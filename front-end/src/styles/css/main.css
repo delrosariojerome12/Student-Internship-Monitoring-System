@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -26,5 +27,146 @@ button {
 }
 
 .container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.login-container {
   display: grid;
+  width: 65rem;
+  height: 40rem;
+  grid-template-columns: 50% 50%;
+  margin: auto;
+  background-color: #f1faee;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 36px -1px #595959;
+  -webkit-box-shadow: 3px 0px 36px -1px rgb(89, 89, 89);
+  -moz-box-shadow: 3px 0px 36px -1px rgb(89, 89, 89);
+  font-family: "Poppins", sans-serif;
+}
+.login-container .left-card {
+  padding: 4rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-direction: column;
+}
+.login-container .left-card img {
+  height: 4rem;
+}
+.login-container .left-card > a {
+  font-size: 1.2rem;
+  color: #000;
+}
+.login-container .left-card form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  display: grid;
+  gap: 2rem;
+}
+.login-container .left-card form label:not(.options label) {
+  position: relative;
+  width: 100%;
+  height: 4.5rem;
+}
+.login-container .left-card form label:not(.options label) span {
+  position: absolute;
+  top: 50%;
+  left: 3%;
+  transform: translateY(-50%);
+  width: 3.7rem;
+  height: 3.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background-color: #457b9d;
+}
+.login-container .left-card form label:not(.options label) span .icons {
+  color: #f1faee !important;
+}
+.login-container .left-card form label:not(.options label) input {
+  grid-column: 2/3;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  box-shadow: 0 6px 10px 0px #cfcfcf;
+  transition: all 0.3s ease-in-out;
+}
+.login-container .left-card form label:not(.options label) input:focus {
+  border: solid 3px #457b9d;
+  box-shadow: none;
+  padding: 0.5rem 0.5rem 0.5rem 5rem;
+}
+.login-container .left-card form label:not(.options label) input:focus::-moz-placeholder {
+  opacity: 0;
+}
+.login-container .left-card form label:not(.options label) input:focus:-ms-input-placeholder {
+  opacity: 0;
+}
+.login-container .left-card form label:not(.options label) input:focus::placeholder {
+  opacity: 0;
+}
+.login-container .left-card form label:not(.options label) input::-moz-placeholder {
+  letter-spacing: 0.2rem;
+  text-align: center;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.login-container .left-card form label:not(.options label) input:-ms-input-placeholder {
+  letter-spacing: 0.2rem;
+  text-align: center;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.login-container .left-card form label:not(.options label) input::placeholder {
+  letter-spacing: 0.2rem;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+.login-container .left-card form button {
+  cursor: pointer;
+  height: 4.5rem;
+  width: 12.5rem;
+  margin: auto;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  background-color: #457b9d;
+  color: #f1faee;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.login-container .left-card form button:hover {
+  background-color: #f1faee;
+  color: #457b9d;
+  border: solid 1px #457b9d;
+}
+.login-container .left-card form .options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.2rem;
+}
+.login-container .left-card form .options a {
+  color: #457b9d;
+}
+.login-container .left-card form .options label {
+  display: flex;
+}
+.login-container .left-card form .options label input {
+  background-color: transparent;
+  cursor: pointer;
+}
+.login-container .right-card img {
+  width: 100%;
+  height: 40rem;
+  border-radius: 0 1rem 1rem 0;
 }/*# sourceMappingURL=main.css.map */
