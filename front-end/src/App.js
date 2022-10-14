@@ -1,9 +1,10 @@
 import React from "react";
+import Login from "./components/auth/login";
 
 const App = () => {
   return (
-    <div>
-      <h2>Student Internship Monitoring System</h2>
+    <div className="container">
+      <Login />
     </div>
   );
 };

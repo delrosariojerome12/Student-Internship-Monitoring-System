@@ -1,6 +1,11 @@
 @import "./reset";
 @import "./variables";
+@import "./utils";
 
 .container {
-  display: grid;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
+
+@import "./components/login";
