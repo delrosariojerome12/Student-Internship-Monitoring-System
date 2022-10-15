@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -28,17 +30,17 @@ button {
 
 .container {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
   position: relative;
+  display: grid;
 }
 
 .login {
-  width: 100%;
-  height: 100%;
-  position: relative;
+  margin: auto;
+  width: 65rem;
+  min-height: 40rem;
 }
 .login .bg-waves {
+  border: solid 1px #000;
   position: absolute;
   bottom: 0%;
   left: 0%;
@@ -48,18 +50,21 @@ button {
 }
 .login .login-container {
   display: grid;
-  width: 65rem;
-  height: 40rem;
+  height: 100%;
+  width: 100%;
   grid-template-columns: 50% 50%;
   margin: auto;
-  background-color: #f1faee;
-  border-radius: 1rem;
   box-shadow: 0px 0px 36px -1px #595959;
   -webkit-box-shadow: 3px 0px 36px -1px rgb(89, 89, 89);
   -moz-box-shadow: 3px 0px 36px -1px rgb(89, 89, 89);
   font-family: "Poppins", sans-serif;
+  background-color: transparent;
+  border-radius: 1rem;
 }
 .login .login-container .left-card {
+  border-radius: 1rem 0 0 1rem;
+  background-color: #f1faee;
+  height: 100%;
   padding: 4rem;
   display: flex;
   gap: 1rem;
@@ -174,6 +179,7 @@ button {
 }
 .login .login-container .left-card form .options label {
   display: flex;
+  gap: 5px;
 }
 .login .login-container .left-card form .options label input {
   background-color: transparent;
@@ -181,6 +187,369 @@ button {
 }
 .login .login-container .right-card img {
   width: 100%;
-  height: 40rem;
+  height: 100%;
   border-radius: 0 1rem 1rem 0;
+}
+
+.login {
+  margin: auto;
+  width: 65rem;
+  min-height: 40rem;
+}
+.login .bg-waves {
+  border: solid 1px #000;
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  width: 100%;
+  transform: translateY(27.8%);
+  z-index: -1;
+}
+.login .login-container {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: 50% 50%;
+  margin: auto;
+  box-shadow: 0px 0px 36px -1px #595959;
+  -webkit-box-shadow: 3px 0px 36px -1px rgb(89, 89, 89);
+  -moz-box-shadow: 3px 0px 36px -1px rgb(89, 89, 89);
+  font-family: "Poppins", sans-serif;
+  background-color: transparent;
+  border-radius: 1rem;
+}
+.login .login-container .left-card {
+  border-radius: 1rem 0 0 1rem;
+  background-color: #f1faee;
+  height: 100%;
+  padding: 4rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-direction: column;
+}
+.login .login-container .left-card img {
+  height: 4rem;
+}
+.login .login-container .left-card > a {
+  font-size: 1.2rem;
+  color: #000;
+}
+.login .login-container .left-card form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  display: grid;
+  gap: 2rem;
+}
+.login .login-container .left-card form label:not(.options label) {
+  position: relative;
+  width: 100%;
+  height: 4.5rem;
+}
+.login .login-container .left-card form label:not(.options label) span {
+  position: absolute;
+  top: 50%;
+  left: 3%;
+  transform: translateY(-50%);
+  width: 3.7rem;
+  height: 3.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background-color: #457b9d;
+}
+.login .login-container .left-card form label:not(.options label) span .icons {
+  color: #f1faee !important;
+}
+.login .login-container .left-card form label:not(.options label) input {
+  grid-column: 2/3;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  box-shadow: 0 6px 10px 0px #cfcfcf;
+  transition: all 0.3s ease-in-out;
+}
+.login .login-container .left-card form label:not(.options label) input:focus {
+  border: solid 3px #457b9d;
+  box-shadow: none;
+  padding: 0.5rem 0.5rem 0.5rem 5rem;
+}
+.login .login-container .left-card form label:not(.options label) input:focus::-moz-placeholder {
+  opacity: 0;
+}
+.login .login-container .left-card form label:not(.options label) input:focus:-ms-input-placeholder {
+  opacity: 0;
+}
+.login .login-container .left-card form label:not(.options label) input:focus::placeholder {
+  opacity: 0;
+}
+.login .login-container .left-card form label:not(.options label) input::-moz-placeholder {
+  letter-spacing: 0.2rem;
+  text-align: center;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.login .login-container .left-card form label:not(.options label) input:-ms-input-placeholder {
+  letter-spacing: 0.2rem;
+  text-align: center;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.login .login-container .left-card form label:not(.options label) input::placeholder {
+  letter-spacing: 0.2rem;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+.login .login-container .left-card form button {
+  cursor: pointer;
+  height: 4.5rem;
+  width: 12.5rem;
+  margin: auto;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  background-color: #457b9d;
+  color: #f1faee;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.login .login-container .left-card form button:hover {
+  background-color: #f1faee;
+  color: #457b9d;
+  border: solid 1px #457b9d;
+}
+.login .login-container .left-card form .options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.2rem;
+}
+.login .login-container .left-card form .options a {
+  color: #457b9d;
+}
+.login .login-container .left-card form .options label {
+  display: flex;
+  gap: 5px;
+}
+.login .login-container .left-card form .options label input {
+  background-color: transparent;
+  cursor: pointer;
+}
+.login .login-container .right-card img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0 1rem 1rem 0;
+}
+
+@media screen and (max-width: 500px) {
+  .login {
+    width: 100% !important;
+  }
+}
+@media screen and (max-width: 450px) {
+  .login {
+    width: 100% !important;
+  }
+  .login .login-container .left-card {
+    padding: 2rem !important;
+  }
+  .login .login-container .left-card form .options {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+.login {
+  margin: auto;
+  width: 65rem;
+  min-height: 40rem;
+}
+.login .bg-waves {
+  border: solid 1px #000;
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  width: 100%;
+  transform: translateY(27.8%);
+  z-index: -1;
+}
+.login .login-container {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: 50% 50%;
+  margin: auto;
+  box-shadow: 0px 0px 36px -1px #595959;
+  -webkit-box-shadow: 3px 0px 36px -1px rgb(89, 89, 89);
+  -moz-box-shadow: 3px 0px 36px -1px rgb(89, 89, 89);
+  font-family: "Poppins", sans-serif;
+  background-color: transparent;
+  border-radius: 1rem;
+}
+.login .login-container .left-card {
+  border-radius: 1rem 0 0 1rem;
+  background-color: #f1faee;
+  height: 100%;
+  padding: 4rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-direction: column;
+}
+.login .login-container .left-card img {
+  height: 4rem;
+}
+.login .login-container .left-card > a {
+  font-size: 1.2rem;
+  color: #000;
+}
+.login .login-container .left-card form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  display: grid;
+  gap: 2rem;
+}
+.login .login-container .left-card form label:not(.options label) {
+  position: relative;
+  width: 100%;
+  height: 4.5rem;
+}
+.login .login-container .left-card form label:not(.options label) span {
+  position: absolute;
+  top: 50%;
+  left: 3%;
+  transform: translateY(-50%);
+  width: 3.7rem;
+  height: 3.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background-color: #457b9d;
+}
+.login .login-container .left-card form label:not(.options label) span .icons {
+  color: #f1faee !important;
+}
+.login .login-container .left-card form label:not(.options label) input {
+  grid-column: 2/3;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  box-shadow: 0 6px 10px 0px #cfcfcf;
+  transition: all 0.3s ease-in-out;
+}
+.login .login-container .left-card form label:not(.options label) input:focus {
+  border: solid 3px #457b9d;
+  box-shadow: none;
+  padding: 0.5rem 0.5rem 0.5rem 5rem;
+}
+.login .login-container .left-card form label:not(.options label) input:focus::-moz-placeholder {
+  opacity: 0;
+}
+.login .login-container .left-card form label:not(.options label) input:focus:-ms-input-placeholder {
+  opacity: 0;
+}
+.login .login-container .left-card form label:not(.options label) input:focus::placeholder {
+  opacity: 0;
+}
+.login .login-container .left-card form label:not(.options label) input::-moz-placeholder {
+  letter-spacing: 0.2rem;
+  text-align: center;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.login .login-container .left-card form label:not(.options label) input:-ms-input-placeholder {
+  letter-spacing: 0.2rem;
+  text-align: center;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.login .login-container .left-card form label:not(.options label) input::placeholder {
+  letter-spacing: 0.2rem;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+.login .login-container .left-card form button {
+  cursor: pointer;
+  height: 4.5rem;
+  width: 12.5rem;
+  margin: auto;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  background-color: #457b9d;
+  color: #f1faee;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.login .login-container .left-card form button:hover {
+  background-color: #f1faee;
+  color: #457b9d;
+  border: solid 1px #457b9d;
+}
+.login .login-container .left-card form .options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.2rem;
+}
+.login .login-container .left-card form .options a {
+  color: #457b9d;
+}
+.login .login-container .left-card form .options label {
+  display: flex;
+  gap: 5px;
+}
+.login .login-container .left-card form .options label input {
+  background-color: transparent;
+  cursor: pointer;
+}
+.login .login-container .right-card img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0 1rem 1rem 0;
+}
+
+@media screen and (max-width: 900px) {
+  .login {
+    width: 90%;
+    height: 50rem;
+  }
+  .login .login-container .left-card {
+    justify-content: center;
+    gap: 2rem;
+  }
+}
+@media screen and (max-width: 700px) {
+  .login {
+    height: 85%;
+    width: 85%;
+  }
+  .login .login-container {
+    display: flex;
+    width: 80%;
+  }
+  .login .login-container .left-card {
+    height: 100%;
+    width: 100%;
+    border-radius: 1rem;
+  }
+  .login .login-container .left-card form label:not(.options label) input:focus {
+    padding: 0.5rem 0.5rem 0.5rem 6rem;
+  }
+  .login .login-container .right-card {
+    display: none;
+  }
 }/*# sourceMappingURL=main.css.map */

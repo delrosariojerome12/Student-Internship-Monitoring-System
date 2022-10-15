@@ -4,9 +4,12 @@
 
 .container {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
   position: relative;
+  display: grid;
 }
 
 @import "./components/login";
+
+@import "./screen/mobile";
+@import "./screen/tablet";
+@import "./screen/desktop";
