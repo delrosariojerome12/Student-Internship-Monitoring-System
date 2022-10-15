@@ -1,0 +1,44 @@
+@import "../components/login";
+
+// login component
+@media screen and (max-width: 900px) {
+  .login {
+    // min-width: 75rem;
+    width: 90%;
+    height: 50rem;
+    .login-container {
+      .left-card {
+        justify-content: center;
+        gap: 2rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .login {
+    height: 85%;
+    width: 85%;
+    .login-container {
+      display: flex;
+      width: 80%;
+      .left-card {
+        height: 100%;
+        width: 100%;
+        border-radius: 1rem;
+        form {
+          label:not(.options label) {
+            input {
+              &:focus {
+                padding: 0.5rem 0.5rem 0.5rem 6rem;
+              }
+            }
+          }
+        }
+      }
+      .right-card {
+        display: none;
+      }
+    }
+  }
+}
