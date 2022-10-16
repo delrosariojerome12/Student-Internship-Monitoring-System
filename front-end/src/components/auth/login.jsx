@@ -28,7 +28,7 @@ const Login = () => {
       {/* <img className="bg-waves" src={bgWaves} alt="" /> */}
       <section className="login-container">
         <div className="left-card">
-          <img src={logo} alt="" />
+          <img src={logo} alt="adwadwadadadda" />
           <h1>Login</h1>
           <form onSubmit={handleSubmit}>
             <IconContext.Provider value={{color: "#f1faee"}}>
