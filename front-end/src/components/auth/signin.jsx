@@ -5,6 +5,7 @@ const Signin = () => {
     <main className="signin">
       <div className="signin-container">
         <h1>Signin</h1>
+        <h1>penge ulam bukas</h1>
       </div>
     </main>
   );
