@@ -1,14 +1,10 @@
 @import "../components/login";
 
-@media screen and (max-width: 500px) {
-  .login {
-    width: 100% !important;
-  }
-}
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 480px) {
   .login {
     width: 100% !important;
     .login-container {
+      width: 90% !important;
       .left-card {
         padding: 2rem !important;
         form {
