@@ -4,8 +4,8 @@
 @media screen and (max-width: 900px) {
   .login {
     // min-width: 75rem;
-    width: 90%;
-    height: 50rem;
+    // width: 90%;
+    // height: 50rem;
     .login-container {
       .left-card {
         justify-content: center;
@@ -17,11 +17,12 @@
 
 @media screen and (max-width: 700px) {
   .login {
-    height: 85%;
-    width: 85%;
+    // height: 85%;
+    // width: 85%;
     .login-container {
       display: flex;
-      width: 80%;
+      width: 65%;
+      height: 90%;
       .left-card {
         height: 100%;
         width: 100%;

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import img from "../../assets/img/bg.png";
 import logo from "../../assets/img/logo.svg";
-// import bgWaves from "../../assets/img/bg-waves.svg";
+import bgWaves from "../../assets/img/bg-waves.svg";
 import {FaUserAlt, FaLock} from "react-icons/fa";
 import {IconContext} from "react-icons";
 
@@ -24,8 +24,8 @@ const Login = () => {
     }
   };
   return (
-    <main className="login">
-      {/* <img className="bg-waves" src={bgWaves} alt="" /> */}
+    <section className="login">
+      <div className="bg-container"></div>
       <section className="login-container">
         <div className="left-card">
           <img src={logo} alt="adwadwadadadda" />
@@ -82,7 +82,7 @@ const Login = () => {
           <img src={img} alt="" />
         </div>
       </section>
-    </main>
+    </section>
   );
 };
 
