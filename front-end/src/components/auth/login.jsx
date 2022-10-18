@@ -1,7 +1,6 @@
 import React, {useState} from "react";
-import img from "../../assets/img/bg.png";
+import img from "../../assets/img/login-bg.svg";
 import logo from "../../assets/img/logo.svg";
-import bgWaves from "../../assets/img/bg-waves.svg";
 import {FaUserAlt, FaLock} from "react-icons/fa";
 import {IconContext} from "react-icons";
 
