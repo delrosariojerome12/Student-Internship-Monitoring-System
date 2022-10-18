@@ -10,7 +10,6 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //shit
   };
 
   const handleOnchange = (value, input) => {
