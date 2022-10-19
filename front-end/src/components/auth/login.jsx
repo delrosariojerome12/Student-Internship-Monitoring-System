@@ -37,7 +37,7 @@ const Login = () => {
   };
   return (
     <section className="login">
-      <div className="bg-container"></div>
+      <section className="bg-container"></section>
       <section className="login-container">
         <div className="left-card">
           <img src={logo} alt="adwadwadadadda" />
@@ -100,7 +100,7 @@ const Login = () => {
           <Link to={"/account/signin"}>Create Account</Link>
         </div>
         <div className="right-card">
-          <img src={img} alt="" />
+          <img src={img} alt="bg.img" />
         </div>
       </section>
     </section>

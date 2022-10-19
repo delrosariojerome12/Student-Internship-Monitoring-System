@@ -1,13 +1,15 @@
 import React from "react";
+import img from "../../assets/img/login-bg.svg";
 
 const Signin = () => {
   return (
-    <main className="signin">
-      <div className="signin-container">
+    <section className="signin">
+      <section className="bg-container"></section>
+      <section className="signin-container">
         <div className="left-card"></div>
         <div className="right-card"></div>
-      </div>
-    </main>
+      </section>
+    </section>
   );
 };
 

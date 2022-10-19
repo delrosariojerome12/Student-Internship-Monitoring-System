@@ -1,7 +1,18 @@
 @import "../variables";
 @import "../utils";
+@import "../components/login";
 
-// .signin {
-//   .signin-container {
-//   }
-// }
+.signin {
+  min-height: 40rem;
+  background-color: red;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  @include flexCenter;
+
+  .signin-container {
+    width: 50%;
+    height: 50%;
+    border: solid 1px #000;
+  }
+}
