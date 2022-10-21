@@ -3,10 +3,12 @@ import img from "../../assets/img/login-bg.svg";
 
 const Signin = () => {
   return (
-    <section className="signin">
+    <section className="auth-container signin">
       <section className="bg-container"></section>
-      <section className="signin-container">
-        <div className="left-card"></div>
+      <section className="signin card-container">
+        <div className="left-card">
+          <img src={img} alt="bg.img" />
+        </div>
         <div className="right-card"></div>
       </section>
     </section>

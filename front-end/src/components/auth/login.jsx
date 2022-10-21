@@ -24,7 +24,6 @@ const Login = () => {
       passwordType.current.type = "password";
     }
   };
-  console.log(passwordType.current);
   const handleOnchange = (value, input) => {
     switch (input) {
       case "username":
@@ -36,9 +35,9 @@ const Login = () => {
     }
   };
   return (
-    <section className="login">
+    <section className="auth-container login">
       <section className="bg-container"></section>
-      <section className="login-container">
+      <section className="login card-container">
         <div className="left-card">
           <img src={logo} alt="adwadwadadadda" />
           <h1>Login</h1>

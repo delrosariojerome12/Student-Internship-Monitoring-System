@@ -1,9 +1,9 @@
 @import "../components/login";
 
 @media screen and (max-width: 480px) {
-  .login {
+  .auth-container {
     width: 100% !important;
-    .login-container {
+    .card-container {
       width: 90% !important;
       .left-card {
         padding: 2rem !important;
