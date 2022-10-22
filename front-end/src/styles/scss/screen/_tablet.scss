@@ -2,11 +2,8 @@
 
 // login component
 @media screen and (max-width: 900px) {
-  .login {
-    // min-width: 75rem;
-    // width: 90%;
-    // height: 50rem;
-    .login-container {
+  .auth-container {
+    .card-container {
       .left-card {
         justify-content: center;
         gap: 2rem;
@@ -16,10 +13,8 @@
 }
 
 @media screen and (max-width: 700px) {
-  .login {
-    // height: 85%;
-    // width: 85%;
-    .login-container {
+  .auth-container {
+    .card-container {
       display: flex;
       width: 65%;
       height: 90%;

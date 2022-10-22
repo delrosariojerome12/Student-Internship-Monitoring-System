@@ -6,6 +6,8 @@ const connectDB = require("./db/connection");
 require("dotenv").config();
 require("express-async-errors");
 
+app.use(express.json());
+
 const port = 3000 || process.env.PORT;
 
 const start = async () => {
