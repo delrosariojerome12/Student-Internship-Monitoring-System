@@ -39,7 +39,7 @@ const Login = () => {
       <section className="bg-container"></section>
       <section className="login card-container">
         <div className="left-card">
-          <img src={logo} alt="adwadwadadadda" />
+          <img src={logo} alt="" />
           <h1>Login</h1>
           <form onSubmit={handleSubmit}>
             <IconContext.Provider

@@ -1,7 +1,7 @@
 @import "../variables";
 @import "../utils";
 
-.auth-container {
+.login {
   @include flexCenter;
   @include authContainer;
   .bg-container {
@@ -11,6 +11,8 @@
   }
   .card-container {
     @include cardContainer;
+    grid-template-columns: 50% 50%;
+
     .left-card:not(.signin .left-card) {
       border-radius: 1rem 0 0 1rem;
       background-color: $light-bg-color;

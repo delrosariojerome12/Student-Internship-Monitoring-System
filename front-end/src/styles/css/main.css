@@ -42,17 +42,16 @@ button {
   display: grid;
 }
 
-.auth-container {
+.login {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 65rem;
   min-height: 40rem;
   width: 100%;
   position: relative;
   overflow: hidden;
 }
-.auth-container .bg-container {
+.login .bg-container {
   top: 20%;
   left: 100%;
   position: absolute;
@@ -62,19 +61,19 @@ button {
   transform: translate(-50%, -50%) rotate(45deg);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1080' height='560' preserveAspectRatio='none' viewBox='0 0 1080 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask2564%26quot%3b)' fill='none'%3e%3crect width='1080' height='560' x='0' y='0' fill='%230e2a47'%3e%3c/rect%3e%3cpath d='M1010.8603635618742 115.02007383675995L935.1085530076157 74.74212169962718 894.830600870483 150.4939322538857 970.5824114247415 190.77188439101846z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1029.702005360189-33.801361989301135L955.3181325638373 132.83996290940632 1114.23531739998 118.9365107967899z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M160.34755279135828 168.1717987652483L57.198242897431086 240.39772311410553 129.4241672462883 343.5470330080327 232.57347714021552 271.3211086591755z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M220.96 187.17 a172.47 172.47 0 1 0 344.94 0 a172.47 172.47 0 1 0 -344.94 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1018.7807516909211 434.36034169448095L907.1133335469049 512.5507096513369 1096.971119647777 546.0277598384972z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M221.043%2c171.975C268.229%2c172.492%2c317.623%2c157.708%2c341.015%2c116.725C364.253%2c76.012%2c352.021%2c25.929%2c327.048%2c-13.743C303.854%2c-50.589%2c264.567%2c-72.773%2c221.043%2c-73.86C175.388%2c-75%2c129.36%2c-58.188%2c105.454%2c-19.276C80.502%2c21.338%2c80.883%2c73.35%2c105.539%2c114.145C129.41%2c153.641%2c174.897%2c171.469%2c221.043%2c171.975' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M545.14 445.37 a103.26 103.26 0 1 0 206.52 0 a103.26 103.26 0 1 0 -206.52 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M-67.54124169793184 104.96717829859668L-101.53980937332204 203.7061883668626 63.56798956677189 205.33453484581497z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1085.1253407364632 390.54958929741383L1165.516297865899 275.739404112919 970.3151555519684 310.1586321679779z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M371.116887954621 239.9213757523273L455.48057641168793 158.4523088080166 374.0115094673772 74.0886203509497 289.6478210103103 155.5576872952604z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M447.07733384265805 664.1033901869265L485.82202255664106 508.706931417102 330.4255637868165 469.96224270311905 291.68087507283354 625.3587014729435z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M892.7093568070289-48.78614360137685L813.5510624340563-52.93465402129758 846.9074439906616 67.8770427481216z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask2564'%3e%3crect width='1080' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
 }
-.auth-container .card-container {
+.login .card-container {
   display: grid;
   z-index: 1;
   min-height: 40rem;
   max-width: 70rem;
-  grid-template-columns: 50% 50%;
   margin: auto;
   box-shadow: 0px 0px 100px 1px #4d89af;
   font-family: "Poppins", sans-serif;
   background-color: transparent;
   border-radius: 1rem;
+  grid-template-columns: 50% 50%;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) {
+.login .card-container .left-card:not(.signin .left-card) {
   border-radius: 1rem 0 0 1rem;
   background-color: #f1faee;
   height: 100%;
@@ -84,14 +83,14 @@ button {
   align-items: center;
   flex-direction: column;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) img {
+.login .card-container .left-card:not(.signin .left-card) img {
   height: 4rem;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) > a {
+.login .card-container .left-card:not(.signin .left-card) > a {
   font-size: 1.2rem;
   color: #000;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form {
+.login .card-container .left-card:not(.signin .left-card) form {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -99,12 +98,12 @@ button {
   display: grid;
   gap: 2rem;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) {
   position: relative;
   width: 100%;
   height: 4.5rem;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) span:not(.show-password) {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) span:not(.show-password) {
   position: absolute;
   top: 50%;
   left: 3%;
@@ -117,10 +116,10 @@ button {
   border-radius: 0.5rem;
   background-color: #457b9d;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) span:not(.show-password) .icons {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) span:not(.show-password) .icons {
   color: #f1faee !important;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) .show-password {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) .show-password {
   position: absolute;
   top: 50%;
   right: 3%;
@@ -133,10 +132,10 @@ button {
   border-radius: 0.5rem;
   cursor: pointer;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) .show-password .icons {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) .show-password .icons {
   color: gray !important;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input {
   grid-column: 2/3;
   width: 100%;
   height: 100%;
@@ -147,38 +146,38 @@ button {
   box-shadow: 0 6px 10px 0px #cfcfcf;
   transition: all 0.3s ease-in-out;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus {
   border: solid 3px #457b9d;
   box-shadow: none;
   padding: 0.5rem 0.5rem 0.5rem 5rem;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus::-moz-placeholder {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus::-moz-placeholder {
   opacity: 0;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus:-ms-input-placeholder {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus:-ms-input-placeholder {
   opacity: 0;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus::placeholder {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus::placeholder {
   opacity: 0;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input::-moz-placeholder {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input::-moz-placeholder {
   letter-spacing: 0.2rem;
   text-align: center;
   -moz-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:-ms-input-placeholder {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:-ms-input-placeholder {
   letter-spacing: 0.2rem;
   text-align: center;
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input::placeholder {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input::placeholder {
   letter-spacing: 0.2rem;
   text-align: center;
   transition: all 0.3s ease-in-out;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form button {
+.login .card-container .left-card:not(.signin .left-card) form button {
   cursor: pointer;
   height: 4.5rem;
   width: 12.5rem;
@@ -192,45 +191,44 @@ button {
   transition: all 0.3s ease-in-out;
   font-weight: 600;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form button:hover {
+.login .card-container .left-card:not(.signin .left-card) form button:hover {
   background-color: #f1faee;
   color: #457b9d;
   border: solid 1px #457b9d;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form .options {
+.login .card-container .left-card:not(.signin .left-card) form .options {
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 1.2rem;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form .options a {
+.login .card-container .left-card:not(.signin .left-card) form .options a {
   color: #457b9d;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form .options label {
+.login .card-container .left-card:not(.signin .left-card) form .options label {
   display: flex;
   gap: 5px;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form .options label input {
+.login .card-container .left-card:not(.signin .left-card) form .options label input {
   background-color: transparent;
   cursor: pointer;
 }
-.auth-container .card-container .right-card:not(.signin .right-card) img {
+.login .card-container .right-card:not(.signin .right-card) img {
   width: 100%;
   height: 100%;
   border-radius: 0 1rem 1rem 0;
 }
 
-.auth-container {
+.login {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 65rem;
   min-height: 40rem;
   width: 100%;
   position: relative;
   overflow: hidden;
 }
-.auth-container .bg-container {
+.login .bg-container {
   top: 20%;
   left: 100%;
   position: absolute;
@@ -240,19 +238,19 @@ button {
   transform: translate(-50%, -50%) rotate(45deg);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1080' height='560' preserveAspectRatio='none' viewBox='0 0 1080 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask2564%26quot%3b)' fill='none'%3e%3crect width='1080' height='560' x='0' y='0' fill='%230e2a47'%3e%3c/rect%3e%3cpath d='M1010.8603635618742 115.02007383675995L935.1085530076157 74.74212169962718 894.830600870483 150.4939322538857 970.5824114247415 190.77188439101846z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1029.702005360189-33.801361989301135L955.3181325638373 132.83996290940632 1114.23531739998 118.9365107967899z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M160.34755279135828 168.1717987652483L57.198242897431086 240.39772311410553 129.4241672462883 343.5470330080327 232.57347714021552 271.3211086591755z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M220.96 187.17 a172.47 172.47 0 1 0 344.94 0 a172.47 172.47 0 1 0 -344.94 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1018.7807516909211 434.36034169448095L907.1133335469049 512.5507096513369 1096.971119647777 546.0277598384972z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M221.043%2c171.975C268.229%2c172.492%2c317.623%2c157.708%2c341.015%2c116.725C364.253%2c76.012%2c352.021%2c25.929%2c327.048%2c-13.743C303.854%2c-50.589%2c264.567%2c-72.773%2c221.043%2c-73.86C175.388%2c-75%2c129.36%2c-58.188%2c105.454%2c-19.276C80.502%2c21.338%2c80.883%2c73.35%2c105.539%2c114.145C129.41%2c153.641%2c174.897%2c171.469%2c221.043%2c171.975' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M545.14 445.37 a103.26 103.26 0 1 0 206.52 0 a103.26 103.26 0 1 0 -206.52 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M-67.54124169793184 104.96717829859668L-101.53980937332204 203.7061883668626 63.56798956677189 205.33453484581497z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1085.1253407364632 390.54958929741383L1165.516297865899 275.739404112919 970.3151555519684 310.1586321679779z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M371.116887954621 239.9213757523273L455.48057641168793 158.4523088080166 374.0115094673772 74.0886203509497 289.6478210103103 155.5576872952604z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M447.07733384265805 664.1033901869265L485.82202255664106 508.706931417102 330.4255637868165 469.96224270311905 291.68087507283354 625.3587014729435z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M892.7093568070289-48.78614360137685L813.5510624340563-52.93465402129758 846.9074439906616 67.8770427481216z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask2564'%3e%3crect width='1080' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
 }
-.auth-container .card-container {
+.login .card-container {
   display: grid;
   z-index: 1;
   min-height: 40rem;
   max-width: 70rem;
-  grid-template-columns: 50% 50%;
   margin: auto;
   box-shadow: 0px 0px 100px 1px #4d89af;
   font-family: "Poppins", sans-serif;
   background-color: transparent;
   border-radius: 1rem;
+  grid-template-columns: 50% 50%;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) {
+.login .card-container .left-card:not(.signin .left-card) {
   border-radius: 1rem 0 0 1rem;
   background-color: #f1faee;
   height: 100%;
@@ -262,14 +260,14 @@ button {
   align-items: center;
   flex-direction: column;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) img {
+.login .card-container .left-card:not(.signin .left-card) img {
   height: 4rem;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) > a {
+.login .card-container .left-card:not(.signin .left-card) > a {
   font-size: 1.2rem;
   color: #000;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form {
+.login .card-container .left-card:not(.signin .left-card) form {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -277,12 +275,12 @@ button {
   display: grid;
   gap: 2rem;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) {
   position: relative;
   width: 100%;
   height: 4.5rem;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) span:not(.show-password) {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) span:not(.show-password) {
   position: absolute;
   top: 50%;
   left: 3%;
@@ -295,10 +293,10 @@ button {
   border-radius: 0.5rem;
   background-color: #457b9d;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) span:not(.show-password) .icons {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) span:not(.show-password) .icons {
   color: #f1faee !important;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) .show-password {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) .show-password {
   position: absolute;
   top: 50%;
   right: 3%;
@@ -311,10 +309,10 @@ button {
   border-radius: 0.5rem;
   cursor: pointer;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) .show-password .icons {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) .show-password .icons {
   color: gray !important;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input {
   grid-column: 2/3;
   width: 100%;
   height: 100%;
@@ -325,38 +323,38 @@ button {
   box-shadow: 0 6px 10px 0px #cfcfcf;
   transition: all 0.3s ease-in-out;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus {
   border: solid 3px #457b9d;
   box-shadow: none;
   padding: 0.5rem 0.5rem 0.5rem 5rem;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus::-moz-placeholder {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus::-moz-placeholder {
   opacity: 0;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus:-ms-input-placeholder {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus:-ms-input-placeholder {
   opacity: 0;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus::placeholder {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus::placeholder {
   opacity: 0;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input::-moz-placeholder {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input::-moz-placeholder {
   letter-spacing: 0.2rem;
   text-align: center;
   -moz-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:-ms-input-placeholder {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:-ms-input-placeholder {
   letter-spacing: 0.2rem;
   text-align: center;
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input::placeholder {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input::placeholder {
   letter-spacing: 0.2rem;
   text-align: center;
   transition: all 0.3s ease-in-out;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form button {
+.login .card-container .left-card:not(.signin .left-card) form button {
   cursor: pointer;
   height: 4.5rem;
   width: 12.5rem;
@@ -370,54 +368,44 @@ button {
   transition: all 0.3s ease-in-out;
   font-weight: 600;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form button:hover {
+.login .card-container .left-card:not(.signin .left-card) form button:hover {
   background-color: #f1faee;
   color: #457b9d;
   border: solid 1px #457b9d;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form .options {
+.login .card-container .left-card:not(.signin .left-card) form .options {
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 1.2rem;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form .options a {
+.login .card-container .left-card:not(.signin .left-card) form .options a {
   color: #457b9d;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form .options label {
+.login .card-container .left-card:not(.signin .left-card) form .options label {
   display: flex;
   gap: 5px;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form .options label input {
+.login .card-container .left-card:not(.signin .left-card) form .options label input {
   background-color: transparent;
   cursor: pointer;
 }
-.auth-container .card-container .right-card:not(.signin .right-card) img {
+.login .card-container .right-card:not(.signin .right-card) img {
   width: 100%;
   height: 100%;
   border-radius: 0 1rem 1rem 0;
 }
 
-.card-container .left-card:not(.login .left-card) img {
-  width: 100%;
-  height: 100%;
-  border-radius: 0 1rem 1rem 0;
-}
-.card-container .right-card:not(.login .right-card) {
-  background-color: #f1faee;
-}
-
-.auth-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 65rem;
+.signin {
   min-height: 40rem;
   width: 100%;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.auth-container .bg-container {
+.signin .bg-container {
   top: 20%;
   left: 100%;
   position: absolute;
@@ -427,20 +415,29 @@ button {
   transform: translate(-50%, -50%) rotate(45deg);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1080' height='560' preserveAspectRatio='none' viewBox='0 0 1080 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask2564%26quot%3b)' fill='none'%3e%3crect width='1080' height='560' x='0' y='0' fill='%230e2a47'%3e%3c/rect%3e%3cpath d='M1010.8603635618742 115.02007383675995L935.1085530076157 74.74212169962718 894.830600870483 150.4939322538857 970.5824114247415 190.77188439101846z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1029.702005360189-33.801361989301135L955.3181325638373 132.83996290940632 1114.23531739998 118.9365107967899z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M160.34755279135828 168.1717987652483L57.198242897431086 240.39772311410553 129.4241672462883 343.5470330080327 232.57347714021552 271.3211086591755z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M220.96 187.17 a172.47 172.47 0 1 0 344.94 0 a172.47 172.47 0 1 0 -344.94 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1018.7807516909211 434.36034169448095L907.1133335469049 512.5507096513369 1096.971119647777 546.0277598384972z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M221.043%2c171.975C268.229%2c172.492%2c317.623%2c157.708%2c341.015%2c116.725C364.253%2c76.012%2c352.021%2c25.929%2c327.048%2c-13.743C303.854%2c-50.589%2c264.567%2c-72.773%2c221.043%2c-73.86C175.388%2c-75%2c129.36%2c-58.188%2c105.454%2c-19.276C80.502%2c21.338%2c80.883%2c73.35%2c105.539%2c114.145C129.41%2c153.641%2c174.897%2c171.469%2c221.043%2c171.975' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M545.14 445.37 a103.26 103.26 0 1 0 206.52 0 a103.26 103.26 0 1 0 -206.52 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M-67.54124169793184 104.96717829859668L-101.53980937332204 203.7061883668626 63.56798956677189 205.33453484581497z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1085.1253407364632 390.54958929741383L1165.516297865899 275.739404112919 970.3151555519684 310.1586321679779z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M371.116887954621 239.9213757523273L455.48057641168793 158.4523088080166 374.0115094673772 74.0886203509497 289.6478210103103 155.5576872952604z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M447.07733384265805 664.1033901869265L485.82202255664106 508.706931417102 330.4255637868165 469.96224270311905 291.68087507283354 625.3587014729435z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M892.7093568070289-48.78614360137685L813.5510624340563-52.93465402129758 846.9074439906616 67.8770427481216z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask2564'%3e%3crect width='1080' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
 }
-.auth-container .card-container {
+.signin .card-container {
   display: grid;
   z-index: 1;
   min-height: 40rem;
   max-width: 70rem;
-  grid-template-columns: 50% 50%;
   margin: auto;
   box-shadow: 0px 0px 100px 1px #4d89af;
   font-family: "Poppins", sans-serif;
   background-color: transparent;
   border-radius: 1rem;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: repeat(2, 50%);
 }
-.auth-container .card-container .left-card:not(.signin .left-card) {
-  border-radius: 1rem 0 0 1rem;
+.signin .card-container .left-card:not(.login .left-card) img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0 1rem 1rem 0;
+}
+.signin .card-container .right-card:not(.login .right-card) {
+  grid-row: 1/3;
+  grid-column: 2/3;
+  background-color: #f1faee;
+  border-radius: 0 1rem 1rem 0;
   background-color: #f1faee;
   height: 100%;
   padding: 4rem;
@@ -449,14 +446,14 @@ button {
   align-items: center;
   flex-direction: column;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) img {
+.signin .card-container .right-card:not(.login .right-card) img {
   height: 4rem;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) > a {
+.signin .card-container .right-card:not(.login .right-card) > a {
   font-size: 1.2rem;
   color: #000;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form {
+.signin .card-container .right-card:not(.login .right-card) form {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -464,12 +461,12 @@ button {
   display: grid;
   gap: 2rem;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) {
+.signin .card-container .right-card:not(.login .right-card) form label:not(.options label) {
   position: relative;
   width: 100%;
   height: 4.5rem;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) span:not(.show-password) {
+.signin .card-container .right-card:not(.login .right-card) form label:not(.options label) span:not(.show-password) {
   position: absolute;
   top: 50%;
   left: 3%;
@@ -482,10 +479,10 @@ button {
   border-radius: 0.5rem;
   background-color: #457b9d;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) span:not(.show-password) .icons {
+.signin .card-container .right-card:not(.login .right-card) form label:not(.options label) span:not(.show-password) .icons {
   color: #f1faee !important;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) .show-password {
+.signin .card-container .right-card:not(.login .right-card) form label:not(.options label) .show-password {
   position: absolute;
   top: 50%;
   right: 3%;
@@ -498,10 +495,10 @@ button {
   border-radius: 0.5rem;
   cursor: pointer;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) .show-password .icons {
+.signin .card-container .right-card:not(.login .right-card) form label:not(.options label) .show-password .icons {
   color: gray !important;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input {
+.signin .card-container .right-card:not(.login .right-card) form label:not(.options label) input {
   grid-column: 2/3;
   width: 100%;
   height: 100%;
@@ -512,38 +509,38 @@ button {
   box-shadow: 0 6px 10px 0px #cfcfcf;
   transition: all 0.3s ease-in-out;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus {
+.signin .card-container .right-card:not(.login .right-card) form label:not(.options label) input:focus {
   border: solid 3px #457b9d;
   box-shadow: none;
   padding: 0.5rem 0.5rem 0.5rem 5rem;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus::-moz-placeholder {
+.signin .card-container .right-card:not(.login .right-card) form label:not(.options label) input:focus::-moz-placeholder {
   opacity: 0;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus:-ms-input-placeholder {
+.signin .card-container .right-card:not(.login .right-card) form label:not(.options label) input:focus:-ms-input-placeholder {
   opacity: 0;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus::placeholder {
+.signin .card-container .right-card:not(.login .right-card) form label:not(.options label) input:focus::placeholder {
   opacity: 0;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input::-moz-placeholder {
+.signin .card-container .right-card:not(.login .right-card) form label:not(.options label) input::-moz-placeholder {
   letter-spacing: 0.2rem;
   text-align: center;
   -moz-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:-ms-input-placeholder {
+.signin .card-container .right-card:not(.login .right-card) form label:not(.options label) input:-ms-input-placeholder {
   letter-spacing: 0.2rem;
   text-align: center;
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input::placeholder {
+.signin .card-container .right-card:not(.login .right-card) form label:not(.options label) input::placeholder {
   letter-spacing: 0.2rem;
   text-align: center;
   transition: all 0.3s ease-in-out;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form button {
+.signin .card-container .right-card:not(.login .right-card) form button {
   cursor: pointer;
   height: 4.5rem;
   width: 12.5rem;
@@ -557,29 +554,201 @@ button {
   transition: all 0.3s ease-in-out;
   font-weight: 600;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form button:hover {
+.signin .card-container .right-card:not(.login .right-card) form button:hover {
   background-color: #f1faee;
   color: #457b9d;
   border: solid 1px #457b9d;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form .options {
+.signin .card-container .right-card:not(.login .right-card) form .options {
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 1.2rem;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form .options a {
+.signin .card-container .right-card:not(.login .right-card) form .options a {
   color: #457b9d;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form .options label {
+.signin .card-container .right-card:not(.login .right-card) form .options label {
   display: flex;
   gap: 5px;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form .options label input {
+.signin .card-container .right-card:not(.login .right-card) form .options label input {
   background-color: transparent;
   cursor: pointer;
 }
-.auth-container .card-container .right-card:not(.signin .right-card) img {
+
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40rem;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.login .bg-container {
+  top: 20%;
+  left: 100%;
+  position: absolute;
+  border-radius: 50%;
+  height: 250%;
+  width: 250%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1080' height='560' preserveAspectRatio='none' viewBox='0 0 1080 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask2564%26quot%3b)' fill='none'%3e%3crect width='1080' height='560' x='0' y='0' fill='%230e2a47'%3e%3c/rect%3e%3cpath d='M1010.8603635618742 115.02007383675995L935.1085530076157 74.74212169962718 894.830600870483 150.4939322538857 970.5824114247415 190.77188439101846z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1029.702005360189-33.801361989301135L955.3181325638373 132.83996290940632 1114.23531739998 118.9365107967899z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M160.34755279135828 168.1717987652483L57.198242897431086 240.39772311410553 129.4241672462883 343.5470330080327 232.57347714021552 271.3211086591755z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M220.96 187.17 a172.47 172.47 0 1 0 344.94 0 a172.47 172.47 0 1 0 -344.94 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1018.7807516909211 434.36034169448095L907.1133335469049 512.5507096513369 1096.971119647777 546.0277598384972z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M221.043%2c171.975C268.229%2c172.492%2c317.623%2c157.708%2c341.015%2c116.725C364.253%2c76.012%2c352.021%2c25.929%2c327.048%2c-13.743C303.854%2c-50.589%2c264.567%2c-72.773%2c221.043%2c-73.86C175.388%2c-75%2c129.36%2c-58.188%2c105.454%2c-19.276C80.502%2c21.338%2c80.883%2c73.35%2c105.539%2c114.145C129.41%2c153.641%2c174.897%2c171.469%2c221.043%2c171.975' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M545.14 445.37 a103.26 103.26 0 1 0 206.52 0 a103.26 103.26 0 1 0 -206.52 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M-67.54124169793184 104.96717829859668L-101.53980937332204 203.7061883668626 63.56798956677189 205.33453484581497z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1085.1253407364632 390.54958929741383L1165.516297865899 275.739404112919 970.3151555519684 310.1586321679779z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M371.116887954621 239.9213757523273L455.48057641168793 158.4523088080166 374.0115094673772 74.0886203509497 289.6478210103103 155.5576872952604z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M447.07733384265805 664.1033901869265L485.82202255664106 508.706931417102 330.4255637868165 469.96224270311905 291.68087507283354 625.3587014729435z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M892.7093568070289-48.78614360137685L813.5510624340563-52.93465402129758 846.9074439906616 67.8770427481216z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask2564'%3e%3crect width='1080' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
+}
+.login .card-container {
+  display: grid;
+  z-index: 1;
+  min-height: 40rem;
+  max-width: 70rem;
+  margin: auto;
+  box-shadow: 0px 0px 100px 1px #4d89af;
+  font-family: "Poppins", sans-serif;
+  background-color: transparent;
+  border-radius: 1rem;
+  grid-template-columns: 50% 50%;
+}
+.login .card-container .left-card:not(.signin .left-card) {
+  border-radius: 1rem 0 0 1rem;
+  background-color: #f1faee;
+  height: 100%;
+  padding: 4rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-direction: column;
+}
+.login .card-container .left-card:not(.signin .left-card) img {
+  height: 4rem;
+}
+.login .card-container .left-card:not(.signin .left-card) > a {
+  font-size: 1.2rem;
+  color: #000;
+}
+.login .card-container .left-card:not(.signin .left-card) form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  display: grid;
+  gap: 2rem;
+}
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) {
+  position: relative;
+  width: 100%;
+  height: 4.5rem;
+}
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) span:not(.show-password) {
+  position: absolute;
+  top: 50%;
+  left: 3%;
+  transform: translateY(-50%);
+  width: 3.7rem;
+  height: 3.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background-color: #457b9d;
+}
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) span:not(.show-password) .icons {
+  color: #f1faee !important;
+}
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) .show-password {
+  position: absolute;
+  top: 50%;
+  right: 3%;
+  transform: translateY(-50%);
+  width: 3.7rem;
+  height: 3.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) .show-password .icons {
+  color: gray !important;
+}
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input {
+  grid-column: 2/3;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  box-shadow: 0 6px 10px 0px #cfcfcf;
+  transition: all 0.3s ease-in-out;
+}
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus {
+  border: solid 3px #457b9d;
+  box-shadow: none;
+  padding: 0.5rem 0.5rem 0.5rem 5rem;
+}
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus::-moz-placeholder {
+  opacity: 0;
+}
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus:-ms-input-placeholder {
+  opacity: 0;
+}
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus::placeholder {
+  opacity: 0;
+}
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input::-moz-placeholder {
+  letter-spacing: 0.2rem;
+  text-align: center;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:-ms-input-placeholder {
+  letter-spacing: 0.2rem;
+  text-align: center;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input::placeholder {
+  letter-spacing: 0.2rem;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+.login .card-container .left-card:not(.signin .left-card) form button {
+  cursor: pointer;
+  height: 4.5rem;
+  width: 12.5rem;
+  margin: auto;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  background-color: #457b9d;
+  color: #f1faee;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.login .card-container .left-card:not(.signin .left-card) form button:hover {
+  background-color: #f1faee;
+  color: #457b9d;
+  border: solid 1px #457b9d;
+}
+.login .card-container .left-card:not(.signin .left-card) form .options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.2rem;
+}
+.login .card-container .left-card:not(.signin .left-card) form .options a {
+  color: #457b9d;
+}
+.login .card-container .left-card:not(.signin .left-card) form .options label {
+  display: flex;
+  gap: 5px;
+}
+.login .card-container .left-card:not(.signin .left-card) form .options label input {
+  background-color: transparent;
+  cursor: pointer;
+}
+.login .card-container .right-card:not(.signin .right-card) img {
   width: 100%;
   height: 100%;
   border-radius: 0 1rem 1rem 0;
@@ -600,17 +769,16 @@ button {
     gap: 1.5rem;
   }
 }
-.auth-container {
+.login {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 65rem;
   min-height: 40rem;
   width: 100%;
   position: relative;
   overflow: hidden;
 }
-.auth-container .bg-container {
+.login .bg-container {
   top: 20%;
   left: 100%;
   position: absolute;
@@ -620,19 +788,19 @@ button {
   transform: translate(-50%, -50%) rotate(45deg);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1080' height='560' preserveAspectRatio='none' viewBox='0 0 1080 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask2564%26quot%3b)' fill='none'%3e%3crect width='1080' height='560' x='0' y='0' fill='%230e2a47'%3e%3c/rect%3e%3cpath d='M1010.8603635618742 115.02007383675995L935.1085530076157 74.74212169962718 894.830600870483 150.4939322538857 970.5824114247415 190.77188439101846z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1029.702005360189-33.801361989301135L955.3181325638373 132.83996290940632 1114.23531739998 118.9365107967899z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M160.34755279135828 168.1717987652483L57.198242897431086 240.39772311410553 129.4241672462883 343.5470330080327 232.57347714021552 271.3211086591755z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M220.96 187.17 a172.47 172.47 0 1 0 344.94 0 a172.47 172.47 0 1 0 -344.94 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1018.7807516909211 434.36034169448095L907.1133335469049 512.5507096513369 1096.971119647777 546.0277598384972z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M221.043%2c171.975C268.229%2c172.492%2c317.623%2c157.708%2c341.015%2c116.725C364.253%2c76.012%2c352.021%2c25.929%2c327.048%2c-13.743C303.854%2c-50.589%2c264.567%2c-72.773%2c221.043%2c-73.86C175.388%2c-75%2c129.36%2c-58.188%2c105.454%2c-19.276C80.502%2c21.338%2c80.883%2c73.35%2c105.539%2c114.145C129.41%2c153.641%2c174.897%2c171.469%2c221.043%2c171.975' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M545.14 445.37 a103.26 103.26 0 1 0 206.52 0 a103.26 103.26 0 1 0 -206.52 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M-67.54124169793184 104.96717829859668L-101.53980937332204 203.7061883668626 63.56798956677189 205.33453484581497z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1085.1253407364632 390.54958929741383L1165.516297865899 275.739404112919 970.3151555519684 310.1586321679779z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M371.116887954621 239.9213757523273L455.48057641168793 158.4523088080166 374.0115094673772 74.0886203509497 289.6478210103103 155.5576872952604z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M447.07733384265805 664.1033901869265L485.82202255664106 508.706931417102 330.4255637868165 469.96224270311905 291.68087507283354 625.3587014729435z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M892.7093568070289-48.78614360137685L813.5510624340563-52.93465402129758 846.9074439906616 67.8770427481216z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask2564'%3e%3crect width='1080' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
 }
-.auth-container .card-container {
+.login .card-container {
   display: grid;
   z-index: 1;
   min-height: 40rem;
   max-width: 70rem;
-  grid-template-columns: 50% 50%;
   margin: auto;
   box-shadow: 0px 0px 100px 1px #4d89af;
   font-family: "Poppins", sans-serif;
   background-color: transparent;
   border-radius: 1rem;
+  grid-template-columns: 50% 50%;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) {
+.login .card-container .left-card:not(.signin .left-card) {
   border-radius: 1rem 0 0 1rem;
   background-color: #f1faee;
   height: 100%;
@@ -642,14 +810,14 @@ button {
   align-items: center;
   flex-direction: column;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) img {
+.login .card-container .left-card:not(.signin .left-card) img {
   height: 4rem;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) > a {
+.login .card-container .left-card:not(.signin .left-card) > a {
   font-size: 1.2rem;
   color: #000;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form {
+.login .card-container .left-card:not(.signin .left-card) form {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -657,12 +825,12 @@ button {
   display: grid;
   gap: 2rem;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) {
   position: relative;
   width: 100%;
   height: 4.5rem;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) span:not(.show-password) {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) span:not(.show-password) {
   position: absolute;
   top: 50%;
   left: 3%;
@@ -675,10 +843,10 @@ button {
   border-radius: 0.5rem;
   background-color: #457b9d;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) span:not(.show-password) .icons {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) span:not(.show-password) .icons {
   color: #f1faee !important;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) .show-password {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) .show-password {
   position: absolute;
   top: 50%;
   right: 3%;
@@ -691,10 +859,10 @@ button {
   border-radius: 0.5rem;
   cursor: pointer;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) .show-password .icons {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) .show-password .icons {
   color: gray !important;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input {
   grid-column: 2/3;
   width: 100%;
   height: 100%;
@@ -705,38 +873,38 @@ button {
   box-shadow: 0 6px 10px 0px #cfcfcf;
   transition: all 0.3s ease-in-out;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus {
   border: solid 3px #457b9d;
   box-shadow: none;
   padding: 0.5rem 0.5rem 0.5rem 5rem;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus::-moz-placeholder {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus::-moz-placeholder {
   opacity: 0;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus:-ms-input-placeholder {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus:-ms-input-placeholder {
   opacity: 0;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus::placeholder {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:focus::placeholder {
   opacity: 0;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input::-moz-placeholder {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input::-moz-placeholder {
   letter-spacing: 0.2rem;
   text-align: center;
   -moz-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:-ms-input-placeholder {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input:-ms-input-placeholder {
   letter-spacing: 0.2rem;
   text-align: center;
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form label:not(.options label) input::placeholder {
+.login .card-container .left-card:not(.signin .left-card) form label:not(.options label) input::placeholder {
   letter-spacing: 0.2rem;
   text-align: center;
   transition: all 0.3s ease-in-out;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form button {
+.login .card-container .left-card:not(.signin .left-card) form button {
   cursor: pointer;
   height: 4.5rem;
   width: 12.5rem;
@@ -750,29 +918,29 @@ button {
   transition: all 0.3s ease-in-out;
   font-weight: 600;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form button:hover {
+.login .card-container .left-card:not(.signin .left-card) form button:hover {
   background-color: #f1faee;
   color: #457b9d;
   border: solid 1px #457b9d;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form .options {
+.login .card-container .left-card:not(.signin .left-card) form .options {
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 1.2rem;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form .options a {
+.login .card-container .left-card:not(.signin .left-card) form .options a {
   color: #457b9d;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form .options label {
+.login .card-container .left-card:not(.signin .left-card) form .options label {
   display: flex;
   gap: 5px;
 }
-.auth-container .card-container .left-card:not(.signin .left-card) form .options label input {
+.login .card-container .left-card:not(.signin .left-card) form .options label input {
   background-color: transparent;
   cursor: pointer;
 }
-.auth-container .card-container .right-card:not(.signin .right-card) img {
+.login .card-container .right-card:not(.signin .right-card) img {
   width: 100%;
   height: 100%;
   border-radius: 0 1rem 1rem 0;
