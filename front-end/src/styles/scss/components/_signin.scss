@@ -1,7 +1,149 @@
 @import "../variables";
 @import "../utils";
+@import "../components/login";
 
-// .signin {
-//   .signin-container {
-//   }
-// }
+.signin {
+  @include authContainer;
+  @include flexCenter;
+  .bg-container {
+    top: 20%;
+    left: 100%;
+    @include bgStyle;
+  }
+
+  .card-container {
+    @include cardContainer;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: repeat(2, 50%);
+
+    .left-card:not(.login .left-card) {
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 0 1rem 1rem 0;
+      }
+    }
+    .right-card:not(.login .right-card) {
+      grid-row: 1/3;
+      grid-column: 2/3;
+      background-color: $light-bg-color;
+      border-radius: 0 1rem 1rem 0;
+      background-color: $light-bg-color;
+      height: 100%;
+      padding: 4rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-direction: column;
+      img {
+        height: 4rem;
+      }
+      & > a {
+        font-size: 1.2rem;
+        color: #000;
+      }
+      form {
+        width: 100%;
+        @include flexColumn;
+        display: grid;
+        gap: 2rem;
+
+        label:not(.options label) {
+          position: relative;
+          width: 100%;
+          height: 4.5rem;
+          span:not(.show-password) {
+            position: absolute;
+            top: 50%;
+            left: 3%;
+            transform: translateY(-50%);
+            width: 3.7rem;
+            height: 3.6rem;
+            @include flexCenter;
+            border-radius: 0.5rem;
+            background-color: $primary-bg-color;
+            .icons {
+              color: $primary-font-color !important;
+            }
+          }
+          .show-password {
+            position: absolute;
+            top: 50%;
+            right: 3%;
+            transform: translateY(-50%);
+            // background-color: $primary-bg-color;
+            width: 3.7rem;
+            height: 3.6rem;
+            @include flexCenter;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            .icons {
+              color: gray !important;
+            }
+          }
+
+          input {
+            grid-column: 2/3;
+            width: 100%;
+            height: 100%;
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: solid 1px transparent;
+            outline: none;
+            box-shadow: 0 6px 10px 0px #cfcfcf;
+            transition: all 0.3s ease-in-out;
+            &:focus {
+              border: solid 3px $primary-bg-color;
+              box-shadow: none;
+              padding: 0.5rem 0.5rem 0.5rem 5rem;
+              &::placeholder {
+                opacity: 0;
+              }
+            }
+            &::placeholder {
+              letter-spacing: 0.2rem;
+              text-align: center;
+              transition: all 0.3s ease-in-out;
+            }
+          }
+        }
+        button {
+          cursor: pointer;
+          height: 4.5rem;
+          width: 12.5rem;
+          margin: auto;
+          border-radius: 5px;
+          border: solid 1px transparent;
+          outline: none;
+          background-color: $primary-bg-color;
+          color: $primary-font-color;
+          letter-spacing: 0.2rem;
+          transition: all 0.3s ease-in-out;
+          font-weight: 600;
+          &:hover {
+            background-color: $primary-font-color;
+            color: $primary-bg-color;
+            border: solid 1px $primary-bg-color;
+          }
+        }
+        .options {
+          @include flexNormal;
+          align-items: center;
+          justify-content: space-between;
+          font-size: 1.2rem;
+          a {
+            color: $primary-bg-color;
+          }
+          label {
+            display: flex;
+            gap: 5px;
+            input {
+              background-color: transparent;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
