@@ -24,7 +24,6 @@ const Login = () => {
       passwordType.current.type = "password";
     }
   };
-  console.log(passwordType.current);
   const handleOnchange = (value, input) => {
     switch (input) {
       case "username":
@@ -36,11 +35,11 @@ const Login = () => {
     }
   };
   return (
-    <section className="login">
-      <div className="bg-container"></div>
-      <section className="login-container">
+    <section className="auth-container login">
+      <section className="bg-container"></section>
+      <section className="login card-container">
         <div className="left-card">
-          <img src={logo} alt="adwadwadadadda" />
+          <img src={logo} alt="" />
           <h1>Login</h1>
           <form onSubmit={handleSubmit}>
             <IconContext.Provider
@@ -100,7 +99,7 @@ const Login = () => {
           <Link to={"/account/signin"}>Create Account</Link>
         </div>
         <div className="right-card">
-          <img src={img} alt="" />
+          <img src={img} alt="bg.img" />
         </div>
       </section>
     </section>
