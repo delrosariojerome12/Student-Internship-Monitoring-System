@@ -35,9 +35,7 @@
 @mixin cardContainer {
   display: grid;
   z-index: 1;
-  min-height: 40rem;
   max-width: 70rem;
-  // grid-template-columns: 50% 50%;
   margin: auto;
   box-shadow: 0px 0px 100px 1px lighten($color: $primary-bg-color, $amount: 5);
   font-family: $poppins-font-family;

@@ -11,6 +11,7 @@
   }
   .card-container {
     @include cardContainer;
+    min-height: 40vh;
     grid-template-columns: 50% 50%;
 
     .left-card:not(.signin .left-card) {
