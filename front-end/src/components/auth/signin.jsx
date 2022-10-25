@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../../assets/img/logo.svg";
 import img from "../../assets/img/secure-login.svg";
-// import {FaUserAlt, FaLock, FaEye, FaEyeSlash} from "react-icons/fa";
+import {FaUserAlt, FaLock, FaEye, FaEyeSlash} from "react-icons/fa";
 import {IconContext} from "react-icons";
 import {useState} from "react";
 
@@ -12,15 +12,35 @@ const Signin = () => {
       type: "text",
       id: "first-name",
       value: "",
+      IconType: FaUserAlt,
     },
-    {forInput: "Last Name", type: "text", id: "last-name", value: ""},
-    {forInput: "Email", type: "email", id: "email", value: ""},
-    {forInput: "Password", type: "password", id: "password", value: ""},
+    {
+      forInput: "Last Name",
+      type: "text",
+      id: "last-name",
+      value: "",
+      IconType: FaUserAlt,
+    },
+    {
+      forInput: "Email",
+      type: "email",
+      id: "email",
+      value: "",
+      IconType: FaUserAlt,
+    },
+    {
+      forInput: "Password",
+      type: "password",
+      id: "password",
+      value: "",
+      IconType: FaLock,
+    },
     {
       forInput: "Confirm Password",
       type: "password",
       id: "confirm-password",
       value: "",
+      IconType: FaLock,
     },
   ]);
 
@@ -44,11 +64,9 @@ const Signin = () => {
           <img src={logo} alt="" />
           <h1>Signin</h1>
           <form onSubmit={handleSubmit}>
-            <IconContext.Provider
-              value={{color: "#f1faee", className: "icons"}}
-            >
+            <IconContext.Provider value={{color: "#000", className: "icons"}}>
               {form.map((inputs, index) => {
-                const {forInput, id, type, value} = inputs;
+                const {forInput, id, type, value, IconType} = inputs;
                 return (
                   <div className="input-contain" key={index}>
                     <input
@@ -64,7 +82,12 @@ const Signin = () => {
                         value ? "placeholder-text active" : "placeholder-text"
                       }
                     >
-                      <div className="text">{forInput}</div>
+                      <div className="text">
+                        <span>
+                          <IconType />
+                        </span>
+                        {forInput}
+                      </div>
                     </label>
                   </div>
                 );

@@ -497,6 +497,8 @@ button {
   padding: 0 0.5rem;
   background-color: transparent;
   color: black;
+  display: flex;
+  gap: 0.5rem;
 }
 .signin .card-container .right-card:not(.login .right-card) form .input-contain .active {
   top: 0%;
