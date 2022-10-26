@@ -473,8 +473,8 @@ button {
   transition: all 0.2s ease-in-out;
   pointer-events: none;
   top: 50%;
-  left: 3%;
-  transform: translate(-5%, -50%);
+  left: 5%;
+  transform: translate(0%, -50%);
 }
 .signin .card-container form .input-contain .placeholder-text:nth-child(1) {
   left: 2% !important;

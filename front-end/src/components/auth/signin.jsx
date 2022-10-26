@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {debounce} from "lodash";
 import {Link} from "react-router-dom";
 import logo from "../../assets/img/logo.svg";
 import {
@@ -48,7 +49,7 @@ const Signin = () => {
       IconType: FaLock,
       isError: false,
       errorMessage:
-        "Your password must: Contain at least 8 characters Contain unique characters, numbers, or symbols Not contain your email address",
+        "Your password must: \nContain at least 8 characters Contain unique characters, numbers, or symbols Not contain your email address",
     },
     {
       forInput: "Confirm Password",
