@@ -418,30 +418,55 @@ button {
 .signin .card-container form .input-contain {
   display: flex;
   position: relative;
+  flex-direction: column;
   border-radius: 0.5rem;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  gap: 1rem;
+}
+.signin .card-container form .input-contain .placeholder-container {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  height: 4.5rem;
+  width: 100%;
+  pointer-events: none;
 }
 .signin .card-container form .input-contain input {
   width: 30rem;
   border: solid 3px transparent;
   outline: solid 1px #8b8b8b;
   border-radius: 0.5rem;
-  padding: 1.2rem;
+  padding: 1.1rem;
+  letter-spacing: 2px;
   transition: all 0.1s ease-in-out;
 }
 .signin .card-container form .input-contain input:focus {
   border: solid 3px #457b9d;
   outline: none;
 }
-.signin .card-container form .input-contain input:focus + .placeholder-text {
+.signin .card-container form .input-contain input:focus + .placeholder-container .placeholder-text {
   top: 0%;
   left: 0%;
   background-color: #fff;
   font-size: 1.1rem;
   color: black;
   scale: 0.8;
+}
+.signin .card-container form .input-contain .input-error {
+  border: solid 2px #ed3737 !important;
+}
+.signin .card-container form .input-contain .error-message {
+  color: #ed3737;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.signin .card-container form .input-contain .icons-error {
+  color: red !important;
+}
+.signin .card-container form .input-contain p {
+  width: 30rem;
 }
 .signin .card-container form .input-contain .placeholder-text {
   position: absolute;
@@ -461,6 +486,7 @@ button {
   color: black;
   display: flex;
   gap: 0.5rem;
+  align-items: center;
 }
 .signin .card-container form .input-contain .active {
   top: 0%;

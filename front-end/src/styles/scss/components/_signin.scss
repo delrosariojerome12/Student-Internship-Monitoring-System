@@ -13,9 +13,6 @@
     padding: 3rem;
     gap: 3rem;
     grid-template-rows: auto 1fr;
-    // & > * {
-    //   border: solid 1px #000;
-    // }
     header {
       font-size: 32px;
       img {
@@ -30,21 +27,32 @@
       .input-contain {
         display: flex;
         position: relative;
+        flex-direction: column;
         border-radius: 0.5rem;
         width: fit-content;
+        gap: 1rem;
+        .placeholder-container {
+          position: absolute;
+          top: 0%;
+          left: 0%;
+          height: 4.5rem;
+          width: 100%;
+          pointer-events: none;
+        }
         input {
           width: 30rem;
           border: solid 3px transparent;
           outline: solid 1px #8b8b8b;
           border-radius: 0.5rem;
-          padding: 1.2rem;
+          padding: 1.1rem;
+          letter-spacing: 2px;
           transition: all 0.1s ease-in-out;
           &:focus {
             border: solid 3px $primary-bg-color;
             outline: none;
           }
 
-          &:focus + .placeholder-text {
+          &:focus + .placeholder-container .placeholder-text {
             top: 0%;
             left: 0%;
             background-color: #fff;
@@ -53,6 +61,20 @@
             // border: solid 1px #8b8b8b;
             scale: 0.8;
           }
+        }
+        .input-error {
+          border: solid 2px #ed3737 !important;
+        }
+        .error-message {
+          color: #ed3737;
+          font-size: 1.2rem;
+          font-weight: 600;
+        }
+        .icons-error {
+          color: red !important;
+        }
+        p {
+          width: 30rem;
         }
 
         .placeholder-text {
@@ -72,6 +94,7 @@
             color: black;
             display: flex;
             gap: 0.5rem;
+            align-items: center;
           }
         }
         .active {
