@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useCallback} from "react";
 import {debounce} from "lodash";
 import {Link} from "react-router-dom";
 import logo from "../../assets/img/logo.svg";
@@ -49,7 +49,7 @@ const Signin = () => {
       IconType: FaLock,
       isError: false,
       errorMessage:
-        "Your password must: \nContain at least 8 characters Contain unique characters, numbers, or symbols Not contain your email address",
+        "Your password must: Contain at least 8 characters Contain unique characters, numbers, or symbols Not contain your email address",
     },
     {
       forInput: "Confirm Password",
@@ -71,7 +71,18 @@ const Signin = () => {
     data[index].value = value;
     value ? (data[index].isError = false) : (data[index].isError = true);
     setForm(data);
+    handleError(value, index);
   };
+
+  const handleError = useCallback(
+    debounce((value, index) => {
+      const data = [...form];
+      //verify input
+      value ? (data[index].isError = false) : (data[index].isError = true);
+      setForm(data);
+    }, 1000),
+    []
+  );
 
   return (
     <section className="signin">
