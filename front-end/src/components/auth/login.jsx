@@ -1,107 +1,148 @@
-import React, {useState} from "react";
-import img from "../../assets/img/login-bg.svg";
-import logo from "../../assets/img/logo.svg";
-import {FaUserAlt, FaLock, FaEye, FaEyeSlash} from "react-icons/fa";
-import {IconContext} from "react-icons";
+import React, {useState, useCallback} from "react";
+import {debounce} from "lodash";
 import {Link} from "react-router-dom";
+import logo from "../../assets/img/logo.svg";
+import {
+  FaUserAlt,
+  FaLock,
+  FaEye,
+  FaEyeSlash,
+  FaCheckCircle,
+} from "react-icons/fa";
+import {GrMail} from "react-icons/gr";
+import {IconContext} from "react-icons";
 import {useRef} from "react";
 
 const Login = () => {
-  const [hasUsername, setHasUsername] = useState(false);
-  const [hasPassword, setHasPassword] = useState(false);
+  const [form, setForm] = useState([
+    {
+      forInput: "Email",
+      type: "email",
+      id: "email",
+      value: "",
+      IconType: GrMail,
+      isError: false,
+      errorMessage: "Please provide valid email",
+      hasEyeIcon: false,
+    },
+    {
+      forInput: "Password",
+      type: "password",
+      id: "password",
+      value: "",
+      IconType: FaLock,
+      isError: false,
+      errorMessage:
+        "Your password must: Contain at least 8 characters Contain unique characters, numbers, or symbols Not contain your email address",
+      hasEyeIcon: true,
+    },
+  ]);
   const [isPasswordShown, setIsPasswordShown] = useState(false);
-  const passwordType = useRef();
+  const refPassword = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
-  const handleShowPassword = () => {
-    setIsPasswordShown(!isPasswordShown);
-    if (passwordType.current.type === "password") {
-      passwordType.current.type = "text";
-    } else {
-      passwordType.current.type = "password";
-    }
+  const handleOnChange = (value, index) => {
+    const data = [...form];
+    data[index].value = value;
+    value ? (data[index].isError = false) : (data[index].isError = true);
+    setForm(data);
+    handleError(value, index);
   };
-  const handleOnchange = (value, input) => {
-    switch (input) {
-      case "username":
-        return value ? setHasUsername(true) : setHasUsername(false);
 
-      case "password":
-        return value ? setHasPassword(true) : setHasPassword(false);
-      default:
-    }
+  const handleError = useCallback(
+    debounce((value, index) => {
+      const data = [...form];
+      //verify input
+      value ? (data[index].isError = false) : (data[index].isError = true);
+      setForm(data);
+    }, 1000),
+    []
+  );
+
+  const handleShowPassword = (e) => {
+    const passwordInput =
+      e.target.parentElement.parentElement.parentElement.firstElementChild;
+    isPasswordShown
+      ? (passwordInput.type = "text")
+      : (passwordInput.type = "password");
+    setIsPasswordShown(!isPasswordShown);
   };
+
+  const renderEyeIcon = () => {
+    return isPasswordShown ? (
+      <FaEye onClick={(e) => handleShowPassword(e)} />
+    ) : (
+      <FaEyeSlash onClick={(e) => handleShowPassword(e)} />
+    );
+  };
+
   return (
-    <section className="auth-container login">
-      <section className="bg-container"></section>
-      <section className="login card-container">
-        <div className="left-card">
+    <section className="login">
+      <section className="card-container">
+        <header>
           <img src={logo} alt="" />
           <h1>Login</h1>
-          <form onSubmit={handleSubmit}>
-            <IconContext.Provider
-              value={{color: "#f1faee", className: "icons"}}
-            >
-              <label htmlFor="username">
-                <span>
-                  <FaUserAlt />
-                </span>
-                <input
-                  style={
-                    hasUsername ? {padding: "0.5rem 0.5rem 0.5rem 6rem"} : null
-                  }
-                  onChange={(e) => handleOnchange(e.target.value, e.target.id)}
-                  type="text"
-                  name="username"
-                  id="username"
-                  placeholder="Username"
-                />
-              </label>
-              <label htmlFor="password">
-                <span>
-                  <FaLock />
-                </span>
-                <span
-                  onClick={() => handleShowPassword()}
-                  className="show-password"
-                >
-                  {isPasswordShown ? <FaEye /> : <FaEyeSlash />}
-                </span>
-                <input
-                  ref={passwordType}
-                  style={
-                    hasPassword ? {padding: "0.5rem 0.5rem 0.5rem 6rem"} : null
-                  }
-                  type="password"
-                  name="password"
-                  id="password"
-                  onChange={(e) => handleOnchange(e.target.value, e.target.id)}
-                  placeholder="Password"
-                />
-              </label>
-
-              <div className="options">
-                <label htmlFor="remember-me">
-                  <input type="checkbox" name="remeber-me" id="remember-me" />
-                  <p>Remember Me</p>
-                </label>
-                <a href="https://web.facebook.com/?_rdc=1&_rdr">
-                  Forgot Password
-                </a>
-              </div>
-
-              <button type="submit">Login</button>
-            </IconContext.Provider>
-          </form>
-          <Link to={"/account/signin"}>Create Account</Link>
-        </div>
-        <div className="right-card">
-          <img src={img} alt="bg.img" />
-        </div>
+        </header>
+        <form onSubmit={handleSubmit}>
+          <IconContext.Provider value={{color: "#000", className: "icons"}}>
+            {form.map((inputs, index) => {
+              const {
+                forInput,
+                id,
+                type,
+                value,
+                IconType,
+                isError,
+                errorMessage,
+                hasEyeIcon,
+              } = inputs;
+              return (
+                <div className="input-contain" key={index}>
+                  <input
+                    type={type}
+                    name={forInput}
+                    id={id}
+                    className={isError ? "input-error" : null}
+                    value={value}
+                    required
+                    onChange={(e) => handleOnChange(e.target.value, index)}
+                  />
+                  <div className="placeholder-container">
+                    <label
+                      htmlFor={id}
+                      className={
+                        value ? "placeholder-text active" : "placeholder-text"
+                      }
+                    >
+                      <div className={isError ? "text icons-error" : "text"}>
+                        <span>
+                          <IconType
+                            className={isError ? "icons-error" : "icons"}
+                          />
+                        </span>
+                        {forInput}
+                      </div>
+                    </label>
+                  </div>
+                  {isError && <p className="error-message">{errorMessage}</p>}
+                  <div className="eye-container">
+                    <span>{hasEyeIcon && renderEyeIcon()}</span>
+                  </div>
+                </div>
+              );
+            })}
+            <span>
+              <p>Already have an account?</p>
+              <Link to="/account/signin">Sign up</Link>
+            </span>
+            <button type="submit">Login</button>
+          </IconContext.Provider>
+        </form>
       </section>
+      <section className="bg-container"></section>
     </section>
   );
 };
