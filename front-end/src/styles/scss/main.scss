@@ -6,6 +6,7 @@
   min-height: 100vh;
   position: relative;
   display: grid;
+  font-family: $poppins-font-family;
 }
 
 @import "./components/login";
