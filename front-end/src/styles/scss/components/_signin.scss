@@ -5,6 +5,7 @@
 .signin {
   display: grid;
   grid-template-columns: 34.2rem 1fr;
+  font-size: 1.4rem;
   .bg-container {
     @include bgStyle;
   }

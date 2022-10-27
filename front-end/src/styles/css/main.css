@@ -46,6 +46,7 @@ button {
 .login {
   display: grid;
   grid-template-columns: 34.2rem 1fr;
+  font-size: 1.4rem;
 }
 .login .bg-container {
   height: 100%;
@@ -72,10 +73,6 @@ button {
   width: -moz-fit-content;
   width: fit-content;
   gap: 1rem;
-  font-size: 1.4rem;
-}
-.login .card-container form .input-contain a {
-  font-size: 1.4rem;
 }
 .login .card-container form .input-contain .placeholder-container {
   position: absolute;
@@ -184,6 +181,7 @@ button {
 .login {
   display: grid;
   grid-template-columns: 34.2rem 1fr;
+  font-size: 1.4rem;
 }
 .login .bg-container {
   height: 100%;
@@ -210,10 +208,6 @@ button {
   width: -moz-fit-content;
   width: fit-content;
   gap: 1rem;
-  font-size: 1.4rem;
-}
-.login .card-container form .input-contain a {
-  font-size: 1.4rem;
 }
 .login .card-container form .input-contain .placeholder-container {
   position: absolute;
@@ -322,6 +316,7 @@ button {
 .signin {
   display: grid;
   grid-template-columns: 34.2rem 1fr;
+  font-size: 1.4rem;
 }
 .signin .bg-container {
   height: 100%;
@@ -452,6 +447,7 @@ button {
 .login {
   display: grid;
   grid-template-columns: 34.2rem 1fr;
+  font-size: 1.4rem;
 }
 .login .bg-container {
   height: 100%;
@@ -478,10 +474,6 @@ button {
   width: -moz-fit-content;
   width: fit-content;
   gap: 1rem;
-  font-size: 1.4rem;
-}
-.login .card-container form .input-contain a {
-  font-size: 1.4rem;
 }
 .login .card-container form .input-contain .placeholder-container {
   position: absolute;
@@ -605,6 +597,7 @@ button {
 .login {
   display: grid;
   grid-template-columns: 34.2rem 1fr;
+  font-size: 1.4rem;
 }
 .login .bg-container {
   height: 100%;
@@ -631,10 +624,6 @@ button {
   width: -moz-fit-content;
   width: fit-content;
   gap: 1rem;
-  font-size: 1.4rem;
-}
-.login .card-container form .input-contain a {
-  font-size: 1.4rem;
 }
 .login .card-container form .input-contain .placeholder-container {
   position: absolute;

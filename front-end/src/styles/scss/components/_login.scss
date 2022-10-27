@@ -4,6 +4,7 @@
 .login {
   display: grid;
   grid-template-columns: 34.2rem 1fr;
+  font-size: 1.4rem;
   .bg-container {
     @include bgStyle;
   }
@@ -25,10 +26,7 @@
         border-radius: 0.5rem;
         width: fit-content;
         gap: 1rem;
-        font-size: 1.4rem;
-        a {
-          font-size: 1.4rem;
-        }
+
         .placeholder-container {
           position: absolute;
           top: 0%;
