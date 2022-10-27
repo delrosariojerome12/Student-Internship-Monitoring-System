@@ -5,16 +5,19 @@
 .signin {
   display: grid;
   grid-template-columns: 34.2rem 1fr;
+  font-size: 1.4rem;
   .bg-container {
     @include bgStyle;
   }
   .card-container {
     display: grid;
     padding: 3rem;
-    gap: 3rem;
+    gap: 2.5rem;
     grid-template-rows: auto 1fr;
     header {
-      font-size: 32px;
+      h1 {
+        font-size: 32px;
+      }
       img {
         height: 3.7rem;
       }
@@ -38,6 +41,18 @@
           height: 4.5rem;
           width: 100%;
           pointer-events: none;
+        }
+        .eye-container {
+          position: absolute;
+          // height: 4.5rem;
+          display: flex;
+          align-items: center;
+          top: 15px;
+          right: 3%;
+          svg {
+            cursor: pointer;
+            pointer-events: all;
+          }
         }
         input {
           width: 30rem;

@@ -46,6 +46,7 @@ button {
 .login {
   display: grid;
   grid-template-columns: 34.2rem 1fr;
+  font-size: 1.4rem;
 }
 .login .bg-container {
   height: 100%;
@@ -57,6 +58,12 @@ button {
   padding: 3rem;
   gap: 3rem;
   grid-template-rows: auto 1fr;
+}
+.login .card-container header h1 {
+  font-size: 3.2rem;
+}
+.login .card-container header img {
+  height: 3.7rem;
 }
 .login .card-container form {
   display: flex;
@@ -72,19 +79,17 @@ button {
   width: -moz-fit-content;
   width: fit-content;
   gap: 1rem;
-  font-size: 1.4rem;
-}
-.login .card-container form .input-contain a {
-  font-size: 1.4rem;
 }
 .login .card-container form .input-contain .placeholder-container {
   position: absolute;
   top: 0%;
   left: 0%;
   height: 4.5rem;
+  width: 100%;
   pointer-events: none;
 }
 .login .card-container form .input-contain .eye-container {
+  z-index: 2;
   position: absolute;
   height: 4.5rem;
   display: flex;
@@ -184,6 +189,7 @@ button {
 .login {
   display: grid;
   grid-template-columns: 34.2rem 1fr;
+  font-size: 1.4rem;
 }
 .login .bg-container {
   height: 100%;
@@ -195,6 +201,12 @@ button {
   padding: 3rem;
   gap: 3rem;
   grid-template-rows: auto 1fr;
+}
+.login .card-container header h1 {
+  font-size: 3.2rem;
+}
+.login .card-container header img {
+  height: 3.7rem;
 }
 .login .card-container form {
   display: flex;
@@ -210,19 +222,17 @@ button {
   width: -moz-fit-content;
   width: fit-content;
   gap: 1rem;
-  font-size: 1.4rem;
-}
-.login .card-container form .input-contain a {
-  font-size: 1.4rem;
 }
 .login .card-container form .input-contain .placeholder-container {
   position: absolute;
   top: 0%;
   left: 0%;
   height: 4.5rem;
+  width: 100%;
   pointer-events: none;
 }
 .login .card-container form .input-contain .eye-container {
+  z-index: 2;
   position: absolute;
   height: 4.5rem;
   display: flex;
@@ -322,6 +332,7 @@ button {
 .signin {
   display: grid;
   grid-template-columns: 34.2rem 1fr;
+  font-size: 1.4rem;
 }
 .signin .bg-container {
   height: 100%;
@@ -331,10 +342,10 @@ button {
 .signin .card-container {
   display: grid;
   padding: 3rem;
-  gap: 3rem;
+  gap: 2.5rem;
   grid-template-rows: auto 1fr;
 }
-.signin .card-container header {
+.signin .card-container header h1 {
   font-size: 32px;
 }
 .signin .card-container header img {
@@ -362,6 +373,17 @@ button {
   height: 4.5rem;
   width: 100%;
   pointer-events: none;
+}
+.signin .card-container form .input-contain .eye-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 15px;
+  right: 3%;
+}
+.signin .card-container form .input-contain .eye-container svg {
+  cursor: pointer;
+  pointer-events: all;
 }
 .signin .card-container form .input-contain input {
   width: 30rem;
@@ -452,6 +474,7 @@ button {
 .login {
   display: grid;
   grid-template-columns: 34.2rem 1fr;
+  font-size: 1.4rem;
 }
 .login .bg-container {
   height: 100%;
@@ -463,6 +486,12 @@ button {
   padding: 3rem;
   gap: 3rem;
   grid-template-rows: auto 1fr;
+}
+.login .card-container header h1 {
+  font-size: 3.2rem;
+}
+.login .card-container header img {
+  height: 3.7rem;
 }
 .login .card-container form {
   display: flex;
@@ -478,19 +507,17 @@ button {
   width: -moz-fit-content;
   width: fit-content;
   gap: 1rem;
-  font-size: 1.4rem;
-}
-.login .card-container form .input-contain a {
-  font-size: 1.4rem;
 }
 .login .card-container form .input-contain .placeholder-container {
   position: absolute;
   top: 0%;
   left: 0%;
   height: 4.5rem;
+  width: 100%;
   pointer-events: none;
 }
 .login .card-container form .input-contain .eye-container {
+  z-index: 2;
   position: absolute;
   height: 4.5rem;
   display: flex;
@@ -605,6 +632,7 @@ button {
 .login {
   display: grid;
   grid-template-columns: 34.2rem 1fr;
+  font-size: 1.4rem;
 }
 .login .bg-container {
   height: 100%;
@@ -616,6 +644,12 @@ button {
   padding: 3rem;
   gap: 3rem;
   grid-template-rows: auto 1fr;
+}
+.login .card-container header h1 {
+  font-size: 3.2rem;
+}
+.login .card-container header img {
+  height: 3.7rem;
 }
 .login .card-container form {
   display: flex;
@@ -631,19 +665,17 @@ button {
   width: -moz-fit-content;
   width: fit-content;
   gap: 1rem;
-  font-size: 1.4rem;
-}
-.login .card-container form .input-contain a {
-  font-size: 1.4rem;
 }
 .login .card-container form .input-contain .placeholder-container {
   position: absolute;
   top: 0%;
   left: 0%;
   height: 4.5rem;
+  width: 100%;
   pointer-events: none;
 }
 .login .card-container form .input-contain .eye-container {
+  z-index: 2;
   position: absolute;
   height: 4.5rem;
   display: flex;
