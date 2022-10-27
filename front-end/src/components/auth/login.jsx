@@ -52,15 +52,17 @@ const Login = () => {
     handleError(value, index);
   };
 
-  const handleError = useCallback(
-    debounce((value, index) => {
-      const data = [...form];
-      //verify input
-      value ? (data[index].isError = false) : (data[index].isError = true);
-      setForm(data);
-    }, 1000),
-    []
-  );
+  const handleError =
+    // eslint-disable-next-line
+    useCallback(
+      debounce((value, index) => {
+        const data = [...form];
+        //verify input
+        value ? (data[index].isError = false) : (data[index].isError = true);
+        setForm(data);
+      }, 1000),
+      []
+    );
 
   const handleShowPassword = () => {
     setIsPasswordShown(!isPasswordShown);

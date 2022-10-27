@@ -21,7 +21,7 @@ const Signin = () => {
       value: "",
       IconType: FaUserAlt,
       isError: false,
-      errorMessage: "First name must be between 1 and 20 characters long",
+      errorMessage: "First name must be between 3 and 20 characters long",
       hasEyeIcon: false,
     },
     {
@@ -31,7 +31,7 @@ const Signin = () => {
       value: "",
       IconType: FaUserAlt,
       isError: false,
-      errorMessage: "Last name must be between 1 and 20 characters long",
+      errorMessage: "Last name must be between 3 and 20 characters long",
       hasEyeIcon: false,
     },
     {
@@ -54,16 +54,18 @@ const Signin = () => {
       errorMessage:
         "Your password must: Contain at least 8 characters Contain unique characters, numbers, or symbols Not contain your email address",
       hasEyeIcon: true,
+      hasShownPassword: false,
     },
     {
       forInput: "Confirm Password",
       type: "password",
       id: "confirm-password",
       value: "",
-      IconType: FaCheckCircle,
+      IconType: FaLock,
       isError: false,
       errorMessage: "Password are not the same",
       hasEyeIcon: true,
+      hasShownPassword: false,
     },
   ]);
 
@@ -71,23 +73,81 @@ const Signin = () => {
     e.preventDefault();
   };
 
-  const handleOnChange = (value, index) => {
+  const handleOnChange = (value, index, input) => {
     const data = [...form];
     data[index].value = value;
-    value ? (data[index].isError = false) : (data[index].isError = true);
+
+    switch (input) {
+      case "First Name":
+        value.length > 2 && value.length < 20
+          ? (data[index].isError = false)
+          : (data[index].isError = true);
+
+        // if (value.length > 2 && value.length < 20) {
+        //   data[index].isError = false;
+        // } else {
+        //   data[index].isError = true;
+        //   setForm(data);
+        // }
+
+        console.log(data[index].value);
+        return;
+      case "Last Name":
+        value.length > 2 && value.length < 20
+          ? (data[index].isError = false)
+          : (data[index].isError = true);
+        setForm(data);
+
+        return;
+      case "Email":
+        // regex validation
+        return;
+      case "Password":
+        // validate
+        return;
+      case "Confirm Password":
+        // compare password
+        return;
+      default:
+        break;
+    }
+
+    // value ? (data[index].isError = false) : (data[index].isError = true);
     setForm(data);
-    handleError(value, index);
   };
 
-  const handleError = useCallback(
-    debounce((value, index) => {
-      const data = [...form];
-      //verify input
-      value ? (data[index].isError = false) : (data[index].isError = true);
-      setForm(data);
-    }, 1000),
-    []
-  );
+  // const handleError =
+  //   // eslint-disable-next-line
+  //   useCallback(
+  //     debounce((value, index) => {
+  //       const data = [...form];
+  //       //verify input
+  //       value ? (data[index].isError = false) : (data[index].isError = true);
+  //       setForm(data);
+  //     }, 1000),
+  //     []
+  //   );
+
+  const handleShowPassword = (index) => {
+    const newForm = [...form];
+    newForm[index].hasShownPassword
+      ? (newForm[index].hasShownPassword = false)
+      : (newForm[index].hasShownPassword = true);
+
+    newForm[index].type === "password"
+      ? (newForm[index].type = "text")
+      : (newForm[index].type = "password");
+    console.log(newForm);
+    setForm(newForm);
+  };
+
+  const renderEyeIcon = (condition, index) => {
+    return condition ? (
+      <FaEye onClick={() => handleShowPassword(index)} />
+    ) : (
+      <FaEyeSlash onClick={() => handleShowPassword(index)} />
+    );
+  };
 
   return (
     <section className="signin">
@@ -108,6 +168,8 @@ const Signin = () => {
                 IconType,
                 isError,
                 errorMessage,
+                hasEyeIcon,
+                hasShownPassword,
               } = inputs;
               return (
                 <div className="input-contain" key={index}>
@@ -118,7 +180,9 @@ const Signin = () => {
                     className={isError ? "input-error" : null}
                     value={value}
                     required
-                    onChange={(e) => handleOnChange(e.target.value, index)}
+                    onChange={(e) =>
+                      handleOnChange(e.target.value, index, forInput)
+                    }
                   />
                   <div className="placeholder-container">
                     <label
@@ -138,6 +202,9 @@ const Signin = () => {
                     </label>
                   </div>
                   {isError && <p className="error-message">{errorMessage}</p>}
+                  <div className="eye-container">
+                    {hasEyeIcon && renderEyeIcon(hasShownPassword, index)}
+                  </div>
                 </div>
               );
             })}

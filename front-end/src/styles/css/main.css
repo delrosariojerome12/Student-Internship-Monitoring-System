@@ -82,6 +82,7 @@ button {
   pointer-events: none;
 }
 .login .card-container form .input-contain .eye-container {
+  z-index: 2;
   position: absolute;
   height: 4.5rem;
   display: flex;
@@ -217,6 +218,7 @@ button {
   pointer-events: none;
 }
 .login .card-container form .input-contain .eye-container {
+  z-index: 2;
   position: absolute;
   height: 4.5rem;
   display: flex;
@@ -326,10 +328,10 @@ button {
 .signin .card-container {
   display: grid;
   padding: 3rem;
-  gap: 3rem;
+  gap: 2.5rem;
   grid-template-rows: auto 1fr;
 }
-.signin .card-container header {
+.signin .card-container header h1 {
   font-size: 32px;
 }
 .signin .card-container header img {
@@ -357,6 +359,17 @@ button {
   height: 4.5rem;
   width: 100%;
   pointer-events: none;
+}
+.signin .card-container form .input-contain .eye-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 15px;
+  right: 3%;
+}
+.signin .card-container form .input-contain .eye-container svg {
+  cursor: pointer;
+  pointer-events: all;
 }
 .signin .card-container form .input-contain input {
   width: 30rem;
@@ -483,6 +496,7 @@ button {
   pointer-events: none;
 }
 .login .card-container form .input-contain .eye-container {
+  z-index: 2;
   position: absolute;
   height: 4.5rem;
   display: flex;
@@ -633,6 +647,7 @@ button {
   pointer-events: none;
 }
 .login .card-container form .input-contain .eye-container {
+  z-index: 2;
   position: absolute;
   height: 4.5rem;
   display: flex;

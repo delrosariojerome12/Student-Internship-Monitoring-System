@@ -36,6 +36,7 @@
           pointer-events: none;
         }
         .eye-container {
+          z-index: 2;
           position: absolute;
           height: 4.5rem;
           display: flex;
