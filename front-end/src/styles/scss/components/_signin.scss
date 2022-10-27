@@ -3,121 +3,132 @@
 @import "../components/login";
 
 .signin {
-  @include authContainer;
-  @include flexCenter;
+  display: grid;
+  grid-template-columns: 34.2rem 1fr;
   .bg-container {
-    top: 20%;
-    left: 100%;
     @include bgStyle;
   }
-
   .card-container {
-    @include cardContainer;
-    height: 60vh;
-    grid-template-columns: 30% 70%;
-    .left-card:not(.login .left-card) {
+    display: grid;
+    padding: 3rem;
+    gap: 3rem;
+    grid-template-rows: auto 1fr;
+    header {
+      font-size: 32px;
       img {
-        width: 100%;
-        height: 100%;
-        border-radius: 0 1rem 1rem 0;
+        height: 3.7rem;
       }
     }
-    .right-card:not(.login .right-card) {
-      grid-column: 2/ 3;
-      background-color: $light-bg-color;
-      border-radius: 0 1rem 1rem 0;
-      // background-color: $light-bg-color;
-      background-color: #fff;
-      height: 100%;
-      padding: 3rem;
+    form {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
-      // align-items: center;
-      img {
-        height: 2rem;
-        align-self: flex-start;
-      }
-      & > a {
-        font-size: 1.2rem;
-        color: #000;
-      }
-      form {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
+      gap: 2.5rem;
 
-        .input-contain {
-          &:nth-child(3) {
-            grid-column: 1/3;
-          }
-          display: flex;
-          position: relative;
+      .input-contain {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        border-radius: 0.5rem;
+        width: fit-content;
+        gap: 1rem;
+        .placeholder-container {
+          position: absolute;
+          top: 0%;
+          left: 0%;
+          height: 4.5rem;
+          width: 100%;
+          pointer-events: none;
+        }
+        input {
+          width: 30rem;
+          border: solid 3px transparent;
+          outline: solid 1px #8b8b8b;
           border-radius: 0.5rem;
-          input {
-            width: 100%;
-            border: solid 1px #8b8b8b;
+          padding: 1.1rem;
+          letter-spacing: 2px;
+          transition: all 0.1s ease-in-out;
+          &:focus {
+            border: solid 3px $primary-bg-color;
             outline: none;
-            border-radius: 0.5rem;
-            padding: 1rem;
-            &:focus + .placeholder-text {
-              top: 0%;
-              left: 0%;
-              background-color: #fff;
-              font-size: 1.1rem;
-              color: black;
-              border-color: #8b8b8b;
-              scale: 0.8;
-            }
           }
 
-          .placeholder-text {
-            position: absolute;
-            transition: all 0.2s ease-in-out;
-            pointer-events: none;
-            top: 50%;
-            left: 5%;
-            transform: translate(-5%, -50%);
-            &:nth-child(1) {
-              left: 2% !important;
-            }
-            .text {
-              font-size: 1.4rem;
-              padding: 0 0.5rem;
-              background-color: transparent;
-              color: black;
-            }
-          }
-          .active {
+          &:focus + .placeholder-container .placeholder-text {
             top: 0%;
             left: 0%;
             background-color: #fff;
             font-size: 1.1rem;
-            border-color: #8b8b8b;
+            color: black;
+            // border: solid 1px #8b8b8b;
             scale: 0.8;
           }
         }
-
-        button {
-          grid-row: 4/5;
-          cursor: pointer;
-          height: 4.5rem;
-          width: 12.5rem;
-          // margin: auto;
-          border-radius: 5px;
-          border: solid 1px transparent;
-          outline: none;
-          background-color: $primary-bg-color;
-          color: $primary-font-color;
-          letter-spacing: 0.2rem;
-          transition: all 0.3s ease-in-out;
+        .input-error {
+          border: solid 2px #ed3737 !important;
+        }
+        .error-message {
+          color: #ed3737;
+          font-size: 1.2rem;
           font-weight: 600;
-          &:hover {
-            background-color: $primary-font-color;
-            color: $primary-bg-color;
-            border: solid 1px $primary-bg-color;
+        }
+        .icons-error {
+          color: red !important;
+        }
+        p {
+          width: 30rem;
+        }
+
+        .placeholder-text {
+          position: absolute;
+          transition: all 0.2s ease-in-out;
+          pointer-events: none;
+          top: 50%;
+          left: 5%;
+          transform: translate(0%, -50%);
+          &:nth-child(1) {
+            left: 2% !important;
           }
+          .text {
+            font-size: 1.4rem;
+            padding: 0 0.5rem;
+            background-color: transparent;
+            color: black;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+          }
+        }
+        .active {
+          top: 0%;
+          left: 0%;
+          background-color: #fff;
+          font-size: 1.1rem;
+          border-color: #8b8b8b;
+          scale: 0.8;
+        }
+      }
+      span {
+        display: flex;
+        gap: 1rem;
+      }
+
+      button {
+        // grid-row: 4/5;
+        cursor: pointer;
+        height: 4.5rem;
+        width: 12.5rem;
+        // margin: auto;
+        border-radius: 5px;
+        border: solid 1px transparent;
+        outline: none;
+        background-color: $primary-bg-color;
+        color: $primary-font-color;
+        letter-spacing: 0.2rem;
+        transition: all 0.3s ease-in-out;
+        font-weight: 600;
+        &:hover {
+          background-color: $primary-font-color;
+          color: $primary-bg-color;
+          border: solid 1px $primary-bg-color;
         }
       }
     }

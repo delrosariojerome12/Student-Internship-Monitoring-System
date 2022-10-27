@@ -30,7 +30,6 @@ const start = async () => {
   try {
     const connectionString = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@projectsdb.wlwmrul.mongodb.net/SIMS?retryWrites=true&w=majority`;
     await connectDB(connectionString);
-
     app.listen(port, () => console.log(`listening at ${port}`));
   } catch (error) {
     console.log(error);
