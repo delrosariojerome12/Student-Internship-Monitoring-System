@@ -76,28 +76,24 @@ const Signin = () => {
   const handleOnChange = (value, index, input) => {
     const data = [...form];
     data[index].value = value;
-
     switch (input) {
       case "First Name":
         value.length > 2 && value.length < 20
           ? (data[index].isError = false)
           : (data[index].isError = true);
-
+        setForm(data);
         // if (value.length > 2 && value.length < 20) {
         //   data[index].isError = false;
         // } else {
         //   data[index].isError = true;
         //   setForm(data);
         // }
-
-        console.log(data[index].value);
         return;
       case "Last Name":
         value.length > 2 && value.length < 20
           ? (data[index].isError = false)
           : (data[index].isError = true);
         setForm(data);
-
         return;
       case "Email":
         // regex validation
