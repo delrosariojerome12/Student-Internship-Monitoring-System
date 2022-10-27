@@ -128,7 +128,14 @@ const Login = () => {
                       className={
                         value ? "placeholder-text active" : "placeholder-text"
                       }
-                    ></label>
+                    >
+                      <div className={"text"}>
+                        <span>
+                          <IconType className={"icons"} />
+                        </span>
+                        {forInput}
+                      </div>
+                    </label>
                   </div>
                   <div className="eye-container">
                     {hasEyeIcon && renderEyeIcon()}
