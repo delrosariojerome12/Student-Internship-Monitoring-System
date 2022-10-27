@@ -12,12 +12,7 @@
     padding: 3rem;
     gap: 3rem;
     grid-template-rows: auto 1fr;
-    header {
-      font-size: 32px;
-      img {
-        height: 3.7rem;
-      }
-    }
+
     form {
       display: flex;
       flex-direction: column;
@@ -30,12 +25,16 @@
         border-radius: 0.5rem;
         width: fit-content;
         gap: 1rem;
+        font-size: 1.4rem;
+        a {
+          font-size: 1.4rem;
+        }
         .placeholder-container {
           position: absolute;
           top: 0%;
           left: 0%;
           height: 4.5rem;
-          width: 100%;
+          // width: 100%;
           pointer-events: none;
         }
         .eye-container {
@@ -48,6 +47,7 @@
           transform: translate(0, -50%);
           svg {
             cursor: pointer;
+            pointer-events: all;
           }
         }
         input {
@@ -83,9 +83,6 @@
         }
         .icons-error {
           color: red !important;
-        }
-        p {
-          width: 30rem;
         }
 
         .placeholder-text {

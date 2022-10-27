@@ -62,20 +62,20 @@ const Login = () => {
     []
   );
 
-  const handleShowPassword = (e) => {
-    const passwordInput =
-      e.target.parentElement.parentElement.parentElement.firstElementChild;
-    isPasswordShown
-      ? (passwordInput.type = "text")
-      : (passwordInput.type = "password");
+  const handleShowPassword = () => {
     setIsPasswordShown(!isPasswordShown);
+    if (refPassword.current.type === "password") {
+      refPassword.current.type = "text";
+    } else {
+      refPassword.current.type = "password";
+    }
   };
 
   const renderEyeIcon = () => {
     return isPasswordShown ? (
-      <FaEye onClick={(e) => handleShowPassword(e)} />
+      <FaEye onClick={handleShowPassword} />
     ) : (
-      <FaEyeSlash onClick={(e) => handleShowPassword(e)} />
+      <FaEyeSlash onClick={handleShowPassword} />
     );
   };
 
@@ -101,35 +101,37 @@ const Login = () => {
               } = inputs;
               return (
                 <div className="input-contain" key={index}>
-                  <input
-                    type={type}
-                    name={forInput}
-                    id={id}
-                    className={isError ? "input-error" : null}
-                    value={value}
-                    required
-                    onChange={(e) => handleOnChange(e.target.value, index)}
-                  />
+                  {hasEyeIcon ? (
+                    <input
+                      ref={refPassword}
+                      type={type}
+                      name={forInput}
+                      id={id}
+                      value={value}
+                      required
+                      onChange={(e) => handleOnChange(e.target.value, index)}
+                    />
+                  ) : (
+                    <input
+                      type={type}
+                      name={forInput}
+                      id={id}
+                      // className={isError ? "input-error" : null}
+                      value={value}
+                      required
+                      onChange={(e) => handleOnChange(e.target.value, index)}
+                    />
+                  )}
                   <div className="placeholder-container">
                     <label
                       htmlFor={id}
                       className={
                         value ? "placeholder-text active" : "placeholder-text"
                       }
-                    >
-                      <div className={isError ? "text icons-error" : "text"}>
-                        <span>
-                          <IconType
-                            className={isError ? "icons-error" : "icons"}
-                          />
-                        </span>
-                        {forInput}
-                      </div>
-                    </label>
+                    ></label>
                   </div>
-                  {isError && <p className="error-message">{errorMessage}</p>}
                   <div className="eye-container">
-                    <span>{hasEyeIcon && renderEyeIcon()}</span>
+                    {hasEyeIcon && renderEyeIcon()}
                   </div>
                 </div>
               );

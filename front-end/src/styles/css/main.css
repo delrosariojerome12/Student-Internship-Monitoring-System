@@ -58,12 +58,6 @@ button {
   gap: 3rem;
   grid-template-rows: auto 1fr;
 }
-.login .card-container header {
-  font-size: 32px;
-}
-.login .card-container header img {
-  height: 3.7rem;
-}
 .login .card-container form {
   display: flex;
   flex-direction: column;
@@ -78,13 +72,16 @@ button {
   width: -moz-fit-content;
   width: fit-content;
   gap: 1rem;
+  font-size: 1.4rem;
+}
+.login .card-container form .input-contain a {
+  font-size: 1.4rem;
 }
 .login .card-container form .input-contain .placeholder-container {
   position: absolute;
   top: 0%;
   left: 0%;
   height: 4.5rem;
-  width: 100%;
   pointer-events: none;
 }
 .login .card-container form .input-contain .eye-container {
@@ -98,6 +95,7 @@ button {
 }
 .login .card-container form .input-contain .eye-container svg {
   cursor: pointer;
+  pointer-events: all;
 }
 .login .card-container form .input-contain input {
   width: 28rem;
@@ -130,9 +128,6 @@ button {
 }
 .login .card-container form .input-contain .icons-error {
   color: red !important;
-}
-.login .card-container form .input-contain p {
-  width: 30rem;
 }
 .login .card-container form .input-contain .placeholder-text {
   position: absolute;
@@ -201,12 +196,6 @@ button {
   gap: 3rem;
   grid-template-rows: auto 1fr;
 }
-.login .card-container header {
-  font-size: 32px;
-}
-.login .card-container header img {
-  height: 3.7rem;
-}
 .login .card-container form {
   display: flex;
   flex-direction: column;
@@ -221,13 +210,16 @@ button {
   width: -moz-fit-content;
   width: fit-content;
   gap: 1rem;
+  font-size: 1.4rem;
+}
+.login .card-container form .input-contain a {
+  font-size: 1.4rem;
 }
 .login .card-container form .input-contain .placeholder-container {
   position: absolute;
   top: 0%;
   left: 0%;
   height: 4.5rem;
-  width: 100%;
   pointer-events: none;
 }
 .login .card-container form .input-contain .eye-container {
@@ -241,6 +233,7 @@ button {
 }
 .login .card-container form .input-contain .eye-container svg {
   cursor: pointer;
+  pointer-events: all;
 }
 .login .card-container form .input-contain input {
   width: 28rem;
@@ -273,9 +266,6 @@ button {
 }
 .login .card-container form .input-contain .icons-error {
   color: red !important;
-}
-.login .card-container form .input-contain p {
-  width: 30rem;
 }
 .login .card-container form .input-contain .placeholder-text {
   position: absolute;
@@ -474,12 +464,6 @@ button {
   gap: 3rem;
   grid-template-rows: auto 1fr;
 }
-.login .card-container header {
-  font-size: 32px;
-}
-.login .card-container header img {
-  height: 3.7rem;
-}
 .login .card-container form {
   display: flex;
   flex-direction: column;
@@ -494,13 +478,16 @@ button {
   width: -moz-fit-content;
   width: fit-content;
   gap: 1rem;
+  font-size: 1.4rem;
+}
+.login .card-container form .input-contain a {
+  font-size: 1.4rem;
 }
 .login .card-container form .input-contain .placeholder-container {
   position: absolute;
   top: 0%;
   left: 0%;
   height: 4.5rem;
-  width: 100%;
   pointer-events: none;
 }
 .login .card-container form .input-contain .eye-container {
@@ -514,6 +501,7 @@ button {
 }
 .login .card-container form .input-contain .eye-container svg {
   cursor: pointer;
+  pointer-events: all;
 }
 .login .card-container form .input-contain input {
   width: 28rem;
@@ -546,9 +534,6 @@ button {
 }
 .login .card-container form .input-contain .icons-error {
   color: red !important;
-}
-.login .card-container form .input-contain p {
-  width: 30rem;
 }
 .login .card-container form .input-contain .placeholder-text {
   position: absolute;
@@ -632,12 +617,6 @@ button {
   gap: 3rem;
   grid-template-rows: auto 1fr;
 }
-.login .card-container header {
-  font-size: 32px;
-}
-.login .card-container header img {
-  height: 3.7rem;
-}
 .login .card-container form {
   display: flex;
   flex-direction: column;
@@ -652,13 +631,16 @@ button {
   width: -moz-fit-content;
   width: fit-content;
   gap: 1rem;
+  font-size: 1.4rem;
+}
+.login .card-container form .input-contain a {
+  font-size: 1.4rem;
 }
 .login .card-container form .input-contain .placeholder-container {
   position: absolute;
   top: 0%;
   left: 0%;
   height: 4.5rem;
-  width: 100%;
   pointer-events: none;
 }
 .login .card-container form .input-contain .eye-container {
@@ -672,6 +654,7 @@ button {
 }
 .login .card-container form .input-contain .eye-container svg {
   cursor: pointer;
+  pointer-events: all;
 }
 .login .card-container form .input-contain input {
   width: 28rem;
@@ -704,9 +687,6 @@ button {
 }
 .login .card-container form .input-contain .icons-error {
   color: red !important;
-}
-.login .card-container form .input-contain p {
-  width: 30rem;
 }
 .login .card-container form .input-contain .placeholder-text {
   position: absolute;
