@@ -59,6 +59,12 @@ button {
   gap: 3rem;
   grid-template-rows: auto 1fr;
 }
+.login .card-container header h1 {
+  font-size: 3.2rem;
+}
+.login .card-container header img {
+  height: 3.7rem;
+}
 .login .card-container form {
   display: flex;
   flex-direction: column;
@@ -79,6 +85,7 @@ button {
   top: 0%;
   left: 0%;
   height: 4.5rem;
+  width: 100%;
   pointer-events: none;
 }
 .login .card-container form .input-contain .eye-container {
@@ -195,6 +202,12 @@ button {
   gap: 3rem;
   grid-template-rows: auto 1fr;
 }
+.login .card-container header h1 {
+  font-size: 3.2rem;
+}
+.login .card-container header img {
+  height: 3.7rem;
+}
 .login .card-container form {
   display: flex;
   flex-direction: column;
@@ -215,6 +228,7 @@ button {
   top: 0%;
   left: 0%;
   height: 4.5rem;
+  width: 100%;
   pointer-events: none;
 }
 .login .card-container form .input-contain .eye-container {
@@ -473,6 +487,12 @@ button {
   gap: 3rem;
   grid-template-rows: auto 1fr;
 }
+.login .card-container header h1 {
+  font-size: 3.2rem;
+}
+.login .card-container header img {
+  height: 3.7rem;
+}
 .login .card-container form {
   display: flex;
   flex-direction: column;
@@ -493,6 +513,7 @@ button {
   top: 0%;
   left: 0%;
   height: 4.5rem;
+  width: 100%;
   pointer-events: none;
 }
 .login .card-container form .input-contain .eye-container {
@@ -624,6 +645,12 @@ button {
   gap: 3rem;
   grid-template-rows: auto 1fr;
 }
+.login .card-container header h1 {
+  font-size: 3.2rem;
+}
+.login .card-container header img {
+  height: 3.7rem;
+}
 .login .card-container form {
   display: flex;
   flex-direction: column;
@@ -644,6 +671,7 @@ button {
   top: 0%;
   left: 0%;
   height: 4.5rem;
+  width: 100%;
   pointer-events: none;
 }
 .login .card-container form .input-contain .eye-container {
