@@ -22,6 +22,7 @@ const Signin = () => {
       IconType: FaUserAlt,
       isError: false,
       errorMessage: "First name must be between 1 and 20 characters long",
+      hasEyeIcon: false,
     },
     {
       forInput: "Last Name",
@@ -31,6 +32,7 @@ const Signin = () => {
       IconType: FaUserAlt,
       isError: false,
       errorMessage: "Last name must be between 1 and 20 characters long",
+      hasEyeIcon: false,
     },
     {
       forInput: "Email",
@@ -40,6 +42,7 @@ const Signin = () => {
       IconType: GrMail,
       isError: false,
       errorMessage: "Please provide valid email",
+      hasEyeIcon: false,
     },
     {
       forInput: "Password",
@@ -50,6 +53,7 @@ const Signin = () => {
       isError: false,
       errorMessage:
         "Your password must: Contain at least 8 characters Contain unique characters, numbers, or symbols Not contain your email address",
+      hasEyeIcon: true,
     },
     {
       forInput: "Confirm Password",
@@ -59,6 +63,7 @@ const Signin = () => {
       IconType: FaCheckCircle,
       isError: false,
       errorMessage: "Password are not the same",
+      hasEyeIcon: true,
     },
   ]);
 
