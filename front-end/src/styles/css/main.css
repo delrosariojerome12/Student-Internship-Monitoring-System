@@ -772,10 +772,13 @@ button {
   border: solid 1px #457b9d;
 }
 
-@media screen and (max-width: 900px) {
-  .auth-container .card-container .left-card {
-    justify-content: center;
-    gap: 2rem;
+@media screen and (max-width: 800px) {
+  .login {
+    grid-template-columns: 1fr;
+    grid-template-rows: 10rem 1fr;
+  }
+  .login .bg-container {
+    grid-row: 1/2;
   }
 }
 @media screen and (max-width: 700px) {
