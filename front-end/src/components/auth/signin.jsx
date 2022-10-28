@@ -52,7 +52,7 @@ const Signin = () => {
       IconType: FaLock,
       isError: false,
       errorMessage:
-        "Your password must: Contain unique characters, numbers, or symbols Not contain your email address".toString(),
+        "Your password must: Contain unique characters, numbers, or symbols Not contain your email address",
       hasEyeIcon: true,
       hasShownPassword: false,
       pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/,
