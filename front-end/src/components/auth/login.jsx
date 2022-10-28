@@ -154,6 +154,7 @@ const Login = () => {
         </form>
       </section>
       <section className="bg-container"></section>
+      <footer></footer>
     </section>
   );
 };
