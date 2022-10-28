@@ -1,6 +1,6 @@
-import React, { useState, useCallback } from "react";
-import { debounce } from "lodash";
-import { Link } from "react-router-dom";
+import React, {useState, useCallback} from "react";
+import {debounce} from "lodash";
+import {Link} from "react-router-dom";
 import logo from "../../assets/img/logo.svg";
 import {
   FaUserAlt,
@@ -9,9 +9,9 @@ import {
   FaEyeSlash,
   FaCheckCircle,
 } from "react-icons/fa";
-import { GrMail } from "react-icons/gr";
-import { IconContext } from "react-icons";
-import { useRef } from "react";
+import {GrMail} from "react-icons/gr";
+import {IconContext} from "react-icons";
+import {useRef} from "react";
 
 const Login = () => {
   const [form, setForm] = useState([
@@ -89,7 +89,7 @@ const Login = () => {
           <h1>Login</h1>
         </header>
         <form onSubmit={handleSubmit}>
-          <IconContext.Provider value={{ color: "#000", className: "icons" }}>
+          <IconContext.Provider value={{color: "#000", className: "icons"}}>
             {form.map((inputs, index) => {
               const {
                 forInput,
@@ -154,7 +154,6 @@ const Login = () => {
         </form>
       </section>
       <section className="bg-container"></section>
-      <footer></footer>
     </section>
   );
 };

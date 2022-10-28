@@ -4,25 +4,16 @@
 // login component
 @media screen and (max-width: 800px) {
   .login {
-    grid-template-columns: 50px 1fr 50px;
+    grid-template-columns: 150px 1fr;
     grid-template-rows: 1fr;
-    footer {
-      display: flex;
-      @include bgStyle;
-      grid-column: 3/4;
-    }
     .bg-container {
       grid-column: 1/2;
+      grid-row: 1/2;
     }
     .card-container {
       grid-column: 2/3;
       gap: 2rem;
-
       header {
-        @include flexCenter;
-        gap: 0.7rem;
-        flex-direction: column;
-
         h1 {
           font-size: 4rem;
         }
@@ -59,15 +50,12 @@
 //sign-in component
 @media screen and (max-width: 800px) {
   .signin {
-    grid-template-columns: 50px 1fr 50px;
+    grid-template-columns: 150px 1fr;
     grid-template-rows: 1fr;
-    footer {
-      display: flex;
-      @include bgStyle;
-      grid-column: 3/4;
-    }
+
     .bg-container {
       grid-column: 1/2;
+      grid-row: 1/2;
     }
     .card-container {
       grid-column: 2/3;

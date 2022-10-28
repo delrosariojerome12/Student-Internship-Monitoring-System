@@ -18,6 +18,10 @@
     grid-template-rows: auto 1fr;
 
     header {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      flex-direction: column;
       h1 {
         font-size: 3.2rem;
       }
