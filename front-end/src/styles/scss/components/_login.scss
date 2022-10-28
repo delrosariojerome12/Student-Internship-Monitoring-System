@@ -8,6 +8,9 @@
   .bg-container {
     @include bgStyle;
   }
+  footer {
+    display: none;
+  }
   .card-container {
     display: grid;
     padding: 3rem;
