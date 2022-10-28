@@ -52,9 +52,10 @@ const Signin = () => {
       IconType: FaLock,
       isError: false,
       errorMessage:
-        "Your password must: Contain at least 8 characters Contain unique characters, numbers, or symbols Not contain your email address",
+        "Your password must: Contain unique characters, numbers, or symbols Not contain your email address",
       hasEyeIcon: true,
       hasShownPassword: false,
+      pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/,
     },
     {
       forInput: "Confirm Password",
@@ -82,12 +83,6 @@ const Signin = () => {
           ? (data[index].isError = false)
           : (data[index].isError = true);
         setForm(data);
-        // if (value.length > 2 && value.length < 20) {
-        //   data[index].isError = false;
-        // } else {
-        //   data[index].isError = true;
-        //   setForm(data);
-        // }
         return;
       case "Last Name":
         value.length > 2 && value.length < 20
@@ -96,10 +91,20 @@ const Signin = () => {
         setForm(data);
         return;
       case "Email":
-        // regex validation
+        const emailRegex =
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        let isValid = emailRegex.test(value);
+        isValid ? (data[index].isError = false) : (data[index].isError = true);
+        setForm(data);
         return;
       case "Password":
-        // validate
+        const passswordRegex =
+          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,16}$/;
+        let isPasswordValid = passswordRegex.test(value);
+        isPasswordValid
+          ? (data[index].isError = false)
+          : (data[index].isError = true);
+        setForm(data);
         return;
       case "Confirm Password":
         // compare password
@@ -107,22 +112,7 @@ const Signin = () => {
       default:
         break;
     }
-
-    // value ? (data[index].isError = false) : (data[index].isError = true);
-    setForm(data);
   };
-
-  // const handleError =
-  //   // eslint-disable-next-line
-  //   useCallback(
-  //     debounce((value, index) => {
-  //       const data = [...form];
-  //       //verify input
-  //       value ? (data[index].isError = false) : (data[index].isError = true);
-  //       setForm(data);
-  //     }, 1000),
-  //     []
-  //   );
 
   const handleShowPassword = (index) => {
     const newForm = [...form];
@@ -133,7 +123,6 @@ const Signin = () => {
     newForm[index].type === "password"
       ? (newForm[index].type = "text")
       : (newForm[index].type = "password");
-    console.log(newForm);
     setForm(newForm);
   };
 
@@ -166,6 +155,7 @@ const Signin = () => {
                 errorMessage,
                 hasEyeIcon,
                 hasShownPassword,
+                pattern,
               } = inputs;
               return (
                 <div className="input-contain" key={index}>
@@ -174,6 +164,7 @@ const Signin = () => {
                     name={forInput}
                     id={id}
                     className={isError ? "input-error" : null}
+                    // pattern={pattern ? pattern : null}
                     value={value}
                     required
                     onChange={(e) =>
