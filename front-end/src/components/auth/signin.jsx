@@ -212,6 +212,7 @@ const Signin = () => {
           </IconContext.Provider>
         </form>
       </section>
+      {/* <footer></footer> */}
     </section>
   );
 };
