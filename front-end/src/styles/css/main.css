@@ -111,6 +111,7 @@ button {
 .login .card-container form .input-contain .eye-container svg {
   cursor: pointer;
   pointer-events: all;
+  font-size: 1.7rem;
 }
 .login .card-container form .input-contain input {
   width: 28rem;
@@ -176,6 +177,9 @@ button {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+.login .card-container form span s svg {
+  font-size: 1.7rem;
 }
 .login .card-container form button {
   cursor: pointer;
@@ -263,6 +267,7 @@ button {
 .login .card-container form .input-contain .eye-container svg {
   cursor: pointer;
   pointer-events: all;
+  font-size: 1.7rem;
 }
 .login .card-container form .input-contain input {
   width: 28rem;
@@ -328,6 +333,9 @@ button {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+.login .card-container form span s svg {
+  font-size: 1.7rem;
 }
 .login .card-container form button {
   cursor: pointer;
@@ -401,6 +409,7 @@ button {
   right: 3%;
 }
 .signin .card-container form .input-contain .eye-container svg {
+  font-size: 1.7rem;
   cursor: pointer;
   pointer-events: all;
 }
@@ -471,6 +480,9 @@ button {
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+.signin .card-container form span svg {
+  font-size: 1.7rem;
 }
 .signin .card-container form button {
   cursor: pointer;
@@ -558,6 +570,7 @@ button {
 .login .card-container form .input-contain .eye-container svg {
   cursor: pointer;
   pointer-events: all;
+  font-size: 1.7rem;
 }
 .login .card-container form .input-contain input {
   width: 28rem;
@@ -624,6 +637,9 @@ button {
   flex-direction: column;
   gap: 1rem;
 }
+.login .card-container form span s svg {
+  font-size: 1.7rem;
+}
 .login .card-container form button {
   cursor: pointer;
   height: 4.5rem;
@@ -643,86 +659,93 @@ button {
   border: solid 1px #457b9d;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 480px) {
   .login {
-    grid-template-columns: 150px 1fr;
-    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 50px !important;
+    grid-template-rows: 1fr !important;
   }
   .login .bg-container {
-    grid-column: 1/2;
-    grid-row: 1/2;
+    grid-column: 2/3 !important;
+    grid-row: 1/2 !important;
   }
   .login .card-container {
-    grid-column: 2/3;
-    gap: 2rem;
+    grid-column: 1/2 !important;
+  }
+  .login .card-container header {
+    align-items: flex-start !important;
   }
   .login .card-container header h1 {
-    font-size: 4rem;
+    font-size: 3.5rem !important;
   }
   .login .card-container header img {
-    height: 4.5rem;
-  }
-  .login .card-container form {
-    width: 100%;
-  }
-  .login .card-container form .input-contain {
-    width: 100%;
-  }
-  .login .card-container form .input-contain .text {
-    padding: 0;
-  }
-  .login .card-container form .input-contain input {
-    height: 50px;
-    width: 100%;
+    height: 4rem !important;
   }
   .login .card-container form span {
-    display: grid;
-    grid-template-columns: auto auto;
-    margin: 0 auto;
+    justify-content: flex-start !important;
+    margin: 0 !important;
   }
   .login .card-container form button {
-    margin: 0 auto;
+    margin: 0 !important;
   }
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 357px) {
+  .login {
+    grid-template-columns: 1fr !important;
+  }
+  .login .card-container {
+    padding: 2rem !important;
+  }
+  .login .card-container form {
+    gap: 2.5rem !important;
+  }
+  .login .card-container form span {
+    grid-template-columns: auto !important;
+    margin: 0 !important;
+  }
+}
+@media screen and (max-width: 480px) {
   .signin {
-    grid-template-columns: 150px 1fr;
-    grid-template-rows: 1fr;
+    grid-template-columns: 50px 1fr !important;
+    grid-template-rows: 1fr !important;
   }
   .signin .bg-container {
-    grid-column: 1/2;
-    grid-row: 1/2;
+    grid-column: 1/2 !important;
+    grid-row: 1/2 !important;
   }
   .signin .card-container {
-    grid-column: 2/3;
-    gap: 2rem;
+    grid-column: 2/3 !important;
   }
   .signin .card-container header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.7rem;
-    flex-direction: column;
+    align-items: flex-start !important;
   }
   .signin .card-container header h1 {
-    font-size: 3rem;
+    font-size: 3rem !important;
   }
   .signin .card-container header img {
-    height: 5.5rem;
+    height: 4rem !important;
   }
   .signin .card-container form {
-    width: 100%;
-    align-items: center;
+    align-items: flex-start !important;
   }
-  .signin .card-container form .input-contain {
-    width: 100%;
+  .signin .card-container form span {
+    align-items: flex-start !important;
+    margin: 0 !important;
   }
-  .signin .card-container form .input-contain .text {
-    padding: 0;
+}
+@media screen and (max-width: 357px) {
+  .signin {
+    grid-template-columns: 1fr !important;
   }
-  .signin .card-container form .input-contain input {
-    height: 50px;
-    width: 100%;
+  .signin .card-container {
+    padding: 2rem !important;
+  }
+  .signin .card-container form {
+    gap: 2.5rem !important;
+  }
+  .signin .card-container form span {
+    align-items: flex-start !important;
+    flex-direction: column;
+    margin: 0 !important;
   }
 }
 .login {
@@ -792,6 +815,7 @@ button {
 .login .card-container form .input-contain .eye-container svg {
   cursor: pointer;
   pointer-events: all;
+  font-size: 1.7rem;
 }
 .login .card-container form .input-contain input {
   width: 28rem;
@@ -858,6 +882,9 @@ button {
   flex-direction: column;
   gap: 1rem;
 }
+.login .card-container form span s svg {
+  font-size: 1.7rem;
+}
 .login .card-container form button {
   cursor: pointer;
   height: 4.5rem;
@@ -877,18 +904,93 @@ button {
   border: solid 1px #457b9d;
 }
 
-@media screen and (max-width: 480px) {
-  .auth-container {
-    width: 100% !important;
+@media screen and (max-width: 800px) {
+  .login {
+    grid-template-columns: 1fr 150px;
+    grid-template-rows: 1fr;
   }
-  .auth-container .card-container {
-    width: 90% !important;
+  .login .bg-container {
+    grid-column: 2/3;
+    grid-row: 1/2;
   }
-  .auth-container .card-container .left-card {
-    padding: 2rem !important;
+  .login .card-container {
+    margin-top: 5%;
+    grid-column: 1/2;
+    gap: 2rem;
   }
-  .auth-container .card-container .left-card form .options {
+  .login .card-container header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
     flex-direction: column;
-    gap: 1.5rem;
+  }
+  .login .card-container header h1 {
+    font-size: 4rem;
+  }
+  .login .card-container header img {
+    height: 5rem;
+  }
+  .login .card-container form {
+    width: 100%;
+  }
+  .login .card-container form .input-contain {
+    width: 100%;
+  }
+  .login .card-container form .input-contain .text {
+    padding: 0;
+  }
+  .login .card-container form .input-contain input {
+    height: 50px;
+    width: 100%;
+  }
+  .login .card-container form span {
+    display: grid;
+    grid-template-columns: auto auto;
+    margin: 0 auto;
+  }
+  .login .card-container form button {
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 800px) {
+  .signin {
+    grid-template-columns: 150px 1fr;
+    grid-template-rows: 1fr;
+  }
+  .signin .bg-container {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+  .signin .card-container {
+    grid-column: 2/3;
+    gap: 2rem;
+  }
+  .signin .card-container header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    flex-direction: column;
+  }
+  .signin .card-container header h1 {
+    font-size: 3rem;
+  }
+  .signin .card-container header img {
+    height: 4.5rem;
+  }
+  .signin .card-container form {
+    width: 100%;
+    align-items: center;
+  }
+  .signin .card-container form .input-contain {
+    width: 100%;
+  }
+  .signin .card-container form .input-contain .text {
+    padding: 0;
+  }
+  .signin .card-container form .input-contain input {
+    height: 50px;
+    width: 100%;
   }
 }/*# sourceMappingURL=main.css.map */
