@@ -4,20 +4,26 @@
 // login component
 @media screen and (max-width: 800px) {
   .login {
-    grid-template-columns: 1fr;
-    grid-template-rows: 10rem 1fr;
+    grid-template-columns: 150px 1fr;
+    grid-template-rows: 1fr;
     .bg-container {
+      grid-column: 1/2;
       grid-row: 1/2;
     }
     .card-container {
+      grid-column: 2/3;
+      gap: 2rem;
       header {
-        @include flexCenter;
-        flex-direction: column;
-        gap: 0.8rem;
+        h1 {
+          font-size: 4rem;
+        }
+        img {
+          height: 4.5rem;
+        }
       }
+
       form {
         width: 100%;
-        align-items: center;
         .input-contain {
           width: 100%;
           .text {
@@ -29,39 +35,42 @@
           }
         }
         span {
-          display: flex;
+          display: grid;
+          grid-template-columns: auto auto;
+          margin: 0 auto;
+        }
+        button {
+          margin: 0 auto;
         }
       }
     }
   }
 }
 
+//sign-in component
 @media screen and (max-width: 800px) {
   .signin {
-    grid-template-columns: 1fr;
-    grid-template-rows: 50px 1fr;
-    footer {
-      display: flex;
-      @include bgStyle;
-    }
+    grid-template-columns: 150px 1fr;
+    grid-template-rows: 1fr;
+
     .bg-container {
+      grid-column: 1/2;
       grid-row: 1/2;
     }
     .card-container {
-      grid-row: 2/3;
+      grid-column: 2/3;
       gap: 2rem;
 
       header {
-        // margin: 0 auto;
         @include flexCenter;
         gap: 0.7rem;
         flex-direction: column;
 
         h1 {
-          font-size: 4rem;
+          font-size: 3rem;
         }
         img {
-          height: 4.5rem;
+          height: 5.5rem;
         }
       }
 
