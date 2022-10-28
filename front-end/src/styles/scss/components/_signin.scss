@@ -9,6 +9,9 @@
   .bg-container {
     @include bgStyle;
   }
+  footer {
+    display: none;
+  }
   .card-container {
     display: grid;
     padding: 3rem;
@@ -123,6 +126,8 @@
       }
       span {
         display: flex;
+        align-items: center;
+        // border: solid 1px #000;
         gap: 1rem;
       }
 

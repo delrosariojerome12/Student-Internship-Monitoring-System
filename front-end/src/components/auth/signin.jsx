@@ -82,12 +82,6 @@ const Signin = () => {
           ? (data[index].isError = false)
           : (data[index].isError = true);
         setForm(data);
-        // if (value.length > 2 && value.length < 20) {
-        //   data[index].isError = false;
-        // } else {
-        //   data[index].isError = true;
-        //   setForm(data);
-        // }
         return;
       case "Last Name":
         value.length > 2 && value.length < 20
@@ -96,7 +90,11 @@ const Signin = () => {
         setForm(data);
         return;
       case "Email":
-        // regex validation
+        const regex =
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        let isValid = regex.test(value);
+        isValid ? (data[index].isError = false) : (data[index].isError = true);
+        setForm(data);
         return;
       case "Password":
         // validate
@@ -109,7 +107,7 @@ const Signin = () => {
     }
 
     // value ? (data[index].isError = false) : (data[index].isError = true);
-    setForm(data);
+    // setForm(data);
   };
 
   // const handleError =
@@ -133,7 +131,6 @@ const Signin = () => {
     newForm[index].type === "password"
       ? (newForm[index].type = "text")
       : (newForm[index].type = "password");
-    console.log(newForm);
     setForm(newForm);
   };
 
@@ -212,6 +209,7 @@ const Signin = () => {
           </IconContext.Provider>
         </form>
       </section>
+      {/* <footer></footer> */}
     </section>
   );
 };
