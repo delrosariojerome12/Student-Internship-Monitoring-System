@@ -785,6 +785,30 @@ button {
   .login .bg-container {
     grid-row: 1/2;
   }
+  .login .card-container header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .login .card-container form {
+    width: 100%;
+    align-items: center;
+  }
+  .login .card-container form .input-contain {
+    width: 100%;
+  }
+  .login .card-container form .input-contain .text {
+    padding: 0;
+  }
+  .login .card-container form .input-contain input {
+    height: 50px;
+    width: 100%;
+  }
+  .login .card-container form span {
+    display: flex;
+  }
 }
 @media screen and (max-width: 800px) {
   .signin {

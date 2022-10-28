@@ -9,6 +9,30 @@
     .bg-container {
       grid-row: 1/2;
     }
+    .card-container {
+      header {
+        @include flexCenter;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      form {
+        width: 100%;
+        align-items: center;
+        .input-contain {
+          width: 100%;
+          .text {
+            padding: 0;
+          }
+          input {
+            height: 50px;
+            width: 100%;
+          }
+        }
+        span {
+          display: flex;
+        }
+      }
+    }
   }
 }
 
