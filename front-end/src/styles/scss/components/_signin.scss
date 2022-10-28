@@ -51,6 +51,7 @@
           top: 15px;
           right: 3%;
           svg {
+            font-size: 1.7rem;
             cursor: pointer;
             pointer-events: all;
           }
@@ -125,8 +126,10 @@
       span {
         display: flex;
         align-items: center;
-        // border: solid 1px #000;
         gap: 1rem;
+        svg {
+          font-size: 1.7rem;
+        }
       }
 
       button {

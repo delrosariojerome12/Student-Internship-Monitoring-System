@@ -4,21 +4,25 @@
 // login component
 @media screen and (max-width: 800px) {
   .login {
-    grid-template-columns: 150px 1fr;
+    grid-template-columns: 1fr 150px;
     grid-template-rows: 1fr;
     .bg-container {
-      grid-column: 1/2;
+      grid-column: 2/3;
       grid-row: 1/2;
     }
     .card-container {
-      grid-column: 2/3;
+      margin-top: 5%;
+      grid-column: 1/2;
       gap: 2rem;
       header {
+        @include flexCenter;
+        gap: 0.7rem;
+        flex-direction: column;
         h1 {
           font-size: 4rem;
         }
         img {
-          height: 4.5rem;
+          height: 5rem;
         }
       }
 
@@ -70,7 +74,7 @@
           font-size: 3rem;
         }
         img {
-          height: 5.5rem;
+          height: 4.5rem;
         }
       }
 
