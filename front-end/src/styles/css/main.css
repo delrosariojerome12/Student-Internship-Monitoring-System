@@ -643,19 +643,86 @@ button {
   border: solid 1px #457b9d;
 }
 
-@media screen and (max-width: 480px) {
-  .auth-container {
-    width: 100% !important;
+@media screen and (max-width: 800px) {
+  .login {
+    grid-template-columns: 150px 1fr;
+    grid-template-rows: 1fr;
   }
-  .auth-container .card-container {
-    width: 90% !important;
+  .login .bg-container {
+    grid-column: 1/2;
+    grid-row: 1/2;
   }
-  .auth-container .card-container .left-card {
-    padding: 2rem !important;
+  .login .card-container {
+    grid-column: 2/3;
+    gap: 2rem;
   }
-  .auth-container .card-container .left-card form .options {
+  .login .card-container header h1 {
+    font-size: 4rem;
+  }
+  .login .card-container header img {
+    height: 4.5rem;
+  }
+  .login .card-container form {
+    width: 100%;
+  }
+  .login .card-container form .input-contain {
+    width: 100%;
+  }
+  .login .card-container form .input-contain .text {
+    padding: 0;
+  }
+  .login .card-container form .input-contain input {
+    height: 50px;
+    width: 100%;
+  }
+  .login .card-container form span {
+    display: grid;
+    grid-template-columns: auto auto;
+    margin: 0 auto;
+  }
+  .login .card-container form button {
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 800px) {
+  .signin {
+    grid-template-columns: 150px 1fr;
+    grid-template-rows: 1fr;
+  }
+  .signin .bg-container {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+  .signin .card-container {
+    grid-column: 2/3;
+    gap: 2rem;
+  }
+  .signin .card-container header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
     flex-direction: column;
-    gap: 1.5rem;
+  }
+  .signin .card-container header h1 {
+    font-size: 3rem;
+  }
+  .signin .card-container header img {
+    height: 5.5rem;
+  }
+  .signin .card-container form {
+    width: 100%;
+    align-items: center;
+  }
+  .signin .card-container form .input-contain {
+    width: 100%;
+  }
+  .signin .card-container form .input-contain .text {
+    padding: 0;
+  }
+  .signin .card-container form .input-contain input {
+    height: 50px;
+    width: 100%;
   }
 }
 .login {
@@ -810,85 +877,18 @@ button {
   border: solid 1px #457b9d;
 }
 
-@media screen and (max-width: 800px) {
-  .login {
-    grid-template-columns: 150px 1fr;
-    grid-template-rows: 1fr;
+@media screen and (max-width: 480px) {
+  .auth-container {
+    width: 100% !important;
   }
-  .login .bg-container {
-    grid-column: 1/2;
-    grid-row: 1/2;
+  .auth-container .card-container {
+    width: 90% !important;
   }
-  .login .card-container {
-    grid-column: 2/3;
-    gap: 2rem;
+  .auth-container .card-container .left-card {
+    padding: 2rem !important;
   }
-  .login .card-container header h1 {
-    font-size: 4rem;
-  }
-  .login .card-container header img {
-    height: 4.5rem;
-  }
-  .login .card-container form {
-    width: 100%;
-  }
-  .login .card-container form .input-contain {
-    width: 100%;
-  }
-  .login .card-container form .input-contain .text {
-    padding: 0;
-  }
-  .login .card-container form .input-contain input {
-    height: 50px;
-    width: 100%;
-  }
-  .login .card-container form span {
-    display: grid;
-    grid-template-columns: auto auto;
-    margin: 0 auto;
-  }
-  .login .card-container form button {
-    margin: 0 auto;
-  }
-}
-@media screen and (max-width: 800px) {
-  .signin {
-    grid-template-columns: 150px 1fr;
-    grid-template-rows: 1fr;
-  }
-  .signin .bg-container {
-    grid-column: 1/2;
-    grid-row: 1/2;
-  }
-  .signin .card-container {
-    grid-column: 2/3;
-    gap: 2rem;
-  }
-  .signin .card-container header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.7rem;
+  .auth-container .card-container .left-card form .options {
     flex-direction: column;
-  }
-  .signin .card-container header h1 {
-    font-size: 3rem;
-  }
-  .signin .card-container header img {
-    height: 5.5rem;
-  }
-  .signin .card-container form {
-    width: 100%;
-    align-items: center;
-  }
-  .signin .card-container form .input-contain {
-    width: 100%;
-  }
-  .signin .card-container form .input-contain .text {
-    padding: 0;
-  }
-  .signin .card-container form .input-contain input {
-    height: 50px;
-    width: 100%;
+    gap: 1.5rem;
   }
 }/*# sourceMappingURL=main.css.map */
