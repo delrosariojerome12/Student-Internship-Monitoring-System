@@ -18,7 +18,7 @@ const authRouter = require("./routers/auth");
 app.use(express.json());
 
 // routes
-app.use("/auth", authUser, authRouter);
+app.use("/auth", authRouter);
 
 // errors
 app.use(notFound);
