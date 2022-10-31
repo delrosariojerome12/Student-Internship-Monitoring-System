@@ -3,31 +3,31 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const UserSchema = new mongoose.Schema({
-  firstName: {
+  firstname: {
     type: String,
+    required: [true, "Please provide firstname"],
     maxlength: 20,
     minlength: 3,
-    required: [true, " Please provide firstname"],
   },
-  lastName: {
+  lastname: {
     type: String,
+    required: [true, "Please provide lastname"],
     maxlength: 20,
     minlength: 3,
-    required: [true, " Please provide lastname"],
   },
-  userName: {
+  email: {
     type: String,
-    unique: true,
-    required: [true, " Please provide username"],
+    required: [true, "Please provide email"],
     match: [
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-      "Please provide a valid username",
+      "Please provide a valid email",
     ],
+    unique: true,
   },
   password: {
     type: String,
-    minlength: 8,
     required: [true, "Please provide password"],
+    minlength: 8,
   },
 });
 
@@ -40,7 +40,9 @@ UserSchema.methods.createJWT = function () {
   return jwt.sign(
     { userId: this._id, name: this.name },
     process.env.JWT_SECRET,
-    { expiresIn: process.env.JWT_LIFETIME }
+    {
+      expiresIn: process.env.JWT_LIFETIME,
+    }
   );
 };
 
@@ -48,5 +50,4 @@ UserSchema.methods.comparePassword = async function (canditatePassword) {
   const match = await bcrypt.compare(canditatePassword, this.password);
   return match;
 };
-
 module.exports = mongoose.model("User", UserSchema);
