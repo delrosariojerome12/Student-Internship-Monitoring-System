@@ -147,7 +147,7 @@ const Login = () => {
             })}
             <span>
               <p>Already have an account?</p>
-              <Link to="/account/signin">Sign up</Link>
+              <Link to="/account/signup">Sign up</Link>
             </span>
             <button type="submit">Login</button>
           </IconContext.Provider>
