@@ -8,7 +8,7 @@ const Home = () => {
     <section className="home">
       <h1>Home</h1>
       <button onClick={() => navigate("/account/login")}>Log in </button>
-      <button onClick={() => navigate("/account/signin")}>Register</button>
+      <button onClick={() => navigate("/account/signup")}>Register</button>
     </section>
   );
 };

@@ -1,6 +1,5 @@
 import React, {useState, useCallback} from "react";
-import {debounce} from "lodash";
-import {Link} from "react-router-dom";
+import {Link, redirect, useNavigate} from "react-router-dom";
 import logo from "../../assets/img/logo.svg";
 import {
   FaUserAlt,
@@ -12,7 +11,7 @@ import {
 import {GrMail} from "react-icons/gr";
 import {IconContext} from "react-icons";
 
-const Signin = () => {
+const Signup = () => {
   const [form, setForm] = useState([
     {
       forInput: "First Name",
@@ -53,9 +52,9 @@ const Signin = () => {
       isError: false,
       errorMessage:
         "Your password must: Contain unique characters, numbers, or symbols Not contain your email address",
+      requirements: [],
       hasEyeIcon: true,
       hasShownPassword: false,
-      pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/,
     },
     {
       forInput: "Confirm Password",
@@ -69,11 +68,9 @@ const Signin = () => {
       hasShownPassword: false,
     },
   ]);
+  const [isSignupError, setSignupError] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
+  const navigate = useNavigate();
   const handleOnChange = (value, index, input) => {
     const data = [...form];
     data[index].value = value;
@@ -107,7 +104,12 @@ const Signin = () => {
         setForm(data);
         return;
       case "Confirm Password":
-        // compare password
+        const password = form[index - 1].value;
+        const confirmPassword = form[index];
+        password === confirmPassword.value
+          ? (confirmPassword.isError = false)
+          : (confirmPassword.isError = true);
+        setForm(data);
         return;
       default:
         break;
@@ -126,12 +128,84 @@ const Signin = () => {
     setForm(newForm);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    let x = 0;
+    form.forEach((item) => {
+      item.isError && x++;
+    });
+    // api send
+    if (x === 0) {
+      try {
+        console.log("api request");
+        // redirect("/dashboard");
+        navigate("/dashboard");
+      } catch (error) {
+        // clears field
+        // send error
+        setSignupError(true);
+        const newForm = form.map((input) => {
+          input.value = "";
+          return {...input};
+        });
+        setForm(newForm);
+      }
+    }
+  };
+
   const renderEyeIcon = (condition, index) => {
     return condition ? (
       <FaEye onClick={() => handleShowPassword(index)} />
     ) : (
       <FaEyeSlash onClick={() => handleShowPassword(index)} />
     );
+  };
+
+  const renderInputs = () => {
+    return form.map((inputs, index) => {
+      const {
+        forInput,
+        id,
+        type,
+        value,
+        IconType,
+        isError,
+        errorMessage,
+        hasEyeIcon,
+        hasShownPassword,
+      } = inputs;
+      return (
+        <div className="input-contain" key={index}>
+          <input
+            type={type}
+            name={forInput}
+            id={id}
+            className={isError ? "input-error" : null}
+            value={value}
+            required
+            onChange={(e) => handleOnChange(e.target.value, index, forInput)}
+          />
+          <div className="placeholder-container">
+            <label
+              htmlFor={id}
+              className={value ? "placeholder-text active" : "placeholder-text"}
+            >
+              <div className={isError ? "text icons-error" : "text"}>
+                <span>
+                  <IconType className={isError ? "icons-error" : "icons"} />
+                </span>
+                {forInput}
+              </div>
+            </label>
+          </div>
+          {isError && <p className="error-message">{errorMessage}</p>}
+          <div className="eye-container">
+            {hasEyeIcon && renderEyeIcon(hasShownPassword, index)}
+          </div>
+        </div>
+      );
+    });
   };
 
   return (
@@ -141,65 +215,16 @@ const Signin = () => {
         <header>
           <img src={logo} alt="" />
           <h1>Create Your Account</h1>
+          {isSignupError && <h1>has error</h1>}
         </header>
         <form onSubmit={handleSubmit}>
           <IconContext.Provider value={{color: "#000", className: "icons"}}>
-            {form.map((inputs, index) => {
-              const {
-                forInput,
-                id,
-                type,
-                value,
-                IconType,
-                isError,
-                errorMessage,
-                hasEyeIcon,
-                hasShownPassword,
-                pattern,
-              } = inputs;
-              return (
-                <div className="input-contain" key={index}>
-                  <input
-                    type={type}
-                    name={forInput}
-                    id={id}
-                    className={isError ? "input-error" : null}
-                    // pattern={pattern ? pattern : null}
-                    value={value}
-                    required
-                    onChange={(e) =>
-                      handleOnChange(e.target.value, index, forInput)
-                    }
-                  />
-                  <div className="placeholder-container">
-                    <label
-                      htmlFor={id}
-                      className={
-                        value ? "placeholder-text active" : "placeholder-text"
-                      }
-                    >
-                      <div className={isError ? "text icons-error" : "text"}>
-                        <span>
-                          <IconType
-                            className={isError ? "icons-error" : "icons"}
-                          />
-                        </span>
-                        {forInput}
-                      </div>
-                    </label>
-                  </div>
-                  {isError && <p className="error-message">{errorMessage}</p>}
-                  <div className="eye-container">
-                    {hasEyeIcon && renderEyeIcon(hasShownPassword, index)}
-                  </div>
-                </div>
-              );
-            })}
+            {renderInputs()}
             <span>
               <p>Already have an account?</p>
               <Link to="/account/login">Log in</Link>
             </span>
-            <button type="submit">Signin</button>
+            <button type="submit">Sign up</button>
           </IconContext.Provider>
         </form>
       </section>
@@ -207,4 +232,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Signup;
