@@ -1,38 +1,57 @@
 const User = require("../models/User");
-const { StatusCodes } = require("http-status-codes");
-const { BadRequest, Unauthorize } = require("../errors");
+const {StatusCodes} = require("http-status-codes");
+const {BadRequest, Unauthorize, NotFound} = require("../errors");
 
 //register
-const signin = async (req, res) => {
-  const user = await User.create({ ...req.body });
+const signup = async (req, res) => {
+  const {firstname, lastname, email, password} = req.body;
+
+  if (!firstname || !lastname || !email || !password) {
+    throw new BadRequest("Credentials must be provided");
+  }
+  const user = await User.create({...req.body});
+
   const token = user.createJWT();
-  res
-    .status(StatusCodes.CREATED)
-    .json({ user: { name: user.firstname }, token });
+  res.status(StatusCodes.CREATED).json({
+    user: {
+      name: `${user.firstname} ${user.lastname}`,
+      email: user.email,
+      userID: user._id,
+    },
+    token,
+  });
 };
 
 //login
 const login = async (req, res) => {
-  const { email, password } = req.body;
+  const {email, password} = req.body;
 
   if (!email || !password) {
     throw new BadRequest("Please provide email and password");
   }
-  const user = await User.findOne({ email });
+  const user = await User.findOne({email});
+
   if (!user) {
-    throw new Unauthorize("Invalid Credentials");
+    throw new NotFound("User not found");
   }
-  const correctPassword = await user.comparePassword(password);
-  if (!correctPassword) {
-    throw new Unauthorize("Invalid Credentials");
+  const isMatch = await user.comparePassword(password);
+  if (!isMatch) {
+    throw new Unauthorize("Incorrect email or password");
   }
 
   // compare pass
   const token = user.createJWT();
-  res.status(StatusCodes.OK).json({ user: { name: user.firstname }, token });
+  res.status(StatusCodes.OK).json({
+    user: {
+      name: `${user.firstname} ${user.lastname}`,
+      email: user.email,
+      userID: user._id,
+    },
+    token,
+  });
 };
 
 module.exports = {
-  signin,
+  signup,
   login,
 };
