@@ -46,7 +46,7 @@ button {
 
 .login {
   display: grid;
-  grid-template-columns: 34.2rem 1fr;
+  grid-template-columns: 45.2rem 1fr;
   font-size: 1.4rem;
 }
 .login .bg-container {
@@ -70,10 +70,10 @@ button {
   flex-direction: column;
 }
 .login .card-container header h1 {
-  font-size: 3.2rem;
+  font-size: 4.2rem;
 }
 .login .card-container header img {
-  height: 3.7rem;
+  height: 4.7rem;
 }
 .login .card-container form {
   display: flex;
@@ -92,7 +92,7 @@ button {
 }
 .login .card-container form .input-contain .placeholder-container {
   position: absolute;
-  top: 0%;
+  top: 5%;
   left: 0%;
   height: 4.5rem;
   width: 100%;
@@ -111,10 +111,11 @@ button {
 .login .card-container form .input-contain .eye-container svg {
   cursor: pointer;
   pointer-events: all;
-  font-size: 1.7rem;
+  font-size: 1.9rem;
 }
 .login .card-container form .input-contain input {
-  width: 28rem;
+  width: 39rem;
+  height: 5rem;
   border: solid 3px transparent;
   outline: solid 1px #8b8b8b;
   border-radius: 0.5rem;
@@ -178,7 +179,7 @@ button {
   flex-direction: column;
   gap: 1rem;
 }
-.login .card-container form span s svg {
+.login .card-container form span svg {
   font-size: 1.7rem;
 }
 .login .card-container form button {
@@ -202,7 +203,7 @@ button {
 
 .login {
   display: grid;
-  grid-template-columns: 34.2rem 1fr;
+  grid-template-columns: 45.2rem 1fr;
   font-size: 1.4rem;
 }
 .login .bg-container {
@@ -226,10 +227,10 @@ button {
   flex-direction: column;
 }
 .login .card-container header h1 {
-  font-size: 3.2rem;
+  font-size: 4.2rem;
 }
 .login .card-container header img {
-  height: 3.7rem;
+  height: 4.7rem;
 }
 .login .card-container form {
   display: flex;
@@ -248,7 +249,7 @@ button {
 }
 .login .card-container form .input-contain .placeholder-container {
   position: absolute;
-  top: 0%;
+  top: 5%;
   left: 0%;
   height: 4.5rem;
   width: 100%;
@@ -267,10 +268,11 @@ button {
 .login .card-container form .input-contain .eye-container svg {
   cursor: pointer;
   pointer-events: all;
-  font-size: 1.7rem;
+  font-size: 1.9rem;
 }
 .login .card-container form .input-contain input {
-  width: 28rem;
+  width: 39rem;
+  height: 5rem;
   border: solid 3px transparent;
   outline: solid 1px #8b8b8b;
   border-radius: 0.5rem;
@@ -334,7 +336,7 @@ button {
   flex-direction: column;
   gap: 1rem;
 }
-.login .card-container form span s svg {
+.login .card-container form span svg {
   font-size: 1.7rem;
 }
 .login .card-container form button {
@@ -505,7 +507,7 @@ button {
 
 .login {
   display: grid;
-  grid-template-columns: 34.2rem 1fr;
+  grid-template-columns: 45.2rem 1fr;
   font-size: 1.4rem;
 }
 .login .bg-container {
@@ -529,10 +531,10 @@ button {
   flex-direction: column;
 }
 .login .card-container header h1 {
-  font-size: 3.2rem;
+  font-size: 4.2rem;
 }
 .login .card-container header img {
-  height: 3.7rem;
+  height: 4.7rem;
 }
 .login .card-container form {
   display: flex;
@@ -551,7 +553,7 @@ button {
 }
 .login .card-container form .input-contain .placeholder-container {
   position: absolute;
-  top: 0%;
+  top: 5%;
   left: 0%;
   height: 4.5rem;
   width: 100%;
@@ -570,10 +572,11 @@ button {
 .login .card-container form .input-contain .eye-container svg {
   cursor: pointer;
   pointer-events: all;
-  font-size: 1.7rem;
+  font-size: 1.9rem;
 }
 .login .card-container form .input-contain input {
-  width: 28rem;
+  width: 39rem;
+  height: 5rem;
   border: solid 3px transparent;
   outline: solid 1px #8b8b8b;
   border-radius: 0.5rem;
@@ -637,7 +640,7 @@ button {
   flex-direction: column;
   gap: 1rem;
 }
-.login .card-container form span s svg {
+.login .card-container form span svg {
   font-size: 1.7rem;
 }
 .login .card-container form button {
@@ -750,7 +753,7 @@ button {
 }
 .login {
   display: grid;
-  grid-template-columns: 34.2rem 1fr;
+  grid-template-columns: 45.2rem 1fr;
   font-size: 1.4rem;
 }
 .login .bg-container {
@@ -774,10 +777,10 @@ button {
   flex-direction: column;
 }
 .login .card-container header h1 {
-  font-size: 3.2rem;
+  font-size: 4.2rem;
 }
 .login .card-container header img {
-  height: 3.7rem;
+  height: 4.7rem;
 }
 .login .card-container form {
   display: flex;
@@ -796,7 +799,7 @@ button {
 }
 .login .card-container form .input-contain .placeholder-container {
   position: absolute;
-  top: 0%;
+  top: 5%;
   left: 0%;
   height: 4.5rem;
   width: 100%;
@@ -815,10 +818,11 @@ button {
 .login .card-container form .input-contain .eye-container svg {
   cursor: pointer;
   pointer-events: all;
-  font-size: 1.7rem;
+  font-size: 1.9rem;
 }
 .login .card-container form .input-contain input {
-  width: 28rem;
+  width: 39rem;
+  height: 5rem;
   border: solid 3px transparent;
   outline: solid 1px #8b8b8b;
   border-radius: 0.5rem;
@@ -882,7 +886,7 @@ button {
   flex-direction: column;
   gap: 1rem;
 }
-.login .card-container form span s svg {
+.login .card-container form span svg {
   font-size: 1.7rem;
 }
 .login .card-container form button {
