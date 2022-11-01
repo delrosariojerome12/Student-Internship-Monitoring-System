@@ -1,5 +1,6 @@
 import React, {useState, useCallback} from "react";
 import {Link, redirect, useNavigate} from "react-router-dom";
+import axios from "axios";
 import logo from "../../assets/img/logo.svg";
 import {
   FaUserAlt,
@@ -22,6 +23,7 @@ const Signup = () => {
       isError: false,
       errorMessage: "First name must be between 3 and 20 characters long",
       hasEyeIcon: false,
+      code: "firstname",
     },
     {
       forInput: "Last Name",
@@ -32,6 +34,7 @@ const Signup = () => {
       isError: false,
       errorMessage: "Last name must be between 3 and 20 characters long",
       hasEyeIcon: false,
+      code: "lastname",
     },
     {
       forInput: "Email",
@@ -42,6 +45,7 @@ const Signup = () => {
       isError: false,
       errorMessage: "Please provide valid email",
       hasEyeIcon: false,
+      code: "email",
     },
     {
       forInput: "Password",
@@ -55,6 +59,7 @@ const Signup = () => {
       requirements: [],
       hasEyeIcon: true,
       hasShownPassword: false,
+      code: "password",
     },
     {
       forInput: "Confirm Password",
@@ -69,6 +74,7 @@ const Signup = () => {
     },
   ]);
   const [isSignupError, setSignupError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
   const handleOnChange = (value, index, input) => {
@@ -128,9 +134,25 @@ const Signup = () => {
     setForm(newForm);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const convertForm = () => {
+    const newData = form.map((input) => {
+      const {code, value} = input;
+      return {
+        code,
+        value,
+      };
+    });
 
+    const newObject = Object.assign(
+      {},
+      ...newData.map((item) => ({[item.code]: item.value}))
+    );
+
+    return newObject;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     let x = 0;
     form.forEach((item) => {
       item.isError && x++;
@@ -138,18 +160,15 @@ const Signup = () => {
     // api send
     if (x === 0) {
       try {
-        console.log("api request");
-        // redirect("/dashboard");
+        const url = "http://localhost:5000/auth/signup";
+        const {data: res} = await axios.post(url, convertForm());
+        localStorage.setItem("Bearer", res.token);
+        console.log(res);
         navigate("/dashboard");
       } catch (error) {
-        // clears field
-        // send error
+        const {msg} = error.response.data;
         setSignupError(true);
-        const newForm = form.map((input) => {
-          input.value = "";
-          return {...input};
-        });
-        setForm(newForm);
+        setErrorMessage(msg);
       }
     }
   };
@@ -215,7 +234,7 @@ const Signup = () => {
         <header>
           <img src={logo} alt="" />
           <h1>Create Your Account</h1>
-          {isSignupError && <h1>has error</h1>}
+          {isSignupError && <h3 style={{color: "red"}}>{errorMessage}</h3>}
         </header>
         <form onSubmit={handleSubmit}>
           <IconContext.Provider value={{color: "#000", className: "icons"}}>
