@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 import Logo from "../assets/img/ASSETS MAIN LANDING PAGE/LANDING IMAGE/Logo.png";
 import MainIMG from "../assets/img/ASSETS MAIN LANDING PAGE/LANDING IMAGE/webFinal.png";
-import MainIMGBg from "../assets/img/ASSETS MAIN LANDING PAGE/LANDING IMAGE/mainBG";
+import mainBG from "../assets/img/ASSETS MAIN LANDING PAGE/LANDING IMAGE/mainBG.png";
+
 const links = [
   {
     link: "How it Works?",
@@ -71,6 +72,7 @@ const LandingPage = () => {
         </ul>
       </nav>
       <section className="contents">
+        <img src={mainBG} alt="" />
         <img src={MainIMG} alt="" />
       </section>
       <footer></footer>
