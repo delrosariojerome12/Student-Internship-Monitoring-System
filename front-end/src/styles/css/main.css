@@ -513,6 +513,27 @@ button {
 .landing-page > * {
   border: solid 1px #000;
 }
+.landing-page nav {
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+  align-items: center;
+  background-color: #222831;
+  color: #eeeeee;
+}
+.landing-page .links {
+  margin: 500px;
+}
+.landing-page a {
+  color: #eeeeee;
+}
+.landing-page .icon {
+  display: flex;
+  gap: 1em;
+}
+.landing-page .icon h1 {
+  font-size: 1em;
+}
 
 .login {
   display: grid;

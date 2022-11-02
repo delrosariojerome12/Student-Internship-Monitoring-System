@@ -8,4 +8,28 @@
   & > * {
     border: solid 1px #000;
   }
+  //
+  nav {
+    display: flex;
+    // margin: 0 auto;
+    justify-content: center;
+    padding: 1em;
+    align-items: center;
+    background-color: $primary-bg-color-landing;
+    color: $primary-font-color-landing;
+  }
+  .links {
+    margin: 500px;
+    // padding: 2em;
+  }
+  a {
+    color: $primary-font-color-landing;
+  }
+  .icon {
+    display: flex;
+    gap: 1em;
+  }
+  .icon h1 {
+    font-size: 1em;
+  }
 }

@@ -1,6 +1,6 @@
 import React from "react";
-import {Link} from "react-router-dom";
-
+import { Link } from "react-router-dom";
+import Logo from "../assets/img/ASSETS MAIN LANDING PAGE/LANDING IMAGE/Logo.png";
 const links = [
   {
     link: "How it Works?",
@@ -34,10 +34,15 @@ const LandingPage = () => {
   return (
     <section className="landing-page">
       <nav>
-        <div className="icon"></div>
+        {/* Icons and SIMS */}
+        <div className="icon">
+          <img src={Logo} alt="Logo.png" />
+          <h1>SIMS</h1>
+        </div>
+        {/* LINKS */}
         <ul className="links">
           {links.map((item, index) => {
-            const {path, link} = item;
+            const { path, link } = item;
             return (
               <Link key={index} to={path}>
                 {link}
@@ -47,7 +52,7 @@ const LandingPage = () => {
         </ul>
         <ul className="auth-links">
           {authLinks.map((item, index) => {
-            const {path, link} = item;
+            const { path, link } = item;
             return (
               <Link key={index} to={path}>
                 {link}
