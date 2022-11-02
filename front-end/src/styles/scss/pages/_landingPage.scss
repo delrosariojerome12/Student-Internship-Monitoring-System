@@ -3,7 +3,7 @@
 
 .landing-page {
   display: grid;
-  grid-template-rows: 8rem minmax(100vh, auto) 10rem;
+  grid-template-rows: 12rem minmax(100vh, auto) 10rem;
   gap: 1rem;
   & > * {
     border: solid 1px #000;
@@ -12,24 +12,69 @@
   nav {
     display: flex;
     // margin: 0 auto;
-    justify-content: center;
+    justify-content: space-evenly;
     padding: 1em;
     align-items: center;
     background-color: $primary-bg-color-landing;
     color: $primary-font-color-landing;
+    // & > * {
+    //   border: 1px solid #ffff;
+    //   // height: 10%;
+    //   font-size: 2.4rem;
+    // }
   }
-  .links {
-    margin: 500px;
-    // padding: 2em;
-  }
+  // LINKS
   a {
     color: $primary-font-color-landing;
   }
+
   .icon {
     display: flex;
+    align-items: center;
     gap: 1em;
+    h1 {
+      font-size: 4rem;
+    }
+    img {
+      height: 32px;
+    }
   }
-  .icon h1 {
-    font-size: 1em;
+  .links {
+    // margin: 500px;
+    display: flex;
+    justify-content: space;
+    align-items: center;
+    flex-direction: row;
+    gap: 100px;
+  }
+  .auth-links {
+    display: flex;
+    gap: 25px;
+    & > * {
+      @include flexColumn;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid $primary-compliment-landing;
+      width: 200px;
+      height: 50px;
+      padding: 1em;
+      &:nth-of-type(1) {
+        background-color: $primary-bg-color-landing;
+        color: $primary-font-color-landing;
+        font-size: 2rem;
+      }
+      &:nth-of-type(2) {
+        background-color: $primary-compliment-landing;
+        color: $primary-font-color-landing;
+        font-size: 2rem;
+      }
+    }
+  }
+  .contents {
+    background-color: $primary-bg-color-landing;
+  }
+  footer {
+    background-color: $primary-bg-color-landing;
   }
 }
