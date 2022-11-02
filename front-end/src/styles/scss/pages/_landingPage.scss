@@ -73,6 +73,17 @@
   }
   .contents {
     background-color: $primary-bg-color-landing;
+    img {
+      // display: inline;
+      width: 1246px;
+      height: 1000px;
+      position: relative;
+      left: 650px;
+    }
+    img:nth-of-type(2) {
+      position: relative;
+      // top: -1  530px;
+    }
   }
   footer {
     background-color: $primary-bg-color-landing;

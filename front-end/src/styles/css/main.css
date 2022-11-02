@@ -573,6 +573,15 @@ button {
 .landing-page .contents {
   background-color: #222831;
 }
+.landing-page .contents img {
+  width: 1246px;
+  height: 1000px;
+  position: relative;
+  left: 650px;
+}
+.landing-page .contents img:nth-of-type(2) {
+  position: relative;
+}
 .landing-page footer {
   background-color: #222831;
 }
