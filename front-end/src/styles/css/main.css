@@ -11,6 +11,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -501,6 +503,15 @@ button {
   background-color: #f1faee;
   color: #457b9d;
   border: solid 1px #457b9d;
+}
+
+.landing-page {
+  display: grid;
+  grid-template-rows: 8rem minmax(100vh, auto) 10rem;
+  gap: 1rem;
+}
+.landing-page > * {
+  border: solid 1px #000;
 }
 
 .login {
