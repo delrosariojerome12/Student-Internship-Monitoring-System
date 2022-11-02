@@ -1,7 +1,7 @@
 import React from "react";
 // pages
 import LandingPage from "./pages/landingPage";
-import Dashboard from "./pages/dashboard";
+import Dashboard from "./pages/dashboard/dashboard";
 
 // component
 import Login from "./pages/auth/login";
@@ -15,7 +15,7 @@ const App = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/account/login" element={<Login />} />
         <Route path="/account/signup" element={<Signup />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard/*" element={<Dashboard />} />
       </Routes>
     </main>
   );

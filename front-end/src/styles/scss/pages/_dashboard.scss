@@ -1,0 +1,14 @@
+@import "../variables";
+@import "../utils";
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 20rem 1fr 20rem;
+  gap: 1rem;
+  & > * {
+    border: solid 1px #000;
+  }
+  .left-sidebar {
+    @include flexColumn;
+  }
+}
