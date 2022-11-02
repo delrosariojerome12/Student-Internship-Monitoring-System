@@ -13,6 +13,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -511,6 +513,15 @@ button {
   gap: 1rem;
 }
 .landing-page > * {
+  border: solid 1px #000;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 20rem 1fr 20rem;
+  gap: 1rem;
+}
+.dashboard > * {
   border: solid 1px #000;
 }
 
