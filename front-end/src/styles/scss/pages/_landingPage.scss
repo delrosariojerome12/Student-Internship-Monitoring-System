@@ -1,0 +1,11 @@
+@import "../variables";
+@import "../utils";
+
+.landing-page {
+  display: grid;
+  grid-template-rows: 8rem minmax(100vh, auto) 10rem;
+  gap: 1rem;
+  & > * {
+    border: solid 1px #000;
+  }
+}
