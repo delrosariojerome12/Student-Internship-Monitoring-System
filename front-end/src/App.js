@@ -1,7 +1,7 @@
 import React from "react";
 // pages
 import LandingPage from "./pages/landingPage";
-import Dashboard from "./pages/user/dashboard";
+import Dashboard from "./pages/dashboard/dashboard";
 
 // component
 import Login from "./pages/auth/login";

@@ -8,4 +8,7 @@
   & > * {
     border: solid 1px #000;
   }
+  .left-sidebar {
+    @include flexColumn;
+  }
 }

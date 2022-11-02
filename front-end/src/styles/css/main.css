@@ -545,6 +545,11 @@ button {
 .dashboard > * {
   border: solid 1px #000;
 }
+.dashboard .left-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
 .login {
   display: grid;
