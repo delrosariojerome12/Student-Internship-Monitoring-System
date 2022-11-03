@@ -87,7 +87,6 @@ const LandingPage = () => {
         </div>
         <div className="feature-contents"></div>
         <div className="mockup-contents"></div>
-        >>>>>>> Jake
       </section>
       <footer></footer>
     </section>
