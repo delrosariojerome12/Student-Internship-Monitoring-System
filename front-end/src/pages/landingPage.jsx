@@ -1,9 +1,9 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
-import Logo from "../assets/img/ASSETS MAIN LANDING PAGE/LANDING IMAGE/Logo.png";
-import MainIMG from "../assets/img/ASSETS MAIN LANDING PAGE/LANDING IMAGE/webFinal.png";
-import mainBG from "../assets/img/ASSETS MAIN LANDING PAGE/LANDING IMAGE/mainBG.png";
+import logo from "../assets/img/landingPage/Logo.png";
+import landingImg from "../assets/img/landingPage/landing-image.png";
+import landingBg from "../assets/img/landingPage/landing-bg.png";
 
 const links = [
   {
@@ -41,13 +41,13 @@ const LandingPage = () => {
       <nav>
         {/* Icons and SIMS */}
         <div className="icon">
-          <img src={Logo} alt="Logo.png " />
+          <img src={logo} alt="Logo.png " />
           <h1>SIMS</h1>
         </div>
         {/* LINKS */}
         <ul className="links">
           {links.map((item, index) => {
-            const { path, link } = item;
+            const {path, link} = item;
             return (
               <Link key={index} to={path}>
                 {link}
@@ -57,7 +57,7 @@ const LandingPage = () => {
         </ul>
         <ul className="auth-links">
           {authLinks.map((item, index) => {
-            const { path, link } = item;
+            const {path, link} = item;
             return (
               <button
                 onClick={() => {
@@ -72,8 +72,21 @@ const LandingPage = () => {
         </ul>
       </nav>
       <section className="contents">
-        <img src={MainIMG} alt="" />
-        <img src={mainBG} alt="" />
+        <div className="landing-contents">
+          <div className="text">
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla
+              iste repellendus illum molestiae aspernatur reiciendis nemo
+              nesciunt, iure voluptates? Maiores exercitationem nihil numquam
+              quod ipsum sequi, fugit eum placeat officia!
+            </p>
+          </div>
+          <div className="img-container">
+            <img src={landingImg} alt="" />
+          </div>
+        </div>
+        <div className="feature-contents"></div>
+        <div className="mockup-contents"></div>
       </section>
       <footer></footer>
     </section>
