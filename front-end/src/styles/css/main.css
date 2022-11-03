@@ -11,6 +11,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -503,6 +507,90 @@ button {
   background-color: #f1faee;
   color: #457b9d;
   border: solid 1px #457b9d;
+}
+
+.landing-page {
+  display: grid;
+  grid-template-rows: 12rem minmax(100vh, auto) 10rem;
+  gap: 1rem;
+}
+.landing-page > * {
+  border: solid 1px #000;
+}
+.landing-page nav {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1em;
+  align-items: center;
+  background-color: #222831;
+  color: #eeeeee;
+}
+.landing-page a {
+  color: #eeeeee;
+}
+.landing-page .icon {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+.landing-page .icon h1 {
+  font-size: 4rem;
+}
+.landing-page .icon img {
+  height: 32px;
+}
+.landing-page .links {
+  display: flex;
+  justify-content: space;
+  align-items: center;
+  flex-direction: row;
+  gap: 100px;
+}
+.landing-page .auth-links {
+  display: flex;
+  gap: 25px;
+}
+.landing-page .auth-links > * {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #0d7377;
+  width: 200px;
+  height: 50px;
+  padding: 1em;
+}
+.landing-page .auth-links > *:nth-of-type(1) {
+  background-color: #222831;
+  color: #eeeeee;
+  font-size: 2rem;
+}
+.landing-page .auth-links > *:nth-of-type(2) {
+  background-color: #0d7377;
+  color: #eeeeee;
+  font-size: 2rem;
+}
+.landing-page .contents {
+  background-color: #222831;
+}
+.landing-page footer {
+  background-color: #222831;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 20rem 1fr 20rem;
+  gap: 1rem;
+}
+.dashboard > * {
+  border: solid 1px #000;
+}
+.dashboard .left-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .login {
