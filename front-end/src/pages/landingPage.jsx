@@ -71,7 +71,11 @@ const LandingPage = () => {
           })}
         </ul>
       </nav>
-      <section className="contents"></section>
+      <section className="contents">
+        <div className="landing-content"></div>
+        <div className="features"></div>
+        <div className="mockup"></div>
+      </section>
       <footer></footer>
     </section>
   );
