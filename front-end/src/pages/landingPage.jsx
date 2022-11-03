@@ -73,7 +73,7 @@ const LandingPage = () => {
       </nav>
       <section className="contents">
         <img src={MainIMG} alt="" />
-        {/* <img src={mainBG} alt="" /> */}
+        <img src={mainBG} alt="" />
       </section>
       <footer></footer>
     </section>
