@@ -1,12 +1,13 @@
 import React from "react";
 import {Route, Routes, Link} from "react-router-dom";
 
-import Profile from "./Profile";
-import DailyTimeRecord from "./DailyTimeRecord";
-import Documents from "./Documents";
-import Reports from "./Reports";
-import Settings from "./Settings";
-import {useState} from "react";
+import {useState, lazy, Suspense} from "react";
+
+const Profile = lazy(() => import("./Profile"));
+const DailyTimeRecord = lazy(() => import("./DailyTimeRecord"));
+const Documents = lazy(() => import("./Documents"));
+const Reports = lazy(() => import("./Reports"));
+const Settings = lazy(() => import("./Settings"));
 
 const links = [
   {
@@ -49,14 +50,16 @@ const Dashboard = () => {
           );
         })}
       </aside>
-      <Routes>
-        <Route path="/" element={<h1>dashboard</h1>} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/daily-time-record" element={<DailyTimeRecord />} />
-        <Route path="/documents" element={<Documents />} />
-        <Route path="/reports" element={<Reports />} />
-        <Route path="/settings" element={<Settings />} />
-      </Routes>
+      <Suspense fallback={<h2>Loading...</h2>}>
+        <Routes>
+          <Route path="/" element={<h1>dashboard</h1>} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/daily-time-record" element={<DailyTimeRecord />} />
+          <Route path="/documents" element={<Documents />} />
+          <Route path="/reports" element={<Reports />} />
+          <Route path="/settings" element={<Settings />} />
+        </Routes>
+      </Suspense>
       <aside className="right-sidebar"></aside>
     </section>
   );
