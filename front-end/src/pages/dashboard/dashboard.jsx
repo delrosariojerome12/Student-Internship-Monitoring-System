@@ -3,53 +3,19 @@ import {Route, Routes, Link} from "react-router-dom";
 
 import {useState, lazy, Suspense} from "react";
 
+import SidebarLeft from "../../components/dashboard/SidebarLeft";
+import RightSidebar from "../../components/dashboard/RightSidebar";
+
 const Profile = lazy(() => import("./Profile"));
 const DailyTimeRecord = lazy(() => import("./DailyTimeRecord"));
 const Documents = lazy(() => import("./Documents"));
 const Reports = lazy(() => import("./Reports"));
 const Settings = lazy(() => import("./Settings"));
 
-const links = [
-  {
-    path: "/dashboard",
-    link: "Dashboard",
-  },
-  {
-    path: "/dashboard/profile",
-    link: "Profile",
-  },
-  {
-    path: "/dashboard/daily-time-record",
-    link: "Daily Time Record",
-  },
-  {
-    path: "/dashboard/documents",
-    link: "Documents",
-  },
-  {
-    path: "/dashboard/reports",
-    link: "Reports",
-  },
-  ,
-  {
-    path: "/dashboard/settings",
-    link: "Settings",
-  },
-];
-
 const Dashboard = () => {
   return (
     <section className="dashboard">
-      <aside className="left-sidebar">
-        {links.map((item, index) => {
-          const {path, link} = item;
-          return (
-            <Link to={path} key={index}>
-              {link}
-            </Link>
-          );
-        })}
-      </aside>
+      <SidebarLeft />
       <Suspense fallback={<h2>Loading...</h2>}>
         <Routes>
           <Route path="/" element={<h1>dashboard</h1>} />
@@ -60,7 +26,7 @@ const Dashboard = () => {
           <Route path="/settings" element={<Settings />} />
         </Routes>
       </Suspense>
-      <aside className="right-sidebar"></aside>
+      <RightSidebar />
     </section>
   );
 };
