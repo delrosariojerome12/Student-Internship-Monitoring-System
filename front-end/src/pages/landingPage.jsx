@@ -4,6 +4,8 @@ import {Link, useNavigate} from "react-router-dom";
 import logo from "../assets/img/landingPage/Logo.png";
 import landingImg from "../assets/img/landingPage/landing-image.png";
 import landingBg from "../assets/img/landingPage/landing-bg.png";
+import landingBgDark from "../assets/img/landingPage/darkBg.png";
+import landingBgDark2 from "../assets/img/landingPage/darkBg2.png";
 
 const links = [
   {
@@ -42,7 +44,7 @@ const LandingPage = () => {
         {/* Icons and SIMS */}
         <div className="icon">
           <img src={logo} alt="Logo.png " />
-          <h1>SIMS</h1>
+          <h2>SIMS</h2>
         </div>
         {/* LINKS */}
         <ul className="links">
@@ -80,9 +82,12 @@ const LandingPage = () => {
               nesciunt, iure voluptates? Maiores exercitationem nihil numquam
               quod ipsum sequi, fugit eum placeat officia!
             </p>
+            <div className="darkbg"></div>
+            <div className="darkbg2"></div>
           </div>
           <div className="img-container">
-            <img src={landingImg} alt="" />
+            <img className="landingImg" src={landingImg} alt="" />
+            <img className="landingBg" src={landingBg} alt="" />
           </div>
         </div>
         <div className="feature-contents"></div>

@@ -509,45 +509,47 @@ button {
 
 .landing-page {
   display: grid;
-  grid-template-rows: 9vh minmax(100vh, auto) 25rem;
-}
-.landing-page > * {
-  border: solid 1px #000;
+  grid-template-rows: minmax(100vh, auto) 25rem;
 }
 .landing-page nav {
+  height: 9vh;
+  position: fixed;
+  top: 0%;
+  left: 0%;
   display: flex;
+  z-index: 2;
   justify-content: space-evenly;
   padding: 1em;
   align-items: center;
   background-color: #222831;
   color: #eeeeee;
 }
-.landing-page a {
+.landing-page nav a {
   color: #eeeeee;
 }
-.landing-page .icon {
+.landing-page nav .icon {
   display: flex;
   align-items: center;
   gap: 1em;
 }
-.landing-page .icon h1 {
+.landing-page nav .icon h1 {
   font-size: 4rem;
 }
-.landing-page .icon img {
+.landing-page nav .icon img {
   height: 32px;
 }
-.landing-page .links {
+.landing-page nav .links {
   display: flex;
   justify-content: space;
   align-items: center;
   flex-direction: row;
   gap: 100px;
 }
-.landing-page .auth-links {
+.landing-page nav .auth-links {
   display: flex;
   gap: 25px;
 }
-.landing-page .auth-links > * {
+.landing-page nav .auth-links > * {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -556,15 +558,15 @@ button {
   justify-content: center;
   border: 2px solid #0d7377;
   width: 200px;
-  height: 50px;
+  height: 15px;
   padding: 1em;
 }
-.landing-page .auth-links > *:nth-of-type(1) {
+.landing-page nav .auth-links > *:nth-of-type(1) {
   background-color: #222831;
   color: #eeeeee;
   font-size: 2rem;
 }
-.landing-page .auth-links > *:nth-of-type(2) {
+.landing-page nav .auth-links > *:nth-of-type(2) {
   background-color: #0d7377;
   color: #eeeeee;
   font-size: 2rem;
@@ -583,14 +585,33 @@ button {
   grid-template-columns: 1.8fr 3fr;
   color: #fff;
 }
-.landing-page .contents .landing-contents > * {
-  border: solid 1px #fff;
-}
 .landing-page .contents .landing-contents .text {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
+  position: relative;
+}
+.landing-page .contents .landing-contents .text p {
+  z-index: 2;
+}
+.landing-page .contents .landing-contents .text .darkbg {
+  position: absolute;
+  top: 40%;
+  left: -12rem;
+  background-color: #323232;
+  transform: rotate(40deg);
+  height: 100vh;
+  width: 50rem;
+}
+.landing-page .contents .landing-contents .text .darkbg2 {
+  background-color: rgba(50, 50, 50, 0.4705882353);
+  position: absolute;
+  top: 20%;
+  left: -12rem;
+  transform: rotate(40deg);
+  height: 100vh;
+  width: 50rem;
 }
 .landing-page .contents .landing-contents .img-container {
   display: flex;
@@ -598,14 +619,21 @@ button {
   justify-content: center;
   display: flex;
   justify-content: center;
+  position: relative;
 }
-.landing-page .contents .landing-contents .img-container img {
+.landing-page .contents .landing-contents .img-container .landingImg {
   width: 100%;
   height: 85%;
   -o-object-fit: contain;
      object-fit: contain;
-  border: solid 1px #fff;
-  background: url(https://s4.aconvert.com/convert/p3r68-cdx67/a2xfb-fag0a.svg);
+  z-index: 1;
+}
+.landing-page .contents .landing-contents .img-container .landingBg {
+  bottom: 0%;
+  left: 0%;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 .landing-page footer {
   background-color: #222831;
