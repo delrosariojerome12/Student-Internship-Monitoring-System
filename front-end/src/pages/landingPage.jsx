@@ -4,8 +4,6 @@ import {Link, useNavigate} from "react-router-dom";
 import logo from "../assets/img/landingPage/Logo.png";
 import landingImg from "../assets/img/landingPage/landing-image.png";
 import landingBg from "../assets/img/landingPage/landing-bg.png";
-import landingBgDark from "../assets/img/landingPage/darkBg.png";
-import landingBgDark2 from "../assets/img/landingPage/darkBg2.png";
 
 const links = [
   {
