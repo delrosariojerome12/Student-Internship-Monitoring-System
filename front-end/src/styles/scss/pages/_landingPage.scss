@@ -126,6 +126,9 @@
         }
       }
     }
+    .feature-contents {
+      z-index: 2;
+    }
   }
   footer {
     background-color: $primary-bg-color-landing;

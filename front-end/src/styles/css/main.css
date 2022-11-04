@@ -636,6 +636,9 @@ button {
   height: 100%;
   width: 100%;
 }
+.landing-page .contents .feature-contents {
+  z-index: 2;
+}
 .landing-page footer {
   background-color: #222831;
 }
