@@ -2,6 +2,7 @@ import React from "react";
 // pages
 import LandingPage from "./pages/landingPage";
 import Dashboard from "./pages/dashboard/dashboard";
+import PageNotFound from "./pages/PageNotFound";
 
 // component
 import Login from "./pages/auth/login";
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/account/login" element={<Login />} />
         <Route path="/account/signup" element={<Signup />} />
         <Route path="/dashboard/*" element={<Dashboard />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </main>
   );

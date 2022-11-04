@@ -1,9 +1,11 @@
 import React from "react";
 import {Link, useNavigate} from "react-router-dom";
 
-import Logo from "../assets/img/ASSETS MAIN LANDING PAGE/LANDING IMAGE/Logo.png";
-import MainIMG from "../assets/img/ASSETS MAIN LANDING PAGE/LANDING IMAGE/webFinal.png";
-import mainBG from "../assets/img/ASSETS MAIN LANDING PAGE/LANDING IMAGE/mainBG.png";
+import logo from "../assets/img/landingPage/Logo.png";
+import landingImg from "../assets/img/landingPage/landing-image.png";
+import landingBg from "../assets/img/landingPage/landing-bg.png";
+import landingBgDark from "../assets/img/landingPage/darkBg.png";
+import landingBgDark2 from "../assets/img/landingPage/darkBg2.png";
 
 const links = [
   {
@@ -41,8 +43,8 @@ const LandingPage = () => {
       <nav>
         {/* Icons and SIMS */}
         <div className="icon">
-          <img src={Logo} alt="Logo.png " />
-          <h1>SIMS</h1>
+          <img src={logo} alt="Logo.png " />
+          <h2>SIMS</h2>
         </div>
         {/* LINKS */}
         <ul className="links">
@@ -71,7 +73,26 @@ const LandingPage = () => {
           })}
         </ul>
       </nav>
-      <section className="contents"></section>
+      <section className="contents">
+        <div className="landing-contents">
+          <div className="text">
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla
+              iste repellendus illum molestiae aspernatur reiciendis nemo
+              nesciunt, iure voluptates? Maiores exercitationem nihil numquam
+              quod ipsum sequi, fugit eum placeat officia!
+            </p>
+            <div className="darkbg"></div>
+            <div className="darkbg2"></div>
+          </div>
+          <div className="img-container">
+            <img className="landingImg" src={landingImg} alt="" />
+            <img className="landingBg" src={landingBg} alt="" />
+          </div>
+        </div>
+        <div className="feature-contents"></div>
+        <div className="mockup-contents"></div>
+      </section>
       <footer></footer>
     </section>
   );

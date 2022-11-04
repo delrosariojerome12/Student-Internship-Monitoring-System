@@ -2,13 +2,12 @@
 @import "../utils";
 
 .dashboard {
-  display: grid;
-  grid-template-columns: 20rem 1fr 20rem;
+  height: 100%;
   gap: 1rem;
+  position: relative;
   & > * {
     border: solid 1px #000;
   }
-  .left-sidebar {
-    @include flexColumn;
-  }
+  @import "../components/dashboard/sidebarLeft";
+  @import "../components/dashboard/sidebarRight";
 }
