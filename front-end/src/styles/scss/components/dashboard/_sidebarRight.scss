@@ -1,0 +1,16 @@
+@import "../../variables";
+@import "../../utils";
+
+.right-sidebar {
+  position: fixed;
+  top: 0%;
+  right: 0%;
+  height: 100%;
+  width: 230px;
+  gap: 5px;
+  display: grid;
+  grid-template-rows: 150px 1fr 1fr;
+  & > * {
+    border: solid 1px #000;
+  }
+}

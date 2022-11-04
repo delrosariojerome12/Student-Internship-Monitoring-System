@@ -1,0 +1,27 @@
+@import "../../variables";
+@import "../../utils";
+
+.left-sidebar {
+  display: grid;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  height: 100%;
+  grid-template-rows: 16rem 1fr 1fr;
+  gap: 5px;
+  & > * {
+    border: solid 1px #000;
+  }
+  .links-con {
+    padding: 1rem;
+    @include flexColumn;
+    a {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      border: solid 1px #000;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+}
