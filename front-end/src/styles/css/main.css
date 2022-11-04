@@ -513,6 +513,7 @@ button {
 }
 .landing-page nav {
   height: 9vh;
+  width: 100%;
   position: fixed;
   top: 0%;
   left: 0%;
@@ -602,7 +603,7 @@ button {
   background-color: #323232;
   transform: rotate(40deg);
   height: 100vh;
-  width: 50rem;
+  width: 100%;
 }
 .landing-page .contents .landing-contents .text .darkbg2 {
   background-color: rgba(50, 50, 50, 0.4705882353);
@@ -611,7 +612,7 @@ button {
   left: -12rem;
   transform: rotate(40deg);
   height: 100vh;
-  width: 50rem;
+  width: 100%;
 }
 .landing-page .contents .landing-contents .img-container {
   display: flex;

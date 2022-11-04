@@ -7,6 +7,7 @@
 
   nav {
     height: 9vh;
+    width: 100%;
     position: fixed;
     top: 0%;
     left: 0%;
@@ -93,7 +94,7 @@
           background-color: #323232;
           transform: rotate(40deg);
           height: 100vh;
-          width: 50rem;
+          width: 100%;
         }
         .darkbg2 {
           background-color: #32323278;
@@ -102,7 +103,7 @@
           left: -12rem;
           transform: rotate(40deg);
           height: 100vh;
-          width: 50rem;
+          width: 100%;
         }
       }
       .img-container {
