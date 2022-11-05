@@ -520,7 +520,7 @@ button {
   top: 0%;
   left: 0%;
   display: flex;
-  z-index: 2;
+  z-index: 99;
   justify-content: space-evenly;
   padding: 1em;
   align-items: center;
@@ -592,8 +592,12 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 2em;
   position: relative;
+  text-align: justify;
+  display: flex;
+  flex-direction: column;
+  font-size: larger;
 }
 .landing-page .contents .landing-contents .text p {
   z-index: 2;
@@ -650,7 +654,11 @@ button {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  gap: 64px;
+  gap: 80px;
+  background-color: #00adb5;
+  padding: 5em;
+  border: 3px solid #eeeeee;
+  border-radius: 20px;
 }
 .landing-page footer {
   background-color: #222831;

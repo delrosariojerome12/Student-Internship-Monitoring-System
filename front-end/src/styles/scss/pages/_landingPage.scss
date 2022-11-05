@@ -12,7 +12,7 @@
     top: 0%;
     left: 0%;
     display: flex;
-    z-index: 2;
+    z-index: 99;
     justify-content: space-evenly;
     padding: 1em;
     align-items: center;
@@ -82,8 +82,12 @@
 
       .text {
         @include flexCenter;
-        padding: 1rem;
+        padding: 2em;
         position: relative;
+        text-align: justify;
+        display: flex;
+        flex-direction: column;
+        font-size: larger;
         p {
           z-index: 2;
         }
@@ -132,12 +136,17 @@
       flex-direction: row;
       justify-content: space-evenly;
       align-items: center;
+      // .feature-BG{}
       .feature-Content-Img {
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
         align-items: center;
-        gap: 64px;
+        gap: 80px;
+        background-color: $primary-feature-bg;
+        padding: 5em;
+        border: 3px solid $primary-font-color-landing;
+        border-radius: 20px;
       }
     }
   }
