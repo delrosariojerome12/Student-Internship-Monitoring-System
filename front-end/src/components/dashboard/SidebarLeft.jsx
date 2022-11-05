@@ -1,11 +1,11 @@
-import React, {useState} from "react";
-import {Link} from "react-router-dom";
-import {RiDashboardLine} from "react-icons/ri";
-import {HiPencilAlt} from "react-icons/hi";
-import {HiDocument, HiTrendingUp} from "react-icons/hi";
-import {FaUserAlt, FaChevronLeft, FaChevronRight} from "react-icons/fa";
-import {IoMdSettings} from "react-icons/io";
-import {IconContext} from "react-icons";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { RiDashboardLine } from "react-icons/ri";
+import { HiPencilAlt } from "react-icons/hi";
+import { HiDocument, HiTrendingUp } from "react-icons/hi";
+import { FaUserAlt, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { IoMdSettings, IoMdSearch } from "react-icons/io";
+import { IconContext } from "react-icons";
 
 import logo from "../../assets/img/logo.svg";
 
@@ -50,7 +50,7 @@ const SidebarLeft = () => {
   };
   return (
     <aside className={isSidebarOpen ? "left-sidebar active" : "left-sidebar"}>
-      <IconContext.Provider value={{className: "icons", color: "white"}}>
+      <IconContext.Provider value={{ className: "icons", color: "white" }}>
         <div className="img-con">
           <img src={logo} alt="Logo.png " />
         </div>
@@ -59,7 +59,7 @@ const SidebarLeft = () => {
             {isSidebarOpen ? <FaChevronRight /> : <FaChevronLeft />}
           </span>
           {links.map((item, index) => {
-            const {path, link, IconType} = item;
+            const { path, link, IconType } = item;
             return (
               <Link to={path} key={index}>
                 <IconType />
