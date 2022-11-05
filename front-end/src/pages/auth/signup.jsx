@@ -204,6 +204,7 @@ const Signup = () => {
             value={value}
             required
             onChange={(e) => handleOnChange(e.target.value, index, forInput)}
+            autoComplete={hasEyeIcon ? "true" : null}
           />
           <div className="placeholder-container">
             <label
