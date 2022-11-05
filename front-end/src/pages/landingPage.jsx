@@ -1,12 +1,16 @@
 import React from "react";
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import logo from "../assets/img/landingPage/Logo.png";
 import landingImg from "../assets/img/landingPage/landing-image.png";
 import landingBg from "../assets/img/landingPage/landing-bg.png";
 import landingBgDark from "../assets/img/landingPage/darkBg.png";
 import landingBgDark2 from "../assets/img/landingPage/darkBg2.png";
-
+// feature images
+import featureImg1 from "../assets/img/landingPage/imageFeature1.png";
+import featureImg2 from "../assets/img/landingPage/imageFeature2.png";
+import featureImg3 from "../assets/img/landingPage/imageFeature3.png";
+import featureBg
 const links = [
   {
     link: "How it Works?",
@@ -49,7 +53,7 @@ const LandingPage = () => {
         {/* LINKS */}
         <ul className="links">
           {links.map((item, index) => {
-            const {path, link} = item;
+            const { path, link } = item;
             return (
               <Link key={index} to={path}>
                 {link}
@@ -59,7 +63,7 @@ const LandingPage = () => {
         </ul>
         <ul className="auth-links">
           {authLinks.map((item, index) => {
-            const {path, link} = item;
+            const { path, link } = item;
             return (
               <button
                 onClick={() => {
@@ -90,7 +94,21 @@ const LandingPage = () => {
             <img className="landingBg" src={landingBg} alt="" />
           </div>
         </div>
-        <div className="feature-contents"></div>
+        {/*  */}
+        <div className="feature-contents">
+          <div className="feature-Content-Img">
+            <img src="" alt="" />
+            <div className="img-features">
+              <img src={featureImg1} alt="" />
+            </div>
+            <div className="img-features">
+              <img src={featureImg2} alt="" />
+            </div>
+            <div className="img-features">
+              <img src={featureImg3} alt="" />
+            </div>
+          </div>
+        </div>
         <div className="mockup-contents"></div>
       </section>
       <footer></footer>
