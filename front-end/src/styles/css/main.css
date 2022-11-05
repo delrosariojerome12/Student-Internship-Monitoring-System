@@ -793,6 +793,8 @@ button {
 }
 
 .page-not-found {
+  height: 100%;
+  width: 100%;
   background: url(https://media.tenor.com/Pfai4bV4x2IAAAAC/leni-robredo-leni.gif) no-repeat center;
   background-size: cover;
 }

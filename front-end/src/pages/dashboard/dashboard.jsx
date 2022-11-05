@@ -6,6 +6,7 @@ import {useState, lazy, Suspense} from "react";
 import DashboardMain from "./DashboardMain";
 import SidebarLeft from "../../components/dashboard/SidebarLeft";
 import RightSidebar from "../../components/dashboard/RightSidebar";
+import PageNotFound from "../PageNotFound";
 
 const Profile = lazy(() => import("./Profile"));
 const DailyTimeRecord = lazy(() => import("./DailyTimeRecord"));
@@ -25,6 +26,7 @@ const Dashboard = () => {
           <Route path="/documents" element={<Documents />} />
           <Route path="/reports" element={<Reports />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Suspense>
       <RightSidebar />
