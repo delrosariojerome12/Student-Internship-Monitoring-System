@@ -4,12 +4,17 @@
 .left-sidebar {
   display: grid;
   position: fixed;
+  overflow: hidden;
+  width: 26rem;
   top: 0%;
   left: 0%;
   height: 100%;
   grid-template-rows: 16rem 1fr 1fr;
+  grid-template-columns: 100%;
   gap: 5px;
   background-color: $primary-bg-color-landing;
+  transition: all 0.2s ease-in-out;
+
   & > * {
     border-top: solid 1px $ascent-color;
     border-bottom: solid 1px $ascent-color;
@@ -17,9 +22,11 @@
   }
   //top
   .img-con {
-    @include flexCenter;
-    background-color: $primary-font-color;
+    @include flexColumn;
+    justify-content: center;
+    align-items: center;
     margin: 1.5rem;
+    transition: all 0.2s ease-in-out;
     img {
       height: 5rem;
     }
@@ -28,6 +35,7 @@
   .links-con {
     padding: 1rem;
     @include flexColumn;
+    position: relative;
     a {
       // border: solid 1px #000;
       text-decoration: none;
@@ -37,6 +45,13 @@
       align-items: center;
       color: $primary-font-color;
       gap: 0.5rem;
+      cursor: pointer;
+    }
+    .collapse-icon {
+      position: absolute;
+      transform: translate(0%, -50%);
+      top: 50%;
+      right: -0.5rem;
       cursor: pointer;
     }
   }
@@ -63,6 +78,22 @@
         color: $primary-bg-color;
         border: solid 1px $secondary-bg-color;
       }
+    }
+  }
+}
+
+.active {
+  width: 100px;
+  .img-con {
+    transition: all 0.2s ease-in;
+    transform: rotate(90deg);
+    img {
+      height: 4rem;
+    }
+  }
+  .links-con {
+    a {
+      font-size: 3rem;
     }
   }
 }

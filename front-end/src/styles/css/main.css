@@ -649,6 +649,7 @@ button {
   height: 100%;
   gap: 1rem;
   position: relative;
+  padding: 2rem 30rem 2rem 26rem;
   background-color: #393e46;
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
@@ -686,12 +687,16 @@ button {
 .dashboard .left-sidebar {
   display: grid;
   position: fixed;
+  overflow: hidden;
+  width: 26rem;
   top: 0%;
   left: 0%;
   height: 100%;
   grid-template-rows: 16rem 1fr 1fr;
+  grid-template-columns: 100%;
   gap: 5px;
   background-color: #222831;
+  transition: all 0.2s ease-in-out;
 }
 .dashboard .left-sidebar > * {
   border-top: solid 1px #a8dadc;
@@ -700,10 +705,12 @@ button {
 }
 .dashboard .left-sidebar .img-con {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
   justify-content: center;
-  background-color: #f1faee;
+  align-items: center;
   margin: 1.5rem;
+  transition: all 0.2s ease-in-out;
 }
 .dashboard .left-sidebar .img-con img {
   height: 5rem;
@@ -713,6 +720,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  position: relative;
 }
 .dashboard .left-sidebar .links-con a {
   text-decoration: none;
@@ -722,6 +730,13 @@ button {
   align-items: center;
   color: #f1faee;
   gap: 0.5rem;
+  cursor: pointer;
+}
+.dashboard .left-sidebar .links-con .collapse-icon {
+  position: absolute;
+  transform: translate(0%, -50%);
+  top: 50%;
+  right: -0.5rem;
   cursor: pointer;
 }
 .dashboard .left-sidebar .box {
@@ -749,12 +764,25 @@ button {
   color: #457b9d;
   border: solid 1px #1d3557;
 }
+.dashboard .active {
+  width: 100px;
+}
+.dashboard .active .img-con {
+  transition: all 0.2s ease-in;
+  transform: rotate(90deg);
+}
+.dashboard .active .img-con img {
+  height: 4rem;
+}
+.dashboard .active .links-con a {
+  font-size: 3rem;
+}
 .dashboard .right-sidebar {
   position: fixed;
   top: 0%;
   right: 0%;
   height: 100%;
-  width: 230px;
+  width: 30rem;
   gap: 5px;
   display: grid;
   grid-template-rows: 0.5fr 1fr 1fr;
@@ -762,6 +790,11 @@ button {
 }
 .dashboard .right-sidebar > * {
   border: solid 1px #fff;
+}
+
+.page-not-found {
+  background: url(https://media.tenor.com/Pfai4bV4x2IAAAAC/leni-robredo-leni.gif) no-repeat center;
+  background-size: cover;
 }
 
 .login {
