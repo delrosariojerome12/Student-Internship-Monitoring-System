@@ -26,6 +26,17 @@ const Dashboard = () => {
           <Route path="/settings" element={<Settings />} />
         </Routes>
       </Suspense>
+
+      <section className="main">
+        <div className="name"></div>
+        <div className="dashboard-content">
+          <div className="time-keeper"></div>
+          <div className="documents"></div>
+          <div className="intern-details"></div>
+          <div className="map"></div>
+        </div>
+      </section>
+
       <RightSidebar />
     </section>
   );

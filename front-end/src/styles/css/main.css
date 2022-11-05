@@ -658,6 +658,17 @@ button {
 .dashboard > * {
   border: solid 2px #000;
 }
+.dashboard .main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: solid 1px #fff;
+  height: 20rem;
+}
+.dashboard .main .dashboard-content div {
+  border: solid 1px #fff;
+  height: 20rem;
+}
 .dashboard .left-sidebar {
   display: grid;
   position: fixed;
@@ -678,7 +689,7 @@ button {
   align-items: center;
   justify-content: center;
   background-color: #f1faee;
-  margin: 1rem;
+  margin: 1.5rem;
 }
 .dashboard .left-sidebar .img-con img {
   height: 5rem;

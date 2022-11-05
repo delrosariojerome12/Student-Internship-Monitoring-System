@@ -9,6 +9,17 @@
   & > * {
     border: solid 2px #000;
   }
+  .main {
+    @include flexColumn;
+    border: solid 1px #fff;
+    height: 20rem;
+    .dashboard-content {
+      div {
+        border: solid 1px #fff;
+        height: 20rem;
+      }
+    }
+  }
   @import "../components/dashboard/sidebarLeft";
   @import "../components/dashboard/sidebarRight";
 }
