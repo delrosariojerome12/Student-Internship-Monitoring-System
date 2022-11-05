@@ -3,8 +3,10 @@ import {Route, Routes, Link} from "react-router-dom";
 
 import {useState, lazy, Suspense} from "react";
 
+import DashboardMain from "./DashboardMain";
 import SidebarLeft from "../../components/dashboard/SidebarLeft";
 import RightSidebar from "../../components/dashboard/RightSidebar";
+import PageNotFound from "../PageNotFound";
 
 const Profile = lazy(() => import("./Profile"));
 const DailyTimeRecord = lazy(() => import("./DailyTimeRecord"));
@@ -18,12 +20,13 @@ const Dashboard = () => {
       <SidebarLeft />
       <Suspense fallback={<h2>Loading...</h2>}>
         <Routes>
-          <Route path="/" element={<h1>dashboard</h1>} />
+          <Route path="/" element={<DashboardMain />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/daily-time-record" element={<DailyTimeRecord />} />
           <Route path="/documents" element={<Documents />} />
           <Route path="/reports" element={<Reports />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Suspense>
       <RightSidebar />

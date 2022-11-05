@@ -520,7 +520,7 @@ button {
   top: 0%;
   left: 0%;
   display: flex;
-  z-index: 2;
+  z-index: 99;
   justify-content: space-evenly;
   padding: 1em;
   align-items: center;
@@ -592,8 +592,12 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 2em;
   position: relative;
+  text-align: justify;
+  display: flex;
+  flex-direction: column;
+  font-size: larger;
 }
 .landing-page .contents .landing-contents .text p {
   z-index: 2;
@@ -640,6 +644,21 @@ button {
 }
 .landing-page .contents .feature-contents {
   z-index: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.landing-page .contents .feature-contents .feature-Content-Img {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 80px;
+  background-color: #00adb5;
+  padding: 5em;
+  border: 3px solid #eeeeee;
+  border-radius: 20px;
 }
 .landing-page footer {
   background-color: #222831;
@@ -649,52 +668,154 @@ button {
   height: 100%;
   gap: 1rem;
   position: relative;
+  padding: 2rem 30rem 2rem 26rem;
+  background-color: #393e46;
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 }
 .dashboard > * {
-  border: solid 1px #000;
+  border: solid 2px #000;
+}
+.dashboard .main {
+  height: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: 15vh auto;
+  gap: 1.8rem;
+  padding: 1rem;
+}
+.dashboard .main .content {
+  border: solid 2px #fff;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  padding: 1.5rem;
+}
+.dashboard .main .content > * {
+  border: solid 2px #fff;
+  border-radius: 0.5rem;
+}
+.dashboard .main .content .time-keeper {
+  grid-column: 1/3;
+}
+.dashboard .main .content .documents {
+  grid-row: 2/4;
 }
 .dashboard .left-sidebar {
   display: grid;
   position: fixed;
+  overflow: hidden;
+  width: 26rem;
   top: 0%;
   left: 0%;
   height: 100%;
   grid-template-rows: 16rem 1fr 1fr;
+  grid-template-columns: 100%;
   gap: 5px;
+  background-color: #222831;
+  transition: all 0.2s ease-in-out;
 }
 .dashboard .left-sidebar > * {
-  border: solid 1px #000;
+  border-top: solid 1px #a8dadc;
+  border-bottom: solid 1px #a8dadc;
+  margin: 0 1rem;
+}
+.dashboard .left-sidebar .img-con {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem;
+  transition: all 0.2s ease-in-out;
+}
+.dashboard .left-sidebar .img-con img {
+  height: 5rem;
 }
 .dashboard .left-sidebar .links-con {
   padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  position: relative;
 }
 .dashboard .left-sidebar .links-con a {
+  text-decoration: none;
   display: inline-block;
   padding: 0.5rem 1.5rem;
-  border: solid 1px #000;
   display: flex;
   align-items: center;
+  color: #f1faee;
   gap: 0.5rem;
+  cursor: pointer;
+}
+.dashboard .left-sidebar .links-con .collapse-icon {
+  position: absolute;
+  transform: translate(0%, -50%);
+  top: 50%;
+  right: -0.5rem;
+  cursor: pointer;
+}
+.dashboard .left-sidebar .box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 1px #fff;
+  border-radius: 2rem;
+  margin: 2rem;
+}
+.dashboard .left-sidebar .box button {
+  height: 4rem;
+  width: 14rem;
+  outline: none;
+  border: solid 1px #457b9d;
+  background-color: #222831;
+  color: #f1faee;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+  cursor: pointer;
+}
+.dashboard .left-sidebar .box button:hover {
+  background-color: #f1faee;
+  color: #457b9d;
+  border: solid 1px #1d3557;
+}
+.dashboard .active {
+  width: 100px;
+}
+.dashboard .active .img-con {
+  transition: all 0.2s ease-in;
+  transform: rotate(90deg);
+}
+.dashboard .active .img-con img {
+  height: 4rem;
+}
+.dashboard .active .links-con a {
+  font-size: 3rem;
 }
 .dashboard .right-sidebar {
   position: fixed;
   top: 0%;
   right: 0%;
   height: 100%;
-  width: 230px;
+  width: 30rem;
   gap: 5px;
   display: grid;
-  grid-template-rows: 150px 1fr 1fr;
+  grid-template-rows: 0.5fr 1fr 1fr;
+  background-color: #222831;
 }
 .dashboard .right-sidebar > * {
-  border: solid 1px #000;
+  border: solid 1px #fff;
+}
+
+.page-not-found {
+  height: 100%;
+  width: 100%;
+  background: url(https://media.tenor.com/Pfai4bV4x2IAAAAC/leni-robredo-leni.gif) no-repeat center;
+  background-size: cover;
 }
 
 .login {
