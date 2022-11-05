@@ -6,11 +6,13 @@
   top: 0%;
   right: 0%;
   height: 100%;
-  width: 230px;
+  width: 30rem;
   gap: 5px;
   display: grid;
-  grid-template-rows: 150px 1fr 1fr;
+  grid-template-rows: 0.5fr 1fr 1fr;
+  background-color: $primary-bg-color-landing;
+
   & > * {
-    border: solid 1px #000;
+    border: solid 1px #fff;
   }
 }
