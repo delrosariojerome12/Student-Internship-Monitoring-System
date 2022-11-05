@@ -675,9 +675,6 @@ button {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 }
-.dashboard > * {
-  border: solid 2px #000;
-}
 .dashboard .main {
   height: 100%;
   margin: 0 auto;
@@ -685,6 +682,15 @@ button {
   grid-template-rows: 15vh auto;
   gap: 1.8rem;
   padding: 1rem;
+}
+.dashboard .main header {
+  color: #f1faee;
+}
+.dashboard .main header .name {
+  font-size: 4rem;
+}
+.dashboard .main header h4 {
+  font-size: 2rem;
 }
 .dashboard .main .content {
   border: solid 2px #fff;
@@ -695,13 +701,69 @@ button {
 }
 .dashboard .main .content > * {
   border: solid 2px #fff;
-  border-radius: 0.5rem;
+  border-radius: 2rem;
+}
+.dashboard .main .content h4 {
+  color: #f1faee;
+  text-align: center;
 }
 .dashboard .main .content .time-keeper {
+  position: relative;
   grid-column: 1/3;
+  padding: 5px;
+  z-index: 1;
+}
+.dashboard .main .content .time-keeper::after {
+  filter: blur(10px);
+  content: "";
+  background-color: rgba(87, 87, 87, 0.473);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  border-radius: 2rem;
+}
+.dashboard .main .content .time-keeper div {
+  padding: 2%;
+  height: 3px;
+  background-color: #f1faee;
+  border: solid 1px #000;
+  height: 80%;
 }
 .dashboard .main .content .documents {
+  position: relative;
+  padding: 1rem;
   grid-row: 2/4;
+  z-index: 1;
+}
+.dashboard .main .content .documents::after {
+  filter: blur(10px);
+  content: "";
+  background-color: rgba(87, 87, 87, 0.473);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  border-radius: 2rem;
+}
+.dashboard .main .content .documents div {
+  padding: 2%;
+  height: 3px;
+  background-color: #f1faee;
+  border: solid 1px #000;
+  height: 90%;
+}
+.dashboard .main .content .internship-details {
+  padding: 1rem;
+  background-color: #11999e;
+}
+.dashboard .main .content .map {
+  padding: 1rem;
+  background-color: #f1faee;
 }
 .dashboard .left-sidebar {
   display: grid;
@@ -809,6 +871,20 @@ button {
 }
 .dashboard .right-sidebar > * {
   border: solid 1px #fff;
+}
+.dashboard .right-sidebar .top {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  padding: 2rem;
+}
+.dashboard .right-sidebar .graph {
+  color: #fff;
+  text-align: center;
+}
+.dashboard .right-sidebar .graph2 {
+  color: #fff;
+  text-align: center;
 }
 
 .page-not-found {
