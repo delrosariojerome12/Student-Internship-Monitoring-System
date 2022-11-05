@@ -686,16 +686,40 @@ button {
   padding: 1rem;
 }
 .dashboard .main header {
+  display: flex;
+  justify-content: space-between;
+}
+.dashboard .main header .name-container {
+  padding-left: 1rem;
   color: #f1faee;
 }
-.dashboard .main header .name {
+.dashboard .main header .name-container .name {
   font-size: 4rem;
 }
-.dashboard .main header h4 {
+.dashboard .main header .name-container h4 {
   font-size: 2rem;
 }
+.dashboard .main header .search-box {
+  display: flex;
+  background-color: #f1faee;
+  width: 25rem;
+  border-radius: 2rem;
+  align-items: center;
+  padding: 0 1.5rem;
+  margin: 1rem 1rem auto auto;
+}
+.dashboard .main header .search-box img {
+  width: 1.8rem;
+  cursor: pointer;
+}
+.dashboard .main header .search-box input {
+  width: 100%;
+  background: transparent;
+  padding: 1rem;
+  outline: none;
+  border: 0;
+}
 .dashboard .main .content {
-  border: solid 2px #fff;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;

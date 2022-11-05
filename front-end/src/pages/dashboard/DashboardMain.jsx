@@ -1,11 +1,18 @@
 import React from "react";
+import searchIcon from "../../assets/img/search.svg";
 
 const DashboardMain = () => {
   return (
     <section className="main">
       <header>
-        <h1 className="name">Hello, Hakdog</h1>
-        <h4>Welcome Back!</h4>
+        <div className="name-container">
+          <h1 className="name">Hello, Hakdog</h1>
+          <h4>Welcome Back!</h4>
+        </div>
+        <div class="search-box">
+          <img src={searchIcon} alt="" />
+          <input type="text" placeholder="Search" />
+        </div>
       </header>
       <div className="content">
         <div className="time-keeper">
