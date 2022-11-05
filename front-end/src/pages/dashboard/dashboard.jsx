@@ -1,8 +1,9 @@
 import React from "react";
-import { Route, Routes, Link } from "react-router-dom";
+import {Route, Routes, Link} from "react-router-dom";
 
-import { useState, lazy, Suspense } from "react";
+import {useState, lazy, Suspense} from "react";
 
+import DashboardMain from "./DashboardMain";
 import SidebarLeft from "../../components/dashboard/SidebarLeft";
 import RightSidebar from "../../components/dashboard/RightSidebar";
 
@@ -18,7 +19,7 @@ const Dashboard = () => {
       <SidebarLeft />
       <Suspense fallback={<h2>Loading...</h2>}>
         <Routes>
-          <Route path="/" element={<h1>SIMS</h1>} />
+          <Route path="/" element={<DashboardMain />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/daily-time-record" element={<DailyTimeRecord />} />
           <Route path="/documents" element={<Documents />} />
@@ -26,17 +27,6 @@ const Dashboard = () => {
           <Route path="/settings" element={<Settings />} />
         </Routes>
       </Suspense>
-
-      <section className="main">
-        <div className="name"></div>
-        <div className="dashboard-content">
-          <div className="time-keeper"></div>
-          <div className="documents"></div>
-          <div className="intern-details"></div>
-          <div className="map"></div>
-        </div>
-      </section>
-
       <RightSidebar />
     </section>
   );
