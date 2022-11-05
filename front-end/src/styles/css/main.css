@@ -649,13 +649,14 @@ button {
   height: 100%;
   gap: 1rem;
   position: relative;
+  background-color: #393e46;
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 }
 .dashboard > * {
-  border: solid 1px #000;
+  border: solid 2px #000;
 }
 .dashboard .left-sidebar {
   display: grid;
@@ -665,9 +666,22 @@ button {
   height: 100%;
   grid-template-rows: 16rem 1fr 1fr;
   gap: 5px;
+  background-color: #222831;
 }
 .dashboard .left-sidebar > * {
-  border: solid 1px #000;
+  border-top: solid 1px #a8dadc;
+  border-bottom: solid 1px #a8dadc;
+  margin: 0 1rem;
+}
+.dashboard .left-sidebar .img-con {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1faee;
+  margin: 1rem;
+}
+.dashboard .left-sidebar .img-con img {
+  height: 5rem;
 }
 .dashboard .left-sidebar .links-con {
   padding: 1rem;
@@ -676,12 +690,39 @@ button {
   gap: 1rem;
 }
 .dashboard .left-sidebar .links-con a {
+  text-decoration: none;
   display: inline-block;
   padding: 0.5rem 1.5rem;
-  border: solid 1px #000;
   display: flex;
   align-items: center;
+  color: #f1faee;
   gap: 0.5rem;
+  cursor: pointer;
+}
+.dashboard .left-sidebar .box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 1px #fff;
+  border-radius: 2rem;
+  margin: 2rem;
+}
+.dashboard .left-sidebar .box button {
+  height: 4rem;
+  width: 14rem;
+  outline: none;
+  border: solid 1px #457b9d;
+  background-color: #222831;
+  color: #f1faee;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+  cursor: pointer;
+}
+.dashboard .left-sidebar .box button:hover {
+  background-color: #f1faee;
+  color: #457b9d;
+  border: solid 1px #1d3557;
 }
 .dashboard .right-sidebar {
   position: fixed;
@@ -691,10 +732,11 @@ button {
   width: 230px;
   gap: 5px;
   display: grid;
-  grid-template-rows: 150px 1fr 1fr;
+  grid-template-rows: 0.5fr 1fr 1fr;
+  background-color: #222831;
 }
 .dashboard .right-sidebar > * {
-  border: solid 1px #000;
+  border: solid 1px #fff;
 }
 
 .login {

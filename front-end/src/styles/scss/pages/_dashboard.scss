@@ -5,8 +5,9 @@
   height: 100%;
   gap: 1rem;
   position: relative;
+  background-color: #393e46;
   & > * {
-    border: solid 1px #000;
+    border: solid 2px #000;
   }
   @import "../components/dashboard/sidebarLeft";
   @import "../components/dashboard/sidebarRight";

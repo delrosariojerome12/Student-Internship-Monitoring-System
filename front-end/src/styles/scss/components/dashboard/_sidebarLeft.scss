@@ -9,19 +9,60 @@
   height: 100%;
   grid-template-rows: 16rem 1fr 1fr;
   gap: 5px;
+  background-color: $primary-bg-color-landing;
   & > * {
-    border: solid 1px #000;
+    border-top: solid 1px $ascent-color;
+    border-bottom: solid 1px $ascent-color;
+    margin: 0 1rem;
   }
+  //top
+  .img-con {
+    @include flexCenter;
+    background-color: $primary-font-color;
+    margin: 1rem;
+    img {
+      height: 5rem;
+    }
+  }
+  //middle
   .links-con {
     padding: 1rem;
     @include flexColumn;
     a {
+      // border: solid 1px #000;
+      text-decoration: none;
       display: inline-block;
       padding: 0.5rem 1.5rem;
-      border: solid 1px #000;
       display: flex;
       align-items: center;
+      color: $primary-font-color;
       gap: 0.5rem;
+      cursor: pointer;
+    }
+  }
+  //bottom
+  .box {
+    @include flexCenter;
+    border: solid 1px #fff;
+    border-radius: 2rem;
+    margin: 2rem;
+
+    button {
+      height: 4rem;
+      width: 14rem;
+      outline: none;
+      border: solid 1px $primary-bg-color;
+      background-color: $primary-bg-color-landing;
+      color: $primary-font-color;
+      letter-spacing: 0.2rem;
+      transition: all 0.3s ease-in-out;
+      font-weight: bold;
+      cursor: pointer;
+      &:hover {
+        background-color: $primary-font-color;
+        color: $primary-bg-color;
+        border: solid 1px $secondary-bg-color;
+      }
     }
   }
 }
