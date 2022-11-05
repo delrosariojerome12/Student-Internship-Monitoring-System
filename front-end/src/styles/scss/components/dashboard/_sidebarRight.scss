@@ -15,4 +15,18 @@
   & > * {
     border: solid 1px #fff;
   }
+  .top {
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    padding: 2rem;
+  }
+  .graph {
+    color: #fff;
+    text-align: center;
+  }
+  .graph2 {
+    color: #fff;
+    text-align: center;
+  }
 }
