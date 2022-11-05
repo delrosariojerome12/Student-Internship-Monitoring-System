@@ -598,8 +598,10 @@ button {
   display: flex;
   flex-direction: column;
   font-size: larger;
+  z-index: 2;
 }
-.landing-page .contents .landing-contents .text p {
+.landing-page .contents .landing-contents .text p,
+.landing-page .contents .landing-contents .text h3 {
   z-index: 2;
 }
 .landing-page .contents .landing-contents .text .darkbg {
