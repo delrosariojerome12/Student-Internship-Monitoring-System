@@ -10,7 +10,7 @@ import landingBgDark2 from "../assets/img/landingPage/darkBg2.png";
 import featureImg1 from "../assets/img/landingPage/imageFeature1.png";
 import featureImg2 from "../assets/img/landingPage/imageFeature2.png";
 import featureImg3 from "../assets/img/landingPage/imageFeature3.png";
-import featureBg
+import featureBg from "../assets/img/landingPage/featureBg.png";
 const links = [
   {
     link: "How it Works?",
@@ -97,7 +97,7 @@ const LandingPage = () => {
         {/*  */}
         <div className="feature-contents">
           <div className="feature-Content-Img">
-            <img src="" alt="" />
+            <img src={featureBg} alt="" />
             <div className="img-features">
               <img src={featureImg1} alt="" />
             </div>
