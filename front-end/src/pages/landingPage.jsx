@@ -12,6 +12,13 @@ import featureImg1 from "../assets/img/landingPage/imageFeature1.png";
 import featureImg2 from "../assets/img/landingPage/imageFeature2.png";
 import featureImg3 from "../assets/img/landingPage/imageFeature3.png";
 // import featureBg from "../assets/img/landingPage/featureBg.png";
+import mainMockup from "../assets/img/landingPage/MainMockup.png";
+import mockupImage from "../assets/img/landingPage/imageLowerContainer.png";
+// Footer
+import socialIcon1 from "../assets/img/landingPage/ICON SOCIALS/FB.png";
+import socialIcon2 from "../assets/img/landingPage/ICON SOCIALS/INSTA.png";
+import socialIcon3 from "../assets/img/landingPage/ICON SOCIALS/LINKIN.png";
+import socialIcon4 from "../assets/img/landingPage/ICON SOCIALS/TWITTER.png";
 
 const links = [
   {
@@ -103,10 +110,8 @@ const LandingPage = () => {
             <img className="landingBg" src={landingBg} alt="" />
           </div>
         </div>
-        {/*  */}
         <div className="feature-contents">
           <div className="feature-Content-Img">
-            {/* <div className="feature-BG"></div> */}
             <div className="img-features">
               <img src={featureImg1} alt="" />
             </div>
@@ -119,14 +124,49 @@ const LandingPage = () => {
           </div>
         </div>
         <div className="mockup-contents">
-          <div className="main-Mockup">
-            <div className="mockup-image1"></div>
-            <div className="mockup-image2"></div>
-            <div className="mockup-image3"></div>
+          <div className="card">
+            <div className="text">
+              <p>Do you need assistance with your internship?</p>
+              <p>
+                We've got you covered! SIMS is an easy-to-use online application
+                designed just for your needs!
+              </p>
+              <p>
+                Support you in managing your internship fast, efficiently, and
+                without trouble.
+              </p>
+              <div className="img-con">
+                <img src={mockupImage} alt="" />
+              </div>
+            </div>
+            <div className="img-con">
+              <img src={mainMockup} alt="" />
+            </div>
           </div>
         </div>
       </section>
-      <footer></footer>
+      <footer>
+        <div className="footer-content">
+          <div className="icon">
+            <img src={logo} alt="Logo.png " />
+            <h2>SIMS</h2>
+          </div>
+          <div className="socials-img">
+            <div className="social">
+              <img src={socialIcon1} alt="" />
+            </div>
+            <div className="social">
+              <img src={socialIcon2} alt="" />
+            </div>
+            <div className="social">
+              <img src={socialIcon3} alt="" />
+            </div>
+            <div className="social">
+              <img src={socialIcon4} alt="" />
+            </div>
+          </div>
+        </div>
+      </footer>
     </section>
   );
 };
