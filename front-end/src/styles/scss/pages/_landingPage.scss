@@ -245,5 +245,37 @@
   }
   footer {
     background-color: $primary-bg-color-landing;
+    .footer-content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      padding-left: 10em;
+      .icon {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1em;
+        color: $primary-font-color-landing;
+        h1 {
+          font-size: 4rem;
+        }
+        img {
+          height: 32px;
+        }
+      }
+      .socials-img {
+        display: flex;
+        justify-content: space-evenly;
+        gap: 20px;
+        padding: 5em;
+        .social {
+          display: flex;
+          justify-content: space-evenly;
+          gap: 20px;
+        }
+      }
+    }
   }
 }

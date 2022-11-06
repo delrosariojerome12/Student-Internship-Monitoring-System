@@ -750,6 +750,38 @@ button {
 .landing-page footer {
   background-color: #222831;
 }
+.landing-page footer .footer-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding-left: 10em;
+}
+.landing-page footer .footer-content .icon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1em;
+  color: #eeeeee;
+}
+.landing-page footer .footer-content .icon h1 {
+  font-size: 4rem;
+}
+.landing-page footer .footer-content .icon img {
+  height: 32px;
+}
+.landing-page footer .footer-content .socials-img {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px;
+  padding: 5em;
+}
+.landing-page footer .footer-content .socials-img .social {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px;
+}
 
 .dashboard {
   height: 100%;

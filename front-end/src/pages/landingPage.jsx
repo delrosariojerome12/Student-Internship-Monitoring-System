@@ -14,6 +14,11 @@ import featureImg3 from "../assets/img/landingPage/imageFeature3.png";
 // import featureBg from "../assets/img/landingPage/featureBg.png";
 import mainMockup from "../assets/img/landingPage/MainMockup.png";
 import mockupImage from "../assets/img/landingPage/imageLowerContainer.png";
+// Footer
+import socialIcon1 from "../assets/img/landingPage/ICON SOCIALS/FB.png";
+import socialIcon2 from "../assets/img/landingPage/ICON SOCIALS/INSTA.png";
+import socialIcon3 from "../assets/img/landingPage/ICON SOCIALS/LINKIN.png";
+import socialIcon4 from "../assets/img/landingPage/ICON SOCIALS/TWITTER.png";
 
 const links = [
   {
@@ -144,9 +149,25 @@ const LandingPage = () => {
         </div>
       </section>
       <footer>
-        <div className="icon">
-          <img src={logo} alt="Logo.png " />
-          <h2>SIMS</h2>
+        <div className="footer-content">
+          <div className="icon">
+            <img src={logo} alt="Logo.png " />
+            <h2>SIMS</h2>
+          </div>
+          <div className="socials-img">
+            <div className="social">
+              <img src={socialIcon1} alt="" />
+            </div>
+            <div className="social">
+              <img src={socialIcon2} alt="" />
+            </div>
+            <div className="social">
+              <img src={socialIcon3} alt="" />
+            </div>
+            <div className="social">
+              <img src={socialIcon4} alt="" />
+            </div>
+          </div>
         </div>
       </footer>
     </section>
