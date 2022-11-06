@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 import logo from "../assets/img/landingPage/Logo.png";
 import landingImg from "../assets/img/landingPage/landing-image.png";
@@ -62,7 +62,7 @@ const LandingPage = () => {
         {/* LINKS */}
         <ul className="links">
           {links.map((item, index) => {
-            const { path, link } = item;
+            const {path, link} = item;
             return (
               <Link key={index} to={path}>
                 {link}
@@ -72,7 +72,7 @@ const LandingPage = () => {
         </ul>
         <ul className="auth-links">
           {authLinks.map((item, index) => {
-            const { path, link } = item;
+            const {path, link} = item;
             return (
               <button
                 onClick={() => {
@@ -112,7 +112,6 @@ const LandingPage = () => {
         </div>
         <div className="feature-contents">
           <div className="feature-Content-Img">
-            {/* <div className="feature-BG"></div> */}
             <div className="img-features">
               <img src={featureImg1} alt="" />
             </div>
@@ -125,24 +124,22 @@ const LandingPage = () => {
           </div>
         </div>
         <div className="mockup-contents">
-          <div className="mockup-bg1">
-            <div className="mockup-inner-content">
-              <div className="text-mockup">
-                <h1>Do you need assistance with your internship?</h1>
-                <p>
-                  We've got you covered! SIMS is an easy-to-use online
-                  application designed just for your needs!
-                </p>
-                <p>
-                  Support you in managing your internship fast, efficiently, and
-                  without trouble.
-                </p>
+          <div className="card">
+            <div className="text">
+              <p>Do you need assistance with your internship?</p>
+              <p>
+                We've got you covered! SIMS is an easy-to-use online application
+                designed just for your needs!
+              </p>
+              <p>
+                Support you in managing your internship fast, efficiently, and
+                without trouble.
+              </p>
+              <div className="img-con">
                 <img src={mockupImage} alt="" />
               </div>
-              <div className="mockup-inner"></div>
             </div>
-            <div className="mockup-bg2"></div>
-            <div className="mockup-image1">
+            <div className="img-con">
               <img src={mainMockup} alt="" />
             </div>
           </div>
