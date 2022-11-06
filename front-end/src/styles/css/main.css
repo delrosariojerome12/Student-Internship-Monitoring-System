@@ -670,7 +670,7 @@ button {
   height: 100%;
   gap: 1rem;
   position: relative;
-  padding: 2rem 30rem 2rem 26rem;
+  padding: 2rem 15rem;
   background-color: #393e46;
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
@@ -795,7 +795,7 @@ button {
   display: grid;
   position: fixed;
   overflow: hidden;
-  width: 26rem;
+  width: 100px;
   top: 0%;
   left: 0%;
   height: 100%;
@@ -804,6 +804,7 @@ button {
   gap: 5px;
   background-color: #222831;
   transition: all 0.2s ease-in-out;
+  z-index: 5;
 }
 .dashboard .left-sidebar > * {
   border-top: solid 1px #a8dadc;
@@ -818,9 +819,10 @@ button {
   align-items: center;
   margin: 1.5rem;
   transition: all 0.2s ease-in-out;
+  transform: rotate(90deg);
 }
 .dashboard .left-sidebar .img-con img {
-  height: 5rem;
+  height: 4rem;
 }
 .dashboard .left-sidebar .links-con {
   padding: 1rem;
@@ -838,6 +840,7 @@ button {
   color: #f1faee;
   gap: 0.5rem;
   cursor: pointer;
+  font-size: 3rem;
 }
 .dashboard .left-sidebar .links-con .collapse-icon {
   position: absolute;
@@ -871,29 +874,32 @@ button {
   color: #457b9d;
   border: solid 1px #1d3557;
 }
-.dashboard .active {
-  width: 100px;
+.dashboard .active-sidebar {
+  width: 26rem;
 }
-.dashboard .active .img-con {
+.dashboard .active-sidebar .img-con {
   transition: all 0.2s ease-in;
-  transform: rotate(90deg);
+  transform: rotate(0deg);
 }
-.dashboard .active .img-con img {
-  height: 4rem;
+.dashboard .active-sidebar .img-con img {
+  height: 5rem;
 }
-.dashboard .active .links-con a {
-  font-size: 3rem;
+.dashboard .active-sidebar .links-con a {
+  font-size: 1.8rem;
 }
 .dashboard .right-sidebar {
   position: fixed;
   top: 0%;
   right: 0%;
   height: 100%;
-  width: 30rem;
+  width: 10rem;
   gap: 5px;
   display: grid;
   grid-template-rows: 0.5fr 1fr 1fr;
   background-color: #222831;
+  overflow: hidden;
+  transition: all 0.2s ease-in;
+  z-index: 5;
 }
 .dashboard .right-sidebar > * {
   border: solid 1px #fff;
@@ -907,10 +913,21 @@ button {
 .dashboard .right-sidebar .graph {
   color: #fff;
   text-align: center;
+  position: relative;
+}
+.dashboard .right-sidebar .graph .collapse-icon {
+  position: absolute;
+  transform: translate(0%, -50%);
+  top: 50%;
+  left: 5px;
+  cursor: pointer;
 }
 .dashboard .right-sidebar .graph2 {
   color: #fff;
   text-align: center;
+}
+.dashboard .active-sidebar {
+  width: 26rem;
 }
 
 .page-not-found {
