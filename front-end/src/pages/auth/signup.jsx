@@ -11,8 +11,13 @@ import {
 } from "react-icons/fa";
 import {GrMail} from "react-icons/gr";
 import {IconContext} from "react-icons";
+import {useDispatch} from "react-redux";
+import {setUser} from "../../features/user/userReducer";
 
 const Signup = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [form, setForm] = useState([
     {
       forInput: "First Name",
@@ -76,7 +81,6 @@ const Signup = () => {
   const [isSignupError, setSignupError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const navigate = useNavigate();
   const handleOnChange = (value, index, input) => {
     const data = [...form];
     data[index].value = value;
@@ -164,6 +168,7 @@ const Signup = () => {
         const {data: res} = await axios.post(url, convertForm());
         localStorage.setItem("Bearer", res.token);
         console.log(res);
+        dispatch(setUser(res.user));
         navigate("/dashboard");
       } catch (error) {
         const {msg} = error.response.data;
@@ -204,6 +209,7 @@ const Signup = () => {
             value={value}
             required
             onChange={(e) => handleOnChange(e.target.value, index, forInput)}
+            autoComplete={hasEyeIcon ? "true" : null}
           />
           <div className="placeholder-container">
             <label

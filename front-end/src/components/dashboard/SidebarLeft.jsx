@@ -4,7 +4,7 @@ import {RiDashboardLine} from "react-icons/ri";
 import {HiPencilAlt} from "react-icons/hi";
 import {HiDocument, HiTrendingUp} from "react-icons/hi";
 import {FaUserAlt, FaChevronLeft, FaChevronRight} from "react-icons/fa";
-import {IoMdSettings} from "react-icons/io";
+import {IoMdSettings, IoMdSearch} from "react-icons/io";
 import {IconContext} from "react-icons";
 
 import logo from "../../assets/img/logo.svg";
@@ -49,21 +49,25 @@ const SidebarLeft = () => {
     setSidebarOpen(!isSidebarOpen);
   };
   return (
-    <aside className={isSidebarOpen ? "left-sidebar active" : "left-sidebar"}>
+    <aside
+      className={
+        isSidebarOpen ? "left-sidebar active-sidebar" : "left-sidebar "
+      }
+    >
       <IconContext.Provider value={{className: "icons", color: "white"}}>
         <div className="img-con">
           <img src={logo} alt="Logo.png " />
         </div>
         <div className="links-con">
           <span onClick={handleSideBar} className="collapse-icon">
-            {isSidebarOpen ? <FaChevronRight /> : <FaChevronLeft />}
+            {!isSidebarOpen ? <FaChevronRight /> : <FaChevronLeft />}
           </span>
           {links.map((item, index) => {
             const {path, link, IconType} = item;
             return (
               <Link to={path} key={index}>
                 <IconType />
-                {!isSidebarOpen && link}
+                {isSidebarOpen && link}
               </Link>
             );
           })}

@@ -5,7 +5,7 @@
   display: grid;
   position: fixed;
   overflow: hidden;
-  width: 26rem;
+  width: 100px;
   top: 0%;
   left: 0%;
   height: 100%;
@@ -14,6 +14,7 @@
   gap: 5px;
   background-color: $primary-bg-color-landing;
   transition: all 0.2s ease-in-out;
+  z-index: 5;
 
   & > * {
     border-top: solid 1px $ascent-color;
@@ -27,8 +28,9 @@
     align-items: center;
     margin: 1.5rem;
     transition: all 0.2s ease-in-out;
+    transform: rotate(90deg);
     img {
-      height: 5rem;
+      height: 4rem;
     }
   }
   //middle
@@ -46,6 +48,7 @@
       color: $primary-font-color;
       gap: 0.5rem;
       cursor: pointer;
+      font-size: 3rem;
     }
     .collapse-icon {
       position: absolute;
@@ -82,18 +85,18 @@
   }
 }
 
-.active {
-  width: 100px;
+.active-sidebar {
+  width: 26rem;
   .img-con {
     transition: all 0.2s ease-in;
-    transform: rotate(90deg);
+    transform: rotate(0deg);
     img {
-      height: 4rem;
+      height: 5rem;
     }
   }
   .links-con {
     a {
-      font-size: 3rem;
+      font-size: 1.8rem;
     }
   }
 }
