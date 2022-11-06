@@ -162,12 +162,12 @@
     }
   }
   .mockup-contents {
-    z-index: 2;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     height: 100%;
+    z-index: 1;
 
     .mockup-bg1 {
       background-color: $primary-bg-color-landing-compliment;
@@ -178,17 +178,45 @@
     .mockup-inner-content {
       border: 1px solid $primary-font-color-landing;
       background-color: $primary-bg-color-landing;
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-end;
-      align-items: flex-end;
-      // height;
+      display: grid;
+      grid-template-columns: 350px auto;
+      z-index: 2;
+      .text-mockup {
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        grid-column: 2/3;
+        grid-row: 1/3;
+        display: grid;
+        grid-template-columns: 1fr 0.3fr 1fr;
+        padding: 1rem;
+        grid-template-rows: repeat(4, auto);
+        h1 {
+          grid-column: 1/4;
+          margin: 0 auto;
+          grid-row: 1/2;
+        }
+        p {
+          &:nth-of-type(1) {
+            grid-row: 2/3;
+            grid-column: 1/3;
+          }
+          &:nth-of-type(2) {
+            grid-row: 3/4;
+            grid-column: 2/4;
+            align-self: center;
+          }
+        }
+        img {
+          grid-row: 3/4;
+          grid-column: 1/2;
+          height: 100%;
+          width: 100%;
+          margin: auto;
+        }
+      }
     }
-    .text-mockup {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
+
     .mockup-bg2 {
       background-color: $primary-bg-color-landing-compliment;
       opacity: 50%;
@@ -202,6 +230,7 @@
       height: 100%;
       position: absolute;
       top: -50px;
+      z-index: 5;
       img {
         height: 110%;
       }

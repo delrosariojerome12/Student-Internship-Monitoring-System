@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 import logo from "../assets/img/landingPage/Logo.png";
 import landingImg from "../assets/img/landingPage/landing-image.png";
@@ -13,6 +13,7 @@ import featureImg2 from "../assets/img/landingPage/imageFeature2.png";
 import featureImg3 from "../assets/img/landingPage/imageFeature3.png";
 // import featureBg from "../assets/img/landingPage/featureBg.png";
 import mainMockup from "../assets/img/landingPage/MainMockup.png";
+import mockupImage from "../assets/img/landingPage/imageLowerContainer.png";
 
 const links = [
   {
@@ -56,7 +57,7 @@ const LandingPage = () => {
         {/* LINKS */}
         <ul className="links">
           {links.map((item, index) => {
-            const { path, link } = item;
+            const {path, link} = item;
             return (
               <Link key={index} to={path}>
                 {link}
@@ -66,7 +67,7 @@ const LandingPage = () => {
         </ul>
         <ul className="auth-links">
           {authLinks.map((item, index) => {
-            const { path, link } = item;
+            const {path, link} = item;
             return (
               <button
                 onClick={() => {
@@ -104,7 +105,6 @@ const LandingPage = () => {
             <img className="landingBg" src={landingBg} alt="" />
           </div>
         </div>
-        {/*  */}
         <div className="feature-contents">
           <div className="feature-Content-Img">
             {/* <div className="feature-BG"></div> */}
@@ -128,6 +128,11 @@ const LandingPage = () => {
                   We've got you covered! SIMS is an easy-to-use online
                   application designed just for your needs!
                 </p>
+                <p>
+                  Support you in managing your internship fast, efficiently, and
+                  without trouble.
+                </p>
+                <img src={mockupImage} alt="" />
               </div>
               <div className="mockup-inner"></div>
             </div>
