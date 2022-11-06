@@ -6,11 +6,14 @@
   top: 0%;
   right: 0%;
   height: 100%;
-  width: 30rem;
+  width: 10rem;
   gap: 5px;
   display: grid;
   grid-template-rows: 0.5fr 1fr 1fr;
   background-color: $primary-bg-color-landing;
+  overflow: hidden;
+  transition: all 0.2s ease-in;
+  z-index: 5;
 
   & > * {
     border: solid 1px #fff;
@@ -24,9 +27,21 @@
   .graph {
     color: #fff;
     text-align: center;
+    position: relative;
+    .collapse-icon {
+      position: absolute;
+      transform: translate(0%, -50%);
+      top: 50%;
+      left: 5px;
+      cursor: pointer;
+    }
   }
   .graph2 {
     color: #fff;
     text-align: center;
   }
+}
+
+.active-sidebar {
+  width: 26rem;
 }
