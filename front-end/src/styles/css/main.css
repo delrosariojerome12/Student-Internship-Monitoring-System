@@ -15,6 +15,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -918,16 +920,111 @@ button {
   grid-template-rows: 18vh auto;
   gap: 1rem;
 }
-.daily-time-record > * {
-  border: solid 1px rgb(238, 195, 195);
+.daily-time-record header {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+}
+.daily-time-record header .name-container {
+  padding-left: 1rem;
+  color: #f1faee;
+}
+.daily-time-record header .name-container .name {
+  font-size: 4rem;
+}
+.daily-time-record header .name-container h4 {
+  font-size: 2rem;
+}
+.daily-time-record header .search-box {
+  display: flex;
+  background-color: #f1faee;
+  width: 25rem;
+  border-radius: 2rem;
+  align-items: center;
+  padding: 0 1.5rem;
+  margin: 1rem 1rem auto auto;
+}
+.daily-time-record header .search-box img {
+  width: 1.8rem;
+  cursor: pointer;
+}
+.daily-time-record header .search-box input {
+  width: 100%;
+  background: transparent;
+  padding: 1rem;
+  outline: none;
+  border: 0;
 }
 .daily-time-record .content {
   display: grid;
-  grid-template-rows: 15vh 5rem auto;
+  grid-template-rows: 17vh 5rem auto;
   gap: 1rem;
+  padding: 1rem;
 }
-.daily-time-record .content > * {
-  border: solid 1px rgb(255, 255, 255);
+.daily-time-record .content .user {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  border: solid 1px #fff;
+  border-radius: 2rem;
+}
+.daily-time-record .content .user .infos {
+  margin: 3rem 0.5rem;
+  color: #f1faee;
+}
+.daily-time-record .content .user img {
+  background-color: #f1faee;
+  margin: 3rem;
+  padding: 1rem;
+}
+.daily-time-record .content .user::after {
+  filter: blur(10px);
+  content: "";
+  background-color: rgba(87, 87, 87, 0.473);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  border-radius: 2rem;
+}
+.daily-time-record .content .button-container {
+  margin-top: -5px;
+}
+.daily-time-record .content .button-container button {
+  cursor: pointer;
+  height: 4rem;
+  width: 12rem;
+  border: solid 1px transparent;
+  outline: none;
+  background-color: #fff;
+  color: #000;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+  margin: 1rem;
+}
+.daily-time-record .content .button-container button:hover {
+  background-color: #000;
+  color: #fff;
+}
+.daily-time-record .content .table {
+  position: relative;
+  border: solid 1px #fff;
+  border-radius: 2rem;
+  z-index: 1;
+}
+.daily-time-record .content .table::after {
+  filter: blur(10px);
+  content: "";
+  background-color: rgba(87, 87, 87, 0.473);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  border-radius: 2rem;
 }
 
 .page-not-found {
