@@ -1,5 +1,5 @@
 import React from "react";
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import logo from "../assets/img/landingPage/Logo.png";
 import landingImg from "../assets/img/landingPage/landing-image.png";
@@ -12,6 +12,7 @@ import featureImg1 from "../assets/img/landingPage/imageFeature1.png";
 import featureImg2 from "../assets/img/landingPage/imageFeature2.png";
 import featureImg3 from "../assets/img/landingPage/imageFeature3.png";
 // import featureBg from "../assets/img/landingPage/featureBg.png";
+import mainMockup from "../assets/img/landingPage/MainMockup.png";
 
 const links = [
   {
@@ -55,7 +56,7 @@ const LandingPage = () => {
         {/* LINKS */}
         <ul className="links">
           {links.map((item, index) => {
-            const {path, link} = item;
+            const { path, link } = item;
             return (
               <Link key={index} to={path}>
                 {link}
@@ -65,7 +66,7 @@ const LandingPage = () => {
         </ul>
         <ul className="auth-links">
           {authLinks.map((item, index) => {
-            const {path, link} = item;
+            const { path, link } = item;
             return (
               <button
                 onClick={() => {
@@ -119,10 +120,21 @@ const LandingPage = () => {
           </div>
         </div>
         <div className="mockup-contents">
-          <div className="main-Mockup">
-            <div className="mockup-image1"></div>
-            <div className="mockup-image2"></div>
-            <div className="mockup-image3"></div>
+          <div className="mockup-bg1">
+            <div className="mockup-inner-content">
+              <div className="text-mockup">
+                <h1>Do you need assistance with your internship?</h1>
+                <p>
+                  We've got you covered! SIMS is an easy-to-use online
+                  application designed just for your needs!
+                </p>
+              </div>
+              <div className="mockup-inner"></div>
+            </div>
+            <div className="mockup-bg2"></div>
+            <div className="mockup-image1">
+              <img src={mainMockup} alt="" />
+            </div>
           </div>
         </div>
       </section>

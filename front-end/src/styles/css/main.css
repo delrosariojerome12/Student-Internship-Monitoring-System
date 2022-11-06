@@ -650,17 +650,68 @@ button {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  position: relative;
 }
 .landing-page .contents .feature-contents .feature-Content-Img {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   gap: 80px;
   background-color: #00adb5;
-  padding: 2em;
+  padding: 1rem;
   border: 3px solid #eeeeee;
   border-radius: 20px;
+  width: 80%;
+  position: absolute;
+}
+.landing-page .contents .feature-contents .feature-Content-Img img {
+  width: 100%;
+  height: 50%;
+}
+.landing-page .mockup-contents {
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100%;
+}
+.landing-page .mockup-contents .mockup-bg1 {
+  background-color: #323232;
+  width: 85%;
+  height: 70%;
+  display: flex;
+}
+.landing-page .mockup-contents .mockup-inner-content {
+  border: 1px solid #eeeeee;
+  background-color: #222831;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.landing-page .mockup-contents .text-mockup {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.landing-page .mockup-contents .mockup-bg2 {
+  background-color: #323232;
+  opacity: 50%;
+  width: 70%;
+  height: 70%;
+  display: flex;
+  position: absolute;
+  top: 50px;
+}
+.landing-page .mockup-contents .mockup-image1 {
+  height: 100%;
+  position: absolute;
+  top: -50px;
+}
+.landing-page .mockup-contents .mockup-image1 img {
+  height: 110%;
 }
 .landing-page footer {
   background-color: #222831;

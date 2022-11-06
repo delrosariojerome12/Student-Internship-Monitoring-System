@@ -139,17 +139,71 @@
       flex-direction: row;
       justify-content: space-evenly;
       align-items: center;
+      position: relative;
       // .feature-BG{}
       .feature-Content-Img {
         display: flex;
         flex-direction: row;
-        justify-content: space-evenly;
+        justify-content: space-around;
         align-items: center;
         gap: 80px;
         background-color: $primary-feature-bg;
-        padding: 2em;
+        padding: 1rem;
         border: 3px solid $primary-font-color-landing;
         border-radius: 20px;
+        width: 80%;
+        // height: 100%;
+        position: absolute;
+        img {
+          width: 100%;
+          height: 50%;
+        }
+      }
+    }
+  }
+  .mockup-contents {
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%;
+
+    .mockup-bg1 {
+      background-color: $primary-bg-color-landing-compliment;
+      width: 85%;
+      height: 70%;
+      display: flex;
+    }
+    .mockup-inner-content {
+      border: 1px solid $primary-font-color-landing;
+      background-color: $primary-bg-color-landing;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: flex-end;
+      // height;
+    }
+    .text-mockup {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .mockup-bg2 {
+      background-color: $primary-bg-color-landing-compliment;
+      opacity: 50%;
+      width: 70%;
+      height: 70%;
+      display: flex;
+      position: absolute;
+      top: 50px;
+    }
+    .mockup-image1 {
+      height: 100%;
+      position: absolute;
+      top: -50px;
+      img {
+        height: 110%;
       }
     }
   }
