@@ -9,7 +9,7 @@ const DailyTimeRecord = () => {
           <h1 className="name">Hello, Hakdog</h1>
           <h4>Welcome Back!</h4>
         </div>
-        <div class="search-box">
+        <div className="search-box">
           <img src={searchIcon} alt="" />
           <input type="text" placeholder="Search" />
         </div>
