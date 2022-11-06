@@ -12,6 +12,12 @@
   // }
 
   .main {
+    height: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: 12vh auto;
+    gap: 1.8rem;
+    padding: 1rem;
     header {
       display: flex;
       justify-content: space-between;
@@ -46,15 +52,7 @@
         }
       }
     }
-    height: 100%;
-    // width: calc(100% - 480px);
-    margin: 0 auto;
-    display: grid;
-    grid-template-rows: 15vh auto;
-    gap: 1.8rem;
-    padding: 1rem;
     .content {
-      // border: solid 2px #fff;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
@@ -71,7 +69,7 @@
       .time-keeper {
         position: relative;
         grid-column: 1/3;
-        padding: 5px;
+        padding: 1rem;
         z-index: 1;
         &::after {
           filter: blur(10px);

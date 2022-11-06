@@ -805,7 +805,7 @@ button {
   height: 100%;
   margin: 0 auto;
   display: grid;
-  grid-template-rows: 15vh auto;
+  grid-template-rows: 12vh auto;
   gap: 1.8rem;
   padding: 1rem;
 }
@@ -860,7 +860,7 @@ button {
 .dashboard .main .content .time-keeper {
   position: relative;
   grid-column: 1/3;
-  padding: 5px;
+  padding: 1rem;
   z-index: 1;
 }
 .dashboard .main .content .time-keeper::after {
