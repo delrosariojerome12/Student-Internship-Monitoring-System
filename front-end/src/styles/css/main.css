@@ -911,6 +911,25 @@ button {
   text-align: center;
 }
 
+.daily-time-record {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 18vh auto;
+  gap: 1rem;
+}
+.daily-time-record > * {
+  border: solid 1px rgb(238, 195, 195);
+}
+.daily-time-record .content {
+  display: grid;
+  grid-template-rows: 15vh 5rem auto;
+  gap: 1rem;
+}
+.daily-time-record .content > * {
+  border: solid 1px rgb(255, 255, 255);
+}
+
 .page-not-found {
   height: 100%;
   width: 100%;
