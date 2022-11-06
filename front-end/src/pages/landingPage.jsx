@@ -1,5 +1,5 @@
 import React from "react";
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import logo from "../assets/img/landingPage/Logo.png";
 import landingImg from "../assets/img/landingPage/landing-image.png";
@@ -57,7 +57,7 @@ const LandingPage = () => {
         {/* LINKS */}
         <ul className="links">
           {links.map((item, index) => {
-            const {path, link} = item;
+            const { path, link } = item;
             return (
               <Link key={index} to={path}>
                 {link}
@@ -67,7 +67,7 @@ const LandingPage = () => {
         </ul>
         <ul className="auth-links">
           {authLinks.map((item, index) => {
-            const {path, link} = item;
+            const { path, link } = item;
             return (
               <button
                 onClick={() => {
@@ -143,7 +143,12 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
-      <footer></footer>
+      <footer>
+        <div className="icon">
+          <img src={logo} alt="Logo.png " />
+          <h2>SIMS</h2>
+        </div>
+      </footer>
     </section>
   );
 };
