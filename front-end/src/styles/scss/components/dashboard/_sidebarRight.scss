@@ -24,6 +24,11 @@
     width: 4rem;
     border-radius: 50%;
     @include flexCenter;
+    transition: all 0.2s linear;
+    &:hover {
+      background-color: $primary-bg-color;
+      border-radius: 1rem;
+    }
   }
   .icon {
     font-size: 2.6rem;
@@ -36,20 +41,31 @@
     gap: 2rem;
     padding: 1rem;
     width: 100%;
-    border: solid 1px #fff;
 
     .profile-img {
-      height: 52px;
-      width: 52px;
+      height: 5.2rem;
+      width: 5.2rem;
       border-radius: 50%;
       position: relative;
       cursor: pointer;
+      transition: all 0.2s linear;
+
+      &:hover {
+        img {
+          border-radius: 1rem;
+          background-color: lighten(
+            $color: $primary-bg-color-landing-compliment,
+            $amount: 10
+          );
+        }
+      }
 
       img {
         height: 100%;
         width: 100%;
         border-radius: 50%;
         object-fit: cover;
+        transition: all 0.2s linear;
       }
       span {
         position: absolute;

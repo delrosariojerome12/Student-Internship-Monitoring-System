@@ -5,8 +5,6 @@ import logo from "../assets/img/landingPage/Logo.png";
 import landingImg from "../assets/img/landingPage/landing-image.png";
 import landingBg from "../assets/img/landingPage/landing-bg.png";
 
-import landingBgDark from "../assets/img/landingPage/darkBg.png";
-import landingBgDark2 from "../assets/img/landingPage/darkBg2.png";
 // feature images
 import featureImg1 from "../assets/img/landingPage/imageFeature1.png";
 import featureImg2 from "../assets/img/landingPage/imageFeature2.png";
@@ -54,12 +52,10 @@ const LandingPage = () => {
   return (
     <section className="landing-page">
       <nav>
-        {/* Icons and SIMS */}
         <div className="icon">
           <img src={logo} alt="Logo.png " />
           <h2>SIMS</h2>
         </div>
-        {/* LINKS */}
         <ul className="links">
           {links.map((item, index) => {
             const {path, link} = item;
