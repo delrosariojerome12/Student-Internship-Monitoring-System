@@ -29,6 +29,38 @@ const UserSchema = new mongoose.Schema({
     required: [true, "Please provide password"],
     minlength: 8,
   },
+
+  
+  contactNumber: {
+    type: Number,
+    maxlength: 15,
+    minlength: 6,
+    }, 
+
+  requiredHours: {
+    type: Number,
+    maxlength: 3,
+    minlength: 1,
+  },
+
+  companyName: {
+    type: String,
+    maxlength: 100,
+    minlength: 10,
+  },
+
+  companyAddress: {
+    type: String,
+    maxlength: 100,
+    minlength: 10,
+  },
+
+  supervisorName: {
+    type: String,
+    maxlength: 100,
+    minlength: 10,
+  }
+
 });
 
 UserSchema.pre("save", async function () {
@@ -52,3 +84,4 @@ UserSchema.methods.comparePassword = async function (canditatePassword) {
   return match;
 };
 module.exports = mongoose.model("User", UserSchema);
+

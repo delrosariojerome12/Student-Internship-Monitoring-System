@@ -3,12 +3,15 @@ require("express-async-errors");
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const interns = require ('./routers/interns')
 
 //connect DB
 const connectDB = require("./db/connection");
+const authenticateUser = require('./middlewares/auth');
 //
 const authRouter = require("./routers/auth");
 // const authUser = require("./middlewares/auth");
+const internsRouter = require("./routers/interns");
 
 // error handler
 const notFound = require("./middlewares/notFound");
@@ -19,6 +22,7 @@ app.use(express.json());
 app.use(cors());
 // routes
 app.use("/auth", authRouter);
+app.use("/interns", internsRouter);
 
 app.use(notFound);
 app.use(errorHandler);
