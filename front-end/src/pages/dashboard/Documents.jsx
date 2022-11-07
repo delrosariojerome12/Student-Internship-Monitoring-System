@@ -5,6 +5,7 @@ const Documents = () => {
     <section className="documents-page">
       <header>
         <div className="box"></div>
+        <div className="box"></div>
       </header>
       <div className="content">
         <div className="box-container">

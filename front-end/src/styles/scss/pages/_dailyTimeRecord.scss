@@ -68,7 +68,7 @@
         padding: 1rem;
       }
       &::after {
-        filter: blur(10px);
+        filter: blur(1rem);
         content: "";
         background-color: rgba(87, 87, 87, 0.473);
         position: absolute;
