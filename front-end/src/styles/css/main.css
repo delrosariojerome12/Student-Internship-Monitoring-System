@@ -385,7 +385,7 @@ button {
   grid-template-rows: auto 1fr;
 }
 .signin .card-container header h1 {
-  font-size: 32px;
+  font-size: 3.2rem;
 }
 .signin .card-container header img {
   height: 3.7rem;
@@ -417,7 +417,7 @@ button {
   position: absolute;
   display: flex;
   align-items: center;
-  top: 15px;
+  top: 3rem;
   right: 3%;
 }
 .signin .card-container form .input-contain .eye-container svg {
@@ -676,11 +676,11 @@ button {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  gap: 80px;
+  gap: 8rem;
   background-color: #00adb5;
   padding: 1rem;
   border: 3px solid #eeeeee;
-  border-radius: 20px;
+  border-radius: 2rem;
   width: 80%;
   position: absolute;
 }
@@ -780,7 +780,7 @@ button {
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  padding-left: 10em;
+  padding-left: 15rem;
 }
 .landing-page footer .footer-content .icon {
   display: flex;
@@ -789,29 +789,34 @@ button {
   gap: 1em;
   color: #eeeeee;
 }
-.landing-page footer .footer-content .icon h1 {
-  font-size: 4rem;
+.landing-page footer .footer-content .icon h2 {
+  font-size: 4.5rem;
 }
 .landing-page footer .footer-content .icon img {
-  height: 32px;
+  height: 4rem;
 }
 .landing-page footer .footer-content .socials-img {
+  padding: 0 15rem 0 0;
   display: flex;
-  justify-content: space-evenly;
-  gap: 20px;
-  padding: 5em;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.landing-page footer .footer-content .socials-img img {
+  height: 5rem;
+}
+.landing-page footer .footer-content .socials-img h2 {
+  height: 5rem;
 }
 .landing-page footer .footer-content .socials-img .social {
-  display: flex;
-  justify-content: space-evenly;
-  gap: 20px;
+  height: 5rem;
+  margin: 0 1rem 0 1rem;
 }
 
 .dashboard {
   height: 100%;
   gap: 1rem;
   position: relative;
-  padding: 2rem 15rem;
+  padding: 2rem 8rem 2rem 12rem;
   background-color: #393e46;
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
@@ -926,7 +931,7 @@ button {
   display: grid;
   position: fixed;
   overflow: hidden;
-  width: 100px;
+  width: 11rem;
   top: 0%;
   left: 0%;
   height: 100%;
@@ -982,28 +987,19 @@ button {
 }
 .dashboard .left-sidebar .box {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
   justify-content: center;
+  align-items: center;
   border: solid 1px #fff;
   border-radius: 2rem;
   margin: 2rem;
 }
-.dashboard .left-sidebar .box button {
-  height: 4rem;
-  width: 14rem;
-  outline: none;
-  border: solid 1px #457b9d;
-  background-color: #222831;
-  color: #f1faee;
-  letter-spacing: 0.2rem;
-  transition: all 0.3s ease-in-out;
-  font-weight: bold;
-  cursor: pointer;
+.dashboard .left-sidebar .box p {
+  color: #fff;
 }
-.dashboard .left-sidebar .box button:hover {
-  background-color: #f1faee;
-  color: #457b9d;
-  border: solid 1px #1d3557;
+.dashboard .left-sidebar .box img {
+  height: 1px;
 }
 .dashboard .active-sidebar {
   width: 26rem;
@@ -1017,6 +1013,12 @@ button {
 }
 .dashboard .active-sidebar .links-con a {
   font-size: 1.8rem;
+}
+.dashboard .active-sidebar .box p {
+  visibility: hidden;
+}
+.dashboard .active-sidebar .box img {
+  height: 15rem;
 }
 .dashboard .sidebar-right {
   position: fixed;
@@ -1061,8 +1063,8 @@ button {
   width: 100%;
 }
 .dashboard .sidebar-right .top .profile-img {
-  height: 52px;
-  width: 52px;
+  height: 5.2rem;
+  width: 5.2rem;
   border-radius: 50%;
   position: relative;
   cursor: pointer;
@@ -1193,7 +1195,7 @@ button {
   padding: 1rem;
 }
 .daily-time-record .content .user::after {
-  filter: blur(10px);
+  filter: blur(1rem);
   content: "";
   background-color: rgba(87, 87, 87, 0.473);
   position: absolute;
@@ -1256,8 +1258,8 @@ button {
 .documents-page::after {
   content: "";
   background-color: rgba(29, 29, 29, 0.5);
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(1rem);
+          backdrop-filter: blur(1rem);
   position: absolute;
   top: 0;
   left: 0;
@@ -1269,9 +1271,9 @@ button {
 .documents-page header .box {
   border: solid 2px #fff;
   width: 24rem;
-  height: 24rem;
+  height: 12rem;
   margin: 0.5rem;
-  margin: 2rem;
+  margin: 1rem 2rem 1rem 1rem;
 }
 .documents-page .content {
   border: solid 1px #fff;
@@ -1279,7 +1281,7 @@ button {
   padding: 13rem;
 }
 .documents-page .content .box-container {
-  padding: 20px;
+  padding: 2rem;
   display: grid;
   grid-template-columns: auto auto auto;
   justify-content: center;
