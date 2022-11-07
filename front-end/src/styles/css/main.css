@@ -518,16 +518,19 @@ button {
 .landing-page {
   display: grid;
   grid-template-rows: minmax(100vh, auto) 25rem;
+  padding: 3rem 0 0 0;
+  gap: 20rem;
+  background-color: #222831;
 }
 .landing-page nav {
-  height: 9vh;
+  height: 10vh;
   width: 100%;
   position: fixed;
   top: 0%;
   left: 0%;
   display: flex;
   z-index: 99;
-  justify-content: space-evenly;
+  justify-content: space-between;
   padding: 1em;
   align-items: center;
   background-color: #222831;
@@ -535,6 +538,14 @@ button {
 }
 .landing-page nav a {
   color: #eeeeee;
+  position: relative;
+}
+.landing-page nav a:before {
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  width: 100%;
+  height: 1px;
 }
 .landing-page nav .icon {
   display: flex;
@@ -552,41 +563,32 @@ button {
   justify-content: space;
   align-items: center;
   flex-direction: row;
-  gap: 100px;
+  gap: 3rem;
 }
 .landing-page nav .auth-links {
   display: flex;
-  gap: 25px;
+  gap: 2.5rem;
 }
 .landing-page nav .auth-links > * {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 2px solid #0d7377;
-  width: 200px;
-  height: 15px;
-  padding: 1em;
+  width: 15rem;
+  padding: 1rem;
 }
 .landing-page nav .auth-links > *:nth-of-type(1) {
   background-color: #222831;
   color: #eeeeee;
-  font-size: 2rem;
 }
 .landing-page nav .auth-links > *:nth-of-type(2) {
   background-color: #0d7377;
   color: #eeeeee;
-  font-size: 2rem;
 }
 .landing-page .contents {
   display: grid;
   grid-template-rows: minmax(90vh, auto) repeat(2, 80vh);
-  background-color: #222831;
-}
-.landing-page .contents > * {
-  border: solid 1px #fff;
+  gap: 10rem;
 }
 .landing-page .contents .landing-contents {
   display: grid;
@@ -759,7 +761,7 @@ button {
   width: 30rem;
 }
 .landing-page footer {
-  background-color: #222831;
+  background-color: #323232;
 }
 .landing-page footer .footer-content {
   display: flex;
@@ -1024,6 +1026,10 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.2s linear;
+}
+.dashboard .sidebar-right span:hover {
+  background-color: #457b9d;
 }
 .dashboard .sidebar-right .icon {
   font-size: 2.6rem;
