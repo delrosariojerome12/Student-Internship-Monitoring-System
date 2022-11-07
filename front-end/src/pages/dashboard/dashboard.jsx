@@ -5,7 +5,7 @@ import {lazy, Suspense} from "react";
 
 import DashboardMain from "./DashboardMain";
 import SidebarLeft from "../../components/dashboard/SidebarLeft";
-import RightSidebar from "../../components/dashboard/RightSidebar";
+import SideBarRight from "../../components/dashboard/SidebarRight";
 import PageNotFound from "../PageNotFound";
 import {useSelector} from "react-redux";
 
@@ -30,7 +30,7 @@ const Dashboard = () => {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Suspense>
-      <RightSidebar />
+      <SideBarRight />
     </section>
   );
 };
