@@ -1044,6 +1044,7 @@ button {
 }
 .dashboard .sidebar-right span:hover {
   background-color: #457b9d;
+  border-radius: 1rem;
 }
 .dashboard .sidebar-right .icon {
   font-size: 2.6rem;
@@ -1058,7 +1059,6 @@ button {
   gap: 2rem;
   padding: 1rem;
   width: 100%;
-  border: solid 1px #fff;
 }
 .dashboard .sidebar-right .top .profile-img {
   height: 52px;
@@ -1066,6 +1066,11 @@ button {
   border-radius: 50%;
   position: relative;
   cursor: pointer;
+  transition: all 0.2s linear;
+}
+.dashboard .sidebar-right .top .profile-img:hover img {
+  border-radius: 1rem;
+  background-color: #4c4c4c;
 }
 .dashboard .sidebar-right .top .profile-img img {
   height: 100%;
@@ -1073,6 +1078,7 @@ button {
   border-radius: 50%;
   -o-object-fit: cover;
      object-fit: cover;
+  transition: all 0.2s linear;
 }
 .dashboard .sidebar-right .top .profile-img span {
   position: absolute;
