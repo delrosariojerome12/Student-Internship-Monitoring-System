@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import {IconContext} from "react-icons";
-import {IoIosNotifications} from "react-icons/io";
+import {IoIosNotifications, IoMdSettings} from "react-icons/io";
 import {TbMessageCircle} from "react-icons/tb";
 import {FaChevronDown, FaInfoCircle} from "react-icons/fa";
+import {VscFeedback} from "react-icons/vsc";
 
 const SideBarRight = () => {
   return (
@@ -22,7 +23,17 @@ const SideBarRight = () => {
             <TbMessageCircle />
           </span>
         </div>
-        <div className="bottom"></div>
+        <div className="bottom">
+          <span className="info">
+            <FaInfoCircle />
+          </span>
+          <span>
+            <IoMdSettings />
+          </span>
+          <span>
+            <VscFeedback />
+          </span>
+        </div>
       </aside>
     </IconContext.Provider>
   );
