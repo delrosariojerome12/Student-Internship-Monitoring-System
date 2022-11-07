@@ -36,12 +36,12 @@ const links = [
     link: "Reports",
     IconType: HiPencilAlt,
   },
+  // {
+  //   path: "/dashboard/settings",
+  //   link: "Settings",
+  //   IconType: IoMdSettings,
+  // },
   ,
-  {
-    path: "/dashboard/settings",
-    link: "Settings",
-    IconType: IoMdSettings,
-  },
 ];
 
 const SidebarLeft = () => {
