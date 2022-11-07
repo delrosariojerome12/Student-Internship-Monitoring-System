@@ -24,6 +24,10 @@
     width: 4rem;
     border-radius: 50%;
     @include flexCenter;
+    transition: all 0.2s linear;
+    &:hover {
+      background-color: $primary-bg-color;
+    }
   }
   .icon {
     font-size: 2.6rem;
