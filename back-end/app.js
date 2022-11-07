@@ -3,11 +3,10 @@ require("express-async-errors");
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const interns = require ('./routers/interns')
 
 //connect DB
 const connectDB = require("./db/connection");
-const authenticateUser = require('./middlewares/auth');
+const authenticateUser = require("./middlewares/auth");
 //
 const authRouter = require("./routers/auth");
 // const authUser = require("./middlewares/auth");
