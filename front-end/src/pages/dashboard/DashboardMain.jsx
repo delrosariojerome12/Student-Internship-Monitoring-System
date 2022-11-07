@@ -5,7 +5,9 @@ const DashboardMain = () => {
     <section className="main">
       <header>
         <div className="name-container">
-          <h1 className="name">Hello, Hakdog</h1>
+          <h1 className="name">
+            Hello, <span>Hakdog</span>
+          </h1>
           <h4>Welcome Back!</h4>
         </div>
         <div className="search-box">

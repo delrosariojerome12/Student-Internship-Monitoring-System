@@ -823,6 +823,9 @@ button {
 .dashboard .main header .name-container h4 {
   font-size: 2rem;
 }
+.dashboard .main header .name-container span {
+  color: #0d7377;
+}
 .dashboard .main header .search-box {
   display: flex;
   background-color: #f1faee;
