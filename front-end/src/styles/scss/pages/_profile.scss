@@ -1,0 +1,25 @@
+@import "../variables";
+@import "../utils";
+
+.profile {
+  display: grid;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  grid-template-rows: 30vh auto;
+  gap: 1rem;
+  border: solid 1px #fff;
+
+  & > * {
+    margin: 1rem;
+  }
+  .content {
+    display: grid;
+    grid-template-rows: 5rem auto;
+    gap: 1rem;
+    padding: 1rem;
+    & > * {
+      border: solid 1px #fff;
+    }
+  }
+}

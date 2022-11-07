@@ -18,19 +18,19 @@ const DashboardMain = () => {
       <div className="content">
         <div className="time-keeper">
           <h4>Time Keeper</h4>
-          <div>
+          <div className="time-keeper-contents">
             <h3>TIME</h3>
           </div>
         </div>
         <div className="documents">
           <h4>Documents</h4>
-          <div>
+          <div className="document-contents">
             <h3>TODO</h3>
           </div>
         </div>
         <div className="internship-details">
           <h4>Intership Details</h4>
-          <div>
+          <div className="internship-contents">
             <h5>Motorpool</h5>
             <h6>Mahiwagang Hakdog</h6>
             <h6>666 position</h6>
