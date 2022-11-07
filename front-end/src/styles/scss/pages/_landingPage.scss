@@ -146,11 +146,11 @@
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
-        gap: 80px;
+        gap: 8rem;
         background-color: $primary-feature-bg;
         padding: 1rem;
         border: 3px solid $primary-font-color-landing;
-        border-radius: 20px;
+        border-radius: 2rem;
         width: 80%;
         // height: 100%;
         position: absolute;
@@ -269,18 +269,18 @@
           font-size: 4rem;
         }
         img {
-          height: 32px;
+          height: 3.2rem;
         }
       }
       .socials-img {
         display: flex;
         justify-content: space-evenly;
-        gap: 20px;
+        gap: 2rem;
         padding: 5em;
         .social {
           display: flex;
           justify-content: space-evenly;
-          gap: 20px;
+          gap: 2rem;
         }
       }
     }
