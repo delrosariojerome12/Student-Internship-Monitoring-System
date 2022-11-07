@@ -25,12 +25,24 @@
     a {
       color: $primary-font-color-landing;
       position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      padding: 0.5rem;
+      display: inline-block;
+
+      &:hover::before {
+        width: 100%;
+      }
       &:before {
+        content: "";
         position: absolute;
         bottom: 0%;
         left: 0%;
-        width: 100%;
+        width: 0%;
         height: 1px;
+        background-color: #fff;
+        z-index: 2;
+        transition: all 0.2s ease-in-out;
       }
     }
 
