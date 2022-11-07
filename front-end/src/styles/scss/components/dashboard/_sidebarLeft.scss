@@ -4,12 +4,11 @@
 .left-sidebar {
   display: grid;
   position: fixed;
-  overflow: hidden;
   width: 11rem;
   top: 0%;
   left: 0%;
   height: 100%;
-  grid-template-rows: 16rem 1fr 1fr;
+  grid-template-rows: 15rem 1fr;
   grid-template-columns: 100%;
   gap: 5px;
   background-color: $primary-bg-color-landing;
@@ -27,35 +26,63 @@
     justify-content: center;
     align-items: center;
     margin: 1.5rem;
-    transition: all 0.2s ease-in-out;
-    transform: rotate(90deg);
+    position: relative;
+
     img {
       height: 4rem;
+      transform: rotate(90deg);
+      transition: all 0.2s ease-in;
+      user-select: none;
+    }
+
+    .collapse-icon {
+      position: absolute;
+      top: 50%;
+      right: -20px;
+      transform: translate(0%, -50%);
+      cursor: pointer;
+      height: 3rem;
+      width: 3rem;
+      border-radius: 50%;
+      @include flexCenter;
+      transition: all 0.2s linear;
+      background-color: $primary-bg-color;
+      z-index: 1;
     }
   }
   //middle
   .links-con {
     padding: 1rem;
     @include flexColumn;
-    position: relative;
-    a {
-      // border: solid 1px #000;
-      text-decoration: none;
-      display: inline-block;
-      padding: 0.5rem 1.5rem;
-      display: flex;
-      align-items: center;
-      color: $primary-font-color;
-      gap: 0.5rem;
-      cursor: pointer;
-      font-size: 3rem;
-    }
-    .collapse-icon {
-      position: absolute;
-      transform: translate(0%, -50%);
-      top: 50%;
-      right: -0.5rem;
-      cursor: pointer;
+    align-items: center;
+    gap: 1rem;
+
+    .icon-con {
+      height: 5rem;
+      width: 5rem;
+      border-radius: 50%;
+      @include flexCenter;
+      transition: all 0.2s linear;
+      background-color: lighten(
+        $color: $primary-bg-color-landing-compliment,
+        $amount: 10
+      );
+      &:hover {
+        background-color: $primary-bg-color;
+        border-radius: 1rem;
+      }
+      a {
+        text-decoration: none;
+        display: inline-block;
+        padding: 0.5rem 1.5rem;
+        color: $primary-font-color;
+        cursor: pointer;
+        @include flexCenter;
+
+        .icons {
+          font-size: 2.6rem;
+        }
+      }
     }
   }
   //bottom
@@ -78,15 +105,21 @@
 .active-sidebar {
   width: 26rem;
   .img-con {
-    transition: all 0.2s ease-in;
-    transform: rotate(0deg);
     img {
       height: 5rem;
+      transform: rotate(0deg);
     }
   }
+
   .links-con {
-    a {
-      font-size: 1.8rem;
+    align-items: flex-start;
+    .icon-con {
+      border-radius: 0.5rem;
+      width: 100%;
+      a {
+        font-size: 1.8rem;
+        gap: 1rem;
+      }
     }
   }
   .box {

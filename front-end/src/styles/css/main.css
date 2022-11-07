@@ -930,12 +930,11 @@ button {
 .dashboard .left-sidebar {
   display: grid;
   position: fixed;
-  overflow: hidden;
   width: 11rem;
   top: 0%;
   left: 0%;
   height: 100%;
-  grid-template-rows: 16rem 1fr 1fr;
+  grid-template-rows: 15rem 1fr;
   grid-template-columns: 100%;
   gap: 5px;
   background-color: #222831;
@@ -954,36 +953,67 @@ button {
   justify-content: center;
   align-items: center;
   margin: 1.5rem;
-  transition: all 0.2s ease-in-out;
-  transform: rotate(90deg);
+  position: relative;
 }
 .dashboard .left-sidebar .img-con img {
   height: 4rem;
+  transform: rotate(90deg);
+  transition: all 0.2s ease-in;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.dashboard .left-sidebar .img-con .collapse-icon {
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  transform: translate(0%, -50%);
+  cursor: pointer;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s linear;
+  background-color: #457b9d;
+  z-index: 1;
 }
 .dashboard .left-sidebar .links-con {
   padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  position: relative;
+  align-items: center;
+  gap: 1rem;
 }
-.dashboard .left-sidebar .links-con a {
+.dashboard .left-sidebar .links-con .icon-con {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s linear;
+  background-color: #4c4c4c;
+}
+.dashboard .left-sidebar .links-con .icon-con:hover {
+  background-color: #457b9d;
+  border-radius: 1rem;
+}
+.dashboard .left-sidebar .links-con .icon-con a {
   text-decoration: none;
   display: inline-block;
   padding: 0.5rem 1.5rem;
+  color: #f1faee;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  color: #f1faee;
-  gap: 0.5rem;
-  cursor: pointer;
-  font-size: 3rem;
+  justify-content: center;
 }
-.dashboard .left-sidebar .links-con .collapse-icon {
-  position: absolute;
-  transform: translate(0%, -50%);
-  top: 50%;
-  right: -0.5rem;
-  cursor: pointer;
+.dashboard .left-sidebar .links-con .icon-con a .icons {
+  font-size: 2.6rem;
 }
 .dashboard .left-sidebar .box {
   display: flex;
@@ -1004,15 +1034,20 @@ button {
 .dashboard .active-sidebar {
   width: 26rem;
 }
-.dashboard .active-sidebar .img-con {
-  transition: all 0.2s ease-in;
-  transform: rotate(0deg);
-}
 .dashboard .active-sidebar .img-con img {
   height: 5rem;
+  transform: rotate(0deg);
 }
-.dashboard .active-sidebar .links-con a {
+.dashboard .active-sidebar .links-con {
+  align-items: flex-start;
+}
+.dashboard .active-sidebar .links-con .icon-con {
+  border-radius: 0.5rem;
+  width: 100%;
+}
+.dashboard .active-sidebar .links-con .icon-con a {
   font-size: 1.8rem;
+  gap: 1rem;
 }
 .dashboard .active-sidebar .box p {
   visibility: hidden;
