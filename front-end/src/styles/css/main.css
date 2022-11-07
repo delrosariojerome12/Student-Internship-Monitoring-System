@@ -553,8 +553,8 @@ button {
   bottom: 0%;
   left: 0%;
   width: 0%;
-  height: 1px;
-  background-color: #fff;
+  height: 3px;
+  background-color: #eeeeee;
   z-index: 2;
   transition: all 0.2s ease-in-out;
 }
