@@ -17,6 +17,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -1054,6 +1058,28 @@ button {
   width: 26rem;
 }
 
+.profile {
+  display: grid;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  grid-template-rows: 30vh auto;
+  gap: 1rem;
+  border: solid 1px #fff;
+}
+.profile > * {
+  margin: 1rem;
+}
+.profile .content {
+  display: grid;
+  grid-template-rows: 5rem auto;
+  gap: 1rem;
+  padding: 1rem;
+}
+.profile .content > * {
+  border: solid 1px #fff;
+}
+
 .daily-time-record {
   height: 100%;
   width: 100%;
@@ -1166,6 +1192,56 @@ button {
   height: 100%;
   z-index: -1;
   border-radius: 2rem;
+}
+
+.documents {
+  display: grid;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  grid-template-rows: 25vh auto;
+  gap: 1rem;
+  border: solid 1px #fff;
+  border-radius: 1.5rem;
+  z-index: 1;
+}
+.documents::after {
+  content: "";
+  background-color: rgba(29, 29, 29, 0.5);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 98.5%;
+  height: 98%;
+  z-index: -1;
+  margin: 1rem;
+}
+.documents header .box {
+  border: solid 2px #fff;
+  width: 24rem;
+  height: 24rem;
+  margin: 0.5rem;
+  margin: 2rem;
+}
+.documents .content {
+  border: solid 1px #fff;
+  margin: 2rem;
+  padding: 13rem;
+}
+.documents .content .box-container {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  align-items: center;
+}
+.documents .content .box-container .box {
+  border: solid 2px #fff;
+  width: 20rem;
+  height: 10rem;
+  margin: 0.5rem;
 }
 
 .page-not-found {
