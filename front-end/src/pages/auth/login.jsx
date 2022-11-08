@@ -14,6 +14,7 @@ import {IconContext} from "react-icons";
 import {useRef} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+// import {signInWithGoogle} from "../../Firebase";
 
 const Login = () => {
   const [form, setForm] = useState([
@@ -139,6 +140,7 @@ const Login = () => {
               value={value}
               required
               onChange={(e) => handleOnChange(e.target.value, index)}
+              autoComplete={hasEyeIcon ? "true" : null}
             />
           ) : (
             <input

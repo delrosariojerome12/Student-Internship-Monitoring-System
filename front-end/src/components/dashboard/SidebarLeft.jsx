@@ -4,9 +4,10 @@ import {RiDashboardLine} from "react-icons/ri";
 import {HiPencilAlt} from "react-icons/hi";
 import {HiDocument, HiTrendingUp} from "react-icons/hi";
 import {FaUserAlt, FaChevronLeft, FaChevronRight} from "react-icons/fa";
-import {IoMdSettings} from "react-icons/io";
+import {IoMdSettings, IoMdSearch} from "react-icons/io";
 import {IconContext} from "react-icons";
 
+import graph from "../../assets/img/graph.png";
 import logo from "../../assets/img/logo.svg";
 
 const links = [
@@ -22,7 +23,7 @@ const links = [
   },
   {
     path: "/dashboard/daily-time-record",
-    link: "Daily Time Record",
+    link: "DTR",
     IconType: HiTrendingUp,
   },
   {
@@ -35,12 +36,12 @@ const links = [
     link: "Reports",
     IconType: HiPencilAlt,
   },
+  // {
+  //   path: "/dashboard/settings",
+  //   link: "Settings",
+  //   IconType: IoMdSettings,
+  // },
   ,
-  {
-    path: "/dashboard/settings",
-    link: "Settings",
-    IconType: IoMdSettings,
-  },
 ];
 
 const SidebarLeft = () => {
@@ -49,27 +50,30 @@ const SidebarLeft = () => {
     setSidebarOpen(!isSidebarOpen);
   };
   return (
-    <aside className={isSidebarOpen ? "left-sidebar active" : "left-sidebar"}>
+    <aside
+      className={
+        isSidebarOpen ? "left-sidebar active-sidebar" : "left-sidebar "
+      }
+    >
       <IconContext.Provider value={{className: "icons", color: "white"}}>
         <div className="img-con">
           <img src={logo} alt="Logo.png " />
+          <span onClick={handleSideBar} className="collapse-icon">
+            {!isSidebarOpen ? <FaChevronRight /> : <FaChevronLeft />}
+          </span>
         </div>
         <div className="links-con">
-          <span onClick={handleSideBar} className="collapse-icon">
-            {isSidebarOpen ? <FaChevronRight /> : <FaChevronLeft />}
-          </span>
           {links.map((item, index) => {
             const {path, link, IconType} = item;
             return (
-              <Link to={path} key={index}>
-                <IconType />
-                {!isSidebarOpen && link}
-              </Link>
+              <span className="icon-con" key={index}>
+                <Link to={path}>
+                  <IconType />
+                  {isSidebarOpen && link}
+                </Link>
+              </span>
             );
           })}
-        </div>
-        <div className="box">
-          <button type="submit">Log In</button>
         </div>
       </IconContext.Provider>
     </aside>
