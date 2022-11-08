@@ -1,5 +1,5 @@
 import React from "react";
-import {Route, Routes, Link} from "react-router-dom";
+import {Route, Routes, Link, Navigate} from "react-router-dom";
 
 import {lazy, Suspense} from "react";
 
@@ -22,12 +22,12 @@ const Dashboard = () => {
       <Suspense fallback={<h2>Loading...</h2>}>
         <Routes>
           <Route path="/" element={<DashboardMain />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/*" element={<Profile />} />
           <Route path="/daily-time-record" element={<DailyTimeRecord />} />
           <Route path="/documents" element={<Documents />} />
           <Route path="/reports" element={<Reports />} />
           <Route path="/settings" element={<Settings />} />
-          <Route path="*" element={<PageNotFound />} />
+          <Route path="*" element={<Navigate to="/404" replace />} />
         </Routes>
       </Suspense>
       <SideBarRight />

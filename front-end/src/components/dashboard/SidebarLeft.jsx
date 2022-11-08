@@ -17,7 +17,7 @@ const links = [
     IconType: RiDashboardLine,
   },
   {
-    path: "/dashboard/profile",
+    path: "/dashboard/profile/summary",
     link: "Profile",
     IconType: FaUserAlt,
   },
