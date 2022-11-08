@@ -1139,26 +1139,96 @@ button {
   padding: 1rem;
 }
 
-.profile {
+.profile-page {
   display: grid;
-  position: relative;
   height: 100%;
   width: 100%;
-  grid-template-rows: 30vh auto;
-  gap: 1rem;
-  border: solid 1px #fff;
-}
-.profile > * {
-  margin: 1rem;
-}
-.profile .content {
-  display: grid;
-  grid-template-rows: 5rem auto;
+  grid-template-rows: 45vh auto;
   gap: 1rem;
   padding: 1rem;
 }
-.profile .content > * {
-  border: solid 1px #fff;
+.profile-page .profile-user {
+  display: grid;
+  grid-template-rows: 2fr 2.5fr;
+}
+.profile-page .profile-user .profile-bg {
+  background-size: cover;
+  border-radius: 1rem 1rem 0 0;
+}
+.profile-page .profile-user .profile-details {
+  position: relative;
+  border-radius: 0 0 1rem 1rem;
+  background-color: #4c4c4c;
+}
+.profile-page .profile-user .profile-details .profile-img {
+  position: absolute;
+  left: 2rem;
+  top: -5rem;
+  border-radius: 50%;
+  border: solid 3px #457b9d;
+  width: 12rem;
+  height: 12rem;
+}
+.profile-page .profile-user .profile-details .profile-img img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.profile-page .content {
+  display: grid;
+  grid-template-rows: 5rem auto;
+}
+.profile-page .content .button-container {
+  width: 50rem;
+  border-radius: 1rem 1rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  background-color: #4c4c4c;
+}
+.profile-page .content .button-container button {
+  color: #fff;
+  outline: none;
+  border: none;
+  padding: 1rem;
+  background-color: transparent;
+  transition: all 0.3s linear;
+  position: relative;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.profile-page .content .button-container button:hover::before {
+  width: 80%;
+}
+.profile-page .content .button-container button:focus {
+  background-color: #7f7f7f;
+}
+.profile-page .content .button-container button:focus::before {
+  width: 80%;
+}
+.profile-page .content .button-container button::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 75%;
+  transform: translate(-50%, -75%);
+  transition: all 0.3s linear;
+  width: 0%;
+  height: 2px;
+  z-index: 2;
+  background-color: #fff;
+}
+.profile-page .content .button-container button:nth-of-type(1) {
+  border-radius: 1rem 0 0 0;
+}
+.profile-page .content .button-container button:nth-last-of-type(1) {
+  border-radius: 0 1rem 0 0;
+}
+.profile-page .content .display {
+  padding: 2rem;
+  border-radius: 0 1rem 1rem 1rem;
+  background-color: #4c4c4c;
 }
 
 .daily-time-record {
