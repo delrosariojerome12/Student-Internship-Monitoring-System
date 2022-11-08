@@ -2,12 +2,10 @@
 @import "../utils";
 
 .documents-page {
-  display: grid;
   height: 100%;
   width: 100%;
-  grid-template-rows: 25vh auto;
+  display: grid;
   gap: 1rem;
-
   border: solid 1px #fff;
   border-radius: 1.5rem;
 

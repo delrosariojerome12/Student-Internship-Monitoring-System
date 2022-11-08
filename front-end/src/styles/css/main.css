@@ -814,6 +814,7 @@ button {
   position: relative;
   padding: 2rem 8rem 2rem 12rem;
   background-color: #393e46;
+  transition: all 0.2s ease-in-out;
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
@@ -999,6 +1000,7 @@ button {
   border-radius: 1rem;
 }
 .dashboard .left-sidebar .links-con .icon-con a {
+  transition: all 0.2s linear;
   text-decoration: none;
   display: inline-block;
   padding: 0.5rem 1.5rem;
@@ -1034,16 +1036,22 @@ button {
   height: 5rem;
   transform: rotate(0deg);
 }
-.dashboard .active-sidebar .links-con {
-  align-items: flex-start;
-}
 .dashboard .active-sidebar .links-con .icon-con {
   border-radius: 0.5rem;
+  background: transparent;
   width: 100%;
 }
 .dashboard .active-sidebar .links-con .icon-con a {
   font-size: 1.8rem;
   gap: 1rem;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 1rem;
+}
+.dashboard .active-sidebar .links-con .icon-con a:focus {
+  background-color: #457b9d;
 }
 .dashboard .active-sidebar .box p {
   visibility: hidden;
@@ -1346,10 +1354,9 @@ button {
 }
 
 .documents-page {
-  display: grid;
   height: 100%;
   width: 100%;
-  grid-template-rows: 25vh auto;
+  display: grid;
   gap: 1rem;
   border: solid 1px #fff;
   border-radius: 1.5rem;

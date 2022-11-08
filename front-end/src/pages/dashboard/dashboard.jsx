@@ -1,12 +1,12 @@
 import React from "react";
-import {Route, Routes, Link, Navigate} from "react-router-dom";
+import {Route, Routes, Navigate} from "react-router-dom";
 
 import {lazy, Suspense} from "react";
 
 import DashboardMain from "./DashboardMain";
 import SidebarLeft from "../../components/dashboard/SidebarLeft";
 import SideBarRight from "../../components/dashboard/SidebarRight";
-import PageNotFound from "../PageNotFound";
+
 import {useSelector} from "react-redux";
 
 const Profile = lazy(() => import("./Profile"));
@@ -16,8 +16,12 @@ const Reports = lazy(() => import("./Reports"));
 const Settings = lazy(() => import("./Settings"));
 
 const Dashboard = () => {
+  const {isSidebarOpen} = useSelector((state) => state.dashboard);
   return (
-    <section className="dashboard">
+    <section
+      style={isSidebarOpen ? {padding: "2rem 8rem 2rem 26rem"} : null}
+      className="dashboard"
+    >
       <SidebarLeft />
       <Suspense fallback={<h2>Loading...</h2>}>
         <Routes>
