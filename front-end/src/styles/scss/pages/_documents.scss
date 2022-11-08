@@ -3,7 +3,6 @@
 
 .documents-page {
   display: grid;
-  position: relative;
   height: 100%;
   width: 100%;
   grid-template-rows: 25vh auto;
@@ -11,21 +10,11 @@
 
   border: solid 1px #fff;
   border-radius: 1.5rem;
-  z-index: 1;
 
-  &::after {
-    content: "";
-    background-color: rgba(29, 29, 29, 0.5);
-    backdrop-filter: blur(1rem);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 98.5%;
-    height: 98%;
-    z-index: -1;
-    margin: 1rem;
+  background-color: rgba(29, 29, 29, 0.2);
+  & > * {
+    border: solid 1px #fff;
   }
-
   header {
     .box {
       border: solid 2px #fff;
