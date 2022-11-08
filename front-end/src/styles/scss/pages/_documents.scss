@@ -2,56 +2,8 @@
 @import "../utils";
 
 .documents-page {
-  display: grid;
-  position: relative;
   height: 100%;
   width: 100%;
-  grid-template-rows: 25vh auto;
+  display: grid;
   gap: 1rem;
-
-  border: solid 1px #fff;
-  border-radius: 1.5rem;
-  z-index: 1;
-
-  &::after {
-    content: "";
-    background-color: rgba(29, 29, 29, 0.5);
-    backdrop-filter: blur(1rem);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 98.5%;
-    height: 98%;
-    z-index: -1;
-    margin: 1rem;
-  }
-
-  header {
-    .box {
-      border: solid 2px #fff;
-      width: 24rem;
-      height: 12rem;
-      margin: 0.5rem;
-      margin: 1rem 2rem 1rem 1rem;
-    }
-  }
-  .content {
-    border: solid 1px #fff;
-    margin: 2rem;
-
-    padding: 13rem;
-    .box-container {
-      padding: 2rem;
-      display: grid;
-      grid-template-columns: auto auto auto;
-      justify-content: center;
-      align-items: center;
-      .box {
-        border: solid 2px #fff;
-        width: 20rem;
-        height: 10rem;
-        margin: 0.5rem;
-      }
-    }
-  }
 }

@@ -3,22 +3,12 @@ import React from "react";
 const Documents = () => {
   return (
     <section className="documents-page">
-      <header>
-        <div className="box"></div>
-        <div className="box"></div>
-      </header>
-      <div className="content">
-        <div className="box-container">
-          <div className="box"></div>
-          <div className="box"></div>
-          <div className="box"></div>
-          <div className="box"></div>
-          <div className="box"></div>
-          <div className="box"></div>
-          <div className="box"></div>
-          <div className="box"></div>
-          <div className="box"></div>
-        </div>
+      <div className="top">
+        <div className="drop-file"></div>
+      </div>
+      <div className="bottom">
+        <div className="category-tab"></div>
+        <div className="files-container"></div>
       </div>
     </section>
   );
