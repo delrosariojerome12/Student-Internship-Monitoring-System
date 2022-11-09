@@ -29,13 +29,18 @@ const UserSchema = new mongoose.Schema({
     required: [true, "Please provide password"],
     minlength: 8,
   },
+
+  internshipDetails: {
+    type: Object,
+    ref: "User",
+  },
   contactnumber: {
-    type: Number,
+    type: String,
     maxlength: 15,
     minlength: 6,
   },
   requiredhours: {
-    type: Number,
+    type: String,
     maxlength: 3,
     minlength: 1,
   },

@@ -4,24 +4,15 @@ const { BadRequest, NotFound } = require("../errors");
 
 const updateUser = async (req, res) => {
   const {
-    body: {
-      firstname,
-      lastname,
-      email,
-      contactnumber,
-      requiredhours,
-      companyname,
-      companyaddress,
-      supervisorname,
-    },
-    params: { id: userId },
+    body: { internshipDetails },
+    params: { email },
   } = req;
-  const user = await User.findByIdAndUpdate({ _id: userId }, req.body, {
+  const user = await User.findByIdAndUpdate({ email }, req.body, {
     new: true,
     runValidators: true,
   });
   if (!user) {
-    throw new NotFound(`No user with id ${userId}`);
+    throw new NotFound(`No user with email ${email}`);
   }
   res.status(StatusCodes.OK).json({ user });
 };
