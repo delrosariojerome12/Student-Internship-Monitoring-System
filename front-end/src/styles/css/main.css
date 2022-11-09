@@ -1359,6 +1359,7 @@ button {
   width: 100%;
   grid-template-rows: 25rem auto;
   gap: 2rem;
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 }
 .documents-page .top {
   border-radius: 1.5rem;
@@ -1407,6 +1408,41 @@ button {
   padding: 2rem;
   border-radius: 0 1.5rem 1.5rem 1.5rem;
   background-color: #4c4c4c;
+}
+.documents-page * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.documents-page html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+.documents-page body {
+  font-size: 1.8rem;
+}
+.documents-page ul {
+  list-style: none;
+}
+.documents-page ul a {
+  text-decoration: none;
+}
+.documents-page button {
+  cursor: pointer;
+}
+.documents-page .completion-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.documents-page .completion-container div {
+  background-color: #0d7377;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+.documents-page .completion-container:hover {
+  background-color: #00adb5;
 }
 
 .page-not-found {
