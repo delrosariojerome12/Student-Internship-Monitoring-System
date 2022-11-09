@@ -1,13 +1,7 @@
 import React from "react";
 
-const completion = () => {
-  return (
-    <section className="">
-      <div className="content">
-        <p>completion</p>
-      </div>
-    </section>
-  );
+const Completion = () => {
+  return <div>Completion</div>;
 };
 
-export default completion;
+export default Completion;

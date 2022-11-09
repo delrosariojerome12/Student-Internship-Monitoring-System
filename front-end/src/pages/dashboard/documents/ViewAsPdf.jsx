@@ -1,7 +1,7 @@
 import React from "react";
 
-const viewAsPdf = () => {
-  return <div>View as PDF</div>;
+const ViewAsPdf = () => {
+  return <div>ViewAsPdf</div>;
 };
 
-export default viewAsPdf;
+export default ViewAsPdf;

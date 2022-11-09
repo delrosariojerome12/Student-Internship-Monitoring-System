@@ -1,17 +1,17 @@
 import React from "react";
-import { Route, Routes, Link, Navigate, useNavigate } from "react-router-dom";
+import {Route, Routes, Link, Navigate, useNavigate} from "react-router-dom";
 import Completion from "./documents/Completion";
 import Requirments from "./documents/Requirments";
 import ViewAsPdf from "./documents/ViewAsPdf";
 
 const buttons = [
   {
-    path: "/dashboard/documents/completion",
-    btnName: "Completion",
-  },
-  {
     path: "/dashboard/documents/requirments",
     btnName: "Requirments",
+  },
+  {
+    path: "/dashboard/documents/completion",
+    btnName: "Completion",
   },
   {
     path: "/dashboard/documents/viewaspdf",
@@ -25,12 +25,12 @@ const Documents = () => {
     <section className="documents-page">
       <div className="top">
         <div className="private-comment"></div>
-        <div className="drop-file"></div>H
+        <div className="drop-file"></div>
       </div>
       <div className="content">
         <div className="button-container">
           {buttons.map((item, index) => {
-            const { path, btnName } = item;
+            const {path, btnName} = item;
             return (
               <button key={index} onClick={() => navigate(path)}>
                 {btnName}
@@ -40,9 +40,9 @@ const Documents = () => {
         </div>
         <div className="display">
           <Routes>
-            <Route path="/completion" element={<Completion />} />
             <Route path="/requirments" element={<Requirments />} />
-            <Route path="/ViewAsPdf" element={<viewaspdf />} />
+            <Route path="/completion" element={<Completion />} />
+            <Route path="/ViewAsPdf" element={<ViewAsPdf />} />
             <Route path="*" element={<Navigate to="/404" replace />} />
           </Routes>
         </div>
