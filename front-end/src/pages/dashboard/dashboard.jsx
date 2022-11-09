@@ -19,7 +19,7 @@ const Dashboard = () => {
   const {isSidebarOpen} = useSelector((state) => state.dashboard);
   return (
     <section
-      style={isSidebarOpen ? {padding: "2rem 8rem 2rem 26rem"} : null}
+      style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
       className="dashboard"
     >
       <SidebarLeft />
@@ -28,7 +28,7 @@ const Dashboard = () => {
           <Route path="/" element={<DashboardMain />} />
           <Route path="/profile/*" element={<Profile />} />
           <Route path="/daily-time-record" element={<DailyTimeRecord />} />
-          <Route path="/documents" element={<Documents />} />
+          <Route path="/documents/*" element={<Documents />} />
           <Route path="/reports" element={<Reports />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="*" element={<Navigate to="/404" replace />} />

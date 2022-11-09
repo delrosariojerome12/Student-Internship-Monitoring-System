@@ -2,8 +2,70 @@
 @import "../utils";
 
 .documents-page {
+  display: grid;
   height: 100%;
   width: 100%;
-  display: grid;
-  gap: 1rem;
+  grid-template-rows: 25rem auto;
+  gap: 2rem;
+
+  .top {
+    border-radius: 1.5rem;
+    background-color: lighten(
+      $color: $primary-bg-color-landing-compliment,
+      $amount: 10
+    );
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 1rem;
+    gap: 1rem;
+    .private-comment {
+      border: solid 1px #fff;
+    }
+    .drop-file {
+      border: solid 1px #fff;
+    }
+  }
+
+  .content {
+    display: grid;
+    grid-template-rows: 5rem auto;
+
+    .button-container {
+      width: 45rem;
+      border-radius: 1.5rem 1.5rem 0 0;
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      background-color: lighten(
+        $color: $primary-bg-color-landing-compliment,
+        $amount: 10
+      );
+      button {
+        color: #fff;
+        outline: none;
+        border: none;
+        padding: 1rem;
+        background-color: transparent;
+        transition: all 0.3s linear;
+        position: relative;
+        font-weight: 600;
+        letter-spacing: 1px;
+
+        &:nth-of-type(1) {
+          border-radius: 1.5rem 0 0 0;
+        }
+        &:nth-last-of-type(1) {
+          border-radius: 0 1.5rem 0 0;
+        }
+      }
+    }
+    .display {
+      color: #fff;
+      padding: 2rem;
+      border-radius: 0 1.5rem 1.5rem 1.5rem;
+      background-color: lighten(
+        $color: $primary-bg-color-landing-compliment,
+        $amount: 10
+      );
+    }
+  }
 }

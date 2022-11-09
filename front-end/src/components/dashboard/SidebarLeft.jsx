@@ -26,7 +26,7 @@ const links = [
     IconType: HiTrendingUp,
   },
   {
-    path: "/dashboard/documents",
+    path: "/dashboard/documents/requirments",
     link: "Documents",
     IconType: HiDocument,
   },
