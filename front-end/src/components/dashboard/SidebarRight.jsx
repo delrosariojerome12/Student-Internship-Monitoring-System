@@ -1,10 +1,8 @@
 import React from "react";
 import {IconContext} from "react-icons";
 import {IoIosNotifications, IoMdSettings} from "react-icons/io";
-import {MdNightlight} from "react-icons/md";
 import {TbMessageCircle} from "react-icons/tb";
 import {FaChevronDown, FaInfoCircle} from "react-icons/fa";
-import {VscFeedback} from "react-icons/vsc";
 import {useSelector, useDispatch} from "react-redux";
 import {handleProfile} from "../../features/dashboard/sidebarRight";
 import ProfileTab from "../sidebarRight/ProfileTab";
@@ -38,9 +36,6 @@ const SideBarRight = () => {
         <div className="bottom">
           <span className="info">
             <FaInfoCircle />
-          </span>
-          <span>
-            <MdNightlight />
           </span>
         </div>
       </aside>

@@ -1104,7 +1104,7 @@ button {
   cursor: pointer;
   transition: all 0.2s linear;
 }
-.dashboard .sidebar-right .top .profile-img:hover img:not(.profile-tab img) {
+.dashboard .sidebar-right .top .profile-img:hover img {
   border-radius: 1rem;
   background-color: #4c4c4c;
 }
@@ -1120,19 +1120,24 @@ button {
   position: absolute;
   top: 0%;
   left: -29rem;
-  height: 40rem;
+  height: auto;
   width: 25rem;
   z-index: 2;
   background-color: #323232;
   border-radius: 2rem;
   padding: 1rem;
   color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 .dashboard .sidebar-right .top .profile-img .profile-tab .user {
-  border: solid 1px #fff;
+  border-radius: 1rem;
+  background-color: #252525;
   display: flex;
   align-items: center;
   gap: 1rem;
+  padding: 1rem;
 }
 .dashboard .sidebar-right .top .profile-img .profile-tab .user img {
   height: 7rem;
@@ -1141,6 +1146,14 @@ button {
      object-fit: cover;
   transition: all 0.2s linear;
   border-radius: 50%;
+}
+.dashboard .sidebar-right .top .profile-img .profile-tab > *:not(.user) {
+  padding: 1rem;
+  background-color: #252525;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 1rem;
 }
 .dashboard .sidebar-right .top .profile-img span {
   position: absolute;
