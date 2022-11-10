@@ -1299,6 +1299,137 @@ button {
   grid-template-rows: 18vh auto;
   gap: 1rem;
 }
+.daily-time-record .time-in-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: solid 1px #25b525;
+  border-radius: 2rem;
+  background-color: #fff;
+  height: 42rem;
+  width: 32rem;
+  z-index: 2;
+  padding: 1rem;
+  display: flex;
+}
+.daily-time-record .time-in-modal .modals-content {
+  display: grid;
+  grid-template-rows: 2fr 1.5fr;
+  gap: 1rem;
+  justify-items: center;
+  align-items: center;
+}
+.daily-time-record .time-in-modal .modals-content .top {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  text-align: center;
+}
+.daily-time-record .time-in-modal .modals-content .top .icon {
+  font-size: 3.5rem;
+  color: grey;
+}
+.daily-time-record .time-in-modal .modals-content .top p {
+  font-size: 2rem;
+  font-weight: 600;
+  color: grey;
+}
+.daily-time-record .time-in-modal .modals-content .bottom button {
+  background-color: #0d7377;
+  color: #fff;
+  border: none;
+  font-size: 1.5rem;
+  height: 4rem;
+  width: 15rem;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+.daily-time-record .time-in-modal .modals-content .bottom button:hover {
+  color: #000;
+  background-color: #fff;
+  border: solid 1px #000;
+  font-weight: bold;
+}
+.daily-time-record .time-in-modal .check-icon {
+  position: absolute;
+  top: -1rem;
+  left: 2.5rem;
+  border-radius: 0.5rem;
+  background-color: #25b525;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.daily-time-record .time-in-modal .check-icon .icon {
+  color: #fff;
+  font-size: 2rem;
+}
+.daily-time-record .time-in-modals2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: solid 2px #0f615d;
+  border-radius: 2rem;
+  background-color: #fff;
+  height: 42rem;
+  width: 32rem;
+  z-index: 3;
+  padding: 2rem;
+}
+.daily-time-record .time-in-modals2 .check-and-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.daily-time-record .time-in-modals2 .check-and-message .icon {
+  background-color: #0f615d;
+  color: #fff;
+  font-size: 6rem;
+  padding: 1rem;
+  border-radius: 100%;
+}
+.daily-time-record .time-in-modals2 .check-and-message p {
+  color: #0f615d;
+  font-weight: 600;
+}
+.daily-time-record .time-in-modals2 .modal-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+.daily-time-record .time-in-modals2 .modal-details .icon {
+  font-size: 7rem;
+  color: grey;
+}
+.daily-time-record .time-in-modals2 .modal-details .user-infos {
+  text-align: center;
+  color: grey;
+  font-size: 1.5rem;
+}
+.daily-time-record .time-in-modals2 .modal-details button {
+  background-color: #0d7377;
+  color: #fff;
+  border: none;
+  font-size: 1.5rem;
+  height: 4rem;
+  width: 100%;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+.daily-time-record .time-in-modals2 .modal-details button:hover {
+  color: #000;
+  background-color: #fff;
+  border: solid 1px #000;
+  font-weight: bold;
+}
 .daily-time-record header {
   display: flex;
   justify-content: space-between;
@@ -1342,31 +1473,21 @@ button {
 }
 .daily-time-record .content .user {
   display: flex;
-  position: relative;
-  z-index: 1;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
   border: solid 1px #fff;
   border-radius: 2rem;
 }
 .daily-time-record .content .user .infos {
-  margin: 3rem 0.5rem;
   color: #f1faee;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1.5rem;
 }
 .daily-time-record .content .user img {
   background-color: #f1faee;
-  margin: 3rem;
-  padding: 1rem;
-}
-.daily-time-record .content .user::after {
-  filter: blur(1rem);
-  content: "";
-  background-color: rgba(87, 87, 87, 0.473);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  border-radius: 2rem;
+  height: 10rem;
 }
 .daily-time-record .content .button-container {
   margin-top: -5px;
@@ -1412,6 +1533,9 @@ button {
   width: 100%;
   grid-template-rows: 25rem auto;
   gap: 2rem;
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 }
 .documents-page .top {
@@ -1462,36 +1586,55 @@ button {
   border-radius: 0 1.5rem 1.5rem 1.5rem;
   background-color: #4c4c4c;
 }
-.documents-page * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-.documents-page html {
-  font-size: 62.5%;
-  scroll-behavior: smooth;
-}
-.documents-page body {
-  font-size: 1.8rem;
-}
-.documents-page ul {
-  list-style: none;
-}
-.documents-page ul a {
-  text-decoration: none;
-}
-.documents-page button {
-  cursor: pointer;
-}
 .documents-page .completion-container {
   display: grid;
-  grid-template-columns: auto auto auto;
-  padding: 1rem;
+  grid-template-columns: repeat(3, minmax(20rem, 30rem));
+  grid-auto-rows: 6rem;
+  gap: 1rem;
 }
 .documents-page .completion-container div {
-  background-color: #0d7377;
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+.documents-page .completion-container div h5 {
+  color: #000;
+  padding: 0.2rem;
+}
+.documents-page .completion-container div:hover {
+  background-color: aqua;
+  border-radius: 1rem;
+}
+.documents-page .requirments-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(20rem, 30rem));
+  grid-auto-rows: 6rem;
+  gap: 1rem;
+}
+.documents-page .requirments-container div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+.documents-page .requirments-container div h5 {
+  color: #000;
+  padding: 0.2rem;
+}
+.documents-page .requirments-container div:hover {
+  background-color: aqua;
+  border-radius: 1rem;
 }
 
 .page-not-found {
