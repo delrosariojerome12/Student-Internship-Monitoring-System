@@ -13,7 +13,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: solid 1px #000;
+    border: solid 1px #25b525;
     border-radius: 2rem;
     background-color: #fff;
     height: 42rem;
@@ -21,9 +21,9 @@
     z-index: 2;
     padding: 1rem;
     display: flex;
-    .example {
+    .modals-content {
       display: grid;
-      grid-template-rows: 2fr 1fr;
+      grid-template-rows: 2fr 1.5fr;
       gap: 1rem;
       justify-items: center;
       align-items: center;
@@ -31,12 +31,42 @@
         @include flexColumn;
         align-items: center;
         text-align: center;
+        .icon {
+          font-size: 3.5rem;
+          color: grey;
+        }
+        p {
+          font-size: 2rem;
+          font-weight: 600;
+          color: grey;
+        }
+      }
+      .bottom {
+        button {
+          background-color: $primary-compliment-landing;
+          color: #fff;
+          border: none;
+          font-size: 1.5rem;
+          height: 4rem;
+          width: 15rem;
+          cursor: pointer;
+          transition: all 0.3s linear;
+
+          &:hover {
+            color: #000;
+            background-color: #fff;
+            border: solid 1px #000;
+            font-weight: bold;
+          }
+        }
       }
     }
+
     .check-icon {
       position: absolute;
-      top: -2rem;
-      left: 1rem;
+      top: -1rem;
+      left: 2.5rem;
+      border-radius: 0.5rem;
       background-color: #25b525;
       padding: 0.5rem;
       @include flexCenter;
@@ -44,6 +74,66 @@
       .icon {
         color: #fff;
         font-size: 2rem;
+      }
+    }
+  }
+  .time-in-modals2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: solid 2px #0f615d;
+    border-radius: 2rem;
+    background-color: #fff;
+    height: 42rem;
+    width: 32rem;
+    z-index: 3;
+    padding: 2rem;
+    .check-and-message {
+      @include flexCenter;
+      flex-direction: column;
+      .icon {
+        background-color: #0f615d;
+        color: #fff;
+        font-size: 6rem;
+        padding: 1rem;
+        border-radius: 100%;
+      }
+      p {
+        color: #0f615d;
+        font-weight: 600;
+      }
+    }
+    .modal-details {
+      @include flexCenter;
+      flex-direction: column;
+      gap: 1rem;
+      .icon {
+        font-size: 7rem;
+        color: grey;
+      }
+      .user-infos {
+        text-align: center;
+        color: grey;
+        font-size: 1.5rem;
+      }
+      button {
+        background-color: $primary-compliment-landing;
+        color: #fff;
+        border: none;
+        font-size: 1.5rem;
+        height: 4rem;
+        width: 100%;
+        border-radius: 1rem;
+        cursor: pointer;
+        transition: all 0.3s linear;
+
+        &:hover {
+          color: #000;
+          background-color: #fff;
+          border: solid 1px #000;
+          font-weight: bold;
+        }
       }
     }
   }

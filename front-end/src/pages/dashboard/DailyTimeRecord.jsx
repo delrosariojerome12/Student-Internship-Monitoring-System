@@ -1,17 +1,17 @@
 import React from "react";
 import searchIcon from "../../assets/img/search.svg";
-import {FaCheck, FaCamera} from "react-icons/fa";
-import {IconContext} from "react-icons";
+import { FaCheck, FaCamera, FaRegImage } from "react-icons/fa";
+import { IconContext } from "react-icons";
 
 const DailyTimeRecord = () => {
   return (
-    <IconContext.Provider value={{className: "icon"}}>
+    <IconContext.Provider value={{ className: "icon" }}>
       <section className="daily-time-record">
         <div className="time-in-modal">
           <span className="check-icon">
             <FaCheck />
           </span>
-          <div className="example">
+          <div className="modals-content">
             <div className="top">
               <span>
                 <FaCamera />
@@ -21,6 +21,28 @@ const DailyTimeRecord = () => {
             <div className="bottom">
               <button>Check-In</button>
             </div>
+          </div>
+        </div>
+        <div className="time-in-modals2">
+          <div className="check-and-message">
+            <span>
+              <FaCheck />
+            </span>
+            <p>Thank You!</p>
+          </div>
+          <div className="modal-details">
+            <span>
+              <FaRegImage />
+            </span>
+            <div className="user-infos">
+              <p>Checked-In Successfully</p>
+              <p>user name</p>
+              <p>time</p>
+              <p>date</p>
+              <p>localtion</p>
+              <p>ID number</p>
+            </div>
+            <button>Return to home</button>
           </div>
         </div>
         <header>
