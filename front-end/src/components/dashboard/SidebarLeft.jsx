@@ -1,14 +1,13 @@
-import React, {useState} from "react";
+import React from "react";
 import {Link} from "react-router-dom";
 import {RiDashboardLine} from "react-icons/ri";
 import {HiPencilAlt} from "react-icons/hi";
 import {HiDocument, HiTrendingUp} from "react-icons/hi";
 import {FaUserAlt, FaChevronLeft, FaChevronRight} from "react-icons/fa";
-import {IoMdSettings, IoMdSearch} from "react-icons/io";
 import {IconContext} from "react-icons";
-
-import graph from "../../assets/img/graph.png";
 import logo from "../../assets/img/logo.svg";
+import {useSelector, useDispatch} from "react-redux";
+import {handleSidebar} from "../../features/dashboard/dashboard";
 
 const links = [
   {
@@ -27,7 +26,7 @@ const links = [
     IconType: HiTrendingUp,
   },
   {
-    path: "/dashboard/documents",
+    path: "/dashboard/documents/requirments",
     link: "Documents",
     IconType: HiDocument,
   },
@@ -36,19 +35,12 @@ const links = [
     link: "Reports",
     IconType: HiPencilAlt,
   },
-  // {
-  //   path: "/dashboard/settings",
-  //   link: "Settings",
-  //   IconType: IoMdSettings,
-  // },
-  ,
 ];
 
 const SidebarLeft = () => {
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
-  const handleSideBar = () => {
-    setSidebarOpen(!isSidebarOpen);
-  };
+  const {isSidebarOpen} = useSelector((state) => state.dashboard);
+  const dispatch = useDispatch();
+
   return (
     <aside
       className={
@@ -58,7 +50,11 @@ const SidebarLeft = () => {
       <IconContext.Provider value={{className: "icons", color: "white"}}>
         <div className="img-con">
           <img src={logo} alt="Logo.png " />
-          <span onClick={handleSideBar} className="collapse-icon">
+          <span
+            onClick={() => dispatch(handleSidebar())}
+            onBlur={() => dispatch(handleSidebar())}
+            className="collapse-icon"
+          >
             {!isSidebarOpen ? <FaChevronRight /> : <FaChevronLeft />}
           </span>
         </div>

@@ -11,7 +11,6 @@
   display: grid;
   grid-template-rows: 1fr 1fr;
   background-color: $primary-bg-color-landing;
-  overflow: hidden;
   transition: all 0.2s ease-in;
   z-index: 5;
 
@@ -25,6 +24,7 @@
     border-radius: 50%;
     @include flexCenter;
     transition: all 0.2s linear;
+    position: relative;
     &:hover {
       background-color: $primary-bg-color;
       border-radius: 1rem;
@@ -60,13 +60,14 @@
         }
       }
 
-      img {
+      & > img {
         height: 100%;
         width: 100%;
         border-radius: 50%;
         object-fit: cover;
         transition: all 0.2s linear;
       }
+
       span {
         position: absolute;
         right: -1px;
@@ -79,6 +80,77 @@
         .icon {
           height: 1rem;
           width: 1rem;
+        }
+      }
+    }
+
+    .tab {
+      position: absolute;
+      top: 1rem;
+      left: -29rem;
+      height: auto;
+      width: 25rem;
+      z-index: 2;
+      background-color: $primary-bg-color-landing-compliment;
+      border-radius: 2rem;
+      padding: 1rem;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      // profile tab
+    }
+    .profile-tab {
+      .user {
+        border-radius: 1rem;
+        background-color: darken(
+          $color: $primary-bg-color-landing-compliment,
+          $amount: 5
+        );
+        transition: all 0.2s linear;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        &:hover {
+          background-color: lighten(
+            $color: $primary-bg-color-landing-compliment,
+            $amount: 5
+          );
+        }
+        img {
+          height: 7rem;
+          width: 7rem;
+          object-fit: cover;
+          transition: all 0.2s linear;
+          border-radius: 50%;
+        }
+      }
+      & > *:not(.user) {
+        padding: 1rem;
+        background-color: darken(
+          $color: $primary-bg-color-landing-compliment,
+          $amount: 5
+        );
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 1rem;
+        cursor: pointer;
+        transition: all 0.2s linear;
+        &:hover {
+          background-color: lighten(
+            $color: $primary-bg-color-landing-compliment,
+            $amount: 5
+          );
+        }
+        .icon-holder {
+          @include flexCenter;
+          gap: 1rem;
+        }
+        .icon:not(.icon-holder .icon) {
+          font-size: 1.5rem;
         }
       }
     }

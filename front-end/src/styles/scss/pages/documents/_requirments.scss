@@ -1,0 +1,27 @@
+@import "../../../utils";
+@import "../../../variables";
+
+.requirments-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(20rem, 30rem));
+  grid-auto-rows: 6rem;
+  gap: 1rem;
+  div {
+    @include flexCenter;
+    background-color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s linear;
+
+    h5 {
+      color: #000;
+      padding: 0.2rem;
+    }
+    &:hover {
+      background-color: aqua;
+      border-radius: 1rem;
+    }
+  }
+}
