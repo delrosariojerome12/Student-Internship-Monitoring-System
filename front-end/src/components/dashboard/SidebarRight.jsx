@@ -4,11 +4,19 @@ import {IoIosNotifications, IoMdSettings} from "react-icons/io";
 import {TbMessageCircle} from "react-icons/tb";
 import {FaChevronDown, FaInfoCircle} from "react-icons/fa";
 import {useSelector, useDispatch} from "react-redux";
-import {handleProfile} from "../../features/dashboard/sidebarRight";
+import {
+  handleProfile,
+  handleChat,
+  handleNotification,
+} from "../../features/dashboard/sidebarRight";
 import ProfileTab from "../sidebarRight/ProfileTab";
+import ChatTab from "../sidebarRight/ChatTab";
+import NotificationTab from "../sidebarRight/NotificationTab";
 
 const SideBarRight = () => {
-  const {isProfileOpen} = useSelector((state) => state.sidebarRight);
+  const {isProfileOpen, isChatOpen, isNotificationOpen} = useSelector(
+    (state) => state.sidebarRight
+  );
   const dispatch = useDispatch();
 
   return (
@@ -26,11 +34,16 @@ const SideBarRight = () => {
             </span>
             {isProfileOpen && <ProfileTab />}
           </span>
-          <span className="notification">
+          <span
+            onClick={() => dispatch(handleNotification())}
+            className="notification"
+          >
             <IoIosNotifications />
+            {isNotificationOpen && <NotificationTab />}
           </span>
-          <span className="message">
+          <span onClick={() => dispatch(handleChat())} className="chat">
             <TbMessageCircle />
+            {isChatOpen && <ChatTab />}
           </span>
         </div>
         <div className="bottom">

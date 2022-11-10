@@ -24,6 +24,7 @@
     border-radius: 50%;
     @include flexCenter;
     transition: all 0.2s linear;
+    position: relative;
     &:hover {
       background-color: $primary-bg-color;
       border-radius: 1rem;
@@ -113,6 +114,9 @@
         }
       }
 
+      // .tab {
+      //   position: absolute;
+      // }
       span {
         position: absolute;
         right: -1px;

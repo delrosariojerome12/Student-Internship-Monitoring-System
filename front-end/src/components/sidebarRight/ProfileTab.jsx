@@ -6,7 +6,7 @@ import {FaChevronRight} from "react-icons/fa";
 
 const ProfileTab = () => {
   return (
-    <div className="profile-tab">
+    <div className="profile-tab tab">
       <div className="user">
         <img src={"https://i.imgur.com/aFPFvGv.jpg"} alt="" />
         <p>Bochi the Rock</p>

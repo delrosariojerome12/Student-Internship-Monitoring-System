@@ -1077,6 +1077,7 @@ button {
   align-items: center;
   justify-content: center;
   transition: all 0.2s linear;
+  position: relative;
 }
 .dashboard .sidebar-right span:hover {
   background-color: #457b9d;
