@@ -1,7 +1,7 @@
 @import "../../../utils";
 @import "../../../variables";
 
-.completion-container {
+.requirments-container {
   display: grid;
   grid-template-columns: repeat(3, minmax(20rem, 30rem));
   grid-auto-rows: 6rem;

@@ -1360,6 +1360,9 @@ button {
   grid-template-rows: 25rem auto;
   gap: 2rem;
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 }
 .documents-page .top {
   border-radius: 1.5rem;
@@ -1409,36 +1412,55 @@ button {
   border-radius: 0 1.5rem 1.5rem 1.5rem;
   background-color: #4c4c4c;
 }
-.documents-page * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-.documents-page html {
-  font-size: 62.5%;
-  scroll-behavior: smooth;
-}
-.documents-page body {
-  font-size: 1.8rem;
-}
-.documents-page ul {
-  list-style: none;
-}
-.documents-page ul a {
-  text-decoration: none;
-}
-.documents-page button {
-  cursor: pointer;
-}
 .documents-page .completion-container {
   display: grid;
-  grid-template-columns: auto auto auto;
-  padding: 1rem;
+  grid-template-columns: repeat(3, minmax(20rem, 30rem));
+  grid-auto-rows: 6rem;
+  gap: 1rem;
 }
 .documents-page .completion-container div {
-  background-color: #0d7377;
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+.documents-page .completion-container div h5 {
+  color: #000;
+  padding: 0.2rem;
+}
+.documents-page .completion-container div:hover {
+  background-color: aqua;
+  border-radius: 1rem;
+}
+.documents-page .requirments-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(20rem, 30rem));
+  grid-auto-rows: 6rem;
+  gap: 1rem;
+}
+.documents-page .requirments-container div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+.documents-page .requirments-container div h5 {
+  color: #000;
+  padding: 0.2rem;
+}
+.documents-page .requirments-container div:hover {
+  background-color: aqua;
+  border-radius: 1rem;
 }
 
 .page-not-found {
