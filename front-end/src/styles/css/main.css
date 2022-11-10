@@ -812,7 +812,7 @@ button {
   height: 100%;
   gap: 1rem;
   position: relative;
-  padding: 2rem 9rem 2rem 13rem;
+  padding: 1rem 9rem 1rem 13rem;
   background-color: #393e46;
   transition: all 0.2s ease-in-out;
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
@@ -824,16 +824,19 @@ button {
   height: 100%;
   margin: 0 auto;
   display: grid;
-  grid-template-rows: 15vh auto;
-  gap: 1.8rem;
+  grid-template-rows: 10rem minmax(450px, auto);
+  gap: 1rem;
   padding: 1rem;
 }
 .dashboard .main header {
+  height: 100%;
   display: flex;
   justify-content: space-between;
+  padding: 0 0 0 1rem;
 }
 .dashboard .main header .name-container {
-  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
   color: #f1faee;
 }
 .dashboard .main header .name-container .name {
@@ -841,9 +844,6 @@ button {
 }
 .dashboard .main header .name-container h4 {
   font-size: 2rem;
-}
-.dashboard .main header .name-container span {
-  color: #0d7377;
 }
 .dashboard .main header .search-box {
   display: flex;
@@ -869,10 +869,9 @@ button {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.2rem;
-  padding: 1.5rem;
 }
 .dashboard .main .content > * {
-  border: solid 2px #fff;
+  border: solid 1.5px #fff;
   border-radius: 2rem;
 }
 .dashboard .main .content h4 {
@@ -887,14 +886,13 @@ button {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  gap: 0px;
 }
 .dashboard .main .content .time-keeper .time-keeper-contents {
-  padding: 2%;
-  height: 3px;
   background-color: #f1faee;
-  border: solid 1px #000;
-  height: 80%;
+  height: 100%;
   border-radius: 2rem;
+  padding: 1rem;
 }
 .dashboard .main .content .documents {
   position: relative;
@@ -906,12 +904,10 @@ button {
   gap: 1rem;
 }
 .dashboard .main .content .documents .document-contents {
-  padding: 1rem;
-  height: 3px;
   background-color: #f1faee;
-  border: solid 1px #000;
-  height: 90%;
+  height: 100%;
   border-radius: 2rem;
+  padding: 1rem;
 }
 .dashboard .main .content .internship-details {
   padding: 1rem;
@@ -1069,7 +1065,6 @@ button {
   display: grid;
   grid-template-rows: 1fr 1fr;
   background-color: #222831;
-  overflow: hidden;
   transition: all 0.2s ease-in;
   z-index: 5;
 }
@@ -1109,17 +1104,43 @@ button {
   cursor: pointer;
   transition: all 0.2s linear;
 }
-.dashboard .sidebar-right .top .profile-img:hover img {
+.dashboard .sidebar-right .top .profile-img:hover img:not(.profile-tab img) {
   border-radius: 1rem;
   background-color: #4c4c4c;
 }
-.dashboard .sidebar-right .top .profile-img img {
+.dashboard .sidebar-right .top .profile-img > img {
   height: 100%;
   width: 100%;
   border-radius: 50%;
   -o-object-fit: cover;
      object-fit: cover;
   transition: all 0.2s linear;
+}
+.dashboard .sidebar-right .top .profile-img .profile-tab {
+  position: absolute;
+  top: 0%;
+  left: -29rem;
+  height: 40rem;
+  width: 25rem;
+  z-index: 2;
+  background-color: #323232;
+  border-radius: 2rem;
+  padding: 1rem;
+  color: #fff;
+}
+.dashboard .sidebar-right .top .profile-img .profile-tab .user {
+  border: solid 1px #fff;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.dashboard .sidebar-right .top .profile-img .profile-tab .user img {
+  height: 7rem;
+  width: 7rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: all 0.2s linear;
+  border-radius: 50%;
 }
 .dashboard .sidebar-right .top .profile-img span {
   position: absolute;

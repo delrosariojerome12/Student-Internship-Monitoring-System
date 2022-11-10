@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {Link} from "react-router-dom";
 import {RiDashboardLine} from "react-icons/ri";
 import {HiPencilAlt} from "react-icons/hi";
@@ -35,7 +35,6 @@ const links = [
     link: "Reports",
     IconType: HiPencilAlt,
   },
-  ,
 ];
 
 const SidebarLeft = () => {
@@ -53,6 +52,7 @@ const SidebarLeft = () => {
           <img src={logo} alt="Logo.png " />
           <span
             onClick={() => dispatch(handleSidebar())}
+            onBlur={() => dispatch(handleSidebar())}
             className="collapse-icon"
           >
             {!isSidebarOpen ? <FaChevronRight /> : <FaChevronLeft />}

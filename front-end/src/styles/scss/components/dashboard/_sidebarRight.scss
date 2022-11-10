@@ -11,7 +11,6 @@
   display: grid;
   grid-template-rows: 1fr 1fr;
   background-color: $primary-bg-color-landing;
-  overflow: hidden;
   transition: all 0.2s ease-in;
   z-index: 5;
 
@@ -51,7 +50,7 @@
       transition: all 0.2s linear;
 
       &:hover {
-        img {
+        img:not(.profile-tab img) {
           border-radius: 1rem;
           background-color: lighten(
             $color: $primary-bg-color-landing-compliment,
@@ -60,13 +59,40 @@
         }
       }
 
-      img {
+      & > img {
         height: 100%;
         width: 100%;
         border-radius: 50%;
         object-fit: cover;
         transition: all 0.2s linear;
       }
+
+      .profile-tab {
+        position: absolute;
+        top: 0%;
+        left: -29rem;
+        height: 40rem;
+        width: 25rem;
+        z-index: 2;
+        background-color: $primary-bg-color-landing-compliment;
+        border-radius: 2rem;
+        padding: 1rem;
+        color: #fff;
+        .user {
+          border: solid 1px #fff;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          img {
+            height: 7rem;
+            width: 7rem;
+            object-fit: cover;
+            transition: all 0.2s linear;
+            border-radius: 50%;
+          }
+        }
+      }
+
       span {
         position: absolute;
         right: -1px;

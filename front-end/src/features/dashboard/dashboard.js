@@ -14,6 +14,6 @@ export const dashboardReducer = createSlice({
   },
   extraReducers: {},
 });
-export const {handleSidebar} = dashboardReducer.actions;
+export const {handleSidebar, closeSidbar} = dashboardReducer.actions;
 
 export default dashboardReducer.reducer;
