@@ -1433,16 +1433,12 @@ button {
 .documents-page .completion-container {
   display: grid;
   grid-template-columns: auto auto auto;
+  padding: 1rem;
 }
 .documents-page .completion-container div {
   background-color: #0d7377;
   border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  font-size: 30px;
-  text-align: center;
-}
-.documents-page .completion-container:hover {
-  background-color: #00adb5;
+  padding: 2rem;
 }
 
 .page-not-found {
