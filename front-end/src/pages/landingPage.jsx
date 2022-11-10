@@ -1,5 +1,5 @@
 import React from "react";
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import logo from "../assets/img/landingPage/Logo.png";
 import landingImg from "../assets/img/landingPage/landing-image.png";
@@ -58,7 +58,7 @@ const LandingPage = () => {
         </div>
         <ul className="links">
           {links.map((item, index) => {
-            const {path, link} = item;
+            const { path, link } = item;
             return (
               <Link key={index} to={path}>
                 {link}
@@ -68,7 +68,7 @@ const LandingPage = () => {
         </ul>
         <ul className="auth-links">
           {authLinks.map((item, index) => {
-            const {path, link} = item;
+            const { path, link } = item;
             return (
               <button
                 onClick={() => {
@@ -89,13 +89,12 @@ const LandingPage = () => {
             <p>A web-based system</p>
             <p>
               that monitors the progress of student’s internship performance and
-              state. The essence of this system is to provide clear and valid
-              data; those includes the number of rendered hours, the time-in and
-              time-outs, over-times, daily and weekly accomplishment tasks. The
-              system's h1 point is making it easy for students to gather the
-              necessary documents for their narrative report. On the other side,
-              OJT coordinator have his own interface in the system by which he
-              can see that current state of his students.
+              status which includes providing clear and valid data: the number
+              of rendered hours, Daily Time Record, and weekly accomplishment
+              reports. Moreover, gathering and managing students' necessary
+              documents for their narrative report is made easy. OJT
+              coordinators can also see the current status of his students in
+              the internship/OJT through their own interface in the system.
             </p>
             <p> Beneficiaries: • Students • OJT Coordinators</p>
             <div className="darkbg"></div>
