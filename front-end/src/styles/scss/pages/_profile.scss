@@ -49,14 +49,11 @@
   .content {
     display: grid;
     grid-template-rows: 5rem auto;
-    // padding: 1rem;
-
     .button-container {
       width: 50rem;
       border-radius: 1rem 1rem 0 0;
       display: grid;
       grid-template-columns: repeat(4, auto);
-      // background-color: $primary-bg-color;
       background-color: lighten(
         $color: $primary-bg-color-landing-compliment,
         $amount: 10

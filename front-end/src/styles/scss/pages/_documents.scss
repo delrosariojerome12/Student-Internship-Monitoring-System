@@ -3,55 +3,69 @@
 
 .documents-page {
   display: grid;
-  position: relative;
   height: 100%;
   width: 100%;
-  grid-template-rows: 25vh auto;
-  gap: 1rem;
+  grid-template-rows: 25rem auto;
+  gap: 2rem;
 
-  border: solid 1px #fff;
-  border-radius: 1.5rem;
-  z-index: 1;
-
-  &::after {
-    content: "";
-    background-color: rgba(29, 29, 29, 0.5);
-    backdrop-filter: blur(1rem);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 98.5%;
-    height: 98%;
-    z-index: -1;
-    margin: 1rem;
-  }
-
-  header {
-    .box {
-      border: solid 2px #fff;
-      width: 24rem;
-      height: 12rem;
-      margin: 0.5rem;
-      margin: 1rem 2rem 1rem 1rem;
+  .top {
+    border-radius: 1.5rem;
+    background-color: lighten(
+      $color: $primary-bg-color-landing-compliment,
+      $amount: 10
+    );
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 1rem;
+    gap: 1rem;
+    .private-comment {
+      border: solid 1px #fff;
+    }
+    .drop-file {
+      border: solid 1px #fff;
     }
   }
-  .content {
-    border: solid 1px #fff;
-    margin: 2rem;
 
-    padding: 13rem;
-    .box-container {
-      padding: 2rem;
+  .content {
+    display: grid;
+    grid-template-rows: 5rem auto;
+
+    .button-container {
+      width: 45rem;
+      border-radius: 1.5rem 1.5rem 0 0;
       display: grid;
-      grid-template-columns: auto auto auto;
-      justify-content: center;
-      align-items: center;
-      .box {
-        border: solid 2px #fff;
-        width: 20rem;
-        height: 10rem;
-        margin: 0.5rem;
+      grid-template-columns: repeat(3, auto);
+      background-color: lighten(
+        $color: $primary-bg-color-landing-compliment,
+        $amount: 10
+      );
+      button {
+        color: #fff;
+        outline: none;
+        border: none;
+        padding: 1rem;
+        background-color: transparent;
+        transition: all 0.3s linear;
+        position: relative;
+        font-weight: 600;
+        letter-spacing: 1px;
+
+        &:nth-of-type(1) {
+          border-radius: 1.5rem 0 0 0;
+        }
+        &:nth-last-of-type(1) {
+          border-radius: 0 1.5rem 0 0;
+        }
       }
+    }
+    .display {
+      color: #fff;
+      padding: 2rem;
+      border-radius: 0 1.5rem 1.5rem 1.5rem;
+      background-color: lighten(
+        $color: $primary-bg-color-landing-compliment,
+        $amount: 10
+      );
     }
   }
 }

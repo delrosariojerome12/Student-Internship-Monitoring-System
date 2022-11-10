@@ -1,5 +1,5 @@
 import React from "react";
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import logo from "../assets/img/landingPage/Logo.png";
 import landingImg from "../assets/img/landingPage/landing-image.png";
@@ -58,7 +58,7 @@ const LandingPage = () => {
         </div>
         <ul className="links">
           {links.map((item, index) => {
-            const {path, link} = item;
+            const { path, link } = item;
             return (
               <Link key={index} to={path}>
                 {link}
@@ -68,7 +68,7 @@ const LandingPage = () => {
         </ul>
         <ul className="auth-links">
           {authLinks.map((item, index) => {
-            const {path, link} = item;
+            const { path, link } = item;
             return (
               <button
                 onClick={() => {
@@ -148,18 +148,10 @@ const LandingPage = () => {
             <h2>SIMS</h2>
           </div>
           <div className="socials-img">
-            <div className="social">
-              <img src={socialIcon1} alt="" />
-            </div>
-            <div className="social">
-              <img src={socialIcon2} alt="" />
-            </div>
-            <div className="social">
-              <img src={socialIcon3} alt="" />
-            </div>
-            <div className="social">
-              <img src={socialIcon4} alt="" />
-            </div>
+            <img src={socialIcon1} alt="" />
+            <img src={socialIcon2} alt="" />
+            <img src={socialIcon3} alt="" />
+            <img src={socialIcon4} alt="" />
           </div>
         </div>
       </footer>
