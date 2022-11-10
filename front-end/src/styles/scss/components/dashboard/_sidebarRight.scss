@@ -100,6 +100,8 @@
       gap: 1rem;
 
       // profile tab
+    }
+    .profile-tab {
       .user {
         border-radius: 1rem;
         background-color: darken(
@@ -125,7 +127,6 @@
           border-radius: 50%;
         }
       }
-
       & > *:not(.user) {
         padding: 1rem;
         background-color: darken(

@@ -1148,7 +1148,7 @@ button {
   flex-direction: column;
   gap: 1rem;
 }
-.dashboard .sidebar-right .top .tab .user {
+.dashboard .sidebar-right .top .profile-tab .user {
   border-radius: 1rem;
   background-color: #252525;
   transition: all 0.2s linear;
@@ -1157,10 +1157,10 @@ button {
   gap: 1rem;
   padding: 1rem;
 }
-.dashboard .sidebar-right .top .tab .user:hover {
+.dashboard .sidebar-right .top .profile-tab .user:hover {
   background-color: #3f3f3f;
 }
-.dashboard .sidebar-right .top .tab .user img {
+.dashboard .sidebar-right .top .profile-tab .user img {
   height: 7rem;
   width: 7rem;
   -o-object-fit: cover;
@@ -1168,7 +1168,7 @@ button {
   transition: all 0.2s linear;
   border-radius: 50%;
 }
-.dashboard .sidebar-right .top .tab > *:not(.user) {
+.dashboard .sidebar-right .top .profile-tab > *:not(.user) {
   padding: 1rem;
   background-color: #252525;
   display: flex;
@@ -1178,16 +1178,16 @@ button {
   cursor: pointer;
   transition: all 0.2s linear;
 }
-.dashboard .sidebar-right .top .tab > *:not(.user):hover {
+.dashboard .sidebar-right .top .profile-tab > *:not(.user):hover {
   background-color: #3f3f3f;
 }
-.dashboard .sidebar-right .top .tab > *:not(.user) .icon-holder {
+.dashboard .sidebar-right .top .profile-tab > *:not(.user) .icon-holder {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
 }
-.dashboard .sidebar-right .top .tab > *:not(.user) .icon:not(.icon-holder .icon) {
+.dashboard .sidebar-right .top .profile-tab > *:not(.user) .icon:not(.icon-holder .icon) {
   font-size: 1.5rem;
 }
 .dashboard .sidebar-right .bottom {
