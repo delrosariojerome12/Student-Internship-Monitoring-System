@@ -23,6 +23,10 @@ const SideBarRight = () => {
     <IconContext.Provider value={{className: "icon"}}>
       <aside className="sidebar-right">
         <div className="top">
+          {isProfileOpen && <ProfileTab />}
+          {isNotificationOpen && <NotificationTab />}
+          {isChatOpen && <ChatTab />}
+
           <span className="profile-img">
             <img
               onClick={() => dispatch(handleProfile())}
@@ -32,18 +36,15 @@ const SideBarRight = () => {
             <span onClick={() => dispatch(handleProfile())}>
               <FaChevronDown />
             </span>
-            {isProfileOpen && <ProfileTab />}
           </span>
           <span
             onClick={() => dispatch(handleNotification())}
             className="notification"
           >
             <IoIosNotifications />
-            {isNotificationOpen && <NotificationTab />}
           </span>
           <span onClick={() => dispatch(handleChat())} className="chat">
             <TbMessageCircle />
-            {isChatOpen && <ChatTab />}
           </span>
         </div>
         <div className="bottom">

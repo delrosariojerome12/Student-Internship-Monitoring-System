@@ -5,8 +5,6 @@ const initialState = {
   isNotificationOpen: false,
   isChatOpen: false,
   isAboutSystemOpen: false,
-  isFeedbackOpen: false,
-  isDarkMode: true,
 };
 
 export const sidebarRightReducer = createSlice({
@@ -15,15 +13,21 @@ export const sidebarRightReducer = createSlice({
   reducers: {
     handleProfile: (state, action) => {
       state.isProfileOpen = !state.isProfileOpen;
+      state.isNotificationOpen = false;
+      state.isChatOpen = false;
     },
     handleNotification: (state, action) => {
       state.isNotificationOpen = !state.isNotificationOpen;
+      state.isProfileOpen = false;
+      state.isChatOpen = false;
     },
     handleChat: (state, action) => {
       state.isChatOpen = !state.isChatOpen;
+      state.isProfileOpen = false;
+      state.isNotificationOpen = false;
     },
   },
-  extraReducers: {},
+  extraReducers: (builder) => {},
 });
 
 export const {handleProfile, handleChat, handleNotification} =

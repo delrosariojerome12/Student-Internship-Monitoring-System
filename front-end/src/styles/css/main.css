@@ -1117,45 +1117,6 @@ button {
      object-fit: cover;
   transition: all 0.2s linear;
 }
-.dashboard .sidebar-right .top .profile-img .profile-tab {
-  position: absolute;
-  top: 0%;
-  left: -29rem;
-  height: auto;
-  width: 25rem;
-  z-index: 2;
-  background-color: #323232;
-  border-radius: 2rem;
-  padding: 1rem;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.dashboard .sidebar-right .top .profile-img .profile-tab .user {
-  border-radius: 1rem;
-  background-color: #252525;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-}
-.dashboard .sidebar-right .top .profile-img .profile-tab .user img {
-  height: 7rem;
-  width: 7rem;
-  -o-object-fit: cover;
-     object-fit: cover;
-  transition: all 0.2s linear;
-  border-radius: 50%;
-}
-.dashboard .sidebar-right .top .profile-img .profile-tab > *:not(.user) {
-  padding: 1rem;
-  background-color: #252525;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  border-radius: 1rem;
-}
 .dashboard .sidebar-right .top .profile-img span {
   position: absolute;
   right: -1px;
@@ -1171,6 +1132,63 @@ button {
 .dashboard .sidebar-right .top .profile-img span .icon {
   height: 1rem;
   width: 1rem;
+}
+.dashboard .sidebar-right .top .tab {
+  position: absolute;
+  top: 1rem;
+  left: -29rem;
+  height: auto;
+  width: 25rem;
+  z-index: 2;
+  background-color: #323232;
+  border-radius: 2rem;
+  padding: 1rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.dashboard .sidebar-right .top .tab .user {
+  border-radius: 1rem;
+  background-color: #252525;
+  transition: all 0.2s linear;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+.dashboard .sidebar-right .top .tab .user:hover {
+  background-color: #3f3f3f;
+}
+.dashboard .sidebar-right .top .tab .user img {
+  height: 7rem;
+  width: 7rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: all 0.2s linear;
+  border-radius: 50%;
+}
+.dashboard .sidebar-right .top .tab > *:not(.user) {
+  padding: 1rem;
+  background-color: #252525;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+.dashboard .sidebar-right .top .tab > *:not(.user):hover {
+  background-color: #3f3f3f;
+}
+.dashboard .sidebar-right .top .tab > *:not(.user) .icon-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.dashboard .sidebar-right .top .tab > *:not(.user) .icon:not(.icon-holder .icon) {
+  font-size: 1.5rem;
 }
 .dashboard .sidebar-right .bottom {
   display: flex;

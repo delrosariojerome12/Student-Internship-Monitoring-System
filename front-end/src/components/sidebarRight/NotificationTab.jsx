@@ -1,7 +1,7 @@
 import React from "react";
 
 const NotificationTab = () => {
-  return <div className="tab">NotificationTab</div>;
+  return <div className="notification-tab tab">NotificationTab</div>;
 };
 
 export default NotificationTab;
