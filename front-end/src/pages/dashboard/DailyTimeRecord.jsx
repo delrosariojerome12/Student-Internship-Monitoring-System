@@ -1,9 +1,26 @@
 import React from "react";
 import searchIcon from "../../assets/img/search.svg";
+import { FaCheck, FaCamera } from "react-icons/fa";
 
 const DailyTimeRecord = () => {
   return (
     <section className="daily-time-record">
+      <div className="timeIn-modal">
+        <span>
+          <FaCheck />
+        </span>
+        <div className="example">
+          <div className="top">
+            <span>
+              <FaCamera />
+            </span>
+            <p>Allow camera to take your Check-in</p>
+          </div>
+          <div className="bottom">
+            <button>Check-In</button>
+          </div>
+        </div>
+      </div>
       <header>
         <div className="name-container">
           <h1 className="name">Hello, Hakdog</h1>

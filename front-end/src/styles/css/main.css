@@ -1246,6 +1246,35 @@ button {
   grid-template-rows: 18vh auto;
   gap: 1rem;
 }
+.daily-time-record .timeIn-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: solid 1px #000;
+  border-radius: 1rem;
+  background-color: #fff;
+  height: 35rem;
+  width: 30rem;
+  z-index: 2;
+}
+.daily-time-record .timeIn-modal span {
+  position: absolute;
+}
+.daily-time-record .timeIn-modal .example {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 2rem;
+}
+.daily-time-record .timeIn-modal .example .top span {
+  height: 5rem;
+}
+.daily-time-record .timeIn-modal .example .top p {
+  font-size: 2rem;
+}
+.daily-time-record .timeIn-modal .example button {
+  border-radius: 1rem;
+}
 .daily-time-record header {
   display: flex;
   justify-content: space-between;
@@ -1289,31 +1318,21 @@ button {
 }
 .daily-time-record .content .user {
   display: flex;
-  position: relative;
-  z-index: 1;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
   border: solid 1px #fff;
   border-radius: 2rem;
 }
 .daily-time-record .content .user .infos {
-  margin: 3rem 0.5rem;
   color: #f1faee;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1.5rem;
 }
 .daily-time-record .content .user img {
   background-color: #f1faee;
-  margin: 3rem;
-  padding: 1rem;
-}
-.daily-time-record .content .user::after {
-  filter: blur(1rem);
-  content: "";
-  background-color: rgba(87, 87, 87, 0.473);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  border-radius: 2rem;
+  height: 10rem;
 }
 .daily-time-record .content .button-container {
   margin-top: -5px;

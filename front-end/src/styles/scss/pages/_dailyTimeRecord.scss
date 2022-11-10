@@ -8,6 +8,37 @@
   grid-template-rows: 18vh auto;
   gap: 1rem;
 
+  .timeIn-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: solid 1px #000;
+    border-radius: 1rem;
+    background-color: #fff;
+    height: 35rem;
+    width: 30rem;
+    z-index: 2;
+    span {
+      position: absolute;
+    }
+    .example {
+      display: grid;
+      grid-template-rows: auto auto;
+      gap: 2rem;
+      .top {
+        span {
+          height: 5rem;
+        }
+        p {
+          font-size: 2rem;
+        }
+      }
+      button {
+        border-radius: 1rem;
+      }
+    }
+  }
   header {
     display: flex;
     justify-content: space-between;
@@ -53,31 +84,20 @@
 
     .user {
       display: flex;
-      position: relative;
-      z-index: 1;
-
+      align-items: center;
+      padding: 1rem;
+      gap: 1rem;
       border: solid 1px #fff;
       border-radius: 2rem;
       .infos {
-        margin: 3rem 0.5rem;
         color: $primary-font-color;
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 1.5rem;
       }
       img {
         background-color: $light-bg-color;
-        margin: 3rem;
-        padding: 1rem;
-      }
-      &::after {
-        filter: blur(1rem);
-        content: "";
-        background-color: rgba(87, 87, 87, 0.473);
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        border-radius: 2rem;
+        height: 10rem;
       }
     }
     .button-container {
