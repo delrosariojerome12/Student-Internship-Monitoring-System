@@ -15,6 +15,8 @@ const signup = async (req, res) => {
   res.status(StatusCodes.CREATED).json({
     user: {
       name: `${user.firstname} ${user.lastname}`,
+      firstname: user.firstname,
+      lastname: user.lastname,
       email: user.email,
       userID: user._id,
     },
@@ -44,6 +46,8 @@ const login = async (req, res) => {
   res.status(StatusCodes.OK).json({
     user: {
       name: `${user.firstname} ${user.lastname}`,
+      firstname: user.firstname,
+      lastname: user.lastname,
       email: user.email,
       userID: user._id,
     },

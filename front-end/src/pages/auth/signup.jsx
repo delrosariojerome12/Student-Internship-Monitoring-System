@@ -174,6 +174,7 @@ const Signup = () => {
         const {msg} = error.response.data;
         setSignupError(true);
         setErrorMessage(msg);
+        console.log(msg);
       }
     }
   };

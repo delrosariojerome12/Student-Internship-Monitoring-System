@@ -10,6 +10,11 @@
   display: flex;
 }
 
+@mixin flexAlign {
+  display: flex;
+  align-items: center;
+}
+
 @mixin flexCenter {
   display: flex;
   align-items: center;

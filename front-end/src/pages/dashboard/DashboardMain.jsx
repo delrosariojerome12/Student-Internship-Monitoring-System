@@ -1,13 +1,17 @@
 import React from "react";
 import searchIcon from "../../assets/img/search.svg";
+import {useSelector} from "react-redux";
+import jwt_decode from "jwt-decode";
 const DashboardMain = () => {
+  const {user} = useSelector((state) => state.user);
+
+  const decode = jwt_decode(localStorage.getItem("token"));
+
   return (
     <section className="main">
       <header>
         <div className="name-container">
-          <h1 className="name">
-            Hello, <span>Hakdog</span>
-          </h1>
+          <h1 className="name">Hello {user ? user.firstname : decode.name}</h1>
           <h4>Welcome Back!</h4>
         </div>
         <div className="search-box">
