@@ -29,6 +29,36 @@ const UserSchema = new mongoose.Schema({
     required: [true, "Please provide password"],
     minlength: 8,
   },
+
+  internshipDetails: {
+    type: Object,
+    ref: "User",
+  },
+  contactnumber: {
+    type: String,
+    maxlength: 15,
+    minlength: 6,
+  },
+  requiredhours: {
+    type: String,
+    maxlength: 3,
+    minlength: 1,
+  },
+  companyname: {
+    type: String,
+    maxlength: 100,
+    minlength: 10,
+  },
+  companyaddress: {
+    type: String,
+    maxlength: 100,
+    minlength: 10,
+  },
+  supervisor: {
+    type: String,
+    maxlength: 100,
+    minlength: 10,
+  },
 });
 
 UserSchema.pre("save", async function () {
@@ -38,7 +68,7 @@ UserSchema.pre("save", async function () {
 
 UserSchema.methods.createJWT = function () {
   const token = jwt.sign(
-    {userId: this._id, name: this.name},
+    { userId: this._id, name: this.name },
     process.env.JWT_SECRET,
     {
       expiresIn: process.env.JWT_LIFETIME,
