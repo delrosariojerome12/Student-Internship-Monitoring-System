@@ -417,7 +417,7 @@ button {
   position: absolute;
   display: flex;
   align-items: center;
-  top: 3rem;
+  top: 1.4rem;
   right: 3%;
 }
 .signin .card-container form .input-contain .eye-container svg {
@@ -1136,13 +1136,13 @@ button {
 .dashboard .sidebar-right .top .tab {
   position: absolute;
   top: 1rem;
-  left: -29rem;
+  left: -31rem;
   height: auto;
-  width: 25rem;
+  min-width: 28rem;
   z-index: 2;
   background-color: #323232;
   border-radius: 2rem;
-  padding: 1rem;
+  padding: 2rem;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -1156,6 +1156,7 @@ button {
   align-items: center;
   gap: 1rem;
   padding: 1rem;
+  cursor: pointer;
 }
 .dashboard .sidebar-right .top .profile-tab .user:hover {
   background-color: #3f3f3f;
@@ -1189,6 +1190,64 @@ button {
 }
 .dashboard .sidebar-right .top .profile-tab > *:not(.user) .icon:not(.icon-holder .icon) {
   font-size: 1.5rem;
+}
+.dashboard .sidebar-right .top .notification-tab {
+  display: grid;
+  width: 36rem;
+  left: -39rem;
+}
+.dashboard .sidebar-right .top .notification-tab .display {
+  display: grid;
+  gap: 1rem;
+}
+.dashboard .sidebar-right .top .notification-tab .display .notification {
+  height: 5rem;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 5rem auto;
+  gap: 1rem;
+}
+.dashboard .sidebar-right .top .notification-tab .display .notification .notif-icon {
+  height: 100%;
+  width: 100%;
+}
+.dashboard .sidebar-right .top .notification-tab .display .notification .notif-icon img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 50%;
+  border: solid 1px #fff;
+}
+.dashboard .sidebar-right .top .notification-tab .display .notification > * {
+  border: solid 1px #fff;
+}
+.dashboard .sidebar-right .top .chat-tab {
+  display: grid;
+  width: 32rem;
+  left: -35rem;
+  min-height: 20rem;
+}
+.dashboard .sidebar-right .top .chat-tab .display {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+.dashboard .sidebar-right .top .chat-tab .display button {
+  border-radius: 1rem;
+  padding: 1rem;
+  border: solid 2px transparent;
+  background-color: #0f615d;
+  color: #fff;
+  transition: all 0.3s linear;
+  font-weight: 600;
+}
+.dashboard .sidebar-right .top .chat-tab .display button:hover {
+  background-color: #fff;
+  color: #0f615d;
+  border: solid 2px #0f615d;
 }
 .dashboard .sidebar-right .bottom {
   display: flex;

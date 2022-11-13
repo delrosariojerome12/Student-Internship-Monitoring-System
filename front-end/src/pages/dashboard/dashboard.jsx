@@ -1,13 +1,13 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Route, Routes, Navigate} from "react-router-dom";
-
 import {lazy, Suspense} from "react";
+import jwt from "jwt-decode";
+import {setUser} from "../../features/user/userReducer";
+import {useSelector, useDispatch} from "react-redux";
 
 import DashboardMain from "./DashboardMain";
 import SidebarLeft from "../../components/dashboard/SidebarLeft";
 import SideBarRight from "../../components/dashboard/SidebarRight";
-
-import {useSelector} from "react-redux";
 
 const Profile = lazy(() => import("./Profile"));
 const DailyTimeRecord = lazy(() => import("./DailyTimeRecord"));
@@ -17,6 +17,13 @@ const Settings = lazy(() => import("./Settings"));
 
 const Dashboard = () => {
   const {isSidebarOpen} = useSelector((state) => state.dashboard);
+  const {user} = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  if (!user && !localStorage.getItem("token")) {
+    return <h1>User Session Expired</h1>;
+  }
+
   return (
     <section
       style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}

@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from "react";
+import React, {useState, useCallback, useEffect} from "react";
 import {debounce} from "lodash";
 import {Link} from "react-router-dom";
 import logo from "../../assets/img/logo.svg";
@@ -12,11 +12,17 @@ import {
 import {GrMail} from "react-icons/gr";
 import {IconContext} from "react-icons";
 import {useRef} from "react";
-import axios from "axios";
 import {useNavigate} from "react-router-dom";
 // import {signInWithGoogle} from "../../Firebase";
+import {useSelector, useDispatch} from "react-redux";
+import {fetchUser} from "../../features/user/userReducer";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const {isError, errorMessage, isLoading, user} = useSelector(
+    (state) => state.user
+  );
+
   const [form, setForm] = useState([
     {
       forInput: "Email",
@@ -42,42 +48,21 @@ const Login = () => {
       code: "password",
     },
   ]);
-  const [isLoginError, setLoginError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
   const [isPasswordShown, setIsPasswordShown] = useState(false);
   const refPassword = useRef();
   const navigate = useNavigate();
 
-  const convertForm = () => {
-    const newData = form.map((input) => {
-      const {code, value} = input;
-      return {
-        code,
-        value,
-      };
-    });
+  useEffect(() => {
+    if (user) {
+      navigate("/dashboard");
+    }
+  }, [user]);
 
-    const newObject = Object.assign(
-      {},
-      ...newData.map((item) => ({[item.code]: item.value}))
-    );
-
-    return newObject;
-  };
+  console.log("TEst");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const url = "http://localhost:5000/auth/login";
-      const {data: res} = await axios.post(url, convertForm());
-      localStorage.setItem("token", res.token);
-      console.log(res);
-      navigate("/dashboard");
-    } catch (error) {
-      const {msg} = error.response.data;
-      setLoginError(true);
-      setErrorMessage(msg);
-    }
+    dispatch(fetchUser(form));
   };
 
   const handleOnChange = (value, index) => {
@@ -85,20 +70,20 @@ const Login = () => {
     data[index].value = value;
     value ? (data[index].isError = false) : (data[index].isError = true);
     setForm(data);
-    handleError(value, index);
+    // handleError(value, index);
   };
 
-  const handleError =
-    // eslint-disable-next-line
-    useCallback(
-      debounce((value, index) => {
-        const data = [...form];
-        //verify input
-        value ? (data[index].isError = false) : (data[index].isError = true);
-        setForm(data);
-      }, 1000),
-      []
-    );
+  // const handleError =
+  //   // eslint-disable-next-line
+  //   useCallback(
+  //     debounce((value, index) => {
+  //       const data = [...form];
+  //       //verify input
+  //       value ? (data[index].isError = false) : (data[index].isError = true);
+  //       setForm(data);
+  //     }, 1000),
+  //     []
+  //   );
 
   const handleShowPassword = () => {
     setIsPasswordShown(!isPasswordShown);
@@ -116,6 +101,12 @@ const Login = () => {
       <FaEyeSlash onClick={handleShowPassword} />
     );
   };
+
+  // useEffect(() => {
+  //   if (user) {
+  //     navigate("/dashboard");
+  //   }
+  // }, [user]);
 
   const renderInputs = () => {
     return form.map((inputs, index) => {
@@ -178,7 +169,7 @@ const Login = () => {
         <header>
           <img src={logo} alt="" />
           <h1>Login</h1>
-          {isLoginError && <h3 style={{color: "red"}}>{errorMessage}</h3>}
+          {isError && <h3 style={{color: "red"}}>{errorMessage}</h3>}
         </header>
         <form onSubmit={handleSubmit}>
           <IconContext.Provider value={{color: "#000", className: "icons"}}>
