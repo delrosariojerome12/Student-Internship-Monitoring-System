@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const internsDetails = mongoose.Schema({
+const internsDetails = new mongoose.Schema({
   companyname: {
     type: String,
     required: [true, "Please provide company name"],
@@ -35,6 +35,11 @@ const internsDetails = mongoose.Schema({
     required: [true, "Please provide supervisor name"],
     maxlength: 50,
     minlength: 5,
+  },
+  createdBy: {
+    type: mongoose.Types.ObjectId,
+    ref: "User",
+    required: [true],
   },
 });
 
@@ -76,7 +81,7 @@ UserSchema.pre("save", async function () {
 
 UserSchema.methods.createJWT = function () {
   const token = jwt.sign(
-    {userId: this._id, name: this.firstname},
+    { userId: this._id, name: this.firstname },
     process.env.JWT_SECRET,
     {
       expiresIn: process.env.JWT_LIFETIME,
