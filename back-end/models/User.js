@@ -2,6 +2,42 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+const internsDetails = mongoose.Schema({
+  companyname: {
+    type: String,
+    required: [true, "Please provide company name"],
+    maxlength: 50,
+    minlength: 2,
+  },
+  companyaddress: {
+    type: String,
+    required: [true, "Please provide company address"],
+    maxlength: 70,
+    minlength: 10,
+  },
+  contactnumber: {
+    type: String,
+    required: [true, "Please provide contact number"],
+    maxlength: 11,
+    minlength: 11,
+  },
+  requiredhours: {
+    type: String,
+    required: [
+      true,
+      "Please provide the exact number of hours to be rendered.",
+    ],
+    maxlength: 4,
+    minlength: 1,
+  },
+  supervisor: {
+    type: String,
+    required: [true, "Please provide supervisor name"],
+    maxlength: 50,
+    minlength: 5,
+  },
+});
+
 const UserSchema = new mongoose.Schema({
   firstname: {
     type: String,
@@ -30,35 +66,7 @@ const UserSchema = new mongoose.Schema({
     minlength: 8,
   },
 
-  internshipDetails: {
-    type: Object,
-    ref: "User",
-  },
-  contactnumber: {
-    type: String,
-    maxlength: 15,
-    minlength: 6,
-  },
-  requiredhours: {
-    type: String,
-    maxlength: 3,
-    minlength: 1,
-  },
-  companyname: {
-    type: String,
-    maxlength: 100,
-    minlength: 10,
-  },
-  companyaddress: {
-    type: String,
-    maxlength: 100,
-    minlength: 10,
-  },
-  supervisor: {
-    type: String,
-    maxlength: 100,
-    minlength: 10,
-  },
+  internshipDetails: internsDetails,
 });
 
 UserSchema.pre("save", async function () {
@@ -68,7 +76,7 @@ UserSchema.pre("save", async function () {
 
 UserSchema.methods.createJWT = function () {
   const token = jwt.sign(
-    { userId: this._id, name: this.name },
+    { userId: this._id, name: this.firstname },
     process.env.JWT_SECRET,
     {
       expiresIn: process.env.JWT_LIFETIME,
@@ -81,4 +89,5 @@ UserSchema.methods.comparePassword = async function (canditatePassword) {
   const match = await bcrypt.compare(canditatePassword, this.password);
   return match;
 };
+
 module.exports = mongoose.model("User", UserSchema);
