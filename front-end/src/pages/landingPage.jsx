@@ -86,18 +86,14 @@ const LandingPage = () => {
         <div className="landing-contents">
           <div className="text">
             <h3>Student Internship Monitoring System</h3>
-            <p>A web-based system</p>
+            <p>A web application</p>
             <p>
-              that monitors the progress of student’s internship performance and
-              state. The essence of this system is to provide clear and valid
-              data; those includes the number of rendered hours, the time-in and
-              time-outs, over-times, daily and weekly accomplishment tasks. The
-              system's h1 point is making it easy for students to gather the
-              necessary documents for their narrative report. On the other side,
-              OJT coordinator have his own interface in the system by which he
-              can see that current state of his students.
+              that helps OJT coordinators and students monitor the progress of
+              the latter's internship performance and status including the
+              number of rendered hours, Daily Time Record, weekly accomplishment
+              reports, and other necessary documents.
             </p>
-            <p> Beneficiaries: • Students • OJT Coordinators</p>
+
             <div className="darkbg"></div>
             <div className="darkbg2"></div>
           </div>
