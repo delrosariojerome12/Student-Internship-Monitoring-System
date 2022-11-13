@@ -1,8 +1,13 @@
 const express = require("express");
 const router = express.Router();
 
-const {updateInfos} = require("../controllers/interns");
+const {
+  updateInfos,
+  getInfos,
+  getAllInterns,
+} = require("../controllers/interns");
 
-router.route("/").patch(updateInfos);
+router.route("/").patch(updateInfos).get(getAllInterns);
+router.route("/:id").get(getInfos);
 
 module.exports = router;
