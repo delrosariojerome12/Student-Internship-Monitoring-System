@@ -1,9 +1,15 @@
 import React from "react";
 import searchIcon from "../../assets/img/search.svg";
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 import jwt_decode from "jwt-decode";
+import {useEffect} from "react";
+import {setUser} from "../../features/user/userReducer";
+
 const DashboardMain = () => {
   const {user} = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  console.log("main");
 
   const decode = jwt_decode(localStorage.getItem("token"));
 
