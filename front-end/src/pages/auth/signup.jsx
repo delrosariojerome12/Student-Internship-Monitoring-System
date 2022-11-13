@@ -29,6 +29,7 @@ const Signup = () => {
       errorMessage: "First name must be between 3 and 20 characters long",
       hasEyeIcon: false,
       code: "firstname",
+      isVisible: true,
     },
     {
       forInput: "Last Name",
@@ -40,6 +41,7 @@ const Signup = () => {
       errorMessage: "Last name must be between 3 and 20 characters long",
       hasEyeIcon: false,
       code: "lastname",
+      isVisible: true,
     },
     {
       forInput: "Email",
@@ -51,6 +53,7 @@ const Signup = () => {
       errorMessage: "Please provide valid email",
       hasEyeIcon: false,
       code: "email",
+      isVisible: true,
     },
     {
       forInput: "Password",
@@ -65,6 +68,8 @@ const Signup = () => {
       hasEyeIcon: true,
       hasShownPassword: false,
       code: "password",
+      isVisible: true,
+      hasShownPassword: false,
     },
     {
       forInput: "Confirm Password",
@@ -75,6 +80,8 @@ const Signup = () => {
       isError: false,
       errorMessage: "Password are not the same",
       hasEyeIcon: true,
+      hasShownPassword: false,
+      isVisible: false,
       hasShownPassword: false,
     },
   ]);
@@ -89,12 +96,16 @@ const Signup = () => {
         value.length > 2 && value.length < 20
           ? (data[index].isError = false)
           : (data[index].isError = true);
+        data[index].value =
+          value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
         setForm(data);
         return;
       case "Last Name":
         value.length > 2 && value.length < 20
           ? (data[index].isError = false)
           : (data[index].isError = true);
+        data[index].value =
+          value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
         setForm(data);
         return;
       case "Email":
@@ -105,21 +116,32 @@ const Signup = () => {
         setForm(data);
         return;
       case "Password":
-        const passswordRegex =
+        const passwordRegex =
           /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,16}$/;
-        let isPasswordValid = passswordRegex.test(value);
-        isPasswordValid
-          ? (data[index].isError = false)
-          : (data[index].isError = true);
+        let isPasswordValid = passwordRegex.test(value);
+
+        if (isPasswordValid) {
+          data[index].isError = false;
+          data[index + 1].isVisible = true;
+        } else {
+          data[index].isError = true;
+          data[index + 1].isVisible = false;
+          data[index + 1].value = "";
+        }
         setForm(data);
         return;
       case "Confirm Password":
         const password = form[index - 1].value;
         const confirmPassword = form[index];
-        password === confirmPassword.value
+        const confirmPasswordRegex =
+          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,16}$/;
+        let isConfirmPasswordValid = confirmPasswordRegex.test(value);
+        password === confirmPassword.value && isConfirmPasswordValid
           ? (confirmPassword.isError = false)
           : (confirmPassword.isError = true);
+
         setForm(data);
+
         return;
       default:
         break;
@@ -199,37 +221,44 @@ const Signup = () => {
         errorMessage,
         hasEyeIcon,
         hasShownPassword,
+        isVisible,
       } = inputs;
       return (
-        <div className="input-contain" key={index}>
-          <input
-            type={type}
-            name={forInput}
-            id={id}
-            className={isError ? "input-error" : null}
-            value={value}
-            required
-            onChange={(e) => handleOnChange(e.target.value, index, forInput)}
-            autoComplete={hasEyeIcon ? "true" : null}
-          />
-          <div className="placeholder-container">
-            <label
-              htmlFor={id}
-              className={value ? "placeholder-text active" : "placeholder-text"}
-            >
-              <div className={isError ? "text icons-error" : "text"}>
-                <span>
-                  <IconType className={isError ? "icons-error" : "icons"} />
-                </span>
-                {forInput}
+        isVisible && (
+          <div className="input-contain" key={index}>
+            <input
+              type={type}
+              name={forInput}
+              id={id}
+              className={isError ? "input-error" : null}
+              value={value}
+              required
+              onChange={(e) => handleOnChange(e.target.value, index, forInput)}
+              autoComplete={hasEyeIcon ? "true" : null}
+            />
+            <div className="placeholder-container">
+              <label
+                htmlFor={id}
+                className={
+                  value ? "placeholder-text active" : "placeholder-text"
+                }
+              >
+                <div className={isError ? "text icons-error" : "text"}>
+                  <span>
+                    <IconType className={isError ? "icons-error" : "icons"} />
+                  </span>
+                  {forInput}
+                </div>
+              </label>
+            </div>
+            {isError && <p className="error-message">{errorMessage}</p>}
+            {hasEyeIcon && (
+              <div className="eye-container">
+                {renderEyeIcon(hasShownPassword, index)}
               </div>
-            </label>
+            )}
           </div>
-          {isError && <p className="error-message">{errorMessage}</p>}
-          <div className="eye-container">
-            {hasEyeIcon && renderEyeIcon(hasShownPassword, index)}
-          </div>
-        </div>
+        )
       );
     });
   };

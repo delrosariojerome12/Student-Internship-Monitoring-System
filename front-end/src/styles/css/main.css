@@ -417,7 +417,7 @@ button {
   position: absolute;
   display: flex;
   align-items: center;
-  top: 1.7rem;
+  top: 1.4rem;
   right: 3%;
 }
 .signin .card-container form .input-contain .eye-container svg {
