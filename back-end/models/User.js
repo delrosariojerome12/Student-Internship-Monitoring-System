@@ -19,7 +19,7 @@ const internsDetails = new mongoose.Schema({
     type: String,
     required: [true, "Please provide contact number"],
     maxlength: 11,
-    minlength: 11,
+    minlength: 1,
   },
   requiredhours: {
     type: String,
@@ -36,11 +36,11 @@ const internsDetails = new mongoose.Schema({
     maxlength: 50,
     minlength: 5,
   },
-  createdBy: {
-    type: mongoose.Types.ObjectId,
-    ref: "User",
-    required: [true],
-  },
+  // createdBy: {
+  //   type: mongoose.Types.ObjectId,
+  //   ref: "User",
+  //   required: [true],
+  // },
 });
 
 const UserSchema = new mongoose.Schema({
@@ -81,7 +81,7 @@ UserSchema.pre("save", async function () {
 
 UserSchema.methods.createJWT = function () {
   const token = jwt.sign(
-    { userId: this._id, name: this.firstname },
+    {userId: this._id, name: this.firstname},
     process.env.JWT_SECRET,
     {
       expiresIn: process.env.JWT_LIFETIME,

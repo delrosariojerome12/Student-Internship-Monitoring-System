@@ -15,12 +15,12 @@ const internsRouter = require("./routers/interns");
 const notFound = require("./middlewares/notFound");
 const errorHandler = require("./middlewares/errorHandler");
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(cors());
 // routes
 app.use("/auth", authRouter);
-app.use("/interns", authUser, internsRouter);
+app.use("/interns", internsRouter);
 
 app.use(notFound);
 app.use(errorHandler);
