@@ -4,14 +4,20 @@ import {VscFeedback} from "react-icons/vsc";
 import {MdLogout} from "react-icons/md";
 import {FaChevronRight} from "react-icons/fa";
 import {IconContext} from "react-icons";
+import {useDispatch, useSelector} from "react-redux";
 
 const ProfileTab = () => {
+  const {user} = useSelector((state) => state.user);
+  const dispatch = useDispatch("");
+
+  console.log(user);
+
   return (
     <IconContext.Provider value={{className: "icon"}}>
       <div className="profile-tab tab">
         <div className="user">
           <img src={"https://i.imgur.com/aFPFvGv.jpg"} alt="" />
-          <p>Bochi the Rock</p>
+          {/* <p>{firstname}</p> */}
         </div>
         <div className="dark-mode">
           <div className="icon-holder">

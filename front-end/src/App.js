@@ -8,7 +8,7 @@ import PageNotFound from "./pages/PageNotFound";
 import Login from "./pages/auth/login";
 import Signup from "./pages/auth/signup";
 
-import {Routes, Route, Outlet} from "react-router-dom";
+import {Routes, Route, Navigate} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
 import {setUser} from "./features/user/userReducer";
 import jwt_decode from "jwt-decode";
@@ -16,8 +16,6 @@ import jwt_decode from "jwt-decode";
 const App = () => {
   const {user} = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
-  console.log("app");
 
   // sets state of user from token
   useEffect(() => {
@@ -31,13 +29,27 @@ const App = () => {
     <main className="container">
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/account/login" element={<Login />} />
-        <Route path="/account/signup" element={<Signup />} />
+        {!user ? (
+          <>
+            <Route path="/account/login" element={<Login />} />
+            <Route path="/account/signup" element={<Signup />} />
+          </>
+        ) : (
+          <>
+            <Route
+              path="/account/login"
+              element={<Navigate to={"/dashboard"} replace />}
+            />
+            <Route
+              path="/account/signup"
+              element={<Navigate to={"/dashboard"} replace />}
+            />
+          </>
+        )}
         <Route path="/dashboard/*" element={<Dashboard />} />
         <Route path="/404" element={<PageNotFound />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-      <Outlet />
     </main>
   );
 };
