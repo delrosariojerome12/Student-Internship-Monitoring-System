@@ -87,13 +87,13 @@
     .tab {
       position: absolute;
       top: 1rem;
-      left: -29rem;
+      left: -31rem;
       height: auto;
-      width: 25rem;
+      min-width: 28rem;
       z-index: 2;
       background-color: $primary-bg-color-landing-compliment;
       border-radius: 2rem;
-      padding: 1rem;
+      padding: 2rem;
       color: #fff;
       display: flex;
       flex-direction: column;
@@ -113,6 +113,7 @@
         align-items: center;
         gap: 1rem;
         padding: 1rem;
+        cursor: pointer;
         &:hover {
           background-color: lighten(
             $color: $primary-bg-color-landing-compliment,
@@ -151,6 +152,64 @@
         }
         .icon:not(.icon-holder .icon) {
           font-size: 1.5rem;
+        }
+      }
+    }
+    .notification-tab {
+      display: grid;
+      width: 36rem;
+      left: -39rem;
+      .display {
+        display: grid;
+        gap: 1rem;
+        .notification {
+          height: 5rem;
+          cursor: pointer;
+          display: grid;
+          grid-template-columns: 5rem auto;
+          gap: 1rem;
+          .notif-icon {
+            height: 100%;
+            width: 100%;
+            img {
+              height: 100%;
+              width: 100%;
+              object-fit: contain;
+              border-radius: 50%;
+              border: solid 1px #fff;
+            }
+          }
+          & > * {
+            border: solid 1px #fff;
+          }
+        }
+      }
+    }
+    .chat-tab {
+      display: grid;
+      width: 32rem;
+      left: -35rem;
+      min-height: 20rem;
+      .display {
+        display: grid;
+        justify-content: center;
+        justify-items: center;
+        text-align: center;
+        gap: 1rem;
+        button {
+          border-radius: 1rem;
+          padding: 1rem;
+          border: solid 2px transparent;
+          background-color: #0f615d;
+          color: #fff;
+          transition: all 0.3s linear;
+          font-weight: 600;
+
+          &:hover {
+            background-color: #fff;
+            color: #0f615d;
+            border: solid 2px #0f615d;
+          }
         }
       }
     }

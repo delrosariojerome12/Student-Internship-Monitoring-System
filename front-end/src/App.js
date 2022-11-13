@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useCallback} from "react";
 // pages
 import LandingPage from "./pages/landingPage";
 import Dashboard from "./pages/dashboard/dashboard";
@@ -7,9 +7,26 @@ import PageNotFound from "./pages/PageNotFound";
 // component
 import Login from "./pages/auth/login";
 import Signup from "./pages/auth/signup";
+
 import {Routes, Route, Outlet} from "react-router-dom";
+import {useSelector, useDispatch} from "react-redux";
+import {setUser} from "./features/user/userReducer";
+import jwt_decode from "jwt-decode";
 
 const App = () => {
+  const {user} = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  console.log("app");
+
+  // sets state of user from token
+  useEffect(() => {
+    if (!user && localStorage.getItem("token")) {
+      const {name} = jwt_decode(localStorage.getItem("token"));
+      dispatch(setUser({firstname: name}));
+    }
+  }, []);
+
   return (
     <main className="container">
       <Routes>

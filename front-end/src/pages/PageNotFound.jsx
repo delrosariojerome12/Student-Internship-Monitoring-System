@@ -1,5 +1,6 @@
 import React from "react";
 import error404 from "../assets/ERROR IMAGE/Error.svg";
+
 const PageNotFound = () => {
   return (
     <section className="page-not-found">
