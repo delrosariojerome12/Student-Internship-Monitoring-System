@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from "react";
+import React, {useState, useCallback, useEffect} from "react";
 import {Link, redirect, useNavigate} from "react-router-dom";
 import axios from "axios";
 import logo from "../../assets/img/logo.svg";
@@ -11,12 +11,20 @@ import {
 } from "react-icons/fa";
 import {GrMail} from "react-icons/gr";
 import {IconContext} from "react-icons";
-import {useDispatch} from "react-redux";
-import {setUser} from "../../features/user/userReducer";
+import {useDispatch, useSelector} from "react-redux";
+import {handleSignup} from "../../features/user/userReducer";
 
 const Signup = () => {
-  const navigate = useNavigate();
+  const {isError, errorMessage, isLoading, user} = useSelector(
+    (state) => state.user
+  );
   const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   if (user) {
+  //     navigate("/dashboard");
+  //   }
+  // }, [user]);
 
   const [form, setForm] = useState([
     {
@@ -85,8 +93,6 @@ const Signup = () => {
       hasShownPassword: false,
     },
   ]);
-  const [isSignupError, setSignupError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
 
   const handleOnChange = (value, index, input) => {
     const data = [...form];
@@ -160,23 +166,6 @@ const Signup = () => {
     setForm(newForm);
   };
 
-  const convertForm = () => {
-    const newData = form.map((input) => {
-      const {code, value} = input;
-      return {
-        code,
-        value,
-      };
-    });
-
-    const newObject = Object.assign(
-      {},
-      ...newData.map((item) => ({[item.code]: item.value}))
-    );
-
-    return newObject;
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     let x = 0;
@@ -185,19 +174,7 @@ const Signup = () => {
     });
     // api send
     if (x === 0) {
-      try {
-        const url = "http://localhost:5000/auth/signup";
-        const {data: res} = await axios.post(url, convertForm());
-        localStorage.setItem("Bearer", res.token);
-        console.log(res);
-        dispatch(setUser(res.user));
-        navigate("/dashboard");
-      } catch (error) {
-        const {msg} = error.response.data;
-        setSignupError(true);
-        setErrorMessage(msg);
-        console.log(msg);
-      }
+      dispatch(handleSignup(form));
     }
   };
 
@@ -270,7 +247,7 @@ const Signup = () => {
         <header>
           <img src={logo} alt="" />
           <h1>Create Your Account</h1>
-          {isSignupError && <h3 style={{color: "red"}}>{errorMessage}</h3>}
+          {isError && <h3 style={{color: "red"}}>{errorMessage}</h3>}
         </header>
         <form onSubmit={handleSubmit}>
           <IconContext.Provider value={{color: "#000", className: "icons"}}>

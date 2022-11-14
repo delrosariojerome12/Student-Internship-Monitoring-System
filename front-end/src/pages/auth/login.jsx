@@ -15,7 +15,7 @@ import {useRef} from "react";
 import {useNavigate} from "react-router-dom";
 // import {signInWithGoogle} from "../../Firebase";
 import {useSelector, useDispatch} from "react-redux";
-import {fetchUser} from "../../features/user/userReducer";
+import {handleLogin} from "../../features/user/userReducer";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -58,11 +58,9 @@ const Login = () => {
     }
   }, [user]);
 
-  console.log("TEst");
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(fetchUser(form));
+    dispatch(handleLogin(form));
   };
 
   const handleOnChange = (value, index) => {
