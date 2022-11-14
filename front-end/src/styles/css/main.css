@@ -129,7 +129,7 @@ button {
   border: solid 3px transparent;
   outline: solid 1px #8b8b8b;
   border-radius: 0.5rem;
-  padding: 1.1rem;
+  padding: 1.1rem 3.5rem 1.1rem 1.1rem;
   letter-spacing: 2px;
   transition: all 0.1s ease-in-out;
 }
@@ -286,7 +286,7 @@ button {
   border: solid 3px transparent;
   outline: solid 1px #8b8b8b;
   border-radius: 0.5rem;
-  padding: 1.1rem;
+  padding: 1.1rem 3.5rem 1.1rem 1.1rem;
   letter-spacing: 2px;
   transition: all 0.1s ease-in-out;
 }
@@ -430,7 +430,7 @@ button {
   border: solid 3px transparent;
   outline: solid 1px #8b8b8b;
   border-radius: 0.5rem;
-  padding: 1.1rem;
+  padding: 1.1rem 3.5rem 1.1rem 1.1rem;
   letter-spacing: 2px;
   transition: all 0.1s ease-in-out;
 }
@@ -1776,7 +1776,7 @@ button {
   border: solid 3px transparent;
   outline: solid 1px #8b8b8b;
   border-radius: 0.5rem;
-  padding: 1.1rem;
+  padding: 1.1rem 3.5rem 1.1rem 1.1rem;
   letter-spacing: 2px;
   transition: all 0.1s ease-in-out;
 }
@@ -2022,7 +2022,7 @@ button {
   border: solid 3px transparent;
   outline: solid 1px #8b8b8b;
   border-radius: 0.5rem;
-  padding: 1.1rem;
+  padding: 1.1rem 3.5rem 1.1rem 1.1rem;
   letter-spacing: 2px;
   transition: all 0.1s ease-in-out;
 }
