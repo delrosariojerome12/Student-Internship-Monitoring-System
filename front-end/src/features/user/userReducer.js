@@ -25,11 +25,24 @@ const convertForm = (form) => {
   return newObject;
 };
 
-export const fetchUser = createAsyncThunk(
-  "/user/getUser",
+export const handleLogin = createAsyncThunk(
+  "/user/logUser",
   async (form, {rejectWithValue}) => {
     try {
       const url = "http://localhost:5000/auth/login";
+      const {data: res} = await axios.post(url, convertForm(form));
+      return {res};
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const handleSignup = createAsyncThunk(
+  "/user/signUser",
+  async (form, {rejectWithValue}) => {
+    try {
+      const url = "http://localhost:5000/auth/signup";
       const {data: res} = await axios.post(url, convertForm(form));
       return {res};
     } catch (err) {
@@ -45,21 +58,41 @@ export const userReducer = createSlice({
     setUser: (state, action) => {
       state.user = action.payload;
     },
+    handleLogout: (state, action) => {
+      state.user = null;
+      localStorage.removeItem("token");
+    },
   },
   extraReducers: (builder) => {
-    // login
     builder
-      .addCase(fetchUser.pending, (state) => {
+      .addCase(handleLogin.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(fetchUser.fulfilled, (state, action) => {
+      .addCase(handleLogin.fulfilled, (state, action) => {
+        const {res} = action.payload;
+        console.log(res);
+        state.isLoading = false;
+        state.isError = false;
+        state.user = res.user;
+        localStorage.setItem("token", res.token);
+      })
+      .addCase(handleLogin.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.errorMessage = action.payload.msg;
+      });
+    builder
+      .addCase(handleSignup.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(handleSignup.fulfilled, (state, action) => {
         const {res} = action.payload;
         state.isLoading = false;
         state.isError = false;
         state.user = res.user;
         localStorage.setItem("token", res.token);
       })
-      .addCase(fetchUser.rejected, (state, action) => {
+      .addCase(handleSignup.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.errorMessage = action.payload.msg;
@@ -67,6 +100,6 @@ export const userReducer = createSlice({
   },
 });
 
-export const {setUser} = userReducer.actions;
+export const {setUser, handleLogout} = userReducer.actions;
 
 export default userReducer.reducer;
