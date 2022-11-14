@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const internsDetails = mongoose.Schema({
+const internsDetails = new mongoose.Schema({
   companyname: {
     type: String,
     required: [true, "Please provide company name"],
@@ -19,7 +19,7 @@ const internsDetails = mongoose.Schema({
     type: String,
     required: [true, "Please provide contact number"],
     maxlength: 11,
-    minlength: 11,
+    minlength: 1,
   },
   requiredhours: {
     type: String,
