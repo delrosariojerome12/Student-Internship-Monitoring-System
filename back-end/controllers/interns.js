@@ -3,9 +3,7 @@ const { StatusCodes } = require("http-status-codes");
 const { BadRequest, NotFound } = require("../errors");
 
 const getAllInfos = async (req, res) => {
-  // res.send("Get All");
-  const interns = await User.find({ _id: req.user.userId }).sort("createdAt");
-  res.status(StatusCodes.OK).json({ interns, count: interns.length });
+  res.send("Get All");
 };
 
 const getSingleInfos = async (req, res) => {
