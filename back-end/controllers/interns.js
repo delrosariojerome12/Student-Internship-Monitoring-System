@@ -52,4 +52,4 @@ const updateIntern = async (req, res) => {
 
 module.exports = { updateIntern, getIntern, getAllInterns };
 
-//return password
+//password and id remove
