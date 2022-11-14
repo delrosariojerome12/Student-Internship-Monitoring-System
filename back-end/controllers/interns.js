@@ -1,24 +1,24 @@
 const User = require("../models/User");
-const { StatusCodes } = require("http-status-codes");
-const { BadRequest, NotFound } = require("../errors");
+const {StatusCodes} = require("http-status-codes");
+const {BadRequest, NotFound} = require("../errors");
 
-const getAllInfos = async (req, res) => {
-  const { users } = req.body;
-  const interns = await User.find({ users }).sort("createdAt");
-  res.status(StatusCodes.OK).json({ interns, count: interns.length });
+const getAllInterns = async (req, res) => {
+  const {users} = req.body;
+  const interns = await User.find({users}).sort("createdAt");
+  res.status(StatusCodes.OK).json({interns, count: interns.length});
 };
 
-const getSingleInfos = async (req, res) => {
-  const { email } = req.body;
-  const intern = await User.findOne({ email });
+const getIntern = async (req, res) => {
+  const {email} = req.params;
+  const intern = await User.findOne({email});
 
   if (!intern) {
     throw new NotFound(`No intern with email ${email}`);
   }
-  res.status(StatusCodes.OK).json({ intern });
+  res.status(StatusCodes.OK).json({user: intern});
 };
 
-const updateInfos = async (req, res) => {
+const updateIntern = async (req, res) => {
   const {
     email,
     internshipDetails: {
@@ -39,7 +39,7 @@ const updateInfos = async (req, res) => {
   ) {
     throw new BadRequest("fields cannot be empty");
   }
-  const intern = await User.findOneAndUpdate({ email }, req.body, {
+  const intern = await User.findOneAndUpdate({email}, req.body, {
     new: true,
     runValidators: true,
   });
@@ -47,7 +47,7 @@ const updateInfos = async (req, res) => {
   if (!intern) {
     throw new NotFound(`No intern with email ${email}`);
   }
-  res.status(StatusCodes.OK).json({ intern });
+  res.status(StatusCodes.OK).json({intern});
 };
 
-module.exports = { updateInfos, getSingleInfos, getAllInfos };
+module.exports = {updateIntern, getIntern, getAllInterns};

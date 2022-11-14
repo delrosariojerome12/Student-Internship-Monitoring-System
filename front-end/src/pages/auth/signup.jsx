@@ -20,12 +20,6 @@ const Signup = () => {
   );
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   if (user) {
-  //     navigate("/dashboard");
-  //   }
-  // }, [user]);
-
   const [form, setForm] = useState([
     {
       forInput: "First Name",
@@ -71,7 +65,7 @@ const Signup = () => {
       IconType: FaLock,
       isError: false,
       errorMessage:
-        "Your password must: Contain unique characters, numbers, or symbols Not contain your email address",
+        "Password must have: Atleast 1 uppercase, 1 lowercase, 1 number, 1 special characters and minimum of 8 characters",
       requirements: [],
       hasEyeIcon: true,
       hasShownPassword: false,
@@ -122,10 +116,10 @@ const Signup = () => {
         setForm(data);
         return;
       case "Password":
+        // const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
         const passwordRegex =
-          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,16}$/;
+          /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$/;
         let isPasswordValid = passwordRegex.test(value);
-
         if (isPasswordValid) {
           data[index].isError = false;
           data[index + 1].isVisible = true;
@@ -140,7 +134,7 @@ const Signup = () => {
         const password = form[index - 1].value;
         const confirmPassword = form[index];
         const confirmPasswordRegex =
-          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,16}$/;
+          /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$/;
         let isConfirmPasswordValid = confirmPasswordRegex.test(value);
         password === confirmPassword.value && isConfirmPasswordValid
           ? (confirmPassword.isError = false)

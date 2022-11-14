@@ -1,4 +1,4 @@
-import React, {useEffect, useCallback} from "react";
+import React, {useEffect} from "react";
 // pages
 import LandingPage from "./pages/landingPage";
 import Dashboard from "./pages/dashboard/dashboard";
@@ -11,6 +11,7 @@ import Signup from "./pages/auth/signup";
 import {Routes, Route, Navigate} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
 import {setUser} from "./features/user/userReducer";
+import {getUserOnLoad} from "./features/user/userReducer";
 import jwt_decode from "jwt-decode";
 
 const App = () => {
@@ -20,8 +21,8 @@ const App = () => {
   // sets state of user from token
   useEffect(() => {
     if (!user && localStorage.getItem("token")) {
-      const {name} = jwt_decode(localStorage.getItem("token"));
-      dispatch(setUser({firstname: name}));
+      const {name, email} = jwt_decode(localStorage.getItem("token"));
+      dispatch(getUserOnLoad(email));
     }
   }, []);
 

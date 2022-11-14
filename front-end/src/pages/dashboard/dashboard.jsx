@@ -18,7 +18,7 @@ const Settings = lazy(() => import("./Settings"));
 const Dashboard = () => {
   const {isSidebarOpen} = useSelector((state) => state.dashboard);
   const {user} = useSelector((state) => state.user);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   if (!user && !localStorage.getItem("token")) {
     return <h1>User Session Expired</h1>;

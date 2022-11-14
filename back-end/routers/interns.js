@@ -2,13 +2,13 @@ const express = require("express");
 const router = express.Router();
 
 const {
-  updateInfos,
-  getSingleInfos,
-  getAllInfos,
+  getIntern,
+  getAllInterns,
+  updateIntern,
 } = require("../controllers/interns");
 
-router.route("/getallintern").get(getAllInfos);
-router.route("/getintern").get(getSingleInfos);
-router.route("/updateintern").patch(updateInfos);
+router.route("/getAllInterns").get(getAllInterns);
+router.route("/getIntern/:email").get(getIntern);
+router.route("/updateIntern").patch(updateIntern);
 
 module.exports = router;

@@ -2,7 +2,6 @@ import React from "react";
 import searchIcon from "../../assets/img/search.svg";
 import {useSelector, useDispatch} from "react-redux";
 import jwt_decode from "jwt-decode";
-import {useEffect} from "react";
 import {setUser} from "../../features/user/userReducer";
 
 const DashboardMain = () => {
