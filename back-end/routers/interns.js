@@ -3,11 +3,12 @@ const router = express.Router();
 
 const {
   updateInfos,
-  getInfos,
-  getAllInterns,
+  getSingleInfos,
+  getAllInfos,
 } = require("../controllers/interns");
 
-router.route("/").patch(updateInfos).get(getAllInterns);
-router.route("/:id").get(getInfos);
+router.route("/getallintern").get(getAllInfos);
+router.route("/getintern").get(getSingleInfos);
+router.route("/updateintern").patch(updateInfos);
 
 module.exports = router;
