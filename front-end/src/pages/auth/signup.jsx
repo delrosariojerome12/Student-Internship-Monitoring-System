@@ -20,12 +20,6 @@ const Signup = () => {
   );
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   if (user) {
-  //     navigate("/dashboard");
-  //   }
-  // }, [user]);
-
   const [form, setForm] = useState([
     {
       forInput: "First Name",
