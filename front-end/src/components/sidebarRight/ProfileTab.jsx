@@ -9,7 +9,7 @@ import {handleLogout} from "../../features/user/userReducer";
 import {useNavigate} from "react-router-dom";
 const ProfileTab = () => {
   const {
-    user: {firstname, lastname},
+    user: {firstName, lastName},
   } = useSelector((state) => state.user);
   const dispatch = useDispatch("");
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ const ProfileTab = () => {
       <div className="profile-tab tab">
         <div className="user">
           <img src={"https://i.imgur.com/aFPFvGv.jpg"} alt="" />
-          <p>{`${firstname} ${lastname}`}</p>
+          <p>{`${firstName} ${lastName}`}</p>
         </div>
         <div className="dark-mode">
           <div className="icon-holder">

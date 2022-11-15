@@ -30,7 +30,7 @@ const Signup = () => {
       isError: false,
       errorMessage: "First name must be between 3 and 20 characters long",
       hasEyeIcon: false,
-      code: "firstname",
+      code: "firstName",
       isVisible: true,
     },
     {
@@ -42,7 +42,7 @@ const Signup = () => {
       isError: false,
       errorMessage: "Last name must be between 3 and 20 characters long",
       hasEyeIcon: false,
-      code: "lastname",
+      code: "lastName",
       isVisible: true,
     },
     {
@@ -193,14 +193,15 @@ const Signup = () => {
         hasEyeIcon,
         hasShownPassword,
         isVisible,
+        code,
       } = inputs;
       return (
         isVisible && (
           <div className="input-contain" key={index}>
             <input
               type={type}
-              name={forInput}
-              id={id}
+              name={code}
+              id={code}
               className={isError ? "input-error" : null}
               value={value}
               required

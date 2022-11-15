@@ -4,9 +4,9 @@ const {BadRequest, Unauthorize, NotFound} = require("../errors");
 
 //register
 const signup = async (req, res) => {
-  const {firstname, lastname, email, password} = req.body;
+  const {firstName, lastName, email, password} = req.body;
 
-  if (!firstname || !lastname || !email || !password) {
+  if (!firstName || !lastName || !email || !password) {
     throw new BadRequest("Credentials must be provided");
   }
   const user = await User.create({...req.body});
@@ -14,11 +14,8 @@ const signup = async (req, res) => {
   const token = user.createJWT();
   res.status(StatusCodes.CREATED).json({
     user: {
-      name: `${user.firstname} ${user.lastname}`,
-      firstname: user.firstname,
-      lastname: user.lastname,
-      email: user.email,
-      userID: user._id,
+      name: `${user.firstName} ${user.lastName}`,
+      ...user,
     },
     token,
   });
@@ -45,11 +42,8 @@ const login = async (req, res) => {
   const token = user.createJWT();
   res.status(StatusCodes.OK).json({
     user: {
-      name: `${user.firstname} ${user.lastname}`,
-      firstname: user.firstname,
-      lastname: user.lastname,
-      email: user.email,
-      userID: user._id,
+      name: `${user.firstName} ${user.lastName}`,
+      ...user,
     },
     token,
   });

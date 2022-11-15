@@ -1,38 +1,38 @@
-const internsDetails = {
-  companyname: {
+const internshipDetails = {
+  companyName: {
     type: String,
-    required: [true, "Please provide company name"],
+    // required: [true, "Please provide company name"],
     maxlength: 50,
     minlength: 2,
   },
-  companyaddress: {
+  companyAddress: {
     type: String,
-    required: [true, "Please provide company address"],
+    // required: [true, "Please provide company address"],
     maxlength: 70,
     minlength: 10,
   },
-  contactnumber: {
+  contactNumber: {
     type: String,
-    required: [true, "Please provide contact number"],
+    // required: [true, "Please provide contact number"],
     maxlength: 11,
     minlength: 1,
   },
-  requiredhours: {
+  requiredHours: {
     type: String,
-    required: [
-      true,
-      "Please provide the exact number of hours to be rendered.",
-    ],
+    // required: [
+    //   true,
+    //   "Please provide the exact number of hours to be rendered.",
+    // ],
     maxlength: 4,
     minlength: 1,
   },
   supervisor: {
     type: String,
-    required: [true, "Please provide supervisor name"],
+    // required: [true, "Please provide supervisor name"],
     maxlength: 50,
     minlength: 5,
   },
-  requiredHours: {
+  renderedHours: {
     type: String,
     default: "0",
     maxlength: 4,
@@ -65,4 +65,4 @@ const internsAssets = {
   },
 };
 
-module.exports = { internsDetails, internsAssets };
+module.exports = {internshipDetails, internsAssets};

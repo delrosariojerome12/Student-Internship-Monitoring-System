@@ -1,5 +1,4 @@
 import React, {useState, useCallback, useEffect} from "react";
-import {debounce} from "lodash";
 import {Link} from "react-router-dom";
 import logo from "../../assets/img/logo.svg";
 import {
@@ -52,11 +51,11 @@ const Login = () => {
   const refPassword = useRef();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (user) {
-      navigate("/dashboard");
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (user) {
+  //     navigate("/dashboard");
+  //   }
+  // }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

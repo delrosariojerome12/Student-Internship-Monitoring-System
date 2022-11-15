@@ -57,7 +57,11 @@ export const handleSignup = createAsyncThunk(
   async (form, {rejectWithValue}) => {
     try {
       const url = "http://localhost:5000/auth/signup";
-      const {data: res} = await axios.post(url, convertForm(form));
+      const {data: res} = await axios.post(url, {
+        ...convertForm(form),
+        isValidated: false,
+      });
+      console.log(res);
       return {res};
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -121,7 +125,7 @@ export const userReducer = createSlice({
       })
       .addCase(getUserOnLoad.fulfilled, (state, action) => {
         const {res} = action.payload;
-        state.isLoading = true;
+        state.isLoading = false;
         state.user = res;
       })
       .addCase(getUserOnLoad.rejected, (state, action) => {

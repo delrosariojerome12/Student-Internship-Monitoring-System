@@ -2,18 +2,18 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const { internsDetails, internsAssets } = require("./utils/internsDetails");
+const {internshipDetails, internsAssets} = require("./utils/internsDetails");
 const schoolDetails = require("./utils/schoolDetails");
 
 const UserSchema = new mongoose.Schema(
   {
-    firstname: {
+    firstName: {
       type: String,
       required: [true, "Please provide firstname"],
       maxlength: 20,
       minlength: 3,
     },
-    lastname: {
+    lastName: {
       type: String,
       required: [true, "Please provide lastname"],
       maxlength: 20,
@@ -37,12 +37,16 @@ const UserSchema = new mongoose.Schema(
       ],
       minlength: 8,
     },
+    isValidated: {
+      type: Boolean,
+      default: false,
+    },
 
-    internsDetails,
+    internshipDetails,
     internsAssets,
     schoolDetails,
   },
-  { versionKey: false }
+  {versionKey: false}
 );
 
 UserSchema.pre("save", async function () {
@@ -52,7 +56,7 @@ UserSchema.pre("save", async function () {
 
 UserSchema.methods.createJWT = function () {
   const token = jwt.sign(
-    { userId: this._id, name: this.firstname, email: this.email },
+    {userId: this._id, name: this.firstname, email: this.email},
     process.env.JWT_SECRET,
     {
       expiresIn: process.env.JWT_LIFETIME,

@@ -1,9 +1,7 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {Route, Routes, Navigate} from "react-router-dom";
 import {lazy, Suspense} from "react";
-import jwt from "jwt-decode";
-import {setUser} from "../../features/user/userReducer";
-import {useSelector, useDispatch} from "react-redux";
+import {useSelector} from "react-redux";
 
 import DashboardMain from "./DashboardMain";
 import SidebarLeft from "../../components/dashboard/SidebarLeft";
@@ -21,7 +19,7 @@ const Dashboard = () => {
   // const dispatch = useDispatch();
 
   if (!user && !localStorage.getItem("token")) {
-    return <h1>User Session Expired</h1>;
+    return <Navigate to={"/404"} />;
   }
 
   return (
