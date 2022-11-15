@@ -5,10 +5,10 @@ import jwt_decode from "jwt-decode";
 import {setUser} from "../../features/user/userReducer";
 
 const DashboardMain = () => {
-  const {user} = useSelector((state) => state.user);
+  const {
+    user: {firstname},
+  } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
-  console.log("main");
 
   const decode = jwt_decode(localStorage.getItem("token"));
 
@@ -16,7 +16,7 @@ const DashboardMain = () => {
     <section className="main">
       <header>
         <div className="name-container">
-          <h1 className="name">Hello {user ? user.firstname : decode.name}</h1>
+          <h1 className="name">Hello {firstname}</h1>
           <h4>Welcome Back!</h4>
         </div>
         <div className="search-box">

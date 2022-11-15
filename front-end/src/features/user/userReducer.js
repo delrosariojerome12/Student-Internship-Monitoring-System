@@ -31,8 +31,7 @@ export const getUserOnLoad = createAsyncThunk(
     try {
       const url = `http://localhost:5000/interns/getIntern/${email}`;
       const {data: res} = await axios.get(url);
-      console.log(res);
-      return {res};
+      return {res: res.user};
     } catch (error) {
       console.log(error);
       return rejectWithValue(error.response.data);
@@ -122,10 +121,8 @@ export const userReducer = createSlice({
       })
       .addCase(getUserOnLoad.fulfilled, (state, action) => {
         const {res} = action.payload;
-
         state.isLoading = true;
-        // state.user = user.re
-        console.log(res);
+        state.user = res;
       })
       .addCase(getUserOnLoad.rejected, (state, action) => {
         state.isLoading = false;

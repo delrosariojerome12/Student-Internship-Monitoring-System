@@ -26,6 +26,12 @@ const App = () => {
     }
   }, []);
 
+  if (!user) {
+    return <h1>Loading...</h1>;
+  }
+
+  console.log(user);
+
   return (
     <main className="container">
       <Routes>
