@@ -1,9 +1,14 @@
 const express = require("express");
 const router = express.Router();
 
-const { createInfos } = require("../controllers/interns");
+const {
+  getIntern,
+  getAllInterns,
+  updateIntern,
+} = require("../controllers/interns");
 
-router.route("/").post(createInfos);
-// router.route("/:email").patch(updateUser);
+router.route("/getAllInterns").get(getAllInterns);
+router.route("/getIntern/:email").get(getIntern);
+router.route("/updateIntern").patch(updateIntern);
 
 module.exports = router;

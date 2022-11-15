@@ -8,18 +8,18 @@ import {useDispatch, useSelector} from "react-redux";
 import {handleLogout} from "../../features/user/userReducer";
 import {useNavigate} from "react-router-dom";
 const ProfileTab = () => {
-  const {user} = useSelector((state) => state.user);
+  const {
+    user: {firstName, lastName},
+  } = useSelector((state) => state.user);
   const dispatch = useDispatch("");
   const navigate = useNavigate();
-
-  console.log(user);
 
   return (
     <IconContext.Provider value={{className: "icon"}}>
       <div className="profile-tab tab">
         <div className="user">
           <img src={"https://i.imgur.com/aFPFvGv.jpg"} alt="" />
-          <p>{user.firstname}</p>
+          <p>{`${firstName} ${lastName}`}</p>
         </div>
         <div className="dark-mode">
           <div className="icon-holder">

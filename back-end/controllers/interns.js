@@ -1,47 +1,57 @@
 const User = require("../models/User");
-const { StatusCodes } = require("http-status-codes");
-const { BadRequest, NotFound } = require("../errors");
+const {StatusCodes} = require("http-status-codes");
+const {BadRequest, NotFound} = require("../errors");
 
-const createInfos = async (req, res) => {
+const getAllInterns = async (req, res) => {
+  const {users} = req.body;
+  const interns = await User.find({users}).sort("createdAt");
+  res.status(StatusCodes.OK).json({interns, count: interns.length});
+};
+
+const getIntern = async (req, res) => {
+  const {email} = req.params;
+  const user = await User.findOne({email});
+
+  if (!user) {
+    throw new NotFound(`No intern with email ${email}`);
+  }
+  res.status(StatusCodes.OK).json({user});
+};
+
+const updateIntern = async (req, res) => {
   const {
-    companyname,
-    companyaddress,
-    contactnumber,
-    requiredhours,
-    supervisor,
+    email,
+    internshipDetails: {
+      companyName,
+      companyAddress,
+      contactNumber,
+      requiredHours,
+      renderedHours,
+      supervisor,
+    },
   } = req.body;
 
-  const userMoreDetails = await User.create({
-    companyname,
-    companyaddress,
-    contactnumber,
-    requiredhours,
-    supervisor,
+  if (
+    !companyName ||
+    !companyAddress ||
+    !contactNumber ||
+    !requiredHours ||
+    !supervisor ||
+    !renderedHours
+  ) {
+    throw new BadRequest("fields cannot be empty");
+  }
+  const user = await User.findOneAndUpdate({email}, req.body, {
+    new: true,
+    runValidators: true,
   });
 
-  if (userMoreDetails) {
-    req.send(userMoreDetails);
-  } else {
-    res.status(500).send("unsuccesful");
+  if (!user) {
+    throw new NotFound(`No intern with email ${email}`);
   }
-
-  // req.body.createdBy = req.user.userId;
-  // const job = await Job.create(req.body);
-  // res.status(StatusCodes.CREATED).json({ job });
+  res.status(StatusCodes.OK).json({user});
 };
-// const updateUser = async (req, res) => {
-//   const {
-//     body: { internshipDetails },
-//     params: { email },
-//   } = req;
-//   const user = await User.findByIdAndUpdate({ email }, req.body, {
-//     new: true,
-//     runValidators: true,
-//   });
-//   if (!user) {
-//     throw new NotFound(`No user with email ${email}`);
-//   }
-//   res.status(StatusCodes.OK).json({ user });
-// };
 
-module.exports = { createInfos };
+module.exports = {updateIntern, getIntern, getAllInterns};
+
+//password and id remove

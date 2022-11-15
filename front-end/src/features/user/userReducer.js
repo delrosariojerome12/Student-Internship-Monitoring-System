@@ -25,6 +25,20 @@ const convertForm = (form) => {
   return newObject;
 };
 
+export const getUserOnLoad = createAsyncThunk(
+  "/user/getUserOnLoad",
+  async (email, {rejectWithValue}) => {
+    try {
+      const url = `http://localhost:5000/interns/getIntern/${email}`;
+      const {data: res} = await axios.get(url);
+      return {res: res.user};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 export const handleLogin = createAsyncThunk(
   "/user/logUser",
   async (form, {rejectWithValue}) => {
@@ -43,7 +57,11 @@ export const handleSignup = createAsyncThunk(
   async (form, {rejectWithValue}) => {
     try {
       const url = "http://localhost:5000/auth/signup";
-      const {data: res} = await axios.post(url, convertForm(form));
+      const {data: res} = await axios.post(url, {
+        ...convertForm(form),
+        isValidated: false,
+      });
+      console.log(res);
       return {res};
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -64,6 +82,7 @@ export const userReducer = createSlice({
     },
   },
   extraReducers: (builder) => {
+    // login
     builder
       .addCase(handleLogin.pending, (state) => {
         state.isLoading = true;
@@ -81,18 +100,35 @@ export const userReducer = createSlice({
         state.isError = true;
         state.errorMessage = action.payload.msg;
       });
+    // signup
     builder
       .addCase(handleSignup.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(handleSignup.fulfilled, (state, action) => {
         const {res} = action.payload;
+        console.log(res);
         state.isLoading = false;
         state.isError = false;
         state.user = res.user;
         localStorage.setItem("token", res.token);
       })
       .addCase(handleSignup.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.errorMessage = action.payload.msg;
+      });
+    // get user onload
+    builder
+      .addCase(getUserOnLoad.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(getUserOnLoad.fulfilled, (state, action) => {
+        const {res} = action.payload;
+        state.isLoading = false;
+        state.user = res;
+      })
+      .addCase(getUserOnLoad.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.errorMessage = action.payload.msg;
