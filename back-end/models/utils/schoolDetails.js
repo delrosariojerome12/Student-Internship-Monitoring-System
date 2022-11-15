@@ -1,6 +1,4 @@
-const mongoose = require("mongoose");
-
-const schoolDetails = new mongoose.Schema({
+const schoolDetails = {
   program: {
     type: String,
     required: [true, "Please provide program"],
@@ -13,6 +11,6 @@ const schoolDetails = new mongoose.Schema({
     maxlength: 50,
     minlength: 3,
   },
-});
+};
 
 module.exports = schoolDetails;

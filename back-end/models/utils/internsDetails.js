@@ -1,6 +1,4 @@
-const mongoose = require("mongoose");
-
-const internsDetails = new mongoose.Schema({
+const internsDetails = {
   companyname: {
     type: String,
     required: [true, "Please provide company name"],
@@ -34,9 +32,15 @@ const internsDetails = new mongoose.Schema({
     maxlength: 50,
     minlength: 5,
   },
-});
+  requiredHours: {
+    type: String,
+    default: "0",
+    maxlength: 4,
+    minlenght: 1,
+  },
+};
 
-const internsAssets = new mongoose.Schema({
+const internsAssets = {
   // profile img- bg image- notif - chat - feedback
   profileImage: {
     type: String,
@@ -59,6 +63,6 @@ const internsAssets = new mongoose.Schema({
   feedback: {
     feedBack: [],
   },
-});
+};
 
 module.exports = { internsDetails, internsAssets };
