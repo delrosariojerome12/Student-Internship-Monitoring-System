@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const { internsDetails, internsAssets } = require("./internsDetails");
-const schoolDetails = require("./schoolDetails");
+const { internsDetails, internsAssets } = require("./utils/internsDetails");
+const schoolDetails = require("./utils/schoolDetails");
 
 const UserSchema = new mongoose.Schema(
   {
@@ -38,9 +38,9 @@ const UserSchema = new mongoose.Schema(
       minlength: 8,
     },
 
-    internshipDetails: internsDetails,
-    internsAssets: internsAssets,
-    schoolDetails: schoolDetails,
+    internsDetails,
+    internsAssets,
+    schoolDetails,
   },
   { versionKey: false }
 );
