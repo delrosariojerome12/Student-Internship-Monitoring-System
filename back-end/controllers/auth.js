@@ -15,7 +15,11 @@ const signup = async (req, res) => {
   res.status(StatusCodes.CREATED).json({
     user: {
       name: `${user.firstName} ${user.lastName}`,
-      ...user,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      userID: user._id,
+      isValidated: user.isValidated,
     },
     token,
   });
@@ -41,10 +45,7 @@ const login = async (req, res) => {
   // compare pass
   const token = user.createJWT();
   res.status(StatusCodes.OK).json({
-    user: {
-      name: `${user.firstName} ${user.lastName}`,
-      ...user,
-    },
+    user,
     token,
   });
 };
