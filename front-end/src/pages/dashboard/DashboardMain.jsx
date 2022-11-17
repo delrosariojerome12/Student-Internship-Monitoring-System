@@ -6,13 +6,13 @@ const DashboardMain = () => {
   const {
     user: {
       firstName,
-      internshipDetails: {
-        renderedHours,
-        requiredHours,
-        companyName,
-        companyAddress,
-        supervisor,
-      },
+      // internshipDetails: {
+      //   renderedHours,
+      //   requiredHours,
+      //   companyName,
+      //   companyAddress,
+      //   supervisor,
+      // },
     },
   } = useSelector((state) => state.user);
 
@@ -32,7 +32,7 @@ const DashboardMain = () => {
         <div className="time-keeper">
           <h4>Time Keeper</h4>
           <div className="time-keeper-contents">
-            <p>{`Rendered Hours: ${renderedHours}/${requiredHours}`}</p>
+            {/* <p>{`Rendered Hours: ${renderedHours}/${requiredHours}`}</p> */}
           </div>
         </div>
         <div className="documents">
