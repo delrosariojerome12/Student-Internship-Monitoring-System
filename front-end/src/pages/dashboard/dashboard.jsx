@@ -4,6 +4,7 @@ import {lazy, Suspense} from "react";
 import {useSelector} from "react-redux";
 
 import DashboardMain from "./DashboardMain";
+import Pending from "../Pending";
 import SidebarLeft from "../../components/dashboard/SidebarLeft";
 import SideBarRight from "../../components/dashboard/SidebarRight";
 
@@ -21,6 +22,7 @@ const Dashboard = () => {
   if (!user && !localStorage.getItem("token")) {
     return <Navigate to={"/404"} />;
   }
+  const isValidated = user.isValidated;
 
   return (
     <section
@@ -30,7 +32,11 @@ const Dashboard = () => {
       <SidebarLeft />
       <Suspense fallback={<h2>Loading...</h2>}>
         <Routes>
-          <Route path="/" element={<DashboardMain />} />
+          {isValidated ? (
+            <Route path="/" element={<DashboardMain />} />
+          ) : (
+            <Route path="/" element={<Pending />} />
+          )}
           <Route path="/profile/*" element={<Profile />} />
           <Route path="/daily-time-record" element={<DailyTimeRecord />} />
           <Route path="/documents/*" element={<Documents />} />
