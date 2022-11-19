@@ -7,93 +7,204 @@ const Pending = () => {
   const dispatch = useDispatch();
   const {user} = useSelector((state) => state.user);
 
+  // const [form, setForm] = useState([
+  //   {
+  //     type: "text",
+  //     id: "company-name",
+  //     forInput: "Company Name",
+  //     value: "",
+  //   },
+  //   {
+  //     type: "text",
+  //     id: "company-address",
+  //     forInput: "Company Address",
+  //     value: "",
+  //   },
+  //   {
+  //     type: "text",
+  //     id: "supervisor",
+  //     forInput: "Supervisor",
+  //     value: "",
+  //   },
+  //   {
+  //     type: "text",
+  //     id: "supervisor-contact",
+  //     forInput: "Supervisor Contact",
+  //     value: "",
+  //   },
+  //   {
+  //     type: "select",
+  //     id: "internship-type",
+  //     value: "",
+  //     options: [
+  //       {
+  //         value: "Onsite",
+  //         label: "Onsite",
+  //       },
+  //       {
+  //         value: "Online",
+  //         label: "Online",
+  //       },
+  //       {
+  //         value: "Hybrid",
+  //         label: "Hybrid",
+  //       },
+  //     ],
+  //   },
+
+  //   {
+  //     type: "list",
+  //     id: "duties",
+  //     forInput: "Duties",
+  //     value: "",
+  //     value: "",
+  //     optionItems: [
+  //       {
+  //         value: "Encoding",
+  //         label: "Encoding",
+  //       },
+  //       {
+  //         value: "Paper Works",
+  //         label: "Paper Works",
+  //       },
+  //       {
+  //         value: "Sofware Development",
+  //         label: "Sofware Development",
+  //       },
+  //       {
+  //         value: "Hardware Related",
+  //         label: "Hardware Related",
+  //       },
+  //       {
+  //         value: "Not specified",
+  //         label: "Not specified",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     type: "text",
+  //     id: "required-hours",
+  //     forInput: "Required Hours",
+  //     value: "",
+  //   },
+  //   // {
+  //   //   type: "image",
+  //   //   id: "valid-id",
+  //   //   forInput: "",
+  //   //   value: "",
+  //   // },
+  // ]);
+
   const [form, setForm] = useState([
     {
-      type: "text",
-      id: "company-name",
-      forInput: "Company Name",
-      value: "",
-    },
-    {
-      type: "text",
-      id: "company-address",
-      forInput: "Company Address",
-      value: "",
-    },
-    {
-      type: "text",
-      id: "supervisor",
-      forInput: "Supervisor",
-      value: "",
-    },
-    {
-      type: "text",
-      id: "supervisor-contact",
-      forInput: "Supervisor Contact",
-      value: "",
-    },
-    {
-      type: "select",
-      id: "internship-type",
-      value: "",
-      options: [
+      group: "internship-details",
+      forms: [
         {
-          value: "Onsite",
-          label: "Onsite",
+          type: "text",
+          id: "company-name",
+          forInput: "Company Name",
+          value: "",
         },
         {
-          value: "Online",
-          label: "Online",
+          type: "text",
+          id: "company-address",
+          forInput: "Company Address",
+          value: "",
         },
         {
-          value: "Hybrid",
-          label: "Hybrid",
+          type: "text",
+          id: "supervisor",
+          forInput: "Supervisor",
+          value: "",
         },
-      ],
-    },
+        {
+          type: "text",
+          id: "supervisor-contact",
+          forInput: "Supervisor Contact",
+          value: "",
+        },
+        {
+          type: "select",
+          id: "internship-type",
+          value: "",
+          options: [
+            {
+              value: "Onsite",
+              label: "Onsite",
+            },
+            {
+              value: "Online",
+              label: "Online",
+            },
+            {
+              value: "Hybrid",
+              label: "Hybrid",
+            },
+          ],
+        },
 
-    {
-      type: "list",
-      id: "duties",
-      forInput: "Duties",
-      value: "",
-      value: "",
-      optionItems: [
         {
-          value: "Encoding",
-          label: "Encoding",
+          type: "list",
+          id: "duties",
+          forInput: "Duties",
+          value: "",
+          value: "",
+          optionItems: [
+            {
+              value: "Encoding",
+              label: "Encoding",
+            },
+            {
+              value: "Paper Works",
+              label: "Paper Works",
+            },
+            {
+              value: "Sofware Development",
+              label: "Sofware Development",
+            },
+            {
+              value: "Hardware Related",
+              label: "Hardware Related",
+            },
+            {
+              value: "Not specified",
+              label: "Not specified",
+            },
+          ],
         },
         {
-          value: "Paper Works",
-          label: "Paper Works",
-        },
-        {
-          value: "Sofware Development",
-          label: "Sofware Development",
-        },
-        {
-          value: "Hardware Related",
-          label: "Hardware Related",
-        },
-        {
-          value: "Not specified",
-          label: "Not specified",
+          type: "text",
+          id: "required-hours",
+          forInput: "Required Hours",
+          value: "",
         },
       ],
     },
     {
-      type: "text",
-      id: "required-hours",
-      forInput: "Required Hours",
-      value: "",
+      group: "student-details",
+      forms: [
+        {
+          type: "text",
+          id: "program",
+          forInput: "Program",
+          value: "",
+        },
+        {
+          type: "text",
+          id: "department",
+          forInput: "Department",
+          value: "",
+        },
+        {
+          type: "image",
+          id: "valid-id",
+          forInput: "",
+          value: "",
+        },
+      ],
     },
-    // {
-    //   type: "image",
-    //   id: "valid-id",
-    //   forInput: "",
-    //   value: "",
-    // },
   ]);
+
   const [isModalOpen, setModalOpen] = useState(false);
   const [atNextPage, setNextPage] = useState(false);
 
@@ -101,11 +212,12 @@ const Pending = () => {
     e.preventDefault();
   };
 
-  const handleOnChange = (value, index) => {
+  const handleOnChange = (value, group, index) => {
     const newForm = [...form];
-    newForm[index].value = value;
-    setForm(newForm);
-    console.log(newForm[index]);
+    console.log(value, group, index);
+    // newForm[group].forms[index].value = value;
+    // setForm(newForm);
+    // console.log(newForm[index]);
   };
 
   const customStyle = {
@@ -121,8 +233,8 @@ const Pending = () => {
     }),
   };
 
-  const renderInputs = () => {
-    return form.map((item, index) => {
+  const renderInputs = (arr, group) => {
+    return arr.map((item, index) => {
       const {type, id, value, forInput} = item;
       switch (type) {
         case "text":
@@ -131,7 +243,7 @@ const Pending = () => {
               <input
                 required
                 value={value}
-                onChange={(e) => handleOnChange(e.target.value, index)}
+                onChange={(e) => handleOnChange(e.target.value, group, index)}
                 type={type}
                 name={forInput}
               />
@@ -162,7 +274,7 @@ const Pending = () => {
             <Select
               styles={customStyle}
               required
-              onChange={(e) => handleOnChange(e.value, index)}
+              onChange={(e) => handleOnChange(e.target.value, group, index)}
               placeholder="Type of Internship"
               theme={(theme) => ({
                 ...theme,
@@ -183,7 +295,7 @@ const Pending = () => {
             <CreatableSelect
               styles={customStyle}
               required
-              onChange={(e) => handleOnChange(e.value, index)}
+              onChange={(e) => handleOnChange(e.target.value, group, index)}
               placeholder="Possible Work"
               theme={(theme) => ({
                 ...theme,
@@ -220,16 +332,17 @@ const Pending = () => {
             }
           >
             <h3>Internship Details</h3>
-            {renderInputs()}
+            {renderInputs(form[0].forms, "internship-details")}
             <button onClick={() => setNextPage(!atNextPage)}>Next</button>
           </div>
           <div
             className={
               atNextPage ? "student-details active" : "student-details"
             }
-            // className="student-details active"
           >
             <h3>Student Details Details</h3>
+            {renderInputs(form[1].forms, "student-details")}
+            <button onClick={() => setNextPage(!atNextPage)}>Back</button>
             <button>Submit Verification</button>
           </div>
         </form>
