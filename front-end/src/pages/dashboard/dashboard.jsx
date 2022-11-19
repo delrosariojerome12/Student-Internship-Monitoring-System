@@ -22,10 +22,11 @@ const Dashboard = () => {
   if (!user && !localStorage.getItem("token")) {
     return <Navigate to={"/404"} />;
   }
-  const isValidated = user.isValidated;
+  const isVerified = user.verification.isVerified;
 
+  console.log(isVerified);
   // not validated
-  if (!isValidated) {
+  if (!isVerified) {
     return (
       <section
         style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
