@@ -1893,8 +1893,121 @@ button {
   display: grid;
   height: 100%;
   width: 100%;
-  border: solid 1px red;
+  border: solid 1px #fff;
+  border-radius: 0.5rem;
   padding: 2rem;
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+}
+.reports .content {
+  display: grid;
+  grid-template-rows: 5rem auto;
+}
+.reports .content .button-content {
+  display: flex;
+  justify-content: space-between;
+}
+.reports .content .button-content .button-container {
+  width: 45rem;
+  border-radius: 1.5rem 1.5rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  background-color: #4c4c4c;
+}
+.reports .content .button-content .button-container button {
+  color: #fff;
+  outline: none;
+  border: none;
+  padding: 1rem;
+  background-color: transparent;
+  transition: all 0.3s linear;
+  position: relative;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.reports .content .button-content .button-container button:hover::before {
+  width: 80%;
+}
+.reports .content .button-content .button-container button:focus {
+  background-color: #7f7f7f;
+}
+.reports .content .button-content .button-container button:focus::before {
+  width: 80%;
+}
+.reports .content .button-content .button-container button::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 75%;
+  transform: translate(-50%, -75%);
+  transition: all 0.2s linear;
+  width: 0%;
+  height: 2px;
+  z-index: 2;
+  background-color: #fff;
+}
+.reports .content .button-content .button-container button:nth-of-type(1) {
+  border-radius: 1.5rem 0 0 0;
+}
+.reports .content .button-content .button-container button:nth-last-of-type(1) {
+  border-radius: 0 1.5rem 0 0;
+}
+.reports .content .button-content .dotted-button {
+  cursor: pointer;
+}
+.reports .content .button-content .dotted-button span {
+  font-size: 3.5rem;
+  color: #fff;
+}
+.reports .content .button-content .dotted-button:hover {
+  background-color: rgba(5, 5, 5, 0.336);
+}
+.reports .content .display {
+  color: #fff;
+  padding: 2rem;
+  border-radius: 0 1.5rem 1.5rem 1.5rem;
+  background-color: #4c4c4c;
+}
+.reports .narrative-container {
+  display: grid;
+  grid-template-rows: 6rem auto;
+  gap: 1rem;
+}
+.reports .narrative-container .button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+.reports .narrative-container .button-container button {
+  padding: 0 5rem;
+  border-radius: 0.5rem;
+}
+.reports .narrative-container .content {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(20rem, 30rem));
+  grid-auto-rows: 6rem;
+  justify-content: center;
+  border: solid 1px red;
+  gap: 1rem;
+}
+.reports .narrative-container .content .blank {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+.reports .narrative-container .content .blank h5 {
+  color: #000;
+}
+.reports .narrative-container .content .blank:hover {
+  background-color: rgba(87, 87, 87, 0.473);
+  border-radius: 1rem;
+}
+.reports .narrative-container .content .blank:hover h5 {
+  color: #fff;
 }
 
 .page-not-found {

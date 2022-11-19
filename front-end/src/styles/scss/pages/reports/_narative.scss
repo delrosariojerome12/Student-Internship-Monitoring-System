@@ -1,0 +1,47 @@
+@import "../../utils";
+@import "../../variables";
+
+.narrative-container {
+  display: grid;
+  grid-template-rows: 6rem auto;
+  gap: 1rem;
+  //   & > * {
+  //     border: solid 1px red;
+  //   }
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    button {
+      padding: 0 5rem;
+      border-radius: 0.5rem;
+    }
+  }
+  .content {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(20rem, 30rem));
+    grid-auto-rows: 6rem;
+    justify-content: center;
+    border: solid 1px red;
+    gap: 1rem;
+
+    .blank {
+      @include flexCenter;
+      background-color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s linear;
+
+      h5 {
+        color: #000;
+      }
+      &:hover {
+        background-color: rgba(87, 87, 87, 0.473);
+        border-radius: 1rem;
+        h5 {
+          color: #fff;
+        }
+      }
+    }
+  }
+}

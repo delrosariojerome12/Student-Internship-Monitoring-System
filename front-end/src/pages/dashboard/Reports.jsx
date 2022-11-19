@@ -1,8 +1,9 @@
 import React from "react";
-import {Route, Routes, Link, Navigate, useNavigate} from "react-router-dom";
+import { Route, Routes, Link, Navigate, useNavigate } from "react-router-dom";
 import Narrative from "./reports/Narrative";
 import Summary from "./reports/Summary";
 import ViewAsPdf from "./reports/ViewAsPdf";
+import { BiDotsVerticalRounded } from "react-icons/bi";
 
 const buttons = [
   {
@@ -25,16 +26,24 @@ const Reports = () => {
   return (
     <section className="reports">
       <div className="content">
-        <div className="button-container">
-          {buttons.map((item, index) => {
-            const {path, btnName} = item;
-            return (
-              <button key={index} onClick={() => navigate(path)}>
-                {btnName}
-              </button>
-            );
-          })}
+        <div className="button-content">
+          <div className="button-container">
+            {buttons.map((item, index) => {
+              const { path, btnName } = item;
+              return (
+                <button key={index} onClick={() => navigate(path)}>
+                  {btnName}
+                </button>
+              );
+            })}
+          </div>
+          <div className="dotted-button">
+            <span>
+              <BiDotsVerticalRounded />
+            </span>
+          </div>
         </div>
+
         <div className="display">
           <Routes>
             <Route path="/narrative" element={<Narrative />} />
