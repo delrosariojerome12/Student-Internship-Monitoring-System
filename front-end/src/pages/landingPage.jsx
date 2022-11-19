@@ -144,10 +144,18 @@ const LandingPage = () => {
             <h2>SIMS</h2>
           </div>
           <div className="socials-img">
-            <img src={socialIcon1} alt="" />
-            <img src={socialIcon2} alt="" />
-            <img src={socialIcon3} alt="" />
-            <img src={socialIcon4} alt="" />
+            <div className="social">
+              <img src={socialIcon1} alt="" />
+            </div>
+            <div className="social">
+              <img src={socialIcon2} alt="" />
+            </div>
+            <div className="social">
+              <img src={socialIcon3} alt="" />
+            </div>
+            <div className="social">
+              <img src={socialIcon4} alt="" />
+            </div>
           </div>
         </div>
       </footer>

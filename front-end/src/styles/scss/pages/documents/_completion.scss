@@ -6,6 +6,8 @@
   grid-template-columns: repeat(3, minmax(20rem, 30rem));
   grid-auto-rows: 6rem;
   gap: 1rem;
+  justify-content: center;
+
   div {
     @include flexCenter;
     background-color: #fff;
@@ -20,8 +22,11 @@
       padding: 0.2rem;
     }
     &:hover {
-      background-color: aqua;
+      background-color: rgba(87, 87, 87, 0.473);
       border-radius: 1rem;
+      h5 {
+        color: #fff;
+      }
     }
   }
 }

@@ -19,7 +19,15 @@
     padding: 1rem;
     gap: 1rem;
     .private-comment {
+      @include flexColumn;
+      color: #fff;
       border: solid 1px #fff;
+      & > * {
+        border: solid 1px red;
+      }
+      .one {
+        flex-direction: row;
+      }
     }
     .drop-file {
       border: solid 1px #fff;
@@ -49,6 +57,31 @@
         position: relative;
         font-weight: 600;
         letter-spacing: 1px;
+
+        &:hover::before {
+          width: 80%;
+        }
+        &:focus {
+          background-color: lighten(
+            $color: $primary-bg-color-landing-compliment,
+            $amount: 30
+          );
+          &::before {
+            width: 80%;
+          }
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          left: 50%;
+          top: 75%;
+          transform: translate(-50%, -75%);
+          transition: all 0.2s linear;
+          width: 0%;
+          height: 2px;
+          z-index: 2;
+          background-color: #fff;
+        }
 
         &:nth-of-type(1) {
           border-radius: 1.5rem 0 0 0;
