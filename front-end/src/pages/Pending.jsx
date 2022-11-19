@@ -210,14 +210,13 @@ const Pending = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(form);
   };
 
-  const handleOnChange = (value, group, index) => {
+  const handleOnChange = (value, group, index, mainIndex) => {
     const newForm = [...form];
-    console.log(value, group, index);
-    // newForm[group].forms[index].value = value;
-    // setForm(newForm);
-    // console.log(newForm[index]);
+    newForm[mainIndex].forms[index].value = value;
+    setForm(newForm);
   };
 
   const customStyle = {
@@ -233,7 +232,7 @@ const Pending = () => {
     }),
   };
 
-  const renderInputs = (arr, group) => {
+  const renderInputs = (arr, group, mainIndex) => {
     return arr.map((item, index) => {
       const {type, id, value, forInput} = item;
       switch (type) {
@@ -243,7 +242,9 @@ const Pending = () => {
               <input
                 required
                 value={value}
-                onChange={(e) => handleOnChange(e.target.value, group, index)}
+                onChange={(e) =>
+                  handleOnChange(e.target.value, group, index, mainIndex)
+                }
                 type={type}
                 name={forInput}
               />
@@ -263,7 +264,16 @@ const Pending = () => {
           return (
             <div className="img-input" key={index}>
               <label htmlFor="valid-img">School ID</label>
-              <input required type="file" name="valid-img" id="valid-img" />
+              <input
+                onChange={(e) =>
+                  handleOnChange(e.target.value, group, index, mainIndex)
+                }
+                required
+                type="file"
+                name="valid-img"
+                id="valid-img"
+                accept="image/*"
+              />
             </div>
           );
         case "select":
@@ -274,7 +284,7 @@ const Pending = () => {
             <Select
               styles={customStyle}
               required
-              onChange={(e) => handleOnChange(e.target.value, group, index)}
+              onChange={(e) => handleOnChange(e.value, group, index, mainIndex)}
               placeholder="Type of Internship"
               theme={(theme) => ({
                 ...theme,
@@ -295,7 +305,7 @@ const Pending = () => {
             <CreatableSelect
               styles={customStyle}
               required
-              onChange={(e) => handleOnChange(e.target.value, group, index)}
+              onChange={(e) => handleOnChange(e.value, group, index, mainIndex)}
               placeholder="Possible Work"
               theme={(theme) => ({
                 ...theme,
@@ -324,7 +334,10 @@ const Pending = () => {
           </button>
         </>
       )}
-      <div style={!isModalOpen ? {display: "none"} : null} className="modal">
+      <div
+        style={!isModalOpen ? {display: "none"} : null}
+        className={atNextPage ? "modal verify" : "modal"}
+      >
         <form onSubmit={handleSubmit}>
           <div
             className={
@@ -332,7 +345,7 @@ const Pending = () => {
             }
           >
             <h3>Internship Details</h3>
-            {renderInputs(form[0].forms, "internship-details")}
+            {renderInputs(form[0].forms, "internship-details", 0)}
             <button onClick={() => setNextPage(!atNextPage)}>Next</button>
           </div>
           <div
@@ -340,10 +353,12 @@ const Pending = () => {
               atNextPage ? "student-details active" : "student-details"
             }
           >
-            <h3>Student Details Details</h3>
-            {renderInputs(form[1].forms, "student-details")}
-            <button onClick={() => setNextPage(!atNextPage)}>Back</button>
-            <button>Submit Verification</button>
+            <h3>Student Details</h3>
+            {renderInputs(form[1].forms, "student-details", 1)}
+            <div className="btn-con">
+              <button onClick={() => setNextPage(!atNextPage)}>Back</button>
+              <button>Submit Verification</button>
+            </div>
           </div>
         </form>
       </div>
