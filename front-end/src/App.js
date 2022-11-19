@@ -26,8 +26,6 @@ const App = () => {
     }
   }, []);
 
-  console.log(user);
-
   return (
     <main className="container">
       <Suspense fallback={<h1>loading...</h1>}>

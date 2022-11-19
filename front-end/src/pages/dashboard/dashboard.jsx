@@ -24,6 +24,27 @@ const Dashboard = () => {
   }
   const isValidated = user.isValidated;
 
+  // not validated
+  if (!isValidated) {
+    return (
+      <section
+        style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
+        className="dashboard"
+      >
+        <SidebarLeft />
+        <Suspense fallback={<h2>Loading...</h2>}>
+          <Routes>
+            <Route path="/" element={<Pending />} />
+            <Route path="/profile/*" element={<Profile />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="*" element={<Navigate to="/404" replace />} />
+          </Routes>
+        </Suspense>
+        <SideBarRight />
+      </section>
+    );
+  }
+
   return (
     <section
       style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
@@ -32,11 +53,7 @@ const Dashboard = () => {
       <SidebarLeft />
       <Suspense fallback={<h2>Loading...</h2>}>
         <Routes>
-          {isValidated ? (
-            <Route path="/" element={<DashboardMain />} />
-          ) : (
-            <Route path="/" element={<Pending />} />
-          )}
+          <Route path="/" element={<DashboardMain />} />
           <Route path="/profile/*" element={<Profile />} />
           <Route path="/daily-time-record" element={<DailyTimeRecord />} />
           <Route path="/documents/*" element={<Documents />} />

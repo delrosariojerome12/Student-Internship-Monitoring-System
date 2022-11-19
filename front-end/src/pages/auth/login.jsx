@@ -99,12 +99,6 @@ const Login = () => {
     );
   };
 
-  // useEffect(() => {
-  //   if (user) {
-  //     navigate("/dashboard");
-  //   }
-  // }, [user]);
-
   const renderInputs = () => {
     return form.map((inputs, index) => {
       const {

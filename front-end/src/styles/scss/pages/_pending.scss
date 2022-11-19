@@ -1,0 +1,92 @@
+@import "../utils";
+.pending {
+  border: solid 1px #fff;
+  height: 100%;
+  @include flexCenter;
+  flex-direction: column;
+
+  .modal {
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      border: solid 1px #fff;
+      background-color: #fff;
+      border-radius: 1rem;
+      padding: 2rem;
+
+      select {
+        padding: 1.1rem 3.5rem 1.1rem 1.1rem;
+        cursor: pointer;
+        option {
+          padding: 1rem;
+        }
+      }
+
+      .input-contain {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        border-radius: 0.5rem;
+        width: fit-content;
+        gap: 1rem;
+        border: solid 1px #fff;
+
+        .placeholder-container {
+          position: absolute;
+          top: 0%;
+          left: 0.5rem;
+          height: 4.5rem;
+          width: 100%;
+          pointer-events: none;
+        }
+
+        input {
+          width: 39rem;
+          height: 5rem;
+          border: solid 3px transparent;
+          outline: solid 1px #8b8b8b;
+          border-radius: 0.5rem;
+          padding: 1.1rem 3.5rem 1.1rem 1.1rem;
+          letter-spacing: 2px;
+          transition: all 0.3s ease-in-out;
+          &:focus {
+            border: solid 3px $primary-bg-color;
+            outline: none;
+          }
+
+          &:focus + .placeholder-container .placeholder-text {
+            top: 0%;
+            left: 0%;
+            background-color: #fff;
+            font-size: 1.1rem;
+            color: black;
+            // border: solid 1px #8b8b8b;
+            scale: 0.8;
+          }
+        }
+
+        .placeholder-text {
+          position: absolute;
+          transition: all 0.2s ease-in-out;
+          pointer-events: none;
+          top: 50%;
+          left: 5%;
+          transform: translate(0%, -50%);
+          &:nth-child(1) {
+            left: 2% !important;
+          }
+          .text {
+            font-size: 1.4rem;
+            padding: 0 0.5rem;
+            background-color: transparent;
+            color: black;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+          }
+        }
+      }
+    }
+  }
+}
