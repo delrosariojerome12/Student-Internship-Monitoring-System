@@ -1267,6 +1267,13 @@ button {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  position: relative;
+}
+.pending .modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 .pending .modal form {
   display: flex;
@@ -1344,6 +1351,14 @@ button {
   display: flex;
   gap: 0.5rem;
   align-items: center;
+}
+.pending .modal form .input-contain .active {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  border-color: #8b8b8b;
+  scale: 0.8;
 }
 
 .profile-page {

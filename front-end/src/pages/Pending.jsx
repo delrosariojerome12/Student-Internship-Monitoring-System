@@ -1,24 +1,13 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Select from "react-select";
+import CreatableSelect from "react-select/creatable";
 import {requestVerification} from "../features/user/userReducer";
 const Pending = () => {
   const dispatch = useDispatch();
   const {user} = useSelector((state) => state.user);
 
-  const [isModalOpen, setModalOpen] = useState(false);
   const [form, setForm] = useState([
-    {
-      type: "select",
-      id: "internship-type",
-      options: ["Onsite", "Online"],
-    },
-    {
-      type: "list",
-      id: "duties",
-      forInput: "Duties",
-      value: "",
-    },
     {
       type: "text",
       id: "company-name",
@@ -44,6 +33,47 @@ const Pending = () => {
       value: "",
     },
     {
+      type: "select",
+      id: "internship-type",
+      value: "",
+      options: [
+        {
+          value: "Onsite",
+          label: "Onsite",
+        },
+        {
+          value: "Online",
+          label: "Online",
+        },
+      ],
+    },
+
+    {
+      type: "list",
+      id: "duties",
+      forInput: "Duties",
+      value: "",
+      value: "",
+      optionItems: [
+        {
+          value: "Encoding",
+          label: "Encoding",
+        },
+        {
+          value: "Paper Works",
+          label: "Paper Works",
+        },
+        {
+          value: "Sofware Development",
+          label: "Sofware Development",
+        },
+        {
+          value: "Hardware Related",
+          label: "Hardware Related",
+        },
+      ],
+    },
+    {
       type: "text",
       id: "required-hours",
       forInput: "Required Hours",
@@ -56,6 +86,32 @@ const Pending = () => {
       value: "",
     },
   ]);
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // dispatch(handleLogin(form));
+  };
+
+  const handleOnChange = (value, index) => {
+    const newForm = [...form];
+    newForm[index].value = value;
+    setForm(newForm);
+    console.log(newForm[index]);
+  };
+
+  const customStyle = {
+    control: (styles) => ({
+      ...styles,
+      border: "solid 1px #8b8b8b",
+      fontSize: "1.5rem",
+      padding: "6.2px",
+    }),
+    options: (base, state) => ({
+      ...base,
+      backgroundColor: state.isSelected ? "red" : "green",
+    }),
+  };
 
   const renderInputs = () => {
     return form.map((item, index) => {
@@ -64,12 +120,18 @@ const Pending = () => {
         case "text":
           return (
             <div className="input-contain" key={index}>
-              <input type={type} name={forInput} />
+              <input
+                required
+                value={value}
+                onChange={(e) => handleOnChange(e.target.value, index)}
+                type={type}
+                name={forInput}
+              />
               <div className="placeholder-container">
                 <label
                   htmlFor={id}
                   className={
-                    forInput ? "placeholder-text active" : "placeholder-text"
+                    value ? "placeholder-text active" : "placeholder-text"
                   }
                 >
                   <div className="text">{forInput}</div>
@@ -81,27 +143,52 @@ const Pending = () => {
           return (
             <div className="img-input" key={index}>
               <label htmlFor="valid-img">School ID</label>
-              <input type="file" name="valid-img" id="valid-img" />
+              <input required type="file" name="valid-img" id="valid-img" />
             </div>
           );
         case "select":
           const {options} = item;
-          return <Select key={index} />;
-        case "list":
+          const list = options.map((opt) => opt);
+
           return (
-            <div className="input-contain" key={index}>
-              <input type={type} name={forInput} />
-              <div className="placeholder-container">
-                <label
-                  htmlFor={id}
-                  className={
-                    forInput ? "placeholder-text active" : "placeholder-text"
-                  }
-                >
-                  <div className="text">{forInput}</div>
-                </label>
-              </div>
-            </div>
+            <Select
+              styles={customStyle}
+              required
+              onChange={(e) => handleOnChange(e.value, index)}
+              placeholder="Type of Internship"
+              theme={(theme) => ({
+                ...theme,
+                outline: "solid 1px #8b8b8b",
+                colors: {
+                  ...theme.colors,
+                  primary25: "#8b8b8b",
+                  primary: "#457b9d",
+                },
+              })}
+              key={index}
+              options={list}
+            />
+          );
+        case "list":
+          const {optionItems} = item;
+          return (
+            <CreatableSelect
+              styles={customStyle}
+              required
+              onChange={(e) => handleOnChange(e.value, index)}
+              placeholder="Type of Internship"
+              theme={(theme) => ({
+                ...theme,
+                outline: "solid 1px #8b8b8b",
+                colors: {
+                  ...theme.colors,
+                  primary25: "#8b8b8b",
+                  primary: "#457b9d",
+                },
+              })}
+              key={index}
+              options={optionItems}
+            />
           );
       }
     });
@@ -111,10 +198,11 @@ const Pending = () => {
     <div className="pending">
       <p>Fill up few more details and you are ready!</p>
       <button onClick={() => setModalOpen(!isModalOpen)}>Verify Account</button>
-      <div className="modal">
-        <form>
+      <div style={!isModalOpen ? {display: "none"} : null} className="modal">
+        <form onSubmit={handleSubmit}>
           <h3>Internship Details</h3>
           {renderInputs()}
+          <button>Submit Verification</button>
         </form>
       </div>
     </div>
