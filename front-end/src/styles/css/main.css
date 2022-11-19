@@ -1270,28 +1270,64 @@ button {
   position: relative;
 }
 .pending .modal {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  overflow: hidden;
+  width: 90%;
+  height: 90%;
+  display: flex;
 }
 .pending .modal form {
+  overflow: auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 2rem;
   border: solid 1px #fff;
   background-color: #fff;
   border-radius: 1rem;
   padding: 2rem;
 }
-.pending .modal form select {
-  padding: 1.1rem 3.5rem 1.1rem 1.1rem;
+.pending .modal form .inactive {
+  position: absolute;
+  transform: translate(-100%, 0%);
+}
+.pending .modal form .internship-details {
+  position: absolute;
+  padding: 2rem;
+  border-radius: 1rem;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  border: solid 1px #fff;
+  transition: all 0.2s linear;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.pending .modal form .internship-details button {
   cursor: pointer;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  padding: 1.6rem;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  background-color: #457b9d;
+  color: #f1faee;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
 }
-.pending .modal form select option {
-  padding: 1rem;
+.pending .modal form .internship-details button:hover {
+  background-color: #f1faee;
+  color: #457b9d;
+  border: solid 1px #457b9d;
 }
-.pending .modal form .input-contain {
+.pending .modal form .internship-details .input-contain {
   display: flex;
   position: relative;
   flex-direction: column;
@@ -1302,7 +1338,7 @@ button {
   gap: 1rem;
   border: solid 1px #fff;
 }
-.pending .modal form .input-contain .placeholder-container {
+.pending .modal form .internship-details .input-contain .placeholder-container {
   position: absolute;
   top: 0%;
   left: 0.5rem;
@@ -1310,7 +1346,7 @@ button {
   width: 100%;
   pointer-events: none;
 }
-.pending .modal form .input-contain input {
+.pending .modal form .internship-details .input-contain input {
   width: 39rem;
   height: 5rem;
   border: solid 3px transparent;
@@ -1320,11 +1356,11 @@ button {
   letter-spacing: 2px;
   transition: all 0.3s ease-in-out;
 }
-.pending .modal form .input-contain input:focus {
+.pending .modal form .internship-details .input-contain input:focus {
   border: solid 3px #457b9d;
   outline: none;
 }
-.pending .modal form .input-contain input:focus + .placeholder-container .placeholder-text {
+.pending .modal form .internship-details .input-contain input:focus + .placeholder-container .placeholder-text {
   top: 0%;
   left: 0%;
   background-color: #fff;
@@ -1332,7 +1368,7 @@ button {
   color: black;
   scale: 0.8;
 }
-.pending .modal form .input-contain .placeholder-text {
+.pending .modal form .internship-details .input-contain .placeholder-text {
   position: absolute;
   transition: all 0.2s ease-in-out;
   pointer-events: none;
@@ -1340,10 +1376,10 @@ button {
   left: 5%;
   transform: translate(0%, -50%);
 }
-.pending .modal form .input-contain .placeholder-text:nth-child(1) {
+.pending .modal form .internship-details .input-contain .placeholder-text:nth-child(1) {
   left: 2% !important;
 }
-.pending .modal form .input-contain .placeholder-text .text {
+.pending .modal form .internship-details .input-contain .placeholder-text .text {
   font-size: 1.4rem;
   padding: 0 0.5rem;
   background-color: transparent;
@@ -1352,13 +1388,27 @@ button {
   gap: 0.5rem;
   align-items: center;
 }
-.pending .modal form .input-contain .active {
+.pending .modal form .internship-details .input-contain .active {
   top: 0%;
   left: 0%;
   background-color: #fff;
   font-size: 1.1rem;
   border-color: #8b8b8b;
   scale: 0.8;
+}
+.pending .modal form .active {
+  transform: translate(-100%, 0%);
+}
+.pending .modal form .student-details {
+  position: absolute;
+  padding: 2rem;
+  border-radius: 1rem;
+  top: 0%;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  border: solid 1px #fff;
+  transition: all 0.2s linear;
 }
 
 .profile-page {

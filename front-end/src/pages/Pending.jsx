@@ -45,6 +45,10 @@ const Pending = () => {
           value: "Online",
           label: "Online",
         },
+        {
+          value: "Hybrid",
+          label: "Hybrid",
+        },
       ],
     },
 
@@ -71,6 +75,10 @@ const Pending = () => {
           value: "Hardware Related",
           label: "Hardware Related",
         },
+        {
+          value: "Not specified",
+          label: "Not specified",
+        },
       ],
     },
     {
@@ -79,18 +87,18 @@ const Pending = () => {
       forInput: "Required Hours",
       value: "",
     },
-    {
-      type: "image",
-      id: "valid-id",
-      forInput: "",
-      value: "",
-    },
+    // {
+    //   type: "image",
+    //   id: "valid-id",
+    //   forInput: "",
+    //   value: "",
+    // },
   ]);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [atNextPage, setNextPage] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // dispatch(handleLogin(form));
   };
 
   const handleOnChange = (value, index) => {
@@ -176,7 +184,7 @@ const Pending = () => {
               styles={customStyle}
               required
               onChange={(e) => handleOnChange(e.value, index)}
-              placeholder="Type of Internship"
+              placeholder="Possible Work"
               theme={(theme) => ({
                 ...theme,
                 outline: "solid 1px #8b8b8b",
@@ -196,13 +204,34 @@ const Pending = () => {
 
   return (
     <div className="pending">
-      <p>Fill up few more details and you are ready!</p>
-      <button onClick={() => setModalOpen(!isModalOpen)}>Verify Account</button>
+      {!isModalOpen && (
+        <>
+          <p>Fill up few more details and you are ready!</p>
+          <button onClick={() => setModalOpen(!isModalOpen)}>
+            Verify Account
+          </button>
+        </>
+      )}
       <div style={!isModalOpen ? {display: "none"} : null} className="modal">
         <form onSubmit={handleSubmit}>
-          <h3>Internship Details</h3>
-          {renderInputs()}
-          <button>Submit Verification</button>
+          <div
+            className={
+              atNextPage ? "internship-details inactive" : "internship-details"
+            }
+          >
+            <h3>Internship Details</h3>
+            {renderInputs()}
+            <button onClick={() => setNextPage(!atNextPage)}>Next</button>
+          </div>
+          <div
+            className={
+              atNextPage ? "student-details active" : "student-details"
+            }
+            // className="student-details active"
+          >
+            <h3>Student Details Details</h3>
+            <button>Submit Verification</button>
+          </div>
         </form>
       </div>
     </div>
