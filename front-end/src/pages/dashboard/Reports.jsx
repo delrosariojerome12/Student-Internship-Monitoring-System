@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes, Link, Navigate, useNavigate } from "react-router-dom";
+import {Route, Routes, Link, Navigate, useNavigate} from "react-router-dom";
 import Narrative from "./reports/Narrative";
 import Summary from "./reports/Summary";
 import ViewAsPdf from "./reports/ViewAsPdf";
@@ -27,7 +27,7 @@ const Reports = () => {
       <div className="content">
         <div className="button-container">
           {buttons.map((item, index) => {
-            const { path, btnName } = item;
+            const {path, btnName} = item;
             return (
               <button key={index} onClick={() => navigate(path)}>
                 {btnName}
@@ -40,7 +40,7 @@ const Reports = () => {
             <Route path="/narrative" element={<Narrative />} />
             <Route path="/summary" element={<Summary />} />
             <Route path="/viewaspdf" element={<ViewAsPdf />} />
-            {/* <Route path="*" element={<Navigate to="/404" replace />} /> */}
+            <Route path="*" element={<Navigate to="/404" replace />} />
           </Routes>
         </div>
       </div>
