@@ -65,4 +65,15 @@ const internsAssets = {
   },
 };
 
-module.exports = {internshipDetails, internsAssets};
+const verification = {
+  isVerified: {
+    type: Boolean,
+    default: false,
+  },
+  hasSentVerification: {
+    type: Boolean,
+    default: false,
+  },
+};
+
+module.exports = {internshipDetails, internsAssets, verification};

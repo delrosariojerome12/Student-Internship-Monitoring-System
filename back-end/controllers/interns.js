@@ -15,7 +15,7 @@ const getIntern = async (req, res) => {
   if (!user) {
     throw new NotFound(`No intern with email ${email}`);
   }
-  res.status(StatusCodes.OK).json({user});
+  return res.status(StatusCodes.OK).json({user});
 };
 
 const updateIntern = async (req, res) => {
@@ -47,11 +47,25 @@ const updateIntern = async (req, res) => {
   });
 
   if (!user) {
+    throw new NotFound(`Email not found`);
+  }
+  return res.status(StatusCodes.OK).json({user});
+};
+
+const requestVerification = async (req, res) => {
+  const {email} = req.body;
+  const user = await User.findOneAndUpdate({email}, req.body, {
+    new: true,
+    runValidators: true,
+  });
+
+  if (!user) {
     throw new NotFound(`No intern with email ${email}`);
   }
+
   res.status(StatusCodes.OK).json({user});
 };
 
-module.exports = {updateIntern, getIntern, getAllInterns};
+module.exports = {updateIntern, getIntern, getAllInterns, requestVerification};
 
 //password and id remove
