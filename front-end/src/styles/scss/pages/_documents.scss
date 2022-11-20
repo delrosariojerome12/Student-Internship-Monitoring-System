@@ -22,15 +22,59 @@
       @include flexColumn;
       color: #fff;
       border: solid 1px #fff;
-      & > * {
-        border: solid 1px red;
-      }
       .one {
+        @include flexCenter;
         flex-direction: row;
+        padding: 1rem 0 0;
+        cursor: pointer;
+        span {
+          padding-top: 0.4rem;
+          font-size: 2rem;
+        }
+        p {
+          font-size: 1.5rem;
+          padding: 0 0.8rem;
+        }
+      }
+      .two {
+        cursor: pointer;
+        @include flexCenter;
+        p {
+          color: $primary-feature-bg;
+          font-size: 1.5rem;
+          width: 22rem;
+          text-align: center;
+        }
       }
     }
     .drop-file {
       border: solid 1px #fff;
+      @include flexCenter;
+      .drop-file-container {
+        @include flexCenter;
+        flex-direction: column;
+        border: dashed 2px #fff;
+        background-color: rgb(59, 59, 59);
+        height: 80%;
+        width: 80%;
+        .add-icon {
+          cursor: pointer;
+          span {
+            font-size: 4rem;
+            color: rgb(187, 187, 187);
+          }
+        }
+        .add-file-text {
+          flex-direction: column;
+          text-align: center;
+          h5 {
+            color: #fff;
+          }
+          p {
+            color: grey;
+          }
+        }
+      }
     }
   }
 
@@ -47,10 +91,11 @@
         $color: $primary-bg-color-landing-compliment,
         $amount: 10
       );
+      border: solid 1px #fff;
       button {
+        border: none;
         color: #fff;
         outline: none;
-        border: none;
         padding: 1rem;
         background-color: transparent;
         transition: all 0.3s linear;
@@ -94,7 +139,8 @@
 
     .display {
       color: #fff;
-      padding: 2rem;
+      border: #fff solid 1px;
+      padding: 5rem;
       border-radius: 0 1.5rem 1.5rem 1.5rem;
       background-color: lighten(
         $color: $primary-bg-color-landing-compliment,

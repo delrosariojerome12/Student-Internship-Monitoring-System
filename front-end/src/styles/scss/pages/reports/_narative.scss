@@ -3,26 +3,92 @@
 
 .narrative-container {
   display: grid;
-  grid-template-rows: 6rem auto;
+  grid-template-rows: 5rem auto;
   gap: 1rem;
-  //   & > * {
-  //     border: solid 1px red;
-  //   }
+  // border: solid 1px red;
+  height: 100%;
+
   .button-container {
+    padding: 1rem 1rem 0 0;
     display: flex;
-    justify-content: flex-end;
+    flex-direction: row-reverse;
+    // justify-content: flex-end;
     button {
+      background-color: rgb(139, 139, 139);
+      color: #fff;
+      margin: 0 1rem;
+      border: none;
+      transition: all 0.3s linear;
       padding: 0 5rem;
       border-radius: 0.5rem;
+      &:hover {
+        background-color: $primary-bg-color-landing-compliment;
+        color: #fff;
+      }
     }
   }
   .content {
     display: grid;
-    grid-template-columns: repeat(3, minmax(20rem, 30rem));
-    grid-auto-rows: 6rem;
-    justify-content: center;
-    border: solid 1px red;
-    gap: 1rem;
+    grid-template-columns: 0.8fr 1.8fr 2fr;
+    gap: 0.5rem;
+    .right {
+      display: grid;
+      gap: 1rem;
+      .blank {
+        flex-direction: column;
+        // border: solid 2px blue;
+        padding: 1.65rem 0;
+        h5,
+        p {
+          padding: 0.5rem 0;
+          color: #000;
+        }
+        p {
+          font-size: 1.3rem;
+        }
+      }
+    }
+    .mid {
+      display: grid;
+      gap: 1rem;
+      .blank {
+        flex-direction: column;
+        // border: solid 2px red;
+        padding: 1rem 0;
+
+        .top {
+          padding: 0.5rem;
+          button {
+            transition: all 0.3s linear;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: $primary-compliment-landing;
+            border: solid 1px $primary-compliment-landing;
+            padding: 0.5rem 15rem;
+            border-radius: 0.5rem;
+          }
+        }
+        .bottom {
+          padding: 0.2rem 0.5rem 0.5rem;
+          flex-direction: row;
+          button {
+            color: $primary-compliment-landing;
+            border: solid 1px $primary-compliment-landing;
+            transition: all 0.3s linear;
+            padding: 0.5rem 4rem;
+            border-radius: 0.5rem;
+          }
+        }
+      }
+    }
+    .left {
+      display: grid;
+      gap: 1rem;
+      .blank {
+        padding: 4.76rem;
+        background-color: grey;
+      }
+    }
 
     .blank {
       @include flexCenter;
@@ -31,17 +97,6 @@
       text-align: center;
       cursor: pointer;
       transition: all 0.3s linear;
-
-      h5 {
-        color: #000;
-      }
-      &:hover {
-        background-color: rgba(87, 87, 87, 0.473);
-        border-radius: 1rem;
-        h5 {
-          color: #fff;
-        }
-      }
     }
   }
 }

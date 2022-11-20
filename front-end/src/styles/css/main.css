@@ -1764,14 +1764,66 @@ button {
   color: #fff;
   border: solid 1px #fff;
 }
-.documents-page .top .private-comment > * {
-  border: solid 1px red;
-}
 .documents-page .top .private-comment .one {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: row;
+  padding: 1rem 0 0;
+  cursor: pointer;
+}
+.documents-page .top .private-comment .one span {
+  padding-top: 0.4rem;
+  font-size: 2rem;
+}
+.documents-page .top .private-comment .one p {
+  font-size: 1.5rem;
+  padding: 0 0.8rem;
+}
+.documents-page .top .private-comment .two {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.documents-page .top .private-comment .two p {
+  color: #00adb5;
+  font-size: 1.5rem;
+  width: 22rem;
+  text-align: center;
 }
 .documents-page .top .drop-file {
   border: solid 1px #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.documents-page .top .drop-file .drop-file-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: dashed 2px #fff;
+  background-color: rgb(59, 59, 59);
+  height: 80%;
+  width: 80%;
+}
+.documents-page .top .drop-file .drop-file-container .add-icon {
+  cursor: pointer;
+}
+.documents-page .top .drop-file .drop-file-container .add-icon span {
+  font-size: 4rem;
+  color: rgb(187, 187, 187);
+}
+.documents-page .top .drop-file .drop-file-container .add-file-text {
+  flex-direction: column;
+  text-align: center;
+}
+.documents-page .top .drop-file .drop-file-container .add-file-text h5 {
+  color: #fff;
+}
+.documents-page .top .drop-file .drop-file-container .add-file-text p {
+  color: grey;
 }
 .documents-page .content {
   display: grid;
@@ -1783,11 +1835,12 @@ button {
   display: grid;
   grid-template-columns: repeat(3, auto);
   background-color: #4c4c4c;
+  border: solid 1px #fff;
 }
 .documents-page .content .button-container button {
+  border: none;
   color: #fff;
   outline: none;
-  border: none;
   padding: 1rem;
   background-color: transparent;
   transition: all 0.3s linear;
@@ -1824,14 +1877,15 @@ button {
 }
 .documents-page .content .display {
   color: #fff;
-  padding: 2rem;
+  border: #fff solid 1px;
+  padding: 5rem;
   border-radius: 0 1.5rem 1.5rem 1.5rem;
   background-color: #4c4c4c;
 }
 .documents-page .completion-container {
   display: grid;
-  grid-template-columns: repeat(3, minmax(20rem, 30rem));
-  grid-auto-rows: 6rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: 8rem;
   gap: 1rem;
   justify-content: center;
 }
@@ -1859,12 +1913,11 @@ button {
 }
 .documents-page .requirments-container {
   display: grid;
-  grid-template-columns: repeat(3, minmax(20rem, 30rem));
-  grid-auto-rows: 6rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: 8rem;
   gap: 1rem;
   justify-content: center;
   height: 100%;
-  border: solid 1px red;
 }
 .documents-page .requirments-container div {
   display: flex;
@@ -1906,10 +1959,14 @@ button {
 .reports .content .button-content {
   display: flex;
   justify-content: space-between;
+  border-radius: 1rem 1rem 0 0;
+  border-top: solid 1px #fff;
+  border-left: solid 1px #fff;
+  border-right: solid 1px #fff;
 }
 .reports .content .button-content .button-container {
   width: 45rem;
-  border-radius: 1.5rem 1.5rem 0 0;
+  border-radius: 1.5rem 0 0 0;
   display: grid;
   grid-template-columns: repeat(3, auto);
   background-color: #4c4c4c;
@@ -1949,45 +2006,121 @@ button {
 .reports .content .button-content .button-container button:nth-of-type(1) {
   border-radius: 1.5rem 0 0 0;
 }
-.reports .content .button-content .button-container button:nth-last-of-type(1) {
-  border-radius: 0 1.5rem 0 0;
-}
 .reports .content .button-content .dotted-button {
   cursor: pointer;
+  border-radius: 0 1.5rem 0 0;
 }
 .reports .content .button-content .dotted-button span {
   font-size: 3.5rem;
   color: #fff;
+  transition: all 0.3s linear;
+  position: relative;
 }
-.reports .content .button-content .dotted-button:hover {
-  background-color: rgba(5, 5, 5, 0.336);
+.reports .content .button-content .dotted-button span:hover::before {
+  width: 80%;
+}
+.reports .content .button-content .dotted-button span::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 75%;
+  transform: translate(-50%, -75%);
+  transition: all 0.2s linear;
+  width: 0%;
+  height: 2px;
+  z-index: 2;
+  background-color: #fff;
 }
 .reports .content .display {
+  border: solid 1px #fff;
   color: #fff;
   padding: 2rem;
-  border-radius: 0 1.5rem 1.5rem 1.5rem;
+  border-radius: 0 0 1.5rem 1.5rem;
   background-color: #4c4c4c;
 }
 .reports .narrative-container {
   display: grid;
-  grid-template-rows: 6rem auto;
+  grid-template-rows: 5rem auto;
   gap: 1rem;
+  height: 100%;
 }
 .reports .narrative-container .button-container {
+  padding: 1rem 1rem 0 0;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: row-reverse;
 }
 .reports .narrative-container .button-container button {
+  background-color: rgb(139, 139, 139);
+  color: #fff;
+  margin: 0 1rem;
+  border: none;
+  transition: all 0.3s linear;
   padding: 0 5rem;
   border-radius: 0.5rem;
 }
+.reports .narrative-container .button-container button:hover {
+  background-color: #323232;
+  color: #fff;
+}
 .reports .narrative-container .content {
   display: grid;
-  grid-template-columns: repeat(3, minmax(20rem, 30rem));
-  grid-auto-rows: 6rem;
-  justify-content: center;
-  border: solid 1px red;
+  grid-template-columns: 0.8fr 1.8fr 2fr;
+  gap: 0.5rem;
+}
+.reports .narrative-container .content .right {
+  display: grid;
   gap: 1rem;
+}
+.reports .narrative-container .content .right .blank {
+  flex-direction: column;
+  padding: 1.65rem 0;
+}
+.reports .narrative-container .content .right .blank h5,
+.reports .narrative-container .content .right .blank p {
+  padding: 0.5rem 0;
+  color: #000;
+}
+.reports .narrative-container .content .right .blank p {
+  font-size: 1.3rem;
+}
+.reports .narrative-container .content .mid {
+  display: grid;
+  gap: 1rem;
+}
+.reports .narrative-container .content .mid .blank {
+  flex-direction: column;
+  padding: 1rem 0;
+}
+.reports .narrative-container .content .mid .blank .top {
+  padding: 0.5rem;
+}
+.reports .narrative-container .content .mid .blank .top button {
+  transition: all 0.3s linear;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0d7377;
+  border: solid 1px #0d7377;
+  padding: 0.5rem 15rem;
+  border-radius: 0.5rem;
+}
+.reports .narrative-container .content .mid .blank .bottom {
+  padding: 0.2rem 0.5rem 0.5rem;
+  flex-direction: row;
+}
+.reports .narrative-container .content .mid .blank .bottom button {
+  color: #0d7377;
+  border: solid 1px #0d7377;
+  transition: all 0.3s linear;
+  padding: 0.5rem 4rem;
+  border-radius: 0.5rem;
+}
+.reports .narrative-container .content .left {
+  display: grid;
+  gap: 1rem;
+}
+.reports .narrative-container .content .left .blank {
+  padding: 4.76rem;
+  background-color: grey;
 }
 .reports .narrative-container .content .blank {
   display: flex;
@@ -1998,16 +2131,6 @@ button {
   text-align: center;
   cursor: pointer;
   transition: all 0.3s linear;
-}
-.reports .narrative-container .content .blank h5 {
-  color: #000;
-}
-.reports .narrative-container .content .blank:hover {
-  background-color: rgba(87, 87, 87, 0.473);
-  border-radius: 1rem;
-}
-.reports .narrative-container .content .blank:hover h5 {
-  color: #fff;
 }
 
 .page-not-found {

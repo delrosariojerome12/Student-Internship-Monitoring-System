@@ -38,9 +38,19 @@ const Documents = () => {
           </div>
         </div>
         <div className="drop-file">
-          <span>
-            <AiOutlineFileAdd />
-          </span>
+          <div className="drop-file-container">
+            <div className="add-icon">
+              <span>
+                <AiOutlineFileAdd />
+              </span>
+            </div>
+            <div className="add-file-text">
+              <h5>
+                Drag and drop files, or <strong>Browse</strong>
+              </h5>
+              <p>Support zip or rar files</p>
+            </div>
+          </div>
         </div>
       </div>
       <div className="content">

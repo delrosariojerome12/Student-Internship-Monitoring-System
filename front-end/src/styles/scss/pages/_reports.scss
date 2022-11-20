@@ -11,21 +11,28 @@
   .content {
     display: grid;
     grid-template-rows: 5rem auto;
+    // border: solid 1px #fff;
     // padding: 2rem;
 
     .button-content {
       display: flex;
       justify-content: space-between;
+      border-radius: 1rem 1rem 0 0;
+      border-top: solid 1px #fff;
+      border-left: solid 1px #fff;
+      border-right: solid 1px #fff;
 
       .button-container {
         width: 45rem;
-        border-radius: 1.5rem 1.5rem 0 0;
+        border-radius: 1.5rem 0 0 0;
         display: grid;
         grid-template-columns: repeat(3, auto);
         background-color: lighten(
           $color: $primary-bg-color-landing-compliment,
           $amount: 10
         );
+        // border: solid 1px #fff;
+
         button {
           color: #fff;
           outline: none;
@@ -65,27 +72,44 @@
           &:nth-of-type(1) {
             border-radius: 1.5rem 0 0 0;
           }
-          &:nth-last-of-type(1) {
-            border-radius: 0 1.5rem 0 0;
-          }
+          // &:nth-last-of-type(1) {
+          //   border-radius: 0 1.5rem 0 0;
+          // }
         }
       }
       .dotted-button {
         cursor: pointer;
+        border-radius: 0 1.5rem 0 0;
+
         span {
           font-size: 3.5rem;
           color: #fff;
-        }
-        &:hover {
-          background-color: rgba(5, 5, 5, 0.336);
+          transition: all 0.3s linear;
+          position: relative;
+          &:hover::before {
+            width: 80%;
+          }
+          &::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 75%;
+            transform: translate(-50%, -75%);
+            transition: all 0.2s linear;
+            width: 0%;
+            height: 2px;
+            z-index: 2;
+            background-color: #fff;
+          }
         }
       }
     }
 
     .display {
+      border: solid 1px #fff;
       color: #fff;
       padding: 2rem;
-      border-radius: 0 1.5rem 1.5rem 1.5rem;
+      border-radius: 0 0 1.5rem 1.5rem;
       background-color: lighten(
         $color: $primary-bg-color-landing-compliment,
         $amount: 10
