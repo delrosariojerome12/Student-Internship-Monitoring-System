@@ -2034,103 +2034,122 @@ button {
 .reports .content .display {
   border: solid 1px #fff;
   color: #fff;
-  padding: 2rem;
   border-radius: 0 0 1.5rem 1.5rem;
   background-color: #4c4c4c;
 }
 .reports .narrative-container {
   display: grid;
-  grid-template-rows: 5rem auto;
+  grid-template-rows: 4rem auto;
   gap: 1rem;
   height: 100%;
 }
 .reports .narrative-container .button-container {
-  padding: 1rem 1rem 0 0;
   display: flex;
-  flex-direction: row-reverse;
-}
-.reports .narrative-container .button-container button {
+  justify-content: center;
   background-color: rgb(139, 139, 139);
-  color: #fff;
-  margin: 0 1rem;
+}
+.reports .narrative-container .button-container .sort,
+.reports .narrative-container .button-container .status,
+.reports .narrative-container .button-container .filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
   border: none;
-  transition: all 0.3s linear;
-  padding: 0 5rem;
-  border-radius: 0.5rem;
-}
-.reports .narrative-container .button-container button:hover {
-  background-color: #323232;
+  padding: 0 4rem;
   color: #fff;
+  background-color: rgb(139, 139, 139);
+  transition: all 0.3s linear;
+  cursor: pointer;
 }
-.reports .narrative-container .content {
+.reports .narrative-container .button-container .sort span,
+.reports .narrative-container .button-container .status span,
+.reports .narrative-container .button-container .filters span {
+  font-size: 1.8rem;
+  padding: 0.5rem 0.5rem 0;
+}
+.reports .narrative-container .button-container .sort p,
+.reports .narrative-container .button-container .status p,
+.reports .narrative-container .button-container .filters p {
+  font-size: 1.5rem;
+}
+.reports .narrative-container .button-container .sort:hover,
+.reports .narrative-container .button-container .status:hover,
+.reports .narrative-container .button-container .filters:hover {
+  background-color: #a4a4a4;
+  border-radius: 5rem;
+}
+.reports .narrative-container .narrative-content {
   display: grid;
-  grid-template-columns: 0.8fr 1.8fr 2fr;
-  gap: 0.5rem;
+  grid-template-columns: 0.5fr 1fr 1.5fr;
+  grid-auto-rows: 10rem;
+  padding: 1rem 2rem;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
 }
-.reports .narrative-container .content .right {
-  display: grid;
-  gap: 1rem;
+.reports .narrative-container .narrative-content > * {
+  background-color: #d9d9d9;
 }
-.reports .narrative-container .content .right .blank {
+.reports .narrative-container .narrative-content .dateAndDay {
+  text-align: center;
   flex-direction: column;
-  padding: 1.65rem 0;
+  padding: 1.8rem 0;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
 }
-.reports .narrative-container .content .right .blank h5,
-.reports .narrative-container .content .right .blank p {
-  padding: 0.5rem 0;
+.reports .narrative-container .narrative-content .dateAndDay h5 {
   color: #000;
+  padding: 0.5rem 0;
 }
-.reports .narrative-container .content .right .blank p {
+.reports .narrative-container .narrative-content .dateAndDay p {
+  color: #000;
   font-size: 1.3rem;
+  padding: 0 0 0.5rem;
 }
-.reports .narrative-container .content .mid {
-  display: grid;
-  gap: 1rem;
-}
-.reports .narrative-container .content .mid .blank {
+.reports .narrative-container .narrative-content .btn-column-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
-  padding: 1rem 0;
 }
-.reports .narrative-container .content .mid .blank .top {
+.reports .narrative-container .narrative-content .btn-column-container .top {
   padding: 0.5rem;
 }
-.reports .narrative-container .content .mid .blank .top button {
+.reports .narrative-container .narrative-content .btn-column-container .top button {
   transition: all 0.3s linear;
   font-size: 1.5rem;
   font-weight: 600;
   color: #0d7377;
   border: solid 1px #0d7377;
-  padding: 0.5rem 15rem;
-  border-radius: 0.5rem;
+  padding: 1rem 16rem;
+  border-radius: 1rem;
 }
-.reports .narrative-container .content .mid .blank .bottom {
-  padding: 0.2rem 0.5rem 0.5rem;
-  flex-direction: row;
-}
-.reports .narrative-container .content .mid .blank .bottom button {
-  color: #0d7377;
-  border: solid 1px #0d7377;
-  transition: all 0.3s linear;
-  padding: 0.5rem 4rem;
-  border-radius: 0.5rem;
-}
-.reports .narrative-container .content .left {
-  display: grid;
-  gap: 1rem;
-}
-.reports .narrative-container .content .left .blank {
-  padding: 4.76rem;
-  background-color: grey;
-}
-.reports .narrative-container .content .blank {
+.reports .narrative-container .narrative-content .btn-column-container .bottom {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  text-align: center;
-  cursor: pointer;
+  padding: 0.2rem 0.5rem 0.5rem;
+  flex-direction: row;
+}
+.reports .narrative-container .narrative-content .btn-column-container .bottom button {
+  margin: 0 0.5rem;
+  color: #0d7377;
+  border: solid 1px #0d7377;
   transition: all 0.3s linear;
+  padding: 0.8rem 4.5rem;
+  border-radius: 0.5rem;
+}
+.reports .narrative-container .narrative-content .blank-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.reports .narrative-container .narrative-content .blank-container .blank {
+  height: 80%;
+  width: 95%;
+  background-color: #a4a4a4;
 }
 
 .page-not-found {

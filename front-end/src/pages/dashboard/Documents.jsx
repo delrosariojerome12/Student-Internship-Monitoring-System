@@ -45,9 +45,7 @@ const Documents = () => {
               </span>
             </div>
             <div className="add-file-text">
-              <h5>
-                Drag and drop files, or <strong>Browse</strong>
-              </h5>
+              <h5>Drag and drop files, or Browse</h5>
               <p>Support zip or rar files</p>
             </div>
           </div>
