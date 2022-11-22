@@ -2055,8 +2055,6 @@ button {
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  -moz-column-gap: 1rem;
-       column-gap: 1rem;
   border: none;
   padding: 0 4rem;
   color: #fff;
@@ -2081,7 +2079,7 @@ button {
   background-color: #a4a4a4;
   border-radius: 5rem;
 }
-.reports .narrative-container .narrative-content {
+.reports .narrative-container .content .narrative-content {
   display: grid;
   grid-template-columns: 0.5fr 1fr 1.5fr;
   grid-auto-rows: 10rem;
@@ -2089,35 +2087,35 @@ button {
   -moz-column-gap: 1rem;
        column-gap: 1rem;
 }
-.reports .narrative-container .narrative-content > * {
+.reports .narrative-container .content .narrative-content > * {
   background-color: #d9d9d9;
 }
-.reports .narrative-container .narrative-content .dateAndDay {
+.reports .narrative-container .content .narrative-content .dateAndDay {
   text-align: center;
   flex-direction: column;
   padding: 1.8rem 0;
   -moz-column-gap: 1rem;
        column-gap: 1rem;
 }
-.reports .narrative-container .narrative-content .dateAndDay h5 {
+.reports .narrative-container .content .narrative-content .dateAndDay h5 {
   color: #000;
   padding: 0.5rem 0;
 }
-.reports .narrative-container .narrative-content .dateAndDay p {
+.reports .narrative-container .content .narrative-content .dateAndDay p {
   color: #000;
   font-size: 1.3rem;
   padding: 0 0 0.5rem;
 }
-.reports .narrative-container .narrative-content .btn-column-container {
+.reports .narrative-container .content .narrative-content .btn-column-container {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-.reports .narrative-container .narrative-content .btn-column-container .top {
+.reports .narrative-container .content .narrative-content .btn-column-container .top {
   padding: 0.5rem;
 }
-.reports .narrative-container .narrative-content .btn-column-container .top button {
+.reports .narrative-container .content .narrative-content .btn-column-container .top button {
   transition: all 0.3s linear;
   font-size: 1.5rem;
   font-weight: 600;
@@ -2126,14 +2124,14 @@ button {
   padding: 1rem 16rem;
   border-radius: 1rem;
 }
-.reports .narrative-container .narrative-content .btn-column-container .bottom {
+.reports .narrative-container .content .narrative-content .btn-column-container .bottom {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.2rem 0.5rem 0.5rem;
   flex-direction: row;
 }
-.reports .narrative-container .narrative-content .btn-column-container .bottom button {
+.reports .narrative-container .content .narrative-content .btn-column-container .bottom button {
   margin: 0 0.5rem;
   color: #0d7377;
   border: solid 1px #0d7377;
@@ -2141,12 +2139,12 @@ button {
   padding: 0.8rem 4.5rem;
   border-radius: 0.5rem;
 }
-.reports .narrative-container .narrative-content .blank-container {
+.reports .narrative-container .content .narrative-content .blank-container {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.reports .narrative-container .narrative-content .blank-container .blank {
+.reports .narrative-container .content .narrative-content .blank-container .blank {
   height: 80%;
   width: 95%;
   background-color: #a4a4a4;

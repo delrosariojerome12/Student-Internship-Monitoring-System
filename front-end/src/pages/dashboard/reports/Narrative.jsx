@@ -24,23 +24,25 @@ const Narrative = () => {
           <p>Filters</p>
         </button>
       </div>
-      <div className="narrative-content">
-        <div className="dateAndDay">
-          <h5>Day 1</h5>
-          <p>August 18, 2022</p>
-        </div>
-        <div className="btn-column-container">
-          <div className="top">
-            <button>complete</button>
+      <div className="content">
+        <div className="narrative-content">
+          <div className="dateAndDay">
+            <h5>Day 1</h5>
+            <p>August 18, 2022</p>
           </div>
-          <div className="bottom">
-            <button className="add">Add</button>
-            <button className="edit">Edit</button>
-            <button className="View">View</button>
+          <div className="btn-column-container">
+            <div className="top">
+              <button>complete</button>
+            </div>
+            <div className="bottom">
+              <button className="add">Add</button>
+              <button className="edit">Edit</button>
+              <button className="View">View</button>
+            </div>
           </div>
-        </div>
-        <div className="blank-container">
-          <div className="blank"></div>
+          <div className="blank-container">
+            <div className="blank"></div>
+          </div>
         </div>
       </div>
     </div>
