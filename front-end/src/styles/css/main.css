@@ -1952,11 +1952,11 @@ button {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 }
-.reports .content {
+.reports > .content {
   display: grid;
   grid-template-rows: 5rem auto;
 }
-.reports .content .button-content {
+.reports > .content .button-content {
   display: flex;
   justify-content: space-between;
   border-radius: 1rem 1rem 0 0;
@@ -1964,14 +1964,14 @@ button {
   border-left: solid 1px #fff;
   border-right: solid 1px #fff;
 }
-.reports .content .button-content .button-container {
+.reports > .content .button-content .button-container {
   width: 45rem;
   border-radius: 1.5rem 0 0 0;
   display: grid;
   grid-template-columns: repeat(3, auto);
   background-color: #4c4c4c;
 }
-.reports .content .button-content .button-container button {
+.reports > .content .button-content .button-container button {
   color: #fff;
   outline: none;
   border: none;
@@ -1982,16 +1982,16 @@ button {
   font-weight: 600;
   letter-spacing: 1px;
 }
-.reports .content .button-content .button-container button:hover::before {
+.reports > .content .button-content .button-container button:hover::before {
   width: 80%;
 }
-.reports .content .button-content .button-container button:focus {
+.reports > .content .button-content .button-container button:focus {
   background-color: #7f7f7f;
 }
-.reports .content .button-content .button-container button:focus::before {
+.reports > .content .button-content .button-container button:focus::before {
   width: 80%;
 }
-.reports .content .button-content .button-container button::before {
+.reports > .content .button-content .button-container button::before {
   content: "";
   position: absolute;
   left: 50%;
@@ -2003,23 +2003,23 @@ button {
   z-index: 2;
   background-color: #fff;
 }
-.reports .content .button-content .button-container button:nth-of-type(1) {
+.reports > .content .button-content .button-container button:nth-of-type(1) {
   border-radius: 1.5rem 0 0 0;
 }
-.reports .content .button-content .dotted-button {
+.reports > .content .button-content .dotted-button {
   cursor: pointer;
   border-radius: 0 1.5rem 0 0;
 }
-.reports .content .button-content .dotted-button span {
+.reports > .content .button-content .dotted-button span {
   font-size: 3.5rem;
   color: #fff;
   transition: all 0.3s linear;
   position: relative;
 }
-.reports .content .button-content .dotted-button span:hover::before {
+.reports > .content .button-content .dotted-button span:hover::before {
   width: 80%;
 }
-.reports .content .button-content .dotted-button span::before {
+.reports > .content .button-content .dotted-button span::before {
   content: "";
   position: absolute;
   left: 50%;
@@ -2031,7 +2031,7 @@ button {
   z-index: 2;
   background-color: #fff;
 }
-.reports .content .display {
+.reports > .content .display {
   border: solid 1px #fff;
   color: #fff;
   border-radius: 0 0 1.5rem 1.5rem;
