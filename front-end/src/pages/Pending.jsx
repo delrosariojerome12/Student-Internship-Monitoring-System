@@ -96,20 +96,27 @@ const Pending = () => {
       group: "student-details",
       forms: [
         {
-          type: "text",
-          id: "program",
-          forInput: "Program",
-          value: "",
-          isError: false,
-          errorMessage: "",
-        },
-        {
-          type: "text",
+          type: "select",
           id: "department",
-          forInput: "Department",
           value: "",
-          isError: false,
-          errorMessage: "",
+          options: [
+            {
+              value: "College of Computer Studies and Engineering",
+              label: "College of Computer Studies and Engineering",
+            },
+            {
+              value: "College of Business",
+              label: "College of Business",
+            },
+            {
+              value: "College of Tourism Management and Hospitality",
+              label: "College of Tourism Management and Hospitality",
+            },
+            {
+              value: "College of Medical Allied Courses",
+              label: "College of Medical Allied Courses",
+            },
+          ],
         },
         {
           type: "image",
@@ -141,27 +148,34 @@ const Pending = () => {
   const handleOnChange = (value, group, index, mainIndex) => {
     const newForm = [...form];
     const inputField = newForm[mainIndex].forms[index].id;
-    newForm[mainIndex].forms[index].value = value;
     switch (inputField) {
       case "company-name":
         value.length >= 2 && value.length <= 30
           ? (newForm[mainIndex].forms[index].isError = false)
           : (newForm[mainIndex].forms[index].isError = true);
+        newForm[mainIndex].forms[index].value = value;
+
         setForm(newForm);
         return;
       case "company-address":
         value.length >= 10 && value.length <= 50
           ? (newForm[mainIndex].forms[index].isError = false)
           : (newForm[mainIndex].forms[index].isError = true);
+        newForm[mainIndex].forms[index].value = value;
         setForm(newForm);
         return;
       case "supervisor":
+        const result = value.replace(/[^a-z]/gi, "");
+        newForm[mainIndex].forms[index].value = result;
+
         value.length >= 2 && value.length <= 20
           ? (newForm[mainIndex].forms[index].isError = false)
           : (newForm[mainIndex].forms[index].isError = true);
+
         setForm(newForm);
         return;
       case "supervisor-contact":
+        newForm[mainIndex].forms[index].value = value;
         const passwordRegex = /^(09|\+639)\d{9}$/;
         let isConctactValid = passwordRegex.test(value);
         if (isConctactValid) {
@@ -172,15 +186,15 @@ const Pending = () => {
         setForm(newForm);
         return;
       default:
-        // newForm[mainIndex].forms[index].value = value;
+        newForm[mainIndex].forms[index].value = value;
         setForm(newForm);
+        console.log(newForm);
         return;
     }
   };
 
   const handleNext = (e) => {
     e.preventDefault();
-
     let numOfErrors = 0;
     let numOfValues = 0;
     form[0].forms.forEach((item) => {
@@ -189,15 +203,14 @@ const Pending = () => {
     });
 
     if (numOfErrors === 0 && numOfValues === 6) {
-      console.log("working");
       setNextPage(!atNextPage);
     }
   };
 
   const handleKeydown = (e) => {
-    // if (e.keyCode == 13) {
-    //   e.preventDefault();
-    // }
+    if (e.keyCode == 13) {
+      e.preventDefault();
+    }
   };
 
   const customStyle = {
@@ -279,6 +292,7 @@ const Pending = () => {
           const list = options.map((opt) => opt);
           return (
             <Select
+              name={forInput}
               styles={customStyle}
               required
               onChange={(e) => handleOnChange(e.value, group, index, mainIndex)}
