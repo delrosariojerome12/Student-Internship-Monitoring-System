@@ -15,6 +15,7 @@ const Pending = () => {
           type: "select",
           id: "internship-type",
           value: "",
+          placeholder: "Type of Internship",
           options: [
             {
               value: "Onsite",
@@ -99,6 +100,7 @@ const Pending = () => {
           type: "select",
           id: "department",
           value: "",
+          placeholder: "Department",
           options: [
             {
               value: "College of Computer Studies and Engineering",
@@ -117,6 +119,13 @@ const Pending = () => {
               label: "College of Medical Allied Courses",
             },
           ],
+        },
+        {
+          type: "select",
+          id: "program",
+          value: "",
+          options: [],
+          placeholder: "Program",
         },
         {
           type: "image",
@@ -145,6 +154,124 @@ const Pending = () => {
     console.log(form);
   };
 
+  const checkDepartment = (department, mainIndex, index) => {
+    const newForm = [...form];
+    switch (department) {
+      case "College of Computer Studies and Engineering":
+        const CCSE = [
+          {
+            value: "Bachelor of Science in Information Technology",
+            label: "Bachelor of Science in Information Technology",
+          },
+          {
+            value: "Bachelor of Science in Computer Science",
+            label: "Bachelor of Science in Computer Science",
+          },
+          {
+            value: "Bachelor of Library Information System",
+            label: "Bachelor of Library Information System",
+          },
+          {
+            value: "Bachelor of Science in Computer Engineering",
+            label: "Bachelor of Science in Computer Engineering",
+          },
+          {
+            value: "Bachelor of Science in Electrical Engineering",
+            label: "Bachelor of Science in Electrical Engineering",
+          },
+          {
+            value:
+              "Bachelor of Science in Electronics and Communications Engineering",
+            label:
+              "Bachelor of Science in Electronics and Communications Engineering",
+          },
+        ];
+        newForm[mainIndex].forms[index + 1].options = CCSE.map((item) => {
+          const {label, value} = item;
+          return {
+            label,
+            value,
+          };
+        });
+        return;
+      case "College of Business":
+        const COB = [
+          {
+            value: "Bachelor of Science in Accountancy",
+            label: "Bachelor of Science in Accountancy",
+          },
+          {
+            value: "Bachelor of Science in Business Administration",
+            label: "Bachelor of Science in Business Administration",
+          },
+          {
+            value: "Bachelor of Science in Customs Administration",
+            label: "Bachelor of Science in Customs Administration",
+          },
+          {
+            value: "Bachelor of Science in Entrepreneurship",
+            label: "Bachelor of Science in Entrepreneurship",
+          },
+          {
+            value: "Bachelor of Science in Accounting Information System",
+            label: "Bachelor of Science in Accounting Information System",
+          },
+        ];
+        newForm[mainIndex].forms[index + 1].options = COB.map((item) => {
+          const {label, value} = item;
+          return {
+            label,
+            value,
+          };
+        });
+        return;
+      case "College of Tourism Management and Hospitality":
+        const CTMH = [
+          {
+            value: "Bachelor of Science in Hotel and Restaurant Management",
+            label: "Bachelor of Science in Hotel and Restaurant Management",
+          },
+          {
+            value: "Bachelor of Science in Tourism Management",
+            label: "Bachelor of Science in Tourism Management",
+          },
+        ];
+        newForm[mainIndex].forms[index + 1].options = CTMH.map((item) => {
+          const {label, value} = item;
+          return {
+            label,
+            value,
+          };
+        });
+        return;
+      case "College of Medical Allied Courses":
+        const CMAC = [
+          {
+            value: "Bachelor of Science in Biology",
+            label: "Bachelor of Science in Biology",
+          },
+          {
+            value: "Bachelor of Science in Pharmacy",
+            label: "Bachelor of Science in Pharmacy",
+          },
+          {
+            value: "Bachelor of Science in Midwifery",
+            label: "Bachelor of Science in Midwifery",
+          },
+        ];
+        newForm[mainIndex].forms[index + 1].options = CMAC.map((item) => {
+          const {label, value} = item;
+          return {
+            label,
+            value,
+          };
+        });
+        return;
+      default:
+        return;
+    }
+  };
+
   const handleOnChange = (value, group, index, mainIndex) => {
     const newForm = [...form];
     const inputField = newForm[mainIndex].forms[index].id;
@@ -154,7 +281,6 @@ const Pending = () => {
           ? (newForm[mainIndex].forms[index].isError = false)
           : (newForm[mainIndex].forms[index].isError = true);
         newForm[mainIndex].forms[index].value = value;
-
         setForm(newForm);
         return;
       case "company-address":
@@ -167,11 +293,9 @@ const Pending = () => {
       case "supervisor":
         const result = value.replace(/[^a-z]/gi, "");
         newForm[mainIndex].forms[index].value = result;
-
         value.length >= 2 && value.length <= 20
           ? (newForm[mainIndex].forms[index].isError = false)
           : (newForm[mainIndex].forms[index].isError = true);
-
         setForm(newForm);
         return;
       case "supervisor-contact":
@@ -185,10 +309,23 @@ const Pending = () => {
         }
         setForm(newForm);
         return;
+      case "department":
+        newForm[mainIndex].forms[index].value = value;
+        newForm[mainIndex].forms[index + 1].value = "";
+        const departmentValue = newForm[mainIndex].forms[index].value;
+        checkDepartment(departmentValue, mainIndex, index);
+        setForm(newForm);
+        console.log(newForm[mainIndex].forms);
+        return;
+      case "program":
+        newForm[mainIndex].forms[index].value = value;
+        setForm(newForm);
+        console.log(newForm[mainIndex].forms);
+
+        return;
       default:
         newForm[mainIndex].forms[index].value = value;
         setForm(newForm);
-        console.log(newForm);
         return;
     }
   };
@@ -202,13 +339,14 @@ const Pending = () => {
       item.value && numOfValues++;
     });
 
-    if (numOfErrors === 0 && numOfValues === 6) {
-      setNextPage(!atNextPage);
-    }
+    // if (numOfErrors === 0 && numOfValues === 6) {
+    // setNextPage(!atNextPage);
+    // }
+    setNextPage(!atNextPage);
   };
 
   const handleKeydown = (e) => {
-    if (e.keyCode == 13) {
+    if (e.keyCode === 13) {
       e.preventDefault();
     }
   };
@@ -288,7 +426,7 @@ const Pending = () => {
             </div>
           );
         case "select":
-          const {options} = item;
+          const {options, placeholder} = item;
           const list = options.map((opt) => opt);
           return (
             <Select
@@ -296,7 +434,7 @@ const Pending = () => {
               styles={customStyle}
               required
               onChange={(e) => handleOnChange(e.value, group, index, mainIndex)}
-              placeholder="Type of Internship"
+              placeholder={placeholder}
               theme={(theme) => ({
                 ...theme,
                 outline: "solid 1px #8b8b8b",

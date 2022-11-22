@@ -1278,9 +1278,6 @@ button {
   overflow: hidden;
   transition: all 0.2s linear;
 }
-.pending .modal form {
-  z-index: 999;
-}
 .pending .modal form .input-contain {
   display: flex;
   position: relative;
