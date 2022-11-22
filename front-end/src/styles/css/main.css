@@ -1952,6 +1952,84 @@ button {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 }
+.reports .report-modals {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -65%);
+  border: solid 2px black;
+  height: 50rem;
+  width: 55rem;
+  z-index: 2;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: solid 1px #25b525;
+  border-radius: 2rem;
+}
+.reports .report-modals h3 {
+  font-weight: bold;
+  font-size: 2.5rem;
+  background-color: #d9d9d9;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+}
+.reports .report-modals .modals-sorting {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+.reports .report-modals .modals-sorting .day,
+.reports .report-modals .modals-sorting .week,
+.reports .report-modals .modals-sorting .month,
+.reports .report-modals .modals-sorting .year,
+.reports .report-modals .modals-sorting .a-z-order {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #d9d9d9;
+  padding: 0.5rem 1rem 0.5rem 2rem;
+  border-radius: 2rem;
+}
+.reports .report-modals .modals-sorting .day label,
+.reports .report-modals .modals-sorting .week label,
+.reports .report-modals .modals-sorting .month label,
+.reports .report-modals .modals-sorting .year label,
+.reports .report-modals .modals-sorting .a-z-order label {
+  display: flex;
+  flex-direction: row;
+}
+.reports .report-modals .modals-sorting .day label input,
+.reports .report-modals .modals-sorting .week label input,
+.reports .report-modals .modals-sorting .month label input,
+.reports .report-modals .modals-sorting .year label input,
+.reports .report-modals .modals-sorting .a-z-order label input {
+  cursor: pointer;
+}
+.reports .report-modals .modals-sorting .day label p,
+.reports .report-modals .modals-sorting .week label p,
+.reports .report-modals .modals-sorting .month label p,
+.reports .report-modals .modals-sorting .year label p,
+.reports .report-modals .modals-sorting .a-z-order label p {
+  padding: 0 1rem;
+}
+.reports .report-modals .modals-sorting .day span,
+.reports .report-modals .modals-sorting .week span,
+.reports .report-modals .modals-sorting .month span,
+.reports .report-modals .modals-sorting .year span,
+.reports .report-modals .modals-sorting .a-z-order span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+.reports .report-modals .modals-sorting .ascending {
+  display: grid;
+  grid-template-columns: auto auto;
+}
 .reports > .content {
   display: grid;
   grid-template-rows: 5rem auto;
@@ -1960,16 +2038,14 @@ button {
   display: flex;
   justify-content: space-between;
   border-radius: 1rem 1rem 0 0;
-  border-top: solid 1px #fff;
-  border-left: solid 1px #fff;
-  border-right: solid 1px #fff;
 }
 .reports > .content .button-content .button-container {
   width: 45rem;
-  border-radius: 1.5rem 0 0 0;
+  border-radius: 1.5rem 1.5rem 0 0;
   display: grid;
   grid-template-columns: repeat(3, auto);
   background-color: #4c4c4c;
+  border: solid 1px #fff;
 }
 .reports > .content .button-content .button-container button {
   color: #fff;
@@ -2006,30 +2082,8 @@ button {
 .reports > .content .button-content .button-container button:nth-of-type(1) {
   border-radius: 1.5rem 0 0 0;
 }
-.reports > .content .button-content .dotted-button {
-  cursor: pointer;
+.reports > .content .button-content .button-container button:nth-last-of-type(1) {
   border-radius: 0 1.5rem 0 0;
-}
-.reports > .content .button-content .dotted-button span {
-  font-size: 3.5rem;
-  color: #fff;
-  transition: all 0.3s linear;
-  position: relative;
-}
-.reports > .content .button-content .dotted-button span:hover::before {
-  width: 80%;
-}
-.reports > .content .button-content .dotted-button span::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 75%;
-  transform: translate(-50%, -75%);
-  transition: all 0.2s linear;
-  width: 0%;
-  height: 2px;
-  z-index: 2;
-  background-color: #fff;
 }
 .reports > .content .display {
   border: solid 1px #fff;

@@ -44,6 +44,101 @@ const Narrative = () => {
             <div className="blank"></div>
           </div>
         </div>
+        <div className="narrative-content">
+          <div className="dateAndDay">
+            <h5>Day 2</h5>
+            <p>August 19, 2022</p>
+          </div>
+          <div className="btn-column-container">
+            <div className="top">
+              <button>complete</button>
+            </div>
+            <div className="bottom">
+              <button className="add">Add</button>
+              <button className="edit">Edit</button>
+              <button className="View">View</button>
+            </div>
+          </div>
+          <div className="blank-container">
+            <div className="blank"></div>
+          </div>
+        </div>
+        <div className="narrative-content">
+          <div className="dateAndDay">
+            <h5>Day 3</h5>
+            <p>August 20, 2022</p>
+          </div>
+          <div className="btn-column-container">
+            <div className="top">
+              <button>complete</button>
+            </div>
+            <div className="bottom">
+              <button className="add">Add</button>
+              <button className="edit">Edit</button>
+              <button className="View">View</button>
+            </div>
+          </div>
+          <div className="blank-container">
+            <div className="blank"></div>
+          </div>
+        </div>
+        <div className="narrative-content">
+          <div className="dateAndDay">
+            <h5>Day 4</h5>
+            <p>August 21, 2022</p>
+          </div>
+          <div className="btn-column-container">
+            <div className="top">
+              <button>complete</button>
+            </div>
+            <div className="bottom">
+              <button className="add">Add</button>
+              <button className="edit">Edit</button>
+              <button className="View">View</button>
+            </div>
+          </div>
+          <div className="blank-container">
+            <div className="blank"></div>
+          </div>
+        </div>
+        <div className="narrative-content">
+          <div className="dateAndDay">
+            <h5>Day 5</h5>
+            <p>August 22, 2022</p>
+          </div>
+          <div className="btn-column-container">
+            <div className="top">
+              <button>complete</button>
+            </div>
+            <div className="bottom">
+              <button className="add">Add</button>
+              <button className="edit">Edit</button>
+              <button className="View">View</button>
+            </div>
+          </div>
+          <div className="blank-container">
+            <div className="blank"></div>
+          </div>
+        </div>
+        <div className="narrative-content">
+          <div className="dateAndDay">
+            <h5>Day 6</h5>
+            <p>August 23, 2022</p>
+          </div>
+          <div className="btn-column-container">
+            <div className="top">
+              <button>complete</button>
+            </div>
+            <div className="bottom">
+              <button className="add">Add</button>
+              <button className="edit">Edit</button>
+              <button className="View">View</button>
+            </div>
+          </div>
+          <div className="blank-container">
+            <div className="blank"></div>
+          </div>
+        </div>
       </div>
     </div>
   );
