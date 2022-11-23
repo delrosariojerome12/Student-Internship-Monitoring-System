@@ -39,8 +39,39 @@ const links = [
 
 const SidebarLeft = () => {
   const {isSidebarOpen} = useSelector((state) => state.dashboard);
+  const {user} = useSelector((state) => state.user);
+
   const dispatch = useDispatch();
 
+  const renderLinks = () => {
+    const isVerified = user.verification.isVerified;
+    if (isVerified) {
+      return links.map((item, index) => {
+        const {path, link, IconType} = item;
+        return (
+          <span className="icon-con" key={index}>
+            <Link to={path}>
+              <IconType />
+              {isSidebarOpen && link}
+            </Link>
+          </span>
+        );
+      });
+    }
+    return links.map((item, index) => {
+      const {path, link, IconType} = item;
+      if (link === "Dashboard" || link === "Profile") {
+        return (
+          <span className="icon-con" key={index}>
+            <Link to={path}>
+              <IconType />
+              {isSidebarOpen && link}
+            </Link>
+          </span>
+        );
+      }
+    });
+  };
   return (
     <aside
       className={
@@ -58,19 +89,7 @@ const SidebarLeft = () => {
             {!isSidebarOpen ? <FaChevronRight /> : <FaChevronLeft />}
           </span>
         </div>
-        <div className="links-con">
-          {links.map((item, index) => {
-            const {path, link, IconType} = item;
-            return (
-              <span className="icon-con" key={index}>
-                <Link to={path}>
-                  <IconType />
-                  {isSidebarOpen && link}
-                </Link>
-              </span>
-            );
-          })}
-        </div>
+        <div className="links-con">{renderLinks()}</div>
       </IconContext.Provider>
     </aside>
   );
