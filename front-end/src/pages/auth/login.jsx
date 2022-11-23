@@ -51,12 +51,6 @@ const Login = () => {
   const refPassword = useRef();
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (user) {
-  //     navigate("/dashboard");
-  //   }
-  // }, [user]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(handleLogin(form));
@@ -98,12 +92,6 @@ const Login = () => {
       <FaEyeSlash onClick={handleShowPassword} />
     );
   };
-
-  // useEffect(() => {
-  //   if (user) {
-  //     navigate("/dashboard");
-  //   }
-  // }, [user]);
 
   const renderInputs = () => {
     return form.map((inputs, index) => {

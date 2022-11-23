@@ -78,11 +78,10 @@
         color: $primary-font-color-landing;
 
         &:hover {
-          background-color: $primary-font-color-landing;
+          background-color: $primary-bg-color-landing;
           border: solid 1px $primary-compliment-landing;
-          color: #000;
-          font-weight: bold;
-          font-size: 1.4rem;
+          color: $primary-font-color-landing;
+          border-radius: 0.5rem;
         }
       }
     }
@@ -297,8 +296,10 @@
         display: flex;
         justify-content: space-between;
         gap: 2rem;
-        img {
-          height: 3rem;
+        .social {
+          img {
+            height: 3rem;
+          }
         }
       }
     }

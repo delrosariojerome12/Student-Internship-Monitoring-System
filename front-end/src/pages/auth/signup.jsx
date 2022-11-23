@@ -116,7 +116,6 @@ const Signup = () => {
         setForm(data);
         return;
       case "Password":
-        // const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
         const passwordRegex =
           /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$/;
         let isPasswordValid = passwordRegex.test(value);

@@ -2,7 +2,11 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const {internshipDetails, internsAssets} = require("./utils/internsDetails");
+const {
+  internshipDetails,
+  internsAssets,
+  verification,
+} = require("./utils/internsDetails");
 const schoolDetails = require("./utils/schoolDetails");
 
 const UserSchema = new mongoose.Schema(
@@ -37,11 +41,7 @@ const UserSchema = new mongoose.Schema(
       ],
       minlength: 8,
     },
-    isValidated: {
-      type: Boolean,
-      default: false,
-    },
-
+    verification,
     internshipDetails,
     internsAssets,
     schoolDetails,

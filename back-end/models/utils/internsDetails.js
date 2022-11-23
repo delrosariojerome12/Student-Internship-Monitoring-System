@@ -2,7 +2,7 @@ const internshipDetails = {
   companyName: {
     type: String,
     // required: [true, "Please provide company name"],
-    maxlength: 50,
+    maxlength: 30,
     minlength: 2,
   },
   companyAddress: {
@@ -24,13 +24,13 @@ const internshipDetails = {
     //   "Please provide the exact number of hours to be rendered.",
     // ],
     maxlength: 4,
-    minlength: 1,
+    minlength: 3,
   },
   supervisor: {
     type: String,
     // required: [true, "Please provide supervisor name"],
-    maxlength: 50,
-    minlength: 5,
+    maxlength: 20,
+    minlength: 2,
   },
   renderedHours: {
     type: String,
@@ -65,4 +65,15 @@ const internsAssets = {
   },
 };
 
-module.exports = {internshipDetails, internsAssets};
+const verification = {
+  isVerified: {
+    type: Boolean,
+    default: false,
+  },
+  hasSentVerification: {
+    type: Boolean,
+    default: false,
+  },
+};
+
+module.exports = {internshipDetails, internsAssets, verification};

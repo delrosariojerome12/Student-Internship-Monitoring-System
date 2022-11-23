@@ -57,14 +57,25 @@ export const handleSignup = createAsyncThunk(
   async (form, {rejectWithValue}) => {
     try {
       const url = "http://localhost:5000/auth/signup";
-      const {data: res} = await axios.post(url, {
-        ...convertForm(form),
-        isValidated: false,
-      });
+      const {data: res} = await axios.post(url, convertForm(form));
       console.log(res);
       return {res};
     } catch (err) {
       return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const requestVerification = createAsyncThunk(
+  "/user/requestVerify",
+  async (form, {rejectWithValue}) => {
+    try {
+      const url = `http://localhost:5000/interns/requestVerify`;
+      const {data: res} = await axios.patch(url, form);
+      return {res: res.user};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
     }
   }
 );
@@ -129,6 +140,22 @@ export const userReducer = createSlice({
         state.user = res;
       })
       .addCase(getUserOnLoad.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.errorMessage = action.payload.msg;
+      });
+
+    // verification
+    builder
+      .addCase(requestVerification.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(requestVerification.fulfilled, (state, action) => {
+        const {res} = action.payload;
+        state.isLoading = false;
+        state.user = res;
+      })
+      .addCase(requestVerification.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.errorMessage = action.payload.msg;
