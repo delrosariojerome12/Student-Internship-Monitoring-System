@@ -16,6 +16,8 @@ const Pending = () => {
           id: "internship-type",
           value: "",
           placeholder: "Type of Internship",
+          isDisabled: false,
+
           options: [
             {
               value: "Onsite",
@@ -36,6 +38,8 @@ const Pending = () => {
           id: "duties",
           forInput: "Duties",
           value: "",
+          isDisabled: false,
+
           optionItems: [
             {
               value: "Encoding",
@@ -66,6 +70,7 @@ const Pending = () => {
           value: "",
           isError: false,
           errorMessage: "Atleast 2 characters and max of 30",
+          isDisabled: false,
         },
         {
           type: "text",
@@ -74,6 +79,7 @@ const Pending = () => {
           value: "",
           isError: false,
           errorMessage: "Atleast 10 characters and max of 50",
+          isDisabled: false,
         },
         {
           type: "text",
@@ -82,6 +88,7 @@ const Pending = () => {
           value: "",
           isError: false,
           errorMessage: "Atleast 2 characters and  max of 20",
+          isDisabled: false,
         },
         {
           type: "text",
@@ -90,6 +97,7 @@ const Pending = () => {
           value: "",
           isError: false,
           errorMessage: "This phone number format is not recognized. ",
+          isDisabled: false,
         },
       ],
     },
@@ -119,13 +127,18 @@ const Pending = () => {
               label: "College of Medical Allied Courses",
             },
           ],
+          isDisabled: false,
         },
         {
           type: "select",
           id: "program",
-          value: "",
+          value: {
+            value: "",
+            label: "",
+          },
           options: [],
           placeholder: "Program",
+          isDisabled: false,
         },
         {
           type: "image",
@@ -134,6 +147,7 @@ const Pending = () => {
           value: "",
           isError: false,
           errorMessage: "",
+          isDisabled: false,
         },
         {
           type: "text",
@@ -141,6 +155,7 @@ const Pending = () => {
           forInput: "Required Hours",
           value: "",
           isError: false,
+          isDisabled: true,
         },
       ],
     },
@@ -193,6 +208,7 @@ const Pending = () => {
             value,
           };
         });
+        newForm[mainIndex].forms[index + 3].value = "640";
         return;
       case "College of Business":
         const COB = [
@@ -217,6 +233,7 @@ const Pending = () => {
             label: "Bachelor of Science in Accounting Information System",
           },
         ];
+
         newForm[mainIndex].forms[index + 1].options = COB.map((item) => {
           const {label, value} = item;
           return {
@@ -224,6 +241,8 @@ const Pending = () => {
             value,
           };
         });
+        newForm[mainIndex].forms[index + 3].value = "250";
+
         return;
       case "College of Tourism Management and Hospitality":
         const CTMH = [
@@ -243,6 +262,7 @@ const Pending = () => {
             value,
           };
         });
+        newForm[mainIndex].forms[index + 3].value = "250";
         return;
       case "College of Medical Allied Courses":
         const CMAC = [
@@ -266,6 +286,8 @@ const Pending = () => {
             value,
           };
         });
+        newForm[mainIndex].forms[index + 3].value = "250";
+
         return;
       default:
         return;
@@ -311,21 +333,19 @@ const Pending = () => {
         return;
       case "department":
         newForm[mainIndex].forms[index].value = value;
-        newForm[mainIndex].forms[index + 1].value = "";
+        // newForm[mainIndex].forms[index + 1].value = null;
         const departmentValue = newForm[mainIndex].forms[index].value;
         checkDepartment(departmentValue, mainIndex, index);
         setForm(newForm);
         console.log(newForm[mainIndex].forms);
         return;
       case "program":
-        newForm[mainIndex].forms[index].value = value;
+        newForm[mainIndex].forms[index].value.value = value;
+        newForm[mainIndex].forms[index].value.label = value;
         setForm(newForm);
         console.log(newForm[mainIndex].forms);
-
         return;
       default:
-        newForm[mainIndex].forms[index].value = value;
-        setForm(newForm);
         return;
     }
   };
@@ -356,7 +376,8 @@ const Pending = () => {
       ...styles,
       border: "solid 1px #8b8b8b",
       fontSize: "1.5rem",
-      padding: "6.2px",
+      paddingLeft: "5px",
+      height: "50px",
     }),
     options: (base, state) => ({
       ...base,
@@ -379,12 +400,14 @@ const Pending = () => {
         minLength,
         isError,
         errorMessage,
+        isDisabled,
       } = item;
       switch (type) {
         case "text":
           return (
             <div className="input-contain" key={index}>
               <input
+                disabled={isDisabled}
                 required
                 value={value}
                 onChange={(e) =>
@@ -430,10 +453,10 @@ const Pending = () => {
           const list = options.map((opt) => opt);
           return (
             <Select
-              name={forInput}
+              options={list}
               styles={customStyle}
-              required
               onChange={(e) => handleOnChange(e.value, group, index, mainIndex)}
+              name={forInput}
               placeholder={placeholder}
               theme={(theme) => ({
                 ...theme,
@@ -445,7 +468,6 @@ const Pending = () => {
                 },
               })}
               key={index}
-              options={list}
             />
           );
         case "list":

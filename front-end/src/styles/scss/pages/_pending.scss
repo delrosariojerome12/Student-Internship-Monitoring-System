@@ -138,8 +138,9 @@
           display: grid;
           grid-template-columns: repeat(2, minmax(200px, 400px));
           transition: all 0.2s linear;
-          gap: 2rem;
+          column-gap: 2rem;
           justify-content: center;
+          height: 75%;
 
           button {
             grid-row: 5/6;
@@ -172,7 +173,9 @@
         border: solid 1px #fff;
         transition: all 0.2s linear;
         display: grid;
+        gap: 1rem;
         .img-input {
+          height: 5rem;
           display: flex;
           align-items: center;
           border: solid 1px #8b8b8b;
