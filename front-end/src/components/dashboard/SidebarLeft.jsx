@@ -31,7 +31,7 @@ const links = [
     IconType: HiDocument,
   },
   {
-    path: "/dashboard/reports",
+    path: "/dashboard/reports/narrative",
     link: "Reports",
     IconType: HiPencilAlt,
   },

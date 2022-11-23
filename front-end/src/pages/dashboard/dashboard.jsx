@@ -1,7 +1,7 @@
 import React from "react";
-import {Route, Routes, Navigate} from "react-router-dom";
-import {lazy, Suspense} from "react";
-import {useSelector} from "react-redux";
+import { Route, Routes, Navigate } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import { useSelector } from "react-redux";
 
 import DashboardMain from "./DashboardMain";
 import Pending from "../Pending";
@@ -15,8 +15,8 @@ const Reports = lazy(() => import("./Reports"));
 const Settings = lazy(() => import("./Settings"));
 
 const Dashboard = () => {
-  const {isSidebarOpen} = useSelector((state) => state.dashboard);
-  const {user} = useSelector((state) => state.user);
+  const { isSidebarOpen } = useSelector((state) => state.dashboard);
+  const { user } = useSelector((state) => state.user);
   // const dispatch = useDispatch();
 
   if (!user && !localStorage.getItem("token")) {
@@ -29,7 +29,7 @@ const Dashboard = () => {
   if (!isVerified) {
     return (
       <section
-        style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
+        style={isSidebarOpen ? { padding: "2rem 9rem 2rem 29rem" } : null}
         className="dashboard"
       >
         <SidebarLeft />
@@ -48,7 +48,7 @@ const Dashboard = () => {
 
   return (
     <section
-      style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
+      style={isSidebarOpen ? { padding: "2rem 9rem 2rem 29rem" } : null}
       className="dashboard"
     >
       <SidebarLeft />
@@ -58,7 +58,7 @@ const Dashboard = () => {
           <Route path="/profile/*" element={<Profile />} />
           <Route path="/daily-time-record" element={<DailyTimeRecord />} />
           <Route path="/documents/*" element={<Documents />} />
-          <Route path="/reports" element={<Reports />} />
+          <Route path="/reports/*" element={<Reports />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Routes>
