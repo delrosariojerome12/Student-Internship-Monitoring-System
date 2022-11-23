@@ -359,10 +359,9 @@ const Pending = () => {
       item.value && numOfValues++;
     });
 
-    // if (numOfErrors === 0 && numOfValues === 6) {
-    // setNextPage(!atNextPage);
-    // }
-    setNextPage(!atNextPage);
+    if (numOfErrors === 0 && numOfValues === 6) {
+      setNextPage(!atNextPage);
+    }
   };
 
   const handleKeydown = (e) => {
