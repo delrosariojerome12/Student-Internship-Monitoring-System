@@ -72,6 +72,7 @@ export const requestVerification = createAsyncThunk(
     try {
       const url = `http://localhost:5000/interns/requestVerify`;
       const {data: res} = await axios.patch(url, form);
+      console.log(res);
       return {res: res.user};
     } catch (error) {
       console.log(error);

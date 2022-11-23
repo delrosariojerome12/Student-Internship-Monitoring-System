@@ -1396,10 +1396,9 @@ button {
   display: grid;
   grid-template-columns: repeat(2, minmax(200px, 400px));
   transition: all 0.2s linear;
-  -moz-column-gap: 2rem;
-       column-gap: 2rem;
+  gap: 2rem;
   justify-content: center;
-  height: 75%;
+  height: 85%;
 }
 .pending .modal form .internship-details .forms-con button {
   grid-row: 5/6;

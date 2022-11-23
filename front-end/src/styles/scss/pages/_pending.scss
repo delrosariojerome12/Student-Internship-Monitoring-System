@@ -138,9 +138,9 @@
           display: grid;
           grid-template-columns: repeat(2, minmax(200px, 400px));
           transition: all 0.2s linear;
-          column-gap: 2rem;
+          gap: 2rem;
           justify-content: center;
-          height: 75%;
+          height: 85%;
 
           button {
             grid-row: 5/6;
