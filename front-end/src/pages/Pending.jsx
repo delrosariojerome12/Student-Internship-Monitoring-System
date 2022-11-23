@@ -17,7 +17,7 @@ const Pending = () => {
           value: "",
           placeholder: "Type of Internship",
           isDisabled: false,
-
+          code: "internshipType",
           options: [
             {
               value: "Onsite",
@@ -39,7 +39,7 @@ const Pending = () => {
           forInput: "Duties",
           value: "",
           isDisabled: false,
-
+          code: "typeOfWork",
           optionItems: [
             {
               value: "Encoding",
@@ -71,10 +71,12 @@ const Pending = () => {
           isError: false,
           errorMessage: "Atleast 2 characters and max of 30",
           isDisabled: false,
+          code: "companyName",
         },
         {
           type: "text",
           id: "company-address",
+          code: "companyAddress",
           forInput: "Company Address",
           value: "",
           isError: false,
@@ -84,6 +86,7 @@ const Pending = () => {
         {
           type: "text",
           id: "supervisor",
+          code: "supervisor",
           forInput: "Supervisor",
           value: "",
           isError: false,
@@ -93,6 +96,7 @@ const Pending = () => {
         {
           type: "text",
           id: "supervisor-contact",
+          code: "supervisorContact",
           forInput: "Supervisor Contact",
           value: "",
           isError: false,
@@ -107,6 +111,7 @@ const Pending = () => {
         {
           type: "select",
           id: "department",
+          code: "department",
           value: "",
           placeholder: "Department",
           options: [
@@ -132,10 +137,8 @@ const Pending = () => {
         {
           type: "select",
           id: "program",
-          value: {
-            value: "",
-            label: "",
-          },
+          code: "program",
+          value: "",
           options: [],
           placeholder: "Program",
           isDisabled: false,
@@ -143,6 +146,7 @@ const Pending = () => {
         {
           type: "image",
           id: "valid-id",
+          code: "validID",
           forInput: "",
           value: "",
           isError: false,
@@ -152,6 +156,7 @@ const Pending = () => {
         {
           type: "text",
           id: "required-hours",
+          code: "requiredHours",
           forInput: "Required Hours",
           value: "",
           isError: false,
@@ -164,9 +169,31 @@ const Pending = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [atNextPage, setNextPage] = useState(false);
 
+  const convertForm = (form) => {
+    const newData = form.map((input) => {
+      const {code, value} = input;
+      return {
+        code,
+        value,
+      };
+    });
+
+    const newObject = Object.assign(
+      {},
+      ...newData.map((item) => ({[item.code]: item.value}))
+    );
+
+    return newObject;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(form);
+    const finalForm = {
+      email: user.email,
+      internshipDetails: convertForm([...form[0].forms]),
+      schoolDetails: convertForm([...form[1].forms]),
+    };
+    dispatch(requestVerification(finalForm));
   };
 
   const checkDepartment = (department, mainIndex, index) => {
@@ -333,19 +360,19 @@ const Pending = () => {
         return;
       case "department":
         newForm[mainIndex].forms[index].value = value;
-        // newForm[mainIndex].forms[index + 1].value = null;
         const departmentValue = newForm[mainIndex].forms[index].value;
         checkDepartment(departmentValue, mainIndex, index);
         setForm(newForm);
         console.log(newForm[mainIndex].forms);
         return;
       case "program":
-        newForm[mainIndex].forms[index].value.value = value;
-        newForm[mainIndex].forms[index].value.label = value;
+        newForm[mainIndex].forms[index].value = value;
         setForm(newForm);
         console.log(newForm[mainIndex].forms);
         return;
       default:
+        newForm[mainIndex].forms[index].value = value;
+        setForm(newForm);
         return;
     }
   };
@@ -356,12 +383,13 @@ const Pending = () => {
     let numOfValues = 0;
     form[0].forms.forEach((item) => {
       item.isError && numOfErrors++;
-      item.value && numOfValues++;
+      // item.value && numOfValues++;
     });
 
-    if (numOfErrors === 0 && numOfValues === 6) {
+    if (numOfErrors === 0) {
       setNextPage(!atNextPage);
     }
+    // setNextPage(!atNextPage);
   };
 
   const handleKeydown = (e) => {

@@ -13,14 +13,7 @@ const signup = async (req, res) => {
 
   const token = user.createJWT();
   res.status(StatusCodes.CREATED).json({
-    user: {
-      name: `${user.firstName} ${user.lastName}`,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      userID: user._id,
-      isValidated: user.isValidated,
-    },
+    user,
     token,
   });
 };
