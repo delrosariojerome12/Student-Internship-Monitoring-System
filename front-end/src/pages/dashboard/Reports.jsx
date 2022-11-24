@@ -29,6 +29,7 @@ const Reports = () => {
 
   return (
     <section className="reports">
+      {/* modals */}
       <div className="sort-modals">
         <h3>Sort by</h3>
         <div className="modals-sorting">
@@ -184,7 +185,7 @@ const Reports = () => {
       </div>
       <div className="week-modals">
         <div className="week-container">
-          <div className="labels-container">
+          <div className="week-labels-container">
             <div className="top">
               <label>
                 <p>Week 1</p>
@@ -205,6 +206,84 @@ const Reports = () => {
               <label>
                 <p>Week 5</p>
                 <input type="checkbox" />
+              </label>
+            </div>
+            <span>
+              <MdOutlineArrowBackIosNew />
+            </span>
+          </div>
+        </div>
+      </div>
+      <div className="month-modals">
+        <div className="month-container">
+          <div className="month-labels-container">
+            <div className="top">
+              <label>
+                <input type="checkbox" />
+                <p>January</p>
+              </label>
+              <label>
+                <input type="checkbox" />
+                <p>February</p>
+              </label>
+              <label>
+                <input type="checkbox" />
+                <p>March</p>
+              </label>
+              <label>
+                <input type="checkbox" />
+                <p>April</p>
+              </label>
+              <label>
+                <input type="checkbox" />
+                <p>May</p>
+              </label>
+              <label>
+                <input type="checkbox" />
+                <p>June</p>
+              </label>
+              <label>
+                <input type="checkbox" />
+                <p>July</p>
+              </label>
+              <label>
+                <input type="checkbox" />
+                <p>August</p>
+              </label>
+              <label>
+                <input type="checkbox" />
+                <p>September</p>
+              </label>
+              <label>
+                <input type="checkbox" />
+                <p>October</p>
+              </label>
+              <label>
+                <input type="checkbox" />
+                <p>November</p>
+              </label>
+              <label>
+                <input type="checkbox" />
+                <p>December</p>
+              </label>
+            </div>
+            <span>
+              <MdOutlineArrowBackIosNew />
+            </span>
+          </div>
+        </div>
+      </div>
+      <div className="year-modals">
+        <div className="year-container">
+          <div className="year-labels-container">
+            <div className="top">
+              <label>
+                <input type="checkbox" />
+                <p>2022</p>
+              </label>
+              <label>
+                <input type="checkbox" />
+                <p>2021</p>
               </label>
             </div>
             <span>

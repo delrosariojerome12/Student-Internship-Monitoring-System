@@ -1989,7 +1989,7 @@ button {
   border: solid 2px black;
   height: 50rem;
   width: 50rem;
-  z-index: 11;
+  z-index: 2;
   padding: 3rem;
   display: flex;
   flex-direction: column;
@@ -2005,8 +2005,8 @@ button {
   padding: 1rem 2rem;
 }
 .reports .sort-modals .modals-sorting {
-  display: grid;
-  grid-template-columns: 1.5rem auto;
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
   padding-top: 2rem;
 }
@@ -2027,8 +2027,8 @@ button {
 .reports .sort-modals .modals-sorting .month label,
 .reports .sort-modals .modals-sorting .year label,
 .reports .sort-modals .modals-sorting .a-z-order label {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1.5rem auto;
 }
 .reports .sort-modals .modals-sorting .day label input,
 .reports .sort-modals .modals-sorting .week label input,
@@ -2206,9 +2206,9 @@ button {
 }
 .reports .week-modals {
   position: absolute;
-  top: 40%;
-  left: 75%;
-  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  transform: translate(103%, -120%);
   border: solid 2px black;
   width: 25rem;
   z-index: 5;
@@ -2224,31 +2224,125 @@ button {
   gap: 1rem;
   padding: 1rem;
 }
-.reports .week-modals .week-container .labels-container {
+.reports .week-modals .week-container .week-labels-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   background-color: #d9d9d9;
   padding: 0.5rem 1rem 0.5rem 2rem;
 }
-.reports .week-modals .week-container .labels-container label {
+.reports .week-modals .week-container .week-labels-container label {
   display: grid;
-  grid-template-columns: 12rem 1.5rem;
+  grid-template-columns: auto 1.5rem;
 }
-.reports .week-modals .week-container .labels-container label input {
+.reports .week-modals .week-container .week-labels-container label input {
   cursor: pointer;
 }
-.reports .week-modals .week-container .labels-container label p {
+.reports .week-modals .week-container .week-labels-container label p {
   padding: 0 1rem;
 }
-.reports .week-modals .week-container .labels-container span {
+.reports .week-modals .week-container .week-labels-container span {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2.5rem;
   cursor: pointer;
 }
-.reports .week-modals .week-container .labels-container span:hover {
+.reports .week-modals .week-container .week-labels-container span:hover {
+  background-color: rgba(255, 255, 255, 0.521);
+}
+.reports .month-modals {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(103%, -39%);
+  border: solid 2px black;
+  width: 25rem;
+  z-index: 6;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: solid 1px #0d7377;
+}
+.reports .month-modals .month-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+.reports .month-modals .month-container .month-labels-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #d9d9d9;
+  padding: 0.5rem 1rem 0.5rem 2rem;
+}
+.reports .month-modals .month-container .month-labels-container label {
+  display: grid;
+  grid-template-columns: 1.5rem auto;
+}
+.reports .month-modals .month-container .month-labels-container label input {
+  cursor: pointer;
+}
+.reports .month-modals .month-container .month-labels-container label p {
+  padding: 0 1rem;
+}
+.reports .month-modals .month-container .month-labels-container span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+.reports .month-modals .month-container .month-labels-container span:hover {
+  background-color: rgba(255, 255, 255, 0.521);
+}
+.reports .year-modals {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(103%, -72%);
+  border: solid 2px black;
+  width: 25rem;
+  z-index: 7;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: solid 1px #0d7377;
+}
+.reports .year-modals .year-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+.reports .year-modals .year-container .year-labels-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #d9d9d9;
+  padding: 0.5rem 1rem 0.5rem 2rem;
+}
+.reports .year-modals .year-container .year-labels-container label {
+  display: grid;
+  grid-template-columns: 1.5rem auto;
+}
+.reports .year-modals .year-container .year-labels-container label input {
+  cursor: pointer;
+}
+.reports .year-modals .year-container .year-labels-container label p {
+  padding: 0 1rem;
+}
+.reports .year-modals .year-container .year-labels-container span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+.reports .year-modals .year-container .year-labels-container span:hover {
   background-color: rgba(255, 255, 255, 0.521);
 }
 .reports > .content {
