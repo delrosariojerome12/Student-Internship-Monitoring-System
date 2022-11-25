@@ -8,27 +8,24 @@
   border: solid 1px #fff;
   border-radius: 0.5rem;
   padding: 2rem;
-  .report-modals {
+  .sort-modals {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -65%);
     border: solid 2px black;
     height: 50rem;
-    width: 55rem;
+    width: 50rem;
     z-index: 2;
-    padding: 2rem;
+    padding: 3rem;
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    border: solid 1px #25b525;
+    border: solid 1px #0d7377;
     border-radius: 2rem;
 
-    // & > * {
-    //   border: solid 1px red;
-    // }
     h3 {
-      font-weight: bold;
+      font-weight: 800;
       font-size: 2.5rem;
       background-color: #d9d9d9;
       border-radius: 1rem;
@@ -37,8 +34,9 @@
     .modals-sorting {
       display: flex;
       flex-direction: column;
+      // grid-template-columns: 1.5rem auto;
       gap: 1rem;
-      padding-top: 1rem;
+      padding-top: 2rem;
 
       .day,
       .week,
@@ -50,7 +48,72 @@
         justify-content: space-between;
         background-color: #d9d9d9;
         padding: 0.5rem 1rem 0.5rem 2rem;
-        border-radius: 2rem;
+        font-weight: 600;
+        // border-radius: 2rem;
+
+        label {
+          display: grid;
+          grid-template-columns: 1.5rem auto;
+          input {
+            cursor: pointer;
+          }
+          p {
+            padding: 0 1rem;
+          }
+        }
+        span {
+          @include flexCenter;
+          font-size: 2.5rem;
+          cursor: pointer;
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.521);
+          }
+        }
+      }
+      .ascending {
+        display: grid;
+        grid-template-columns: auto auto;
+      }
+    }
+  }
+  .status-modals {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -65%);
+    border: solid 2px black;
+    height: 50rem;
+    width: 50rem;
+    z-index: 3;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: solid 1px #0d7377;
+    border-radius: 2rem;
+    h3 {
+      font-weight: 800;
+      font-size: 2.5rem;
+      background-color: #d9d9d9;
+      border-radius: 1rem;
+      padding: 1rem 2rem;
+    }
+    .modals-status {
+      display: grid;
+      grid-template-columns: 1.5rem auto;
+      gap: 1rem;
+      padding-top: 2rem;
+
+      .complete-task,
+      .pending-task,
+      .missing-task {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: #d9d9d9;
+        padding: 0.5rem 1rem 0.5rem 2rem;
+        font-weight: 600;
+
         label {
           display: flex;
           flex-direction: row;
@@ -65,14 +128,220 @@
           @include flexCenter;
           font-size: 2.5rem;
           cursor: pointer;
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.521);
+          }
         }
-      }
-      .ascending {
-        display: grid;
-        grid-template-columns: auto auto;
       }
     }
   }
+  .filter-modals {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -65%);
+    border: solid 2px black;
+    height: 50rem;
+    width: 50rem;
+    z-index: 4;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: solid 1px #0d7377;
+    border-radius: 2rem;
+    h3 {
+      font-weight: 800;
+      font-size: 2.5rem;
+      background-color: #d9d9d9;
+      border-radius: 1rem;
+      padding: 1rem 2rem;
+    }
+    .modals-status {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding-top: 2rem;
+
+      .week-filter,
+      .month-filter,
+      .year-filter {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: #d9d9d9;
+        padding: 0.5rem 1rem 0.5rem 2rem;
+        font-weight: 600;
+
+        label {
+          display: grid;
+          grid-template-columns: 1.5rem auto;
+          input {
+            cursor: pointer;
+          }
+          p {
+            padding: 0 1rem;
+          }
+        }
+        span {
+          @include flexCenter;
+          font-size: 2.5rem;
+          cursor: pointer;
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.521);
+          }
+        }
+      }
+    }
+  }
+  .week-modals {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(103%, -120%);
+    border: solid 2px black;
+    width: 25rem;
+    z-index: 5;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: solid 1px #0d7377;
+
+    .week-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+
+      .week-labels-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: #d9d9d9;
+        padding: 0.5rem 1rem 0.5rem 2rem;
+
+        label {
+          display: grid;
+          grid-template-columns: auto 1.5rem;
+          input {
+            cursor: pointer;
+          }
+          p {
+            padding: 0 1rem;
+          }
+        }
+
+        span {
+          @include flexCenter;
+          font-size: 2.5rem;
+          cursor: pointer;
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.521);
+          }
+        }
+      }
+    }
+  }
+  .month-modals {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(103%, -39%);
+    border: solid 2px black;
+    width: 25rem;
+    z-index: 6;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: solid 1px #0d7377;
+
+    .month-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+
+      .month-labels-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: #d9d9d9;
+        padding: 0.5rem 1rem 0.5rem 2rem;
+
+        label {
+          display: grid;
+          grid-template-columns: 1.5rem auto;
+          input {
+            cursor: pointer;
+          }
+          p {
+            padding: 0 1rem;
+          }
+        }
+
+        span {
+          @include flexCenter;
+          font-size: 2.5rem;
+          cursor: pointer;
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.521);
+          }
+        }
+      }
+    }
+  }
+  .year-modals {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(103%, -72%);
+    border: solid 2px black;
+    width: 25rem;
+    z-index: 7;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: solid 1px #0d7377;
+
+    .year-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+
+      .year-labels-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: #d9d9d9;
+        padding: 0.5rem 1rem 0.5rem 2rem;
+
+        label {
+          display: grid;
+          grid-template-columns: 1.5rem auto;
+          input {
+            cursor: pointer;
+          }
+          p {
+            padding: 0 1rem;
+          }
+        }
+
+        span {
+          @include flexCenter;
+          font-size: 2.5rem;
+          cursor: pointer;
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.521);
+          }
+        }
+      }
+    }
+  }
+
   & > .content {
     display: grid;
     grid-template-rows: 5rem auto;
