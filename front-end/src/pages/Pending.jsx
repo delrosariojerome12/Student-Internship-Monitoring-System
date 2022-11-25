@@ -340,11 +340,10 @@ const Pending = () => {
         setForm(newForm);
         return;
       case "supervisor":
-        const result = value.replace(/[^a-z]/gi, "");
-        newForm[mainIndex].forms[index].value = result;
         value.length >= 2 && value.length <= 20
           ? (newForm[mainIndex].forms[index].isError = false)
           : (newForm[mainIndex].forms[index].isError = true);
+        newForm[mainIndex].forms[index].value = value;
         setForm(newForm);
         return;
       case "supervisor-contact":

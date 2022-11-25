@@ -1398,7 +1398,6 @@ button {
   transition: all 0.2s linear;
   gap: 2rem;
   justify-content: center;
-  height: 85%;
 }
 .pending .modal form .internship-details .forms-con button {
   grid-row: 5/6;
