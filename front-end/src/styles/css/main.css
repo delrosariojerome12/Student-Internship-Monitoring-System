@@ -1262,15 +1262,38 @@ button {
 }
 
 .pending {
-  border: solid 1px #fff;
   height: 100%;
-  position: relative;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: 10rem minmax(45rem, auto);
+  gap: 1rem;
+  padding: 1rem;
+}
+.pending .greetings {
+  color: #f1faee;
+}
+.pending .greetings .name {
+  font-size: 4rem;
+}
+.pending .greetings h4 {
+  font-size: 2rem;
+}
+.pending .pending-content {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  color: #f1faee;
+  border: solid 1px #fff;
+  gap: 2rem;
 }
-.pending > * {
-  border: solid 1px red;
+.pending .pending-content button {
+  padding: 2rem 5rem;
+  background-color: #0d7377;
+  border: #f1faee;
+  border-radius: 1rem;
+  color: #f1faee;
 }
 .pending .modal {
   height: 45rem;

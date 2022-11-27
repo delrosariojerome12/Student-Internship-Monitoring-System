@@ -4,9 +4,7 @@ import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
 import { requestVerification } from "../features/user/userReducer";
 
-//img
-import landingImg from "../assets/img/landing-dashboard";
-
+import pedningImg from "../assets/img/landingPage/landing-dashboard.svg";
 const Pending = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
@@ -528,13 +526,29 @@ const Pending = () => {
     });
   };
 
+  const {
+    user: { firstName },
+  } = useSelector((state) => state.user);
+
   return (
     <div className="pending">
-      <div className="greetings"></div>
+      <div className="greetings">
+        <h1 className="name">Hello {firstName}</h1>
+        <h4>Welcome Back!</h4>
+      </div>
       <div className="pending-content">
         {!isModalOpen && (
           <>
-            <p>Fill up few more details and you are ready!</p>
+            <h3>Looks like your account is not verified</h3>
+            <img src={pedningImg} alt="" />
+            <p>
+              Before you continue to access the other features, you must verify
+              your credentials
+            </p>
+            <p>
+              You must provide your information and other requirements. This
+              will help the administrator to know your Identity.{" "}
+            </p>
             <button onClick={() => setModalOpen(!isModalOpen)}>
               Verify Account
             </button>
