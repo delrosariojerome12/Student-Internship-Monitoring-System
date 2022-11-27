@@ -1269,6 +1269,9 @@ button {
   align-items: center;
   justify-content: center;
 }
+.pending > * {
+  border: solid 1px red;
+}
 .pending .modal {
   height: 45rem;
   width: 60vw;

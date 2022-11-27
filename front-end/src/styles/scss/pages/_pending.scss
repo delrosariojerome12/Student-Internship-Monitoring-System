@@ -5,7 +5,9 @@
   height: 100%;
   position: relative;
   @include flexCenter;
-
+  & > * {
+    border: solid 1px red;
+  }
   .modal {
     height: 45rem;
     width: 60vw;
