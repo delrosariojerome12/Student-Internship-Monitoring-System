@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(cors());
 // routes
 app.use("/auth", authRouter);
-app.use("/interns", internsRouter);
+app.use("/user", internsRouter);
 
 app.use(notFound);
 app.use(errorHandler);

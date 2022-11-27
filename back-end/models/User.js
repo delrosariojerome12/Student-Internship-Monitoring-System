@@ -7,6 +7,7 @@ const {
   internsAssets,
   verification,
 } = require("./utils/internsDetails");
+
 const schoolDetails = require("./utils/schoolDetails");
 
 const UserSchema = new mongoose.Schema(
@@ -41,10 +42,12 @@ const UserSchema = new mongoose.Schema(
       ],
       minlength: 8,
     },
-    verification,
-    internshipDetails,
-    internsAssets,
-    schoolDetails,
+    _admin: {type: mongoose.Schema.Types.ObjectId, ref: "Admin"},
+    _intern: {type: mongoose.Schema.Types.ObjectId, ref: "Intern"},
+    // verification,
+    // internshipDetails,
+    // internsAssets,
+    // schoolDetails,
   },
   {versionKey: false}
 );
