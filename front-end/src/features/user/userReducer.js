@@ -29,7 +29,7 @@ export const getUserOnLoad = createAsyncThunk(
   "/user/getUserOnLoad",
   async (email, {rejectWithValue}) => {
     try {
-      const url = `http://localhost:5000/interns/getIntern/${email}`;
+      const url = `http://localhost:5000/user/getIntern/${email}`;
       const {data: res} = await axios.get(url);
       return {res: res.user};
     } catch (error) {
@@ -70,7 +70,7 @@ export const requestVerification = createAsyncThunk(
   "/user/requestVerify",
   async (form, {rejectWithValue}) => {
     try {
-      const url = `http://localhost:5000/interns/requestVerify`;
+      const url = `http://localhost:5000/user/requestVerify`;
       const {data: res} = await axios.patch(url, form);
       console.log(res);
       return {res: res.user};
