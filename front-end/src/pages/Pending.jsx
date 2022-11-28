@@ -533,8 +533,7 @@ const Pending = () => {
   return (
     <div className="pending">
       <div className="greetings">
-        <h1 className="name">Hello {firstName}</h1>
-        <h4>Welcome Back!</h4>
+        <h1 className="name">Welcome, {firstName}</h1>
       </div>
       <div className="pending-content">
         {!isModalOpen && (

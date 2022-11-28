@@ -1281,9 +1281,6 @@ button {
 .pending .greetings .name {
   font-size: 4rem;
 }
-.pending .greetings h4 {
-  font-size: 2rem;
-}
 .pending .pending-content {
   display: flex;
   align-items: center;
