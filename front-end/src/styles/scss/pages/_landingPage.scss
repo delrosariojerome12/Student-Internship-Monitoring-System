@@ -14,13 +14,12 @@
     position: fixed;
     top: 0%;
     left: 0%;
-    display: flex;
     z-index: 99;
-    justify-content: space-between;
-    padding: 1em;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 17rem auto;
     background-color: $primary-bg-color-landing;
     color: $primary-font-color-landing;
+    padding: 0 5rem;
 
     a {
       color: $primary-font-color-landing;
@@ -46,7 +45,7 @@
       }
     }
 
-    .icon {
+    .logo {
       display: flex;
       align-items: center;
       gap: 1em;
@@ -57,33 +56,43 @@
         height: 32px;
       }
     }
-    .links {
+    .link-container {
+      background-color: $primary-bg-color-landing;
       display: flex;
-      // justify-content: space;
+      justify-content: space-evenly;
       align-items: center;
-      flex-direction: row;
-      gap: 3rem;
-    }
-    .auth-links {
-      display: flex;
-      gap: 2.5rem;
-      cursor: pointer;
-      & > * {
-        @include flexCenter;
-        border: 2px solid $primary-compliment-landing;
-        width: 15rem;
-        padding: 1rem;
-        transition: all 0.3s ease-in-out;
-        background-color: $primary-compliment-landing;
-        color: $primary-font-color-landing;
-
-        &:hover {
-          background-color: $primary-bg-color-landing;
-          border: solid 1px $primary-compliment-landing;
+      gap: 1rem;
+      .links {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 1rem;
+      }
+      .auth-links {
+        display: flex;
+        gap: 2.5rem;
+        cursor: pointer;
+        & > * {
+          @include flexCenter;
+          border: 2px solid $primary-compliment-landing;
+          width: 15rem;
+          padding: 1rem;
+          transition: all 0.3s ease-in-out;
+          background-color: $primary-compliment-landing;
           color: $primary-font-color-landing;
-          border-radius: 0.5rem;
+
+          &:hover {
+            background-color: $primary-bg-color-landing;
+            border: solid 1px $primary-compliment-landing;
+            color: $primary-font-color-landing;
+            border-radius: 0.5rem;
+          }
         }
       }
+    }
+
+    .menu-icon {
+      display: none;
     }
   }
 
@@ -274,10 +283,8 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-evenly;
       height: 100%;
-      padding-left: 20rem;
-
       .icon {
         display: flex;
         align-items: center;
@@ -292,7 +299,7 @@
         }
       }
       .socials-img {
-        padding: 0 20rem 0 0;
+        // padding: 0 20rem 0 0;
         display: flex;
         justify-content: space-between;
         gap: 2rem;

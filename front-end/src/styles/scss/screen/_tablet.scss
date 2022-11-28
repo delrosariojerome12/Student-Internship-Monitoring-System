@@ -97,17 +97,17 @@
 }
 
 //lannding page
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1100px) {
   .landing-page {
     & > * {
       border: solid 1px red;
     }
     nav {
-      padding: 0 0 0 5rem;
-      .icon {
+      padding: 0 2rem;
+      .logo {
         display: flex;
-        flex-direction: column;
-        gap: 0;
+        // flex-direction: column;
+        // gap: 0;
         h1 {
           font-size: 2.5rem;
         }
@@ -115,16 +115,17 @@
           height: 3rem;
         }
       }
-      .links {
-        font-size: 1.6rem;
-        gap: 1rem;
-      }
-      .auth-links {
-        padding: 0 5rem 0 0;
-
-        gap: 1rem;
-        & > * {
-          width: 10rem;
+      .link-container {
+        .links {
+          font-size: 1.6rem;
+          gap: 1rem;
+        }
+        .auth-links {
+          // padding: 0 5rem 0 0;
+          gap: 1rem;
+          & > * {
+            width: 10rem;
+          }
         }
       }
     }
@@ -197,6 +198,48 @@
           //   img {
           //   }
           // }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .landing-page {
+    nav {
+      padding: 3rem;
+      display: flex;
+      justify-content: space-between;
+      .link-container {
+        height: 0;
+        overflow: hidden;
+        @include flexColumn;
+        border-top: solid #636363 1px;
+        position: absolute;
+        left: 0%;
+        top: 100%;
+        width: 100%;
+        transition: all 0.2s ease-in-out;
+        .links,
+        .auth-links {
+          @include flexColumn;
+        }
+      }
+      .active-drop {
+        height: 30rem;
+        padding: 2rem;
+      }
+      .active {
+        transform: rotate(90deg);
+      }
+      .menu-icon {
+        grid-column: 2/3;
+        grid-row: 1/2;
+        transition: all 0.2s ease-in-out;
+        @include flexCenter;
+        font-size: 3rem;
+        svg {
+          cursor: pointer;
         }
       }
     }
