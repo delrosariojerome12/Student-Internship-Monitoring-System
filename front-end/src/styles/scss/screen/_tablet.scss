@@ -95,3 +95,48 @@
     }
   }
 }
+
+//lannding page
+
+@media screen and (max-width: 1000px) {
+  .landing-page {
+    & > * {
+      border: solid 1px red;
+    }
+    nav {
+      padding: 0 0 0 5rem;
+      .icon {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        h1 {
+          font-size: 2.5rem;
+        }
+        img {
+          height: 3rem;
+        }
+      }
+      .links {
+        font-size: 1.6rem;
+        gap: 1rem;
+      }
+      .auth-links {
+        padding: 0 5rem 0 0;
+
+        gap: 1rem;
+        & > * {
+          width: 10rem;
+        }
+      }
+    }
+    .content {
+      .landing-contents {
+        @include flexCenter;
+        .text {
+        }
+        .img-container {
+        }
+      }
+    }
+  }
+}

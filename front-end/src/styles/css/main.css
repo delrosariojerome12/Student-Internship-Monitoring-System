@@ -574,7 +574,6 @@ button {
 }
 .landing-page nav .links {
   display: flex;
-  justify-content: space;
   align-items: center;
   flex-direction: row;
   gap: 3rem;
@@ -1287,13 +1286,21 @@ button {
   color: #f1faee;
   border: solid 1px #fff;
   gap: 2rem;
+  padding: 0 10rem;
 }
 .pending .pending-content button {
-  padding: 2rem 5rem;
+  padding: 1.5rem 5rem;
   background-color: #0d7377;
-  border: #f1faee;
-  border-radius: 1rem;
+  border: solid 1px #f1faee;
   color: #f1faee;
+  transition: all 0.5s ease-in-out;
+  border-radius: 1rem;
+}
+.pending .pending-content button:hover {
+  border-radius: 4rem;
+  color: #0d7377;
+  border: solid 1px #0d7377;
+  background-color: #f1faee;
 }
 .pending .modal {
   height: 45rem;
@@ -3051,5 +3058,40 @@ button {
   .signin .card-container form .input-contain input {
     height: 50px;
     width: 100%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .landing-page > * {
+    border: solid 1px red;
+  }
+  .landing-page nav {
+    padding: 0 0 0 5rem;
+  }
+  .landing-page nav .icon {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .landing-page nav .icon h1 {
+    font-size: 2.5rem;
+  }
+  .landing-page nav .icon img {
+    height: 3rem;
+  }
+  .landing-page nav .links {
+    font-size: 1.6rem;
+    gap: 1rem;
+  }
+  .landing-page nav .auth-links {
+    padding: 0 5rem 0 0;
+    gap: 1rem;
+  }
+  .landing-page nav .auth-links > * {
+    width: 10rem;
+  }
+  .landing-page .content .landing-contents {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }/*# sourceMappingURL=main.css.map */
