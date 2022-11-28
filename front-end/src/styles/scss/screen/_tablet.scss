@@ -99,6 +99,9 @@
 //lannding page
 @media screen and (max-width: 1100px) {
   .landing-page {
+    grid-template-rows: minmax(100vh, auto) 15rem;
+    gap: 10rem;
+
     & > * {
       border: solid 1px red;
     }
@@ -106,10 +109,8 @@
       padding: 0 2rem;
       .logo {
         display: flex;
-        // flex-direction: column;
-        // gap: 0;
-        h1 {
-          font-size: 2.5rem;
+        h2 {
+          padding: 0 10% 0 0;
         }
         img {
           height: 3rem;
@@ -119,9 +120,9 @@
         .links {
           font-size: 1.6rem;
           gap: 1rem;
+          padding: 0;
         }
         .auth-links {
-          // padding: 0 5rem 0 0;
           gap: 1rem;
           & > * {
             width: 10rem;
@@ -130,32 +131,32 @@
       }
     }
     .contents {
-      grid-template-rows: minmax(70vh, auto) repeat(2, 50vh);
-      gap: 5rem;
+      grid-template-rows: minmax(100vh, auto) repeat(2, 80vh);
+      gap: 2rem;
 
       .landing-contents {
-        grid-template-columns: 1.8fr 2fr;
+        grid-template-columns: 1.5fr 2fr;
 
-        p,
-        h3 {
-          font-size: 2rem;
-        }
         .text {
+          gap: 1rem;
+          p,
+          h3 {
+            font-size: 2rem;
+            text-align: center;
+          }
           .darkbg {
             background-color: #323232af;
             height: 70vh;
-            width: 100%;
             transform: rotate(50deg);
           }
           .darkbg2 {
             background-color: #32323267;
             height: 70vh;
-            width: 100%;
             transform: rotate(50deg);
           }
         }
         .img-container {
-          z-index: 4;
+          z-index: 3;
           .landingImg {
             width: 90%;
             height: 75%;
@@ -177,27 +178,57 @@
       }
       .mockup-contents {
         .card {
-          height: 100%;
-        }
-        .text {
-          width: 90%;
-          height: 90%;
-          p {
-            &:nth-of-type(1) {
-              font-size: 2rem;
-            }
+          grid-template-columns: 30rem auto;
 
-            &:nth-of-type(2) {
-              padding-left: 5%;
+          .text-container {
+            // & > * {
+            //   border: solid 1px red;
+            // }
+            p {
+              &:nth-of-type(1) {
+                font-size: 2rem;
+              }
+              &:nth-of-type(2) {
+                grid-column: 1/4;
+                padding: 0;
+              }
+              &:nth-of-type(3) {
+                grid-column: 4/5;
+                padding: 0;
+              }
             }
-            &:nth-of-type(3) {
-              padding-right: 5%;
+            .img-con {
+              img {
+                height: 25rem;
+                width: 25rem;
+              }
             }
           }
-          // .img-con {
-          //   img {
-          //   }
-          // }
+          .mobile-img {
+            @include flexCenter;
+            img {
+              height: 80%;
+            }
+          }
+        }
+      }
+    }
+    footer {
+      .footer-content {
+        .icon {
+          h2 {
+            font-size: 2.5rem;
+          }
+          img {
+            height: 2rem;
+          }
+        }
+      }
+      .socials-img {
+        .social {
+          img {
+            height: 2.5rem;
+          }
         }
       }
     }

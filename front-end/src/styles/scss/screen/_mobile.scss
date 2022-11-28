@@ -94,3 +94,45 @@
     }
   }
 }
+
+//landing component
+@media screen and (max-width: 480px) {
+  nav {
+    .logo {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+  }
+  .contents {
+    .landing-contents {
+      display: flex !important;
+      flex-direction: column !important;
+      .text {
+        font-size: 2rem;
+        text-align: center;
+      }
+      .img-container {
+        display: none !important;
+      }
+    }
+    .feature-contents {
+      // display: none !important;
+      .feature-Content-Img {
+        flex-direction: column !important;
+        width: 50% !important;
+        gap: 3rem !important;
+
+        img {
+          height: 50% !important;
+        }
+      }
+    }
+    .mockup-contents {
+      display: none !important;
+    }
+    footer {
+      display: none !important;
+    }
+  }
+}
