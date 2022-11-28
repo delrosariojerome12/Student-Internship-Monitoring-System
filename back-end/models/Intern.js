@@ -1,7 +1,18 @@
 const mongoose = require("mongoose");
+const {
+  internshipDetails,
+  internsAssets,
+  verification,
+} = require("./utils/internsDetails");
+
+const schoolDetails = require("./utils/schoolDetails");
 
 const InternSchema = new mongoose.Schema({
-  name: {type: mongoose.Schema.Types.ObjectId, ref: "Name"},
+  user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
+  verification,
+  internshipDetails,
+  internsAssets,
+  schoolDetails,
 });
 
 module.exports = mongoose.model("Intern", InternSchema);
