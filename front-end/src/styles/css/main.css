@@ -24,6 +24,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -2567,10 +2569,66 @@ button {
 }
 
 .page-not-found {
-  height: 100%;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background-color: #393e46;
+  gap: 2rem;
+}
+.page-not-found img {
+  height: 50rem;
+  margin-bottom: -10rem;
+}
+.page-not-found h1 {
+  color: #fafafa;
+}
+.page-not-found h1 b {
+  color: #fa6363;
+}
+.page-not-found button {
+  color: #f1faee;
+  background-color: #0d7377;
+  border: solid 1px #0d7377;
+  border-radius: 1rem;
+  transition: all 0.3s linear;
+  padding: 1.5rem 3rem;
+  font-size: 2rem;
+}
+.page-not-found button:hover {
+  background-color: #f1faee;
+  color: #0d7377;
+  border: solid 1px #f1faee;
+  border-radius: 4rem;
 }
 
+@media screen and (max-width: 800px) {
+  .page-not-found img {
+    height: 40rem;
+    margin-bottom: -7rem;
+  }
+  .page-not-found h1 {
+    font-size: 2.5rem;
+  }
+  .page-not-found button {
+    padding: 1rem 3.5rem;
+    font-size: 1.7rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .page-not-found img {
+    height: 30rem;
+    margin-bottom: -5rem;
+  }
+  .page-not-found h1 {
+    font-size: 2rem;
+  }
+  .page-not-found button {
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
+  }
+}
 .login {
   display: grid;
   grid-template-columns: 45.2rem 1fr;
