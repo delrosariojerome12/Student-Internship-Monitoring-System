@@ -5,7 +5,6 @@ import CreatableSelect from "react-select/creatable";
 import { requestVerification } from "../features/user/userReducer";
 
 import pedningImg from "../assets/img/landingPage/landing-dashboard.svg";
-
 const Pending = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);

@@ -1,68 +1,7 @@
-@import "../variables";
-@import "../utils";
-
 .page-not-found {
-  @include flexCenter;
-  flex-direction: column;
-  text-align: center;
-  background-color: #393e46;
-  gap: 2rem;
-  img {
-    height: 50rem;
-    margin-bottom: -10rem;
-  }
-  h1 {
-    color: #fafafa;
-    b {
-      color: #fa6363;
-    }
-  }
-  button {
-    color: $primary-font-color;
-    background-color: $primary-compliment-landing;
-    border: solid 1px $primary-compliment-landing;
-    border-radius: 1rem;
-    transition: all 0.3s linear;
-    padding: 1.5rem 3rem;
-    font-size: 2rem;
-
-    &:hover {
-      background-color: $primary-font-color;
-      color: $primary-compliment-landing;
-      border: solid 1px $primary-font-color;
-      border-radius: 4rem;
-    }
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .page-not-found {
-    img {
-      height: 40rem;
-      margin-bottom: -7rem;
-    }
-    h1 {
-      font-size: 2.5rem;
-    }
-    button {
-      padding: 1rem 3.5rem;
-      font-size: 1.7rem;
-    }
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .page-not-found {
-    img {
-      height: 30rem;
-      margin-bottom: -5rem;
-    }
-    h1 {
-      font-size: 2rem;
-    }
-    button {
-      padding: 1rem 3rem;
-      font-size: 1.5rem;
-    }
-  }
+  height: 100%;
+  width: 100%;
+  // background: url(https://media.tenor.com/Pfai4bV4x2IAAAAC/leni-robredo-leni.gif)
+  //   no-repeat center;
+  // background-size: cover;
 }
