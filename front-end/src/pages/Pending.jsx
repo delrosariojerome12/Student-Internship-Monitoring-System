@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
-import { requestVerification } from "../features/user/userReducer";
+import {requestVerification} from "../features/user/userReducer";
 
 import pedningImg from "../assets/img/landingPage/landing-dashboard.svg";
 const Pending = () => {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.user);
+  const {user} = useSelector((state) => state.user);
 
   const [form, setForm] = useState([
     {
@@ -171,9 +171,11 @@ const Pending = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [atNextPage, setNextPage] = useState(false);
 
+  console.log(user);
+
   const convertForm = (form) => {
     const newData = form.map((input) => {
-      const { code, value } = input;
+      const {code, value} = input;
       return {
         code,
         value,
@@ -182,7 +184,7 @@ const Pending = () => {
 
     const newObject = Object.assign(
       {},
-      ...newData.map((item) => ({ [item.code]: item.value }))
+      ...newData.map((item) => ({[item.code]: item.value}))
     );
 
     return newObject;
@@ -231,7 +233,7 @@ const Pending = () => {
           },
         ];
         newForm[mainIndex].forms[index + 1].options = CCSE.map((item) => {
-          const { label, value } = item;
+          const {label, value} = item;
           return {
             label,
             value,
@@ -264,7 +266,7 @@ const Pending = () => {
         ];
 
         newForm[mainIndex].forms[index + 1].options = COB.map((item) => {
-          const { label, value } = item;
+          const {label, value} = item;
           return {
             label,
             value,
@@ -285,7 +287,7 @@ const Pending = () => {
           },
         ];
         newForm[mainIndex].forms[index + 1].options = CTMH.map((item) => {
-          const { label, value } = item;
+          const {label, value} = item;
           return {
             label,
             value,
@@ -309,7 +311,7 @@ const Pending = () => {
           },
         ];
         newForm[mainIndex].forms[index + 1].options = CMAC.map((item) => {
-          const { label, value } = item;
+          const {label, value} = item;
           return {
             label,
             value,
@@ -384,10 +386,10 @@ const Pending = () => {
     let numOfValues = 0;
     form[0].forms.forEach((item) => {
       item.isError && numOfErrors++;
-      // item.value && numOfValues++;
+      item.value && numOfValues++;
     });
 
-    if (numOfErrors === 0) {
+    if (numOfErrors === 0 && numOfValues === 6) {
       setNextPage(!atNextPage);
     }
     // setNextPage(!atNextPage);
@@ -477,7 +479,7 @@ const Pending = () => {
             </div>
           );
         case "select":
-          const { options, placeholder } = item;
+          const {options, placeholder} = item;
           const list = options.map((opt) => opt);
           return (
             <Select
@@ -499,7 +501,7 @@ const Pending = () => {
             />
           );
         case "list":
-          const { optionItems } = item;
+          const {optionItems} = item;
           return (
             <CreatableSelect
               styles={customStyle}
@@ -527,7 +529,7 @@ const Pending = () => {
   };
 
   const {
-    user: { firstName },
+    user: {firstName},
   } = useSelector((state) => state.user);
 
   return (
@@ -555,7 +557,7 @@ const Pending = () => {
         )}
       </div>
       <div
-        style={!isModalOpen ? { display: "none" } : null}
+        style={!isModalOpen ? {display: "none"} : null}
         className={atNextPage ? "modal verify" : "modal"}
       >
         <form onSubmit={handleSubmit}>

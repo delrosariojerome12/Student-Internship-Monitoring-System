@@ -23,8 +23,11 @@ const App = () => {
     if (!user && localStorage.getItem("token")) {
       const {email} = jwt_decode(localStorage.getItem("token"));
       dispatch(getUserOnLoad(email));
+      console.log("Test");
     }
-  }, []);
+  }, [user]);
+
+  console.log(user);
 
   return (
     <main className="container">

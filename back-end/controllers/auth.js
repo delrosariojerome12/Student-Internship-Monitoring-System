@@ -16,7 +16,7 @@ const signup = async (req, res) => {
 
   if (user.role === "intern") {
     const intern = await (
-      await Intern.create({user: user._id})
+      await Intern.create({user: user._id, email})
     ).populate({
       path: "user",
       model: "User",

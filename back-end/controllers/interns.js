@@ -1,4 +1,4 @@
-const {User} = require("../models/User");
+const User = require("../models/User");
 const Intern = require("../models/Intern");
 const {StatusCodes} = require("http-status-codes");
 const {BadRequest, NotFound} = require("../errors");
@@ -14,9 +14,10 @@ const getAllInterns = async (req, res) => {
 
 const getIntern = async (req, res) => {
   const {email} = req.params;
-  const user = await Intern.findOne({email}, {_id: 0})
-    .select("email -password")
-    .populate({path: "user", model: "User"});
+  const user = await Intern.findOne({email}).populate({
+    path: "user",
+    model: "User",
+  });
 
   if (!user) {
     throw new NotFound(`No intern with email ${email}`);

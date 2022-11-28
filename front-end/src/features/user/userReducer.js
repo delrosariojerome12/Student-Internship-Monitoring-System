@@ -31,6 +31,7 @@ export const getUserOnLoad = createAsyncThunk(
     try {
       const url = `http://localhost:5000/user/getIntern/${email}`;
       const {data: res} = await axios.get(url);
+      console.log(email);
       return {res: res.user};
     } catch (error) {
       console.log(error);
@@ -137,6 +138,7 @@ export const userReducer = createSlice({
       })
       .addCase(getUserOnLoad.fulfilled, (state, action) => {
         const {res} = action.payload;
+        console.log(res);
         state.isLoading = false;
         state.user = res;
       })
@@ -145,7 +147,6 @@ export const userReducer = createSlice({
         state.isError = true;
         state.errorMessage = action.payload.msg;
       });
-
     // verification
     builder
       .addCase(requestVerification.pending, (state, action) => {
