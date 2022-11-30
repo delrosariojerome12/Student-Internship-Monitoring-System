@@ -98,10 +98,10 @@ export const userReducer = createSlice({
     builder
       .addCase(handleLogin.pending, (state) => {
         state.isLoading = true;
+        console.log(state.isLoading);
       })
       .addCase(handleLogin.fulfilled, (state, action) => {
         const {res} = action.payload;
-        console.log(res);
         state.isLoading = false;
         state.isError = false;
         state.user = res.user;
@@ -137,6 +137,7 @@ export const userReducer = createSlice({
       })
       .addCase(getUserOnLoad.fulfilled, (state, action) => {
         const {res} = action.payload;
+        console.log(res);
         state.isLoading = false;
         state.user = res;
       })
@@ -145,7 +146,6 @@ export const userReducer = createSlice({
         state.isError = true;
         state.errorMessage = action.payload.msg;
       });
-
     // verification
     builder
       .addCase(requestVerification.pending, (state, action) => {

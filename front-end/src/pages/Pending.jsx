@@ -1,14 +1,15 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
-import { requestVerification } from "../features/user/userReducer";
+import {requestVerification} from "../features/user/userReducer";
 
 import pedningImg from "../assets/img/landingPage/landing-dashboard.svg";
-
 const Pending = () => {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.user);
+  const {user} = useSelector((state) => state.user);
+
+  const {user: userDetails} = user;
 
   const [form, setForm] = useState([
     {
@@ -172,9 +173,11 @@ const Pending = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [atNextPage, setNextPage] = useState(false);
 
+  console.log(user);
+
   const convertForm = (form) => {
     const newData = form.map((input) => {
-      const { code, value } = input;
+      const {code, value} = input;
       return {
         code,
         value,
@@ -183,7 +186,7 @@ const Pending = () => {
 
     const newObject = Object.assign(
       {},
-      ...newData.map((item) => ({ [item.code]: item.value }))
+      ...newData.map((item) => ({[item.code]: item.value}))
     );
 
     return newObject;
@@ -232,7 +235,7 @@ const Pending = () => {
           },
         ];
         newForm[mainIndex].forms[index + 1].options = CCSE.map((item) => {
-          const { label, value } = item;
+          const {label, value} = item;
           return {
             label,
             value,
@@ -265,7 +268,7 @@ const Pending = () => {
         ];
 
         newForm[mainIndex].forms[index + 1].options = COB.map((item) => {
-          const { label, value } = item;
+          const {label, value} = item;
           return {
             label,
             value,
@@ -286,7 +289,7 @@ const Pending = () => {
           },
         ];
         newForm[mainIndex].forms[index + 1].options = CTMH.map((item) => {
-          const { label, value } = item;
+          const {label, value} = item;
           return {
             label,
             value,
@@ -310,7 +313,7 @@ const Pending = () => {
           },
         ];
         newForm[mainIndex].forms[index + 1].options = CMAC.map((item) => {
-          const { label, value } = item;
+          const {label, value} = item;
           return {
             label,
             value,
@@ -385,10 +388,10 @@ const Pending = () => {
     let numOfValues = 0;
     form[0].forms.forEach((item) => {
       item.isError && numOfErrors++;
-      // item.value && numOfValues++;
+      item.value && numOfValues++;
     });
 
-    if (numOfErrors === 0) {
+    if (numOfErrors === 0 && numOfValues === 6) {
       setNextPage(!atNextPage);
     }
     // setNextPage(!atNextPage);
@@ -478,7 +481,7 @@ const Pending = () => {
             </div>
           );
         case "select":
-          const { options, placeholder } = item;
+          const {options, placeholder} = item;
           const list = options.map((opt) => opt);
           return (
             <Select
@@ -500,7 +503,7 @@ const Pending = () => {
             />
           );
         case "list":
-          const { optionItems } = item;
+          const {optionItems} = item;
           return (
             <CreatableSelect
               styles={customStyle}
@@ -527,63 +530,69 @@ const Pending = () => {
     });
   };
 
-  const {
-    user: { firstName },
-  } = useSelector((state) => state.user);
+  const {firstName} = userDetails;
+
+  const handleModal = (e) => {
+    e.stopPropagation();
+    setModalOpen(true);
+  };
+
+  const handleParent = () => {
+    setModalOpen(false);
+  };
 
   return (
-    <div className="pending">
+    <div className="pending" onClick={handleParent}>
       <div className="greetings">
         <h1 className="name">Welcome, {firstName}</h1>
       </div>
       <div className="pending-content">
-        {!isModalOpen && (
-          <>
-            <h3>Looks like your account is not verified</h3>
-            <img src={pedningImg} alt="" />
-            <p>
-              Before you continue to access the other features, you must verify
-              your credentials
-            </p>
-            <p>
-              You must provide your information and other requirements. This
-              will help the administrator to know your Identity.{" "}
-            </p>
-            <button onClick={() => setModalOpen(!isModalOpen)}>
-              Verify Account
-            </button>
-          </>
-        )}
-      </div>
-      <div
-        style={!isModalOpen ? { display: "none" } : null}
-        className={atNextPage ? "modal verify" : "modal"}
-      >
-        <form onSubmit={handleSubmit}>
-          <div
-            className={
-              atNextPage ? "internship-details inactive" : "internship-details"
-            }
-          >
-            <h3>Internship Details</h3>
-            <div className="forms-con">
-              {renderInputs(form[0].forms, "internship-details", 0)}
+        <>
+          <h3>Looks like your account is not verified yet.</h3>
+          <img src={pedningImg} alt="" />
+          <p>
+            Before you continue to access the other features, you must verify
+            your credentials
+          </p>
+          <p>
+            You must provide your information and other requirements. This will
+            help the administrator to know your Identity.
+          </p>
+          <button onClick={handleModal}>Verify Account</button>
+        </>
+        <div
+          style={!isModalOpen ? {display: "none"} : null}
+          className={atNextPage ? "modal verify" : "modal"}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <form onSubmit={handleSubmit}>
+            <div
+              className={
+                atNextPage
+                  ? "internship-details inactive"
+                  : "internship-details"
+              }
+            >
+              <h3>Internship Details</h3>
+              <div className="forms-con">
+                {renderInputs(form[0].forms, "internship-details", 0)}
+              </div>
+              <button onClick={handleNext}>Next</button>
             </div>
-            <button onClick={handleNext}>Next</button>
-          </div>
-          <div
-            className={
-              atNextPage ? "student-details active" : "student-details"
-            }
-          >
-            <h3>Student Details</h3>
-            {renderInputs(form[1].forms, "student-details", 1)}
-            <div className="btn-con">
-              <button onClick={() => setNextPage(!atNextPage)}>Back</button>
-              <button>Submit Verification</button>
+            <div
+              className={
+                atNextPage ? "student-details active" : "student-details"
+              }
+            >
+              <h3>Student Details</h3>
+              {renderInputs(form[1].forms, "student-details", 1)}
+              <div className="btn-con">
+                <button onClick={() => setNextPage(!atNextPage)}>Back</button>
+                <button>Submit Verification</button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );

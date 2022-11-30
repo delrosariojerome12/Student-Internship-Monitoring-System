@@ -101,7 +101,6 @@
   .landing-page {
     grid-template-rows: minmax(100vh, auto) 15rem;
     gap: 10rem;
-
     & > * {
       border: solid 1px red;
     }

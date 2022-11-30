@@ -24,7 +24,6 @@ const Dashboard = () => {
   }
   const isVerified = user.verification.isVerified;
 
-  console.log(user.verification.isVerified);
   // not validated
   if (!isVerified) {
     return (
