@@ -26,6 +26,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -1278,7 +1280,7 @@ button {
   height: 100%;
   margin: 0 auto;
   display: grid;
-  grid-template-rows: 6rem minmax(45rem, auto);
+  grid-template-rows: 7rem auto;
   gap: 1rem;
   padding: 1rem;
 }
@@ -1291,12 +1293,17 @@ button {
 .pending .pending-content {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
   text-align: center;
   color: #f1faee;
+  border: solid 1px #fff;
+  background-color: rgba(34, 40, 49, 0.4509803922);
   gap: 1.5rem;
-  padding: 0 10rem;
+  padding: 5rem 10rem;
+  border-radius: 1rem;
+}
+.pending .pending-content h3 {
+  font-size: 2.5rem;
 }
 .pending .pending-content > button {
   padding: 1.5rem 5rem;
@@ -2795,284 +2802,6 @@ button {
   border: solid 1px #457b9d;
 }
 
-@media screen and (max-width: 480px) {
-  .login {
-    grid-template-columns: 1fr 50px !important;
-    grid-template-rows: 1fr !important;
-  }
-  .login .bg-container {
-    grid-column: 2/3 !important;
-    grid-row: 1/2 !important;
-  }
-  .login .card-container {
-    grid-column: 1/2 !important;
-  }
-  .login .card-container header {
-    align-items: flex-start !important;
-  }
-  .login .card-container header h1 {
-    font-size: 3.5rem !important;
-  }
-  .login .card-container header img {
-    height: 4rem !important;
-  }
-  .login .card-container form span {
-    justify-content: flex-start !important;
-    margin: 0 !important;
-  }
-  .login .card-container form button {
-    margin: 0 !important;
-  }
-}
-@media screen and (max-width: 357px) {
-  .login {
-    grid-template-columns: 1fr !important;
-  }
-  .login .card-container {
-    padding: 2rem !important;
-  }
-  .login .card-container form {
-    gap: 2.5rem !important;
-  }
-  .login .card-container form span {
-    grid-template-columns: auto !important;
-    margin: 0 !important;
-  }
-}
-@media screen and (max-width: 480px) {
-  .signin {
-    grid-template-columns: 50px 1fr !important;
-    grid-template-rows: 1fr !important;
-  }
-  .signin .bg-container {
-    grid-column: 1/2 !important;
-    grid-row: 1/2 !important;
-  }
-  .signin .card-container {
-    grid-column: 2/3 !important;
-  }
-  .signin .card-container header {
-    align-items: flex-start !important;
-  }
-  .signin .card-container header h1 {
-    font-size: 3rem !important;
-  }
-  .signin .card-container header img {
-    height: 4rem !important;
-  }
-  .signin .card-container form {
-    align-items: flex-start !important;
-  }
-  .signin .card-container form span {
-    align-items: flex-start !important;
-    margin: 0 !important;
-  }
-}
-@media screen and (max-width: 357px) {
-  .signin {
-    grid-template-columns: 1fr !important;
-  }
-  .signin .card-container {
-    padding: 2rem !important;
-  }
-  .signin .card-container form {
-    gap: 2.5rem !important;
-  }
-  .signin .card-container form span {
-    align-items: flex-start !important;
-    flex-direction: column;
-    margin: 0 !important;
-  }
-}
-@media screen and (max-width: 480px) {
-  nav .logo {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-  }
-  .contents .landing-contents {
-    display: flex !important;
-    flex-direction: column !important;
-  }
-  .contents .landing-contents .text {
-    font-size: 2rem;
-    text-align: center;
-  }
-  .contents .landing-contents .img-container {
-    display: none !important;
-  }
-  .contents .feature-contents .feature-Content-Img {
-    flex-direction: column !important;
-    width: 50% !important;
-    gap: 3rem !important;
-  }
-  .contents .feature-contents .feature-Content-Img img {
-    height: 50% !important;
-  }
-  .contents .mockup-contents {
-    display: none !important;
-  }
-  .contents footer {
-    display: none !important;
-  }
-}
-.login {
-  display: grid;
-  grid-template-columns: 45.2rem 1fr;
-  font-size: 1.4rem;
-}
-.login .bg-container {
-  height: 100%;
-  width: 100%;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1080' height='560' preserveAspectRatio='none' viewBox='0 0 1080 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask2564%26quot%3b)' fill='none'%3e%3crect width='1080' height='560' x='0' y='0' fill='%230e2a47'%3e%3c/rect%3e%3cpath d='M1010.8603635618742 115.02007383675995L935.1085530076157 74.74212169962718 894.830600870483 150.4939322538857 970.5824114247415 190.77188439101846z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1029.702005360189-33.801361989301135L955.3181325638373 132.83996290940632 1114.23531739998 118.9365107967899z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M160.34755279135828 168.1717987652483L57.198242897431086 240.39772311410553 129.4241672462883 343.5470330080327 232.57347714021552 271.3211086591755z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M220.96 187.17 a172.47 172.47 0 1 0 344.94 0 a172.47 172.47 0 1 0 -344.94 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1018.7807516909211 434.36034169448095L907.1133335469049 512.5507096513369 1096.971119647777 546.0277598384972z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M221.043%2c171.975C268.229%2c172.492%2c317.623%2c157.708%2c341.015%2c116.725C364.253%2c76.012%2c352.021%2c25.929%2c327.048%2c-13.743C303.854%2c-50.589%2c264.567%2c-72.773%2c221.043%2c-73.86C175.388%2c-75%2c129.36%2c-58.188%2c105.454%2c-19.276C80.502%2c21.338%2c80.883%2c73.35%2c105.539%2c114.145C129.41%2c153.641%2c174.897%2c171.469%2c221.043%2c171.975' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M545.14 445.37 a103.26 103.26 0 1 0 206.52 0 a103.26 103.26 0 1 0 -206.52 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M-67.54124169793184 104.96717829859668L-101.53980937332204 203.7061883668626 63.56798956677189 205.33453484581497z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1085.1253407364632 390.54958929741383L1165.516297865899 275.739404112919 970.3151555519684 310.1586321679779z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M371.116887954621 239.9213757523273L455.48057641168793 158.4523088080166 374.0115094673772 74.0886203509497 289.6478210103103 155.5576872952604z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M447.07733384265805 664.1033901869265L485.82202255664106 508.706931417102 330.4255637868165 469.96224270311905 291.68087507283354 625.3587014729435z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M892.7093568070289-48.78614360137685L813.5510624340563-52.93465402129758 846.9074439906616 67.8770427481216z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask2564'%3e%3crect width='1080' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
-}
-.login footer {
-  display: none;
-}
-.login .card-container {
-  display: grid;
-  padding: 3rem;
-  gap: 3rem;
-  grid-template-rows: auto 1fr;
-}
-.login .card-container header {
-  display: flex;
-  gap: 1.5rem;
-  align-items: flex-start;
-  flex-direction: column;
-}
-.login .card-container header h1 {
-  font-size: 4.2rem;
-}
-.login .card-container header img {
-  height: 4.7rem;
-}
-.login .card-container form {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-}
-.login .card-container form .input-contain {
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  border-radius: 0.5rem;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  gap: 1rem;
-}
-.login .card-container form .input-contain .placeholder-container {
-  position: absolute;
-  top: 5%;
-  left: 0%;
-  height: 4.5rem;
-  width: 100%;
-  pointer-events: none;
-}
-.login .card-container form .input-contain .eye-container {
-  z-index: 2;
-  position: absolute;
-  height: 4.5rem;
-  display: flex;
-  align-items: center;
-  top: 50%;
-  right: 3%;
-  transform: translate(0, -50%);
-}
-.login .card-container form .input-contain .eye-container svg {
-  cursor: pointer;
-  pointer-events: all;
-  font-size: 1.9rem;
-}
-.login .card-container form .input-contain input {
-  width: 39rem;
-  height: 5rem;
-  border: solid 3px transparent;
-  outline: solid 1px #8b8b8b;
-  border-radius: 0.5rem;
-  padding: 1.1rem 3.5rem 1.1rem 1.1rem;
-  letter-spacing: 2px;
-  transition: all 0.1s ease-in-out;
-}
-.login .card-container form .input-contain input:focus {
-  border: solid 3px #457b9d;
-  outline: none;
-}
-.login .card-container form .input-contain input:focus + .placeholder-container .placeholder-text {
-  top: 0%;
-  left: 0%;
-  background-color: #fff;
-  font-size: 1.1rem;
-  color: black;
-  scale: 0.8;
-}
-.login .card-container form .input-contain .input-error {
-  border: solid 2px #ed3737 !important;
-}
-.login .card-container form .input-contain .error-message {
-  color: #ed3737;
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-.login .card-container form .input-contain .icons-error {
-  color: red !important;
-}
-.login .card-container form .input-contain .placeholder-text {
-  position: absolute;
-  transition: all 0.2s ease-in-out;
-  pointer-events: none;
-  top: 50%;
-  left: 5%;
-  transform: translate(0%, -50%);
-}
-.login .card-container form .input-contain .placeholder-text:nth-child(1) {
-  left: 2% !important;
-}
-.login .card-container form .input-contain .placeholder-text .text {
-  font-size: 1.4rem;
-  padding: 0 0.5rem;
-  background-color: transparent;
-  color: black;
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
-.login .card-container form .input-contain .active {
-  top: 0%;
-  left: 0%;
-  background-color: #fff;
-  font-size: 1.1rem;
-  border-color: #8b8b8b;
-  scale: 0.8;
-}
-.login .card-container form span {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.login .card-container form span svg {
-  font-size: 1.7rem;
-}
-.login .card-container form button {
-  cursor: pointer;
-  height: 4.5rem;
-  width: 12.5rem;
-  border-radius: 5px;
-  border: solid 1px transparent;
-  outline: none;
-  background-color: #457b9d;
-  color: #f1faee;
-  letter-spacing: 0.2rem;
-  transition: all 0.3s ease-in-out;
-  font-weight: 600;
-}
-.login .card-container form button:hover {
-  background-color: #f1faee;
-  color: #457b9d;
-  border: solid 1px #457b9d;
-}
-
 @media screen and (max-width: 800px) {
   .login {
     grid-template-columns: 1fr 150px;
@@ -3122,6 +2851,121 @@ button {
     margin: 0 auto;
   }
 }
+@media screen and (max-width: 480px) {
+  .login {
+    grid-template-columns: 1fr 50px;
+    grid-template-rows: 1fr;
+  }
+  .login .bg-container {
+    grid-column: 2/3;
+    grid-row: 1/2;
+  }
+  .login .card-container {
+    grid-column: 1/2;
+  }
+  .login .card-container header {
+    align-items: flex-start;
+  }
+  .login .card-container header h1 {
+    font-size: 3.5rem;
+  }
+  .login .card-container header img {
+    height: 4rem;
+  }
+  .login .card-container form span {
+    justify-content: flex-start;
+    margin: 0;
+  }
+  .login .card-container form button {
+    margin: 0;
+  }
+}
+@media screen and (max-width: 357px) {
+  .login {
+    grid-template-columns: 1fr;
+  }
+  .login .card-container {
+    padding: 2rem;
+  }
+  .login .card-container form {
+    gap: 2.5rem;
+  }
+  .login .card-container form span {
+    grid-template-columns: auto;
+    margin: 0;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .pending .greetings .name {
+    font-size: 3.9rem;
+  }
+  .pending .pending-content img {
+    height: 35rem;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .pending .greetings .name {
+    font-size: 3.7rem;
+  }
+  .pending .pending-content {
+    padding: 3rem 8rem;
+  }
+  .pending .pending-content h3 {
+    font-size: 2.2rem;
+  }
+  .pending .pending-content img {
+    height: 32rem;
+  }
+}
+@media screen and (max-width: 900px) {
+  .pending .greetings .name {
+    font-size: 3.5rem;
+  }
+  .pending .pending-content {
+    padding: 3rem 6rem;
+  }
+  .pending .pending-content img {
+    height: 30rem;
+  }
+}
+@media screen and (max-width: 830px) {
+  .pending .pending-content img {
+    height: 28rem;
+  }
+}
+@media screen and (max-width: 750px) {
+  .pending .pending-content img {
+    height: 25rem;
+  }
+}
+@media screen and (max-width: 650px) {
+  .pending .greetings .name {
+    font-size: 3.3rem;
+  }
+  .pending .pending-content h3 {
+    font-size: 2rem;
+  }
+  .pending .pending-content img {
+    height: 22rem;
+  }
+  .pending .pending-content p {
+    font-size: 1.8rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .pending .greetings .name {
+    font-size: 3rem;
+  }
+  .pending .pending-content h3 {
+    font-size: 1.8rem;
+  }
+  .pending .pending-content img {
+    height: 18rem;
+  }
+  .pending .pending-content p {
+    font-size: 1.5rem;
+  }
+}
 @media screen and (max-width: 800px) {
   .signin {
     grid-template-columns: 150px 1fr;
@@ -3161,6 +3005,51 @@ button {
   .signin .card-container form .input-contain input {
     height: 50px;
     width: 100%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .signin {
+    grid-template-columns: 50px 1fr;
+    grid-template-rows: 1fr;
+  }
+  .signin .bg-container {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+  .signin .card-container {
+    grid-column: 2/3;
+  }
+  .signin .card-container header {
+    align-items: flex-start;
+  }
+  .signin .card-container header h1 {
+    font-size: 3rem;
+  }
+  .signin .card-container header img {
+    height: 4rem;
+  }
+  .signin .card-container form {
+    align-items: flex-start;
+  }
+  .signin .card-container form span {
+    align-items: flex-start;
+    margin: 0;
+  }
+}
+@media screen and (max-width: 357px) {
+  .signin {
+    grid-template-columns: 1fr;
+  }
+  .signin .card-container {
+    padding: 2rem;
+  }
+  .signin .card-container form {
+    gap: 2.5rem;
+  }
+  .signin .card-container form span {
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 0;
   }
 }
 @media screen and (max-width: 1100px) {
@@ -3315,5 +3204,37 @@ button {
   }
   .landing-page nav .menu-icon svg {
     cursor: pointer;
+  }
+}
+@media screen and (max-width: 480px) {
+  nav .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .contents .landing-contents {
+    display: flex;
+    flex-direction: column;
+  }
+  .contents .landing-contents .text {
+    font-size: 2rem;
+    text-align: center;
+  }
+  .contents .landing-contents .img-container {
+    display: none;
+  }
+  .contents .feature-contents .feature-Content-Img {
+    flex-direction: column;
+    width: 50%;
+    gap: 3rem;
+  }
+  .contents .feature-contents .feature-Content-Img img {
+    height: 50%;
+  }
+  .contents .mockup-contents {
+    display: none;
+  }
+  .contents footer {
+    display: none;
   }
 }/*# sourceMappingURL=main.css.map */

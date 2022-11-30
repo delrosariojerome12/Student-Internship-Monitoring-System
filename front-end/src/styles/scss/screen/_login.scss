@@ -1,0 +1,100 @@
+@import "../components/login";
+@import "../utils";
+
+//tablet
+@media screen and (max-width: 800px) {
+  .login {
+    grid-template-columns: 1fr 150px;
+    grid-template-rows: 1fr;
+    .bg-container {
+      grid-column: 2/3;
+      grid-row: 1/2;
+    }
+    .card-container {
+      margin-top: 5%;
+      grid-column: 1/2;
+      gap: 2rem;
+      header {
+        @include flexCenter;
+        gap: 0.7rem;
+        flex-direction: column;
+        h1 {
+          font-size: 4rem;
+        }
+        img {
+          height: 5rem;
+        }
+      }
+
+      form {
+        width: 100%;
+        .input-contain {
+          width: 100%;
+          .text {
+            padding: 0;
+          }
+          input {
+            height: 50px;
+            width: 100%;
+          }
+        }
+        span {
+          display: grid;
+          grid-template-columns: auto auto;
+          margin: 0 auto;
+        }
+        button {
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+
+//mobile
+@media screen and (max-width: 480px) {
+  .login {
+    grid-template-columns: 1fr 50px;
+    grid-template-rows: 1fr;
+    .bg-container {
+      grid-column: 2/3;
+      grid-row: 1/2;
+    }
+    .card-container {
+      grid-column: 1/2;
+      header {
+        align-items: flex-start;
+        h1 {
+          font-size: 3.5rem;
+        }
+        img {
+          height: 4rem;
+        }
+      }
+      form {
+        span {
+          justify-content: flex-start;
+          margin: 0;
+        }
+        button {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 357px) {
+  .login {
+    grid-template-columns: 1fr;
+    .card-container {
+      padding: 2rem;
+      form {
+        gap: 2.5rem;
+        span {
+          grid-template-columns: auto;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
