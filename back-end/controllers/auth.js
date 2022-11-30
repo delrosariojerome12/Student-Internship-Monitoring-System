@@ -24,7 +24,7 @@ const signup = async (req, res) => {
 
     const token = user.createJWT();
     res.status(StatusCodes.CREATED).json({
-      intern,
+      user: intern,
       token,
     });
   }
@@ -38,7 +38,7 @@ const signup = async (req, res) => {
 
     const token = user.createJWT();
     res.status(StatusCodes.CREATED).json({
-      admin,
+      user: admin,
       token,
     });
   }
@@ -52,7 +52,7 @@ const signup = async (req, res) => {
 
     const token = user.createJWT();
     res.status(StatusCodes.CREATED).json({
-      coordinator,
+      user: coordinator,
       token,
     });
   }
@@ -84,7 +84,7 @@ const login = async (req, res) => {
     });
     const token = user.createJWT();
     res.status(StatusCodes.OK).json({
-      intern,
+      user: intern,
       token,
     });
   }
@@ -97,7 +97,7 @@ const login = async (req, res) => {
 
     const token = user.createJWT();
     res.status(StatusCodes.OK).json({
-      admin,
+      user: admin,
       token,
     });
   }
@@ -110,7 +110,7 @@ const login = async (req, res) => {
 
     const token = user.createJWT();
     res.status(StatusCodes.OK).json({
-      coordinator,
+      user: coordinator,
       token,
     });
   }

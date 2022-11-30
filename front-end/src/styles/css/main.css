@@ -1160,6 +1160,7 @@ button {
 }
 .dashboard .sidebar-right .top .profile-tab .user {
   border-radius: 1rem;
+  text-transform: capitalize;
   background-color: #252525;
   transition: all 0.2s linear;
   display: flex;
@@ -1273,7 +1274,7 @@ button {
   height: 100%;
   margin: 0 auto;
   display: grid;
-  grid-template-rows: 10rem minmax(45rem, auto);
+  grid-template-rows: 6rem minmax(45rem, auto);
   gap: 1rem;
   padding: 1rem;
 }
@@ -1290,28 +1291,32 @@ button {
   flex-direction: column;
   text-align: center;
   color: #f1faee;
-  border: solid 1px #fff;
-  gap: 2rem;
+  gap: 1.5rem;
   padding: 0 10rem;
 }
-.pending .pending-content button {
+.pending .pending-content > button {
   padding: 1.5rem 5rem;
   background-color: #0d7377;
-  border: solid 1px #f1faee;
   color: #f1faee;
   transition: all 0.5s ease-in-out;
   border-radius: 1rem;
+  border: solid 1px transparent;
+  font-weight: 600;
 }
-.pending .pending-content button:hover {
-  border-radius: 4rem;
+.pending .pending-content > button:hover {
   color: #0d7377;
   border: solid 1px #0d7377;
   background-color: #f1faee;
 }
 .pending .modal {
+  text-align: left;
+  color: #000;
   height: 45rem;
   width: 60vw;
-  position: relative;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   border-radius: 1rem;
   border: solid 1px #fff;
   background-color: #fff;

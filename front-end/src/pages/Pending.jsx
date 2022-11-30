@@ -9,6 +9,8 @@ const Pending = () => {
   const dispatch = useDispatch();
   const {user} = useSelector((state) => state.user);
 
+  const {user: userDetails} = user;
+
   const [form, setForm] = useState([
     {
       group: "internship-details",
@@ -528,63 +530,69 @@ const Pending = () => {
     });
   };
 
-  const {
-    user: {firstName},
-  } = useSelector((state) => state.user);
+  const {firstName} = userDetails;
+
+  const handleModal = (e) => {
+    e.stopPropagation();
+    setModalOpen(true);
+  };
+
+  const handleParent = () => {
+    setModalOpen(false);
+  };
 
   return (
-    <div className="pending">
+    <div className="pending" onClick={handleParent}>
       <div className="greetings">
         <h1 className="name">Welcome, {firstName}</h1>
       </div>
       <div className="pending-content">
-        {!isModalOpen && (
-          <>
-            <h3>Looks like your account is not verified</h3>
-            <img src={pedningImg} alt="" />
-            <p>
-              Before you continue to access the other features, you must verify
-              your credentials
-            </p>
-            <p>
-              You must provide your information and other requirements. This
-              will help the administrator to know your Identity.{" "}
-            </p>
-            <button onClick={() => setModalOpen(!isModalOpen)}>
-              Verify Account
-            </button>
-          </>
-        )}
-      </div>
-      <div
-        style={!isModalOpen ? {display: "none"} : null}
-        className={atNextPage ? "modal verify" : "modal"}
-      >
-        <form onSubmit={handleSubmit}>
-          <div
-            className={
-              atNextPage ? "internship-details inactive" : "internship-details"
-            }
-          >
-            <h3>Internship Details</h3>
-            <div className="forms-con">
-              {renderInputs(form[0].forms, "internship-details", 0)}
+        <>
+          <h3>Looks like your account is not verified yet.</h3>
+          <img src={pedningImg} alt="" />
+          <p>
+            Before you continue to access the other features, you must verify
+            your credentials
+          </p>
+          <p>
+            You must provide your information and other requirements. This will
+            help the administrator to know your Identity.
+          </p>
+          <button onClick={handleModal}>Verify Account</button>
+        </>
+        <div
+          style={!isModalOpen ? {display: "none"} : null}
+          className={atNextPage ? "modal verify" : "modal"}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <form onSubmit={handleSubmit}>
+            <div
+              className={
+                atNextPage
+                  ? "internship-details inactive"
+                  : "internship-details"
+              }
+            >
+              <h3>Internship Details</h3>
+              <div className="forms-con">
+                {renderInputs(form[0].forms, "internship-details", 0)}
+              </div>
+              <button onClick={handleNext}>Next</button>
             </div>
-            <button onClick={handleNext}>Next</button>
-          </div>
-          <div
-            className={
-              atNextPage ? "student-details active" : "student-details"
-            }
-          >
-            <h3>Student Details</h3>
-            {renderInputs(form[1].forms, "student-details", 1)}
-            <div className="btn-con">
-              <button onClick={() => setNextPage(!atNextPage)}>Back</button>
-              <button>Submit Verification</button>
+            <div
+              className={
+                atNextPage ? "student-details active" : "student-details"
+              }
+            >
+              <h3>Student Details</h3>
+              {renderInputs(form[1].forms, "student-details", 1)}
+              <div className="btn-con">
+                <button onClick={() => setNextPage(!atNextPage)}>Back</button>
+                <button>Submit Verification</button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );
