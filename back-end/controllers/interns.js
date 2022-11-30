@@ -61,9 +61,12 @@ const updateIntern = async (req, res) => {
 
 const requestVerification = async (req, res) => {
   const {email} = req.body;
-  const user = await User.findOneAndUpdate({email}, req.body, {
+  const user = await Intern.findOneAndUpdate({email}, req.body, {
     new: true,
     runValidators: true,
+  }).populate({
+    path: "user",
+    model: "User",
   });
 
   if (!user) {

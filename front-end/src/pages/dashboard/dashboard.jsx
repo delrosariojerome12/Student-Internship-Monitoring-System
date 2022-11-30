@@ -22,6 +22,15 @@ const Dashboard = () => {
   if (!user && !localStorage.getItem("token")) {
     return <Navigate to={"/404"} />;
   }
+
+  if (user.user.role === "coordinator") {
+    return <h1>Coordinator</h1>;
+  }
+
+  if (user.user.role === "admin") {
+    return <h1>Admin</h1>;
+  }
+
   const isVerified = user.verification.isVerified;
 
   // not validated

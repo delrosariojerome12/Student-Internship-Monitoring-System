@@ -21,12 +21,14 @@ const App = () => {
   // sets state of user from token
   useEffect(() => {
     if (!user && localStorage.getItem("token")) {
-      console.log("TEst");
-
       const {email} = jwt_decode(localStorage.getItem("token"));
       dispatch(getUserOnLoad(email));
     }
   }, []);
+
+  if (isError) {
+    return <h1>Somebitch went wrong</h1>;
+  }
 
   return (
     <main className="container">

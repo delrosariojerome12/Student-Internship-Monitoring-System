@@ -173,8 +173,6 @@ const Pending = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [atNextPage, setNextPage] = useState(false);
 
-  console.log(user);
-
   const convertForm = (form) => {
     const newData = form.map((input) => {
       const {code, value} = input;
@@ -198,8 +196,14 @@ const Pending = () => {
       email: user.email,
       internshipDetails: convertForm([...form[0].forms]),
       schoolDetails: convertForm([...form[1].forms]),
+      verification: {
+        hasSentVerification: true,
+        isVerified: false,
+        isRejected: false,
+      },
     };
     dispatch(requestVerification(finalForm));
+    setModalOpen(false);
   };
 
   const checkDepartment = (department, mainIndex, index) => {
@@ -368,12 +372,10 @@ const Pending = () => {
         const departmentValue = newForm[mainIndex].forms[index].value;
         checkDepartment(departmentValue, mainIndex, index);
         setForm(newForm);
-        console.log(newForm[mainIndex].forms);
         return;
       case "program":
         newForm[mainIndex].forms[index].value = value;
         setForm(newForm);
-        console.log(newForm[mainIndex].forms);
         return;
       default:
         newForm[mainIndex].forms[index].value = value;
@@ -541,25 +543,35 @@ const Pending = () => {
     setModalOpen(false);
   };
 
+  const {hasSentVerification} = user.verification;
+
   return (
     <div className="pending" onClick={handleParent}>
       <div className="greetings">
         <h1 className="name">Welcome, {firstName}</h1>
       </div>
       <div className="pending-content">
-        <>
-          <h3>Looks like your account is not verified yet.</h3>
-          <img src={pedningImg} alt="" />
-          <p>
-            Before you continue to access the other features, you must verify
-            your credentials
-          </p>
-          <p>
-            You must provide your information and other requirements. This will
-            help the administrator to know your Identity.
-          </p>
-          <button onClick={handleModal}>Verify Account</button>
-        </>
+        {hasSentVerification ? (
+          <>
+            <h1>Your Verification has been sent. Please wait madafaka.</h1>
+            <h2>For the mean time, you can update your profile.</h2>
+          </>
+        ) : (
+          <>
+            <h3>Looks like your account is not verified yet.</h3>
+            <img src={pedningImg} alt="" />
+            <p>
+              Before you continue to access the other features, you must verify
+              your credentials
+            </p>
+            <p>
+              You must provide your information and other requirements. This
+              will help the administrator to know your Identity.
+            </p>
+            <button onClick={handleModal}>Verify Account</button>
+          </>
+        )}
+
         <div
           style={!isModalOpen ? {display: "none"} : null}
           className={atNextPage ? "modal verify" : "modal"}

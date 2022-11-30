@@ -58,7 +58,6 @@ export const handleSignup = createAsyncThunk(
     try {
       const url = "http://localhost:5000/auth/signup";
       const {data: res} = await axios.post(url, convertForm(form));
-      console.log(res);
       return {res};
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -69,10 +68,11 @@ export const handleSignup = createAsyncThunk(
 export const requestVerification = createAsyncThunk(
   "/user/requestVerify",
   async (form, {rejectWithValue}) => {
+    // const
     try {
       const url = `http://localhost:5000/user/requestVerify`;
       const {data: res} = await axios.patch(url, form);
-      console.log(res);
+      console.log(form);
       return {res: res.user};
     } catch (error) {
       console.log(error);
@@ -119,7 +119,6 @@ export const userReducer = createSlice({
       })
       .addCase(handleSignup.fulfilled, (state, action) => {
         const {res} = action.payload;
-        console.log(res);
         state.isLoading = false;
         state.isError = false;
         state.user = res.user;
