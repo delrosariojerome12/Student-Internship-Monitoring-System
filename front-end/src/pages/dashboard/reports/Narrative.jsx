@@ -32,7 +32,7 @@ const Narrative = () => {
           </div>
           <div className="btn-column-container">
             <div className="top">
-              <button>complete</button>
+              <button>Completed</button>
             </div>
             <div className="bottom">
               <button className="add">Add</button>
@@ -51,7 +51,7 @@ const Narrative = () => {
           </div>
           <div className="btn-column-container">
             <div className="top">
-              <button>complete</button>
+              <button>Completed</button>
             </div>
             <div className="bottom">
               <button className="add">Add</button>
@@ -70,7 +70,7 @@ const Narrative = () => {
           </div>
           <div className="btn-column-container">
             <div className="top">
-              <button>complete</button>
+              <button>Completed</button>
             </div>
             <div className="bottom">
               <button className="add">Add</button>
@@ -89,7 +89,7 @@ const Narrative = () => {
           </div>
           <div className="btn-column-container">
             <div className="top">
-              <button>complete</button>
+              <button>Completed</button>
             </div>
             <div className="bottom">
               <button className="add">Add</button>
@@ -108,7 +108,7 @@ const Narrative = () => {
           </div>
           <div className="btn-column-container">
             <div className="top">
-              <button>complete</button>
+              <button>Completed</button>
             </div>
             <div className="bottom">
               <button className="add">Add</button>
@@ -127,7 +127,7 @@ const Narrative = () => {
           </div>
           <div className="btn-column-container">
             <div className="top">
-              <button>complete</button>
+              <button>Completed</button>
             </div>
             <div className="bottom">
               <button className="add">Add</button>

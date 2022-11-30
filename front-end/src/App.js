@@ -26,6 +26,10 @@ const App = () => {
     }
   }, []);
 
+  if (isError) {
+    return <h1>Somebitch went wrong</h1>;
+  }
+
   return (
     <main className="container">
       <Suspense fallback={<h1>loading...</h1>}>

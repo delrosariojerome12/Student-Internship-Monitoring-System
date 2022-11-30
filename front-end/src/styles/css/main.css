@@ -24,6 +24,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -531,13 +533,12 @@ button {
   position: fixed;
   top: 0%;
   left: 0%;
-  display: flex;
   z-index: 99;
-  justify-content: space-between;
-  padding: 1em;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 17rem auto;
   background-color: #222831;
   color: #eeeeee;
+  padding: 0 5rem;
 }
 .landing-page nav a {
   color: #eeeeee;
@@ -561,30 +562,36 @@ button {
   z-index: 2;
   transition: all 0.2s ease-in-out;
 }
-.landing-page nav .icon {
+.landing-page nav .logo {
   display: flex;
   align-items: center;
   gap: 1em;
 }
-.landing-page nav .icon h1 {
+.landing-page nav .logo h1 {
   font-size: 4rem;
 }
-.landing-page nav .icon img {
+.landing-page nav .logo img {
   height: 32px;
 }
-.landing-page nav .links {
+.landing-page nav .link-container {
+  background-color: #222831;
   display: flex;
-  justify-content: space;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1rem;
+}
+.landing-page nav .link-container .links {
+  display: flex;
   align-items: center;
   flex-direction: row;
-  gap: 3rem;
+  gap: 1rem;
 }
-.landing-page nav .auth-links {
+.landing-page nav .link-container .auth-links {
   display: flex;
   gap: 2.5rem;
   cursor: pointer;
 }
-.landing-page nav .auth-links > * {
+.landing-page nav .link-container .auth-links > * {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -595,11 +602,14 @@ button {
   background-color: #0d7377;
   color: #eeeeee;
 }
-.landing-page nav .auth-links > *:hover {
+.landing-page nav .link-container .auth-links > *:hover {
   background-color: #222831;
   border: solid 1px #0d7377;
   color: #eeeeee;
   border-radius: 0.5rem;
+}
+.landing-page nav .menu-icon {
+  display: none;
 }
 .landing-page .contents {
   display: grid;
@@ -783,9 +793,8 @@ button {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   height: 100%;
-  padding-left: 20rem;
 }
 .landing-page footer .footer-content .icon {
   display: flex;
@@ -801,7 +810,6 @@ button {
   height: 3rem;
 }
 .landing-page footer .footer-content .socials-img {
-  padding: 0 20rem 0 0;
   display: flex;
   justify-content: space-between;
   gap: 2rem;
@@ -1152,6 +1160,7 @@ button {
 }
 .dashboard .sidebar-right .top .profile-tab .user {
   border-radius: 1rem;
+  text-transform: capitalize;
   background-color: #252525;
   transition: all 0.2s linear;
   display: flex;
@@ -1262,17 +1271,52 @@ button {
 }
 
 .pending {
-  border: solid 1px #fff;
   height: 100%;
-  position: relative;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: 6rem minmax(45rem, auto);
+  gap: 1rem;
+  padding: 1rem;
+}
+.pending .greetings {
+  color: #f1faee;
+}
+.pending .greetings .name {
+  font-size: 4rem;
+}
+.pending .pending-content {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  color: #f1faee;
+  gap: 1.5rem;
+  padding: 0 10rem;
+}
+.pending .pending-content > button {
+  padding: 1.5rem 5rem;
+  background-color: #0d7377;
+  color: #f1faee;
+  transition: all 0.5s ease-in-out;
+  border-radius: 1rem;
+  border: solid 1px transparent;
+  font-weight: 600;
+}
+.pending .pending-content > button:hover {
+  color: #0d7377;
+  border: solid 1px #0d7377;
+  background-color: #f1faee;
 }
 .pending .modal {
+  text-align: left;
+  color: #000;
   height: 45rem;
   width: 60vw;
-  position: relative;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   border-radius: 1rem;
   border: solid 1px #fff;
   background-color: #fff;
@@ -1398,7 +1442,6 @@ button {
   transition: all 0.2s linear;
   gap: 2rem;
   justify-content: center;
-  height: 85%;
 }
 .pending .modal form .internship-details .forms-con button {
   grid-row: 5/6;
@@ -1980,83 +2023,369 @@ button {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 }
-.reports .report-modals {
+.reports .sort-modals {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -65%);
   border: solid 2px black;
   height: 50rem;
-  width: 55rem;
+  width: 50rem;
   z-index: 2;
-  padding: 2rem;
+  padding: 3rem;
   display: flex;
   flex-direction: column;
   background-color: #fff;
-  border: solid 1px #25b525;
+  border: solid 1px #0d7377;
   border-radius: 2rem;
 }
-.reports .report-modals h3 {
-  font-weight: bold;
+.reports .sort-modals h3 {
+  font-weight: 800;
   font-size: 2.5rem;
   background-color: #d9d9d9;
   border-radius: 1rem;
   padding: 1rem 2rem;
 }
-.reports .report-modals .modals-sorting {
+.reports .sort-modals .modals-sorting {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding-top: 1rem;
+  padding-top: 2rem;
 }
-.reports .report-modals .modals-sorting .day,
-.reports .report-modals .modals-sorting .week,
-.reports .report-modals .modals-sorting .month,
-.reports .report-modals .modals-sorting .year,
-.reports .report-modals .modals-sorting .a-z-order {
+.reports .sort-modals .modals-sorting .day,
+.reports .sort-modals .modals-sorting .week,
+.reports .sort-modals .modals-sorting .month,
+.reports .sort-modals .modals-sorting .year,
+.reports .sort-modals .modals-sorting .a-z-order {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   background-color: #d9d9d9;
   padding: 0.5rem 1rem 0.5rem 2rem;
-  border-radius: 2rem;
+  font-weight: 600;
 }
-.reports .report-modals .modals-sorting .day label,
-.reports .report-modals .modals-sorting .week label,
-.reports .report-modals .modals-sorting .month label,
-.reports .report-modals .modals-sorting .year label,
-.reports .report-modals .modals-sorting .a-z-order label {
-  display: flex;
-  flex-direction: row;
+.reports .sort-modals .modals-sorting .day label,
+.reports .sort-modals .modals-sorting .week label,
+.reports .sort-modals .modals-sorting .month label,
+.reports .sort-modals .modals-sorting .year label,
+.reports .sort-modals .modals-sorting .a-z-order label {
+  display: grid;
+  grid-template-columns: 1.5rem auto;
 }
-.reports .report-modals .modals-sorting .day label input,
-.reports .report-modals .modals-sorting .week label input,
-.reports .report-modals .modals-sorting .month label input,
-.reports .report-modals .modals-sorting .year label input,
-.reports .report-modals .modals-sorting .a-z-order label input {
+.reports .sort-modals .modals-sorting .day label input,
+.reports .sort-modals .modals-sorting .week label input,
+.reports .sort-modals .modals-sorting .month label input,
+.reports .sort-modals .modals-sorting .year label input,
+.reports .sort-modals .modals-sorting .a-z-order label input {
   cursor: pointer;
 }
-.reports .report-modals .modals-sorting .day label p,
-.reports .report-modals .modals-sorting .week label p,
-.reports .report-modals .modals-sorting .month label p,
-.reports .report-modals .modals-sorting .year label p,
-.reports .report-modals .modals-sorting .a-z-order label p {
+.reports .sort-modals .modals-sorting .day label p,
+.reports .sort-modals .modals-sorting .week label p,
+.reports .sort-modals .modals-sorting .month label p,
+.reports .sort-modals .modals-sorting .year label p,
+.reports .sort-modals .modals-sorting .a-z-order label p {
   padding: 0 1rem;
 }
-.reports .report-modals .modals-sorting .day span,
-.reports .report-modals .modals-sorting .week span,
-.reports .report-modals .modals-sorting .month span,
-.reports .report-modals .modals-sorting .year span,
-.reports .report-modals .modals-sorting .a-z-order span {
+.reports .sort-modals .modals-sorting .day span,
+.reports .sort-modals .modals-sorting .week span,
+.reports .sort-modals .modals-sorting .month span,
+.reports .sort-modals .modals-sorting .year span,
+.reports .sort-modals .modals-sorting .a-z-order span {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2.5rem;
   cursor: pointer;
 }
-.reports .report-modals .modals-sorting .ascending {
+.reports .sort-modals .modals-sorting .day span:hover,
+.reports .sort-modals .modals-sorting .week span:hover,
+.reports .sort-modals .modals-sorting .month span:hover,
+.reports .sort-modals .modals-sorting .year span:hover,
+.reports .sort-modals .modals-sorting .a-z-order span:hover {
+  background-color: rgba(255, 255, 255, 0.521);
+}
+.reports .sort-modals .modals-sorting .ascending {
   display: grid;
   grid-template-columns: auto auto;
+}
+.reports .status-modals {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -65%);
+  border: solid 2px black;
+  height: 50rem;
+  width: 50rem;
+  z-index: 3;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: solid 1px #0d7377;
+  border-radius: 2rem;
+}
+.reports .status-modals h3 {
+  font-weight: 800;
+  font-size: 2.5rem;
+  background-color: #d9d9d9;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+}
+.reports .status-modals .modals-status {
+  display: grid;
+  grid-template-columns: 1.5rem auto;
+  gap: 1rem;
+  padding-top: 2rem;
+}
+.reports .status-modals .modals-status .complete-task,
+.reports .status-modals .modals-status .pending-task,
+.reports .status-modals .modals-status .missing-task {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #d9d9d9;
+  padding: 0.5rem 1rem 0.5rem 2rem;
+  font-weight: 600;
+}
+.reports .status-modals .modals-status .complete-task label,
+.reports .status-modals .modals-status .pending-task label,
+.reports .status-modals .modals-status .missing-task label {
+  display: flex;
+  flex-direction: row;
+}
+.reports .status-modals .modals-status .complete-task label input,
+.reports .status-modals .modals-status .pending-task label input,
+.reports .status-modals .modals-status .missing-task label input {
+  cursor: pointer;
+}
+.reports .status-modals .modals-status .complete-task label p,
+.reports .status-modals .modals-status .pending-task label p,
+.reports .status-modals .modals-status .missing-task label p {
+  padding: 0 1rem;
+}
+.reports .status-modals .modals-status .complete-task span,
+.reports .status-modals .modals-status .pending-task span,
+.reports .status-modals .modals-status .missing-task span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+.reports .status-modals .modals-status .complete-task span:hover,
+.reports .status-modals .modals-status .pending-task span:hover,
+.reports .status-modals .modals-status .missing-task span:hover {
+  background-color: rgba(255, 255, 255, 0.521);
+}
+.reports .filter-modals {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -65%);
+  border: solid 2px black;
+  height: 50rem;
+  width: 50rem;
+  z-index: 4;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: solid 1px #0d7377;
+  border-radius: 2rem;
+}
+.reports .filter-modals h3 {
+  font-weight: 800;
+  font-size: 2.5rem;
+  background-color: #d9d9d9;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+}
+.reports .filter-modals .modals-status {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 2rem;
+}
+.reports .filter-modals .modals-status .week-filter,
+.reports .filter-modals .modals-status .month-filter,
+.reports .filter-modals .modals-status .year-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #d9d9d9;
+  padding: 0.5rem 1rem 0.5rem 2rem;
+  font-weight: 600;
+}
+.reports .filter-modals .modals-status .week-filter label,
+.reports .filter-modals .modals-status .month-filter label,
+.reports .filter-modals .modals-status .year-filter label {
+  display: grid;
+  grid-template-columns: 1.5rem auto;
+}
+.reports .filter-modals .modals-status .week-filter label input,
+.reports .filter-modals .modals-status .month-filter label input,
+.reports .filter-modals .modals-status .year-filter label input {
+  cursor: pointer;
+}
+.reports .filter-modals .modals-status .week-filter label p,
+.reports .filter-modals .modals-status .month-filter label p,
+.reports .filter-modals .modals-status .year-filter label p {
+  padding: 0 1rem;
+}
+.reports .filter-modals .modals-status .week-filter span,
+.reports .filter-modals .modals-status .month-filter span,
+.reports .filter-modals .modals-status .year-filter span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+.reports .filter-modals .modals-status .week-filter span:hover,
+.reports .filter-modals .modals-status .month-filter span:hover,
+.reports .filter-modals .modals-status .year-filter span:hover {
+  background-color: rgba(255, 255, 255, 0.521);
+}
+.reports .week-modals {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(103%, -120%);
+  border: solid 2px black;
+  width: 25rem;
+  z-index: 5;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: solid 1px #0d7377;
+}
+.reports .week-modals .week-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+.reports .week-modals .week-container .week-labels-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #d9d9d9;
+  padding: 0.5rem 1rem 0.5rem 2rem;
+}
+.reports .week-modals .week-container .week-labels-container label {
+  display: grid;
+  grid-template-columns: auto 1.5rem;
+}
+.reports .week-modals .week-container .week-labels-container label input {
+  cursor: pointer;
+}
+.reports .week-modals .week-container .week-labels-container label p {
+  padding: 0 1rem;
+}
+.reports .week-modals .week-container .week-labels-container span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+.reports .week-modals .week-container .week-labels-container span:hover {
+  background-color: rgba(255, 255, 255, 0.521);
+}
+.reports .month-modals {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(103%, -39%);
+  border: solid 2px black;
+  width: 25rem;
+  z-index: 6;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: solid 1px #0d7377;
+}
+.reports .month-modals .month-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+.reports .month-modals .month-container .month-labels-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #d9d9d9;
+  padding: 0.5rem 1rem 0.5rem 2rem;
+}
+.reports .month-modals .month-container .month-labels-container label {
+  display: grid;
+  grid-template-columns: 1.5rem auto;
+}
+.reports .month-modals .month-container .month-labels-container label input {
+  cursor: pointer;
+}
+.reports .month-modals .month-container .month-labels-container label p {
+  padding: 0 1rem;
+}
+.reports .month-modals .month-container .month-labels-container span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+.reports .month-modals .month-container .month-labels-container span:hover {
+  background-color: rgba(255, 255, 255, 0.521);
+}
+.reports .year-modals {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(103%, -72%);
+  border: solid 2px black;
+  width: 25rem;
+  z-index: 7;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: solid 1px #0d7377;
+}
+.reports .year-modals .year-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+.reports .year-modals .year-container .year-labels-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #d9d9d9;
+  padding: 0.5rem 1rem 0.5rem 2rem;
+}
+.reports .year-modals .year-container .year-labels-container label {
+  display: grid;
+  grid-template-columns: 1.5rem auto;
+}
+.reports .year-modals .year-container .year-labels-container label input {
+  cursor: pointer;
+}
+.reports .year-modals .year-container .year-labels-container label p {
+  padding: 0 1rem;
+}
+.reports .year-modals .year-container .year-labels-container span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+.reports .year-modals .year-container .year-labels-container span:hover {
+  background-color: rgba(255, 255, 255, 0.521);
 }
 .reports > .content {
   display: grid;
@@ -2128,7 +2457,7 @@ button {
 .reports .narrative-container .button-container {
   display: flex;
   justify-content: center;
-  background-color: rgb(139, 139, 139);
+  background-color: #414141;
 }
 .reports .narrative-container .button-container .sort,
 .reports .narrative-container .button-container .status,
@@ -2140,7 +2469,7 @@ button {
   border: none;
   padding: 0 4rem;
   color: #fff;
-  background-color: rgb(139, 139, 139);
+  background-color: #414141;
   transition: all 0.3s linear;
   cursor: pointer;
 }
@@ -2158,7 +2487,7 @@ button {
 .reports .narrative-container .button-container .sort:hover,
 .reports .narrative-container .button-container .status:hover,
 .reports .narrative-container .button-container .filters:hover {
-  background-color: #a4a4a4;
+  background-color: rgba(164, 164, 164, 0.4941176471);
   border-radius: 5rem;
 }
 .reports .narrative-container .content .narrative-content {
@@ -2205,6 +2534,12 @@ button {
   border: solid 1px #0d7377;
   padding: 1rem 16rem;
   border-radius: 1rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+.reports .narrative-container .content .narrative-content .btn-column-container .top button:hover {
+  color: #fff;
+  background-color: #0d7377;
 }
 .reports .narrative-container .content .narrative-content .btn-column-container .bottom {
   display: flex;
@@ -2215,11 +2550,17 @@ button {
 }
 .reports .narrative-container .content .narrative-content .btn-column-container .bottom button {
   margin: 0 0.5rem;
-  color: #0d7377;
+  color: #fff;
   border: solid 1px #0d7377;
   transition: all 0.3s linear;
   padding: 0.8rem 4.5rem;
   border-radius: 0.5rem;
+  background-color: #0d7377;
+  font-weight: 600;
+}
+.reports .narrative-container .content .narrative-content .btn-column-container .bottom button:hover {
+  background-color: #d9d9d9;
+  color: #0d7377;
 }
 .reports .narrative-container .content .narrative-content .blank-container {
   display: flex;
@@ -2233,10 +2574,66 @@ button {
 }
 
 .page-not-found {
-  height: 100%;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background-color: #393e46;
+  gap: 2rem;
+}
+.page-not-found img {
+  height: 50rem;
+  margin-bottom: -10rem;
+}
+.page-not-found h1 {
+  color: #fafafa;
+}
+.page-not-found h1 b {
+  color: #fa6363;
+}
+.page-not-found button {
+  color: #f1faee;
+  background-color: #0d7377;
+  border: solid 1px #0d7377;
+  border-radius: 1rem;
+  transition: all 0.3s linear;
+  padding: 1.5rem 3rem;
+  font-size: 2rem;
+}
+.page-not-found button:hover {
+  background-color: #f1faee;
+  color: #0d7377;
+  border: solid 1px #f1faee;
+  border-radius: 4rem;
 }
 
+@media screen and (max-width: 800px) {
+  .page-not-found img {
+    height: 40rem;
+    margin-bottom: -7rem;
+  }
+  .page-not-found h1 {
+    font-size: 2.5rem;
+  }
+  .page-not-found button {
+    padding: 1rem 3.5rem;
+    font-size: 1.7rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .page-not-found img {
+    height: 30rem;
+    margin-bottom: -5rem;
+  }
+  .page-not-found h1 {
+    font-size: 2rem;
+  }
+  .page-not-found button {
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
+  }
+}
 .login {
   display: grid;
   grid-template-columns: 45.2rem 1fr;
@@ -2728,5 +3125,82 @@ button {
   .signin .card-container form .input-contain input {
     height: 50px;
     width: 100%;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .landing-page > * {
+    border: solid 1px red;
+  }
+  .landing-page nav {
+    padding: 0 2rem;
+  }
+  .landing-page nav .logo {
+    display: flex;
+  }
+  .landing-page nav .logo h1 {
+    font-size: 2.5rem;
+  }
+  .landing-page nav .logo img {
+    height: 3rem;
+  }
+  .landing-page nav .link-container .links {
+    font-size: 1.6rem;
+    gap: 1rem;
+  }
+  .landing-page nav .link-container .auth-links {
+    gap: 1rem;
+  }
+  .landing-page nav .link-container .auth-links > * {
+    width: 10rem;
+  }
+  .landing-page .content .landing-contents {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 850px) {
+  .landing-page nav {
+    padding: 3rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  .landing-page nav .link-container {
+    height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-top: solid #636363 1px;
+    position: absolute;
+    left: 0%;
+    top: 100%;
+    width: 100%;
+    transition: all 0.2s ease-in-out;
+  }
+  .landing-page nav .link-container .links,
+.landing-page nav .link-container .auth-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .landing-page nav .active-drop {
+    height: 30rem;
+    padding: 2rem;
+  }
+  .landing-page nav .active {
+    transform: rotate(90deg);
+  }
+  .landing-page nav .menu-icon {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+  }
+  .landing-page nav .menu-icon svg {
+    cursor: pointer;
   }
 }/*# sourceMappingURL=main.css.map */

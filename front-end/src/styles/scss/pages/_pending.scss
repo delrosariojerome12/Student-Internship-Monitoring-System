@@ -1,15 +1,56 @@
 @import "../utils";
 
 .pending {
-  border: solid 1px #fff;
   height: 100%;
-  position: relative;
-  @include flexCenter;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: 6rem minmax(45rem, auto);
+  gap: 1rem;
+  padding: 1rem;
+  .greetings {
+    color: $primary-font-color;
+    .name {
+      font-size: 4rem;
+    }
+  }
+  .pending-content {
+    @include flexCenter;
+    flex-direction: column;
+    text-align: center;
+    color: $primary-font-color;
+    gap: 1.5rem;
+    padding: 0 10rem;
 
+    // responsive to palitan
+    // img {
+    //   height: 20rem;
+    // }
+    & > button {
+      padding: 1.5rem 5rem;
+      background-color: $primary-compliment-landing;
+      color: $primary-font-color;
+      transition: all 0.5s ease-in-out;
+      border-radius: 1rem;
+      border: solid 1px transparent;
+      font-weight: 600;
+
+      &:hover {
+        color: $primary-compliment-landing;
+        border: solid 1px $primary-compliment-landing;
+        background-color: $primary-font-color;
+      }
+    }
+  }
   .modal {
+    text-align: left;
+    color: #000;
     height: 45rem;
     width: 60vw;
-    position: relative;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    // position: relative;
     border-radius: 1rem;
     border: solid 1px #fff;
     background-color: #fff;
@@ -140,8 +181,7 @@
           transition: all 0.2s linear;
           gap: 2rem;
           justify-content: center;
-          height: 85%;
-
+          // height: 75%;
           button {
             grid-row: 5/6;
             grid-column: 1/3;
