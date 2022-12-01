@@ -22,6 +22,11 @@
 @import "./pages/settings";
 
 @import "./pages/pageNotFound";
-@import "./screen/mobile";
-@import "./screen/tablet";
-@import "./screen/desktop";
+// @import "./screen/mobile";
+// @import "./screen/tablet";
+// @import "./screen/desktop";
+
+@import "./screen/login";
+@import "./screen/pending";
+@import "./screen/signup";
+@import "./screen/landingPage";
