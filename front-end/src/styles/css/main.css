@@ -548,89 +548,89 @@ button {
 @-webkit-keyframes ring {
   0% {
     transform: rotate(0deg);
-    box-shadow: 0.4rem 0.8rem 0.5rem #e64900;
+    box-shadow: 0.4rem 0.8rem 0.5rem #00adb5;
   }
   25% {
     transform: rotate(90deg);
-    box-shadow: 0.4rem 0.8rem 0.5rem #de00e6;
+    box-shadow: 0.4rem 0.8rem 0.5rem #323232;
   }
   50% {
     transform: rotate(180deg);
-    box-shadow: 0.4rem 0.8rem 0.5rem #18b201;
+    box-shadow: 0.4rem 0.8rem 0.5rem #e63946;
   }
   75% {
     transform: rotate(270deg);
-    box-shadow: 0.4rem 0.8rem 0.5rem #0197b2;
+    box-shadow: 0.4rem 0.8rem 0.5rem #1d3557;
   }
   100% {
     transform: rotate(360deg);
-    box-shadow: 0.4rem 0.8rem 0.5rem #0456c8;
+    box-shadow: 0.4rem 0.8rem 0.5rem #457b9d;
   }
 }
 @keyframes ring {
   0% {
     transform: rotate(0deg);
-    box-shadow: 0.4rem 0.8rem 0.5rem #e64900;
+    box-shadow: 0.4rem 0.8rem 0.5rem #00adb5;
   }
   25% {
     transform: rotate(90deg);
-    box-shadow: 0.4rem 0.8rem 0.5rem #de00e6;
+    box-shadow: 0.4rem 0.8rem 0.5rem #323232;
   }
   50% {
     transform: rotate(180deg);
-    box-shadow: 0.4rem 0.8rem 0.5rem #18b201;
+    box-shadow: 0.4rem 0.8rem 0.5rem #e63946;
   }
   75% {
     transform: rotate(270deg);
-    box-shadow: 0.4rem 0.8rem 0.5rem #0197b2;
+    box-shadow: 0.4rem 0.8rem 0.5rem #1d3557;
   }
   100% {
     transform: rotate(360deg);
-    box-shadow: 0.4rem 0.8rem 0.5rem #0456c8;
+    box-shadow: 0.4rem 0.8rem 0.5rem #457b9d;
   }
 }
 @-webkit-keyframes ring2 {
   0% {
     transform: rotate(180deg);
-    box-shadow: 0.4rem 0.8rem 0.5rem #e64900;
+    box-shadow: 0.4rem 0.8rem 0.5rem #00adb5;
   }
   25% {
     transform: rotate(270deg);
-    box-shadow: 0.4rem 0.8rem 0.5rem #de00e6;
+    box-shadow: 0.4rem 0.8rem 0.5rem #323232;
   }
   50% {
     transform: rotate(360deg);
-    box-shadow: 0.4rem 0.8rem 0.5rem #18b201;
+    box-shadow: 0.4rem 0.8rem 0.5rem #e63946;
   }
   75% {
     transform: rotate(450deg);
-    box-shadow: 0.4rem 0.8rem 0.5rem #0197b2;
+    box-shadow: 0.4rem 0.8rem 0.5rem #1d3557;
   }
   100% {
     transform: rotate(540deg);
-    box-shadow: 0.4rem 0.8rem 0.5rem #0456c8;
+    box-shadow: 0.4rem 0.8rem 0.5rem #457b9d;
   }
 }
 @keyframes ring2 {
   0% {
     transform: rotate(180deg);
-    box-shadow: 0.4rem 0.8rem 0.5rem #e64900;
+    box-shadow: 0.4rem 0.8rem 0.5rem #00adb5;
   }
   25% {
     transform: rotate(270deg);
-    box-shadow: 0.4rem 0.8rem 0.5rem #de00e6;
+    box-shadow: 0.4rem 0.8rem 0.5rem #323232;
   }
   50% {
     transform: rotate(360deg);
-    box-shadow: 0.4rem 0.8rem 0.5rem #18b201;
+    box-shadow: 0.4rem 0.8rem 0.5rem #e63946;
   }
   75% {
     transform: rotate(450deg);
-    box-shadow: 0.4rem 0.8rem 0.5rem #0197b2;
+    box-shadow: 0.4rem 0.8rem 0.5rem #1d3557;
   }
   100% {
     transform: rotate(540deg);
-    box-shadow: 0.4rem 0.8rem 0.5rem #0456c8;
+    box-shadow: 0.4rem 0.8rem 0.5rem #457b9d;
   }
 }
 .loading .circle-one:before {
@@ -641,10 +641,10 @@ button {
   height: 100%;
   width: 100%;
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4745098039);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5803921569);
 }
 .loading span {
-  color: rgba(115, 115, 115, 0.4784313725);
+  color: rgba(115, 115, 115, 0.5019607843);
   font-weight: 600;
   font-size: 2rem;
   text-transform: uppercase;
