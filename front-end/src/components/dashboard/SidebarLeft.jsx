@@ -82,7 +82,7 @@ const links = [
       },
       {
         path: "/dashboard/internships",
-        link: "internships",
+        link: "Internships",
         IconType: MdOutlineWork,
       },
     ],
