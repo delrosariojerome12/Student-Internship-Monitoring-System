@@ -140,6 +140,9 @@
           height: 100vh;
           width: 100%;
         }
+        .bg3 {
+          display: none;
+        }
       }
       .img-container {
         @include flexCenter;

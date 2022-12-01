@@ -131,6 +131,10 @@ const LandingPage = () => {
 
             <div className="darkbg"></div>
             <div className="darkbg2"></div>
+            <div className="bg3">
+              <img className="landingImg" src={landingImg} alt="" />
+              <img className="landingBg" src={landingBg} alt="" />
+            </div>
           </div>
           <div className="img-container">
             <img className="landingImg" src={landingImg} alt="" />
