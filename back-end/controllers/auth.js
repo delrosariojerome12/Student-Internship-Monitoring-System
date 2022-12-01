@@ -43,8 +43,9 @@ const signup = async (req, res) => {
     });
   }
   if (user.role === "coordinator") {
+    const {department} = req.body;
     const coordinator = await (
-      await Coordinator.create({user: user._id})
+      await Coordinator.create({user: user._id, email, department})
     ).populate({
       path: "user",
       model: "User",
