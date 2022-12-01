@@ -9,18 +9,20 @@ const connectDB = require("./db/connection");
 //
 const authRouter = require("./routers/auth");
 const authUser = require("./middlewares/auth");
-const internsRouter = require("./routers/interns");
+const internsRouter = require("./routers/intern");
+const userRouter = require("./routers/user");
 
 // error handler
 const notFound = require("./middlewares/notFound");
 const errorHandler = require("./middlewares/errorHandler");
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(cors());
 // routes
 app.use("/auth", authRouter);
-app.use("/interns", authUser, internsRouter);
+app.use("/intern", internsRouter);
+app.use("/user", userRouter);
 
 app.use(notFound);
 app.use(errorHandler);

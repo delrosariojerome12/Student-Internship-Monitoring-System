@@ -20,12 +20,6 @@ const Signup = () => {
   );
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   if (user) {
-  //     navigate("/dashboard");
-  //   }
-  // }, [user]);
-
   const [form, setForm] = useState([
     {
       forInput: "First Name",
@@ -36,7 +30,7 @@ const Signup = () => {
       isError: false,
       errorMessage: "First name must be between 3 and 20 characters long",
       hasEyeIcon: false,
-      code: "firstname",
+      code: "firstName",
       isVisible: true,
     },
     {
@@ -48,7 +42,7 @@ const Signup = () => {
       isError: false,
       errorMessage: "Last name must be between 3 and 20 characters long",
       hasEyeIcon: false,
-      code: "lastname",
+      code: "lastName",
       isVisible: true,
     },
     {
@@ -71,7 +65,7 @@ const Signup = () => {
       IconType: FaLock,
       isError: false,
       errorMessage:
-        "Your password must: Contain unique characters, numbers, or symbols Not contain your email address",
+        "Password must have: Atleast 1 uppercase, 1 lowercase, 1 number, 1 special characters and minimum of 8 characters",
       requirements: [],
       hasEyeIcon: true,
       hasShownPassword: false,
@@ -123,9 +117,8 @@ const Signup = () => {
         return;
       case "Password":
         const passwordRegex =
-          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,16}$/;
+          /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$/;
         let isPasswordValid = passwordRegex.test(value);
-
         if (isPasswordValid) {
           data[index].isError = false;
           data[index + 1].isVisible = true;
@@ -140,7 +133,7 @@ const Signup = () => {
         const password = form[index - 1].value;
         const confirmPassword = form[index];
         const confirmPasswordRegex =
-          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,16}$/;
+          /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$/;
         let isConfirmPasswordValid = confirmPasswordRegex.test(value);
         password === confirmPassword.value && isConfirmPasswordValid
           ? (confirmPassword.isError = false)
@@ -199,14 +192,15 @@ const Signup = () => {
         hasEyeIcon,
         hasShownPassword,
         isVisible,
+        code,
       } = inputs;
       return (
         isVisible && (
           <div className="input-contain" key={index}>
             <input
               type={type}
-              name={forInput}
-              id={id}
+              name={code}
+              id={code}
               className={isError ? "input-error" : null}
               value={value}
               required

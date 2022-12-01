@@ -11,15 +11,18 @@ const ProfileTab = () => {
   const {user} = useSelector((state) => state.user);
   const dispatch = useDispatch("");
   const navigate = useNavigate();
-
-  console.log(user);
+  const {user: userDetails} = user;
+  const {firstName, lastName, role} = userDetails;
 
   return (
     <IconContext.Provider value={{className: "icon"}}>
       <div className="profile-tab tab">
         <div className="user">
           <img src={"https://i.imgur.com/aFPFvGv.jpg"} alt="" />
-          <p>{user.firstname}</p>
+          <div className="text">
+            <p>{`${firstName} ${lastName}`}</p>
+            <p>{role}</p>
+          </div>
         </div>
         <div className="dark-mode">
           <div className="icon-holder">

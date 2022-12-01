@@ -104,6 +104,7 @@
     .profile-tab {
       .user {
         border-radius: 1rem;
+        text-transform: capitalize;
         background-color: darken(
           $color: $primary-bg-color-landing-compliment,
           $amount: 5
@@ -114,6 +115,8 @@
         gap: 1rem;
         padding: 1rem;
         cursor: pointer;
+        // display: grid;
+        // grid-template-columns: 7rem auto;
         &:hover {
           background-color: lighten(
             $color: $primary-bg-color-landing-compliment,

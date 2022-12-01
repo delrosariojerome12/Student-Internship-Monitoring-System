@@ -2,50 +2,14 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const internsDetails = mongoose.Schema({
-  companyname: {
-    type: String,
-    required: [true, "Please provide company name"],
-    maxlength: 50,
-    minlength: 2,
-  },
-  companyaddress: {
-    type: String,
-    required: [true, "Please provide company address"],
-    maxlength: 70,
-    minlength: 10,
-  },
-  contactnumber: {
-    type: String,
-    required: [true, "Please provide contact number"],
-    maxlength: 11,
-    minlength: 11,
-  },
-  requiredhours: {
-    type: String,
-    required: [
-      true,
-      "Please provide the exact number of hours to be rendered.",
-    ],
-    maxlength: 4,
-    minlength: 1,
-  },
-  supervisor: {
-    type: String,
-    required: [true, "Please provide supervisor name"],
-    maxlength: 50,
-    minlength: 5,
-  },
-});
-
 const UserSchema = new mongoose.Schema({
-  firstname: {
+  firstName: {
     type: String,
     required: [true, "Please provide firstname"],
     maxlength: 20,
     minlength: 3,
   },
-  lastname: {
+  lastName: {
     type: String,
     required: [true, "Please provide lastname"],
     maxlength: 20,
@@ -63,10 +27,27 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, "Please provide password"],
+    match: [
+      /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$/,
+      "Password must have: Atleast 1 uppercase, 1 lowercase, 1 number, 1 special characters and minimum of 8 characters",
+    ],
     minlength: 8,
   },
-
-  internshipDetails: internsDetails,
+  role: {
+    type: String,
+    default: "intern",
+  },
+  // role: [
+  //   {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: "Admin",
+  //   },
+  //   {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: "Intern",
+  //     default: "Intern",
+  //   },
+  // ],
 });
 
 UserSchema.pre("save", async function () {
@@ -90,4 +71,6 @@ UserSchema.methods.comparePassword = async function (canditatePassword) {
   return match;
 };
 
-module.exports = mongoose.model("User", UserSchema);
+const User = mongoose.model("User", UserSchema);
+
+module.exports = User;

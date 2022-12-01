@@ -1,0 +1,121 @@
+@import "../../utils";
+@import "../../variables";
+
+.narrative-container {
+  display: grid;
+  grid-template-rows: 4rem auto;
+  gap: 1rem;
+  height: 100%;
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    background-color: #414141;
+
+    .sort,
+    .status,
+    .filters {
+      @include flexCenter;
+      flex-direction: row;
+      border: none;
+      padding: 0 4rem;
+      color: #fff;
+      background-color: #414141;
+      transition: all 0.3s linear;
+      cursor: pointer;
+      span {
+        font-size: 1.8rem;
+        padding: 0.5rem 0.5rem 0;
+      }
+      p {
+        font-size: 1.5rem;
+      }
+      &:hover {
+        background-color: #a4a4a47e;
+        border-radius: 5rem;
+      }
+    }
+  }
+
+  .content {
+    .narrative-content {
+      display: grid;
+      grid-template-columns: 0.5fr 1fr 1.5fr;
+      grid-auto-rows: 10rem;
+      padding: 1rem 2rem;
+      column-gap: 1rem;
+
+      // Bg color of all colums
+      & > * {
+        background-color: #d9d9d9;
+      }
+      .dateAndDay {
+        text-align: center;
+        flex-direction: column;
+        padding: 1.8rem 0;
+        column-gap: 1rem;
+
+        h5 {
+          color: #000;
+          padding: 0.5rem 0;
+        }
+        p {
+          color: #000;
+          font-size: 1.3rem;
+          padding: 0 0 0.5rem;
+        }
+      }
+      .btn-column-container {
+        @include flexCenter;
+        flex-direction: column;
+
+        .top {
+          padding: 0.5rem;
+          button {
+            transition: all 0.3s linear;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: $primary-compliment-landing;
+            border: solid 1px $primary-compliment-landing;
+            padding: 1rem 16rem;
+            border-radius: 1rem;
+            font-weight: 600;
+            font-size: 1.5rem;
+            &:hover {
+              color: #fff;
+              background-color: #0d7377;
+            }
+          }
+        }
+        .bottom {
+          @include flexCenter;
+          padding: 0.2rem 0.5rem 0.5rem;
+          flex-direction: row;
+          button {
+            margin: 0 0.5rem;
+            color: #fff;
+            border: solid 1px $primary-compliment-landing;
+            transition: all 0.3s linear;
+            padding: 0.8rem 4.5rem;
+            border-radius: 0.5rem;
+            background-color: #0d7377;
+            font-weight: 600;
+            &:hover {
+              background-color: #d9d9d9;
+              color: #0d7377;
+            }
+          }
+        }
+      }
+      .blank-container {
+        @include flexCenter;
+
+        .blank {
+          height: 80%;
+          width: 95%;
+          background-color: #a4a4a4;
+        }
+      }
+    }
+  }
+}
