@@ -3,9 +3,13 @@ import {useDispatch, useSelector} from "react-redux";
 import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
 import {requestVerification} from "../features/user/userReducer";
+
+import pedningImg from "../assets/img/landingPage/landing-dashboard.svg";
 const Pending = () => {
   const dispatch = useDispatch();
   const {user} = useSelector((state) => state.user);
+
+  const {user: userDetails} = user;
 
   const [form, setForm] = useState([
     {
@@ -17,7 +21,7 @@ const Pending = () => {
           value: "",
           placeholder: "Type of Internship",
           isDisabled: false,
-
+          code: "internshipType",
           options: [
             {
               value: "Onsite",
@@ -39,7 +43,7 @@ const Pending = () => {
           forInput: "Duties",
           value: "",
           isDisabled: false,
-
+          code: "typeOfWork",
           optionItems: [
             {
               value: "Encoding",
@@ -71,10 +75,12 @@ const Pending = () => {
           isError: false,
           errorMessage: "Atleast 2 characters and max of 30",
           isDisabled: false,
+          code: "companyName",
         },
         {
           type: "text",
           id: "company-address",
+          code: "companyAddress",
           forInput: "Company Address",
           value: "",
           isError: false,
@@ -84,6 +90,7 @@ const Pending = () => {
         {
           type: "text",
           id: "supervisor",
+          code: "supervisor",
           forInput: "Supervisor",
           value: "",
           isError: false,
@@ -93,6 +100,7 @@ const Pending = () => {
         {
           type: "text",
           id: "supervisor-contact",
+          code: "supervisorContact",
           forInput: "Supervisor Contact",
           value: "",
           isError: false,
@@ -107,6 +115,7 @@ const Pending = () => {
         {
           type: "select",
           id: "department",
+          code: "department",
           value: "",
           placeholder: "Department",
           options: [
@@ -132,10 +141,8 @@ const Pending = () => {
         {
           type: "select",
           id: "program",
-          value: {
-            value: "",
-            label: "",
-          },
+          code: "program",
+          value: "",
           options: [],
           placeholder: "Program",
           isDisabled: false,
@@ -143,6 +150,7 @@ const Pending = () => {
         {
           type: "image",
           id: "valid-id",
+          code: "validID",
           forInput: "",
           value: "",
           isError: false,
@@ -152,6 +160,7 @@ const Pending = () => {
         {
           type: "text",
           id: "required-hours",
+          code: "requiredHours",
           forInput: "Required Hours",
           value: "",
           isError: false,
@@ -164,9 +173,37 @@ const Pending = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [atNextPage, setNextPage] = useState(false);
 
+  const convertForm = (form) => {
+    const newData = form.map((input) => {
+      const {code, value} = input;
+      return {
+        code,
+        value,
+      };
+    });
+
+    const newObject = Object.assign(
+      {},
+      ...newData.map((item) => ({[item.code]: item.value}))
+    );
+
+    return newObject;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(form);
+    const finalForm = {
+      email: user.email,
+      internshipDetails: convertForm([...form[0].forms]),
+      schoolDetails: convertForm([...form[1].forms]),
+      verification: {
+        hasSentVerification: true,
+        isVerified: false,
+        isRejected: false,
+      },
+    };
+    dispatch(requestVerification(finalForm));
+    setModalOpen(false);
   };
 
   const checkDepartment = (department, mainIndex, index) => {
@@ -313,11 +350,10 @@ const Pending = () => {
         setForm(newForm);
         return;
       case "supervisor":
-        const result = value.replace(/[^a-z]/gi, "");
-        newForm[mainIndex].forms[index].value = result;
         value.length >= 2 && value.length <= 20
           ? (newForm[mainIndex].forms[index].isError = false)
           : (newForm[mainIndex].forms[index].isError = true);
+        newForm[mainIndex].forms[index].value = value;
         setForm(newForm);
         return;
       case "supervisor-contact":
@@ -333,19 +369,17 @@ const Pending = () => {
         return;
       case "department":
         newForm[mainIndex].forms[index].value = value;
-        // newForm[mainIndex].forms[index + 1].value = null;
         const departmentValue = newForm[mainIndex].forms[index].value;
         checkDepartment(departmentValue, mainIndex, index);
         setForm(newForm);
-        console.log(newForm[mainIndex].forms);
         return;
       case "program":
-        newForm[mainIndex].forms[index].value.value = value;
-        newForm[mainIndex].forms[index].value.label = value;
+        newForm[mainIndex].forms[index].value = value;
         setForm(newForm);
-        console.log(newForm[mainIndex].forms);
         return;
       default:
+        newForm[mainIndex].forms[index].value = value;
+        setForm(newForm);
         return;
     }
   };
@@ -362,6 +396,7 @@ const Pending = () => {
     if (numOfErrors === 0 && numOfValues === 6) {
       setNextPage(!atNextPage);
     }
+    // setNextPage(!atNextPage);
   };
 
   const handleKeydown = (e) => {
@@ -497,45 +532,79 @@ const Pending = () => {
     });
   };
 
+  const {firstName} = userDetails;
+
+  const handleModal = (e) => {
+    e.stopPropagation();
+    setModalOpen(true);
+  };
+
+  const handleParent = () => {
+    setModalOpen(false);
+  };
+
+  const {hasSentVerification} = user.verification;
+
   return (
-    <div className="pending">
-      {!isModalOpen && (
-        <>
-          <p>Fill up few more details and you are ready!</p>
-          <button onClick={() => setModalOpen(!isModalOpen)}>
-            Verify Account
-          </button>
-        </>
-      )}
-      <div
-        style={!isModalOpen ? {display: "none"} : null}
-        className={atNextPage ? "modal verify" : "modal"}
-      >
-        <form onSubmit={handleSubmit}>
-          <div
-            className={
-              atNextPage ? "internship-details inactive" : "internship-details"
-            }
-          >
-            <h3>Internship Details</h3>
-            <div className="forms-con">
-              {renderInputs(form[0].forms, "internship-details", 0)}
+    <div className="pending" onClick={handleParent}>
+      <div className="greetings">
+        <h1 className="name">Welcome, {firstName}</h1>
+      </div>
+      <div className="pending-content">
+        {hasSentVerification ? (
+          <>
+            <h1>Your Verification has been sent. Please wait madafaka.</h1>
+            <h2>For the mean time, you can update your profile.</h2>
+          </>
+        ) : (
+          <>
+            <h3>Looks like your account is not verified yet.</h3>
+            <img src={pedningImg} alt="" />
+            <p>
+              Before you continue to access the other features, you must verify
+              your credentials
+            </p>
+            <p>
+              You must provide your information and other requirements. This
+              will help the administrator to know your Identity.
+            </p>
+            <button onClick={handleModal}>Verify Account</button>
+          </>
+        )}
+
+        <div
+          style={!isModalOpen ? {display: "none"} : null}
+          className={atNextPage ? "modal verify" : "modal"}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <form onSubmit={handleSubmit}>
+            <div
+              className={
+                atNextPage
+                  ? "internship-details inactive"
+                  : "internship-details"
+              }
+            >
+              <h3>Internship Details</h3>
+              <div className="forms-con">
+                {renderInputs(form[0].forms, "internship-details", 0)}
+              </div>
+              <button onClick={handleNext}>Next</button>
             </div>
-            <button onClick={handleNext}>Next</button>
-          </div>
-          <div
-            className={
-              atNextPage ? "student-details active" : "student-details"
-            }
-          >
-            <h3>Student Details</h3>
-            {renderInputs(form[1].forms, "student-details", 1)}
-            <div className="btn-con">
-              <button onClick={() => setNextPage(!atNextPage)}>Back</button>
-              <button>Submit Verification</button>
+            <div
+              className={
+                atNextPage ? "student-details active" : "student-details"
+              }
+            >
+              <h3>Student Details</h3>
+              {renderInputs(form[1].forms, "student-details", 1)}
+              <div className="btn-con">
+                <button onClick={() => setNextPage(!atNextPage)}>Back</button>
+                <button>Submit Verification</button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );

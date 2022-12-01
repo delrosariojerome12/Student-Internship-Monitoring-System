@@ -9,7 +9,7 @@ const internshipDetails = {
     type: String,
     // required: [true, "Please provide company address"],
     maxlength: 70,
-    minlength: 10,
+    minlength: 5,
   },
   contactNumber: {
     type: String,
@@ -17,18 +17,22 @@ const internshipDetails = {
     maxlength: 11,
     minlength: 1,
   },
-  requiredHours: {
-    type: String,
-    // required: [
-    //   true,
-    //   "Please provide the exact number of hours to be rendered.",
-    // ],
-    maxlength: 4,
-    minlength: 3,
-  },
   supervisor: {
     type: String,
     // required: [true, "Please provide supervisor name"],
+    maxlength: 20,
+    minlength: 2,
+  },
+  supervisorContact: {
+    type: String,
+  },
+  internshipType: {
+    type: String,
+    maxlength: 20,
+    minlength: 2,
+  },
+  typeOfWork: {
+    type: String,
     maxlength: 20,
     minlength: 2,
   },
@@ -73,6 +77,13 @@ const verification = {
   hasSentVerification: {
     type: Boolean,
     default: false,
+  },
+  isRejected: {
+    type: Boolean,
+    default: false,
+  },
+  adminMessage: {
+    type: String,
   },
 };
 

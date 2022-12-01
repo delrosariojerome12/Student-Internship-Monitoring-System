@@ -1,12 +1,15 @@
 import React from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
-import { lazy, Suspense } from "react";
-import { useSelector } from "react-redux";
+import {Route, Routes, Navigate} from "react-router-dom";
+import {lazy, Suspense} from "react";
+import {useSelector} from "react-redux";
 
 import DashboardMain from "./DashboardMain";
 import Pending from "../Pending";
 import SidebarLeft from "../../components/dashboard/SidebarLeft";
 import SideBarRight from "../../components/dashboard/SidebarRight";
+
+import Coordinator from "../coordinator/Coordinator";
+import Admin from "../admin/Admin";
 
 const Profile = lazy(() => import("./Profile"));
 const DailyTimeRecord = lazy(() => import("./DailyTimeRecord"));
@@ -15,21 +18,28 @@ const Reports = lazy(() => import("./Reports"));
 const Settings = lazy(() => import("./Settings"));
 
 const Dashboard = () => {
-  const { isSidebarOpen } = useSelector((state) => state.dashboard);
-  const { user } = useSelector((state) => state.user);
+  const {isSidebarOpen} = useSelector((state) => state.dashboard);
+  const {user} = useSelector((state) => state.user);
   // const dispatch = useDispatch();
 
   if (!user && !localStorage.getItem("token")) {
     return <Navigate to={"/404"} />;
   }
-  const isVerified = user.verification.isVerified;
 
-  console.log(isVerified);
+  if (user.user.role === "coordinator") {
+    return <Coordinator isSidebarOpen={isSidebarOpen} />;
+  }
+
+  if (user.user.role === "admin") {
+    return <Admin isSidebarOpen={isSidebarOpen} />;
+  }
+
+  const isVerified = user.verification.isVerified;
   // not validated
   if (!isVerified) {
     return (
       <section
-        style={isSidebarOpen ? { padding: "2rem 9rem 2rem 29rem" } : null}
+        style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
         className="dashboard"
       >
         <SidebarLeft />
@@ -46,9 +56,10 @@ const Dashboard = () => {
     );
   }
 
+  // intern
   return (
     <section
-      style={isSidebarOpen ? { padding: "2rem 9rem 2rem 29rem" } : null}
+      style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
       className="dashboard"
     >
       <SidebarLeft />

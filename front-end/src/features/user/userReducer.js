@@ -29,7 +29,7 @@ export const getUserOnLoad = createAsyncThunk(
   "/user/getUserOnLoad",
   async (email, {rejectWithValue}) => {
     try {
-      const url = `http://localhost:5000/interns/getIntern/${email}`;
+      const url = `http://localhost:5000/user/getUser/${email}`;
       const {data: res} = await axios.get(url);
       return {res: res.user};
     } catch (error) {
@@ -58,7 +58,6 @@ export const handleSignup = createAsyncThunk(
     try {
       const url = "http://localhost:5000/auth/signup";
       const {data: res} = await axios.post(url, convertForm(form));
-      console.log(res);
       return {res};
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -69,9 +68,11 @@ export const handleSignup = createAsyncThunk(
 export const requestVerification = createAsyncThunk(
   "/user/requestVerify",
   async (form, {rejectWithValue}) => {
+    // const
     try {
-      const url = `http://localhost:5000/interns/requestVerify`;
+      const url = `http://localhost:5000/intern/requestVerify`;
       const {data: res} = await axios.patch(url, form);
+      console.log(form);
       return {res: res.user};
     } catch (error) {
       console.log(error);
@@ -100,7 +101,6 @@ export const userReducer = createSlice({
       })
       .addCase(handleLogin.fulfilled, (state, action) => {
         const {res} = action.payload;
-        console.log(res);
         state.isLoading = false;
         state.isError = false;
         state.user = res.user;
@@ -118,7 +118,6 @@ export const userReducer = createSlice({
       })
       .addCase(handleSignup.fulfilled, (state, action) => {
         const {res} = action.payload;
-        console.log(res);
         state.isLoading = false;
         state.isError = false;
         state.user = res.user;
@@ -136,6 +135,7 @@ export const userReducer = createSlice({
       })
       .addCase(getUserOnLoad.fulfilled, (state, action) => {
         const {res} = action.payload;
+        console.log(res);
         state.isLoading = false;
         state.user = res;
       })
@@ -144,7 +144,6 @@ export const userReducer = createSlice({
         state.isError = true;
         state.errorMessage = action.payload.msg;
       });
-
     // verification
     builder
       .addCase(requestVerification.pending, (state, action) => {

@@ -10,7 +10,7 @@
   .button-container {
     display: flex;
     justify-content: center;
-    background-color: rgb(139, 139, 139);
+    background-color: #414141;
 
     .sort,
     .status,
@@ -20,7 +20,7 @@
       border: none;
       padding: 0 4rem;
       color: #fff;
-      background-color: rgb(139, 139, 139);
+      background-color: #414141;
       transition: all 0.3s linear;
       cursor: pointer;
       span {
@@ -31,7 +31,7 @@
         font-size: 1.5rem;
       }
       &:hover {
-        background-color: #a4a4a4;
+        background-color: #a4a4a47e;
         border-radius: 5rem;
       }
     }
@@ -79,6 +79,12 @@
             border: solid 1px $primary-compliment-landing;
             padding: 1rem 16rem;
             border-radius: 1rem;
+            font-weight: 600;
+            font-size: 1.5rem;
+            &:hover {
+              color: #fff;
+              background-color: #0d7377;
+            }
           }
         }
         .bottom {
@@ -87,11 +93,17 @@
           flex-direction: row;
           button {
             margin: 0 0.5rem;
-            color: $primary-compliment-landing;
+            color: #fff;
             border: solid 1px $primary-compliment-landing;
             transition: all 0.3s linear;
             padding: 0.8rem 4.5rem;
             border-radius: 0.5rem;
+            background-color: #0d7377;
+            font-weight: 600;
+            &:hover {
+              background-color: #d9d9d9;
+              color: #0d7377;
+            }
           }
         }
       }

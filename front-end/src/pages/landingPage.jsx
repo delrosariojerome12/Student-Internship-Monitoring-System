@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { HiMenu } from "react-icons/hi";
+import { FaPlus } from "react-icons/fa";
 
 import logo from "../assets/img/landingPage/Logo.png";
 import landingImg from "../assets/img/landingPage/landing-image.png";
@@ -17,6 +19,7 @@ import socialIcon1 from "../assets/img/landingPage/ICON SOCIALS/FB.png";
 import socialIcon2 from "../assets/img/landingPage/ICON SOCIALS/INSTA.png";
 import socialIcon3 from "../assets/img/landingPage/ICON SOCIALS/LINKIN.png";
 import socialIcon4 from "../assets/img/landingPage/ICON SOCIALS/TWITTER.png";
+import { useCallback } from "react";
 
 const links = [
   {
@@ -48,39 +51,71 @@ const authLinks = [
 ];
 
 const LandingPage = () => {
+  const [isNavbarOpen, setNavbarOpen] = useState(false);
   const navigate = useNavigate();
+
+  const handleResize = useCallback(() => {
+    setNavbarOpen(false);
+  }, []);
+
+  const handleNavbar = useCallback(() => {
+    setNavbarOpen(!isNavbarOpen);
+  }, [isNavbarOpen]);
+
+  useEffect(() => {
+    if (isNavbarOpen) {
+      window.addEventListener("resize", () => {
+        handleResize();
+      });
+    }
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isNavbarOpen, handleResize]);
+
   return (
     <section className="landing-page">
       <nav>
-        <div className="icon">
+        <div className="logo">
           <img src={logo} alt="Logo.png " />
           <h2>SIMS</h2>
         </div>
-        <ul className="links">
-          {links.map((item, index) => {
-            const { path, link } = item;
-            return (
-              <Link key={index} to={path}>
-                {link}
-              </Link>
-            );
-          })}
-        </ul>
-        <ul className="auth-links">
-          {authLinks.map((item, index) => {
-            const { path, link } = item;
-            return (
-              <button
-                onClick={() => {
-                  navigate(path);
-                }}
-                key={index}
-              >
-                {link}
-              </button>
-            );
-          })}
-        </ul>
+        <div
+          className={
+            isNavbarOpen ? "link-container active-drop" : "link-container"
+          }
+        >
+          <ul className="links">
+            {links.map((item, index) => {
+              const { path, link } = item;
+              return (
+                <Link key={index} to={path}>
+                  {link}
+                </Link>
+              );
+            })}
+          </ul>
+          <ul className="auth-links">
+            {authLinks.map((item, index) => {
+              const { path, link } = item;
+              return (
+                <button
+                  onClick={() => {
+                    navigate(path);
+                  }}
+                  key={index}
+                >
+                  {link}
+                </button>
+              );
+            })}
+          </ul>
+        </div>
+        <span
+          className={isNavbarOpen ? "menu-icon active" : "menu-icon"}
+          onClick={handleNavbar}
+        >
+          <HiMenu />
+        </span>
       </nav>
       <section className="contents">
         <div className="landing-contents">
@@ -96,6 +131,10 @@ const LandingPage = () => {
 
             <div className="darkbg"></div>
             <div className="darkbg2"></div>
+            <div className="bg3">
+              <img className="landingImg" src={landingImg} alt="" />
+              <img className="landingBg" src={landingBg} alt="" />
+            </div>
           </div>
           <div className="img-container">
             <img className="landingImg" src={landingImg} alt="" />
@@ -117,7 +156,7 @@ const LandingPage = () => {
         </div>
         <div className="mockup-contents">
           <div className="card">
-            <div className="text">
+            <div className="text-container">
               <p>Do you need assistance with your internship?</p>
               <p>
                 We've got you covered! SIMS is an easy-to-use online application
@@ -131,7 +170,7 @@ const LandingPage = () => {
                 <img src={mockupImage} alt="" />
               </div>
             </div>
-            <div className="img-con">
+            <div className="mobile-img">
               <img src={mainMockup} alt="" />
             </div>
           </div>
