@@ -29,7 +29,7 @@ export const getUserOnLoad = createAsyncThunk(
   "/user/getUserOnLoad",
   async (email, {rejectWithValue}) => {
     try {
-      const url = `http://localhost:5000/user/getIntern/${email}`;
+      const url = `http://localhost:5000/user/getUser/${email}`;
       const {data: res} = await axios.get(url);
       return {res: res.user};
     } catch (error) {
@@ -70,7 +70,7 @@ export const requestVerification = createAsyncThunk(
   async (form, {rejectWithValue}) => {
     // const
     try {
-      const url = `http://localhost:5000/user/requestVerify`;
+      const url = `http://localhost:5000/intern/requestVerify`;
       const {data: res} = await axios.patch(url, form);
       console.log(form);
       return {res: res.user};
@@ -98,7 +98,6 @@ export const userReducer = createSlice({
     builder
       .addCase(handleLogin.pending, (state) => {
         state.isLoading = true;
-        console.log(state.isLoading);
       })
       .addCase(handleLogin.fulfilled, (state, action) => {
         const {res} = action.payload;

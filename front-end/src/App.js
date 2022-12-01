@@ -26,9 +26,9 @@ const App = () => {
     }
   }, []);
 
-  if (isError) {
-    return <h1>Somebitch went wrong</h1>;
-  }
+  // if (isError) {
+  //   return <h1>Somebitch went wrong</h1>;
+  // }
 
   return (
     <main className="container">
