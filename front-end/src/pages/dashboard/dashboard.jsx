@@ -24,15 +24,47 @@ const Dashboard = () => {
   }
 
   if (user.user.role === "coordinator") {
-    return <h1>Coordinator</h1>;
+    return (
+      <section
+        style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
+        className="dashboard"
+      >
+        <SidebarLeft />
+        <Suspense fallback={<h2>Loading...</h2>}>
+          <Routes>
+            <Route path="/" element={<h1>Coordinator</h1>} />
+            {/* <Route path="/profile/*" element={<Profile />} /> */}
+            {/* <Route path="/settings" element={<Settings />} /> */}
+            <Route path="*" element={<Navigate to="/404" replace />} />
+          </Routes>
+        </Suspense>
+        <SideBarRight />
+      </section>
+    );
   }
 
   if (user.user.role === "admin") {
-    return <h1>Admin</h1>;
+    console.log(user);
+    return (
+      <section
+        style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
+        className="dashboard"
+      >
+        <SidebarLeft />
+        <Suspense fallback={<h2>Loading...</h2>}>
+          <Routes>
+            <Route path="/" element={<h1>ADMIN</h1>} />
+            <Route path="/profile/*" element={<Profile />} />
+            {/* <Route path="/settings" element={<Settings />} /> */}
+            <Route path="*" element={<Navigate to="/404" replace />} />
+          </Routes>
+        </Suspense>
+        <SideBarRight />
+      </section>
+    );
   }
 
   const isVerified = user.verification.isVerified;
-
   // not validated
   if (!isVerified) {
     return (
@@ -54,6 +86,7 @@ const Dashboard = () => {
     );
   }
 
+  // intern
   return (
     <section
       style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}

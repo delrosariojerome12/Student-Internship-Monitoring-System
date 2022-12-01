@@ -9,10 +9,12 @@ const initialState = {
 
 export const sidebarRightReducer = createSlice({
   name: "sidebarRight",
-  initialState: initialState,
+  initialState,
   reducers: {
     handleProfile: (state, action) => {
+      console.log("Test");
       state.isProfileOpen = !state.isProfileOpen;
+      // state.isProfileOpen = action.payload;
       state.isNotificationOpen = false;
       state.isChatOpen = false;
     },

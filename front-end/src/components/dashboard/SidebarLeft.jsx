@@ -44,6 +44,14 @@ const SidebarLeft = () => {
   const dispatch = useDispatch();
 
   const renderLinks = () => {
+    if (user.user.role === "admin") {
+      return <></>;
+    }
+
+    if (user.user.role === "coordinator") {
+      return <></>;
+    }
+
     const isVerified = user.verification.isVerified;
     if (isVerified) {
       return links.map((item, index) => {
@@ -72,6 +80,7 @@ const SidebarLeft = () => {
       }
     });
   };
+
   return (
     <aside
       className={
