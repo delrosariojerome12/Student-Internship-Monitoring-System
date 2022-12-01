@@ -2,16 +2,6 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const {
-  internshipDetails,
-  internsAssets,
-  verification,
-} = require("./utils/internsDetails");
-
-const schoolDetails = require("./utils/schoolDetails");
-
-const options = {discriminatorKey: "kind"};
-
 const UserSchema = new mongoose.Schema({
   firstName: {
     type: String,

@@ -8,6 +8,9 @@ import Pending from "../Pending";
 import SidebarLeft from "../../components/dashboard/SidebarLeft";
 import SideBarRight from "../../components/dashboard/SidebarRight";
 
+import Coordinator from "../coordinator/Coordinator";
+import Admin from "../admin/Admin";
+
 const Profile = lazy(() => import("./Profile"));
 const DailyTimeRecord = lazy(() => import("./DailyTimeRecord"));
 const Documents = lazy(() => import("./Documents"));
@@ -24,44 +27,11 @@ const Dashboard = () => {
   }
 
   if (user.user.role === "coordinator") {
-    return (
-      <section
-        style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
-        className="dashboard"
-      >
-        <SidebarLeft />
-        <Suspense fallback={<h2>Loading...</h2>}>
-          <Routes>
-            <Route path="/" element={<h1>Coordinator</h1>} />
-            {/* <Route path="/profile/*" element={<Profile />} /> */}
-            {/* <Route path="/settings" element={<Settings />} /> */}
-            <Route path="*" element={<Navigate to="/404" replace />} />
-          </Routes>
-        </Suspense>
-        <SideBarRight />
-      </section>
-    );
+    return <Coordinator isSidebarOpen={isSidebarOpen} />;
   }
 
   if (user.user.role === "admin") {
-    console.log(user);
-    return (
-      <section
-        style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
-        className="dashboard"
-      >
-        <SidebarLeft />
-        <Suspense fallback={<h2>Loading...</h2>}>
-          <Routes>
-            <Route path="/" element={<h1>ADMIN</h1>} />
-            <Route path="/profile/*" element={<Profile />} />
-            {/* <Route path="/settings" element={<Settings />} /> */}
-            <Route path="*" element={<Navigate to="/404" replace />} />
-          </Routes>
-        </Suspense>
-        <SideBarRight />
-      </section>
-    );
+    return <Admin isSidebarOpen={isSidebarOpen} />;
   }
 
   const isVerified = user.verification.isVerified;
