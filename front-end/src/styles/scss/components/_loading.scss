@@ -22,45 +22,45 @@
   @keyframes ring {
     0% {
       transform: rotate(0deg);
-      box-shadow: 0.3rem 0.8rem 0.5rem#e64900;
+      box-shadow: 0.4rem 0.8rem 0.5rem#e64900;
     }
     25% {
       transform: rotate(90deg);
-      box-shadow: 0.3rem 0.8rem 0.5rem#de00e6;
+      box-shadow: 0.4rem 0.8rem 0.5rem#de00e6;
     }
     50% {
       transform: rotate(180deg);
-      box-shadow: 0.3rem 0.8rem 0.5rem #18b201;
+      box-shadow: 0.4rem 0.8rem 0.5rem #18b201;
     }
     75% {
       transform: rotate(270deg);
-      box-shadow: 0.3rem 0.8rem 0.5rem #0197b2;
+      box-shadow: 0.4rem 0.8rem 0.5rem #0197b2;
     }
     100% {
       transform: rotate(360deg);
-      box-shadow: 0.3rem 0.8rem 0.5rem #0456c8;
+      box-shadow: 0.4rem 0.8rem 0.5rem #0456c8;
     }
   }
   @keyframes ring2 {
     0% {
       transform: rotate(180deg);
-      box-shadow: 0.3rem 0.8rem 0.5rem #e64900;
+      box-shadow: 0.4rem 0.8rem 0.5rem #e64900;
     }
     25% {
       transform: rotate(270deg);
-      box-shadow: 0.3rem 0.8rem 0.5rem #de00e6;
+      box-shadow: 0.4rem 0.8rem 0.5rem #de00e6;
     }
     50% {
       transform: rotate(360deg);
-      box-shadow: 0.3rem 0.8rem 0.5rem#18b201;
+      box-shadow: 0.4rem 0.8rem 0.5rem#18b201;
     }
     75% {
       transform: rotate(450deg);
-      box-shadow: 0.3rem 0.8rem 0.5rem #0197b2;
+      box-shadow: 0.4rem 0.8rem 0.5rem #0197b2;
     }
     100% {
       transform: rotate(540deg);
-      box-shadow: 0.3rem 0.8rem 0.5rem #0456c8;
+      box-shadow: 0.4rem 0.8rem 0.5rem #0456c8;
     }
   }
 
