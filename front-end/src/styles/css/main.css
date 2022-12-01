@@ -28,6 +28,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -520,6 +521,146 @@ button {
   background-color: #f1faee;
   color: #457b9d;
   border: solid 1px #457b9d;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #737373;
+}
+.loading .circle-one,
+.loading .circle-two {
+  position: absolute;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+}
+.loading .circle-one {
+  -webkit-animation: ring 2s linear infinite;
+          animation: ring 2s linear infinite;
+}
+.loading .circle-two {
+  -webkit-animation: ring2 2s linear infinite;
+          animation: ring2 2s linear infinite;
+}
+@-webkit-keyframes ring {
+  0% {
+    transform: rotate(0deg);
+    box-shadow: 0.3rem 0.8rem 0.5rem #e64900;
+  }
+  25% {
+    transform: rotate(90deg);
+    box-shadow: 0.3rem 0.8rem 0.5rem #de00e6;
+  }
+  50% {
+    transform: rotate(180deg);
+    box-shadow: 0.3rem 0.8rem 0.5rem #18b201;
+  }
+  75% {
+    transform: rotate(270deg);
+    box-shadow: 0.3rem 0.8rem 0.5rem #0197b2;
+  }
+  100% {
+    transform: rotate(360deg);
+    box-shadow: 0.3rem 0.8rem 0.5rem #0456c8;
+  }
+}
+@keyframes ring {
+  0% {
+    transform: rotate(0deg);
+    box-shadow: 0.3rem 0.8rem 0.5rem #e64900;
+  }
+  25% {
+    transform: rotate(90deg);
+    box-shadow: 0.3rem 0.8rem 0.5rem #de00e6;
+  }
+  50% {
+    transform: rotate(180deg);
+    box-shadow: 0.3rem 0.8rem 0.5rem #18b201;
+  }
+  75% {
+    transform: rotate(270deg);
+    box-shadow: 0.3rem 0.8rem 0.5rem #0197b2;
+  }
+  100% {
+    transform: rotate(360deg);
+    box-shadow: 0.3rem 0.8rem 0.5rem #0456c8;
+  }
+}
+@-webkit-keyframes ring2 {
+  0% {
+    transform: rotate(180deg);
+    box-shadow: 0.3rem 0.8rem 0.5rem #e64900;
+  }
+  25% {
+    transform: rotate(270deg);
+    box-shadow: 0.3rem 0.8rem 0.5rem #de00e6;
+  }
+  50% {
+    transform: rotate(360deg);
+    box-shadow: 0.3rem 0.8rem 0.5rem #18b201;
+  }
+  75% {
+    transform: rotate(450deg);
+    box-shadow: 0.3rem 0.8rem 0.5rem #0197b2;
+  }
+  100% {
+    transform: rotate(540deg);
+    box-shadow: 0.3rem 0.8rem 0.5rem #0456c8;
+  }
+}
+@keyframes ring2 {
+  0% {
+    transform: rotate(180deg);
+    box-shadow: 0.3rem 0.8rem 0.5rem #e64900;
+  }
+  25% {
+    transform: rotate(270deg);
+    box-shadow: 0.3rem 0.8rem 0.5rem #de00e6;
+  }
+  50% {
+    transform: rotate(360deg);
+    box-shadow: 0.3rem 0.8rem 0.5rem #18b201;
+  }
+  75% {
+    transform: rotate(450deg);
+    box-shadow: 0.3rem 0.8rem 0.5rem #0197b2;
+  }
+  100% {
+    transform: rotate(540deg);
+    box-shadow: 0.3rem 0.8rem 0.5rem #0456c8;
+  }
+}
+.loading .circle-one:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4745098039);
+}
+.loading span {
+  color: rgba(115, 115, 115, 0.4784313725);
+  font-weight: 600;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  -webkit-animation: text 3s ease-in-out infinite;
+          animation: text 3s ease-in-out infinite;
+}
+@-webkit-keyframes text {
+  50% {
+    color: black;
+  }
+}
+@keyframes text {
+  50% {
+    color: black;
+  }
 }
 
 .landing-page {

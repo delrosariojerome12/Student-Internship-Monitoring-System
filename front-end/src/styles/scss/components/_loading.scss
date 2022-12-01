@@ -1,0 +1,90 @@
+@import "../utils";
+
+.loading {
+  @include flexCenter;
+  text-align: center;
+  background-color: #737373;
+
+  .circle-one,
+  .circle-two {
+    position: absolute;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+  }
+  .circle-one {
+    animation: ring 2s linear infinite;
+  }
+  .circle-two {
+    animation: ring2 2s linear infinite;
+  }
+
+  @keyframes ring {
+    0% {
+      transform: rotate(0deg);
+      box-shadow: 0.3rem 0.8rem 0.5rem#e64900;
+    }
+    25% {
+      transform: rotate(90deg);
+      box-shadow: 0.3rem 0.8rem 0.5rem#de00e6;
+    }
+    50% {
+      transform: rotate(180deg);
+      box-shadow: 0.3rem 0.8rem 0.5rem #18b201;
+    }
+    75% {
+      transform: rotate(270deg);
+      box-shadow: 0.3rem 0.8rem 0.5rem #0197b2;
+    }
+    100% {
+      transform: rotate(360deg);
+      box-shadow: 0.3rem 0.8rem 0.5rem #0456c8;
+    }
+  }
+  @keyframes ring2 {
+    0% {
+      transform: rotate(180deg);
+      box-shadow: 0.3rem 0.8rem 0.5rem #e64900;
+    }
+    25% {
+      transform: rotate(270deg);
+      box-shadow: 0.3rem 0.8rem 0.5rem #de00e6;
+    }
+    50% {
+      transform: rotate(360deg);
+      box-shadow: 0.3rem 0.8rem 0.5rem#18b201;
+    }
+    75% {
+      transform: rotate(450deg);
+      box-shadow: 0.3rem 0.8rem 0.5rem #0197b2;
+    }
+    100% {
+      transform: rotate(540deg);
+      box-shadow: 0.3rem 0.8rem 0.5rem #0456c8;
+    }
+  }
+
+  .circle-one:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00000079;
+  }
+  span {
+    color: #7373737a;
+    font-weight: 600;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    animation: text 3s ease-in-out infinite;
+  }
+  @keyframes text {
+    50% {
+      color: black;
+    }
+  }
+}
