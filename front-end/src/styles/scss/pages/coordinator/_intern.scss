@@ -1,0 +1,99 @@
+@import "../../utils";
+@import "../../variables";
+
+.intern-container {
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+  border: solid 1px #fff;
+  display: grid;
+  grid-template-rows: 13rem 5rem auto;
+  gap: 1rem;
+  padding: 1rem;
+
+  & > * {
+    border: solid 1px #fff;
+  }
+  .navigation {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+
+    & > * {
+      border: solid 1px #fff;
+    }
+    .left-side {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      button {
+        cursor: pointer;
+        height: 4rem;
+        @include flexCenter;
+        margin: auto;
+        padding: 0rem 2rem;
+        border-radius: 5px;
+        border: solid 1px transparent;
+        outline: none;
+        background-color: $primary-bg-color;
+        color: $primary-font-color;
+        letter-spacing: 0.2rem;
+        transition: all 0.3s ease-in-out;
+        font-weight: 600;
+        &:hover {
+          background-color: $primary-font-color;
+          color: $primary-bg-color;
+          border: solid 1px $primary-bg-color;
+        }
+      }
+    }
+    .right-side {
+      // @include flexCenter;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      form {
+        width: 80%;
+        input {
+          padding: 1rem;
+          width: 100%;
+          border: none;
+          outline: none;
+          border-radius: 0.5rem;
+        }
+      }
+    }
+  }
+  .interns {
+    position: relative;
+    display: grid;
+    // grid-template-rows: 8rem;
+    grid-auto-rows: 10rem;
+    gap: 1rem;
+    padding: 1rem;
+    .modal {
+      padding: 2rem;
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translate(-50%, -10%);
+      width: 50rem;
+      height: 40rem;
+      background-color: #fff;
+      border-radius: 1rem;
+    }
+    .intern {
+      display: grid;
+      grid-template-columns: 10rem auto;
+      border: solid 1px #fff;
+      border-radius: 1rem;
+      gap: 2rem;
+      .intern-details {
+        background-color: #fff;
+      }
+      & > * {
+        border: solid 1px #fff;
+      }
+    }
+  }
+}

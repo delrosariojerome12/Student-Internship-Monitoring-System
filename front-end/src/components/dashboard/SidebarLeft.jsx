@@ -82,7 +82,7 @@ const links = [
       },
       {
         path: "/dashboard/internships",
-        link: "internships",
+        link: "Internships",
         IconType: MdOutlineWork,
       },
     ],
@@ -138,9 +138,10 @@ const SidebarLeft = () => {
         );
       });
     }
-    return links[0].sidebar.map((item, index) => {
-      const {path, link, IconType} = item;
-      if (link === "Dashboard" || link === "Profile") {
+    return links[0].sidebar
+      .filter((item) => item.link === "Dashboard" || item.link === "Profile")
+      .map((item, index) => {
+        const {path, link, IconType} = item;
         return (
           <span className="icon-con" key={index}>
             <Link to={path}>
@@ -149,8 +150,7 @@ const SidebarLeft = () => {
             </Link>
           </span>
         );
-      }
-    });
+      });
   };
 
   return (

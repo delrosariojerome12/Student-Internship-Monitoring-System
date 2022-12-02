@@ -838,6 +838,8 @@ button {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 }
 .dashboard .main {
   height: 100%;
@@ -1278,6 +1280,100 @@ button {
   gap: 2rem;
   padding: 1rem;
 }
+.dashboard .intern-container {
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+  border: solid 1px #fff;
+  display: grid;
+  grid-template-rows: 13rem 5rem auto;
+  gap: 1rem;
+  padding: 1rem;
+}
+.dashboard .intern-container > * {
+  border: solid 1px #fff;
+}
+.dashboard .intern-container .navigation {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.dashboard .intern-container .navigation > * {
+  border: solid 1px #fff;
+}
+.dashboard .intern-container .navigation .left-side {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.dashboard .intern-container .navigation .left-side button {
+  cursor: pointer;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  padding: 0rem 2rem;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  background-color: #457b9d;
+  color: #f1faee;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.dashboard .intern-container .navigation .left-side button:hover {
+  background-color: #f1faee;
+  color: #457b9d;
+  border: solid 1px #457b9d;
+}
+.dashboard .intern-container .navigation .right-side {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.dashboard .intern-container .navigation .right-side form {
+  width: 80%;
+}
+.dashboard .intern-container .navigation .right-side form input {
+  padding: 1rem;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+}
+.dashboard .intern-container .interns {
+  position: relative;
+  display: grid;
+  grid-auto-rows: 10rem;
+  gap: 1rem;
+  padding: 1rem;
+}
+.dashboard .intern-container .interns .modal {
+  padding: 2rem;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -10%);
+  width: 50rem;
+  height: 40rem;
+  background-color: #fff;
+  border-radius: 1rem;
+}
+.dashboard .intern-container .interns .intern {
+  display: grid;
+  grid-template-columns: 10rem auto;
+  border: solid 1px #fff;
+  border-radius: 1rem;
+  gap: 2rem;
+}
+.dashboard .intern-container .interns .intern .intern-details {
+  background-color: #fff;
+}
+.dashboard .intern-container .interns .intern > * {
+  border: solid 1px #fff;
+}
 
 .pending {
   height: 100%;
@@ -1304,6 +1400,7 @@ button {
   gap: 1.5rem;
   padding: 5rem 10rem;
   border-radius: 1rem;
+  position: relative;
 }
 .pending .pending-content h3 {
   font-size: 2.5rem;
@@ -1328,7 +1425,7 @@ button {
   height: 45rem;
   width: 60vw;
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 1rem;
