@@ -5,10 +5,10 @@ const {BadRequest, NotFound} = require("../errors");
 
 const getAllInterns = async (req, res) => {
   const {users} = req.body;
-  const interns = await Intern.find({users}, {_id: 0})
-    .populate({path: "user", model: "User"})
-    // .sort("firstName")
-    .select("email -password");
+  const interns = await Intern.find({users}, {_id: 0}).populate({
+    path: "user",
+    model: "User",
+  });
   res.status(StatusCodes.OK).json({interns, count: interns.length});
 };
 

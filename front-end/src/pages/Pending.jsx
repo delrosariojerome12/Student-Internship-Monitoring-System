@@ -84,7 +84,7 @@ const Pending = () => {
           forInput: "Company Address",
           value: "",
           isError: false,
-          errorMessage: "Atleast 10 characters and max of 50",
+          errorMessage: "Atleast 5 characters and max of 50",
           isDisabled: false,
         },
         {
@@ -343,7 +343,7 @@ const Pending = () => {
         setForm(newForm);
         return;
       case "company-address":
-        value.length >= 10 && value.length <= 50
+        value.length >= 5 && value.length <= 50
           ? (newForm[mainIndex].forms[index].isError = false)
           : (newForm[mainIndex].forms[index].isError = true);
         newForm[mainIndex].forms[index].value = value;
