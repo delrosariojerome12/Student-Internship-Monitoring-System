@@ -1359,6 +1359,7 @@ button {
   width: 50rem;
   height: 40rem;
   background-color: #fff;
+  border: solid 1px #000;
   border-radius: 1rem;
 }
 .dashboard .intern-container .interns .intern {
@@ -1367,6 +1368,7 @@ button {
   border: solid 1px #fff;
   border-radius: 1rem;
   gap: 2rem;
+  cursor: pointer;
 }
 .dashboard .intern-container .interns .intern .intern-details {
   background-color: #fff;

@@ -80,6 +80,7 @@
       width: 50rem;
       height: 40rem;
       background-color: #fff;
+      border: solid 1px #000;
       border-radius: 1rem;
     }
     .intern {
@@ -88,6 +89,7 @@
       border: solid 1px #fff;
       border-radius: 1rem;
       gap: 2rem;
+      cursor: pointer;
       .intern-details {
         background-color: #fff;
       }
