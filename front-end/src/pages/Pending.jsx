@@ -3,6 +3,8 @@ import {useDispatch, useSelector} from "react-redux";
 import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
 import {requestVerification} from "../features/user/userReducer";
+import {useNavigate, Routes, Route, Navigate} from "react-router";
+import Verification from "./dashboard/Verification";
 
 import pedningImg from "../assets/img/landingPage/landing-dashboard.svg";
 
@@ -32,11 +34,14 @@ const days = [
     label: "Saturday",
   },
 ];
+
 const Pending = () => {
   const dispatch = useDispatch();
   const {user} = useSelector((state) => state.user);
 
   const {user: userDetails} = user;
+
+  const navigate = useNavigate();
 
   const [form, setForm] = useState([
     {
@@ -689,69 +694,84 @@ const Pending = () => {
   const {hasSentVerification} = user.verification;
 
   return (
-    <div className="pending" onClick={handleParent}>
-      <div className="greetings">
-        <h1 className="name">Welcome, {firstName}</h1>
-      </div>
-      <div className="pending-content">
-        {hasSentVerification ? (
-          <>
-            <h1>Your Verification has been sent. Please wait madafaka.</h1>
-            <h2>For the mean time, you can update your profile.</h2>
-          </>
-        ) : (
-          <>
-            <h3>Looks like your account is not verified yet.</h3>
-            <img src={pedningImg} alt="" />
-            <p>
-              Before you continue to access the other features, you must verify
-              your credentials
-            </p>
-            <p>
-              You must provide your information and other requirements. This
-              will help the administrator to know your Identity.
-            </p>
-            <button onClick={handleModal}>Verify Account</button>
-          </>
-        )}
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <div className="pending" onClick={handleParent}>
+            <div className="greetings">
+              <h1 className="name">Welcome, {firstName}</h1>
+            </div>
+            <div className="pending-content">
+              {hasSentVerification ? (
+                <>
+                  <h1>
+                    Your Verification has been sent. Please wait madafaka.
+                  </h1>
+                  <h2>For the mean time, you can update your profile.</h2>
+                </>
+              ) : (
+                <>
+                  <h3>Looks like your account is not verified yet.</h3>
+                  <img src={pedningImg} alt="" />
+                  <p>
+                    Before you continue to access the other features, you must
+                    verify your credentials
+                  </p>
+                  <p>
+                    You must provide your information and other requirements.
+                    This will help the administrator to know your Identity.
+                  </p>
+                  <button onClick={() => navigate("/dashboard/verification")}>
+                    Verify Account
+                  </button>
+                </>
+              )}
 
-        <div
-          style={!isModalOpen ? {display: "none"} : null}
-          className={atNextPage ? "modal verify" : "modal"}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <form onSubmit={handleSubmit}>
-            <div
-              className={
-                atNextPage
-                  ? "internship-details inactive"
-                  : "internship-details"
-              }
-            >
-              <h3>Internship Details</h3>
-              <div className="forms-con">
-                {renderInputs(form[0].forms, "internship-details", 0)}
+              <div
+                style={!isModalOpen ? {display: "none"} : null}
+                className={atNextPage ? "modal verify" : "modal"}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <form onSubmit={handleSubmit}>
+                  <div
+                    className={
+                      atNextPage
+                        ? "internship-details inactive"
+                        : "internship-details"
+                    }
+                  >
+                    <h3>Internship Details</h3>
+                    <div className="forms-con">
+                      {renderInputs(form[0].forms, "internship-details", 0)}
+                    </div>
+                    <button onClick={handleNext}>Next</button>
+                  </div>
+                  <div
+                    className={
+                      atNextPage ? "student-details active" : "student-details"
+                    }
+                  >
+                    <h3>Student Details</h3>
+                    <div className="forms-con">
+                      {renderInputs(form[1].forms, "student-details", 1)}
+                    </div>
+                    <div className="btn-con">
+                      <button onClick={() => setNextPage(!atNextPage)}>
+                        Back
+                      </button>
+                      <button>Submit Verification</button>
+                    </div>
+                  </div>
+                </form>
               </div>
-              <button onClick={handleNext}>Next</button>
             </div>
-            <div
-              className={
-                atNextPage ? "student-details active" : "student-details"
-              }
-            >
-              <h3>Student Details</h3>
-              <div className="forms-con">
-                {renderInputs(form[1].forms, "student-details", 1)}
-              </div>
-              <div className="btn-con">
-                <button onClick={() => setNextPage(!atNextPage)}>Back</button>
-                <button>Submit Verification</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+          </div>
+        }
+      />
+      <Route path="/verification" element={<Verification />} />
+      <Route path="*" element={<Navigate to="/404" replace />} />
+    </Routes>
   );
 };
 

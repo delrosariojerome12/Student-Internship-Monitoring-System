@@ -45,7 +45,7 @@ const Dashboard = () => {
         <SidebarLeft />
         <Suspense fallback={<h2>Loading...</h2>}>
           <Routes>
-            <Route path="/" element={<Pending />} />
+            <Route path="/*" element={<Pending />} />
             <Route path="/profile/*" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="*" element={<Navigate to="/404" replace />} />
