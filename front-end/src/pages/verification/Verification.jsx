@@ -2,11 +2,8 @@ import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
-import {requestVerification} from "../features/user/userReducer";
-import {useNavigate, Routes, Route, Navigate} from "react-router";
-import Verification from "./dashboard/Verification";
-
-import pedningImg from "../assets/img/landingPage/landing-dashboard.svg";
+import {useNavigate} from "react-router";
+import {requestVerification} from "../../features/user/userReducer";
 
 const days = [
   {
@@ -35,12 +32,9 @@ const days = [
   },
 ];
 
-const Pending = () => {
+const Verification = () => {
   const dispatch = useDispatch();
   const {user} = useSelector((state) => state.user);
-
-  const {user: userDetails} = user;
-
   const navigate = useNavigate();
 
   const [form, setForm] = useState([
@@ -295,10 +289,8 @@ const Pending = () => {
       ],
     },
   ]);
-
-  const [isModalOpen, setModalOpen] = useState(false);
   const [atNextPage, setNextPage] = useState(false);
-
+  // const [position]
   const convertForm = (form) => {
     const newData = form.map((input) => {
       const {code, value} = input;
@@ -329,133 +321,7 @@ const Pending = () => {
       },
     };
     dispatch(requestVerification(finalForm));
-    setModalOpen(false);
   };
-
-  // const checkDepartment = (department, mainIndex, index) => {
-  //   const newForm = [...form];
-  //   switch (department) {
-  //     case "College of Computer Studies and Engineering":
-  //       const CCSE = [
-  //         {
-  //           value: "Bachelor of Science in Information Technology",
-  //           label: "Bachelor of Science in Information Technology",
-  //         },
-  //         {
-  //           value: "Bachelor of Science in Computer Science",
-  //           label: "Bachelor of Science in Computer Science",
-  //         },
-  //         {
-  //           value: "Bachelor of Library Information System",
-  //           label: "Bachelor of Library Information System",
-  //         },
-  //         {
-  //           value: "Bachelor of Science in Computer Engineering",
-  //           label: "Bachelor of Science in Computer Engineering",
-  //         },
-  //         {
-  //           value: "Bachelor of Science in Electrical Engineering",
-  //           label: "Bachelor of Science in Electrical Engineering",
-  //         },
-  //         {
-  //           value:
-  //             "Bachelor of Science in Electronics and Communications Engineering",
-  //           label:
-  //             "Bachelor of Science in Electronics and Communications Engineering",
-  //         },
-  //       ];
-  //       newForm[mainIndex].forms[index + 1].options = CCSE.map((item) => {
-  //         const {label, value} = item;
-  //         return {
-  //           label,
-  //           value,
-  //         };
-  //       });
-  //       newForm[mainIndex].forms[index + 3].value = "640";
-  //       return;
-  //     case "College of Business":
-  //       const COB = [
-  //         {
-  //           value: "Bachelor of Science in Accountancy",
-  //           label: "Bachelor of Science in Accountancy",
-  //         },
-  //         {
-  //           value: "Bachelor of Science in Business Administration",
-  //           label: "Bachelor of Science in Business Administration",
-  //         },
-  //         {
-  //           value: "Bachelor of Science in Customs Administration",
-  //           label: "Bachelor of Science in Customs Administration",
-  //         },
-  //         {
-  //           value: "Bachelor of Science in Entrepreneurship",
-  //           label: "Bachelor of Science in Entrepreneurship",
-  //         },
-  //         {
-  //           value: "Bachelor of Science in Accounting Information System",
-  //           label: "Bachelor of Science in Accounting Information System",
-  //         },
-  //       ];
-
-  //       newForm[mainIndex].forms[index + 1].options = COB.map((item) => {
-  //         const {label, value} = item;
-  //         return {
-  //           label,
-  //           value,
-  //         };
-  //       });
-  //       newForm[mainIndex].forms[index + 3].value = "250";
-
-  //       return;
-  //     case "College of Tourism Management and Hospitality":
-  //       const CTMH = [
-  //         {
-  //           value: "Bachelor of Science in Hotel and Restaurant Management",
-  //           label: "Bachelor of Science in Hotel and Restaurant Management",
-  //         },
-  //         {
-  //           value: "Bachelor of Science in Tourism Management",
-  //           label: "Bachelor of Science in Tourism Management",
-  //         },
-  //       ];
-  //       newForm[mainIndex].forms[index + 1].options = CTMH.map((item) => {
-  //         const {label, value} = item;
-  //         return {
-  //           label,
-  //           value,
-  //         };
-  //       });
-  //       newForm[mainIndex].forms[index + 3].value = "250";
-  //       return;
-  //     case "College of Medical Allied Courses":
-  //       const CMAC = [
-  //         {
-  //           value: "Bachelor of Science in Biology",
-  //           label: "Bachelor of Science in Biology",
-  //         },
-  //         {
-  //           value: "Bachelor of Science in Pharmacy",
-  //           label: "Bachelor of Science in Pharmacy",
-  //         },
-  //         {
-  //           value: "Bachelor of Science in Midwifery",
-  //           label: "Bachelor of Science in Midwifery",
-  //         },
-  //       ];
-  //       newForm[mainIndex].forms[index + 1].options = CMAC.map((item) => {
-  //         const {label, value} = item;
-  //         return {
-  //           label,
-  //           value,
-  //         };
-  //       });
-  //       newForm[mainIndex].forms[index + 3].value = "250";
-
-  //       return;
-  //     default:
-  //       return;
-  //   }
-  // };
 
   const handleOnChange = (value, group, index, mainIndex) => {
     const newForm = [...form];
@@ -653,7 +519,6 @@ const Pending = () => {
           );
         case "time":
           const {optionTime} = item;
-          // const list = options.map((opt) => opt);
           return (
             <Select
               className="time"
@@ -680,99 +545,35 @@ const Pending = () => {
     });
   };
 
-  const {firstName} = userDetails;
-
-  const handleModal = (e) => {
-    e.stopPropagation();
-    setModalOpen(true);
-  };
-
-  const handleParent = () => {
-    setModalOpen(false);
-  };
-
-  const {hasSentVerification} = user.verification;
-
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <div className="pending" onClick={handleParent}>
-            <div className="greetings">
-              <h1 className="name">Welcome, {firstName}</h1>
-            </div>
-            <div className="pending-content">
-              {hasSentVerification ? (
-                <>
-                  <h1>
-                    Your Verification has been sent. Please wait madafaka.
-                  </h1>
-                  <h2>For the mean time, you can update your profile.</h2>
-                </>
-              ) : (
-                <>
-                  <h3>Looks like your account is not verified yet.</h3>
-                  <img src={pedningImg} alt="" />
-                  <p>
-                    Before you continue to access the other features, you must
-                    verify your credentials
-                  </p>
-                  <p>
-                    You must provide your information and other requirements.
-                    This will help the administrator to know your Identity.
-                  </p>
-                  <button onClick={() => navigate("/dashboard/verification")}>
-                    Verify Account
-                  </button>
-                </>
-              )}
-
-              <div
-                style={!isModalOpen ? {display: "none"} : null}
-                className={atNextPage ? "modal verify" : "modal"}
-                onClick={(e) => e.stopPropagation()}
-              >
-                <form onSubmit={handleSubmit}>
-                  <div
-                    className={
-                      atNextPage
-                        ? "internship-details inactive"
-                        : "internship-details"
-                    }
-                  >
-                    <h3>Internship Details</h3>
-                    <div className="forms-con">
-                      {renderInputs(form[0].forms, "internship-details", 0)}
-                    </div>
-                    <button onClick={handleNext}>Next</button>
-                  </div>
-                  <div
-                    className={
-                      atNextPage ? "student-details active" : "student-details"
-                    }
-                  >
-                    <h3>Student Details</h3>
-                    <div className="forms-con">
-                      {renderInputs(form[1].forms, "student-details", 1)}
-                    </div>
-                    <div className="btn-con">
-                      <button onClick={() => setNextPage(!atNextPage)}>
-                        Back
-                      </button>
-                      <button>Submit Verification</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
+    <div className="verification-container">
+      {/* <form onSubmit={handleSubmit}>
+        <div
+          className={
+            atNextPage ? "internship-details inactive" : "internship-details"
+          }
+        >
+          <h3>Internship Details</h3>
+          <div className="forms-con">
+            {renderInputs(form[0].forms, "internship-details", 0)}
           </div>
-        }
-      />
-      <Route path="/verification" element={<Verification />} />
-      <Route path="*" element={<Navigate to="/404" replace />} />
-    </Routes>
+          <button onClick={handleNext}>Next</button>
+        </div>
+        <div
+          className={atNextPage ? "student-details active" : "student-details"}
+        >
+          <h3>Student Details</h3>
+          <div className="forms-con">
+            {renderInputs(form[1].forms, "student-details", 1)}
+          </div>
+          <div className="btn-con">
+            <button onClick={() => setNextPage(!atNextPage)}>Back</button>
+            <button>Submit Verification</button>
+          </div>
+        </div>
+      </form> */}
+    </div>
   );
 };
 
-export default Pending;
+export default Verification;

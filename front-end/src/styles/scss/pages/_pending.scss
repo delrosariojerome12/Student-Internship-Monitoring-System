@@ -46,192 +46,23 @@
       }
     }
   }
-  .modal {
-    text-align: left;
-    color: #000;
-    height: 60rem;
-    // height: 100%;
-    width: 60vw;
-    // width: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 1rem;
-    border: solid 1px #fff;
-    background-color: #fff;
-    overflow: hidden;
-    transition: all 0.2s linear;
-
-    form {
-      .internship-details {
-        z-index: 3;
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        padding: 3rem;
-        border-radius: 1rem;
-        top: 0%;
-        left: 0%;
-        transition: all 0.2s linear;
-        display: grid;
-        grid-template-rows: 3rem auto 4.5rem;
-        gap: 2rem;
-
-        // & > :nth-child(2) & > .time:first-child {
-        //   color: red;
-        // }
-
-        .forms-con {
-          transition: all 0.2s linear;
-          display: flex;
-          flex-direction: column;
-          gap: 1.2rem;
-          border: solid 1px #000;
-          width: 100%;
-        }
-      }
-      .active {
-        transform: translate(-100%, 0%);
-      }
-      .student-details {
-        position: absolute;
-        padding: 3rem;
-        border-radius: 1rem;
-        top: 0%;
-        left: 100%;
-        width: 100%;
-        height: 100%;
-        border: solid 1px #fff;
-        transition: all 0.2s linear;
-        gap: 2rem;
-        display: grid;
-        grid-template-rows: 4rem auto auto;
-
-        .forms-con {
-          display: flex;
-          flex-direction: column;
-          gap: 2rem;
-        }
-        .img-input {
-          height: 5rem;
-          display: flex;
-          align-items: center;
-          border: solid 1px #8b8b8b;
-          gap: 2rem;
-          padding-left: 2rem;
-          border-radius: 0.5rem;
-        }
-        .btn-con {
-          @include flexCenter;
-        }
-      }
-
-      .input-contain {
-        display: flex;
-        position: relative;
-        flex-direction: column;
-        // border-radius: 0.5rem;
-        // justify-content: center;
-        width: fit-content;
-        gap: 0.5rem;
-        width: 100%;
-
-        .error-message {
-          font-size: 1.4rem;
-          color: red;
-        }
-
-        .placeholder-container {
-          position: absolute;
-          top: 0%;
-          left: 0rem;
-          height: 4.5rem;
-          width: 100%;
-          pointer-events: none;
-        }
-
-        input {
-          width: 100%;
-          height: 5rem;
-          border: solid 3px transparent;
-          outline: solid 1px #8b8b8b;
-          border-radius: 0.5rem;
-          padding: 1.1rem 3.5rem 1.1rem 2rem;
-          letter-spacing: 2px;
-          transition: all 0.3s ease-in-out;
-          &:focus {
-            border: solid 3px $primary-bg-color;
-            outline: none;
-          }
-
-          &:focus + .placeholder-container .placeholder-text {
-            top: 0%;
-            left: 0%;
-            background-color: #fff;
-            font-size: 1.1rem;
-            color: black;
-            // border: solid 1px #8b8b8b;
-            scale: 0.8;
-          }
-        }
-
-        .placeholder-text {
-          position: absolute;
-          transition: all 0.2s ease-in-out;
-          pointer-events: none;
-          top: 50%;
-          left: 5%;
-          transform: translate(0%, -50%);
-          &:nth-child(1) {
-            left: 2% !important;
-          }
-          .text {
-            font-size: 1.4rem;
-            padding: 0 0.5rem;
-            background-color: transparent;
-            color: black;
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-          }
-        }
-        .active {
-          top: 0%;
-          left: 0%;
-          background-color: #fff;
-          font-size: 1.1rem;
-          border-color: #8b8b8b;
-          scale: 0.8;
-        }
-      }
-
-      button {
-        cursor: pointer;
-        height: 4.5rem;
-        @include flexCenter;
-        margin: auto;
-        padding: 1.6rem;
-        border-radius: 5px;
-        border: solid 1px transparent;
-        outline: none;
-        background-color: $primary-bg-color;
-        color: $primary-font-color;
-        letter-spacing: 0.2rem;
-        transition: all 0.3s ease-in-out;
-        font-weight: 600;
-        &:hover {
-          background-color: $primary-font-color;
-          color: $primary-bg-color;
-          border: solid 1px $primary-bg-color;
-        }
-      }
-      .inactive {
-        position: absolute;
-        transform: translate(-100%, 0%);
-      }
-    }
-  }
+  // .modal {
+  //   text-align: left;
+  //   color: #000;
+  //   height: 60rem;
+  //   // height: 100%;
+  //   width: 60vw;
+  //   // width: 100%;
+  //   position: absolute;
+  //   top: 50%;
+  //   left: 50%;
+  //   transform: translate(-50%, -50%);
+  //   border-radius: 1rem;
+  //   border: solid 1px #fff;
+  //   background-color: #fff;
+  //   overflow: hidden;
+  //   transition: all 0.2s linear;
+  // }
 
   .verify {
     height: 50rem;
