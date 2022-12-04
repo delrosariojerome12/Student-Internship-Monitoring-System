@@ -1528,23 +1528,30 @@ button {
   color: #f1faee;
 }
 .pending .greetings .name {
-  font-size: 4rem;
+  font-size: 3.9rem;
 }
 .pending .pending-content {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   text-align: center;
   color: #f1faee;
   border: solid 1px #fff;
   background-color: rgba(34, 40, 49, 0.4509803922);
   gap: 1.5rem;
-  padding: 5rem 10rem;
+  padding: 2rem 10rem;
   border-radius: 1rem;
   position: relative;
 }
 .pending .pending-content h3 {
   font-size: 2.5rem;
+}
+.pending .pending-content img {
+  height: 30rem;
+}
+.pending .pending-content p {
+  font-size: 2rem;
 }
 .pending .pending-content > button {
   padding: 1.5rem 5rem;
@@ -3136,52 +3143,51 @@ button {
     margin: 0;
   }
 }
-@media screen and (max-width: 1200px) {
-  .pending .greetings .name {
-    font-size: 3.9rem;
+@media screen and (max-width: 1300px) {
+  .pending {
+    grid-template-rows: 6rem auto;
   }
-  .pending .pending-content img {
-    height: 35rem;
-  }
-}
-@media screen and (max-width: 1000px) {
-  .pending .greetings .name {
-    font-size: 3.7rem;
-  }
-  .pending .pending-content {
-    padding: 3rem 8rem;
-  }
-  .pending .pending-content h3 {
-    font-size: 2.2rem;
-  }
-  .pending .pending-content img {
-    height: 32rem;
-  }
-}
-@media screen and (max-width: 900px) {
   .pending .greetings .name {
     font-size: 3.5rem;
   }
-  .pending .pending-content {
-    padding: 3rem 6rem;
-  }
-  .pending .pending-content img {
-    height: 30rem;
-  }
-}
-@media screen and (max-width: 830px) {
   .pending .pending-content img {
     height: 28rem;
   }
 }
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 1000px) {
+  .pending .pending-content h3 {
+    font-size: 2.2rem;
+  }
   .pending .pending-content img {
     height: 25rem;
   }
+  .pending .pending-content p {
+    font-size: 1.8rem;
+  }
 }
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 800px) {
+  .pending {
+    grid-template-rows: 5rem auto;
+  }
   .pending .greetings .name {
-    font-size: 3.3rem;
+    font-size: 3.2rem;
+  }
+  .pending .pending-content {
+    padding: 3rem 6rem;
+  }
+  .pending .pending-content h3 {
+    font-size: 2.1rem;
+  }
+  .pending .pending-content img {
+    height: 24rem;
+  }
+  .pending .pending-content p {
+    font-size: 1.6rem;
+  }
+}
+@media screen and (max-width: 640px) {
+  .pending .greetings .name {
+    font-size: 3rem;
   }
   .pending .pending-content h3 {
     font-size: 2rem;
@@ -3190,18 +3196,21 @@ button {
     height: 22rem;
   }
   .pending .pending-content p {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
 }
 @media screen and (max-width: 600px) {
   .pending .greetings .name {
-    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.8rem;
   }
   .pending .pending-content h3 {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
   .pending .pending-content img {
-    height: 18rem;
+    height: 20rem;
   }
   .pending .pending-content p {
     font-size: 1.5rem;
