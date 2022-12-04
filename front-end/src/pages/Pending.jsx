@@ -5,6 +5,33 @@ import CreatableSelect from "react-select/creatable";
 import {requestVerification} from "../features/user/userReducer";
 
 import pedningImg from "../assets/img/landingPage/landing-dashboard.svg";
+
+const days = [
+  {
+    value: "Monday",
+    label: "Monday",
+  },
+  {
+    value: "Tuesday",
+    label: "Tuesday",
+  },
+  {
+    value: "Wednesday",
+    label: "Wednesday",
+  },
+  {
+    value: "Thursday",
+    label: "Thursday",
+  },
+  {
+    value: "Friday",
+    label: "Friday",
+  },
+  {
+    value: "Saturday",
+    label: "Saturday",
+  },
+];
 const Pending = () => {
   const dispatch = useDispatch();
   const {user} = useSelector((state) => state.user);
@@ -15,28 +42,28 @@ const Pending = () => {
     {
       group: "internship-details",
       forms: [
-        {
-          type: "select",
-          id: "internship-type",
-          value: "",
-          placeholder: "Type of Internship",
-          isDisabled: false,
-          code: "internshipType",
-          options: [
-            {
-              value: "Onsite",
-              label: "Onsite",
-            },
-            {
-              value: "Online",
-              label: "Online",
-            },
-            {
-              value: "Hybrid",
-              label: "Hybrid",
-            },
-          ],
-        },
+        // {
+        //   type: "select",
+        //   id: "internship-type",
+        //   value: "",
+        //   placeholder: "Type of Internship",
+        //   isDisabled: false,
+        //   code: "internshipType",
+        //   options: [
+        //     {
+        //       value: "Onsite",
+        //       label: "Onsite",
+        //     },
+        //     {
+        //       value: "Online",
+        //       label: "Online",
+        //     },
+        //     {
+        //       value: "Hybrid",
+        //       label: "Hybrid",
+        //     },
+        //   ],
+        // },
         {
           type: "list",
           id: "duties",
@@ -112,38 +139,65 @@ const Pending = () => {
     {
       group: "student-details",
       forms: [
-        {
-          type: "select",
-          id: "department",
-          code: "department",
-          value: "",
-          placeholder: "Department",
-          options: [
-            {
-              value: "College of Computer Studies and Engineering",
-              label: "College of Computer Studies and Engineering",
-            },
-            {
-              value: "College of Business",
-              label: "College of Business",
-            },
-            {
-              value: "College of Tourism Management and Hospitality",
-              label: "College of Tourism Management and Hospitality",
-            },
-            {
-              value: "College of Medical Allied Courses",
-              label: "College of Medical Allied Courses",
-            },
-          ],
-          isDisabled: false,
-        },
+        // {
+        //   type: "select",
+        //   id: "department",
+        //   code: "department",
+        //   value: "",
+        //   placeholder: "Department",
+        //   options: [
+        //     {
+        //       value: "College of Computer Studies and Engineering",
+        //       label: "College of Computer Studies and Engineering",
+        //     },
+        //     {
+        //       value: "College of Business",
+        //       label: "College of Business",
+        //     },
+        //     {
+        //       value: "College of Tourism Management and Hospitality",
+        //       label: "College of Tourism Management and Hospitality",
+        //     },
+        //     {
+        //       value: "College of Medical Allied Courses",
+        //       label: "College of Medical Allied Courses",
+        //     },
+        //   ],
+        //   isDisabled: false,
+        // },
         {
           type: "select",
           id: "program",
           code: "program",
           value: "",
-          options: [],
+          options: [
+            {
+              value: "Bachelor of Science in Information Technology",
+              label: "Bachelor of Science in Information Technology",
+            },
+            {
+              value: "Bachelor of Science in Computer Science",
+              label: "Bachelor of Science in Computer Science",
+            },
+            {
+              value: "Bachelor of Library Information System",
+              label: "Bachelor of Library Information System",
+            },
+            {
+              value: "Bachelor of Science in Computer Engineering",
+              label: "Bachelor of Science in Computer Engineering",
+            },
+            {
+              value: "Bachelor of Science in Electrical Engineering",
+              label: "Bachelor of Science in Electrical Engineering",
+            },
+            {
+              value:
+                "Bachelor of Science in Electronics and Communications Engineering",
+              label:
+                "Bachelor of Science in Electronics and Communications Engineering",
+            },
+          ],
           placeholder: "Program",
           isDisabled: false,
         },
@@ -165,6 +219,73 @@ const Pending = () => {
           value: "",
           isError: false,
           isDisabled: true,
+        },
+      ],
+    },
+    {
+      group: "schedule-details",
+      forms: [
+        {
+          type: "time",
+          id: "time-in-schedule",
+          forInput: "Time-In Schedule",
+          value: "",
+          isDisabled: false,
+          code: "timeInSchedule",
+          optionTime: [
+            {
+              value: "7:00 AM",
+              label: "7:00 AM",
+            },
+            {
+              value: "8:00 AM",
+              label: "8:00 AM",
+            },
+            {
+              value: "9:00 AM",
+              label: "9:00 AM",
+            },
+          ],
+        },
+        {
+          type: "time",
+          id: "time-out-schedule",
+          forInput: "Time-Out Schedule",
+          value: "",
+          isDisabled: false,
+          code: "timeOutSchedule",
+          optionTime: [
+            {
+              value: "4:00 PM",
+              label: "4:00 PM",
+            },
+            {
+              value: "5:00 PM",
+              label: "5:00 PM",
+            },
+            {
+              value: "6:00 PM",
+              label: "6:00 PM",
+            },
+          ],
+        },
+        {
+          type: "time",
+          id: "starting-day",
+          forInput: "Starting Day",
+          value: "",
+          isDisabled: false,
+          code: "startingDay",
+          optionTime: days,
+        },
+        {
+          type: "time",
+          id: "ending-day",
+          forInput: "Ending Day",
+          value: "",
+          isDisabled: false,
+          code: "endingDay",
+          optionTime: days,
         },
       ],
     },
@@ -206,130 +327,130 @@ const Pending = () => {
     setModalOpen(false);
   };
 
-  const checkDepartment = (department, mainIndex, index) => {
-    const newForm = [...form];
-    switch (department) {
-      case "College of Computer Studies and Engineering":
-        const CCSE = [
-          {
-            value: "Bachelor of Science in Information Technology",
-            label: "Bachelor of Science in Information Technology",
-          },
-          {
-            value: "Bachelor of Science in Computer Science",
-            label: "Bachelor of Science in Computer Science",
-          },
-          {
-            value: "Bachelor of Library Information System",
-            label: "Bachelor of Library Information System",
-          },
-          {
-            value: "Bachelor of Science in Computer Engineering",
-            label: "Bachelor of Science in Computer Engineering",
-          },
-          {
-            value: "Bachelor of Science in Electrical Engineering",
-            label: "Bachelor of Science in Electrical Engineering",
-          },
-          {
-            value:
-              "Bachelor of Science in Electronics and Communications Engineering",
-            label:
-              "Bachelor of Science in Electronics and Communications Engineering",
-          },
-        ];
-        newForm[mainIndex].forms[index + 1].options = CCSE.map((item) => {
-          const {label, value} = item;
-          return {
-            label,
-            value,
-          };
-        });
-        newForm[mainIndex].forms[index + 3].value = "640";
-        return;
-      case "College of Business":
-        const COB = [
-          {
-            value: "Bachelor of Science in Accountancy",
-            label: "Bachelor of Science in Accountancy",
-          },
-          {
-            value: "Bachelor of Science in Business Administration",
-            label: "Bachelor of Science in Business Administration",
-          },
-          {
-            value: "Bachelor of Science in Customs Administration",
-            label: "Bachelor of Science in Customs Administration",
-          },
-          {
-            value: "Bachelor of Science in Entrepreneurship",
-            label: "Bachelor of Science in Entrepreneurship",
-          },
-          {
-            value: "Bachelor of Science in Accounting Information System",
-            label: "Bachelor of Science in Accounting Information System",
-          },
-        ];
+  // const checkDepartment = (department, mainIndex, index) => {
+  //   const newForm = [...form];
+  //   switch (department) {
+  //     case "College of Computer Studies and Engineering":
+  //       const CCSE = [
+  //         {
+  //           value: "Bachelor of Science in Information Technology",
+  //           label: "Bachelor of Science in Information Technology",
+  //         },
+  //         {
+  //           value: "Bachelor of Science in Computer Science",
+  //           label: "Bachelor of Science in Computer Science",
+  //         },
+  //         {
+  //           value: "Bachelor of Library Information System",
+  //           label: "Bachelor of Library Information System",
+  //         },
+  //         {
+  //           value: "Bachelor of Science in Computer Engineering",
+  //           label: "Bachelor of Science in Computer Engineering",
+  //         },
+  //         {
+  //           value: "Bachelor of Science in Electrical Engineering",
+  //           label: "Bachelor of Science in Electrical Engineering",
+  //         },
+  //         {
+  //           value:
+  //             "Bachelor of Science in Electronics and Communications Engineering",
+  //           label:
+  //             "Bachelor of Science in Electronics and Communications Engineering",
+  //         },
+  //       ];
+  //       newForm[mainIndex].forms[index + 1].options = CCSE.map((item) => {
+  //         const {label, value} = item;
+  //         return {
+  //           label,
+  //           value,
+  //         };
+  //       });
+  //       newForm[mainIndex].forms[index + 3].value = "640";
+  //       return;
+  //     case "College of Business":
+  //       const COB = [
+  //         {
+  //           value: "Bachelor of Science in Accountancy",
+  //           label: "Bachelor of Science in Accountancy",
+  //         },
+  //         {
+  //           value: "Bachelor of Science in Business Administration",
+  //           label: "Bachelor of Science in Business Administration",
+  //         },
+  //         {
+  //           value: "Bachelor of Science in Customs Administration",
+  //           label: "Bachelor of Science in Customs Administration",
+  //         },
+  //         {
+  //           value: "Bachelor of Science in Entrepreneurship",
+  //           label: "Bachelor of Science in Entrepreneurship",
+  //         },
+  //         {
+  //           value: "Bachelor of Science in Accounting Information System",
+  //           label: "Bachelor of Science in Accounting Information System",
+  //         },
+  //       ];
 
-        newForm[mainIndex].forms[index + 1].options = COB.map((item) => {
-          const {label, value} = item;
-          return {
-            label,
-            value,
-          };
-        });
-        newForm[mainIndex].forms[index + 3].value = "250";
+  //       newForm[mainIndex].forms[index + 1].options = COB.map((item) => {
+  //         const {label, value} = item;
+  //         return {
+  //           label,
+  //           value,
+  //         };
+  //       });
+  //       newForm[mainIndex].forms[index + 3].value = "250";
 
-        return;
-      case "College of Tourism Management and Hospitality":
-        const CTMH = [
-          {
-            value: "Bachelor of Science in Hotel and Restaurant Management",
-            label: "Bachelor of Science in Hotel and Restaurant Management",
-          },
-          {
-            value: "Bachelor of Science in Tourism Management",
-            label: "Bachelor of Science in Tourism Management",
-          },
-        ];
-        newForm[mainIndex].forms[index + 1].options = CTMH.map((item) => {
-          const {label, value} = item;
-          return {
-            label,
-            value,
-          };
-        });
-        newForm[mainIndex].forms[index + 3].value = "250";
-        return;
-      case "College of Medical Allied Courses":
-        const CMAC = [
-          {
-            value: "Bachelor of Science in Biology",
-            label: "Bachelor of Science in Biology",
-          },
-          {
-            value: "Bachelor of Science in Pharmacy",
-            label: "Bachelor of Science in Pharmacy",
-          },
-          {
-            value: "Bachelor of Science in Midwifery",
-            label: "Bachelor of Science in Midwifery",
-          },
-        ];
-        newForm[mainIndex].forms[index + 1].options = CMAC.map((item) => {
-          const {label, value} = item;
-          return {
-            label,
-            value,
-          };
-        });
-        newForm[mainIndex].forms[index + 3].value = "250";
+  //       return;
+  //     case "College of Tourism Management and Hospitality":
+  //       const CTMH = [
+  //         {
+  //           value: "Bachelor of Science in Hotel and Restaurant Management",
+  //           label: "Bachelor of Science in Hotel and Restaurant Management",
+  //         },
+  //         {
+  //           value: "Bachelor of Science in Tourism Management",
+  //           label: "Bachelor of Science in Tourism Management",
+  //         },
+  //       ];
+  //       newForm[mainIndex].forms[index + 1].options = CTMH.map((item) => {
+  //         const {label, value} = item;
+  //         return {
+  //           label,
+  //           value,
+  //         };
+  //       });
+  //       newForm[mainIndex].forms[index + 3].value = "250";
+  //       return;
+  //     case "College of Medical Allied Courses":
+  //       const CMAC = [
+  //         {
+  //           value: "Bachelor of Science in Biology",
+  //           label: "Bachelor of Science in Biology",
+  //         },
+  //         {
+  //           value: "Bachelor of Science in Pharmacy",
+  //           label: "Bachelor of Science in Pharmacy",
+  //         },
+  //         {
+  //           value: "Bachelor of Science in Midwifery",
+  //           label: "Bachelor of Science in Midwifery",
+  //         },
+  //       ];
+  //       newForm[mainIndex].forms[index + 1].options = CMAC.map((item) => {
+  //         const {label, value} = item;
+  //         return {
+  //           label,
+  //           value,
+  //         };
+  //       });
+  //       newForm[mainIndex].forms[index + 3].value = "250";
 
-        return;
-      default:
-        return;
-    }
-  };
+  //       return;
+  //     default:
+  //       return;
+  //   }
+  // };
 
   const handleOnChange = (value, group, index, mainIndex) => {
     const newForm = [...form];
@@ -367,12 +488,12 @@ const Pending = () => {
         }
         setForm(newForm);
         return;
-      case "department":
-        newForm[mainIndex].forms[index].value = value;
-        const departmentValue = newForm[mainIndex].forms[index].value;
-        checkDepartment(departmentValue, mainIndex, index);
-        setForm(newForm);
-        return;
+      // case "department":
+      //   newForm[mainIndex].forms[index].value = value;
+      //   const departmentValue = newForm[mainIndex].forms[index].value;
+      //   checkDepartment(departmentValue, mainIndex, index);
+      //   setForm(newForm);
+      //   return;
       case "program":
         newForm[mainIndex].forms[index].value = value;
         setForm(newForm);
@@ -393,10 +514,10 @@ const Pending = () => {
       item.value && numOfValues++;
     });
 
-    if (numOfErrors === 0 && numOfValues === 6) {
-      setNextPage(!atNextPage);
-    }
-    // setNextPage(!atNextPage);
+    // if (numOfErrors === 0 && numOfValues === 5) {
+    //   setNextPage(!atNextPage);
+    // }
+    setNextPage(!atNextPage);
   };
 
   const handleKeydown = (e) => {
@@ -410,7 +531,7 @@ const Pending = () => {
       ...styles,
       border: "solid 1px #8b8b8b",
       fontSize: "1.5rem",
-      paddingLeft: "5px",
+      paddingLeft: "10px",
       height: "50px",
     }),
     options: (base, state) => ({
@@ -525,7 +646,29 @@ const Pending = () => {
               options={optionItems}
             />
           );
-
+        case "time":
+          const {optionTime} = item;
+          // const list = options.map((opt) => opt);
+          return (
+            <Select
+              className="time"
+              options={optionTime}
+              styles={customStyle}
+              onChange={(e) => handleOnChange(e.value, group, index, mainIndex)}
+              name={forInput}
+              placeholder={forInput}
+              theme={(theme) => ({
+                ...theme,
+                outline: "solid 1px #8b8b8b",
+                colors: {
+                  ...theme.colors,
+                  primary25: "#8b8b8b",
+                  primary: "#457b9d",
+                },
+              })}
+              key={index}
+            />
+          );
         default:
           return null;
       }
@@ -597,7 +740,9 @@ const Pending = () => {
               }
             >
               <h3>Student Details</h3>
-              {renderInputs(form[1].forms, "student-details", 1)}
+              <div className="forms-con">
+                {renderInputs(form[1].forms, "student-details", 1)}
+              </div>
               <div className="btn-con">
                 <button onClick={() => setNextPage(!atNextPage)}>Back</button>
                 <button>Submit Verification</button>

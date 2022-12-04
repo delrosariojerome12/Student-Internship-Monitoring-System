@@ -1369,9 +1369,13 @@ button {
   border-radius: 1rem;
   gap: 2rem;
   cursor: pointer;
+  font-size: 1.4rem;
 }
 .dashboard .intern-container .interns .intern .intern-details {
   background-color: #fff;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: auto auto;
 }
 .dashboard .intern-container .interns .intern > * {
   border: solid 1px #fff;
@@ -1424,7 +1428,7 @@ button {
 .pending .modal {
   text-align: left;
   color: #000;
-  height: 45rem;
+  height: 60rem;
   width: 60vw;
   position: absolute;
   top: 50%;
@@ -1435,6 +1439,64 @@ button {
   background-color: #fff;
   overflow: hidden;
   transition: all 0.2s linear;
+}
+.pending .modal form .internship-details {
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  padding: 3rem;
+  border-radius: 1rem;
+  top: 0%;
+  left: 0%;
+  transition: all 0.2s linear;
+  display: grid;
+  grid-template-rows: 3rem auto 4.5rem;
+  gap: 2rem;
+}
+.pending .modal form .internship-details .forms-con {
+  transition: all 0.2s linear;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  border: solid 1px #000;
+  width: 100%;
+}
+.pending .modal form .active {
+  transform: translate(-100%, 0%);
+}
+.pending .modal form .student-details {
+  position: absolute;
+  padding: 3rem;
+  border-radius: 1rem;
+  top: 0%;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  border: solid 1px #fff;
+  transition: all 0.2s linear;
+  gap: 2rem;
+  display: grid;
+  grid-template-rows: 4rem auto auto;
+}
+.pending .modal form .student-details .forms-con {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.pending .modal form .student-details .img-input {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  border: solid 1px #8b8b8b;
+  gap: 2rem;
+  padding-left: 2rem;
+  border-radius: 0.5rem;
+}
+.pending .modal form .student-details .btn-con {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .pending .modal form .input-contain {
   display: flex;
@@ -1453,7 +1515,7 @@ button {
 .pending .modal form .input-contain .placeholder-container {
   position: absolute;
   top: 0%;
-  left: 0.5rem;
+  left: 0rem;
   height: 4.5rem;
   width: 100%;
   pointer-events: none;
@@ -1464,7 +1526,7 @@ button {
   border: solid 3px transparent;
   outline: solid 1px #8b8b8b;
   border-radius: 0.5rem;
-  padding: 1.1rem 3.5rem 1.1rem 1.1rem;
+  padding: 1.1rem 3.5rem 1.1rem 2rem;
   letter-spacing: 2px;
   transition: all 0.3s ease-in-out;
 }
@@ -1534,65 +1596,8 @@ button {
   position: absolute;
   transform: translate(-100%, 0%);
 }
-.pending .modal form .internship-details {
-  z-index: 3;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  padding: 3rem;
-  border-radius: 1rem;
-  top: 0%;
-  left: 0%;
-  transition: all 0.2s linear;
-  display: grid;
-  grid-template-rows: 6rem auto 4rem;
-  gap: 2rem;
-  justify-content: center;
-}
-.pending .modal form .internship-details .forms-con {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(200px, 400px));
-  transition: all 0.2s linear;
-  gap: 2rem;
-  justify-content: center;
-}
-.pending .modal form .internship-details .forms-con button {
-  grid-row: 5/6;
-  grid-column: 1/3;
-}
-.pending .modal form .active {
-  transform: translate(-100%, 0%);
-}
-.pending .modal form .student-details {
-  position: absolute;
-  padding: 2rem;
-  border-radius: 1rem;
-  top: 0%;
-  left: 100%;
-  width: 100%;
-  height: 100%;
-  border: solid 1px #fff;
-  transition: all 0.2s linear;
-  display: grid;
-  gap: 1rem;
-}
-.pending .modal form .student-details .img-input {
-  height: 5rem;
-  display: flex;
-  align-items: center;
-  border: solid 1px #8b8b8b;
-  gap: 2rem;
-  padding-left: 2rem;
-  border-radius: 0.5rem;
-}
-.pending .modal form .student-details .btn-con {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .pending .verify {
-  height: 40rem;
-  width: 50rem;
+  height: 50rem;
 }
 
 .profile-page {

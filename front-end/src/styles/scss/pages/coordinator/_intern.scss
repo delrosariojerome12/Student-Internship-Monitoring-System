@@ -90,8 +90,12 @@
       border-radius: 1rem;
       gap: 2rem;
       cursor: pointer;
+      font-size: 1.4rem;
       .intern-details {
         background-color: #fff;
+        padding: 1rem;
+        display: grid;
+        grid-template-columns: auto auto;
       }
       & > * {
         border: solid 1px #fff;
