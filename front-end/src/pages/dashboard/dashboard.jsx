@@ -4,7 +4,7 @@ import {lazy, Suspense} from "react";
 import {useSelector} from "react-redux";
 
 import DashboardMain from "./DashboardMain";
-import Pending from "../Pending";
+import PendingContainer from "../verification/PendingContainer";
 import SidebarLeft from "../../components/dashboard/SidebarLeft";
 import SideBarRight from "../../components/dashboard/SidebarRight";
 
@@ -45,7 +45,7 @@ const Dashboard = () => {
         <SidebarLeft />
         <Suspense fallback={<h2>Loading...</h2>}>
           <Routes>
-            <Route path="/" element={<Pending />} />
+            <Route path="/*" element={<PendingContainer />} />
             <Route path="/profile/*" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="*" element={<Navigate to="/404" replace />} />
