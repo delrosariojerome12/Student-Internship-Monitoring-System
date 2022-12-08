@@ -3,7 +3,7 @@
 .loading {
   @include flexCenter;
   text-align: center;
-  background-color: #737373;
+  background-color: #00000088;
 
   .circle-one,
   .circle-two {
@@ -22,45 +22,45 @@
   @keyframes ring {
     0% {
       transform: rotate(0deg);
-      box-shadow: 0.4rem 0.8rem 0.5rem#00adb5;
+      box-shadow: 0.1rem 0.5rem 0.2rem#00adb5;
     }
     25% {
       transform: rotate(90deg);
-      box-shadow: 0.4rem 0.8rem 0.5rem#323232;
+      box-shadow: 0.1rem 0.5rem 0.2rem#323232;
     }
     50% {
       transform: rotate(180deg);
-      box-shadow: 0.4rem 0.8rem 0.5rem #e63946;
+      box-shadow: 0.1rem 0.5rem 0.2rem #e63946;
     }
     75% {
       transform: rotate(270deg);
-      box-shadow: 0.4rem 0.8rem 0.5rem #1d3557;
+      box-shadow: 0.1rem 0.5rem 0.2rem #1d3557;
     }
     100% {
       transform: rotate(360deg);
-      box-shadow: 0.4rem 0.8rem 0.5rem #457b9d;
+      box-shadow: 0.1rem 0.5rem 0.2rem #457b9d;
     }
   }
   @keyframes ring2 {
     0% {
       transform: rotate(180deg);
-      box-shadow: 0.4rem 0.8rem 0.5rem #00adb5;
+      box-shadow: 0.1rem 0.5rem 0.2rem #00adb5;
     }
     25% {
       transform: rotate(270deg);
-      box-shadow: 0.4rem 0.8rem 0.5rem #323232;
+      box-shadow: 0.1rem 0.5rem 0.2rem #323232;
     }
     50% {
       transform: rotate(360deg);
-      box-shadow: 0.4rem 0.8rem 0.5rem#e63946;
+      box-shadow: 0.1rem 0.5rem 0.2rem#e63946;
     }
     75% {
       transform: rotate(450deg);
-      box-shadow: 0.4rem 0.8rem 0.5rem #1d3557;
+      box-shadow: 0.1rem 0.5rem 0.2rem #1d3557;
     }
     100% {
       transform: rotate(540deg);
-      box-shadow: 0.4rem 0.8rem 0.5rem #457b9d;
+      box-shadow: 0.1rem 0.5rem 0.2rem #457b9d;
     }
   }
 

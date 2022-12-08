@@ -1,10 +1,10 @@
-import React, {useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
-import {useNavigate} from "react-router";
-import {requestVerification} from "../../features/user/userReducer";
-import {FaCheck} from "react-icons/fa";
+import { useNavigate } from "react-router";
+import { requestVerification } from "../../features/user/userReducer";
+import { FaCheck } from "react-icons/fa";
 const days = [
   {
     value: "Monday",
@@ -34,9 +34,9 @@ const days = [
 
 const Verification = () => {
   const dispatch = useDispatch();
-  const {user} = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
   const {
-    user: {firstName},
+    user: { firstName },
   } = user;
   const navigate = useNavigate();
 
@@ -307,7 +307,7 @@ const Verification = () => {
 
   const convertForm = (form) => {
     const newData = form.map((input) => {
-      const {code, value} = input;
+      const { code, value } = input;
       return {
         code,
         value,
@@ -316,7 +316,7 @@ const Verification = () => {
 
     const newObject = Object.assign(
       {},
-      ...newData.map((item) => ({[item.code]: item.value}))
+      ...newData.map((item) => ({ [item.code]: item.value }))
     );
 
     return newObject;
@@ -503,7 +503,7 @@ const Verification = () => {
             </div>
           );
         case "select":
-          const {options, placeholder} = item;
+          const { options, placeholder } = item;
           const list = options.map((opt) => opt);
           return (
             <Select
@@ -525,7 +525,7 @@ const Verification = () => {
             />
           );
         case "list":
-          const {optionItems} = item;
+          const { optionItems } = item;
           return (
             <CreatableSelect
               styles={customStyle}
@@ -546,7 +546,7 @@ const Verification = () => {
             />
           );
         case "time":
-          const {optionTime} = item;
+          const { optionTime } = item;
           return (
             <Select
               className="time"
@@ -590,7 +590,7 @@ const Verification = () => {
 
   const renderSteps = () => {
     return steps.map((item, index) => {
-      const {step, isCompleted} = item;
+      const { step, isCompleted } = item;
       return (
         <div
           className={
