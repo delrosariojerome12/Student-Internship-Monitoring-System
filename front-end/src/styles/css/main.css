@@ -983,6 +983,8 @@ button {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 }
 .dashboard .main {
   height: 100%;
@@ -1523,6 +1525,64 @@ button {
 .dashboard .intern-container .interns .intern > * {
   border: solid 1px #fff;
 }
+.dashboard .approvals-container {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 6vh auto;
+  gap: 1rem;
+}
+.dashboard .approvals-container header .search-box {
+  display: flex;
+  background-color: #f1faee;
+  width: 25rem;
+  border-radius: 2rem;
+  align-items: center;
+  padding: 0 1.5rem;
+  margin: 1rem 1rem auto auto;
+}
+.dashboard .approvals-container header .search-box span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+.dashboard .approvals-container header .search-box input {
+  width: 100%;
+  background: transparent;
+  padding: 1rem;
+  outline: none;
+  border: 0;
+}
+.dashboard .approvals-container .approvals-content {
+  border: solid 1px #fff;
+  border-radius: 1rem;
+  position: relative;
+}
+.dashboard .approvals-container .approvals-content .user1 {
+  display: grid;
+  grid-template-columns: 10rem auto;
+  gap: 1rem;
+  position: absolute;
+  top: 3.5rem;
+  left: 3rem;
+  height: 10%;
+  width: 92%;
+}
+.dashboard .approvals-container .approvals-content .user1 > * {
+  border: solid 1px #fff;
+}
+.dashboard .approvals-container .approvals-content::after {
+  content: "";
+  background-color: rgba(50, 50, 50, 0.5019607843);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 95%;
+  height: 95%;
+}
 
 .pending {
   height: 100%;
@@ -1615,9 +1675,8 @@ button {
 .verification-container .verification-steps .steps-container .steps {
   display: grid;
   grid-template-columns: auto auto auto;
-  justify-content: center;
-  -moz-column-gap: 20%;
-       column-gap: 20%;
+  justify-content: space-evenly;
+  position: relative;
 }
 .verification-container .verification-steps .steps-container .steps .step-1,
 .verification-container .verification-steps .steps-container .steps .step-2,
@@ -1636,6 +1695,20 @@ button {
 .verification-container .verification-steps .steps-container .steps .active {
   color: #fff;
   background-color: #0d7377;
+}
+.verification-container .verification-steps .steps-container .steps .step-1::after {
+  content: " ";
+  position: absolute;
+  left: 28.5%;
+  border: dashed 2px #0d7377;
+  width: 14%;
+}
+.verification-container .verification-steps .steps-container .steps .step-2::before {
+  content: " ";
+  position: absolute;
+  right: 28.5%;
+  border: dashed 2px #0d7377;
+  width: 14%;
 }
 .verification-container form {
   width: 60rem;

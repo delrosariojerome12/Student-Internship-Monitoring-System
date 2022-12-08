@@ -38,8 +38,8 @@
         // align-items: center;
         display: grid;
         grid-template-columns: auto auto auto;
-        justify-content: center;
-        column-gap: 20%;
+        justify-content: space-evenly;
+        position: relative;
         .step-1,
         .step-2,
         .step-3 {
@@ -57,24 +57,24 @@
           color: #fff;
           background-color: $primary-compliment-landing;
         }
-        // .step-1 {
-        //   &::after {
-        //     content: " ";
-        //     position: absolute;
-        //     left: 42%;
-        //     border: dashed 2px $primary-compliment-landing;
-        //     width: 6%;
-        //   }
-        // }
-        // .step-2 {
-        //   &::before {
-        //     content: " ";
-        //     position: absolute;
-        //     left: 54%;
-        //     border: dashed 2px $primary-compliment-landing;
-        //     width: 6%;
-        //   }
-        // }
+        .step-1 {
+          &::after {
+            content: " ";
+            position: absolute;
+            left: 28.5%;
+            border: dashed 2px $primary-compliment-landing;
+            width: 14%;
+          }
+        }
+        .step-2 {
+          &::before {
+            content: " ";
+            position: absolute;
+            right: 28.5%;
+            border: dashed 2px $primary-compliment-landing;
+            width: 14%;
+          }
+        }
       }
     }
   }
