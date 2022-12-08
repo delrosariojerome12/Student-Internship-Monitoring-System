@@ -28,6 +28,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -1433,6 +1435,163 @@ button {
   border: solid 1px #fff;
   height: 100%;
   width: 100%;
+  display: grid;
+  grid-template-rows: 4.3rem auto;
+  gap: 1rem;
+  padding: 3rem;
+}
+.verification-container .greetings {
+  font-size: 2.5rem;
+  color: #f1faee;
+}
+.verification-container .greetings span {
+  color: #0d7377;
+}
+.verification-container .verification-steps {
+  margin: auto;
+  background-color: #fff;
+  border-radius: 1rem;
+  display: grid;
+  grid-template-rows: 12rem auto;
+  gap: 2rem;
+  padding: 3rem;
+}
+.verification-container .verification-steps p {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+.verification-container .verification-steps .steps-container {
+  display: grid;
+  text-align: center;
+}
+.verification-container .verification-steps .steps-container .steps {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.verification-container .verification-steps .steps-container .steps .step-1,
+.verification-container .verification-steps .steps-container .steps .step-2,
+.verification-container .verification-steps .steps-container .steps .step-3 {
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  border: solid 3px #0d7377;
+}
+.verification-container .verification-steps .steps-container .steps .active {
+  color: #fff;
+  background-color: #0d7377;
+}
+.verification-container form {
+  width: 60rem;
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+  height: 50rem;
+}
+.verification-container form .inactive {
+  transform: translate(-100%, 0%);
+}
+.verification-container form .inactive-1 {
+  transform: translate(-200%, 0%);
+}
+.verification-container form .active {
+  transform: translate(-100%, 0%);
+}
+.verification-container form .active-1 {
+  transform: translate(-200%, 0%);
+}
+.verification-container form .internship-details {
+  border: solid 1px #000;
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  padding: 1rem;
+  border-radius: 1rem;
+  top: 0%;
+  left: 0%;
+  transition: all 0.2s linear;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.verification-container form .internship-details .forms-con {
+  transition: all 0.2s linear;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+}
+.verification-container form .student-details {
+  border: solid 1px #000;
+  position: absolute;
+  padding: 1rem;
+  border-radius: 1rem;
+  top: 0%;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  transition: all 0.2s linear;
+  gap: 2rem;
+  display: grid;
+  grid-template-rows: auto auto;
+}
+.verification-container form .student-details .forms-con {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.verification-container form .student-details .img-input {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  border: solid 1px #8b8b8b;
+  gap: 2rem;
+  padding-left: 2rem;
+  border-radius: 0.5rem;
+}
+.verification-container form .student-details .btn-con {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.verification-container form .schedule-details {
+  border: solid 1px #000;
+  position: absolute;
+  padding: 1rem;
+  border-radius: 1rem;
+  top: 0%;
+  left: 200%;
+  width: 100%;
+  height: 100%;
+  transition: all 0.2s linear;
+  gap: 2rem;
+  display: grid;
+  grid-template-rows: auto auto;
+}
+.verification-container form .schedule-details .forms-con {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.verification-container form .schedule-details .img-input {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  border: solid 1px #8b8b8b;
+  gap: 2rem;
+  padding-left: 2rem;
+  border-radius: 0.5rem;
+}
+.verification-container form .schedule-details .btn-con {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .verification-container form .input-contain {
   display: flex;
@@ -1527,10 +1686,6 @@ button {
   background-color: #f1faee;
   color: #457b9d;
   border: solid 1px #457b9d;
-}
-.verification-container form .inactive {
-  position: absolute;
-  transform: translate(-100%, 0%);
 }
 
 .profile-page {

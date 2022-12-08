@@ -4,7 +4,7 @@ import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
 import {useNavigate} from "react-router";
 import {requestVerification} from "../../features/user/userReducer";
-
+import {FaCheck} from "react-icons/fa";
 const days = [
   {
     value: "Monday",
@@ -35,11 +35,14 @@ const days = [
 const Verification = () => {
   const dispatch = useDispatch();
   const {user} = useSelector((state) => state.user);
+  const {
+    user: {firstName},
+  } = user;
   const navigate = useNavigate();
 
   const [form, setForm] = useState([
     {
-      group: "internship-details",
+      group: "Internship Details",
       forms: [
         // {
         //   type: "select",
@@ -136,7 +139,7 @@ const Verification = () => {
       ],
     },
     {
-      group: "student-details",
+      group: "Student Details",
       forms: [
         // {
         //   type: "select",
@@ -212,6 +215,16 @@ const Verification = () => {
         },
         {
           type: "text",
+          id: "student-contact",
+          code: "studentContact",
+          forInput: "Student Contact",
+          value: "",
+          isError: false,
+          errorMessage: "This phone number format is not recognized. ",
+          isDisabled: false,
+        },
+        {
+          type: "text",
           id: "required-hours",
           code: "requiredHours",
           forInput: "Required Hours",
@@ -222,7 +235,7 @@ const Verification = () => {
       ],
     },
     {
-      group: "schedule-details",
+      group: "Schedule Details",
       forms: [
         {
           type: "time",
@@ -289,8 +302,9 @@ const Verification = () => {
       ],
     },
   ]);
-  const [atNextPage, setNextPage] = useState(false);
-  // const [position]
+  // const [atNextPage, setNextPage] = useState(false);
+  const [position, setPosition] = useState(0);
+
   const convertForm = (form) => {
     const newData = form.map((input) => {
       const {code, value} = input;
@@ -349,6 +363,7 @@ const Verification = () => {
         setForm(newForm);
         return;
       case "supervisor-contact":
+      case "student-contact":
         newForm[mainIndex].forms[index].value = value;
         const passwordRegex = /^(09|\+639)\d{9}$/;
         let isConctactValid = passwordRegex.test(value);
@@ -380,15 +395,28 @@ const Verification = () => {
     e.preventDefault();
     let numOfErrors = 0;
     let numOfValues = 0;
-    form[0].forms.forEach((item) => {
+    form[position].forms.forEach((item) => {
       item.isError && numOfErrors++;
       item.value && numOfValues++;
     });
 
-    // if (numOfErrors === 0 && numOfValues === 5) {
-    //   setNextPage(!atNextPage);
+    const lengthForms = form[position].forms.length;
+
+    // if (numOfErrors === 0 && numOfValues === lengthForms) {
+    //   if (position < 2) {
+    //     setPosition((prev) => prev + 1);
+    //   }
     // }
-    setNextPage(!atNextPage);
+    if (position < 2) {
+      setPosition((prev) => prev + 1);
+    }
+  };
+
+  const handleReturn = (e) => {
+    e.preventDefault();
+    if (position !== 0) {
+      setPosition((prev) => prev - 1);
+    }
   };
 
   const handleKeydown = (e) => {
@@ -545,34 +573,100 @@ const Verification = () => {
     });
   };
 
-  return (
-    <div className="verification-container">
-      {/* <form onSubmit={handleSubmit}>
+  const [steps, setSteps] = useState([
+    {
+      step: "1",
+      isCompleted: false,
+    },
+    {
+      step: "2",
+      isCompleted: false,
+    },
+    {
+      step: "3",
+      isCompleted: false,
+    },
+  ]);
+
+  const renderSteps = () => {
+    return steps.map((item, index) => {
+      const {step, isCompleted} = item;
+      return (
         <div
           className={
-            atNextPage ? "internship-details inactive" : "internship-details"
+            index === position ? `step-${step} active` : `step-${step} `
           }
+          key={index}
         >
-          <h3>Internship Details</h3>
-          <div className="forms-con">
-            {renderInputs(form[0].forms, "internship-details", 0)}
-          </div>
-          <button onClick={handleNext}>Next</button>
+          {step}
         </div>
-        <div
-          className={atNextPage ? "student-details active" : "student-details"}
-        >
-          <h3>Student Details</h3>
-          <div className="forms-con">
-            {renderInputs(form[1].forms, "student-details", 1)}
+      );
+    });
+  };
+
+  return (
+    <section className="verification-container">
+      <div className="greetings">
+        <h1>
+          Welcome, <span>{firstName}</span>
+        </h1>
+      </div>
+      <div className="verification-steps">
+        <div className="steps-container">
+          <div className="steps">{renderSteps()}</div>
+          <h2>{form[position].group}</h2>
+        </div>
+        <form onSubmit={handleSubmit}>
+          <div
+            className={
+              position === 0
+                ? "internship-details"
+                : position === 2
+                ? "internship-details inactive-1"
+                : "internship-details inactive"
+            }
+          >
+            <div className="forms-con">
+              {renderInputs(form[0].forms, "Internship Details", 0)}
+            </div>
+            <button onClick={handleNext}>Next</button>
           </div>
-          <div className="btn-con">
-            <button onClick={() => setNextPage(!atNextPage)}>Back</button>
+          <div
+            className={
+              position === 1
+                ? "student-details active"
+                : position === 2
+                ? "student-details inactive-1"
+                : "student-details"
+            }
+          >
+            <div className="forms-con">
+              {renderInputs(form[1].forms, "Student Details", 1)}
+            </div>
+            <div className="btn-con">
+              <button onClick={handleReturn}>Back</button>
+              <button onClick={handleNext}>Next</button>
+              {/* <button onClick={() => setNextPage(!atNextPage)}>Back</button> */}
+            </div>
+          </div>
+          <div
+            className={
+              position === 2
+                ? "schedule-details active-1"
+                : position === 1
+                ? "schedule-details inactive"
+                : "schedule-details"
+            }
+          >
+            <div className="forms-con">
+              {renderInputs(form[2].forms, "student-details", 2)}
+            </div>
+            <button onClick={handleReturn}>Back</button>
             <button>Submit Verification</button>
           </div>
-        </div>
-      </form> */}
-    </div>
+        </form>
+      </div>
+    </section>
   );
 };
 
