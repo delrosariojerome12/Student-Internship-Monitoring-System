@@ -7,7 +7,7 @@ const Intern = React.memo(({intern}) => {
     verification: {isVerified, hasSentVerification},
   } = intern;
 
-  console.log(schoolDetails);
+  // console.log(schoolDetails);
 
   return (
     <div className="intern">

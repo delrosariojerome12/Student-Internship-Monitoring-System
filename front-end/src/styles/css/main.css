@@ -1529,7 +1529,7 @@ button {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: 6vh auto;
+  grid-template-rows: 7vh auto;
   gap: 1rem;
 }
 .dashboard .approvals-container header .search-box {
