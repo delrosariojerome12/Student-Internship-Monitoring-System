@@ -1448,6 +1448,7 @@ button {
   color: #0d7377;
 }
 .verification-container .verification-steps {
+  overflow: hidden;
   margin: auto;
   background-color: #fff;
   border-radius: 1rem;
@@ -1490,7 +1491,6 @@ button {
   width: 60rem;
   position: relative;
   margin: auto;
-  overflow: hidden;
   height: 50rem;
 }
 .verification-container form .inactive {
