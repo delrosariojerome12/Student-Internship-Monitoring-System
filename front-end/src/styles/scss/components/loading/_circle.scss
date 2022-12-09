@@ -1,6 +1,7 @@
-@import "../utils";
+@import "../../utils";
+@import "../../variables";
 
-.loading {
+.circle {
   @include flexCenter;
   text-align: center;
   background-color: #00000088;

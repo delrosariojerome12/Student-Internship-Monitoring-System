@@ -1,8 +1,8 @@
 import React from "react";
 
-const Loading = () => {
+const Circle = () => {
   return (
-    <section class="loading">
+    <section class="circle">
       <div class="circle-one"></div>
       <div class="circle-two"></div>
       <span>loading...</span>
@@ -10,4 +10,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default Circle;
