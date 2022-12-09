@@ -18,6 +18,7 @@
     }
   }
   .verification-steps {
+    overflow: hidden;
     margin: auto;
     background-color: #fff;
     border-radius: 1rem;
@@ -83,7 +84,7 @@
     width: 60rem;
     position: relative;
     margin: auto;
-    overflow: hidden;
+    // overflow: hidden;
     height: 50rem;
     .inactive {
       transform: translate(-100%, 0%);

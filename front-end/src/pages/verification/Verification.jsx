@@ -337,6 +337,32 @@ const Verification = () => {
     dispatch(requestVerification(finalForm));
   };
 
+  const checkProgram = (department, mainIndex, index) => {
+    const newForm = [...form];
+    switch (department) {
+      case "Bachelor of Science in Information Technology":
+        newForm[mainIndex].forms[index + 3].value = "640";
+        return;
+      case "Bachelor of Science in Computer Science":
+        newForm[mainIndex].forms[index + 3].value = "240";
+        return;
+      case "Bachelor of Library Information System":
+        newForm[mainIndex].forms[index + 3].value = "240";
+        return;
+      case "Bachelor of Science in Computer Engineering":
+        newForm[mainIndex].forms[index + 3].value = "240";
+        return;
+      case "Bachelor of Science in Electrical Engineering":
+        newForm[mainIndex].forms[index + 3].value = "240";
+        return;
+      case "Bachelor of Science in Electronics and Communications Engineering":
+        newForm[mainIndex].forms[index + 3].value = "240";
+        return;
+      default:
+        return;
+    }
+  };
+
   const handleOnChange = (value, group, index, mainIndex) => {
     const newForm = [...form];
     const inputField = newForm[mainIndex].forms[index].id;
@@ -382,6 +408,8 @@ const Verification = () => {
       //   return;
       case "program":
         newForm[mainIndex].forms[index].value = value;
+        const programValue = newForm[mainIndex].forms[index].value;
+        checkProgram(programValue, mainIndex, index);
         setForm(newForm);
         return;
       default:
@@ -593,6 +621,7 @@ const Verification = () => {
       const { step, isCompleted } = item;
       return (
         <div
+          onClick={() => setPosition((prev) => (prev = index))}
           className={
             index === position ? `step-${step} active` : `step-${step} `
           }
