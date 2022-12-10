@@ -34,8 +34,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -3781,7 +3779,7 @@ button {
 .dots .dotted span {
   width: 2rem;
   height: 2rem;
-  background-color: #fff;
+  background-color: rgb(253, 250, 68);
   margin: 0 0.5rem;
   border-radius: 50%;
   display: inline-block;
@@ -3789,12 +3787,12 @@ button {
           animation: dot 2s infinite ease-in-out;
 }
 .dots .dotted span:nth-child(2) {
-  background-color: #fff;
+  background-color: #0d7377;
   -webkit-animation-delay: 0.4s;
           animation-delay: 0.4s;
 }
 .dots .dotted span:nth-child(3) {
-  background-color: #fff;
+  background-color: #e63946;
   -webkit-animation-delay: 0.8s;
           animation-delay: 0.8s;
 }
@@ -3809,11 +3807,4 @@ button {
     opacity: 0;
     transform: scale(0.7) translateY(10px);
   }
-}
-
-.cat {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.5333333333);
 }/*# sourceMappingURL=main.css.map */

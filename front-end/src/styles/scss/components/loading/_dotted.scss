@@ -8,7 +8,7 @@
     span {
       width: 2rem;
       height: 2rem;
-      background-color: #fff;
+      background-color: rgb(253, 250, 68);
       margin: 0 0.5rem;
       border-radius: 50%;
       display: inline-block;
@@ -16,11 +16,11 @@
     }
   }
   .dotted span:nth-child(2) {
-    background-color: #fff;
+    background-color: #0d7377;
     animation-delay: 0.4s;
   }
   .dotted span:nth-child(3) {
-    background-color: #fff;
+    background-color: #e63946;
     animation-delay: 0.8s;
   }
   //   .dotted span:nth-child(4) {
