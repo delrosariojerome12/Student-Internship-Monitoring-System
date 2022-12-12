@@ -4,7 +4,7 @@
 .circle {
   @include flexCenter;
   text-align: center;
-  background-color: #00000088;
+  background-color: #1e272eb9;
 
   .circle-one,
   .circle-two {
@@ -85,7 +85,7 @@
   }
   @keyframes text {
     50% {
-      color: black;
+      color: #dddddd;
     }
   }
 }

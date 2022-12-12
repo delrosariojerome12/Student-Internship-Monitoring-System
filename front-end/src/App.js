@@ -7,6 +7,7 @@ import PageNotFound from "./pages/PageNotFound";
 //loadings
 import Circle from "./components/loading/Circle";
 import Dotted from "./components/loading/Dotted";
+import Bounce from "./components/loading/Bouncing";
 
 // component
 import Login from "./pages/auth/login";
@@ -62,6 +63,7 @@ const App = () => {
           {/* loading */}
           <Route path="/circle" element={<Circle />} />
           <Route path="/dotted" element={<Dotted />} />
+          <Route path="/bounce" element={<Bounce />} />
         </Routes>
       </Suspense>
     </main>

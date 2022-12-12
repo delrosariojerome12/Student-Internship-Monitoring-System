@@ -7,8 +7,6 @@ const Dotted = () => {
         <span></span>
         <span></span>
         <span></span>
-        {/* <span></span>
-        <span></span> */}
       </div>
     </section>
   );
