@@ -177,28 +177,28 @@ const Verification = () => {
               value: "Bachelor of Science in Information Technology",
               label: "Bachelor of Science in Information Technology",
             },
-            {
-              value: "Bachelor of Science in Computer Science",
-              label: "Bachelor of Science in Computer Science",
-            },
-            {
-              value: "Bachelor of Library Information System",
-              label: "Bachelor of Library Information System",
-            },
-            {
-              value: "Bachelor of Science in Computer Engineering",
-              label: "Bachelor of Science in Computer Engineering",
-            },
-            {
-              value: "Bachelor of Science in Electrical Engineering",
-              label: "Bachelor of Science in Electrical Engineering",
-            },
-            {
-              value:
-                "Bachelor of Science in Electronics and Communications Engineering",
-              label:
-                "Bachelor of Science in Electronics and Communications Engineering",
-            },
+            // {
+            //   value: "Bachelor of Science in Computer Science",
+            //   label: "Bachelor of Science in Computer Science",
+            // },
+            // {
+            //   value: "Bachelor of Library Information System",
+            //   label: "Bachelor of Library Information System",
+            // },
+            // {
+            //   value: "Bachelor of Science in Computer Engineering",
+            //   label: "Bachelor of Science in Computer Engineering",
+            // },
+            // {
+            //   value: "Bachelor of Science in Electrical Engineering",
+            //   label: "Bachelor of Science in Electrical Engineering",
+            // },
+            // {
+            //   value:
+            //     "Bachelor of Science in Electronics and Communications Engineering",
+            //   label:
+            //     "Bachelor of Science in Electronics and Communications Engineering",
+            // },
           ],
           placeholder: "Program",
           isDisabled: false,
@@ -240,7 +240,7 @@ const Verification = () => {
         {
           type: "time",
           id: "time-in-schedule",
-          forInput: "Time-In Schedule",
+          forInput: "Time-In",
           value: "",
           isDisabled: false,
           code: "timeInSchedule",
@@ -262,7 +262,7 @@ const Verification = () => {
         {
           type: "time",
           id: "time-out-schedule",
-          forInput: "Time-Out Schedule",
+          forInput: "Time-Out",
           value: "",
           isDisabled: false,
           code: "timeOutSchedule",
@@ -282,22 +282,22 @@ const Verification = () => {
           ],
         },
         {
-          type: "time",
-          id: "starting-day",
-          forInput: "Starting Day",
+          type: "scheduleType",
+          id: "schedule-type",
+          forInput: "Schedule Type",
           value: "",
           isDisabled: false,
-          code: "startingDay",
-          optionTime: days,
-        },
-        {
-          type: "time",
-          id: "ending-day",
-          forInput: "Ending Day",
-          value: "",
-          isDisabled: false,
-          code: "endingDay",
-          optionTime: days,
+          code: "scheduleType",
+          scheduleType: [
+            {
+              value: "Regular",
+              label: "Regular",
+            },
+            {
+              value: "Irregular",
+              label: "Irregular",
+            },
+          ],
         },
       ],
     },
@@ -595,6 +595,28 @@ const Verification = () => {
               key={index}
             />
           );
+        case "scheduleType":
+          const {scheduleType} = item;
+          return (
+            <Select
+              className="time"
+              options={scheduleType}
+              styles={customStyle}
+              onChange={(e) => handleOnChange(e.value, group, index, mainIndex)}
+              name={forInput}
+              placeholder={forInput}
+              theme={(theme) => ({
+                ...theme,
+                outline: "solid 1px #8b8b8b",
+                colors: {
+                  ...theme.colors,
+                  primary25: "#8b8b8b",
+                  primary: "#457b9d",
+                },
+              })}
+              key={index}
+            />
+          );
         default:
           return null;
       }
@@ -621,7 +643,7 @@ const Verification = () => {
       const {step, isCompleted} = item;
       return (
         <div
-          onClick={() => setPosition((prev) => (prev = index))}
+          // onClick={() => setPosition((prev) => (prev = index))}
           className={
             index === position ? `step-${step} active` : `step-${step} `
           }
