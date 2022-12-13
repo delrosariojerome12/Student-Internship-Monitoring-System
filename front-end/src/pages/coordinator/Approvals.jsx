@@ -2,6 +2,7 @@ import React from "react";
 import searchIcon from "../../assets/img/search.svg";
 import ApprovalIntern from "../../components/coordinator/ApprovalIntern";
 import { GoSearch } from "react-icons/go";
+
 const Approvals = () => {
   return (
     <section className="approvals-container">

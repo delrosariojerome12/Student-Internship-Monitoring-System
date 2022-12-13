@@ -849,6 +849,8 @@ button {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 }
 .dashboard .main {
   height: 100%;
@@ -1446,6 +1448,79 @@ button {
   transform: translate(-50%, -50%);
   width: 95%;
   height: 95%;
+}
+.dashboard .admin-documents {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 6vh auto;
+  gap: 1rem;
+}
+.dashboard .admin-documents header .search-box {
+  display: flex;
+  background-color: #f1faee;
+  width: 25rem;
+  border-radius: 2rem;
+  align-items: center;
+  padding: 0 1.5rem;
+  margin: 1rem 1rem auto auto;
+}
+.dashboard .admin-documents header .search-box span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+.dashboard .admin-documents header .search-box input {
+  width: 100%;
+  background: transparent;
+  padding: 1rem;
+  outline: none;
+  border: 0;
+}
+.dashboard .admin-documents .documents-content {
+  padding: 2rem;
+  border: solid 1px #fff;
+  border-radius: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: auto auto 1;
+  gap: 2rem;
+  z-index: 1;
+}
+.dashboard .admin-documents .documents-content .inputs input {
+  width: 100%;
+  height: 3.5rem;
+  flex: 1;
+}
+.dashboard .admin-documents .documents-content .buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+.dashboard .admin-documents .documents-content .buttons button {
+  padding: 1rem 3.5rem;
+  border-radius: 1rem;
+  border: none;
+}
+.dashboard .admin-documents .documents-content .files-container {
+  background-color: rgba(255, 0, 0, 0.11);
+  height: 100%;
+  border: solid 1px #fff;
+}
+.dashboard .admin-documents .documents-content::after {
+  content: "";
+  background-color: rgba(50, 50, 50, 0.5019607843);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 95%;
+  height: 95%;
+  z-index: -1;
 }
 
 .pending {
