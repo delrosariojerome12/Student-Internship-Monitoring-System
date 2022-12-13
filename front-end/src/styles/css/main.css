@@ -1582,13 +1582,16 @@ button {
   height: 50rem;
 }
 .verification-container form .inactive {
-  transform: translate(-100%, 0%);
+  transform: translate(-120%, 0%);
 }
 .verification-container form .inactive-1 {
-  transform: translate(-200%, 0%);
+  transform: translate(-240%, 0%);
+}
+.verification-container form .inactive-2 {
+  transform: translate(-80%, 0%);
 }
 .verification-container form .active {
-  transform: translate(-100%, 0%);
+  transform: translate(-120%, 0%);
 }
 .verification-container form .active-1 {
   transform: translate(-200%, 0%);
@@ -1621,7 +1624,7 @@ button {
   padding: 1rem;
   border-radius: 1rem;
   top: 0%;
-  left: 100%;
+  left: 120%;
   width: 100%;
   height: 100%;
   transition: all 0.2s linear;
