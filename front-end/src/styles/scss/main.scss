@@ -11,7 +11,6 @@
 
 @import "./components/login";
 @import "./components/signin";
-@import "./components/loading";
 @import "./pages/landingPage";
 
 @import "./pages/dashboard";
@@ -32,3 +31,8 @@
 @import "./screen/pending";
 @import "./screen/signup";
 @import "./screen/landingPage";
+
+//Loading
+@import "./components/loading/circle";
+@import "./components/loading/dotted";
+@import "./components/loading/bouncing";
