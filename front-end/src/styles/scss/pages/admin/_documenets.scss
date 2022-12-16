@@ -9,7 +9,7 @@
   gap: 1rem;
 
   .create-modal {
-    display: none !important;
+    // display: none !important;
     @include flexColumn;
     justify-content: space-between;
     position: absolute;
@@ -48,18 +48,21 @@
       padding: 1rem 3rem;
       font-weight: 550;
       font-size: 1.5rem;
-      border: solid 1px #000;
+      border: solid 1px $primary-compliment-landing;
+      background-color: $primary-compliment-landing;
+      color: #fff;
       transition: all 0.3s linear;
       &:hover {
-        color: #fff;
-        background-color: #52525271;
+        background-color: #fff;
+        color: $primary-compliment-landing;
+        border: solid 1px $primary-compliment-landing;
       }
     }
     // }
   }
 
   .requirments-modal {
-    display: none !important;
+    // display: none !important;
     @include flexColumn;
     justify-content: space-between;
     position: absolute;
@@ -112,7 +115,7 @@
   }
 
   .delete-modal {
-    display: none !important;
+    // display: none !important;
 
     @include flexCenter;
     flex-direction: column;
@@ -153,10 +156,6 @@
         font-weight: 600;
         border: solid 1px $primary-compliment-landing;
         transition: all 0.3s linear;
-        &:hover {
-          color: #fff;
-          background-color: $primary-compliment-landing;
-        }
       }
       .confirm {
         padding: 1rem 4.5rem;
@@ -165,9 +164,13 @@
         background-color: $primary-compliment-landing;
         color: #fff;
         transition: all 0.3s linear;
+      }
+      .back,
+      .confirm {
         &:hover {
-          color: #000;
-          background-color: #fff;
+          color: #fff;
+          background-color: $primary-compliment-landing;
+          border-radius: 1rem;
         }
       }
     }
@@ -231,8 +234,8 @@
         font-weight: 520;
 
         &:hover {
-          background-color: #b0abab;
           color: #fff;
+          background-color: $primary-compliment-landing;
         }
       }
     }

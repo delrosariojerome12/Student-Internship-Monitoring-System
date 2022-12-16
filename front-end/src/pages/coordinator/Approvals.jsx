@@ -16,10 +16,10 @@ const Approvals = () => {
         </div>
       </header>
       <div className="approvals-content">
-        <div className="user1">
+        {/* <div className="user1">
           <div className="img-container"></div>
           <div className="intern-infos"></div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

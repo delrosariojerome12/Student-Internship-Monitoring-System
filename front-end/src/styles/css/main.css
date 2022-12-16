@@ -1426,29 +1426,6 @@ button {
   border-radius: 1rem;
   position: relative;
 }
-.dashboard .approvals-container .approvals-content .user1 {
-  display: grid;
-  grid-template-columns: 10rem auto;
-  gap: 1rem;
-  position: absolute;
-  top: 3.5rem;
-  left: 3rem;
-  height: 10%;
-  width: 92%;
-}
-.dashboard .approvals-container .approvals-content .user1 > * {
-  border: solid 1px #fff;
-}
-.dashboard .approvals-container .approvals-content::after {
-  content: "";
-  background-color: rgba(50, 50, 50, 0.5019607843);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 95%;
-  height: 95%;
-}
 .dashboard .admin-documents {
   height: 100%;
   width: 100%;
@@ -1457,7 +1434,6 @@ button {
   gap: 1rem;
 }
 .dashboard .admin-documents .create-modal {
-  display: none !important;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -1495,15 +1471,17 @@ button {
   padding: 1rem 3rem;
   font-weight: 550;
   font-size: 1.5rem;
-  border: solid 1px #000;
+  border: solid 1px #0d7377;
+  background-color: #0d7377;
+  color: #fff;
   transition: all 0.3s linear;
 }
 .dashboard .admin-documents .create-modal button:hover {
-  color: #fff;
-  background-color: rgba(82, 82, 82, 0.4431372549);
+  background-color: #fff;
+  color: #0d7377;
+  border: solid 1px #0d7377;
 }
 .dashboard .admin-documents .requirments-modal {
-  display: none !important;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -1552,7 +1530,6 @@ button {
   border: solid 1px #0d7377;
 }
 .dashboard .admin-documents .delete-modal {
-  display: none !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1597,10 +1574,6 @@ button {
   border: solid 1px #0d7377;
   transition: all 0.3s linear;
 }
-.dashboard .admin-documents .delete-modal .delete-btn .back:hover {
-  color: #fff;
-  background-color: #0d7377;
-}
 .dashboard .admin-documents .delete-modal .delete-btn .confirm {
   padding: 1rem 4.5rem;
   font-weight: 600;
@@ -1609,9 +1582,11 @@ button {
   color: #fff;
   transition: all 0.3s linear;
 }
+.dashboard .admin-documents .delete-modal .delete-btn .back:hover,
 .dashboard .admin-documents .delete-modal .delete-btn .confirm:hover {
-  color: #000;
-  background-color: #fff;
+  color: #fff;
+  background-color: #0d7377;
+  border-radius: 1rem;
 }
 .dashboard .admin-documents header .search-box {
   display: flex;
@@ -1672,8 +1647,8 @@ button {
   font-weight: 520;
 }
 .dashboard .admin-documents .documents-content .buttons button:hover {
-  background-color: #b0abab;
   color: #fff;
+  background-color: #0d7377;
 }
 .dashboard .admin-documents .documents-content .files-container {
   display: grid;
