@@ -10,6 +10,29 @@
   gap: 1rem;
   padding: 3rem;
 
+  .are-you-sure-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 200px;
+    background-color: #fff;
+    z-index: 4;
+    border: solid 1px #000;
+  }
+  .success-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 200px;
+    background-color: #fff;
+    border: solid 1px #000;
+    z-index: 4;
+  }
+
   .greetings {
     font-size: 2.5rem;
     color: $primary-font-color;
@@ -38,7 +61,7 @@
         // justify-content: space-evenly;
         // align-items: center;
         display: grid;
-        grid-template-columns: auto auto auto;
+        grid-template-columns: auto auto;
         justify-content: space-evenly;
         position: relative;
         .step-1,
@@ -59,23 +82,24 @@
           background-color: $primary-compliment-landing;
         }
         .step-1 {
+          position: relative;
           &::after {
             content: " ";
             position: absolute;
-            left: 28.5%;
+            left: 100%;
             border: dashed 2px $primary-compliment-landing;
-            width: 14%;
+            width: 240%;
           }
         }
-        .step-2 {
-          &::before {
-            content: " ";
-            position: absolute;
-            right: 28.5%;
-            border: dashed 2px $primary-compliment-landing;
-            width: 14%;
-          }
-        }
+        // .step-2 {
+        //   &::before {
+        //     content: " ";
+        //     position: absolute;
+        //     right: 28.5%;
+        //     border: dashed 2px $primary-compliment-landing;
+        //     width: 14%;
+        //   }
+        // }
       }
     }
   }
@@ -174,6 +198,10 @@
       gap: 2rem;
       display: grid;
       grid-template-rows: auto auto;
+
+      .not-visible {
+        display: none;
+      }
 
       .forms-con {
         display: flex;
