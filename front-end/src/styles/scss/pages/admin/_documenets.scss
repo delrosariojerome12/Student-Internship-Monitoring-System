@@ -9,7 +9,7 @@
   gap: 1rem;
 
   .create-modal {
-    // display: none !important;
+    display: none !important;
     @include flexColumn;
     justify-content: space-between;
     position: absolute;
@@ -62,7 +62,7 @@
   }
 
   .requirments-modal {
-    // display: none !important;
+    display: none !important;
     @include flexColumn;
     justify-content: space-between;
     position: absolute;
@@ -115,7 +115,7 @@
   }
 
   .delete-modal {
-    // display: none !important;
+    display: none !important;
 
     @include flexCenter;
     flex-direction: column;
@@ -156,6 +156,11 @@
         font-weight: 600;
         border: solid 1px $primary-compliment-landing;
         transition: all 0.3s linear;
+        &:hover {
+          color: #fff;
+          background-color: $primary-compliment-landing;
+          border-radius: 1rem;
+        }
       }
       .confirm {
         padding: 1rem 4.5rem;
@@ -164,12 +169,9 @@
         background-color: $primary-compliment-landing;
         color: #fff;
         transition: all 0.3s linear;
-      }
-      .back,
-      .confirm {
         &:hover {
-          color: #fff;
-          background-color: $primary-compliment-landing;
+          background-color: #fff;
+          color: #000;
           border-radius: 1rem;
         }
       }
