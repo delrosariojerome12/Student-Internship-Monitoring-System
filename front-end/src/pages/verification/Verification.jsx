@@ -1,36 +1,12 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
 import {useNavigate} from "react-router";
 import {requestVerification} from "../../features/user/userReducer";
-import {FaCheck} from "react-icons/fa";
-const days = [
-  {
-    value: "Monday",
-    label: "Monday",
-  },
-  {
-    value: "Tuesday",
-    label: "Tuesday",
-  },
-  {
-    value: "Wednesday",
-    label: "Wednesday",
-  },
-  {
-    value: "Thursday",
-    label: "Thursday",
-  },
-  {
-    value: "Friday",
-    label: "Friday",
-  },
-  {
-    value: "Saturday",
-    label: "Saturday",
-  },
-];
+import AreYouSureModal from "../../components/verification/AreYouSureModal";
+import SuccessModal from "../../components/verification/SuccessModal";
+import {useCallback} from "react";
 
 const Verification = () => {
   const dispatch = useDispatch();
@@ -177,28 +153,28 @@ const Verification = () => {
               value: "Bachelor of Science in Information Technology",
               label: "Bachelor of Science in Information Technology",
             },
-            {
-              value: "Bachelor of Science in Computer Science",
-              label: "Bachelor of Science in Computer Science",
-            },
-            {
-              value: "Bachelor of Library Information System",
-              label: "Bachelor of Library Information System",
-            },
-            {
-              value: "Bachelor of Science in Computer Engineering",
-              label: "Bachelor of Science in Computer Engineering",
-            },
-            {
-              value: "Bachelor of Science in Electrical Engineering",
-              label: "Bachelor of Science in Electrical Engineering",
-            },
-            {
-              value:
-                "Bachelor of Science in Electronics and Communications Engineering",
-              label:
-                "Bachelor of Science in Electronics and Communications Engineering",
-            },
+            // {
+            //   value: "Bachelor of Science in Computer Science",
+            //   label: "Bachelor of Science in Computer Science",
+            // },
+            // {
+            //   value: "Bachelor of Library Information System",
+            //   label: "Bachelor of Library Information System",
+            // },
+            // {
+            //   value: "Bachelor of Science in Computer Engineering",
+            //   label: "Bachelor of Science in Computer Engineering",
+            // },
+            // {
+            //   value: "Bachelor of Science in Electrical Engineering",
+            //   label: "Bachelor of Science in Electrical Engineering",
+            // },
+            // {
+            //   value:
+            //     "Bachelor of Science in Electronics and Communications Engineering",
+            //   label:
+            //     "Bachelor of Science in Electronics and Communications Engineering",
+            // },
           ],
           placeholder: "Program",
           isDisabled: false,
@@ -234,76 +210,100 @@ const Verification = () => {
         },
       ],
     },
-    {
-      group: "Schedule Details",
-      forms: [
-        {
-          type: "time",
-          id: "time-in-schedule",
-          forInput: "Time-In Schedule",
-          value: "",
-          isDisabled: false,
-          code: "timeInSchedule",
-          optionTime: [
-            {
-              value: "7:00 AM",
-              label: "7:00 AM",
-            },
-            {
-              value: "8:00 AM",
-              label: "8:00 AM",
-            },
-            {
-              value: "9:00 AM",
-              label: "9:00 AM",
-            },
-          ],
-        },
-        {
-          type: "time",
-          id: "time-out-schedule",
-          forInput: "Time-Out Schedule",
-          value: "",
-          isDisabled: false,
-          code: "timeOutSchedule",
-          optionTime: [
-            {
-              value: "4:00 PM",
-              label: "4:00 PM",
-            },
-            {
-              value: "5:00 PM",
-              label: "5:00 PM",
-            },
-            {
-              value: "6:00 PM",
-              label: "6:00 PM",
-            },
-          ],
-        },
-        {
-          type: "time",
-          id: "starting-day",
-          forInput: "Starting Day",
-          value: "",
-          isDisabled: false,
-          code: "startingDay",
-          optionTime: days,
-        },
-        {
-          type: "time",
-          id: "ending-day",
-          forInput: "Ending Day",
-          value: "",
-          isDisabled: false,
-          code: "endingDay",
-          optionTime: days,
-        },
-      ],
-    },
+    // {
+    //   group: "Schedule Details",
+    //   forms: [
+    //     {
+    //       type: "scheduleType",
+    //       id: "schedule-type",
+    //       forInput: "Schedule Type",
+    //       value: "",
+    //       isDisabled: true,
+    //       code: "scheduleType",
+    //       scheduleType: [
+    //         {
+    //           value: "Regular",
+    //           label: "Regular",
+    //         },
+    //         {
+    //           value: "Irregular",
+    //           label: "Irregular",
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       type: "text",
+    //       id: "time-in-schedule",
+    //       forInput: "Time-In Schedule",
+    //       value: "",
+    //       isDisabled: true,
+    //       isVisible: false,
+    //       code: "timeInSchedule",
+    //     },
+    //     {
+    //       type: "text",
+    //       id: "time-out-schedule",
+    //       forInput: "Time-Out Schedule",
+    //       value: "",
+    //       isDisabled: true,
+    //       isVisible: false,
+    //       code: "timeOutSchedule",
+    //     },
+
+    //     // {
+    //     //   type: "time",
+    //     //   id: "time-in-schedule",
+    //     //   forInput: "Time-In Schedule",
+    //     //   value: "",
+    //     //   isDisabled: false,
+    //     //   code: "timeInSchedule",
+    //     //   isVisible: false,
+    //     //   optionTime: [
+    //     //     {
+    //     //       value: "7:00 AM",
+    //     //       label: "7:00 AM",
+    //     //     },
+    //     //     {
+    //     //       value: "8:00 AM",
+    //     //       label: "8:00 AM",
+    //     //     },
+    //     //     {
+    //     //       value: "9:00 AM",
+    //     //       label: "9:00 AM",
+    //     //     },
+    //     //   ],
+    //     // },
+    //     // {
+    //     //   type: "time",
+    //     //   id: "time-out-schedule",
+    //     //   forInput: "Time-Out Schedule",
+    //     //   value: "",
+    //     //   isDisabled: false,
+    //     //   code: "timeOutSchedule",
+    //     //   isVisible: false,
+    //     //   optionTime: [
+    //     //     {
+    //     //       value: "4:00 PM",
+    //     //       label: "4:00 PM",
+    //     //     },
+    //     //     {
+    //     //       value: "5:00 PM",
+    //     //       label: "5:00 PM",
+    //     //     },
+    //     //     {
+    //     //       value: "6:00 PM",
+    //     //       label: "6:00 PM",
+    //     //     },
+    //     //   ],
+    //     // },
+    //   ],
+    // },
   ]);
 
   const [position, setPosition] = useState(0);
+  const [isFinalizing, setFinalizing] = useState(false);
+  const [isSuccessModalOpen, setSuccessModalOpen] = useState(false);
+  const [isSubmitted, setSubmitted] = useState(false);
 
   const convertForm = (form) => {
     const newData = form.map((input) => {
@@ -322,20 +322,46 @@ const Verification = () => {
     return newObject;
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const finalForm = {
-      email: user.email,
-      internshipDetails: convertForm([...form[0].forms]),
-      schoolDetails: convertForm([...form[1].forms]),
-      verification: {
-        hasSentVerification: true,
-        isVerified: false,
-        isRejected: false,
-      },
-    };
-    dispatch(requestVerification(finalForm));
+  const handleFinalizing = (value) => {
+    setFinalizing(value);
   };
+  const handleSuccessModal = (value) => {
+    setSuccessModalOpen(value);
+  };
+
+  const handleSubmit = useCallback(
+    async (e) => {
+      console.log("Test");
+      e && e.preventDefault();
+      let numOfErrors = 0;
+      let numOfValues = 0;
+      form[position].forms.forEach((item) => {
+        item.isError && numOfErrors++;
+        item.value && numOfValues++;
+      });
+
+      const lengthForms = form[position].forms.length;
+
+      if (isSubmitted) {
+        if (numOfErrors === 0 && numOfValues === lengthForms) {
+          if (position < 2) {
+            const finalForm = {
+              email: user.email,
+              internshipDetails: convertForm([...form[0].forms]),
+              schoolDetails: convertForm([...form[1].forms]),
+              verification: {
+                hasSentVerification: true,
+                isVerified: false,
+                isRejected: false,
+              },
+            };
+            dispatch(requestVerification(finalForm));
+          }
+        }
+      }
+    },
+    [dispatch, form, isSubmitted, position, user.email]
+  );
 
   const checkProgram = (department, mainIndex, index) => {
     const newForm = [...form];
@@ -412,6 +438,12 @@ const Verification = () => {
         checkProgram(programValue, mainIndex, index);
         setForm(newForm);
         return;
+      case "schedule-type":
+        newForm[mainIndex].forms[index].value = value;
+        newForm[mainIndex].forms[index + 1].value = "8:00 AM";
+        newForm[mainIndex].forms[index + 2].value = "5:00 PM";
+        setForm(newForm);
+        return;
       default:
         newForm[mainIndex].forms[index].value = value;
         setForm(newForm);
@@ -430,14 +462,14 @@ const Verification = () => {
 
     const lengthForms = form[position].forms.length;
 
-    // if (numOfErrors === 0 && numOfValues === lengthForms) {
-    //   if (position < 2) {
-    //     setPosition((prev) => prev + 1);
-    //   }
-    // }
-    if (position < 2) {
-      setPosition((prev) => prev + 1);
+    if (numOfErrors === 0 && numOfValues === lengthForms) {
+      if (position < 2) {
+        setPosition((prev) => prev + 1);
+      }
     }
+    // if (position < 2) {
+    //   setPosition((prev) => prev + 1);
+    // }
   };
 
   const handleReturn = (e) => {
@@ -483,6 +515,7 @@ const Verification = () => {
         isError,
         errorMessage,
         isDisabled,
+        isVisible,
       } = item;
       switch (type) {
         case "text":
@@ -577,8 +610,30 @@ const Verification = () => {
           const {optionTime} = item;
           return (
             <Select
-              className="time"
+              className={isVisible ? "time" : "time not-visible"}
               options={optionTime}
+              styles={customStyle}
+              onChange={(e) => handleOnChange(e.value, group, index, mainIndex)}
+              name={forInput}
+              placeholder={forInput}
+              theme={(theme) => ({
+                ...theme,
+                outline: "solid 1px #8b8b8b",
+                colors: {
+                  ...theme.colors,
+                  primary25: "#8b8b8b",
+                  primary: "#457b9d",
+                },
+              })}
+              key={index}
+            />
+          );
+        case "scheduleType":
+          const {scheduleType} = item;
+          return (
+            <Select
+              className="scheduleType"
+              options={scheduleType}
               styles={customStyle}
               onChange={(e) => handleOnChange(e.value, group, index, mainIndex)}
               name={forInput}
@@ -610,10 +665,10 @@ const Verification = () => {
       step: "2",
       isCompleted: false,
     },
-    {
-      step: "3",
-      isCompleted: false,
-    },
+    // {
+    //   step: "3",
+    //   isCompleted: false,
+    // },
   ]);
 
   const renderSteps = () => {
@@ -621,7 +676,7 @@ const Verification = () => {
       const {step, isCompleted} = item;
       return (
         <div
-          onClick={() => setPosition((prev) => (prev = index))}
+          // onClick={() => setPosition((prev) => (prev = index))}
           className={
             index === position ? `step-${step} active` : `step-${step} `
           }
@@ -633,8 +688,30 @@ const Verification = () => {
     });
   };
 
+  // send verification
+  useEffect(
+    (e) => {
+      if (isSubmitted) {
+        handleSubmit(e);
+        handleSuccessModal(true);
+        handleFinalizing(false);
+      }
+    },
+    [isSubmitted, handleSubmit]
+  );
+
   return (
     <section className="verification-container">
+      {isFinalizing && (
+        <AreYouSureModal
+          handleFinalizing={handleFinalizing}
+          handleSubmit={handleSubmit}
+          setSubmitted={setSubmitted}
+        />
+      )}
+      {isSuccessModalOpen && (
+        <SuccessModal handleSuccessModal={handleSuccessModal} />
+      )}
       <div className="greetings">
         <h1>
           Welcome, <span>{firstName}</span>
@@ -674,11 +751,17 @@ const Verification = () => {
             </div>
             <div className="btn-con">
               <button onClick={handleReturn}>Back</button>
-              <button onClick={handleNext}>Next</button>
+              <button
+                disabled={isFinalizing ? true : false}
+                onClick={handleFinalizing}
+              >
+                Submit Verification
+              </button>
+              {/* <button onClick={handleNext}>Next</button> */}
               {/* <button onClick={() => setNextPage(!atNextPage)}>Back</button> */}
             </div>
           </div>
-          <div
+          {/* <div
             className={
               position === 2
                 ? "schedule-details active-1"
@@ -692,7 +775,7 @@ const Verification = () => {
             </div>
             <button onClick={handleReturn}>Back</button>
             <button>Submit Verification</button>
-          </div>
+          </div> */}
         </form>
       </div>
     </section>

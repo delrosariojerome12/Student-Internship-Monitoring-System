@@ -11,6 +11,8 @@ import SideBarRight from "../../components/dashboard/SidebarRight";
 import Coordinator from "../coordinator/Coordinator";
 import Admin from "../admin/Admin";
 
+import Bouncing from "../../components/loading/Bouncing";
+
 const Profile = lazy(() => import("./Profile"));
 const DailyTimeRecord = lazy(() => import("./DailyTimeRecord"));
 const Documents = lazy(() => import("./Documents"));
@@ -43,7 +45,7 @@ const Dashboard = () => {
         className="dashboard"
       >
         <SidebarLeft />
-        <Suspense fallback={<h2>Loading...</h2>}>
+        <Suspense fallback={<Bouncing />}>
           <Routes>
             <Route path="/*" element={<PendingContainer />} />
             <Route path="/profile/*" element={<Profile />} />
@@ -63,7 +65,7 @@ const Dashboard = () => {
       className="dashboard"
     >
       <SidebarLeft />
-      <Suspense fallback={<h2>Loading...</h2>}>
+      <Suspense fallback={<Bouncing />}>
         <Routes>
           <Route path="/" element={<DashboardMain />} />
           <Route path="/profile/*" element={<Profile />} />

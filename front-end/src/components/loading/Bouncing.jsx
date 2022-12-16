@@ -2,14 +2,14 @@ import React from "react";
 
 const Bouncing = () => {
   return (
-    <section class="bouncing">
-      <div class="container">
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="shadow"></div>
-        <div class="shadow"></div>
-        <div class="shadow"></div>
+    <section className="bouncing">
+      <div className="container">
+        <div className="circle"></div>
+        <div className="circle"></div>
+        <div className="circle"></div>
+        <div className="shadow"></div>
+        <div className="shadow"></div>
+        <div className="shadow"></div>
       </div>
       <span>loading...</span>
     </section>

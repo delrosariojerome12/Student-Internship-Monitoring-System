@@ -1757,6 +1757,28 @@ button {
   gap: 1rem;
   padding: 3rem;
 }
+.verification-container .are-you-sure-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 200px;
+  background-color: #fff;
+  z-index: 4;
+  border: solid 1px #000;
+}
+.verification-container .success-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 200px;
+  background-color: #fff;
+  border: solid 1px #000;
+  z-index: 4;
+}
 .verification-container .greetings {
   font-size: 2.5rem;
   color: #f1faee;
@@ -1784,7 +1806,7 @@ button {
 }
 .verification-container .verification-steps .steps-container .steps {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto;
   justify-content: space-evenly;
   position: relative;
 }
@@ -1806,19 +1828,15 @@ button {
   color: #fff;
   background-color: #0d7377;
 }
+.verification-container .verification-steps .steps-container .steps .step-1 {
+  position: relative;
+}
 .verification-container .verification-steps .steps-container .steps .step-1::after {
   content: " ";
   position: absolute;
-  left: 28.5%;
+  left: 100%;
   border: dashed 2px #0d7377;
-  width: 14%;
-}
-.verification-container .verification-steps .steps-container .steps .step-2::before {
-  content: " ";
-  position: absolute;
-  right: 28.5%;
-  border: dashed 2px #0d7377;
-  width: 14%;
+  width: 240%;
 }
 .verification-container form {
   width: 60rem;
@@ -1909,6 +1927,9 @@ button {
   gap: 2rem;
   display: grid;
   grid-template-rows: auto auto;
+}
+.verification-container form .schedule-details .not-visible {
+  display: none;
 }
 .verification-container form .schedule-details .forms-con {
   display: flex;
