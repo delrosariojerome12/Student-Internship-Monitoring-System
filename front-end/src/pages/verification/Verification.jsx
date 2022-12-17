@@ -708,6 +708,12 @@ const Verification = () => {
 
   return (
     <section className="verification-container">
+      {isFinalizing ? (
+        <div className="overlay"></div>
+      ) : isSuccessModalOpen ? (
+        <div className="overlay"></div>
+      ) : null}
+
       {isFinalizing && (
         <AreYouSureModal
           handleFinalizing={handleFinalizing}

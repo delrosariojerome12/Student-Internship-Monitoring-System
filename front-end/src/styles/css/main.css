@@ -1760,27 +1760,109 @@ button {
   gap: 1rem;
   padding: 3rem;
 }
+.verification-container .overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(48, 47, 47, 0.753);
+  position: absolute;
+  filter: blur(20px);
+  top: 0%;
+  left: 0%;
+  z-index: 6;
+}
 .verification-container .are-you-sure-modal {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 400px;
-  height: 200px;
+  width: 50rem;
+  height: 300px;
   background-color: #fff;
-  z-index: 4;
-  border: solid 1px #000;
+  z-index: 7;
+  border: solid 1px #323232;
+  border-radius: 2rem;
+  padding: 2rem;
+  display: grid;
+  align-items: center;
+  text-align: center;
+}
+.verification-container .are-you-sure-modal .button-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+.verification-container .are-you-sure-modal .button-container button {
+  cursor: pointer;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.6rem;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  color: #f1faee;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.verification-container .are-you-sure-modal .button-container button:first-child {
+  background-color: #fff;
+  border: solid 1px #457b9d;
+  color: #457b9d;
+}
+.verification-container .are-you-sure-modal .button-container button:last-child {
+  background-color: #457b9d;
+}
+.verification-container .are-you-sure-modal .button-container button:first-child:hover {
+  background-color: #e63946;
+  color: #fff;
+  border: solid 1px #e63946;
+}
+.verification-container .are-you-sure-modal .button-container button:last-child:hover {
+  background-color: #f1faee;
+  color: #457b9d;
+  border: solid 1px #457b9d;
 }
 .verification-container .success-modal {
+  display: grid;
+  align-items: center;
+  text-align: center;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 400px;
-  height: 200px;
+  width: 50rem;
+  height: 300px;
   background-color: #fff;
   border: solid 1px #000;
-  z-index: 4;
+  z-index: 7;
+  border-radius: 2rem;
+  padding: 2rem;
+}
+.verification-container .success-modal button {
+  margin: auto;
+  cursor: pointer;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.6rem;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  background-color: #457b9d;
+  color: #f1faee;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.verification-container .success-modal button:last-child:hover {
+  background-color: #f1faee;
+  color: #457b9d;
+  border: solid 1px #457b9d;
 }
 .verification-container .greetings {
   font-size: 2.5rem;
