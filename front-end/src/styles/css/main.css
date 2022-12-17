@@ -35,6 +35,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -835,6 +837,7 @@ button {
 }
 
 .dashboard {
+  display: grid;
   height: 100%;
   gap: 1rem;
   position: relative;
@@ -2043,6 +2046,24 @@ button {
   background-color: #f1faee;
   color: #457b9d;
   border: solid 1px #457b9d;
+}
+
+.waiting-container {
+  height: 90%;
+  width: 70vw;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 2rem;
+  display: grid;
+  grid-template-rows: 25px 25px auto;
+  gap: 2rem;
+  padding: 3rem;
+}
+.waiting-container > img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin: auto;
+  border-radius: 1rem;
 }
 
 .profile-page {

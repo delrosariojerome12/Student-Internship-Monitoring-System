@@ -522,6 +522,7 @@ const Verification = () => {
           return (
             <div className="input-contain" key={index}>
               <input
+                tabIndex={-1}
                 disabled={isDisabled}
                 required
                 value={value}
@@ -555,6 +556,7 @@ const Verification = () => {
                 onChange={(e) =>
                   handleOnChange(e.target.value, group, index, mainIndex)
                 }
+                tabIndex={-1}
                 required
                 type="file"
                 name="valid-img"
@@ -568,6 +570,7 @@ const Verification = () => {
           const list = options.map((opt) => opt);
           return (
             <Select
+              tabIndex={-1}
               options={list}
               styles={customStyle}
               onChange={(e) => handleOnChange(e.value, group, index, mainIndex)}
@@ -589,6 +592,7 @@ const Verification = () => {
           const {optionItems} = item;
           return (
             <CreatableSelect
+              tabIndex={-1}
               styles={customStyle}
               required
               onChange={(e) => handleOnChange(e.value, group, index, mainIndex)}
@@ -610,6 +614,7 @@ const Verification = () => {
           const {optionTime} = item;
           return (
             <Select
+              tabIndex={-1}
               className={isVisible ? "time" : "time not-visible"}
               options={optionTime}
               styles={customStyle}
@@ -632,6 +637,7 @@ const Verification = () => {
           const {scheduleType} = item;
           return (
             <Select
+              tabIndex={-1}
               className="scheduleType"
               options={scheduleType}
               styles={customStyle}
@@ -735,7 +741,9 @@ const Verification = () => {
             <div className="forms-con">
               {renderInputs(form[0].forms, "Internship Details", 0)}
             </div>
-            <button onClick={handleNext}>Next</button>
+            <button tabIndex={-1} onClick={handleNext}>
+              Next
+            </button>
           </div>
           <div
             className={
@@ -750,8 +758,11 @@ const Verification = () => {
               {renderInputs(form[1].forms, "Student Details", 1)}
             </div>
             <div className="btn-con">
-              <button onClick={handleReturn}>Back</button>
+              <button tabIndex={-1} onClick={handleReturn}>
+                Back
+              </button>
               <button
+                tabIndex={-1}
                 disabled={isFinalizing ? true : false}
                 onClick={handleFinalizing}
               >
