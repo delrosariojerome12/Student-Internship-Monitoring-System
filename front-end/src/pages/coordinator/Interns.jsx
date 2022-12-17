@@ -1,10 +1,10 @@
-import React, {useState, useCallback, useEffect} from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import Intern from "../../components/coordinator/Intern";
-import {useSelector, useDispatch} from "react-redux";
-import {getAllInterns} from "../../features/interns/internReducer";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllInterns } from "../../features/interns/internReducer";
 
 const Interns = () => {
-  const {interns, isLoading, isError} = useSelector((state) => state.intern);
+  const { interns, isLoading, isError } = useSelector((state) => state.intern);
   const dispatch = useDispatch();
   const [searchIntern, setSearchIntern] = useState("");
   const [isSortOpen, setIsSortOpen] = useState(false);

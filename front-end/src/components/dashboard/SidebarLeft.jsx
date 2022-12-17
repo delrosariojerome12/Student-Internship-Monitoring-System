@@ -1,8 +1,8 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import {RiDashboardLine} from "react-icons/ri";
-import {HiPencilAlt} from "react-icons/hi";
-import {HiDocument, HiTrendingUp} from "react-icons/hi";
+import { Link } from "react-router-dom";
+import { RiDashboardLine } from "react-icons/ri";
+import { HiPencilAlt } from "react-icons/hi";
+import { HiDocument, HiTrendingUp } from "react-icons/hi";
 import {
   FaUserAlt,
   FaChevronLeft,
@@ -10,11 +10,11 @@ import {
   FaUsers,
   FaUserCheck,
 } from "react-icons/fa";
-import {MdOutlineWork} from "react-icons/md";
-import {IconContext} from "react-icons";
+import { MdOutlineWork } from "react-icons/md";
+import { IconContext } from "react-icons";
 import logo from "../../assets/img/logo.svg";
-import {useSelector, useDispatch} from "react-redux";
-import {handleSidebar} from "../../features/dashboard/dashboard";
+import { useSelector, useDispatch } from "react-redux";
+import { handleSidebar } from "../../features/dashboard/dashboard";
 
 const links = [
   {
@@ -55,6 +55,11 @@ const links = [
         link: "Dashboard",
         IconType: RiDashboardLine,
       },
+      {
+        path: "/dashboard/documents",
+        link: "Documents",
+        IconType: HiDocument,
+      },
     ],
   },
   {
@@ -90,15 +95,15 @@ const links = [
 ];
 
 const SidebarLeft = () => {
-  const {isSidebarOpen} = useSelector((state) => state.dashboard);
-  const {user} = useSelector((state) => state.user);
+  const { isSidebarOpen } = useSelector((state) => state.dashboard);
+  const { user } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
 
   const renderLinks = () => {
     if (user.user.role === "admin") {
       return links[1].sidebar.map((item, index) => {
-        const {path, link, IconType} = item;
+        const { path, link, IconType } = item;
         return (
           <span className="icon-con" key={index}>
             <Link to={path}>
@@ -112,7 +117,7 @@ const SidebarLeft = () => {
 
     if (user.user.role === "coordinator") {
       return links[2].sidebar.map((item, index) => {
-        const {path, link, IconType} = item;
+        const { path, link, IconType } = item;
         return (
           <span className="icon-con" key={index}>
             <Link to={path}>
@@ -127,7 +132,7 @@ const SidebarLeft = () => {
     const isVerified = user.verification.isVerified;
     if (isVerified) {
       return links[0].sidebar.map((item, index) => {
-        const {path, link, IconType} = item;
+        const { path, link, IconType } = item;
         return (
           <span className="icon-con" key={index}>
             <Link to={path}>
@@ -141,7 +146,7 @@ const SidebarLeft = () => {
     return links[0].sidebar
       .filter((item) => item.link === "Dashboard" || item.link === "Profile")
       .map((item, index) => {
-        const {path, link, IconType} = item;
+        const { path, link, IconType } = item;
         return (
           <span className="icon-con" key={index}>
             <Link to={path}>
@@ -159,7 +164,7 @@ const SidebarLeft = () => {
         isSidebarOpen ? "left-sidebar active-sidebar" : "left-sidebar "
       }
     >
-      <IconContext.Provider value={{className: "icons", color: "white"}}>
+      <IconContext.Provider value={{ className: "icons", color: "white" }}>
         <div className="img-con">
           <img src={logo} alt="Logo.png " />
           <span

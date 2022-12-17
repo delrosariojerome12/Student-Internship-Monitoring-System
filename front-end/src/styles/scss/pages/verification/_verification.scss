@@ -1,0 +1,325 @@
+@import "../../variables";
+@import "../../utils";
+
+.verification-container {
+  border: solid 1px #fff;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 4.3rem auto;
+  gap: 1rem;
+  padding: 3rem;
+
+  .are-you-sure-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 200px;
+    background-color: #fff;
+    z-index: 4;
+    border: solid 1px #000;
+  }
+  .success-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 200px;
+    background-color: #fff;
+    border: solid 1px #000;
+    z-index: 4;
+  }
+
+  .greetings {
+    font-size: 2.5rem;
+    color: $primary-font-color;
+    span {
+      color: $primary-compliment-landing;
+    }
+  }
+  .verification-steps {
+    overflow: hidden;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 1rem;
+    display: grid;
+    grid-template-rows: 12rem auto;
+    gap: 2rem;
+    padding: 3rem;
+    p {
+      font-size: 2.5rem;
+      font-weight: 600;
+    }
+    .steps-container {
+      display: grid;
+      text-align: center;
+      .steps {
+        // display: flex;
+        // justify-content: space-evenly;
+        // align-items: center;
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: space-evenly;
+        position: relative;
+        .step-1,
+        .step-2,
+        .step-3 {
+          height: 7rem;
+          width: 7rem;
+          border-radius: 50%;
+          @include flexCenter;
+          font-weight: 600;
+          // background-color: $primary-compliment-landing;
+          transition: all 0.2s ease-in-out;
+          border: solid 3px $primary-compliment-landing;
+          cursor: pointer;
+        }
+        .active {
+          color: #fff;
+          background-color: $primary-compliment-landing;
+        }
+        .step-1 {
+          position: relative;
+          &::after {
+            content: " ";
+            position: absolute;
+            left: 100%;
+            border: dashed 2px $primary-compliment-landing;
+            width: 240%;
+          }
+        }
+        // .step-2 {
+        //   &::before {
+        //     content: " ";
+        //     position: absolute;
+        //     right: 28.5%;
+        //     border: dashed 2px $primary-compliment-landing;
+        //     width: 14%;
+        //   }
+        // }
+      }
+    }
+  }
+
+  form {
+    width: 60rem;
+    position: relative;
+    margin: auto;
+    // overflow: hidden;
+    height: 50rem;
+    .inactive {
+      transform: translate(-120%, 0%);
+    }
+    .inactive-1 {
+      transform: translate(-240%, 0%);
+    }
+    .inactive-2 {
+      transform: translate(-80%, 0%);
+    }
+
+    .active {
+      transform: translate(-120%, 0%);
+    }
+    .active-1 {
+      transform: translate(-200%, 0%);
+    }
+
+    .internship-details {
+      border: solid 1px #000;
+      z-index: 3;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      padding: 1rem;
+      border-radius: 1rem;
+      top: 0%;
+      left: 0%;
+      transition: all 0.2s linear;
+      // display: grid;
+      // grid-template-rows: auto 4.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      .forms-con {
+        transition: all 0.2s linear;
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        width: 100%;
+      }
+    }
+
+    .student-details {
+      border: solid 1px #000;
+      position: absolute;
+      padding: 1rem;
+      border-radius: 1rem;
+      top: 0%;
+      left: 120%;
+      width: 100%;
+      height: 100%;
+      transition: all 0.2s linear;
+      gap: 2rem;
+      display: grid;
+      grid-template-rows: auto auto;
+
+      .forms-con {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+      .img-input {
+        height: 5rem;
+        display: flex;
+        align-items: center;
+        border: solid 1px #8b8b8b;
+        gap: 2rem;
+        padding-left: 2rem;
+        border-radius: 0.5rem;
+      }
+      .btn-con {
+        @include flexCenter;
+      }
+    }
+
+    .schedule-details {
+      border: solid 1px #000;
+      position: absolute;
+      padding: 1rem;
+      border-radius: 1rem;
+      top: 0%;
+      left: 200%;
+      width: 100%;
+      height: 100%;
+      transition: all 0.2s linear;
+      gap: 2rem;
+      display: grid;
+      grid-template-rows: auto auto;
+
+      .not-visible {
+        display: none;
+      }
+
+      .forms-con {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+      .img-input {
+        height: 5rem;
+        display: flex;
+        align-items: center;
+        border: solid 1px #8b8b8b;
+        gap: 2rem;
+        padding-left: 2rem;
+        border-radius: 0.5rem;
+      }
+      .btn-con {
+        @include flexCenter;
+      }
+    }
+
+    .input-contain {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      // border-radius: 0.5rem;
+      // justify-content: center;
+      width: fit-content;
+      gap: 0.5rem;
+      width: 100%;
+
+      .error-message {
+        font-size: 1.4rem;
+        color: red;
+      }
+
+      .placeholder-container {
+        position: absolute;
+        top: 0%;
+        left: 0rem;
+        height: 4.5rem;
+        width: 100%;
+        pointer-events: none;
+      }
+
+      input {
+        width: 100%;
+        height: 5rem;
+        border: solid 3px transparent;
+        outline: solid 1px #8b8b8b;
+        border-radius: 0.5rem;
+        padding: 1.1rem 3.5rem 1.1rem 2rem;
+        letter-spacing: 2px;
+        transition: all 0.3s ease-in-out;
+        &:focus {
+          border: solid 3px $primary-bg-color;
+          outline: none;
+        }
+
+        &:focus + .placeholder-container .placeholder-text {
+          top: 0%;
+          left: 0%;
+          background-color: #fff;
+          font-size: 1.1rem;
+          color: black;
+          // border: solid 1px #8b8b8b;
+          scale: 0.8;
+        }
+      }
+
+      .placeholder-text {
+        position: absolute;
+        transition: all 0.2s ease-in-out;
+        pointer-events: none;
+        top: 50%;
+        left: 5%;
+        transform: translate(0%, -50%);
+        &:nth-child(1) {
+          left: 2% !important;
+        }
+        .text {
+          font-size: 1.4rem;
+          padding: 0 0.5rem;
+          background-color: transparent;
+          color: black;
+          display: flex;
+          gap: 0.5rem;
+          align-items: center;
+        }
+      }
+      .active {
+        top: 0%;
+        left: 0%;
+        background-color: #fff;
+        font-size: 1.1rem;
+        border-color: #8b8b8b;
+        scale: 0.8;
+      }
+    }
+
+    button {
+      cursor: pointer;
+      height: 4.5rem;
+      @include flexCenter;
+      margin: auto;
+      padding: 1.6rem;
+      border-radius: 5px;
+      border: solid 1px transparent;
+      outline: none;
+      background-color: $primary-bg-color;
+      color: $primary-font-color;
+      letter-spacing: 0.2rem;
+      transition: all 0.3s ease-in-out;
+      font-weight: 600;
+      &:hover {
+        background-color: $primary-font-color;
+        color: $primary-bg-color;
+        border: solid 1px $primary-bg-color;
+      }
+    }
+  }
+}

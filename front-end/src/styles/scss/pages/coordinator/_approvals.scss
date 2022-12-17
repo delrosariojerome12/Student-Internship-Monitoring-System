@@ -1,0 +1,64 @@
+@import "../../utils";
+@import "../../variables";
+
+.approvals-container {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 7vh auto;
+  gap: 1rem;
+  //   & > * {
+  //     border: solid 1px red;
+  //   }
+  header {
+    .search-box {
+      display: flex;
+      background-color: $light-bg-color;
+      width: 25rem;
+      border-radius: 2rem;
+      align-items: center;
+      padding: 0 1.5rem;
+      margin: 1rem 1rem auto auto;
+      span {
+        @include flexCenter;
+        font-size: 1.8rem;
+        cursor: pointer;
+      }
+      input {
+        width: 100%;
+        background: transparent;
+        padding: 1rem;
+        outline: none;
+        border: 0;
+      }
+    }
+  }
+  .approvals-content {
+    border: solid 1px #fff;
+    border-radius: 1rem;
+    position: relative;
+    // .user1 {
+    //   display: grid;
+    //   grid-template-columns: 10rem auto;
+    //   gap: 1rem;
+    //   position: absolute;
+    //   top: 3.5rem;
+    //   left: 3rem;
+    //   height: 10%;
+    //   width: 92%;
+    //   & > * {
+    //     border: solid 1px #fff;
+    //   }
+    // }
+    // &::after {
+    //   content: "";
+    //   background-color: #32323280;
+    //   position: absolute;
+    //   top: 50%;
+    //   left: 50%;
+    //   transform: translate(-50%, -50%);
+    //   width: 95%;
+    //   height: 95%;
+    // }
+  }
+}

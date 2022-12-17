@@ -26,7 +26,6 @@ const buttons = [
 
 const Profile = () => {
   const navigate = useNavigate();
-
   return (
     <section className="profile-page">
       <div className="profile-user">

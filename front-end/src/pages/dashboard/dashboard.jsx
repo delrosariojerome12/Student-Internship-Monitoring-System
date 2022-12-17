@@ -4,12 +4,14 @@ import {lazy, Suspense} from "react";
 import {useSelector} from "react-redux";
 
 import DashboardMain from "./DashboardMain";
-import Pending from "../Pending";
+import PendingContainer from "../verification/PendingContainer";
 import SidebarLeft from "../../components/dashboard/SidebarLeft";
 import SideBarRight from "../../components/dashboard/SidebarRight";
 
 import Coordinator from "../coordinator/Coordinator";
 import Admin from "../admin/Admin";
+
+import Bouncing from "../../components/loading/Bouncing";
 
 const Profile = lazy(() => import("./Profile"));
 const DailyTimeRecord = lazy(() => import("./DailyTimeRecord"));
@@ -43,9 +45,9 @@ const Dashboard = () => {
         className="dashboard"
       >
         <SidebarLeft />
-        <Suspense fallback={<h2>Loading...</h2>}>
+        <Suspense fallback={<Bouncing />}>
           <Routes>
-            <Route path="/" element={<Pending />} />
+            <Route path="/*" element={<PendingContainer />} />
             <Route path="/profile/*" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="*" element={<Navigate to="/404" replace />} />
@@ -63,7 +65,7 @@ const Dashboard = () => {
       className="dashboard"
     >
       <SidebarLeft />
-      <Suspense fallback={<h2>Loading...</h2>}>
+      <Suspense fallback={<Bouncing />}>
         <Routes>
           <Route path="/" element={<DashboardMain />} />
           <Route path="/profile/*" element={<Profile />} />

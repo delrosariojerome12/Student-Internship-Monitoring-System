@@ -28,6 +28,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -828,12 +837,17 @@ button {
 }
 
 .dashboard {
+  display: grid;
   height: 100%;
   gap: 1rem;
   position: relative;
   padding: 1rem 9rem 1rem 13rem;
   background-color: #393e46;
   transition: all 0.2s ease-in-out;
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
@@ -1359,6 +1373,7 @@ button {
   width: 50rem;
   height: 40rem;
   background-color: #fff;
+  border: solid 1px #000;
   border-radius: 1rem;
 }
 .dashboard .intern-container .interns .intern {
@@ -1367,12 +1382,318 @@ button {
   border: solid 1px #fff;
   border-radius: 1rem;
   gap: 2rem;
+  cursor: pointer;
+  font-size: 1.4rem;
 }
 .dashboard .intern-container .interns .intern .intern-details {
   background-color: #fff;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: auto auto;
 }
 .dashboard .intern-container .interns .intern > * {
   border: solid 1px #fff;
+}
+.dashboard .approvals-container {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 7vh auto;
+  gap: 1rem;
+}
+.dashboard .approvals-container header .search-box {
+  display: flex;
+  background-color: #f1faee;
+  width: 25rem;
+  border-radius: 2rem;
+  align-items: center;
+  padding: 0 1.5rem;
+  margin: 1rem 1rem auto auto;
+}
+.dashboard .approvals-container header .search-box span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+.dashboard .approvals-container header .search-box input {
+  width: 100%;
+  background: transparent;
+  padding: 1rem;
+  outline: none;
+  border: 0;
+}
+.dashboard .approvals-container .approvals-content {
+  border: solid 1px #fff;
+  border-radius: 1rem;
+  position: relative;
+}
+.dashboard .admin-documents {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 6vh auto;
+  gap: 1rem;
+}
+.dashboard .admin-documents .create-modal {
+  display: none !important;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: solid 1px #0d7377;
+  border-radius: 2rem;
+  background-color: #fff;
+  height: 45rem;
+  width: 40rem;
+  padding: 7rem 4rem 5rem;
+  z-index: 2;
+}
+.dashboard .admin-documents .create-modal .folders {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.dashboard .admin-documents .create-modal .folders .folder-name p,
+.dashboard .admin-documents .create-modal .folders .subject p {
+  font-weight: 700;
+  width: 100%;
+  font-size: 1.6rem;
+}
+.dashboard .admin-documents .create-modal .folders .folder-name input,
+.dashboard .admin-documents .create-modal .folders .subject input {
+  padding: 0.8rem;
+  flex: 1;
+  width: 100%;
+}
+.dashboard .admin-documents .create-modal button {
+  padding: 1rem 3rem;
+  font-weight: 550;
+  font-size: 1.5rem;
+  border: solid 1px #0d7377;
+  background-color: #0d7377;
+  color: #fff;
+  transition: all 0.3s linear;
+}
+.dashboard .admin-documents .create-modal button:hover {
+  background-color: #fff;
+  color: #0d7377;
+  border: solid 1px #0d7377;
+}
+.dashboard .admin-documents .requirments-modal {
+  display: none !important;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: solid 1px #0d7377;
+  border-radius: 2rem;
+  background-color: #fff;
+  height: 45rem;
+  width: 40rem;
+  padding: 7rem 4rem 5rem;
+  z-index: 3;
+}
+.dashboard .admin-documents .requirments-modal .file-name {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.dashboard .admin-documents .requirments-modal .file-name .requirements-name p,
+.dashboard .admin-documents .requirments-modal .file-name .subject-req p {
+  font-weight: 700;
+  width: 100%;
+  font-size: 1.6rem;
+}
+.dashboard .admin-documents .requirments-modal .file-name .requirements-name input,
+.dashboard .admin-documents .requirments-modal .file-name .subject-req input {
+  padding: 0.8rem;
+  flex: 1;
+  width: 100%;
+}
+.dashboard .admin-documents .requirments-modal button {
+  padding: 1rem 3rem;
+  font-weight: 550;
+  font-size: 1.5rem;
+  border: solid 1px #0d7377;
+  background-color: #0d7377;
+  color: #fff;
+  transition: all 0.3s linear;
+}
+.dashboard .admin-documents .requirments-modal button:hover {
+  background-color: #fff;
+  color: #0d7377;
+  border: solid 1px #0d7377;
+}
+.dashboard .admin-documents .delete-modal {
+  display: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: solid 1px #000;
+  border-radius: 2rem;
+  background-color: #fff;
+  height: 30rem;
+  width: 55rem;
+  z-index: 4;
+}
+.dashboard .admin-documents .delete-modal .delete-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+.dashboard .admin-documents .delete-modal .delete-icon span {
+  background-color: #bababa;
+  border-radius: 50%;
+  padding: 2.5rem 3rem 1rem;
+  font-size: 4rem;
+}
+.dashboard .admin-documents .delete-modal .delete-icon h5 {
+  color: #323232;
+  font-weight: 500;
+}
+.dashboard .admin-documents .delete-modal .delete-btn {
+  display: flex;
+  gap: 3rem;
+  cursor: pointer;
+}
+.dashboard .admin-documents .delete-modal .delete-btn .back {
+  padding: 1rem 5.5rem;
+  font-weight: 600;
+  border: solid 1px #0d7377;
+  transition: all 0.3s linear;
+}
+.dashboard .admin-documents .delete-modal .delete-btn .back:hover {
+  color: #fff;
+  background-color: #0d7377;
+  border-radius: 1rem;
+}
+.dashboard .admin-documents .delete-modal .delete-btn .confirm {
+  padding: 1rem 4.5rem;
+  font-weight: 600;
+  border: solid 1px #0d7377;
+  background-color: #0d7377;
+  color: #fff;
+  transition: all 0.3s linear;
+}
+.dashboard .admin-documents .delete-modal .delete-btn .confirm:hover {
+  background-color: #fff;
+  color: #000;
+  border-radius: 1rem;
+}
+.dashboard .admin-documents header .search-box {
+  display: flex;
+  background-color: #f1faee;
+  width: 25rem;
+  border-radius: 2rem;
+  align-items: center;
+  padding: 0 1.5rem;
+  margin: 1rem 1rem auto auto;
+}
+.dashboard .admin-documents header .search-box span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+.dashboard .admin-documents header .search-box input {
+  width: 100%;
+  background: transparent;
+  padding: 1rem;
+  outline: none;
+  border: 0;
+}
+.dashboard .admin-documents .documents-content {
+  padding: 2rem;
+  border: solid 1px #fff;
+  border-radius: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: auto auto 1;
+  gap: 3rem;
+  z-index: 1;
+}
+.dashboard .admin-documents .documents-content .inputs {
+  text-align: center;
+}
+.dashboard .admin-documents .documents-content .inputs input {
+  width: 100%;
+  height: 3.5rem;
+  text-align: center;
+  flex: 1;
+}
+.dashboard .admin-documents .documents-content .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+.dashboard .admin-documents .documents-content .buttons button {
+  padding: 1.5rem 3.5rem;
+  border-radius: 1rem;
+  border: none;
+  transition: all 0.3s linear;
+  font-weight: 520;
+}
+.dashboard .admin-documents .documents-content .buttons button:hover {
+  color: #fff;
+  background-color: #0d7377;
+}
+.dashboard .admin-documents .documents-content .files-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: 10rem;
+  gap: 1rem;
+  justify-content: center;
+}
+.dashboard .admin-documents .documents-content .files-container div {
+  background-color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  width: 100%;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+.dashboard .admin-documents .documents-content .files-container div span {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 1rem 0 0;
+  opacity: 0;
+  transition: all 0.5s;
+}
+.dashboard .admin-documents .documents-content .files-container div:hover span {
+  opacity: 1;
+}
+.dashboard .admin-documents .documents-content::after {
+  content: "";
+  background-color: rgba(50, 50, 50, 0.5019607843);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 98%;
+  height: 98%;
+  z-index: -1;
 }
 
 .pending {
@@ -1387,23 +1708,30 @@ button {
   color: #f1faee;
 }
 .pending .greetings .name {
-  font-size: 4rem;
+  font-size: 3.9rem;
 }
 .pending .pending-content {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   text-align: center;
   color: #f1faee;
   border: solid 1px #fff;
   background-color: rgba(34, 40, 49, 0.4509803922);
   gap: 1.5rem;
-  padding: 5rem 10rem;
+  padding: 2rem 10rem;
   border-radius: 1rem;
   position: relative;
 }
 .pending .pending-content h3 {
   font-size: 2.5rem;
+}
+.pending .pending-content img {
+  height: 30rem;
+}
+.pending .pending-content p {
+  font-size: 2rem;
 }
 .pending .pending-content > button {
   padding: 1.5rem 5rem;
@@ -1419,22 +1747,213 @@ button {
   border: solid 1px #0d7377;
   background-color: #f1faee;
 }
-.pending .modal {
-  text-align: left;
-  color: #000;
-  height: 45rem;
-  width: 60vw;
+.pending .verify {
+  height: 50rem;
+}
+
+.verification-container {
+  border: solid 1px #fff;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 4.3rem auto;
+  gap: 1rem;
+  padding: 3rem;
+}
+.verification-container .are-you-sure-modal {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 1rem;
-  border: solid 1px #fff;
+  width: 400px;
+  height: 200px;
   background-color: #fff;
-  overflow: hidden;
-  transition: all 0.2s linear;
+  z-index: 4;
+  border: solid 1px #000;
 }
-.pending .modal form .input-contain {
+.verification-container .success-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 200px;
+  background-color: #fff;
+  border: solid 1px #000;
+  z-index: 4;
+}
+.verification-container .greetings {
+  font-size: 2.5rem;
+  color: #f1faee;
+}
+.verification-container .greetings span {
+  color: #0d7377;
+}
+.verification-container .verification-steps {
+  overflow: hidden;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 1rem;
+  display: grid;
+  grid-template-rows: 12rem auto;
+  gap: 2rem;
+  padding: 3rem;
+}
+.verification-container .verification-steps p {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+.verification-container .verification-steps .steps-container {
+  display: grid;
+  text-align: center;
+}
+.verification-container .verification-steps .steps-container .steps {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-evenly;
+  position: relative;
+}
+.verification-container .verification-steps .steps-container .steps .step-1,
+.verification-container .verification-steps .steps-container .steps .step-2,
+.verification-container .verification-steps .steps-container .steps .step-3 {
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  border: solid 3px #0d7377;
+  cursor: pointer;
+}
+.verification-container .verification-steps .steps-container .steps .active {
+  color: #fff;
+  background-color: #0d7377;
+}
+.verification-container .verification-steps .steps-container .steps .step-1 {
+  position: relative;
+}
+.verification-container .verification-steps .steps-container .steps .step-1::after {
+  content: " ";
+  position: absolute;
+  left: 100%;
+  border: dashed 2px #0d7377;
+  width: 240%;
+}
+.verification-container form {
+  width: 60rem;
+  position: relative;
+  margin: auto;
+  height: 50rem;
+}
+.verification-container form .inactive {
+  transform: translate(-120%, 0%);
+}
+.verification-container form .inactive-1 {
+  transform: translate(-240%, 0%);
+}
+.verification-container form .inactive-2 {
+  transform: translate(-80%, 0%);
+}
+.verification-container form .active {
+  transform: translate(-120%, 0%);
+}
+.verification-container form .active-1 {
+  transform: translate(-200%, 0%);
+}
+.verification-container form .internship-details {
+  border: solid 1px #000;
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  padding: 1rem;
+  border-radius: 1rem;
+  top: 0%;
+  left: 0%;
+  transition: all 0.2s linear;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.verification-container form .internship-details .forms-con {
+  transition: all 0.2s linear;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+}
+.verification-container form .student-details {
+  border: solid 1px #000;
+  position: absolute;
+  padding: 1rem;
+  border-radius: 1rem;
+  top: 0%;
+  left: 120%;
+  width: 100%;
+  height: 100%;
+  transition: all 0.2s linear;
+  gap: 2rem;
+  display: grid;
+  grid-template-rows: auto auto;
+}
+.verification-container form .student-details .forms-con {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.verification-container form .student-details .img-input {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  border: solid 1px #8b8b8b;
+  gap: 2rem;
+  padding-left: 2rem;
+  border-radius: 0.5rem;
+}
+.verification-container form .student-details .btn-con {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.verification-container form .schedule-details {
+  border: solid 1px #000;
+  position: absolute;
+  padding: 1rem;
+  border-radius: 1rem;
+  top: 0%;
+  left: 200%;
+  width: 100%;
+  height: 100%;
+  transition: all 0.2s linear;
+  gap: 2rem;
+  display: grid;
+  grid-template-rows: auto auto;
+}
+.verification-container form .schedule-details .not-visible {
+  display: none;
+}
+.verification-container form .schedule-details .forms-con {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.verification-container form .schedule-details .img-input {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  border: solid 1px #8b8b8b;
+  gap: 2rem;
+  padding-left: 2rem;
+  border-radius: 0.5rem;
+}
+.verification-container form .schedule-details .btn-con {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.verification-container form .input-contain {
   display: flex;
   position: relative;
   flex-direction: column;
@@ -1444,33 +1963,33 @@ button {
   gap: 0.5rem;
   width: 100%;
 }
-.pending .modal form .input-contain .error-message {
+.verification-container form .input-contain .error-message {
   font-size: 1.4rem;
   color: red;
 }
-.pending .modal form .input-contain .placeholder-container {
+.verification-container form .input-contain .placeholder-container {
   position: absolute;
   top: 0%;
-  left: 0.5rem;
+  left: 0rem;
   height: 4.5rem;
   width: 100%;
   pointer-events: none;
 }
-.pending .modal form .input-contain input {
+.verification-container form .input-contain input {
   width: 100%;
   height: 5rem;
   border: solid 3px transparent;
   outline: solid 1px #8b8b8b;
   border-radius: 0.5rem;
-  padding: 1.1rem 3.5rem 1.1rem 1.1rem;
+  padding: 1.1rem 3.5rem 1.1rem 2rem;
   letter-spacing: 2px;
   transition: all 0.3s ease-in-out;
 }
-.pending .modal form .input-contain input:focus {
+.verification-container form .input-contain input:focus {
   border: solid 3px #457b9d;
   outline: none;
 }
-.pending .modal form .input-contain input:focus + .placeholder-container .placeholder-text {
+.verification-container form .input-contain input:focus + .placeholder-container .placeholder-text {
   top: 0%;
   left: 0%;
   background-color: #fff;
@@ -1478,7 +1997,7 @@ button {
   color: black;
   scale: 0.8;
 }
-.pending .modal form .input-contain .placeholder-text {
+.verification-container form .input-contain .placeholder-text {
   position: absolute;
   transition: all 0.2s ease-in-out;
   pointer-events: none;
@@ -1486,10 +2005,10 @@ button {
   left: 5%;
   transform: translate(0%, -50%);
 }
-.pending .modal form .input-contain .placeholder-text:nth-child(1) {
+.verification-container form .input-contain .placeholder-text:nth-child(1) {
   left: 2% !important;
 }
-.pending .modal form .input-contain .placeholder-text .text {
+.verification-container form .input-contain .placeholder-text .text {
   font-size: 1.4rem;
   padding: 0 0.5rem;
   background-color: transparent;
@@ -1498,7 +2017,7 @@ button {
   gap: 0.5rem;
   align-items: center;
 }
-.pending .modal form .input-contain .active {
+.verification-container form .input-contain .active {
   top: 0%;
   left: 0%;
   background-color: #fff;
@@ -1506,7 +2025,7 @@ button {
   border-color: #8b8b8b;
   scale: 0.8;
 }
-.pending .modal form button {
+.verification-container form button {
   cursor: pointer;
   height: 4.5rem;
   display: flex;
@@ -1523,74 +2042,28 @@ button {
   transition: all 0.3s ease-in-out;
   font-weight: 600;
 }
-.pending .modal form button:hover {
+.verification-container form button:hover {
   background-color: #f1faee;
   color: #457b9d;
   border: solid 1px #457b9d;
 }
-.pending .modal form .inactive {
-  position: absolute;
-  transform: translate(-100%, 0%);
-}
-.pending .modal form .internship-details {
-  z-index: 3;
-  height: 100%;
-  width: 100%;
-  position: absolute;
+
+.waiting-container {
+  height: 90%;
+  width: 70vw;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 2rem;
+  display: grid;
+  grid-template-rows: 25px 25px auto;
+  gap: 2rem;
   padding: 3rem;
+}
+.waiting-container > img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin: auto;
   border-radius: 1rem;
-  top: 0%;
-  left: 0%;
-  transition: all 0.2s linear;
-  display: grid;
-  grid-template-rows: 6rem auto 4rem;
-  gap: 2rem;
-  justify-content: center;
-}
-.pending .modal form .internship-details .forms-con {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(200px, 400px));
-  transition: all 0.2s linear;
-  gap: 2rem;
-  justify-content: center;
-}
-.pending .modal form .internship-details .forms-con button {
-  grid-row: 5/6;
-  grid-column: 1/3;
-}
-.pending .modal form .active {
-  transform: translate(-100%, 0%);
-}
-.pending .modal form .student-details {
-  position: absolute;
-  padding: 2rem;
-  border-radius: 1rem;
-  top: 0%;
-  left: 100%;
-  width: 100%;
-  height: 100%;
-  border: solid 1px #fff;
-  transition: all 0.2s linear;
-  display: grid;
-  gap: 1rem;
-}
-.pending .modal form .student-details .img-input {
-  height: 5rem;
-  display: flex;
-  align-items: center;
-  border: solid 1px #8b8b8b;
-  gap: 2rem;
-  padding-left: 2rem;
-  border-radius: 0.5rem;
-}
-.pending .modal form .student-details .btn-con {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.pending .verify {
-  height: 40rem;
-  width: 50rem;
 }
 
 .profile-page {
@@ -2995,52 +3468,51 @@ button {
     margin: 0;
   }
 }
-@media screen and (max-width: 1200px) {
-  .pending .greetings .name {
-    font-size: 3.9rem;
+@media screen and (max-width: 1300px) {
+  .pending {
+    grid-template-rows: 6rem auto;
   }
-  .pending .pending-content img {
-    height: 35rem;
-  }
-}
-@media screen and (max-width: 1000px) {
-  .pending .greetings .name {
-    font-size: 3.7rem;
-  }
-  .pending .pending-content {
-    padding: 3rem 8rem;
-  }
-  .pending .pending-content h3 {
-    font-size: 2.2rem;
-  }
-  .pending .pending-content img {
-    height: 32rem;
-  }
-}
-@media screen and (max-width: 900px) {
   .pending .greetings .name {
     font-size: 3.5rem;
   }
-  .pending .pending-content {
-    padding: 3rem 6rem;
-  }
-  .pending .pending-content img {
-    height: 30rem;
-  }
-}
-@media screen and (max-width: 830px) {
   .pending .pending-content img {
     height: 28rem;
   }
 }
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 1000px) {
+  .pending .pending-content h3 {
+    font-size: 2.2rem;
+  }
   .pending .pending-content img {
     height: 25rem;
   }
+  .pending .pending-content p {
+    font-size: 1.8rem;
+  }
 }
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 800px) {
+  .pending {
+    grid-template-rows: 5rem auto;
+  }
   .pending .greetings .name {
-    font-size: 3.3rem;
+    font-size: 3.2rem;
+  }
+  .pending .pending-content {
+    padding: 3rem 6rem;
+  }
+  .pending .pending-content h3 {
+    font-size: 2.1rem;
+  }
+  .pending .pending-content img {
+    height: 24rem;
+  }
+  .pending .pending-content p {
+    font-size: 1.6rem;
+  }
+}
+@media screen and (max-width: 640px) {
+  .pending .greetings .name {
+    font-size: 3rem;
   }
   .pending .pending-content h3 {
     font-size: 2rem;
@@ -3049,18 +3521,21 @@ button {
     height: 22rem;
   }
   .pending .pending-content p {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
 }
 @media screen and (max-width: 600px) {
   .pending .greetings .name {
-    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.8rem;
   }
   .pending .pending-content h3 {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
   .pending .pending-content img {
-    height: 18rem;
+    height: 20rem;
   }
   .pending .pending-content p {
     font-size: 1.5rem;
@@ -3444,5 +3919,329 @@ button {
   }
   .landing-page nav .menu-icon svg {
     cursor: pointer;
+  }
+}
+.circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgba(30, 39, 46, 0.7254901961);
+}
+.circle .circle-one,
+.circle .circle-two {
+  position: absolute;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+}
+.circle .circle-one {
+  -webkit-animation: ring 2s linear infinite;
+          animation: ring 2s linear infinite;
+}
+.circle .circle-two {
+  -webkit-animation: ring2 2s linear infinite;
+          animation: ring2 2s linear infinite;
+}
+@-webkit-keyframes ring {
+  0% {
+    transform: rotate(0deg);
+    box-shadow: 0.1rem 0.5rem 0.2rem #00adb5;
+  }
+  25% {
+    transform: rotate(90deg);
+    box-shadow: 0.1rem 0.5rem 0.2rem #323232;
+  }
+  50% {
+    transform: rotate(180deg);
+    box-shadow: 0.1rem 0.5rem 0.2rem #e63946;
+  }
+  75% {
+    transform: rotate(270deg);
+    box-shadow: 0.1rem 0.5rem 0.2rem #1d3557;
+  }
+  100% {
+    transform: rotate(360deg);
+    box-shadow: 0.1rem 0.5rem 0.2rem #457b9d;
+  }
+}
+@keyframes ring {
+  0% {
+    transform: rotate(0deg);
+    box-shadow: 0.1rem 0.5rem 0.2rem #00adb5;
+  }
+  25% {
+    transform: rotate(90deg);
+    box-shadow: 0.1rem 0.5rem 0.2rem #323232;
+  }
+  50% {
+    transform: rotate(180deg);
+    box-shadow: 0.1rem 0.5rem 0.2rem #e63946;
+  }
+  75% {
+    transform: rotate(270deg);
+    box-shadow: 0.1rem 0.5rem 0.2rem #1d3557;
+  }
+  100% {
+    transform: rotate(360deg);
+    box-shadow: 0.1rem 0.5rem 0.2rem #457b9d;
+  }
+}
+@-webkit-keyframes ring2 {
+  0% {
+    transform: rotate(180deg);
+    box-shadow: 0.1rem 0.5rem 0.2rem #00adb5;
+  }
+  25% {
+    transform: rotate(270deg);
+    box-shadow: 0.1rem 0.5rem 0.2rem #323232;
+  }
+  50% {
+    transform: rotate(360deg);
+    box-shadow: 0.1rem 0.5rem 0.2rem #e63946;
+  }
+  75% {
+    transform: rotate(450deg);
+    box-shadow: 0.1rem 0.5rem 0.2rem #1d3557;
+  }
+  100% {
+    transform: rotate(540deg);
+    box-shadow: 0.1rem 0.5rem 0.2rem #457b9d;
+  }
+}
+@keyframes ring2 {
+  0% {
+    transform: rotate(180deg);
+    box-shadow: 0.1rem 0.5rem 0.2rem #00adb5;
+  }
+  25% {
+    transform: rotate(270deg);
+    box-shadow: 0.1rem 0.5rem 0.2rem #323232;
+  }
+  50% {
+    transform: rotate(360deg);
+    box-shadow: 0.1rem 0.5rem 0.2rem #e63946;
+  }
+  75% {
+    transform: rotate(450deg);
+    box-shadow: 0.1rem 0.5rem 0.2rem #1d3557;
+  }
+  100% {
+    transform: rotate(540deg);
+    box-shadow: 0.1rem 0.5rem 0.2rem #457b9d;
+  }
+}
+.circle .circle-one:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5803921569);
+}
+.circle span {
+  color: rgba(115, 115, 115, 0.5019607843);
+  font-weight: 600;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  -webkit-animation: text 3s ease-in-out infinite;
+          animation: text 3s ease-in-out infinite;
+}
+@-webkit-keyframes text {
+  50% {
+    color: #dddddd;
+  }
+}
+@keyframes text {
+  50% {
+    color: #dddddd;
+  }
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(30, 39, 46, 0.7254901961);
+}
+.dots .dotted span {
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: #fcf95c;
+  margin: 0 0.3rem;
+  border-radius: 50%;
+  display: inline-block;
+  -webkit-animation: dot 2s infinite ease-in-out;
+          animation: dot 2s infinite ease-in-out;
+}
+.dots .dotted span:nth-child(2) {
+  background-color: #65faff;
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+.dots .dotted span:nth-child(3) {
+  background-color: #ff6f7b;
+  -webkit-animation-delay: 0.8s;
+          animation-delay: 0.8s;
+}
+@-webkit-keyframes dot {
+  50% {
+    opacity: 0;
+    transform: scale(0.7) translateY(10px);
+  }
+}
+@keyframes dot {
+  50% {
+    opacity: 0;
+    transform: scale(0.7) translateY(10px);
+  }
+}
+
+.bouncing {
+  background-color: rgba(30, 39, 46, 0.7254901961);
+}
+.bouncing .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20rem;
+  height: 6rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.bouncing .container .circle {
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: 50%;
+  border-radius: 50%;
+  background-color: #fcf95c;
+  left: 15%;
+  transform-origin: 50%;
+  -webkit-animation: circle 0.5s alternate infinite ease;
+          animation: circle 0.5s alternate infinite ease;
+}
+.bouncing .container .circle:nth-child(2) {
+  left: 45%;
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+  background-color: #65faff;
+}
+.bouncing .container .circle:nth-child(3) {
+  left: auto;
+  right: 15%;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background-color: #ff6f7b;
+}
+@-webkit-keyframes circle {
+  0% {
+    top: 50%;
+    height: 1rem;
+    border-radius: 5rem 5rem 2.5rem 2.5rem;
+    transform: scaleX(1.7);
+  }
+  40% {
+    height: 2rem;
+    border-radius: 50%;
+    transform: scaleX(1);
+  }
+  100% {
+    top: 42%;
+  }
+}
+@keyframes circle {
+  0% {
+    top: 50%;
+    height: 1rem;
+    border-radius: 5rem 5rem 2.5rem 2.5rem;
+    transform: scaleX(1.7);
+  }
+  40% {
+    height: 2rem;
+    border-radius: 50%;
+    transform: scaleX(1);
+  }
+  100% {
+    top: 42%;
+  }
+}
+.bouncing .container .shadow {
+  width: 2rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background-color: rgba(224, 185, 182, 0.5019607843);
+  position: absolute;
+  top: 50%;
+  transform-origin: 50%;
+  z-index: -1;
+  left: 15%;
+  filter: blur(1px);
+  -webkit-animation: shadow 0.5s alternate infinite ease;
+          animation: shadow 0.5s alternate infinite ease;
+}
+.bouncing .container .shadow:nth-child(4) {
+  left: 45%;
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+.bouncing .container .shadow:nth-child(5) {
+  left: auto;
+  right: 15%;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+@-webkit-keyframes shadow {
+  0% {
+    transform: scaleX(1.5);
+  }
+  40% {
+    transform: scaleX(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scaleX(0.2);
+    opacity: 0.4;
+  }
+}
+@keyframes shadow {
+  0% {
+    transform: scaleX(1.5);
+  }
+  40% {
+    transform: scaleX(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scaleX(0.2);
+    opacity: 0.4;
+  }
+}
+.bouncing span {
+  position: absolute;
+  left: 50%;
+  top: 53%;
+  transform: translate(-50%, -50%);
+  color: rgba(115, 115, 115, 0.5019607843);
+  font-weight: 700;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  -webkit-animation: loading 3s ease-in-out infinite;
+          animation: loading 3s ease-in-out infinite;
+}
+@-webkit-keyframes loading {
+  50% {
+    color: #fffcfc;
+  }
+}
+@keyframes loading {
+  50% {
+    color: #fffcfc;
   }
 }/*# sourceMappingURL=main.css.map */

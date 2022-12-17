@@ -1,0 +1,25 @@
+@import "../../variables";
+@import "../../utils";
+
+.waiting-container {
+  height: 90%;
+  width: 70vw;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 2rem;
+  display: grid;
+  grid-template-rows: 25px 25px auto;
+  gap: 2rem;
+  padding: 3rem;
+
+  & > img {
+    // height: 100%;
+    // width: 100%;
+    object-fit: cover;
+    margin: auto;
+    border-radius: 1rem;
+  }
+  //   & > * {
+  //     border: solid 1px #000;
+  //   }
+}
