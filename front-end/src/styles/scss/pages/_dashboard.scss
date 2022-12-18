@@ -2,6 +2,7 @@
 @import "../utils";
 
 .dashboard {
+  display: grid;
   height: 100%;
   gap: 1rem;
   position: relative;
