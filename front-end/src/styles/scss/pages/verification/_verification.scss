@@ -134,14 +134,16 @@
       font-weight: 600;
     }
     .steps-container {
-      display: grid;
+      // display: grid;
+      display: flex;
+      flex-direction: column;
       text-align: center;
       .steps {
         // display: flex;
         // justify-content: space-evenly;
         // align-items: center;
         display: grid;
-        grid-template-columns: auto auto;
+        grid-template-columns: auto auto auto;
         justify-content: space-evenly;
         position: relative;
         .step-1,
@@ -155,7 +157,6 @@
           // background-color: $primary-compliment-landing;
           transition: all 0.2s ease-in-out;
           border: solid 3px $primary-compliment-landing;
-          cursor: pointer;
         }
         .active {
           color: #fff;
@@ -166,9 +167,19 @@
           &::after {
             content: " ";
             position: absolute;
-            left: 100%;
+            left: calc(100% + 1px);
             border: dashed 2px $primary-compliment-landing;
-            width: 240%;
+            width: 150%;
+          }
+        }
+        .step-2 {
+          position: relative;
+          &::after {
+            content: " ";
+            position: absolute;
+            left: calc(100% + 1px);
+            border: dashed 2px $primary-compliment-landing;
+            width: 148%;
           }
         }
         // .step-2 {

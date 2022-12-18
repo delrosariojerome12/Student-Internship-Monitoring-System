@@ -1886,12 +1886,13 @@ button {
   font-weight: 600;
 }
 .verification-container .verification-steps .steps-container {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   text-align: center;
 }
 .verification-container .verification-steps .steps-container .steps {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto auto auto;
   justify-content: space-evenly;
   position: relative;
 }
@@ -1907,7 +1908,6 @@ button {
   font-weight: 600;
   transition: all 0.2s ease-in-out;
   border: solid 3px #0d7377;
-  cursor: pointer;
 }
 .verification-container .verification-steps .steps-container .steps .active {
   color: #fff;
@@ -1919,9 +1919,19 @@ button {
 .verification-container .verification-steps .steps-container .steps .step-1::after {
   content: " ";
   position: absolute;
-  left: 100%;
+  left: calc(100% + 1px);
   border: dashed 2px #0d7377;
-  width: 240%;
+  width: 150%;
+}
+.verification-container .verification-steps .steps-container .steps .step-2 {
+  position: relative;
+}
+.verification-container .verification-steps .steps-container .steps .step-2::after {
+  content: " ";
+  position: absolute;
+  left: calc(100% + 1px);
+  border: dashed 2px #0d7377;
+  width: 148%;
 }
 .verification-container form {
   width: 60rem;
@@ -2141,11 +2151,16 @@ button {
   gap: 2rem;
   padding: 3rem;
 }
-.waiting-container > img {
+.waiting-container .img-container {
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  margin: auto;
   border-radius: 1rem;
+  display: flex;
+}
+.waiting-container .img-container img {
+  height: 300px;
+  margin: auto;
 }
 
 .profile-page {

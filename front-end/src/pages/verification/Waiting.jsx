@@ -6,7 +6,9 @@ const Waiting = () => {
     <section className="waiting-container">
       <h3>You have sent your verification request.</h3>
       <p>Please Wait for the admin approval.</p>
-      <img src={waitingImg} alt="waiting.img" />
+      <div className="img-container">
+        <img src={waitingImg} alt="waiting.img" />
+      </div>
     </section>
   );
 };
