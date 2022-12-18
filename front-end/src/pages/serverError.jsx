@@ -1,5 +1,5 @@
 import React from "react";
-import error500 from "../../assets/ERROR IMAGE/ServerError.svg";
+import error500 from "../assets/ERROR IMAGE/ServerError.svg";
 
 const ServerError = () => {
   return (

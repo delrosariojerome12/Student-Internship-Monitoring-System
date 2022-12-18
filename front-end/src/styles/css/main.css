@@ -3238,7 +3238,7 @@ button {
 }
 .server-error button {
   color: #f1faee;
-  background-color: #393e46;
+  background-color: #0e6164;
   border: solid 1px #0d7377;
   border-radius: 1rem;
   transition: all 0.3s linear;
@@ -3246,7 +3246,7 @@ button {
   font-size: 2rem;
 }
 .server-error button:hover {
-  background-color: #0e6164;
+  background-color: #393e46;
   color: #f1faee;
   border: solid 1px #0d7377;
   border-radius: 3rem;

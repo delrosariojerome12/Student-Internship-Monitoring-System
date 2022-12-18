@@ -15,14 +15,14 @@
   }
   button {
     color: $primary-font-color;
-    background-color: #393e46;
+    background-color: #0e6164;
     border: solid 1px $primary-compliment-landing;
     border-radius: 1rem;
     transition: all 0.3s linear;
     padding: 1.5rem 3rem;
     font-size: 2rem;
     &:hover {
-      background-color: #0e6164;
+      background-color: #393e46;
       color: $primary-font-color;
       border: solid 1px $primary-compliment-landing;
       border-radius: 3rem;
