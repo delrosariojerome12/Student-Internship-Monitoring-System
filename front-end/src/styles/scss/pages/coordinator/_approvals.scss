@@ -11,6 +11,7 @@
   //     border: solid 1px red;
   //   }
   header {
+    padding: 1rem 0 0;
     .search-box {
       display: flex;
       background-color: $light-bg-color;
@@ -53,7 +54,32 @@
         background-color: #fff;
         padding: 1rem;
         display: grid;
-        grid-template-columns: auto auto auto;
+        grid-template-rows: auto 2rem;
+        gap: 1rem;
+
+        .upper {
+          display: grid;
+          grid-template-columns: auto auto 5rem;
+
+          .intern-infos {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+          }
+
+          .notification-bell {
+            @include flexCenter;
+            font-size: 2.5rem;
+          }
+        }
+        .lower {
+          button {
+            width: 100%;
+            background-color: #0e6164;
+            color: #fff;
+            border: none;
+          }
+        }
       }
       & > * {
         border: solid 1px #fff;

@@ -37,6 +37,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -1401,6 +1403,9 @@ button {
   grid-template-rows: 7vh auto;
   gap: 1rem;
 }
+.dashboard .approvals-container header {
+  padding: 1rem 0 0;
+}
 .dashboard .approvals-container header .search-box {
   display: flex;
   background-color: #f1faee;
@@ -1446,7 +1451,29 @@ button {
   background-color: #fff;
   padding: 1rem;
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-rows: auto 2rem;
+  gap: 1rem;
+}
+.dashboard .approvals-container .approvals-content .approval-intern .details .upper {
+  display: grid;
+  grid-template-columns: auto auto 5rem;
+}
+.dashboard .approvals-container .approvals-content .approval-intern .details .upper .intern-infos {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.dashboard .approvals-container .approvals-content .approval-intern .details .upper .notification-bell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+}
+.dashboard .approvals-container .approvals-content .approval-intern .details .lower button {
+  width: 100%;
+  background-color: #0e6164;
+  color: #fff;
+  border: none;
 }
 .dashboard .approvals-container .approvals-content .approval-intern > * {
   border: solid 1px #fff;

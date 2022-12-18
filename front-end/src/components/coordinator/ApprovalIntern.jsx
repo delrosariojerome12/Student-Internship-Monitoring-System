@@ -13,27 +13,43 @@ const ApprovalIntern = React.memo(({ intern }) => {
   return (
     <div className="approval-intern">
       <div className="img"></div>
+
       <div className="details">
-        <div className="internt-name">
-          <p className="name">
-            {firstName} {lastName}
-          </p>
-          <p className="program">Program: {schoolDetails?.program}</p>
+        <div className="upper">
+          <div className="internt-name">
+            <p className="name">
+              <b>
+                {firstName} {lastName}
+              </b>
+            </p>
+            <p className="program">
+              <b>Program:</b> {schoolDetails?.program}
+            </p>
+          </div>
+
+          <div className="intern-infos">
+            <p className="program">
+              <b>{internshipDetails?.companyName}</b>
+            </p>
+            <p>
+              <b>Colegio De San Gabriel Arcangel</b>
+            </p>
+          </div>
+
+          <div className="notification-bell">
+            <span>
+              <IoMdNotifications />
+            </span>
+          </div>
         </div>
-        <div className="intern-infos">
-          <p className="program"> {internshipDetails?.companyName}</p>
-          {/* <p className="program"> {schoolDetails?.program}</p> */}
+
+        <div className="lower">
+          <button>
+            <span>
+              <FaAngleDoubleDown />
+            </span>
+          </button>
         </div>
-        <div className="intern-infos">
-          <span>
-            <IoMdNotifications />
-          </span>
-        </div>
-        {/* <button>
-          <span>
-            <FaAngleDoubleDown />
-          </span>
-        </button> */}
       </div>
     </div>
   );
