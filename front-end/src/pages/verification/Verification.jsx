@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useCallback} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
 import {requestVerification} from "../../features/user/userReducer";
 import AreYouSureModal from "../../components/verification/AreYouSureModal";
 import SuccessModal from "../../components/verification/SuccessModal";
-import {useCallback} from "react";
-
+import verifiedSVG from "../../assets/img/verification/verified.svg";
+import {FaCheck} from "react-icons/fa";
 const Verification = () => {
   const dispatch = useDispatch();
   const {user} = useSelector((state) => state.user);
@@ -242,6 +242,21 @@ const Verification = () => {
   const [isSuccessModalOpen, setSuccessModalOpen] = useState(false);
   const [isSubmitted, setSubmitted] = useState(false);
   const [isComplete, setComplete] = useState(false);
+  const [steps, setSteps] = useState([
+    {
+      step: "1",
+      isCompleted: false,
+    },
+    {
+      step: "2",
+      isCompleted: false,
+    },
+    {
+      step: "3",
+      isCompleted: false,
+    },
+  ]);
+
   const convertForm = (form) => {
     const newData = form.map((input) => {
       const {code, value} = input;
@@ -266,38 +281,36 @@ const Verification = () => {
     setSuccessModalOpen(value);
   };
 
-  const handleSubmit = useCallback(
-    async (e) => {
-      e && e.preventDefault();
-      let numOfErrors = 0;
-      let numOfValues = 0;
-      form[position].forms.forEach((item) => {
-        item.isError && numOfErrors++;
-        item.value && numOfValues++;
-      });
+  const handleSubmit = useCallback(async (e) => {
+    e && e.preventDefault();
+    let numOfErrors = 0;
+    let numOfValues = 0;
+    form[position].forms.forEach((item) => {
+      item.isError && numOfErrors++;
+      item.value && numOfValues++;
+    });
 
-      const lengthForms = form[position].forms.length;
+    const lengthForms = form[position].forms.length;
 
-      if (isSubmitted) {
-        if (numOfErrors === 0 && numOfValues === lengthForms) {
-          if (position < 2) {
-            const finalForm = {
-              email: user.email,
-              internshipDetails: convertForm([...form[0].forms]),
-              schoolDetails: convertForm([...form[1].forms]),
-              verification: {
-                hasSentVerification: true,
-                isVerified: false,
-                isRejected: false,
-              },
-            };
-            dispatch(requestVerification(finalForm));
-          }
+    if (isSubmitted) {
+      if (numOfErrors === 0 && numOfValues === lengthForms) {
+        if (position < 2) {
+          const finalForm = {
+            email: user.email,
+            internshipDetails: convertForm([...form[0].forms]),
+            schoolDetails: convertForm([...form[1].forms]),
+            verification: {
+              hasSentVerification: true,
+              isVerified: false,
+              isRejected: false,
+            },
+          };
+          dispatch(requestVerification(finalForm));
         }
       }
-    },
-    [dispatch, form, isSubmitted, position, user.email]
-  );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const checkProgram = useCallback(
     (department, mainIndex, index) => {
@@ -328,6 +341,27 @@ const Verification = () => {
     [form]
   );
 
+  const checkCompletion = (index) => {
+    let numOfErrors = 0;
+    let numOfValues = 0;
+    form[position].forms.forEach((item) => {
+      item.isError && numOfErrors++;
+      item.value && numOfValues++;
+    });
+
+    const lengthForms = form[position].forms.length;
+    const newSteps = [...steps];
+
+    if (numOfErrors === 0 && numOfValues === lengthForms) {
+      newSteps[index].isCompleted = true;
+      setSteps(newSteps);
+    } else {
+      newSteps[index].isCompleted = false;
+      setSteps(newSteps);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  };
+
   const handleOnChange = useCallback(
     (value, group, index, mainIndex) => {
       const newForm = [...form];
@@ -339,6 +373,7 @@ const Verification = () => {
             : (newForm[mainIndex].forms[index].isError = true);
           newForm[mainIndex].forms[index].value = value;
           setForm(newForm);
+          checkCompletion(mainIndex);
           return;
         case "company-address":
           value.length >= 5 && value.length <= 50
@@ -346,6 +381,8 @@ const Verification = () => {
             : (newForm[mainIndex].forms[index].isError = true);
           newForm[mainIndex].forms[index].value = value;
           setForm(newForm);
+          checkCompletion(mainIndex);
+
           return;
         case "supervisor":
           value.length >= 2 && value.length <= 20
@@ -353,6 +390,8 @@ const Verification = () => {
             : (newForm[mainIndex].forms[index].isError = true);
           newForm[mainIndex].forms[index].value = value;
           setForm(newForm);
+          checkCompletion(mainIndex);
+
           return;
         case "supervisor-contact":
         case "student-contact":
@@ -365,12 +404,17 @@ const Verification = () => {
             newForm[mainIndex].forms[index].isError = true;
           }
           setForm(newForm);
+          checkCompletion(mainIndex);
+
           return;
         case "program":
           newForm[mainIndex].forms[index].value = value;
           const programValue = newForm[mainIndex].forms[index].value;
           checkProgram(programValue, mainIndex, index);
+
           setForm(newForm);
+          checkCompletion(mainIndex);
+
           return;
         case "schedule-type":
           if (value === "Regular") {
@@ -397,13 +441,18 @@ const Verification = () => {
           }
 
           setForm(newForm);
+          checkCompletion(mainIndex);
+
           return;
         default:
           newForm[mainIndex].forms[index].value = value;
           setForm(newForm);
+          checkCompletion(mainIndex);
+
           return;
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [checkProgram, form, position]
   );
 
@@ -615,21 +664,6 @@ const Verification = () => {
     });
   };
 
-  const [steps, setSteps] = useState([
-    {
-      step: "1",
-      isCompleted: false,
-    },
-    {
-      step: "2",
-      isCompleted: false,
-    },
-    {
-      step: "3",
-      isCompleted: false,
-    },
-  ]);
-
   const renderSteps = () => {
     return steps.map((item, index) => {
       const {step, isCompleted} = item;
@@ -640,7 +674,13 @@ const Verification = () => {
           }
           key={index}
         >
-          {step}
+          {isCompleted ? (
+            <span>
+              <FaCheck />
+            </span>
+          ) : (
+            step
+          )}
         </div>
       );
     });

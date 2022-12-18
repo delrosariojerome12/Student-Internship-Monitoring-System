@@ -157,6 +157,9 @@
           // background-color: $primary-compliment-landing;
           transition: all 0.2s ease-in-out;
           border: solid 3px $primary-compliment-landing;
+          span {
+            @include flexColumn;
+          }
         }
         .active {
           color: #fff;

@@ -1909,6 +1909,13 @@ button {
   transition: all 0.2s ease-in-out;
   border: solid 3px #0d7377;
 }
+.verification-container .verification-steps .steps-container .steps .step-1 span,
+.verification-container .verification-steps .steps-container .steps .step-2 span,
+.verification-container .verification-steps .steps-container .steps .step-3 span {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 .verification-container .verification-steps .steps-container .steps .active {
   color: #fff;
   background-color: #0d7377;
