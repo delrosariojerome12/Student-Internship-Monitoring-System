@@ -1427,6 +1427,28 @@ button {
   border: solid 1px #fff;
   border-radius: 1rem;
   position: relative;
+  display: grid;
+  grid-auto-rows: 10rem;
+  gap: 1rem;
+  padding: 1rem;
+}
+.dashboard .approvals-container .approvals-content .approval-intern {
+  display: grid;
+  grid-template-columns: 10rem auto;
+  border: solid 1px #fff;
+  border-radius: 1rem;
+  gap: 2rem;
+  cursor: pointer;
+  font-size: 1.4rem;
+}
+.dashboard .approvals-container .approvals-content .approval-intern .details {
+  background-color: #fff;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.dashboard .approvals-container .approvals-content .approval-intern > * {
+  border: solid 1px #fff;
 }
 .dashboard .admin-documents {
   height: 100%;
