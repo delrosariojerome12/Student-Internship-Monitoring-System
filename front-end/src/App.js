@@ -3,6 +3,7 @@ import React, {lazy, Suspense, useEffect} from "react";
 import LandingPage from "./pages/landingPage";
 // import Dashboard from "./pages/dashboard/dashboard";
 import PageNotFound from "./pages/PageNotFound";
+import ServerError from "./pages/errors/serverError";
 
 //loadings
 import Circle from "./components/loading/Circle";
@@ -64,6 +65,7 @@ const App = () => {
           <Route path="/dashboard/*" element={<Dashboard />} />
           <Route path="/404" element={<PageNotFound />} />
           <Route path="*" element={<PageNotFound />} />
+          <Route path="/server" element={<ServerError />} />
           {/* loading */}
           <Route path="/circle" element={<Circle />} />
           <Route path="/dotted" element={<Dotted />} />
