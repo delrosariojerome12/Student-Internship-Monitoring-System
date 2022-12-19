@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {Routes, Route, Navigate} from "react-router";
 import Verification from "./Verification";
 import Pending from "./Pending";
@@ -11,8 +11,6 @@ const PendingContainer = React.memo(() => {
       verification: {hasSentVerification},
     },
   } = useSelector((state) => state.user);
-
-  const [isVerify, setVerify] = useState(false);
 
   // already sent request
   if (hasSentVerification) {

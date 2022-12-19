@@ -4,8 +4,7 @@ import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
 import {requestVerification} from "../../features/user/userReducer";
 import AreYouSureModal from "../../components/verification/AreYouSureModal";
-import SuccessModal from "../../components/verification/SuccessModal";
-import {useNavigate} from "react-router";
+// import SuccessModal from "../../components/verification/SuccessModal";
 import {FaCheck} from "react-icons/fa";
 const Verification = React.memo(() => {
   const dispatch = useDispatch();
@@ -15,7 +14,6 @@ const Verification = React.memo(() => {
     user: {firstName},
   } = user;
 
-  const navigate = useNavigate();
   const [form, setForm] = useState([
     {
       group: "Internship Details",
@@ -188,53 +186,6 @@ const Verification = React.memo(() => {
           isVisible: false,
           code: "scheduledDays",
         },
-
-        // {
-        //   type: "time",
-        //   id: "time-in-schedule",
-        //   forInput: "Time-In Schedule",
-        //   value: "",
-        //   isDisabled: false,
-        //   code: "timeInSchedule",
-        //   isVisible: false,
-        //   optionTime: [
-        //     {
-        //       value: "7:00 AM",
-        //       label: "7:00 AM",
-        //     },
-        //     {
-        //       value: "8:00 AM",
-        //       label: "8:00 AM",
-        //     },
-        //     {
-        //       value: "9:00 AM",
-        //       label: "9:00 AM",
-        //     },
-        //   ],
-        // },
-        // {
-        //   type: "time",
-        //   id: "time-out-schedule",
-        //   forInput: "Time-Out Schedule",
-        //   value: "",
-        //   isDisabled: false,
-        //   code: "timeOutSchedule",
-        //   isVisible: false,
-        //   optionTime: [
-        //     {
-        //       value: "4:00 PM",
-        //       label: "4:00 PM",
-        //     },
-        //     {
-        //       value: "5:00 PM",
-        //       label: "5:00 PM",
-        //     },
-        //     {
-        //       value: "6:00 PM",
-        //       label: "6:00 PM",
-        //     },
-        //   ],
-        // },
       ],
     },
   ]);
@@ -302,6 +253,7 @@ const Verification = React.memo(() => {
               email: user.email,
               internshipDetails: convertForm([...form[0].forms]),
               schoolDetails: convertForm([...form[1].forms]),
+              scheduleDetails: convertForm([...form[2].forms]),
               verification: {
                 hasSentVerification: true,
                 isVerified: false,
