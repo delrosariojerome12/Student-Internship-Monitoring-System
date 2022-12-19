@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Routes, Route, Navigate} from "react-router";
 import Verification from "./Verification";
 import Pending from "./Pending";
@@ -12,15 +12,21 @@ const PendingContainer = React.memo(() => {
     },
   } = useSelector((state) => state.user);
 
+  const [isVerify, setVerify] = useState(false);
+
   // already sent request
-  // if (hasSentVerification) {
-  //   return (
-  //     <Routes>
-  //       <Route path="/" element={<Waiting />} />
-  //       <Route path="*" element={<Navigate to="/404" replace />} />
-  //     </Routes>
-  //   );
-  // }
+  if (hasSentVerification) {
+    return (
+      <Routes>
+        <Route path="/" element={<Waiting />} />
+        <Route
+          path="/verification"
+          element={<Navigate to="/dashboard" replace />}
+        />
+        <Route path="*" element={<Navigate to="/404" replace />} />
+      </Routes>
+    );
+  }
 
   return (
     <Routes>

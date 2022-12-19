@@ -5,15 +5,17 @@ import CreatableSelect from "react-select/creatable";
 import {requestVerification} from "../../features/user/userReducer";
 import AreYouSureModal from "../../components/verification/AreYouSureModal";
 import SuccessModal from "../../components/verification/SuccessModal";
-import verifiedSVG from "../../assets/img/verification/verified.svg";
+import {useNavigate} from "react-router";
 import {FaCheck} from "react-icons/fa";
-const Verification = () => {
+const Verification = React.memo(() => {
   const dispatch = useDispatch();
   const {user} = useSelector((state) => state.user);
+
   const {
     user: {firstName},
   } = user;
 
+  const navigate = useNavigate();
   const [form, setForm] = useState([
     {
       group: "Internship Details",
@@ -281,36 +283,38 @@ const Verification = () => {
     setSuccessModalOpen(value);
   };
 
-  const handleSubmit = useCallback(async (e) => {
-    e && e.preventDefault();
-    let numOfErrors = 0;
-    let numOfValues = 0;
-    form[position].forms.forEach((item) => {
-      item.isError && numOfErrors++;
-      item.value && numOfValues++;
-    });
+  const handleSubmit = useCallback(
+    async (e) => {
+      e && e.preventDefault();
+      let numOfErrors = 0;
+      let numOfValues = 0;
+      form[position].forms.forEach((item) => {
+        item.isError && numOfErrors++;
+        item.value && numOfValues++;
+      });
 
-    const lengthForms = form[position].forms.length;
+      const lengthForms = form[position].forms.length;
 
-    if (isSubmitted) {
-      if (numOfErrors === 0 && numOfValues === lengthForms) {
-        if (position < 2) {
-          const finalForm = {
-            email: user.email,
-            internshipDetails: convertForm([...form[0].forms]),
-            schoolDetails: convertForm([...form[1].forms]),
-            verification: {
-              hasSentVerification: true,
-              isVerified: false,
-              isRejected: false,
-            },
-          };
-          dispatch(requestVerification(finalForm));
+      if (isSubmitted) {
+        if (numOfErrors === 0 && numOfValues === lengthForms) {
+          if (position < 3) {
+            const finalForm = {
+              email: user.email,
+              internshipDetails: convertForm([...form[0].forms]),
+              schoolDetails: convertForm([...form[1].forms]),
+              verification: {
+                hasSentVerification: true,
+                isVerified: false,
+                isRejected: false,
+              },
+            };
+            dispatch(requestVerification(finalForm));
+          }
         }
       }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    },
+    [form, dispatch, isSubmitted, position, user.email]
+  );
 
   const checkProgram = useCallback(
     (department, mainIndex, index) => {
@@ -472,6 +476,9 @@ const Verification = () => {
         setPosition((prev) => prev + 1);
       }
     }
+    // if (position < 2) {
+    //   setPosition((prev) => prev + 1);
+    // }
   };
 
   const handleReturn = (e) => {
@@ -700,6 +707,7 @@ const Verification = () => {
 
   return (
     <section className="verification-container">
+      {/* <button onClick={() => navigate("/dashboard")}>dashboard</button> */}
       {isFinalizing ? (
         <div className="overlay"></div>
       ) : isSuccessModalOpen ? (
@@ -713,9 +721,9 @@ const Verification = () => {
           setSubmitted={setSubmitted}
         />
       )}
-      {isSuccessModalOpen && (
+      {/* {isSuccessModalOpen && (
         <SuccessModal handleSuccessModal={handleSuccessModal} />
-      )}
+      )} */}
       <div className="greetings">
         <h1>
           Welcome, <span>{firstName}</span>
@@ -794,6 +802,6 @@ const Verification = () => {
       </div>
     </section>
   );
-};
+});
 
 export default Verification;
