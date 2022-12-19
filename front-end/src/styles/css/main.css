@@ -1441,7 +1441,6 @@ button {
 .dashboard .approvals-container .approvals-content .approval-intern {
   display: grid;
   grid-template-columns: 10rem auto;
-  border: solid 1px #fff;
   border-radius: 1rem;
   gap: 2rem;
   cursor: pointer;
@@ -1449,12 +1448,12 @@ button {
 }
 .dashboard .approvals-container .approvals-content .approval-intern .details {
   background-color: #fff;
-  padding: 1rem;
   display: grid;
   grid-template-rows: auto 2rem;
   gap: 1rem;
 }
 .dashboard .approvals-container .approvals-content .approval-intern .details .upper {
+  padding: 1rem;
   display: grid;
   grid-template-columns: auto auto 5rem;
 }
@@ -1470,6 +1469,7 @@ button {
   font-size: 2.5rem;
 }
 .dashboard .approvals-container .approvals-content .approval-intern .details .lower button {
+  padding: 0.1rem;
   width: 100%;
   background-color: #0e6164;
   color: #fff;

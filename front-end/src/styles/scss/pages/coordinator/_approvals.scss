@@ -7,9 +7,7 @@
   display: grid;
   grid-template-rows: 7vh auto;
   gap: 1rem;
-  //   & > * {
-  //     border: solid 1px red;
-  //   }
+
   header {
     padding: 1rem 0 0;
     .search-box {
@@ -45,19 +43,18 @@
     .approval-intern {
       display: grid;
       grid-template-columns: 10rem auto;
-      border: solid 1px #fff;
       border-radius: 1rem;
       gap: 2rem;
       cursor: pointer;
       font-size: 1.4rem;
       .details {
         background-color: #fff;
-        padding: 1rem;
         display: grid;
         grid-template-rows: auto 2rem;
         gap: 1rem;
 
         .upper {
+          padding: 1rem;
           display: grid;
           grid-template-columns: auto auto 5rem;
 
@@ -74,6 +71,7 @@
         }
         .lower {
           button {
+            padding: 0.1rem;
             width: 100%;
             background-color: #0e6164;
             color: #fff;
