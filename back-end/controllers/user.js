@@ -3,7 +3,7 @@ const Intern = require("../models/Intern");
 const Admin = require("../models/Admin");
 const Coordinator = require("../models/Coordinator");
 const {StatusCodes} = require("http-status-codes");
-const {BadRequest, NotFound} = require("../errors");
+const {NotFound} = require("../errors");
 
 const getUser = async (req, res) => {
   const {email} = req.params;
