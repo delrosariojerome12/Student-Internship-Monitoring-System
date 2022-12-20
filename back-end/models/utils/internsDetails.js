@@ -11,12 +11,6 @@ const internshipDetails = {
     maxlength: 70,
     minlength: 5,
   },
-  contactNumber: {
-    type: String,
-    // required: [true, "Please provide contact number"],
-    maxlength: 11,
-    minlength: 1,
-  },
   supervisor: {
     type: String,
     // required: [true, "Please provide supervisor name"],
@@ -25,11 +19,6 @@ const internshipDetails = {
   },
   supervisorContact: {
     type: String,
-  },
-  internshipType: {
-    type: String,
-    maxlength: 20,
-    minlength: 2,
   },
   typeOfWork: {
     type: String,
@@ -81,9 +70,6 @@ const verification = {
   isRejected: {
     type: Boolean,
     default: false,
-  },
-  adminMessage: {
-    type: String,
   },
 };
 

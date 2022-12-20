@@ -1,11 +1,11 @@
 const schoolDetails = {
-  department: {
-    type: String,
-    // required: [true, "Please provide department"],
-    maxlength: 50,
-    minlength: 10,
-    // default: "College of Computer Studies and Engineering",
-  },
+  // department: {
+  //   type: String,
+  //   // required: [true, "Please provide department"],
+  //   maxlength: 50,
+  //   minlength: 10,
+  //   // default: "College of Computer Studies and Engineering",
+  // },
   program: {
     type: String,
     // required: [true, "Please provide program"],
@@ -14,6 +14,11 @@ const schoolDetails = {
   },
   validID: {
     type: String,
+  },
+  studentContact: {
+    type: String,
+    maxlength: 11,
+    minlength: 1,
   },
   requiredHours: {
     type: String,

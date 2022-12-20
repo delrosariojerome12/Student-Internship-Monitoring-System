@@ -1,9 +1,20 @@
 import React from "react";
-import searchIcon from "../../assets/img/search.svg";
-import ApprovalIntern from "../../components/coordinator/ApprovalIntern";
+import Approval from "../../components/coordinator/ApprovalIntern";
+import { useSelector, useDispatch } from "react-redux";
+
 import { GoSearch } from "react-icons/go";
 
 const Approvals = () => {
+  const { interns, isLoading, isError } = useSelector((state) => state.intern);
+
+  const renderApprovals = () => {
+    if (isLoading) {
+      return <h1>Loading...</h1>;
+    }
+    return interns.map((intern, index) => {
+      return <Approval intern={intern} key={index} />;
+    });
+  };
   return (
     <section className="approvals-container">
       <header>
@@ -15,12 +26,7 @@ const Approvals = () => {
           <input type="text" placeholder="Search" />
         </div>
       </header>
-      <div className="approvals-content">
-        {/* <div className="user1">
-          <div className="img-container"></div>
-          <div className="intern-infos"></div>
-        </div> */}
-      </div>
+      <div className="approvals-content">{renderApprovals()}</div>
     </section>
   );
 };

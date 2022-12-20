@@ -1,8 +1,9 @@
-import React, {lazy, Suspense, useEffect} from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 // pages
 import LandingPage from "./pages/landingPage";
 // import Dashboard from "./pages/dashboard/dashboard";
 import PageNotFound from "./pages/PageNotFound";
+import ServerError from "./pages/serverError";
 
 //loadings
 import Circle from "./components/loading/Circle";
@@ -13,22 +14,22 @@ import Bounce from "./components/loading/Bouncing";
 import Login from "./pages/auth/login";
 import Signup from "./pages/auth/signup";
 
-import {Routes, Route, Navigate} from "react-router-dom";
-import {useSelector, useDispatch} from "react-redux";
-import {getUserOnLoad} from "./features/user/userReducer";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { getUserOnLoad } from "./features/user/userReducer";
 import jwt_decode from "jwt-decode";
 
 import Bouncing from "./components/loading/Bouncing";
 
 const Dashboard = lazy(() => import("./pages/dashboard/dashboard"));
 const App = () => {
-  const {user, isLoading, isError} = useSelector((state) => state.user);
+  const { user, isLoading, isError } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   // sets state of user from token
   useEffect(() => {
     if (!user && localStorage.getItem("token")) {
-      const {email} = jwt_decode(localStorage.getItem("token"));
+      const { email } = jwt_decode(localStorage.getItem("token"));
       dispatch(getUserOnLoad(email));
     }
   }, []);
@@ -64,6 +65,7 @@ const App = () => {
           <Route path="/dashboard/*" element={<Dashboard />} />
           <Route path="/404" element={<PageNotFound />} />
           <Route path="*" element={<PageNotFound />} />
+          <Route path="/server" element={<ServerError />} />
           {/* loading */}
           <Route path="/circle" element={<Circle />} />
           <Route path="/dotted" element={<Dotted />} />

@@ -1,47 +1,23 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useCallback} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
-import {useNavigate} from "react-router";
 import {requestVerification} from "../../features/user/userReducer";
 import AreYouSureModal from "../../components/verification/AreYouSureModal";
-import SuccessModal from "../../components/verification/SuccessModal";
-import {useCallback} from "react";
-
-const Verification = () => {
+// import SuccessModal from "../../components/verification/SuccessModal";
+import {FaCheck} from "react-icons/fa";
+const Verification = React.memo(() => {
   const dispatch = useDispatch();
   const {user} = useSelector((state) => state.user);
+
   const {
     user: {firstName},
   } = user;
-  const navigate = useNavigate();
 
   const [form, setForm] = useState([
     {
       group: "Internship Details",
       forms: [
-        // {
-        //   type: "select",
-        //   id: "internship-type",
-        //   value: "",
-        //   placeholder: "Type of Internship",
-        //   isDisabled: false,
-        //   code: "internshipType",
-        //   options: [
-        //     {
-        //       value: "Onsite",
-        //       label: "Onsite",
-        //     },
-        //     {
-        //       value: "Online",
-        //       label: "Online",
-        //     },
-        //     {
-        //       value: "Hybrid",
-        //       label: "Hybrid",
-        //     },
-        //   ],
-        // },
         {
           type: "list",
           id: "duties",
@@ -117,32 +93,6 @@ const Verification = () => {
     {
       group: "Student Details",
       forms: [
-        // {
-        //   type: "select",
-        //   id: "department",
-        //   code: "department",
-        //   value: "",
-        //   placeholder: "Department",
-        //   options: [
-        //     {
-        //       value: "College of Computer Studies and Engineering",
-        //       label: "College of Computer Studies and Engineering",
-        //     },
-        //     {
-        //       value: "College of Business",
-        //       label: "College of Business",
-        //     },
-        //     {
-        //       value: "College of Tourism Management and Hospitality",
-        //       label: "College of Tourism Management and Hospitality",
-        //     },
-        //     {
-        //       value: "College of Medical Allied Courses",
-        //       label: "College of Medical Allied Courses",
-        //     },
-        //   ],
-        //   isDisabled: false,
-        // },
         {
           type: "select",
           id: "program",
@@ -153,28 +103,6 @@ const Verification = () => {
               value: "Bachelor of Science in Information Technology",
               label: "Bachelor of Science in Information Technology",
             },
-            // {
-            //   value: "Bachelor of Science in Computer Science",
-            //   label: "Bachelor of Science in Computer Science",
-            // },
-            // {
-            //   value: "Bachelor of Library Information System",
-            //   label: "Bachelor of Library Information System",
-            // },
-            // {
-            //   value: "Bachelor of Science in Computer Engineering",
-            //   label: "Bachelor of Science in Computer Engineering",
-            // },
-            // {
-            //   value: "Bachelor of Science in Electrical Engineering",
-            //   label: "Bachelor of Science in Electrical Engineering",
-            // },
-            // {
-            //   value:
-            //     "Bachelor of Science in Electronics and Communications Engineering",
-            //   label:
-            //     "Bachelor of Science in Electronics and Communications Engineering",
-            // },
           ],
           placeholder: "Program",
           isDisabled: false,
@@ -210,100 +138,77 @@ const Verification = () => {
         },
       ],
     },
-    // {
-    //   group: "Schedule Details",
-    //   forms: [
-    //     {
-    //       type: "scheduleType",
-    //       id: "schedule-type",
-    //       forInput: "Schedule Type",
-    //       value: "",
-    //       isDisabled: true,
-    //       code: "scheduleType",
-    //       scheduleType: [
-    //         {
-    //           value: "Regular",
-    //           label: "Regular",
-    //         },
-    //         {
-    //           value: "Irregular",
-    //           label: "Irregular",
-    //         },
-    //       ],
-    //     },
-    //     {
-    //       type: "text",
-    //       id: "time-in-schedule",
-    //       forInput: "Time-In Schedule",
-    //       value: "",
-    //       isDisabled: true,
-    //       isVisible: false,
-    //       code: "timeInSchedule",
-    //     },
-    //     {
-    //       type: "text",
-    //       id: "time-out-schedule",
-    //       forInput: "Time-Out Schedule",
-    //       value: "",
-    //       isDisabled: true,
-    //       isVisible: false,
-    //       code: "timeOutSchedule",
-    //     },
-
-    //     // {
-    //     //   type: "time",
-    //     //   id: "time-in-schedule",
-    //     //   forInput: "Time-In Schedule",
-    //     //   value: "",
-    //     //   isDisabled: false,
-    //     //   code: "timeInSchedule",
-    //     //   isVisible: false,
-    //     //   optionTime: [
-    //     //     {
-    //     //       value: "7:00 AM",
-    //     //       label: "7:00 AM",
-    //     //     },
-    //     //     {
-    //     //       value: "8:00 AM",
-    //     //       label: "8:00 AM",
-    //     //     },
-    //     //     {
-    //     //       value: "9:00 AM",
-    //     //       label: "9:00 AM",
-    //     //     },
-    //     //   ],
-    //     // },
-    //     // {
-    //     //   type: "time",
-    //     //   id: "time-out-schedule",
-    //     //   forInput: "Time-Out Schedule",
-    //     //   value: "",
-    //     //   isDisabled: false,
-    //     //   code: "timeOutSchedule",
-    //     //   isVisible: false,
-    //     //   optionTime: [
-    //     //     {
-    //     //       value: "4:00 PM",
-    //     //       label: "4:00 PM",
-    //     //     },
-    //     //     {
-    //     //       value: "5:00 PM",
-    //     //       label: "5:00 PM",
-    //     //     },
-    //     //     {
-    //     //       value: "6:00 PM",
-    //     //       label: "6:00 PM",
-    //     //     },
-    //     //   ],
-    //     // },
-    //   ],
-    // },
+    {
+      group: "Schedule Details",
+      forms: [
+        {
+          type: "scheduleType",
+          id: "schedule-type",
+          forInput: "Schedule Type",
+          value: "",
+          isDisabled: true,
+          code: "scheduleType",
+          scheduleType: [
+            {
+              value: "Regular",
+              label: "Regular",
+            },
+            {
+              value: "Irregular",
+              label: "Irregular",
+            },
+          ],
+        },
+        {
+          type: "text",
+          id: "time-in-schedule",
+          forInput: "Time-In Schedule",
+          value: "",
+          isDisabled: true,
+          isVisible: false,
+          code: "timeInSchedule",
+        },
+        {
+          type: "text",
+          id: "time-out-schedule",
+          forInput: "Time-Out Schedule",
+          value: "",
+          isDisabled: true,
+          isVisible: false,
+          code: "timeOutSchedule",
+        },
+        {
+          type: "text",
+          id: "scheduled-days",
+          forInput: "Scheduled Days",
+          value: "",
+          isDisabled: true,
+          isVisible: false,
+          code: "scheduledDays",
+        },
+      ],
+    },
   ]);
 
   const [position, setPosition] = useState(0);
   const [isFinalizing, setFinalizing] = useState(false);
   const [isSuccessModalOpen, setSuccessModalOpen] = useState(false);
   const [isSubmitted, setSubmitted] = useState(false);
+  const [isComplete, setComplete] = useState(false);
+  const [steps, setSteps] = useState([
+    {
+      step: "1",
+      isCompleted: false,
+    },
+    {
+      step: "2",
+      isCompleted: false,
+    },
+    {
+      step: "3",
+      isCompleted: false,
+    },
+  ]);
 
   const convertForm = (form) => {
     const newData = form.map((input) => {
@@ -331,7 +236,6 @@ const Verification = () => {
 
   const handleSubmit = useCallback(
     async (e) => {
-      console.log("Test");
       e && e.preventDefault();
       let numOfErrors = 0;
       let numOfValues = 0;
@@ -344,11 +248,12 @@ const Verification = () => {
 
       if (isSubmitted) {
         if (numOfErrors === 0 && numOfValues === lengthForms) {
-          if (position < 2) {
+          if (position < 3) {
             const finalForm = {
               email: user.email,
               internshipDetails: convertForm([...form[0].forms]),
               schoolDetails: convertForm([...form[1].forms]),
+              scheduleDetails: convertForm([...form[2].forms]),
               verification: {
                 hasSentVerification: true,
                 isVerified: false,
@@ -360,96 +265,152 @@ const Verification = () => {
         }
       }
     },
-    [dispatch, form, isSubmitted, position, user.email]
+    [form, dispatch, isSubmitted, position, user.email]
   );
 
-  const checkProgram = (department, mainIndex, index) => {
-    const newForm = [...form];
-    switch (department) {
-      case "Bachelor of Science in Information Technology":
-        newForm[mainIndex].forms[index + 3].value = "640";
-        return;
-      case "Bachelor of Science in Computer Science":
-        newForm[mainIndex].forms[index + 3].value = "240";
-        return;
-      case "Bachelor of Library Information System":
-        newForm[mainIndex].forms[index + 3].value = "240";
-        return;
-      case "Bachelor of Science in Computer Engineering":
-        newForm[mainIndex].forms[index + 3].value = "240";
-        return;
-      case "Bachelor of Science in Electrical Engineering":
-        newForm[mainIndex].forms[index + 3].value = "240";
-        return;
-      case "Bachelor of Science in Electronics and Communications Engineering":
-        newForm[mainIndex].forms[index + 3].value = "240";
-        return;
-      default:
-        return;
+  const checkProgram = useCallback(
+    (department, mainIndex, index) => {
+      const newForm = [...form];
+      switch (department) {
+        case "Bachelor of Science in Information Technology":
+          newForm[mainIndex].forms[index + 3].value = "640";
+          return;
+        case "Bachelor of Science in Computer Science":
+          newForm[mainIndex].forms[index + 3].value = "240";
+          return;
+        case "Bachelor of Library Information System":
+          newForm[mainIndex].forms[index + 3].value = "240";
+          return;
+        case "Bachelor of Science in Computer Engineering":
+          newForm[mainIndex].forms[index + 3].value = "240";
+          return;
+        case "Bachelor of Science in Electrical Engineering":
+          newForm[mainIndex].forms[index + 3].value = "240";
+          return;
+        case "Bachelor of Science in Electronics and Communications Engineering":
+          newForm[mainIndex].forms[index + 3].value = "240";
+          return;
+        default:
+          return;
+      }
+    },
+    [form]
+  );
+
+  const checkCompletion = (index) => {
+    let numOfErrors = 0;
+    let numOfValues = 0;
+    form[position].forms.forEach((item) => {
+      item.isError && numOfErrors++;
+      item.value && numOfValues++;
+    });
+
+    const lengthForms = form[position].forms.length;
+    const newSteps = [...steps];
+
+    if (numOfErrors === 0 && numOfValues === lengthForms) {
+      newSteps[index].isCompleted = true;
+      setSteps(newSteps);
+    } else {
+      newSteps[index].isCompleted = false;
+      setSteps(newSteps);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   };
 
-  const handleOnChange = (value, group, index, mainIndex) => {
-    const newForm = [...form];
-    const inputField = newForm[mainIndex].forms[index].id;
-    switch (inputField) {
-      case "company-name":
-        value.length >= 2 && value.length <= 30
-          ? (newForm[mainIndex].forms[index].isError = false)
-          : (newForm[mainIndex].forms[index].isError = true);
-        newForm[mainIndex].forms[index].value = value;
-        setForm(newForm);
-        return;
-      case "company-address":
-        value.length >= 5 && value.length <= 50
-          ? (newForm[mainIndex].forms[index].isError = false)
-          : (newForm[mainIndex].forms[index].isError = true);
-        newForm[mainIndex].forms[index].value = value;
-        setForm(newForm);
-        return;
-      case "supervisor":
-        value.length >= 2 && value.length <= 20
-          ? (newForm[mainIndex].forms[index].isError = false)
-          : (newForm[mainIndex].forms[index].isError = true);
-        newForm[mainIndex].forms[index].value = value;
-        setForm(newForm);
-        return;
-      case "supervisor-contact":
-      case "student-contact":
-        newForm[mainIndex].forms[index].value = value;
-        const passwordRegex = /^(09|\+639)\d{9}$/;
-        let isConctactValid = passwordRegex.test(value);
-        if (isConctactValid) {
-          newForm[mainIndex].forms[index].isError = false;
-        } else {
-          newForm[mainIndex].forms[index].isError = true;
-        }
-        setForm(newForm);
-        return;
-      // case "department":
-      //   newForm[mainIndex].forms[index].value = value;
-      //   const departmentValue = newForm[mainIndex].forms[index].value;
-      //   checkDepartment(departmentValue, mainIndex, index);
-      //   setForm(newForm);
-      //   return;
-      case "program":
-        newForm[mainIndex].forms[index].value = value;
-        const programValue = newForm[mainIndex].forms[index].value;
-        checkProgram(programValue, mainIndex, index);
-        setForm(newForm);
-        return;
-      case "schedule-type":
-        newForm[mainIndex].forms[index].value = value;
-        newForm[mainIndex].forms[index + 1].value = "8:00 AM";
-        newForm[mainIndex].forms[index + 2].value = "5:00 PM";
-        setForm(newForm);
-        return;
-      default:
-        newForm[mainIndex].forms[index].value = value;
-        setForm(newForm);
-        return;
-    }
-  };
+  const handleOnChange = useCallback(
+    (value, group, index, mainIndex) => {
+      const newForm = [...form];
+      const inputField = newForm[mainIndex].forms[index].id;
+      switch (inputField) {
+        case "company-name":
+          value.length >= 2 && value.length <= 30
+            ? (newForm[mainIndex].forms[index].isError = false)
+            : (newForm[mainIndex].forms[index].isError = true);
+          newForm[mainIndex].forms[index].value = value;
+          setForm(newForm);
+          checkCompletion(mainIndex);
+          return;
+        case "company-address":
+          value.length >= 5 && value.length <= 50
+            ? (newForm[mainIndex].forms[index].isError = false)
+            : (newForm[mainIndex].forms[index].isError = true);
+          newForm[mainIndex].forms[index].value = value;
+          setForm(newForm);
+          checkCompletion(mainIndex);
+
+          return;
+        case "supervisor":
+          value.length >= 2 && value.length <= 20
+            ? (newForm[mainIndex].forms[index].isError = false)
+            : (newForm[mainIndex].forms[index].isError = true);
+          newForm[mainIndex].forms[index].value = value;
+          setForm(newForm);
+          checkCompletion(mainIndex);
+
+          return;
+        case "supervisor-contact":
+        case "student-contact":
+          newForm[mainIndex].forms[index].value = value;
+          const passwordRegex = /^(09|\+639)\d{9}$/;
+          let isConctactValid = passwordRegex.test(value);
+          if (isConctactValid) {
+            newForm[mainIndex].forms[index].isError = false;
+          } else {
+            newForm[mainIndex].forms[index].isError = true;
+          }
+          setForm(newForm);
+          checkCompletion(mainIndex);
+
+          return;
+        case "program":
+          newForm[mainIndex].forms[index].value = value;
+          const programValue = newForm[mainIndex].forms[index].value;
+          checkProgram(programValue, mainIndex, index);
+
+          setForm(newForm);
+          checkCompletion(mainIndex);
+
+          return;
+        case "schedule-type":
+          if (value === "Regular") {
+            newForm[mainIndex].forms[index].value = value;
+            newForm[mainIndex].forms[index + 1].value = "8:00 AM";
+            newForm[mainIndex].forms[index + 2].value = "5:00 PM";
+            newForm[mainIndex].forms[index + 3].value = "Monday - Friday";
+          } else {
+            newForm[mainIndex].forms[index].value = value;
+            newForm[mainIndex].forms[index + 1].value = "Not Specified";
+            newForm[mainIndex].forms[index + 2].value = "Not Specified";
+            newForm[mainIndex].forms[index + 3].value = "Not Specified";
+          }
+          let numOfErrors = 0;
+          let numOfValues = 0;
+          form[position].forms.forEach((item) => {
+            item.isError && numOfErrors++;
+            item.value && numOfValues++;
+          });
+          const lengthForms = form[position].forms.length;
+
+          if (numOfErrors === 0 && numOfValues === lengthForms) {
+            setComplete(true);
+          }
+
+          setForm(newForm);
+          checkCompletion(mainIndex);
+
+          return;
+        default:
+          newForm[mainIndex].forms[index].value = value;
+          setForm(newForm);
+          checkCompletion(mainIndex);
+
+          return;
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [checkProgram, form, position]
+  );
 
   const handleNext = (e) => {
     e.preventDefault();
@@ -662,33 +623,23 @@ const Verification = () => {
     });
   };
 
-  const [steps, setSteps] = useState([
-    {
-      step: "1",
-      isCompleted: false,
-    },
-    {
-      step: "2",
-      isCompleted: false,
-    },
-    // {
-    //   step: "3",
-    //   isCompleted: false,
-    // },
-  ]);
-
   const renderSteps = () => {
     return steps.map((item, index) => {
       const {step, isCompleted} = item;
       return (
         <div
-          // onClick={() => setPosition((prev) => (prev = index))}
           className={
             index === position ? `step-${step} active` : `step-${step} `
           }
           key={index}
         >
-          {step}
+          {isCompleted ? (
+            <span>
+              <FaCheck />
+            </span>
+          ) : (
+            step
+          )}
         </div>
       );
     });
@@ -708,6 +659,13 @@ const Verification = () => {
 
   return (
     <section className="verification-container">
+      {/* <button onClick={() => navigate("/dashboard")}>dashboard</button> */}
+      {isFinalizing ? (
+        <div className="overlay"></div>
+      ) : isSuccessModalOpen ? (
+        <div className="overlay"></div>
+      ) : null}
+
       {isFinalizing && (
         <AreYouSureModal
           handleFinalizing={handleFinalizing}
@@ -715,9 +673,9 @@ const Verification = () => {
           setSubmitted={setSubmitted}
         />
       )}
-      {isSuccessModalOpen && (
+      {/* {isSuccessModalOpen && (
         <SuccessModal handleSuccessModal={handleSuccessModal} />
-      )}
+      )} */}
       <div className="greetings">
         <h1>
           Welcome, <span>{firstName}</span>
@@ -761,18 +719,13 @@ const Verification = () => {
               <button tabIndex={-1} onClick={handleReturn}>
                 Back
               </button>
-              <button
-                tabIndex={-1}
-                disabled={isFinalizing ? true : false}
-                onClick={handleFinalizing}
-              >
-                Submit Verification
+              <button tabIndex={-1} onClick={handleNext}>
+                Next
               </button>
-              {/* <button onClick={handleNext}>Next</button> */}
               {/* <button onClick={() => setNextPage(!atNextPage)}>Back</button> */}
             </div>
           </div>
-          {/* <div
+          <div
             className={
               position === 2
                 ? "schedule-details active-1"
@@ -782,15 +735,25 @@ const Verification = () => {
             }
           >
             <div className="forms-con">
-              {renderInputs(form[2].forms, "student-details", 2)}
+              {renderInputs(form[2].forms, "Schedule Details", 2)}
             </div>
-            <button onClick={handleReturn}>Back</button>
-            <button>Submit Verification</button>
-          </div> */}
+            <div className="btn-con">
+              <button tabIndex={-1} onClick={handleReturn}>
+                Back
+              </button>
+              <button
+                tabIndex={-1}
+                disabled={isComplete ? false : true}
+                onClick={handleFinalizing}
+              >
+                Submit Verification
+              </button>
+            </div>
+          </div>
         </form>
       </div>
     </section>
   );
-};
+});
 
 export default Verification;
