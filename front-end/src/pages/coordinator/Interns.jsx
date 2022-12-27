@@ -1,23 +1,17 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, {useState, useCallback, useEffect} from "react";
 import Intern from "../../components/coordinator/Intern";
-import { useSelector, useDispatch } from "react-redux";
-import { getAllInterns } from "../../features/interns/internReducer";
+import {useSelector, useDispatch} from "react-redux";
 
 const Interns = () => {
-  const { interns, isLoading, isError } = useSelector((state) => state.intern);
-  const dispatch = useDispatch();
+  const {interns, isError} = useSelector((state) => state.intern);
   const [searchIntern, setSearchIntern] = useState("");
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-  useEffect(() => {
-    dispatch(getAllInterns());
-  }, []);
-
   const renderInterns = () => {
-    if (isLoading) {
-      return <h1>Loading...</h1>;
-    }
+    // if (isLoading) {
+    //   return <h1>Loading...</h1>;
+    // }
     return interns.map((intern, index) => {
       return <Intern intern={intern} key={index} />;
     });

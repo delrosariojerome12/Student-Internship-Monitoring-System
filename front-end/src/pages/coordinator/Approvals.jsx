@@ -1,11 +1,11 @@
 import React from "react";
 import Approval from "../../components/coordinator/ApprovalIntern";
-import { useSelector, useDispatch } from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 
-import { GoSearch } from "react-icons/go";
+import {GoSearch} from "react-icons/go";
 
 const Approvals = () => {
-  const { interns, isLoading, isError } = useSelector((state) => state.intern);
+  const {interns, isLoading, isError} = useSelector((state) => state.intern);
 
   const renderApprovals = () => {
     if (isLoading) {
@@ -15,6 +15,7 @@ const Approvals = () => {
       return <Approval intern={intern} key={index} />;
     });
   };
+
   return (
     <section className="approvals-container">
       <header>
