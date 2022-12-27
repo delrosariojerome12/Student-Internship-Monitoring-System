@@ -11,23 +11,24 @@ const Approvals = () => {
     if (isLoading) {
       return <h1>Loading...</h1>;
     }
-    return interns.map((intern, index) => {
-      return <Approval intern={intern} key={index} />;
-    });
+    return interns
+      .filter((intern) => {
+        const {
+          verification: {hasSentVerification, isVerified},
+        } = intern;
+        if (hasSentVerification && isVerified === false) {
+          return intern;
+        }
+      })
+      .map((intern, index) => {
+        return <Approval intern={intern} key={index} />;
+      });
   };
 
   return (
-    <section className="approvals-container">
-      <header>
-        <div className="search-box">
-          {/* <img src={searchIcon} alt="" /> */}
-          <span>
-            <GoSearch />
-          </span>
-          <input type="text" placeholder="Search" />
-        </div>
-      </header>
-      <div className="approvals-content">{renderApprovals()}</div>
+    <section className="approvals">
+      <header>Approvals</header>
+      <div className="approvals-intern-container">{renderApprovals()}</div>
     </section>
   );
 };

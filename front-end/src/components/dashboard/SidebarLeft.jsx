@@ -80,11 +80,11 @@ const links = [
         link: "Appravals",
         IconType: FaUserCheck,
       },
-      {
-        path: "/dashboard/documents",
-        link: "Documents",
-        IconType: HiDocument,
-      },
+      // {
+      //   path: "/dashboard/documents",
+      //   link: "Documents",
+      //   IconType: HiDocument,
+      // },
       {
         path: "/dashboard/internships",
         link: "Internships",

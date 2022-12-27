@@ -1,87 +1,78 @@
 @import "../../utils";
 @import "../../variables";
 
-.approvals-container {
+.approvals {
   height: 100%;
   width: 100%;
   display: grid;
   grid-template-rows: 7vh auto;
   gap: 1rem;
-
   header {
     padding: 1rem 0 0;
-    .search-box {
-      display: flex;
-      background-color: $light-bg-color;
-      width: 25rem;
-      border-radius: 2rem;
-      align-items: center;
-      padding: 0 1.5rem;
-      margin: 1rem 1rem auto auto;
-      span {
-        @include flexCenter;
-        font-size: 1.8rem;
-        cursor: pointer;
-      }
-      input {
-        width: 100%;
-        background: transparent;
-        padding: 1rem;
-        outline: none;
-        border: 0;
-      }
-    }
   }
-  .approvals-content {
-    border: solid 1px #fff;
-    border-radius: 1rem;
-    position: relative;
+  .approvals-intern-container {
+    // border: solid 1px #fff;
     display: grid;
-    grid-auto-rows: 10rem;
+    grid-auto-rows: 11rem;
     gap: 1rem;
-    padding: 1rem;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 1rem;
+
     .approval-intern {
+      border: solid 1px #fff;
       display: grid;
       grid-template-columns: 10rem auto;
+      padding: 1rem;
+      gap: 1rem;
+      background-color: $primary-bg-color-landing-compliment;
       border-radius: 1rem;
-      gap: 2rem;
-      cursor: pointer;
-      font-size: 1.4rem;
-      .details {
-        background-color: #fff;
-        display: grid;
-        grid-template-rows: auto 2rem;
-        gap: 1rem;
+      color: #fff;
 
-        .upper {
-          padding: 1rem;
-          display: grid;
-          grid-template-columns: auto auto 5rem;
-
-          .intern-infos {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-          }
-
-          .notification-bell {
-            @include flexCenter;
-            font-size: 2.5rem;
-          }
-        }
-        .lower {
-          button {
-            padding: 0.1rem;
-            width: 100%;
-            background-color: #0e6164;
-            color: #fff;
-            border: none;
-          }
+      .overlay {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(48, 47, 47, 0.753);
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        z-index: 8;
+        @include flexCenter;
+        .intern-modal {
+          background-color: #fff;
+          color: #000;
+          width: 90rem;
+          height: 80%;
+          border-radius: 1rem;
+          padding: 2rem;
         }
       }
-      & > * {
+
+      .intern-right {
+        display: flex;
+        gap: 2rem;
+        padding: 1rem;
+        align-items: center;
+      }
+
+      .intern-left {
         border: solid 1px #fff;
       }
+    }
+    button {
+      cursor: pointer;
+      height: 4.5rem;
+      @include flexCenter;
+      // margin: 0 auto;
+      padding: 1.6rem;
+      border-radius: 5px;
+      border: solid 1px transparent;
+      outline: none;
+      color: $primary-font-color;
+      background-color: $primary-compliment-landing;
+      letter-spacing: 0.2rem;
+      transition: all 0.3s ease-in-out;
+      font-weight: 600;
     }
   }
 }
