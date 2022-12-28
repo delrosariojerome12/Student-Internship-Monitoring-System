@@ -1,39 +1,82 @@
-import React from "react";
-import { FaAngleDoubleDown } from "react-icons/fa";
-import { IoMdNotifications } from "react-icons/io";
+import React, {useState} from "react";
+import {FaCheck, FaTrash} from "react-icons/fa";
 
-const ApprovalIntern = React.memo(({ intern }) => {
+const ApprovalIntern = React.memo(({intern}) => {
   const {
-    user: { firstName, lastName },
-    schoolDetails,
-    internshipDetails,
-    verification: { isVerified, hasSentVerification },
+    user: {firstName, lastName},
+    schoolDetails: {program, studentContact, validID, requiredHours},
+    internshipDetails: {
+      companyAddress,
+      companyName,
+      supervisor,
+      supervisorContact,
+      typeOfWork,
+    },
+    verification: {isVerified, hasSentVerification},
+    scheduleDetails: {
+      scheduleType,
+      scheduledDays,
+      timeInSchedule,
+      timeOutSchedule,
+    },
   } = intern;
+
+  console.log(intern);
+  const [isDetailsOpen, setDetailsOpen] = useState(false);
+
+  const handleDetails = () => {
+    setDetailsOpen(!isDetailsOpen);
+  };
 
   return (
     <div className="approval-intern">
-      <div className="img"></div>
-      <div className="details">
-        <div className="internt-name">
-          <p className="name">
+      {isDetailsOpen && (
+        <div className="overlay">
+          <div className="intern-modal">
+            <div className="sent-details">
+              <div className="student-details">
+                <h3>Student Details</h3>
+                <p>Contact: {studentContact}</p>
+                <p>Program: {program}</p>
+                <p>Required Hours: {requiredHours}</p>
+                <img src={validID} id="valid-id" alt="student image" />
+              </div>
+
+              <div className="internship-details">
+                <h3>Internship Details</h3>
+                <p>Company: {companyName}</p>
+                <p>Address: {companyAddress}</p>
+                <p>Supervisor: {supervisor}</p>
+                <p>Contact: {supervisorContact}</p>
+                <p>Type of Work: {typeOfWork}</p>
+              </div>
+
+              <div className="schedule-details">
+                <h3>Schedule Details</h3>
+                <p>Schedule Type: {scheduleType}</p>
+                <p>Days: {scheduledDays} </p>
+                <p>Time: {`${timeInSchedule} - ${timeOutSchedule}`}</p>
+              </div>
+            </div>
+            <div className="btn-container">
+              <button onClick={handleDetails}>Back</button>
+              <button>Decline</button>
+              <button>Approve</button>
+            </div>
+          </div>
+        </div>
+      )}
+      <div className="intern-left">
+        <img src="" alt="" />
+      </div>
+      <div className="intern-right">
+        <div className="intern-details">
+          <p>
             {firstName} {lastName}
           </p>
-          <p className="program">Program: {schoolDetails?.program}</p>
+          <p>{program}</p>
         </div>
-        <div className="intern-infos">
-          <p className="program"> {internshipDetails?.companyName}</p>
-          {/* <p className="program"> {schoolDetails?.program}</p> */}
-        </div>
-        <div className="intern-infos">
-          <span>
-            <IoMdNotifications />
-          </span>
-        </div>
-        {/* <button>
-          <span>
-            <FaAngleDoubleDown />
-          </span>
-        </button> */}
+        <button onClick={handleDetails}>View Sent Details</button>
       </div>
     </div>
   );
