@@ -3,6 +3,11 @@ import {Route, Routes, Navigate} from "react-router-dom";
 import {lazy, Suspense} from "react";
 import SidebarLeft from "../../components/dashboard/SidebarLeft";
 import SideBarRight from "../../components/dashboard/SidebarRight";
+import {useEffect} from "react";
+import {useSelector, useDispatch} from "react-redux";
+import {getAllInterns} from "../../features/interns/internReducer";
+
+import Bouncing from "../../components/loading/Bouncing";
 
 const Dashboard = lazy(() => import("./Dashboard"));
 const Approvals = lazy(() => import("./Approvals"));
@@ -11,13 +16,20 @@ const Documents = lazy(() => import("./Documents"));
 const Internships = lazy(() => import("./Internships"));
 
 const Coordinator = React.memo(({isSidebarOpen}) => {
+  const {isLoading, isError} = useSelector((state) => state.intern);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllInterns());
+  }, []);
+
   return (
     <section
       style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
       className="dashboard"
     >
       <SidebarLeft />
-      <Suspense fallback={<h2>Loading...</h2>}>
+      <Suspense fallback={<Bouncing />}>
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/interns" element={<Interns />} />

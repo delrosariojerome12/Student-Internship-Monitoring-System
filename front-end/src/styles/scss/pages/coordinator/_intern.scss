@@ -80,6 +80,7 @@
       width: 50rem;
       height: 40rem;
       background-color: #fff;
+      border: solid 1px #000;
       border-radius: 1rem;
     }
     .intern {
@@ -88,8 +89,13 @@
       border: solid 1px #fff;
       border-radius: 1rem;
       gap: 2rem;
+      cursor: pointer;
+      font-size: 1.4rem;
       .intern-details {
         background-color: #fff;
+        padding: 1rem;
+        display: grid;
+        grid-template-columns: auto auto;
       }
       & > * {
         border: solid 1px #fff;

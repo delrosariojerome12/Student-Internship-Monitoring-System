@@ -2,6 +2,7 @@
 @import "../utils";
 
 .dashboard {
+  display: grid;
   height: 100%;
   gap: 1rem;
   position: relative;
@@ -114,4 +115,7 @@
   @import "../components/dashboard/sidebarRight";
 
   @import "../pages/coordinator/intern";
+  @import "../pages/coordinator/approvals";
+
+  @import "../pages/admin/documenets";
 }

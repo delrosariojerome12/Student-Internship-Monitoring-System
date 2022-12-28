@@ -1,0 +1,32 @@
+@import "../../utils";
+@import "../../variables";
+
+.dots {
+  @include flexCenter;
+  background-color: #1e272eb9;
+  .dotted {
+    span {
+      width: 1.8rem;
+      height: 1.8rem;
+      background-color: #fcf95c;
+      margin: 0 0.3rem;
+      border-radius: 50%;
+      display: inline-block;
+      animation: dot 2s infinite ease-in-out;
+    }
+  }
+  .dotted span:nth-child(2) {
+    background-color: #65faff;
+    animation-delay: 0.4s;
+  }
+  .dotted span:nth-child(3) {
+    background-color: #ff6f7b;
+    animation-delay: 0.8s;
+  }
+  @keyframes dot {
+    50% {
+      opacity: 0;
+      transform: scale(0.7) translateY(10px);
+    }
+  }
+}

@@ -6,6 +6,7 @@ const {
 } = require("./utils/internsDetails");
 
 const schoolDetails = require("./utils/schoolDetails");
+const scheduleDetails = require("./utils/scheduleDetails");
 
 const InternSchema = new mongoose.Schema({
   user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
@@ -22,6 +23,7 @@ const InternSchema = new mongoose.Schema({
   internshipDetails,
   internsAssets,
   schoolDetails,
+  scheduleDetails,
 });
 
 module.exports = mongoose.model("Intern", InternSchema);

@@ -11,11 +11,13 @@
 
 @import "./components/login";
 @import "./components/signin";
-@import "./components/loading";
 @import "./pages/landingPage";
 
 @import "./pages/dashboard";
 @import "./pages/pending";
+@import "./pages/verification/verification";
+@import "./pages/verification/waiting";
+
 @import "./pages/profile";
 @import "./pages/dailyTimeRecord";
 @import "./pages/documents";
@@ -23,6 +25,7 @@
 @import "./pages/settings";
 
 @import "./pages/pageNotFound";
+@import "./pages/serverError";
 // @import "./screen/mobile";
 // @import "./screen/tablet";
 // @import "./screen/desktop";
@@ -31,3 +34,8 @@
 @import "./screen/pending";
 @import "./screen/signup";
 @import "./screen/landingPage";
+
+//Loading
+@import "./components/loading/circle";
+@import "./components/loading/dotted";
+@import "./components/loading/bouncing";
