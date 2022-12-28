@@ -1437,12 +1437,46 @@ button {
   justify-content: center;
 }
 .dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal {
+  display: grid;
   background-color: #fff;
   color: #000;
   width: 90rem;
   height: 80%;
   border-radius: 1rem;
   padding: 2rem;
+  gap: 1rem;
+}
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal > * {
+  border: solid 1px #000;
+}
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details {
+  grid-column: 2/3;
+  grid-row: 1/3;
+}
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .schedule-details {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .student-details > * {
+  border: solid 1px #000;
+}
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .student-details img {
+  height: 10rem;
+  width: 10rem;
+}
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details > * {
+  border: solid 1px #000;
+}
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 .dashboard .approvals .approvals-intern-container .approval-intern .intern-right {
   display: flex;

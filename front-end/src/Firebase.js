@@ -1,31 +1,14 @@
 import {initializeApp} from "firebase/app";
-import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signInWithRedirect,
-  signOut,
-  onAuthStateChanged,
-} from "firebase/auth";
+import {getStorage} from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyChWRSAtePq-heBofnFgd4H_Fnq5uoSmig",
-  authDomain: "sims-6bd68.firebaseapp.com",
-  projectId: "sims-6bd68",
-  storageBucket: "sims-6bd68.appspot.com",
-  messagingSenderId: "620428188675",
-  appId: "1:620428188675:web:00652fad77b18ac7168236",
+  apiKey: "AIzaSyAYqoEEL2nw3WzmHp9R6-ukmIigntSt2BY",
+  authDomain: "sims-9f681.firebaseapp.com",
+  projectId: "sims-9f681",
+  storageBucket: "sims-9f681.appspot.com",
+  messagingSenderId: "684908948986",
+  appId: "1:684908948986:web:603ae938887bb473594843",
 };
 
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-
-const provider = new GoogleAuthProvider();
-
-export const signInWithGoogle = () => {
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      console.log(result);
-    })
-    .catch((err) => console.log(err));
-};
+export const storage = getStorage(app);

@@ -1,11 +1,10 @@
 import React, {useState} from "react";
-import {FaAngleDoubleDown} from "react-icons/fa";
-import {IoMdNotifications} from "react-icons/io";
+import {FaCheck, FaTrash} from "react-icons/fa";
 
 const ApprovalIntern = React.memo(({intern}) => {
   const {
     user: {firstName, lastName},
-    schoolDetails: {program},
+    schoolDetails: {program, studentContact, validID, requiredHours},
     internshipDetails: {
       companyAddress,
       companyName,
@@ -35,15 +34,29 @@ const ApprovalIntern = React.memo(({intern}) => {
         <div className="overlay">
           <div className="intern-modal">
             <div className="sent-details">
-              <p>Company: {companyName}</p>
-              <p>Address: {companyAddress}</p>
-              <p>Supervisor: {supervisor}</p>
-              <p>Contact: {supervisorContact}</p>
-              <p>Type of Work: {typeOfWork}</p>
+              <div className="student-details">
+                <h3>Student Details</h3>
+                <p>Contact: {studentContact}</p>
+                <p>Program: {program}</p>
+                <p>Required Hours: {requiredHours}</p>
+                <img src={validID} id="valid-id" alt="student image" />
+              </div>
 
-              <p>Schedule Type: {scheduleType}</p>
-              <p>Days: {scheduledDays} </p>
-              <p>Time: {`${timeInSchedule} - ${timeOutSchedule}`}</p>
+              <div className="internship-details">
+                <h3>Internship Details</h3>
+                <p>Company: {companyName}</p>
+                <p>Address: {companyAddress}</p>
+                <p>Supervisor: {supervisor}</p>
+                <p>Contact: {supervisorContact}</p>
+                <p>Type of Work: {typeOfWork}</p>
+              </div>
+
+              <div className="schedule-details">
+                <h3>Schedule Details</h3>
+                <p>Schedule Type: {scheduleType}</p>
+                <p>Days: {scheduledDays} </p>
+                <p>Time: {`${timeInSchedule} - ${timeOutSchedule}`}</p>
+              </div>
             </div>
             <div className="btn-container">
               <button onClick={handleDetails}>Back</button>

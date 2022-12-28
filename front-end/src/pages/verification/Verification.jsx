@@ -5,6 +5,11 @@ import CreatableSelect from "react-select/creatable";
 import {requestVerification} from "../../features/user/userReducer";
 import AreYouSureModal from "../../components/verification/AreYouSureModal";
 // import SuccessModal from "../../components/verification/SuccessModal";
+
+import {storage} from "../../Firebase";
+import {ref, uploadBytes, listAll, getDownloadURL} from "firebase/storage";
+import {v4} from "uuid";
+
 import {FaCheck} from "react-icons/fa";
 const Verification = React.memo(() => {
   const dispatch = useDispatch();
@@ -338,7 +343,6 @@ const Verification = React.memo(() => {
           newForm[mainIndex].forms[index].value = value;
           setForm(newForm);
           checkCompletion(mainIndex);
-
           return;
         case "supervisor":
           value.length >= 2 && value.length <= 20
@@ -347,7 +351,6 @@ const Verification = React.memo(() => {
           newForm[mainIndex].forms[index].value = value;
           setForm(newForm);
           checkCompletion(mainIndex);
-
           return;
         case "supervisor-contact":
         case "student-contact":
@@ -361,16 +364,24 @@ const Verification = React.memo(() => {
           }
           setForm(newForm);
           checkCompletion(mainIndex);
-
           return;
         case "program":
           newForm[mainIndex].forms[index].value = value;
           const programValue = newForm[mainIndex].forms[index].value;
           checkProgram(programValue, mainIndex, index);
-
           setForm(newForm);
           checkCompletion(mainIndex);
-
+          return;
+        case "valid-id":
+          const imageRef = ref(storage, `images/validID/${value.name + v4()}`);
+          uploadBytes(imageRef, value).then((res) => {
+            getDownloadURL(res.ref).then((url) => {
+              // console.log(url);
+              newForm[mainIndex].forms[index].value = url;
+            });
+          });
+          setForm(newForm);
+          checkCompletion(mainIndex);
           return;
         case "schedule-type":
           if (value === "Regular") {
@@ -391,20 +402,16 @@ const Verification = React.memo(() => {
             item.value && numOfValues++;
           });
           const lengthForms = form[position].forms.length;
-
           if (numOfErrors === 0 && numOfValues === lengthForms) {
             setComplete(true);
           }
-
           setForm(newForm);
           checkCompletion(mainIndex);
-
           return;
         default:
           newForm[mainIndex].forms[index].value = value;
           setForm(newForm);
           checkCompletion(mainIndex);
-
           return;
       }
     },
@@ -515,7 +522,7 @@ const Verification = React.memo(() => {
               <label htmlFor="valid-img">School ID</label>
               <input
                 onChange={(e) =>
-                  handleOnChange(e.target.value, group, index, mainIndex)
+                  handleOnChange(e.target.files[0], group, index, mainIndex)
                 }
                 tabIndex={-1}
                 required
