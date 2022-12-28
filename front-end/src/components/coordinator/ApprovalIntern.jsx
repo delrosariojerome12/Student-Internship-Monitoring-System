@@ -36,9 +36,9 @@ const ApprovalIntern = React.memo(({intern}) => {
             <div className="sent-details">
               <div className="student-details">
                 <h3>Student Details</h3>
-                <p>Contact: {studentContact}</p>
                 <p>Program: {program}</p>
                 <p>Required Hours: {requiredHours}</p>
+                <p>Contact: {studentContact}</p>
                 <img src={validID} id="valid-id" alt="student image" />
               </div>
 
