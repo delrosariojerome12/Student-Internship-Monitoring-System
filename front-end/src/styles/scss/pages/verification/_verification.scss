@@ -9,6 +9,43 @@
   grid-template-rows: 4.3rem auto;
   gap: 1rem;
   padding: 3rem;
+
+  .valid-id-modal {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(65, 65, 65, 0.76);
+    border: solid 1px #000;
+    z-index: 8;
+    @include flexColumn;
+    align-items: center;
+    justify-content: center;
+    img {
+      height: 50rem;
+      width: 50rem;
+    }
+    button {
+      cursor: pointer;
+      height: 4.5rem;
+      @include flexCenter;
+      padding: 1.6rem;
+      border-radius: 5px;
+      border: solid 1px transparent;
+      outline: none;
+      background-color: $primary-bg-color;
+      color: $primary-font-color;
+      letter-spacing: 0.2rem;
+      transition: all 0.3s ease-in-out;
+      font-weight: 600;
+      &:last-child:hover {
+        background-color: $primary-font-color;
+        color: $primary-bg-color;
+        border: solid 1px $primary-bg-color;
+      }
+    }
+  }
   .overlay {
     width: 100%;
     height: 100%;
@@ -264,16 +301,30 @@
         display: flex;
         flex-direction: column;
         gap: 2rem;
+        .img-input {
+          height: 5rem;
+          display: flex;
+          align-items: center;
+          border: solid 1px #8b8b8b;
+          gap: 2rem;
+          padding-left: 2rem;
+          border-radius: 0.5rem;
+          label {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            img {
+              height: 4rem;
+              width: 4rem;
+              border: solid 1px $primary-bg-color;
+              cursor: pointer;
+            }
+          }
+        }
       }
-      .img-input {
-        height: 5rem;
-        display: flex;
-        align-items: center;
-        border: solid 1px #8b8b8b;
-        gap: 2rem;
-        padding-left: 2rem;
-        border-radius: 0.5rem;
-      }
+
       .btn-con {
         @include flexCenter;
       }
