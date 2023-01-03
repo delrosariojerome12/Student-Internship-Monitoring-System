@@ -1,9 +1,14 @@
 import React, {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {getIntern, updateIntern} from "../../features/interns/internReducer";
 import {FaCheck, FaTrash} from "react-icons/fa";
 
-const ApprovalIntern = React.memo(({intern}) => {
+const ApprovalIntern = React.memo(({intern, index}) => {
+  const {selectedIntern} = useSelector((state) => state.intern);
+  const dispatch = useDispatch();
+
   const {
-    user: {firstName, lastName},
+    user: {firstName, lastName, email},
     schoolDetails: {program, studentContact, validID, requiredHours},
     internshipDetails: {
       companyAddress,
@@ -21,11 +26,28 @@ const ApprovalIntern = React.memo(({intern}) => {
     },
   } = intern;
 
-  console.log(intern);
   const [isDetailsOpen, setDetailsOpen] = useState(false);
+  const [remarks, setRemarks] = useState("");
+
+  const handleTextAreaChange = (value) => {
+    setRemarks(value);
+  };
 
   const handleDetails = () => {
     setDetailsOpen(!isDetailsOpen);
+  };
+  const handleForm = (e) => {
+    e.preventDefault();
+    const form = {
+      email,
+      verification: {
+        hasSentVerification: false,
+        isVerified: false,
+        isRejected: true,
+      },
+    };
+    setDetailsOpen(false);
+    dispatch(updateIntern({form, index}));
   };
 
   return (
@@ -39,6 +61,7 @@ const ApprovalIntern = React.memo(({intern}) => {
                 <p>Program: {program}</p>
                 <p>Required Hours: {requiredHours}</p>
                 <p>Contact: {studentContact}</p>
+                <p>Email: {email}</p>
                 <img src={validID} id="valid-id" alt="student image" />
               </div>
 
@@ -58,10 +81,34 @@ const ApprovalIntern = React.memo(({intern}) => {
                 <p>Time: {`${timeInSchedule} - ${timeOutSchedule}`}</p>
               </div>
             </div>
-            <div className="btn-container">
-              <button onClick={handleDetails}>Back</button>
-              <button>Decline</button>
-              <button>Approve</button>
+            <div className="feedback-container">
+              <form onSubmit={handleForm}>
+                <div className="forms">
+                  <label htmlFor="">
+                    <p>
+                      Remarks <span>{`(optional)`}</span>
+                    </p>
+                    <textarea
+                      value={remarks}
+                      onChange={(e) => handleTextAreaChange(e.target.value)}
+                      name="remarks"
+                      id="remarks"
+                      maxLength={60}
+                    ></textarea>
+                  </label>
+                </div>
+                <div className="btn-container">
+                  <button onClick={handleDetails}>Back</button>
+                  <button>
+                    <FaTrash />
+                    Decline
+                  </button>
+                  <button>
+                    <FaCheck />
+                    Approve
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>

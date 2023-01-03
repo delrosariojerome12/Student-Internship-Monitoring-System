@@ -1440,11 +1440,12 @@ button {
   display: grid;
   background-color: #fff;
   color: #000;
-  width: 90rem;
-  height: 80%;
+  width: 82vw;
+  min-height: 60vh;
   border-radius: 1rem;
   padding: 2rem;
   gap: 1rem;
+  grid-template-rows: auto auto;
 }
 .dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal > * {
   border: solid 1px #000;
@@ -1472,7 +1473,25 @@ button {
 .dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details > * {
   border: solid 1px #000;
 }
-.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .btn-container {
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container {
+  display: grid;
+}
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form {
+  display: grid;
+  grid-template-rows: 12rem auto;
+}
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form .forms label {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+}
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form .forms label textarea {
+  resize: none;
+  padding: 1rem;
+}
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form .btn-container {
   display: flex;
   align-items: center;
   justify-content: center;
