@@ -36,18 +36,34 @@ const ApprovalIntern = React.memo(({intern, index}) => {
   const handleDetails = () => {
     setDetailsOpen(!isDetailsOpen);
   };
+
   const handleForm = (e) => {
     e.preventDefault();
-    const form = {
-      email,
-      verification: {
-        hasSentVerification: false,
-        isVerified: false,
-        isRejected: true,
-      },
-    };
     setDetailsOpen(false);
-    dispatch(updateIntern({form, index}));
+    const selectedAction = e.target.textContent;
+    if (selectedAction === "Decline") {
+      const form = {
+        email,
+        verification: {
+          hasSentVerification: false,
+          isVerified: false,
+          isRejected: true,
+        },
+      };
+      console.log("Request Rejected");
+      dispatch(updateIntern({form, index}));
+    } else {
+      const form = {
+        email,
+        verification: {
+          hasSentVerification: false,
+          isVerified: true,
+          isRejected: false,
+        },
+      };
+      dispatch(updateIntern({form, index}));
+      console.log("Request Accepted");
+    }
   };
 
   return (
@@ -82,7 +98,7 @@ const ApprovalIntern = React.memo(({intern, index}) => {
               </div>
             </div>
             <div className="feedback-container">
-              <form onSubmit={handleForm}>
+              <form>
                 <div className="forms">
                   <label htmlFor="">
                     <p>
@@ -99,11 +115,11 @@ const ApprovalIntern = React.memo(({intern, index}) => {
                 </div>
                 <div className="btn-container">
                   <button onClick={handleDetails}>Back</button>
-                  <button>
+                  <button onClick={handleForm}>
                     <FaTrash />
                     Decline
                   </button>
-                  <button>
+                  <button onClick={handleForm}>
                     <FaCheck />
                     Approve
                   </button>
