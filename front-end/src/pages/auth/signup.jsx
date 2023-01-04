@@ -1,18 +1,16 @@
-import React, {useState, useCallback, useEffect} from "react";
-import {Link, redirect, useNavigate} from "react-router-dom";
-import axios from "axios";
+import React, {useState} from "react";
+import {Link} from "react-router-dom";
 import logo from "../../assets/img/logo.svg";
-import {
-  FaUserAlt,
-  FaLock,
-  FaEye,
-  FaEyeSlash,
-  FaCheckCircle,
-} from "react-icons/fa";
+import {FaUserAlt, FaLock, FaEye, FaEyeSlash, FaCheck} from "react-icons/fa";
 import {GrMail} from "react-icons/gr";
 import {IconContext} from "react-icons";
 import {useDispatch, useSelector} from "react-redux";
 import {handleSignup} from "../../features/user/userReducer";
+import defaultImage from "../../assets/img/defaultImage.png";
+
+import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
+import {storage} from "../../Firebase";
+import {v4} from "uuid";
 
 const Signup = () => {
   const {isError, errorMessage, isLoading, user} = useSelector(
@@ -21,6 +19,19 @@ const Signup = () => {
   const dispatch = useDispatch();
 
   const [form, setForm] = useState([
+    {
+      forInput: "Profile Image",
+      type: "file",
+      id: "profile-image",
+      value:
+        "https://toppng.com/uploads/preview/instagram-default-profile-picture-11562973083brycehrmyv.png",
+      IconType: FaUserAlt,
+      isError: false,
+      errorMessage: "Image should be less than",
+      hasEyeIcon: false,
+      code: "profileImage",
+      isVisible: true,
+    },
     {
       forInput: "First Name",
       type: "text",
@@ -142,6 +153,18 @@ const Signup = () => {
         setForm(data);
 
         return;
+      case "Profile Image":
+        const imageRef = ref(
+          storage,
+          `images/users/profileImages/${v4() + value.name}`
+        );
+        uploadBytes(imageRef, value).then((res) => {
+          getDownloadURL(res.ref).then((url) => {
+            data[index].value = url;
+            setForm(data);
+          });
+        });
+        return;
       default:
         break;
     }
@@ -194,43 +217,88 @@ const Signup = () => {
         isVisible,
         code,
       } = inputs;
-      return (
-        isVisible && (
-          <div className="input-contain" key={index}>
-            <input
-              type={type}
-              name={code}
-              id={code}
-              className={isError ? "input-error" : null}
-              value={value}
-              required
-              onChange={(e) => handleOnChange(e.target.value, index, forInput)}
-              autoComplete={hasEyeIcon ? "true" : null}
-            />
-            <div className="placeholder-container">
-              <label
-                htmlFor={id}
-                className={
-                  value ? "placeholder-text active" : "placeholder-text"
-                }
-              >
-                <div className={isError ? "text icons-error" : "text"}>
-                  <span>
-                    <IconType className={isError ? "icons-error" : "icons"} />
-                  </span>
-                  {forInput}
+
+      switch (type) {
+        case "text":
+        case "email":
+        case "password":
+          return (
+            isVisible && (
+              <div className="input-contain" key={index}>
+                <input
+                  type={type}
+                  name={code}
+                  id={code}
+                  className={isError ? "input-error" : null}
+                  value={value}
+                  required
+                  onChange={(e) =>
+                    handleOnChange(e.target.value, index, forInput)
+                  }
+                  autoComplete={hasEyeIcon ? "true" : null}
+                />
+                <div className="placeholder-container">
+                  <label
+                    htmlFor={id}
+                    className={
+                      value ? "placeholder-text active" : "placeholder-text"
+                    }
+                  >
+                    <div className={isError ? "text icons-error" : "text"}>
+                      <span>
+                        <IconType
+                          className={isError ? "icons-error" : "icons"}
+                        />
+                      </span>
+                      {forInput}
+                    </div>
+                  </label>
                 </div>
+                {isError && <p className="error-message">{errorMessage}</p>}
+                {hasEyeIcon && (
+                  <div className="eye-container">
+                    {renderEyeIcon(hasShownPassword, index)}
+                  </div>
+                )}
+              </div>
+            )
+          );
+        case "file":
+          return (
+            <div key={index} className="img-input">
+              <label htmlFor={id}>
+                <div className="profile-con">
+                  <img src={value} alt="profile image" />
+
+                  {/* {value ? (
+                    <img src={value} alt="profile image" />
+                  ) : (
+                    <img src={defaultImage} alt="profile image" />
+                  )} */}
+                </div>
+                {value.includes("firebase") ? (
+                  <p>
+                    Profile Selected
+                    <FaCheck />
+                  </p>
+                ) : (
+                  <p>Select Profile Image</p>
+                )}
+                <input
+                  type="file"
+                  name={forInput}
+                  id={id}
+                  accept="image/*"
+                  onChange={(e) =>
+                    handleOnChange(e.target.files[0], index, forInput)
+                  }
+                />
               </label>
             </div>
-            {isError && <p className="error-message">{errorMessage}</p>}
-            {hasEyeIcon && (
-              <div className="eye-container">
-                {renderEyeIcon(hasShownPassword, index)}
-              </div>
-            )}
-          </div>
-        )
-      );
+          );
+        default:
+          return;
+      }
     });
   };
 
@@ -244,7 +312,7 @@ const Signup = () => {
           {isError && <h3 style={{color: "red"}}>{errorMessage}</h3>}
         </header>
         <form onSubmit={handleSubmit}>
-          <IconContext.Provider value={{color: "#000", className: "icons"}}>
+          <IconContext.Provider value={{className: "icons"}}>
             {renderInputs()}
             <span>
               <p>Already have an account?</p>

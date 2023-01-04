@@ -55,6 +55,11 @@ const links = [
         link: "Dashboard",
         IconType: RiDashboardLine,
       },
+      {
+        path: "/dashboard/documents",
+        link: "Documents",
+        IconType: HiDocument,
+      },
     ],
   },
   {
@@ -75,11 +80,11 @@ const links = [
         link: "Appravals",
         IconType: FaUserCheck,
       },
-      {
-        path: "/dashboard/documents",
-        link: "Documents",
-        IconType: HiDocument,
-      },
+      // {
+      //   path: "/dashboard/documents",
+      //   link: "Documents",
+      //   IconType: HiDocument,
+      // },
       {
         path: "/dashboard/internships",
         link: "Internships",
@@ -139,7 +144,7 @@ const SidebarLeft = () => {
       });
     }
     return links[0].sidebar
-      .filter((item) => item.link === "Dashboard" || item.link === "Profile")
+      .filter((item) => item.link === "Dashboard" || item.link === "Documents")
       .map((item, index) => {
         const {path, link, IconType} = item;
         return (

@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const CoordinatorSchema = new mongoose.Schema({
   department: {
     type: String,
+    default: "CCSE",
   },
   email: {
     type: String,

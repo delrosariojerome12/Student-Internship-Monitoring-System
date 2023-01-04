@@ -3,6 +3,7 @@ import React, {lazy, Suspense, useEffect} from "react";
 import LandingPage from "./pages/landingPage";
 // import Dashboard from "./pages/dashboard/dashboard";
 import PageNotFound from "./pages/PageNotFound";
+import ServerError from "./pages/serverError";
 
 // component
 import Login from "./pages/auth/login";
@@ -12,6 +13,8 @@ import {Routes, Route, Navigate} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
 import {getUserOnLoad} from "./features/user/userReducer";
 import jwt_decode from "jwt-decode";
+
+import Bouncing from "./components/loading/Bouncing";
 
 const Dashboard = lazy(() => import("./pages/dashboard/dashboard"));
 const App = () => {
@@ -26,13 +29,9 @@ const App = () => {
     }
   }, []);
 
-  // if (isError) {
-  //   return <h1>Somebitch went wrong</h1>;
-  // }
-
   return (
     <main className="container">
-      <Suspense fallback={<h1>loading...</h1>}>
+      <Suspense fallback={<Bouncing />}>
         <Routes>
           <Route path="/" element={<LandingPage />} />
           {!user ? (

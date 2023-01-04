@@ -12,13 +12,13 @@ const ProfileTab = () => {
   const dispatch = useDispatch("");
   const navigate = useNavigate();
   const {user: userDetails} = user;
-  const {firstName, lastName, role} = userDetails;
+  const {firstName, lastName, role, profileImage} = userDetails;
 
   return (
     <IconContext.Provider value={{className: "icon"}}>
       <div className="profile-tab tab">
         <div className="user">
-          <img src={"https://i.imgur.com/aFPFvGv.jpg"} alt="" />
+          <img src={profileImage} alt="profile-image" />
           <div className="text">
             <p>{`${firstName} ${lastName}`}</p>
             <p>{role}</p>
