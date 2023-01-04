@@ -1992,11 +1992,12 @@ button {
 }
 .verification-container .are-you-sure-modal .button-container button:first-child {
   background-color: #fff;
-  border: solid 1px #457b9d;
-  color: #457b9d;
+  border: solid 1px #0d7377;
+  color: #0d7377;
 }
 .verification-container .are-you-sure-modal .button-container button:last-child {
-  background-color: #457b9d;
+  background-color: #0d7377;
+  color: #f1faee;
 }
 .verification-container .are-you-sure-modal .button-container button:first-child:hover {
   background-color: #e63946;
@@ -2004,9 +2005,9 @@ button {
   border: solid 1px #e63946;
 }
 .verification-container .are-you-sure-modal .button-container button:last-child:hover {
+  color: #0d7377;
   background-color: #f1faee;
-  color: #457b9d;
-  border: solid 1px #457b9d;
+  border: solid 1px #0d7377;
 }
 .verification-container .success-modal {
   display: grid;
@@ -2330,16 +2331,16 @@ button {
   border-radius: 5px;
   border: solid 1px transparent;
   outline: none;
-  background-color: #457b9d;
+  background-color: #0d7377;
   color: #f1faee;
   letter-spacing: 0.2rem;
   transition: all 0.3s ease-in-out;
   font-weight: 600;
 }
 .verification-container form button:hover {
+  color: #0d7377;
   background-color: #f1faee;
-  color: #457b9d;
-  border: solid 1px #457b9d;
+  border: solid 1px #0d7377;
 }
 
 .waiting-container {
