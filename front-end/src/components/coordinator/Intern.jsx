@@ -2,7 +2,7 @@ import React from "react";
 
 const Intern = React.memo(({intern}) => {
   const {
-    user: {firstName, lastName},
+    user: {firstName, lastName, profileImage},
     schoolDetails,
     verification: {isVerified, hasSentVerification},
   } = intern;
@@ -11,7 +11,9 @@ const Intern = React.memo(({intern}) => {
 
   return (
     <div className="intern">
-      <div className="img-container"></div>
+      <div className="img-container">
+        <img src={profileImage} alt="profile-image" />
+      </div>
       <div className="intern-details">
         <p className="name">
           {firstName} {lastName}

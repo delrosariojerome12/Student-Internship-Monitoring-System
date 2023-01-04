@@ -91,14 +91,20 @@
       gap: 2rem;
       cursor: pointer;
       font-size: 1.4rem;
+      .img-container {
+        height: 10rem;
+        width: 10rem;
+        img {
+          height: 100%;
+          width: 100%;
+          border-radius: 1rem;
+        }
+      }
       .intern-details {
         background-color: #fff;
         padding: 1rem;
         display: grid;
         grid-template-columns: auto auto;
-      }
-      & > * {
-        border: solid 1px #fff;
       }
     }
   }

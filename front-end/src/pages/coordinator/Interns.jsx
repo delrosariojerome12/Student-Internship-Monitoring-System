@@ -9,9 +9,12 @@ const Interns = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const renderInterns = () => {
-    // if (isLoading) {
-    //   return <h1>Loading...</h1>;
-    // }
+    if (!interns) {
+      return <h1>Loading...</h1>;
+    }
+    if (interns.length === 0) {
+      return <h1>No interns at the moment</h1>;
+    }
     return interns.map((intern, index) => {
       return <Intern intern={intern} key={index} />;
     });

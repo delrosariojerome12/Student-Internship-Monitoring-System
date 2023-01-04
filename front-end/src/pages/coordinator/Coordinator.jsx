@@ -16,7 +16,7 @@ const Documents = lazy(() => import("./Documents"));
 const Internships = lazy(() => import("./Internships"));
 
 const Coordinator = React.memo(({isSidebarOpen}) => {
-  const {isLoading, isError} = useSelector((state) => state.intern);
+  const {isLoading, isError, interns} = useSelector((state) => state.intern);
   const dispatch = useDispatch();
 
   useEffect(() => {

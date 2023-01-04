@@ -12,7 +12,6 @@ export const sidebarRightReducer = createSlice({
   initialState,
   reducers: {
     handleProfile: (state, action) => {
-      console.log("Test");
       state.isProfileOpen = !state.isProfileOpen;
       // state.isProfileOpen = action.payload;
       state.isNotificationOpen = false;

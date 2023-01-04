@@ -5,11 +5,6 @@ import LandingPage from "./pages/landingPage";
 import PageNotFound from "./pages/PageNotFound";
 import ServerError from "./pages/serverError";
 
-//loadings
-import Circle from "./components/loading/Circle";
-import Dotted from "./components/loading/Dotted";
-import Bounce from "./components/loading/Bouncing";
-
 // component
 import Login from "./pages/auth/login";
 import Signup from "./pages/auth/signup";
@@ -33,12 +28,6 @@ const App = () => {
       dispatch(getUserOnLoad(email));
     }
   }, []);
-
-  // gawa ni jake tas hiwalayin ang error sa sign/log sa general error
-
-  // if (isError) {
-  //   return <h1>Somebitch went wrong</h1>;
-  // }
 
   return (
     <main className="container">
@@ -65,7 +54,6 @@ const App = () => {
           <Route path="/dashboard/*" element={<Dashboard />} />
           <Route path="/404" element={<PageNotFound />} />
           <Route path="*" element={<PageNotFound />} />
-          <Route path="/server" element={<ServerError />} />
         </Routes>
       </Suspense>
     </main>
