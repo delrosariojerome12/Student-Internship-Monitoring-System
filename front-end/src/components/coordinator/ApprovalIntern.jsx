@@ -8,7 +8,7 @@ const ApprovalIntern = React.memo(({intern, index}) => {
   const dispatch = useDispatch();
 
   const {
-    user: {firstName, lastName, email},
+    user: {firstName, lastName, email, profileImage},
     schoolDetails: {program, studentContact, validID, requiredHours},
     internshipDetails: {
       companyAddress,
@@ -130,7 +130,7 @@ const ApprovalIntern = React.memo(({intern, index}) => {
         </div>
       )}
       <div className="intern-left">
-        <img src="" alt="" />
+        <img src={profileImage} alt="profile-image" />
       </div>
       <div className="intern-right">
         <div className="intern-details">
