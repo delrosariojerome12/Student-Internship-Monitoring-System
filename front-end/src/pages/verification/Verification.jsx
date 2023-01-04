@@ -11,7 +11,6 @@ import {ref, uploadBytes, listAll, getDownloadURL} from "firebase/storage";
 import {v4} from "uuid";
 
 import {FaCheck} from "react-icons/fa";
-import {async} from "@firebase/util";
 const Verification = React.memo(() => {
   const dispatch = useDispatch();
   const {user} = useSelector((state) => state.user);

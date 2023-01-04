@@ -24,6 +24,9 @@
       }
     }
     form {
+      .icons {
+        color: #000;
+      }
       display: flex;
       flex-direction: column;
       gap: 2.5rem;
@@ -129,6 +132,39 @@
         gap: 1rem;
         svg {
           font-size: 1.7rem;
+        }
+      }
+      .img-input {
+        display: flex;
+        label {
+          p {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            .icons {
+              color: green;
+            }
+          }
+          // border: solid 1px #000;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          cursor: pointer;
+          font-size: 1.6rem;
+          input[type="file"] {
+            display: none;
+          }
+          .profile-con {
+            border-radius: 50%;
+            height: 12rem;
+            width: 12rem;
+            img {
+              border: solid 1px #000;
+              height: 100%;
+              width: 100%;
+              border-radius: 50%;
+            }
+          }
         }
       }
 

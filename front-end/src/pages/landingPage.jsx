@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { HiMenu } from "react-icons/hi";
-import { FaPlus } from "react-icons/fa";
+import React, {useState, useEffect} from "react";
+import {Link, useNavigate} from "react-router-dom";
+import {HiMenu} from "react-icons/hi";
+import {FaPlus} from "react-icons/fa";
 
 import logo from "../assets/img/landingPage/Logo.png";
 import landingImg from "../assets/img/landingPage/landing-image.png";
@@ -19,7 +19,7 @@ import socialIcon1 from "../assets/img/landingPage/ICON SOCIALS/FB.png";
 import socialIcon2 from "../assets/img/landingPage/ICON SOCIALS/INSTA.png";
 import socialIcon3 from "../assets/img/landingPage/ICON SOCIALS/LINKIN.png";
 import socialIcon4 from "../assets/img/landingPage/ICON SOCIALS/TWITTER.png";
-import { useCallback } from "react";
+import {useCallback} from "react";
 
 const links = [
   {
@@ -86,7 +86,7 @@ const LandingPage = () => {
         >
           <ul className="links">
             {links.map((item, index) => {
-              const { path, link } = item;
+              const {path, link} = item;
               return (
                 <Link key={index} to={path}>
                   {link}
@@ -96,7 +96,7 @@ const LandingPage = () => {
           </ul>
           <ul className="auth-links">
             {authLinks.map((item, index) => {
-              const { path, link } = item;
+              const {path, link} = item;
               return (
                 <button
                   onClick={() => {

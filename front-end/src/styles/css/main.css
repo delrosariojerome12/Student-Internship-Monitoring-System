@@ -413,6 +413,9 @@ button {
   flex-direction: column;
   gap: 2.5rem;
 }
+.signin .card-container form .icons {
+  color: #000;
+}
 .signin .card-container form .input-contain {
   display: flex;
   position: relative;
@@ -513,6 +516,38 @@ button {
 }
 .signin .card-container form span svg {
   font-size: 1.7rem;
+}
+.signin .card-container form .img-input {
+  display: flex;
+}
+.signin .card-container form .img-input label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.6rem;
+}
+.signin .card-container form .img-input label p {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.signin .card-container form .img-input label p .icons {
+  color: green;
+}
+.signin .card-container form .img-input label input[type=file] {
+  display: none;
+}
+.signin .card-container form .img-input label .profile-con {
+  border-radius: 50%;
+  height: 12rem;
+  width: 12rem;
+}
+.signin .card-container form .img-input label .profile-con img {
+  border: solid 1px #000;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
 }
 .signin .card-container form button {
   cursor: pointer;
