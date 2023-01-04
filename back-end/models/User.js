@@ -37,17 +37,9 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: "intern",
   },
-  // role: [
-  //   {
-  //     type: mongoose.Schema.Types.ObjectId,
-  //     ref: "Admin",
-  //   },
-  //   {
-  //     type: mongoose.Schema.Types.ObjectId,
-  //     ref: "Intern",
-  //     default: "Intern",
-  //   },
-  // ],
+  profileImage: {
+    type: String,
+  },
 });
 
 UserSchema.pre("save", async function () {

@@ -26,31 +26,14 @@ const getIntern = async (req, res) => {
 };
 
 const updateIntern = async (req, res) => {
-  const {
-    email,
-    internshipDetails: {
-      companyName,
-      companyAddress,
-      contactNumber,
-      requiredHours,
-      renderedHours,
-      supervisor,
-    },
-  } = req.body;
+  const {email} = req.body;
 
-  if (
-    !companyName ||
-    !companyAddress ||
-    !contactNumber ||
-    !requiredHours ||
-    !supervisor ||
-    !renderedHours
-  ) {
-    throw new BadRequest("fields cannot be empty");
-  }
   const user = await Intern.findOneAndUpdate({email}, req.body, {
     new: true,
     runValidators: true,
+  }).populate({
+    path: "user",
+    model: "User",
   });
 
   if (!user) {

@@ -1,6 +1,6 @@
 import React from "react";
 import {IconContext} from "react-icons";
-import {IoIosNotifications, IoMdSettings} from "react-icons/io";
+import {IoIosNotifications} from "react-icons/io";
 import {TbMessageCircle} from "react-icons/tb";
 import {FaChevronDown, FaInfoCircle} from "react-icons/fa";
 import {useSelector, useDispatch} from "react-redux";
@@ -17,6 +17,11 @@ const SideBarRight = () => {
   const {isProfileOpen, isChatOpen, isNotificationOpen} = useSelector(
     (state) => state.sidebarRight
   );
+  const {
+    user: {
+      user: {profileImage},
+    },
+  } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   return (
@@ -30,8 +35,8 @@ const SideBarRight = () => {
           <span className="profile-img">
             <img
               onClick={() => dispatch(handleProfile())}
-              src={"https://i.imgur.com/aFPFvGv.jpg"}
-              alt=""
+              src={profileImage}
+              alt="user-profile"
             />
             <span onClick={() => dispatch(handleProfile())}>
               <FaChevronDown />

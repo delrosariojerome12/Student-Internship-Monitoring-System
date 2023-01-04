@@ -135,6 +135,7 @@ export const userReducer = createSlice({
       })
       .addCase(getUserOnLoad.fulfilled, (state, action) => {
         const {res} = action.payload;
+
         console.log(res);
         state.isLoading = false;
         state.user = res;

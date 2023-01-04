@@ -13,18 +13,18 @@ const PendingContainer = React.memo(() => {
   } = useSelector((state) => state.user);
 
   // already sent request
-  // if (hasSentVerification) {
-  //   return (
-  //     <Routes>
-  //       <Route path="/" element={<Waiting />} />
-  //       <Route
-  //         path="/verification"
-  //         element={<Navigate to="/dashboard" replace />}
-  //       />
-  //       <Route path="*" element={<Navigate to="/404" replace />} />
-  //     </Routes>
-  //   );
-  // }
+  if (hasSentVerification) {
+    return (
+      <Routes>
+        <Route path="/" element={<Waiting />} />
+        <Route
+          path="/verification"
+          element={<Navigate to="/dashboard" replace />}
+        />
+        <Route path="*" element={<Navigate to="/404" replace />} />
+      </Routes>
+    );
+  }
 
   return (
     <Routes>

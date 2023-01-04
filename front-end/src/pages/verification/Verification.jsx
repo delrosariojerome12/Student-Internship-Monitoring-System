@@ -200,6 +200,7 @@ const Verification = React.memo(() => {
   const [isSuccessModalOpen, setSuccessModalOpen] = useState(false);
   const [isSubmitted, setSubmitted] = useState(false);
   const [isComplete, setComplete] = useState(false);
+  const [isImageOpen, setImageOpen] = useState(false);
   const [steps, setSteps] = useState([
     {
       step: "1",
@@ -323,6 +324,10 @@ const Verification = React.memo(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   };
 
+  const handleImageView = () => {
+    setImageOpen(!isImageOpen);
+  };
+
   const handleOnChange = useCallback(
     (value, group, index, mainIndex) => {
       const newForm = [...form];
@@ -373,15 +378,16 @@ const Verification = React.memo(() => {
           checkCompletion(mainIndex);
           return;
         case "valid-id":
-          const imageRef = ref(storage, `images/validID/${value.name + v4()}`);
+          const imageRef = ref(storage, `images/validID/${v4() + value.name}`);
           uploadBytes(imageRef, value).then((res) => {
             getDownloadURL(res.ref).then((url) => {
-              // console.log(url);
               newForm[mainIndex].forms[index].value = url;
+              newForm[mainIndex].forms[index].isDisabled = true;
+              setForm(newForm);
+              checkCompletion(mainIndex);
             });
           });
-          setForm(newForm);
-          checkCompletion(mainIndex);
+
           return;
         case "schedule-type":
           if (value === "Regular") {
@@ -519,18 +525,24 @@ const Verification = React.memo(() => {
         case "image":
           return (
             <div className="img-input" key={index}>
-              <label htmlFor="valid-img">School ID</label>
-              <input
-                onChange={(e) =>
-                  handleOnChange(e.target.files[0], group, index, mainIndex)
-                }
-                tabIndex={-1}
-                required
-                type="file"
-                name="valid-img"
-                id="valid-img"
-                accept="image/*"
-              />
+              <label htmlFor="valid-img">
+                School ID
+                <input
+                  disabled={isDisabled}
+                  onChange={(e) =>
+                    handleOnChange(e.target.files[0], group, index, mainIndex)
+                  }
+                  tabIndex={-1}
+                  required
+                  type="file"
+                  name="valid-img"
+                  id="valid-img"
+                  accept="image/*"
+                />
+                {value && (
+                  <img onClick={handleImageView} src={value} alt={`valid-id`} />
+                )}
+              </label>
             </div>
           );
         case "select":
@@ -666,7 +678,6 @@ const Verification = React.memo(() => {
 
   return (
     <section className="verification-container">
-      {/* <button onClick={() => navigate("/dashboard")}>dashboard</button> */}
       {isFinalizing ? (
         <div className="overlay"></div>
       ) : isSuccessModalOpen ? (
@@ -680,14 +691,18 @@ const Verification = React.memo(() => {
           setSubmitted={setSubmitted}
         />
       )}
-      {/* {isSuccessModalOpen && (
-        <SuccessModal handleSuccessModal={handleSuccessModal} />
-      )} */}
       <div className="greetings">
         <h1>
           Welcome, <span>{firstName}</span>
         </h1>
       </div>
+      {isImageOpen && (
+        <div className="valid-id-modal">
+          <img src={form[1].forms[1].value} alt={`valid-id`} />
+          <button onClick={handleImageView}>Back</button>
+        </div>
+      )}
+
       <div className="verification-steps">
         <div className="steps-container">
           <div className="steps">{renderSteps()}</div>

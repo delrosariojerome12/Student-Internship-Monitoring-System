@@ -413,6 +413,9 @@ button {
   flex-direction: column;
   gap: 2.5rem;
 }
+.signin .card-container form .icons {
+  color: #000;
+}
 .signin .card-container form .input-contain {
   display: flex;
   position: relative;
@@ -513,6 +516,38 @@ button {
 }
 .signin .card-container form span svg {
   font-size: 1.7rem;
+}
+.signin .card-container form .img-input {
+  display: flex;
+}
+.signin .card-container form .img-input label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.6rem;
+}
+.signin .card-container form .img-input label p {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.signin .card-container form .img-input label p .icons {
+  color: green;
+}
+.signin .card-container form .img-input label input[type=file] {
+  display: none;
+}
+.signin .card-container form .img-input label .profile-con {
+  border-radius: 50%;
+  height: 12rem;
+  width: 12rem;
+}
+.signin .card-container form .img-input label .profile-con img {
+  border: solid 1px #000;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
 }
 .signin .card-container form button {
   cursor: pointer;
@@ -1387,14 +1422,20 @@ button {
   cursor: pointer;
   font-size: 1.4rem;
 }
+.dashboard .intern-container .interns .intern .img-container {
+  height: 10rem;
+  width: 10rem;
+}
+.dashboard .intern-container .interns .intern .img-container img {
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+}
 .dashboard .intern-container .interns .intern .intern-details {
   background-color: #fff;
   padding: 1rem;
   display: grid;
   grid-template-columns: auto auto;
-}
-.dashboard .intern-container .interns .intern > * {
-  border: solid 1px #fff;
 }
 .dashboard .approvals {
   height: 100%;
@@ -1408,7 +1449,7 @@ button {
 }
 .dashboard .approvals .approvals-intern-container {
   display: grid;
-  grid-auto-rows: 11rem;
+  grid-auto-rows: 12rem;
   gap: 1rem;
   height: 100%;
   background-color: #fff;
@@ -1440,11 +1481,12 @@ button {
   display: grid;
   background-color: #fff;
   color: #000;
-  width: 90rem;
-  height: 80%;
+  width: 82vw;
+  min-height: 60vh;
   border-radius: 1rem;
   padding: 2rem;
   gap: 1rem;
+  grid-template-rows: auto auto;
 }
 .dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal > * {
   border: solid 1px #000;
@@ -1472,7 +1514,25 @@ button {
 .dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details > * {
   border: solid 1px #000;
 }
-.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .btn-container {
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container {
+  display: grid;
+}
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form {
+  display: grid;
+  grid-template-rows: 12rem auto;
+}
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form .forms label {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+}
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form .forms label textarea {
+  resize: none;
+  padding: 1rem;
+}
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form .btn-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1485,7 +1545,14 @@ button {
   align-items: center;
 }
 .dashboard .approvals .approvals-intern-container .approval-intern .intern-left {
+  height: 10rem;
+  width: 10rem;
+}
+.dashboard .approvals .approvals-intern-container .approval-intern .intern-left img {
+  height: 100%;
+  width: 100%;
   border: solid 1px #fff;
+  border-radius: 1rem;
 }
 .dashboard .approvals .approvals-intern-container button {
   cursor: pointer;
@@ -1834,6 +1901,46 @@ button {
   gap: 1rem;
   padding: 3rem;
 }
+.verification-container .valid-id-modal {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(65, 65, 65, 0.76);
+  border: solid 1px #000;
+  z-index: 8;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.verification-container .valid-id-modal img {
+  height: 50rem;
+  width: 50rem;
+}
+.verification-container .valid-id-modal button {
+  cursor: pointer;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.6rem;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  background-color: #457b9d;
+  color: #f1faee;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.verification-container .valid-id-modal button:last-child:hover {
+  background-color: #f1faee;
+  color: #457b9d;
+  border: solid 1px #457b9d;
+}
 .verification-container .overlay {
   width: 100%;
   height: 100%;
@@ -2076,7 +2183,7 @@ button {
   flex-direction: column;
   gap: 2rem;
 }
-.verification-container form .student-details .img-input {
+.verification-container form .student-details .forms-con .img-input {
   height: 5rem;
   display: flex;
   align-items: center;
@@ -2084,6 +2191,19 @@ button {
   gap: 2rem;
   padding-left: 2rem;
   border-radius: 0.5rem;
+}
+.verification-container form .student-details .forms-con .img-input label {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.verification-container form .student-details .forms-con .img-input label img {
+  height: 4rem;
+  width: 4rem;
+  border: solid 1px #457b9d;
+  cursor: pointer;
 }
 .verification-container form .student-details .btn-con {
   display: flex;
