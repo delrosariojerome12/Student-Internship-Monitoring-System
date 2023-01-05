@@ -50,7 +50,6 @@ const internsAssets = {
     // required: [true, "Message is required!!!!"],
     // red: "users",
     messages: [],
-
     //sender, receiver and message
   },
   feedback: {
@@ -70,6 +69,9 @@ const verification = {
   isRejected: {
     type: Boolean,
     default: false,
+  },
+  remarks: {
+    type: String,
   },
 };
 
