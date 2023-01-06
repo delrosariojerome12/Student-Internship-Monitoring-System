@@ -47,6 +47,8 @@ export const updateIntern = createAsyncThunk(
       const url = `http://localhost:5000/intern/updateIntern`;
       const {data: res} = await axios.patch(url, form);
 
+      console.log(form);
+
       const newApprovalIntern = [...state.intern.approvalInterns].filter(
         (intern) => intern.email !== email
       );

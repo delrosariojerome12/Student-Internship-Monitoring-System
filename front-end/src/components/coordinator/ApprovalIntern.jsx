@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getIntern, updateIntern} from "../../features/interns/internReducer";
+import {updateIntern} from "../../features/interns/internReducer";
 import {FaCheck, FaTrash} from "react-icons/fa";
 
 const ApprovalIntern = React.memo(({intern, index}) => {
-  const {selectedIntern} = useSelector((state) => state.intern);
+  // const {selectedIntern} = useSelector((state) => state.intern);
   const dispatch = useDispatch();
 
   const {
@@ -40,6 +40,7 @@ const ApprovalIntern = React.memo(({intern, index}) => {
   const handleForm = (e) => {
     e.preventDefault();
     setDetailsOpen(false);
+
     const selectedAction = e.target.textContent;
     if (selectedAction === "Decline") {
       const form = {
@@ -48,10 +49,12 @@ const ApprovalIntern = React.memo(({intern, index}) => {
           hasSentVerification: false,
           isVerified: false,
           isRejected: true,
+          remarks,
         },
       };
       console.log("Request Rejected");
       dispatch(updateIntern({form, index}));
+      console.log(remarks);
     } else {
       const form = {
         email,
@@ -59,6 +62,7 @@ const ApprovalIntern = React.memo(({intern, index}) => {
           hasSentVerification: false,
           isVerified: true,
           isRejected: false,
+          remarks,
         },
       };
       dispatch(updateIntern({form, index}));
