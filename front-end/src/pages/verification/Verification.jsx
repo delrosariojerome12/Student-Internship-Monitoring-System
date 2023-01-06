@@ -7,7 +7,7 @@ import AreYouSureModal from "../../components/verification/AreYouSureModal";
 // import SuccessModal from "../../components/verification/SuccessModal";
 
 import {storage} from "../../Firebase";
-import {ref, uploadBytes, listAll, getDownloadURL} from "firebase/storage";
+import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
 import {v4} from "uuid";
 
 import {FaCheck} from "react-icons/fa";
