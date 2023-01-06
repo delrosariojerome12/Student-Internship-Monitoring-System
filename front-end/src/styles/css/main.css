@@ -891,6 +891,8 @@ button {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 }
 .dashboard .main {
   height: 100%;
@@ -1570,6 +1572,112 @@ button {
   letter-spacing: 0.2rem;
   transition: all 0.3s ease-in-out;
   font-weight: 600;
+}
+.dashboard .internship-container {
+  height: 100%;
+  width: 100%;
+  border: solid 1px #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+.dashboard .internship-container .internship {
+  display: grid;
+  grid-template-rows: 15rem 5.5rem auto;
+  background-color: #33363a;
+  padding: 1rem;
+}
+.dashboard .internship-container .internship .top {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  color: #fff;
+}
+.dashboard .internship-container .internship .top p {
+  width: 65%;
+}
+.dashboard .internship-container .internship .mid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  border: solid 1px #fff;
+  background-color: #404449;
+}
+.dashboard .internship-container .internship .mid .left {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.dashboard .internship-container .internship .mid .left button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  padding: 0rem 2rem;
+  border-radius: 1rem;
+  border: transparent 1px solid;
+  background-color: #404449;
+  color: #f1faee;
+  transition: all 0.4s ease-in-out;
+  font-weight: 650;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+.dashboard .internship-container .internship .mid .left button span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+.dashboard .internship-container .internship .mid .left button:hover {
+  background-color: #393e46;
+}
+.dashboard .internship-container .internship .mid .right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1faee;
+  width: 80%;
+  border-radius: 2rem;
+  padding: 0 1.5rem;
+  margin: 1rem 1rem auto auto;
+}
+.dashboard .internship-container .internship .mid .right span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.dashboard .internship-container .internship .mid .right input {
+  width: 100%;
+  background: transparent;
+  padding: 1rem;
+  outline: none;
+  border: 0;
+}
+.dashboard .internship-container .internship .bottom {
+  border: solid 1px #fff;
+  min-height: 70vh;
+}
+.dashboard .internship-container .internship .bottom .main-content {
+  display: grid;
+  grid-template-columns: 12rem auto;
+  grid-auto-rows: 12rem;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+.dashboard .internship-container .internship .bottom .main-content .left-img {
+  height: auto;
+  width: auto;
+  background-color: #fff;
+}
+.dashboard .internship-container .internship .bottom .main-content .right-content {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  font-size: 1.5rem;
+  padding: 1rem;
 }
 .dashboard .admin-documents {
   height: 100%;
