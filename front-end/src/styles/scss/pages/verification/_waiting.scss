@@ -2,13 +2,13 @@
 @import "../../utils";
 
 .waiting-container {
-  height: 90%;
+  min-height: 90%;
   width: 70vw;
   margin: auto;
   background-color: #fff;
   border-radius: 2rem;
   display: grid;
-  grid-template-rows: 25px 25px auto;
+  grid-template-rows: 25px 25px auto 3rem;
   gap: 2rem;
   padding: 3rem;
 
@@ -20,6 +20,44 @@
     img {
       height: 300px;
       margin: auto;
+    }
+  }
+  .sent-details {
+    color: #fff;
+    padding: 2rem;
+    border: solid 1px $primary-bg-color-landing-compliment;
+    background-color: $primary-bg-color-landing-compliment;
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+    row-gap: 1rem;
+    & > * {
+      border: solid 1px #fff;
+    }
+    img {
+      height: 10rem;
+      width: 10rem;
+    }
+  }
+  button {
+    margin: auto;
+    cursor: pointer;
+    height: 4.5rem;
+    @include flexCenter;
+    padding: 1.6rem;
+    border-radius: 5px;
+    border: solid 1px transparent;
+    outline: none;
+    background-color: $primary-bg-color;
+    color: $primary-font-color;
+    letter-spacing: 0.2rem;
+    transition: all 0.3s ease-in-out;
+    font-weight: 600;
+    &:last-child:hover {
+      background-color: $primary-font-color;
+      color: $primary-bg-color;
+      border: solid 1px $primary-bg-color;
     }
   }
   //   & > * {
