@@ -4,13 +4,9 @@ import { useSelector } from "react-redux";
 
 const Internships = React.memo(() => {
   const { approvalInterns } = useSelector((state) => state.intern);
-  const renderApprovals = () => {
+  const renderInternship = () => {
     if (!approvalInterns) {
       return <h1>loading...</h1>;
-    }
-
-    if (approvalInterns.length === 0) {
-      return <h1>No approval request at the moment</h1>;
     }
 
     return approvalInterns.map((intern, index) => {
@@ -20,7 +16,7 @@ const Internships = React.memo(() => {
 
   return (
     <div className="internship-container">
-      <div className="internship-content">{renderApprovals()}</div>
+      <div className="internship-content">{renderInternship()}</div>
     </div>
   );
 });
