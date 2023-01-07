@@ -24,6 +24,10 @@ const Dashboard = () => {
   const {user} = useSelector((state) => state.user);
   // const dispatch = useDispatch();
 
+  if (!user) {
+    return <Bouncing />;
+  }
+
   if (!user && !localStorage.getItem("token")) {
     return <Navigate to={"/404"} />;
   }
