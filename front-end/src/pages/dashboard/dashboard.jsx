@@ -22,7 +22,6 @@ const Settings = lazy(() => import("./Settings"));
 const Dashboard = () => {
   const { isSidebarOpen } = useSelector((state) => state.dashboard);
   const { user } = useSelector((state) => state.user);
-  console.log(user);
   // const dispatch = useDispatch();
 
   if (!user) {
