@@ -6,7 +6,6 @@ import {GrMail} from "react-icons/gr";
 import {IconContext} from "react-icons";
 import {useDispatch, useSelector} from "react-redux";
 import {handleSignup} from "../../features/user/userReducer";
-import defaultImage from "../../assets/img/defaultImage.png";
 
 import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
 import {storage} from "../../Firebase";

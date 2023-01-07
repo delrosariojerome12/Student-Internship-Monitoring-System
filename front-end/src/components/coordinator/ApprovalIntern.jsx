@@ -1,15 +1,15 @@
-import React, {useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {updateIntern} from "../../features/interns/internReducer";
-import {FaCheck, FaTrash} from "react-icons/fa";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateIntern } from "../../features/interns/internReducer";
+import { FaCheck, FaTrash } from "react-icons/fa";
 
-const ApprovalIntern = React.memo(({intern, index}) => {
+const ApprovalIntern = React.memo(({ intern, index }) => {
   // const {selectedIntern} = useSelector((state) => state.intern);
   const dispatch = useDispatch();
 
   const {
-    user: {firstName, lastName, email, profileImage},
-    schoolDetails: {program, studentContact, validID, requiredHours},
+    user: { firstName, lastName, email, profileImage },
+    schoolDetails: { program, studentContact, validID, requiredHours },
     internshipDetails: {
       companyAddress,
       companyName,
@@ -17,7 +17,7 @@ const ApprovalIntern = React.memo(({intern, index}) => {
       supervisorContact,
       typeOfWork,
     },
-    verification: {isVerified, hasSentVerification},
+    verification: { isVerified, hasSentVerification },
     scheduleDetails: {
       scheduleType,
       scheduledDays,
@@ -53,7 +53,7 @@ const ApprovalIntern = React.memo(({intern, index}) => {
         },
       };
       console.log("Request Rejected");
-      dispatch(updateIntern({form, index}));
+      dispatch(updateIntern({ form, index }));
       console.log(remarks);
     } else {
       const form = {
@@ -65,7 +65,7 @@ const ApprovalIntern = React.memo(({intern, index}) => {
           remarks,
         },
       };
-      dispatch(updateIntern({form, index}));
+      dispatch(updateIntern({ form, index }));
       console.log("Request Accepted");
     }
   };
@@ -76,29 +76,62 @@ const ApprovalIntern = React.memo(({intern, index}) => {
         <div className="overlay">
           <div className="intern-modal">
             <div className="sent-details">
+              <img src={validID} id="valid-id" alt="student image" />
+
               <div className="student-details">
                 <h3>Student Details</h3>
-                <p>Program: {program}</p>
-                <p>Required Hours: {requiredHours}</p>
-                <p>Contact: {studentContact}</p>
-                <p>Email: {email}</p>
-                <img src={validID} id="valid-id" alt="student image" />
+                <p>
+                  <b>Program: </b> {program}
+                </p>
+                <p>
+                  <b>Required Hours: </b> {requiredHours}
+                </p>
+                <p>
+                  <b>Contact: </b>
+                  {studentContact}
+                </p>
+                <p>
+                  <b>Email: </b>
+                  {email}
+                </p>
+              </div>
+            </div>
+
+            <div className="scedule-internship-details">
+              <div className="schedule-details">
+                <h3>Schedule Details</h3>
+                <div className="shced-paragraph">
+                  <p>
+                    <b>Schedule Type:</b> {scheduleType}
+                  </p>
+                  <p>
+                    <b>Days: </b> {scheduledDays}
+                  </p>
+                  <p>
+                    <b>Time:</b> {`${timeInSchedule} - ${timeOutSchedule}`}
+                  </p>
+                </div>
               </div>
 
               <div className="internship-details">
                 <h3>Internship Details</h3>
-                <p>Company: {companyName}</p>
-                <p>Address: {companyAddress}</p>
-                <p>Supervisor: {supervisor}</p>
-                <p>Contact: {supervisorContact}</p>
-                <p>Type of Work: {typeOfWork}</p>
-              </div>
-
-              <div className="schedule-details">
-                <h3>Schedule Details</h3>
-                <p>Schedule Type: {scheduleType}</p>
-                <p>Days: {scheduledDays} </p>
-                <p>Time: {`${timeInSchedule} - ${timeOutSchedule}`}</p>
+                <div className="intern-paragraph">
+                  <p>
+                    <b>Company:</b> {companyName}
+                  </p>
+                  <p>
+                    <b>Address:</b> {companyAddress}
+                  </p>
+                  <p>
+                    <b>Supervisor:</b> {supervisor}
+                  </p>
+                  <p>
+                    <b>Contact:</b> {supervisorContact}
+                  </p>
+                  <p>
+                    <b>Type of Work:</b> {typeOfWork}
+                  </p>
+                </div>
               </div>
             </div>
             <div className="feedback-container">
@@ -106,7 +139,9 @@ const ApprovalIntern = React.memo(({intern, index}) => {
                 <div className="forms">
                   <label htmlFor="">
                     <p>
-                      Remarks <span>{`(optional)`}</span>
+                      <b>
+                        Remarks <span>{`(optional)`}</span>
+                      </b>
                     </p>
                     <textarea
                       value={remarks}
@@ -118,13 +153,19 @@ const ApprovalIntern = React.memo(({intern, index}) => {
                   </label>
                 </div>
                 <div className="btn-container">
-                  <button onClick={handleDetails}>Back</button>
-                  <button onClick={handleForm}>
-                    <FaTrash />
+                  <button className="back-btn" onClick={handleDetails}>
+                    Back
+                  </button>
+                  <button className="decline-btn" onClick={handleForm}>
+                    <span>
+                      <FaTrash />
+                    </span>
                     Decline
                   </button>
-                  <button onClick={handleForm}>
-                    <FaCheck />
+                  <button className="approve-btn" onClick={handleForm}>
+                    <span>
+                      <FaCheck />
+                    </span>
                     Approve
                   </button>
                 </div>

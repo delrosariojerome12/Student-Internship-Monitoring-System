@@ -1,7 +1,7 @@
 import React from "react";
-import {Route, Routes, Navigate} from "react-router-dom";
-import {lazy, Suspense} from "react";
-import {useSelector} from "react-redux";
+import { Route, Routes, Navigate } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import { useSelector } from "react-redux";
 
 import DashboardMain from "./DashboardMain";
 import PendingContainer from "../verification/PendingContainer";
@@ -20,9 +20,13 @@ const Reports = lazy(() => import("./Reports"));
 const Settings = lazy(() => import("./Settings"));
 
 const Dashboard = () => {
-  const {isSidebarOpen} = useSelector((state) => state.dashboard);
-  const {user} = useSelector((state) => state.user);
+  const { isSidebarOpen } = useSelector((state) => state.dashboard);
+  const { user } = useSelector((state) => state.user);
   // const dispatch = useDispatch();
+
+  if (!user) {
+    return <Bouncing />;
+  }
 
   if (!user && !localStorage.getItem("token")) {
     return <Navigate to={"/404"} />;
@@ -41,7 +45,7 @@ const Dashboard = () => {
   if (!isVerified) {
     return (
       <section
-        style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
+        style={isSidebarOpen ? { padding: "2rem 9rem 2rem 29rem" } : null}
         className="dashboard"
       >
         <SidebarLeft />
@@ -61,7 +65,7 @@ const Dashboard = () => {
   // intern
   return (
     <section
-      style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
+      style={isSidebarOpen ? { padding: "2rem 9rem 2rem 29rem" } : null}
       className="dashboard"
     >
       <SidebarLeft />
