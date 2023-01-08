@@ -77,7 +77,7 @@ const links = [
       },
       {
         path: "/dashboard/approvals",
-        link: "Appravals",
+        link: "Approvals",
         IconType: FaUserCheck,
       },
       // {

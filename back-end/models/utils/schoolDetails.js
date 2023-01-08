@@ -12,8 +12,15 @@ const schoolDetails = {
     maxlength: 50,
     minlength: 10,
   },
+
   validID: {
-    type: String,
+    type: Object,
+    name: {
+      type: String,
+    },
+    link: {
+      type: String,
+    },
   },
   studentContact: {
     type: String,

@@ -6,7 +6,12 @@ const Waiting = React.memo((user) => {
   const {
     user: {
       email,
-      schoolDetails: {program, studentContact, validID, requiredHours},
+      schoolDetails: {
+        program,
+        studentContact,
+        validID: {link},
+        requiredHours,
+      },
       internshipDetails: {
         companyAddress,
         companyName,
@@ -53,7 +58,7 @@ const Waiting = React.memo((user) => {
           <p>Required Hours: {requiredHours}</p>
           <p>Contact: {studentContact}</p>
           <p>Email: {email}</p>
-          <img src={validID} id="valid-id" alt="student image" />
+          <img src={link} id="valid-id" alt="student image" />
         </div>
 
         <div className="internship-details">

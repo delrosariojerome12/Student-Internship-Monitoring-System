@@ -7,7 +7,13 @@ import AreYouSureModal from "../../components/verification/AreYouSureModal";
 // import SuccessModal from "../../components/verification/SuccessModal";
 
 import {storage} from "../../Firebase";
-import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  listAll,
+  deleteObject,
+} from "firebase/storage";
 import {v4} from "uuid";
 
 import {FaCheck} from "react-icons/fa";
@@ -17,6 +23,7 @@ const Verification = React.memo(() => {
 
   const {
     user: {firstName},
+    schoolDetails,
   } = user;
 
   const [form, setForm] = useState([
@@ -121,7 +128,10 @@ const Verification = React.memo(() => {
           isError: false,
           errorMessage: "",
           isDisabled: false,
+          name: " ",
+          link: "",
         },
+
         {
           type: "text",
           id: "student-contact",
@@ -215,10 +225,18 @@ const Verification = React.memo(() => {
       isCompleted: false,
     },
   ]);
+  const [prevID, setprevID] = useState("");
 
   const convertForm = (form) => {
     const newData = form.map((input) => {
-      const {code, value} = input;
+      const {code, value, name} = input;
+      if (name) {
+        return {
+          code,
+          value,
+          name,
+        };
+      }
       return {
         code,
         value,
@@ -227,7 +245,11 @@ const Verification = React.memo(() => {
 
     const newObject = Object.assign(
       {},
-      ...newData.map((item) => ({[item.code]: item.value}))
+      ...newData.map((item) =>
+        !item.name
+          ? {[item.code]: item.value}
+          : {[item.code]: {link: item.value, name: item.name}}
+      )
     );
 
     return newObject;
@@ -266,7 +288,10 @@ const Verification = React.memo(() => {
                 isRejected: false,
               },
             };
+
             dispatch(requestVerification(finalForm));
+
+            console.log(finalForm);
           }
         }
       }
@@ -328,6 +353,20 @@ const Verification = React.memo(() => {
     setImageOpen(!isImageOpen);
   };
 
+  const deleteDuplicateFirebase = (imgName) => {
+    const desertRef = ref(storage, imgName);
+
+    deleteObject(desertRef)
+      .then(() => {
+        // File deleted successfully
+        console.log("file deleted");
+      })
+      .catch((error) => {
+        // Uh-oh, an error occurred!
+        console.log(error);
+      });
+  };
+
   const handleOnChange = useCallback(
     (value, group, index, mainIndex) => {
       const newForm = [...form];
@@ -378,10 +417,22 @@ const Verification = React.memo(() => {
           checkCompletion(mainIndex);
           return;
         case "valid-id":
-          const imageRef = ref(storage, `images/validID/${v4() + value.name}`);
+          // add catch error here
+          if (schoolDetails) {
+            const {
+              validID: {link, name},
+            } = schoolDetails;
+            deleteDuplicateFirebase(name);
+          }
+
+          const imageName = `images/validID/${v4() + value.name}`;
+          const imageRef = ref(storage, imageName);
+
           uploadBytes(imageRef, value).then((res) => {
             getDownloadURL(res.ref).then((url) => {
+              newForm[mainIndex].forms[index].link = url;
               newForm[mainIndex].forms[index].value = url;
+              newForm[mainIndex].forms[index].name = imageName;
               newForm[mainIndex].forms[index].isDisabled = true;
               setForm(newForm);
               checkCompletion(mainIndex);
@@ -490,6 +541,7 @@ const Verification = React.memo(() => {
         errorMessage,
         isDisabled,
         isVisible,
+        link,
       } = item;
       switch (type) {
         case "text":
@@ -539,8 +591,8 @@ const Verification = React.memo(() => {
                   id="valid-img"
                   accept="image/*"
                 />
-                {value && (
-                  <img onClick={handleImageView} src={value} alt={`valid-id`} />
+                {link && (
+                  <img onClick={handleImageView} src={link} alt={`valid-id`} />
                 )}
               </label>
             </div>
@@ -672,10 +724,23 @@ const Verification = React.memo(() => {
         handleSuccessModal(true);
         handleFinalizing(false);
       }
+      // if (imageList.length === 0) {
+      //   const imageListRef = ref(storage, "images/validID/");
+      //   listAll(imageListRef).then((res) => {
+      //     // setImageList(res);
+      //     // console.log(res);
+      //     res.items.forEach((item) => {
+      //       getDownloadURL(item).then((url) => {
+      //         // console.log(url);
+      //         // setImageList((imageList) => [...imageList, url]);
+      //         setImageList((prev) => [...prev, url]);
+      //       });
+      //     });
+      //   });
+      // }
     },
     [isSubmitted, handleSubmit]
   );
-
   return (
     <section className="verification-container">
       {isFinalizing ? (

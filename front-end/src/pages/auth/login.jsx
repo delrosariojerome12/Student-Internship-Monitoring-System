@@ -12,7 +12,6 @@ import {GrMail} from "react-icons/gr";
 import {IconContext} from "react-icons";
 import {useRef} from "react";
 import {useNavigate} from "react-router-dom";
-// import {signInWithGoogle} from "../../Firebase";
 import {useSelector, useDispatch} from "react-redux";
 import {handleLogin} from "../../features/user/userReducer";
 
