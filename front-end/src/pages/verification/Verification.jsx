@@ -7,13 +7,7 @@ import AreYouSureModal from "../../components/verification/AreYouSureModal";
 // import SuccessModal from "../../components/verification/SuccessModal";
 
 import {storage} from "../../Firebase";
-import {
-  ref,
-  uploadBytes,
-  getDownloadURL,
-  listAll,
-  deleteObject,
-} from "firebase/storage";
+import {ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage";
 import {v4} from "uuid";
 
 import {FaCheck} from "react-icons/fa";
@@ -225,9 +219,13 @@ const Verification = React.memo(() => {
       isCompleted: false,
     },
   ]);
-  const [prevID, setprevID] = useState("");
 
   const convertForm = (form) => {
+    // const newData = form.filter((input) => {
+    //   const {code, value, name} = input;
+    //   return name ? {code, value, name} : {code, value};
+    // });
+
     const newData = form.map((input) => {
       const {code, value, name} = input;
       if (name) {
@@ -420,11 +418,10 @@ const Verification = React.memo(() => {
           // add catch error here
           if (schoolDetails) {
             const {
-              validID: {link, name},
+              validID: {name},
             } = schoolDetails;
             deleteDuplicateFirebase(name);
           }
-
           const imageName = `images/validID/${v4() + value.name}`;
           const imageRef = ref(storage, imageName);
 
