@@ -1,5 +1,11 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  // signOut
+} from "firebase/auth";
 import axios from "axios";
+import {auth} from "../../Firebase";
 
 const initialState = {
   user: null,
@@ -25,6 +31,37 @@ const convertForm = (form) => {
   return newObject;
 };
 
+export const handleSignup = createAsyncThunk(
+  "/user/signUser",
+  async (form, {rejectWithValue}) => {
+    try {
+      const {email, firstName, lastName, password} = convertForm(form);
+
+      const url = "http://localhost:5000/auth/signup";
+      // const user = await createUserWithEmailAndPassword(auth, email, password);
+      const {data: res} = await axios.post(url, convertForm(form));
+      return {res};
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const handleLogin = createAsyncThunk(
+  "/user/logUser",
+  async (form, {rejectWithValue}) => {
+    try {
+      const {email, firstName, lastName, password} = convertForm(form);
+      // const user = signInWithEmailAndPassword(auth, email, password);
+      const url = "http://localhost:5000/auth/login";
+      const {data: res} = await axios.post(url, convertForm(form));
+      return {res};
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 export const getUserOnLoad = createAsyncThunk(
   "/user/getUserOnLoad",
   async (email, {rejectWithValue}) => {
@@ -35,32 +72,6 @@ export const getUserOnLoad = createAsyncThunk(
     } catch (error) {
       console.log(error);
       return rejectWithValue(error.response.data);
-    }
-  }
-);
-
-export const handleLogin = createAsyncThunk(
-  "/user/logUser",
-  async (form, {rejectWithValue}) => {
-    try {
-      const url = "http://localhost:5000/auth/login";
-      const {data: res} = await axios.post(url, convertForm(form));
-      return {res};
-    } catch (err) {
-      return rejectWithValue(err.response.data);
-    }
-  }
-);
-
-export const handleSignup = createAsyncThunk(
-  "/user/signUser",
-  async (form, {rejectWithValue}) => {
-    try {
-      const url = "http://localhost:5000/auth/signup";
-      const {data: res} = await axios.post(url, convertForm(form));
-      return {res};
-    } catch (err) {
-      return rejectWithValue(err.response.data);
     }
   }
 );
@@ -104,6 +115,7 @@ export const userReducer = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.user = res.user;
+        console.log(res.user);
         localStorage.setItem("token", res.token);
       })
       .addCase(handleLogin.rejected, (state, action) => {

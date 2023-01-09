@@ -12,9 +12,7 @@ import {storage} from "../../Firebase";
 import {v4} from "uuid";
 
 const Signup = () => {
-  const {isError, errorMessage, isLoading, user} = useSelector(
-    (state) => state.user
-  );
+  const {isError, errorMessage} = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const [form, setForm] = useState([
@@ -78,7 +76,6 @@ const Signup = () => {
         "Password must have: Atleast 1 uppercase, 1 lowercase, 1 number, 1 special characters and minimum of 8 characters",
       requirements: [],
       hasEyeIcon: true,
-      hasShownPassword: false,
       code: "password",
       isVisible: true,
       hasShownPassword: false,
@@ -94,7 +91,6 @@ const Signup = () => {
       hasEyeIcon: true,
       hasShownPassword: false,
       isVisible: false,
-      hasShownPassword: false,
     },
   ]);
 
@@ -103,11 +99,16 @@ const Signup = () => {
     data[index].value = value;
     switch (input) {
       case "First Name":
+        let firstNameRegex = /(\b[a-z](?!\s))/g;
         value.length > 2 && value.length < 20
           ? (data[index].isError = false)
           : (data[index].isError = true);
-        data[index].value =
-          value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+
+        let firstNameValue = data[index].value.replace(firstNameRegex, (x) =>
+          x.charAt(0).toUpperCase()
+        );
+        data[index].value = firstNameValue;
+
         setForm(data);
         return;
       case "Last Name":
@@ -127,7 +128,7 @@ const Signup = () => {
         return;
       case "Password":
         const passwordRegex =
-          /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$/;
+          /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_.-]).*$/;
         let isPasswordValid = passwordRegex.test(value);
         if (isPasswordValid) {
           data[index].isError = false;
@@ -267,7 +268,7 @@ const Signup = () => {
             <div key={index} className="img-input">
               <label htmlFor={id}>
                 <div className="profile-con">
-                  <img src={value} alt="profile image" />
+                  <img src={value} alt="profile" />
 
                   {/* {value ? (
                     <img src={value} alt="profile image" />
@@ -296,7 +297,6 @@ const Signup = () => {
             </div>
           );
         default:
-          return;
       }
     });
   };
