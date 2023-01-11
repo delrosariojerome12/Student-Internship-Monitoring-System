@@ -70,7 +70,7 @@ const Waiting = React.memo((user) => {
       </header>
       <div className="sent-details">
         <div className="student-details">
-          <img src={validID} id="valid-id" alt="student image" />
+          <img src={link} id="valid-id" alt="student image" />
 
           <div className="more-details">
             <h3>Student Details</h3>
