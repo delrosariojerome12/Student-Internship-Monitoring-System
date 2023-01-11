@@ -53,8 +53,7 @@ const Dashboard = () => {
         <Suspense fallback={<Bouncing />}>
           <Routes>
             <Route path="/*" element={<PendingContainer />} />
-            <Route path="/documents/*" element={<Documents />} />
-            <Route path="/settings" element={<Settings />} />
+            {/* <Route path="/settings" element={<Settings />} /> */}
             <Route path="*" element={<Navigate to="/404" replace />} />
           </Routes>
         </Suspense>

@@ -45,6 +45,11 @@ const links = [
         link: "Reports",
         IconType: HiPencilAlt,
       },
+      {
+        path: "/dashboard/internships",
+        link: "Internships",
+        IconType: HiDocument,
+      },
     ],
   },
   {
@@ -80,11 +85,7 @@ const links = [
         link: "Approvals",
         IconType: FaUserCheck,
       },
-      // {
-      //   path: "/dashboard/documents",
-      //   link: "Documents",
-      //   IconType: HiDocument,
-      // },
+
       {
         path: "/dashboard/internships",
         link: "Internships",
@@ -144,7 +145,7 @@ const SidebarLeft = () => {
       });
     }
     return links[0].sidebar
-      .filter((item) => item.link === "Dashboard" || item.link === "Documents")
+      .filter((item) => item.link === "Dashboard")
       .map((item, index) => {
         const {path, link, IconType} = item;
         return (

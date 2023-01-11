@@ -28,6 +28,7 @@ const Signup = () => {
       hasEyeIcon: false,
       code: "profileImage",
       isVisible: true,
+      isDisabled: false,
     },
     {
       forInput: "First Name",
@@ -162,6 +163,7 @@ const Signup = () => {
         uploadBytes(imageRef, value).then((res) => {
           getDownloadURL(res.ref).then((url) => {
             data[index].value = url;
+            data[index].isDisabled = true;
             setForm(data);
           });
         });
@@ -217,6 +219,7 @@ const Signup = () => {
         hasShownPassword,
         isVisible,
         code,
+        isDisabled,
       } = inputs;
 
       switch (type) {
@@ -286,6 +289,7 @@ const Signup = () => {
                   <p>Select Profile Image</p>
                 )}
                 <input
+                  disabled={isDisabled}
                   type="file"
                   name={forInput}
                   id={id}
