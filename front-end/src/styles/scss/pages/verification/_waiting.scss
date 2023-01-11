@@ -2,65 +2,115 @@
 @import "../../utils";
 
 .waiting-container {
-  min-height: 90%;
+  // min-height: 90%;
   width: 70vw;
   margin: auto;
   background-color: #fff;
   border-radius: 2rem;
   display: grid;
-  grid-template-rows: 25px 25px auto 3rem;
-  gap: 2rem;
+  grid-template-rows: 0.4fr auto auto;
+  gap: 1rem;
   padding: 3rem;
+  min-height: 78vh;
+  // & > * {
+  //   padding: 1rem;
+  // }
+  header {
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    gap: 1rem;
+    padding: 1rem;
 
-  .img-container {
-    height: 100%;
-    object-fit: cover;
-    border-radius: 1rem;
-    display: flex;
-    img {
-      height: 300px;
-      margin: auto;
+    .left-one {
+      width: 80%;
+      h2 {
+        padding-bottom: 1rem;
+      }
+      p {
+        color: #707070;
+      }
+    }
+    .right-one {
+      display: grid;
+      grid-template-columns: 9rem auto;
+      border-top: solid 1px #000;
+      background-color: #d9d9d9;
+      gap: 1rem;
+      padding: 1rem;
+      .right-icons {
+        @include flexCenter;
+        flex-direction: column;
+        span {
+          // @include flexCenter;
+          color: red;
+          font-size: 6rem;
+        }
+      }
+      .right-remarks {
+        display: flex;
+        text-align: center;
+        align-items: center;
+        color: red;
+      }
     }
   }
   .sent-details {
-    color: #fff;
-    padding: 2rem;
-    border: solid 1px $primary-bg-color-landing-compliment;
-    background-color: $primary-bg-color-landing-compliment;
-    border-radius: 1rem;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 2rem;
-    row-gap: 1rem;
-    & > * {
-      border: solid 1px #fff;
+    grid-template-rows: auto auto;
+    border-top: solid 1px #000;
+    background-color: #d9d9d9;
+    padding: 2rem;
+    gap: 2rem;
+    .student-details {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 18rem auto;
+      grid-auto-rows: 18rem;
+      img {
+        height: 18rem;
+        width: 18rem;
+      }
+      .more-details {
+        background-color: #fff;
+        padding: 1.5rem;
+      }
     }
-    img {
-      height: 10rem;
-      width: 10rem;
+    .student-more-details {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 2rem;
+      background-color: #d9d9d9;
+
+      .schedule-details,
+      .internship-details {
+        background-color: #fff;
+        padding: 0 1rem;
+        padding: 1rem;
+        h3 {
+          padding-bottom: 1rem;
+        }
+      }
     }
   }
+
   button {
     margin: auto;
     cursor: pointer;
     height: 4.5rem;
     @include flexCenter;
     padding: 1.6rem;
-    border-radius: 5px;
+    border-radius: 1rem;
     border: solid 1px transparent;
     outline: none;
-    background-color: $primary-bg-color;
     color: $primary-font-color;
-    letter-spacing: 0.2rem;
-    transition: all 0.3s ease-in-out;
+    background-color: $primary-compliment-landing;
+    transition: all 0.4s ease-in-out;
     font-weight: 600;
-    &:last-child:hover {
+
+    &:hover {
       background-color: $primary-font-color;
-      color: $primary-bg-color;
-      border: solid 1px $primary-bg-color;
+      color: $primary-compliment-landing;
+      border: solid 1px $primary-compliment-landing;
     }
   }
-  //   & > * {
-  //     border: solid 1px #000;
-  //   }
 }

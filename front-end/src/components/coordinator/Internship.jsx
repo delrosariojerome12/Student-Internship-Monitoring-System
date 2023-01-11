@@ -5,8 +5,8 @@ import { MdFilterList } from "react-icons/md";
 
 const InternshipsComponents = () => {
   return (
-    <div className="internship">
-      <header className="top">
+    <section className="internship">
+      <header>
         <h2>Looking for Internship?</h2>
         <p>
           Are you finding a hard time looking for internship? We got you! SIMS
@@ -48,7 +48,7 @@ const InternshipsComponents = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

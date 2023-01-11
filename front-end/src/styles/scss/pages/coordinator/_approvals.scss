@@ -38,12 +38,13 @@
         top: 0%;
         left: 0%;
         z-index: 8;
+
         .intern-modal {
           display: grid;
           background-color: #fff;
           color: #000;
-          width: 65vw;
-          min-height: 50vh;
+          width: 70vw;
+          min-height: 60vh;
           border-radius: 1rem;
           padding: 2rem;
           gap: 1rem;
@@ -79,7 +80,7 @@
             .schedule-details,
             .internship-details {
               background-color: #fff;
-              padding: 0 1rem;
+              padding: 1rem;
 
               h3 {
                 padding-bottom: 1rem;

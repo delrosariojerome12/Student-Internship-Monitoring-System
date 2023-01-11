@@ -1,12 +1,15 @@
 import React from "react";
 import Approval from "../../components/coordinator/ApprovalIntern";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
+
+import ApprovalWating from "../../components/loading/Approvals";
+
 // import {useEffect} from "react";
 
 // import {GoSearch} from "react-icons/go";
 
 const Approvals = React.memo(() => {
-  const {approvalInterns} = useSelector((state) => state.intern);
+  const { approvalInterns } = useSelector((state) => state.intern);
 
   const renderApprovals = () => {
     if (!approvalInterns) {
@@ -14,7 +17,7 @@ const Approvals = React.memo(() => {
     }
 
     if (approvalInterns.length === 0) {
-      return <h1>No approval request at the moment</h1>;
+      return <ApprovalWating />;
     }
 
     return approvalInterns.map((intern, index) => {
