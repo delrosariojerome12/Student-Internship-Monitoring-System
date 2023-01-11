@@ -1,12 +1,17 @@
 import React from "react";
 import waitingImg from "../../assets/img/verification/waiting.svg";
-import { useNavigate } from "react-router";
-import { BiErrorAlt } from "react-icons/bi";
+import {useNavigate} from "react-router";
+import {BiErrorAlt} from "react-icons/bi";
 const Waiting = React.memo((user) => {
   const {
     user: {
       email,
-      schoolDetails: { program, studentContact, validID, requiredHours },
+      schoolDetails: {
+        program,
+        studentContact,
+        validID: {link},
+        requiredHours,
+      },
       internshipDetails: {
         companyAddress,
         companyName,
@@ -20,7 +25,7 @@ const Waiting = React.memo((user) => {
         timeInSchedule,
         timeOutSchedule,
       },
-      verification: { isRejected, remarks, hasSentVerification },
+      verification: {isRejected, remarks, hasSentVerification},
     },
   } = user;
 
@@ -84,6 +89,12 @@ const Waiting = React.memo((user) => {
               {email}
             </p>
           </div>
+          <h3>Student Details</h3>
+          <p>Program: {program}</p>
+          <p>Required Hours: {requiredHours}</p>
+          <p>Contact: {studentContact}</p>
+          <p>Email: {email}</p>
+          <img src={link} id="valid-id" alt="student image" />
         </div>
 
         <div className="student-more-details">

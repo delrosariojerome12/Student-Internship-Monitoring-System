@@ -25,7 +25,7 @@ const Pending = React.memo(() => {
           </p>
           <p>
             You must provide your information and other requirements. This will
-            help the administrator to know your Identity.
+            help the OJT Coordinator to know your Identity.
           </p>
           <button onClick={() => navigate("/dashboard/verification")}>
             Verify Account

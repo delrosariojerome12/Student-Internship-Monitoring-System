@@ -7,12 +7,14 @@ const {BadRequest, Unauthorize, NotFound} = require("../errors");
 
 //register
 const signup = async (req, res) => {
-  const {firstName, lastName, email, password} = req.body;
+  const {firstName, lastName, email, password, profileImage} = req.body;
 
-  if (!firstName || !lastName || !email || !password) {
+  if (!firstName || !lastName || !email || !password || !profileImage) {
     throw new BadRequest("Credentials must be provided");
   }
   const user = await User.create({...req.body});
+
+  User.createIndexes();
 
   if (user.role === "intern") {
     const intern = await (
