@@ -2842,10 +2842,12 @@ button {
   justify-content: center;
   gap: 1rem;
   height: 90vh;
-  width: 100%;
+  width: 80%;
+  text-align: center;
+  padding: 2rem;
 }
 .waiting-container-sent img {
-  height: 50rem;
+  height: 40rem;
   width: 30rem;
 }
 
@@ -2958,6 +2960,15 @@ button {
   color: #0d7377;
 }
 
+@media screen and (max-width: 460px) {
+  .waiting-container-sent {
+    width: 90%;
+  }
+  .waiting-container-sent img {
+    height: 30rem;
+    width: 20rem;
+  }
+}
 @media screen and (max-width: 1200px) {
   .waiting-container-pending header .text {
     height: 100%;
