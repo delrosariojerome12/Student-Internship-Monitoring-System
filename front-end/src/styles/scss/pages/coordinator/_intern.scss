@@ -11,13 +11,34 @@
   gap: 1rem;
   padding: 1rem;
 
-  & > * {
+  .no-entries {
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-content: center;
+    gap: 1rem;
+    h3 {
+      text-align: center;
+      padding: 1rem 0;
+      color: #fff;
+      b {
+        color: #109da1;
+      }
+    }
+    .img-waiting {
+      img {
+        height: 60vh;
+      }
+    }
+  }
+
+  .preview-container {
     border: solid 1px #fff;
   }
   .navigation {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+    border: solid 1px #fff;
 
     & > * {
       border: solid 1px #fff;

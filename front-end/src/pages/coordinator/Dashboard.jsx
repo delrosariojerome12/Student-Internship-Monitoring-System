@@ -3,10 +3,11 @@ import DashboardIntern from "../../components/coordinator/dashboardCoordinator/D
 import DashboardApprovals from "../../components/coordinator/dashboardCoordinator/DashboardApprovals";
 import DashboardInternship from "../../components/coordinator/dashboardCoordinator/DashboardInternship";
 
-import ApprovalWating from "../../components/loading/Approvals";
-
 import { useSelector, useDispatch } from "react-redux";
 import { BiSearchAlt } from "react-icons/bi";
+
+import internImg from "../../assets/img/head.svg";
+import approvalImg from "../../assets/img/approvals.svg";
 
 const Dashboard = () => {
   const { approvalInterns, interns, isError } = useSelector(
@@ -17,8 +18,18 @@ const Dashboard = () => {
     if (!interns) {
       return <h1>Loading...</h1>;
     }
+
     if (interns.length === 0) {
-      return <h1>No interns at the moment</h1>;
+      return (
+        <section className="dashboard-intern">
+          <div className="no-intern">
+            <div className="internt-waiting">
+              <img src={internImg} alt="" />
+            </div>
+            <h4>No user found!</h4>
+          </div>
+        </section>
+      );
     }
     return interns.map((intern, index) => {
       return <DashboardIntern intern={intern} key={index} />;
@@ -31,7 +42,14 @@ const Dashboard = () => {
     }
 
     if (approvalInterns.length === 0) {
-      return <ApprovalWating />;
+      <section className="dashboard-approvals">
+        <div className="no-approvals">
+          <div className="approval-waiting">
+            <img src={approvalImg} alt="" />
+          </div>
+          <h4>No approvals found!</h4>
+        </div>
+      </section>;
     }
 
     return approvalInterns.map((intern, index) => {

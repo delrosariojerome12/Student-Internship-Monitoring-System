@@ -1,9 +1,7 @@
 import React from "react";
 import Approval from "../../components/coordinator/ApprovalIntern";
 import { useSelector } from "react-redux";
-
-import ApprovalWating from "../../components/loading/Approvals";
-
+import ApprovalWaiting from "../../assets/img/waiting.svg";
 // import {useEffect} from "react";
 
 // import {GoSearch} from "react-icons/go";
@@ -17,7 +15,18 @@ const Approvals = React.memo(() => {
     }
 
     if (approvalInterns.length === 0) {
-      return <ApprovalWating />;
+      return (
+        <section className="approvals">
+          <div className="no-entries">
+            <h3>
+              Oops, there were no <b>entries</b> yet come back again later
+            </h3>
+            <div className="img-waiting">
+              <img src={ApprovalWaiting} alt="Approvals waiting image" />
+            </div>
+          </div>
+        </section>
+      );
     }
 
     return approvalInterns.map((intern, index) => {

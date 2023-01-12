@@ -7,6 +7,26 @@
   display: grid;
   grid-template-rows: 7vh auto;
   gap: 1rem;
+
+  .no-entries {
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-content: center;
+    gap: 1rem;
+    h3 {
+      text-align: center;
+      padding: 2rem 0;
+      b {
+        color: #074d50;
+      }
+    }
+    // .img-waiting {
+    //   img {
+    //     height: 50vh;
+    //   }
+    // }
+  }
+
   header {
     padding: 1rem 0 0;
   }

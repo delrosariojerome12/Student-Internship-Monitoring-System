@@ -8,7 +8,12 @@ const DashboardApprovals = React.memo(({ intern, index }) => {
 
   const {
     user: { firstName, lastName, email, profileImage },
-    schoolDetails: { program, studentContact, validID, requiredHours },
+    schoolDetails: {
+      program,
+      studentContact,
+      validID: { link },
+      requiredHours,
+    },
     internshipDetails: {
       companyAddress,
       companyName,
@@ -75,7 +80,7 @@ const DashboardApprovals = React.memo(({ intern, index }) => {
         <div className="overlay">
           <div className="intern-modal">
             <div className="sent-details">
-              <img src={validID} id="valid-id" alt="student image" />
+              <img src={link} id="valid-id" alt="student image" />
 
               <div className="student-details">
                 <h3>Student Details</h3>
