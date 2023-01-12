@@ -46,7 +46,8 @@ const Dashboard = () => {
   if (!isVerified) {
     return (
       <section
-        style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
+        // style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
+        // className={isSidebarOpen ? "dashboard-active" : "dashboard"}
         className="dashboard"
       >
         <SidebarLeft />
@@ -65,7 +66,8 @@ const Dashboard = () => {
   // intern
   return (
     <section
-      style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
+      // style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
+      // className={isSidebarOpen ? "dashboard-active" : "dashboard"}
       className="dashboard"
     >
       <SidebarLeft />
