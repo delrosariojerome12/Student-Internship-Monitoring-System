@@ -8,6 +8,7 @@ import { BiSearchAlt } from "react-icons/bi";
 
 import internImg from "../../assets/img/head.svg";
 import approvalImg from "../../assets/img/approvals.svg";
+import internshipImg from "../../assets/img/no-internship.svg";
 
 const Dashboard = () => {
   const { approvalInterns, interns, isError } = useSelector(
@@ -21,12 +22,10 @@ const Dashboard = () => {
 
     if (interns.length === 0) {
       return (
-        <section className="dashboard-intern">
+        <section className="all-intern-container">
           <div className="no-intern">
-            <div className="internt-waiting">
-              <img src={internImg} alt="" />
-            </div>
-            <h4>No user found!</h4>
+            <img src={internImg} alt="" />
+            <h3>No user found!</h3>
           </div>
         </section>
       );
@@ -42,18 +41,35 @@ const Dashboard = () => {
     }
 
     if (approvalInterns.length === 0) {
-      <section className="dashboard-approvals">
-        <div className="no-approvals">
-          <div className="approval-waiting">
-            <img src={approvalImg} alt="" />
+      return (
+        <section className="dashboard-approvals">
+          <div className="no-approvals">
+            <img src={approvalImg} alt="No Intern Found" />
+            <h4>No approvals found!</h4>
           </div>
-          <h4>No approvals found!</h4>
-        </div>
-      </section>;
+        </section>
+      );
     }
 
     return approvalInterns.map((intern, index) => {
       return <DashboardApprovals intern={intern} key={index} index={index} />;
+    });
+  };
+
+  const renderInternship = () => {
+    if (approvalInterns.length === 0) {
+      return (
+        <section className="dashboard-internships">
+          <div className="no-internship">
+            <img src={internshipImg} alt="No available internship" />
+            <h4>No available internship</h4>
+          </div>
+        </section>
+      );
+    }
+
+    return approvalInterns.map((intern, index) => {
+      return <DashboardInternship intern={intern} key={index} index={index} />;
     });
   };
 
@@ -88,9 +104,7 @@ const Dashboard = () => {
         </div>
         <div className="dashboard-internships">
           <h3 className="internships-title">Companies</h3>
-          <div className="all-internship-container">
-            {DashboardInternship()}
-          </div>
+          <div className="all-internship-container">{renderInternship()}</div>
         </div>
       </div>
     </section>

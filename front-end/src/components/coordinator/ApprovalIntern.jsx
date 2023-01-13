@@ -190,7 +190,9 @@ const ApprovalIntern = React.memo(({ intern, index }) => {
           </p>
           <p>{program}</p>
         </div>
-        <button onClick={handleDetails}>View Sent Details</button>
+        <button className="view" onClick={handleDetails}>
+          View Sent Details
+        </button>
       </div>
     </section>
   );

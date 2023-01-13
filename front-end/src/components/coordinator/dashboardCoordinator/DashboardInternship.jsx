@@ -8,21 +8,6 @@ const DashboardInternship = () => {
         <p>Motorpool</p>
         <button className="edit-details">Edit Details</button>
       </div>
-      <div className="img-internships"></div>
-      <div className="text-internships">
-        <p>Motorpool</p>
-        <button className="edit-details">Edit Details</button>
-      </div>
-      <div className="img-internships"></div>
-      <div className="text-internships">
-        <p>Motorpool</p>
-        <button className="edit-details">Edit Details</button>
-      </div>
-      <div className="img-internships"></div>
-      <div className="text-internships">
-        <p>Motorpool</p>
-        <button className="edit-details">Edit Details</button>
-      </div>
     </section>
   );
 };

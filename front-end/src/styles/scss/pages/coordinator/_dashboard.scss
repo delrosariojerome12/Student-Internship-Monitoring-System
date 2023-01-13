@@ -77,6 +77,22 @@
       overflow-y: auto;
       height: 30vh;
       background-color: #d9d9d9;
+
+      .no-intern {
+        @include flexColumn;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        gap: 1;
+
+        img {
+          height: 15rem;
+          width: 15rem;
+        }
+        h3 {
+          color: $primary-compliment-landing;
+        }
+      }
       .all-interns {
         display: grid;
         grid-template-columns: 10rem auto;
@@ -84,18 +100,20 @@
         gap: 1rem;
         font-size: 1.4rem;
         cursor: pointer;
-        & > * {
-          background-color: #fff;
-        }
+
         .img-intern {
           height: 10rem;
           width: 10rem;
           img {
+            background-color: #fff;
             height: 100%;
             width: 100%;
+            border-radius: 1rem;
           }
         }
         .intern-detail {
+          background-color: #fff;
+          border-radius: 1rem;
           padding: 1rem;
           display: grid;
           grid-template-columns: auto auto;
@@ -129,11 +147,27 @@
       grid-template-rows: 0.2fr auto;
       padding: 2rem;
       border-radius: 0 0 0 2rem;
+      .no-approvals {
+        @include flexColumn;
+        justify-content: center;
+        align-items: center;
+        // flex-direction: column;
+        gap: 1;
+
+        img {
+          height: 15rem;
+          width: 15rem;
+        }
+        h4 {
+          color: $primary-compliment-landing;
+        }
+      }
       .all-approvals-container {
         overflow: hidden;
         overflow-y: auto;
-        height: 35vh;
+        height: 100%;
         background-color: #d9d9d9;
+
         .approvals-container {
           display: grid;
           grid-template-columns: 12rem auto;
@@ -141,6 +175,7 @@
           background-color: #d9d9d9;
           gap: 1rem;
           padding: 1rem;
+
           .overlay {
             @include flexCenter;
             width: 100%;
@@ -236,21 +271,23 @@
           //   background-color: #fff;
           // }
           .img-approvals {
-            background-color: #fff;
-
             height: 12rem;
             width: 12rem;
             img {
               height: 100%;
               width: 100%;
-              border: solid 1px #fff;
+              background-color: #fff;
+              border-radius: 1rem;
             }
           }
           .text-approvals {
-            display: grid;
-            background-color: #fff;
-            padding: 1rem;
+            display: flex;
             gap: 0.5rem;
+            padding: 0 1rem;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 1rem;
+            background-color: #fff;
 
             .approvals-details {
               h4,
@@ -258,11 +295,9 @@
                 font-size: 1.5rem;
               }
             }
-
-            // .approvals-btn {
-            //   display: flex;
-            //   justify-content: space-evenly;
-            // }
+            .view-more {
+              height: 5rem;
+            }
           }
         }
       }
@@ -273,11 +308,26 @@
       padding: 2rem;
       border-radius: 0 0 2rem 0;
 
+      .no-internship {
+        @include flexColumn;
+        justify-content: center;
+        align-items: center;
+        gap: 1;
+
+        img {
+          height: 15rem;
+          width: 15rem;
+        }
+        h4 {
+          color: $primary-compliment-landing;
+        }
+      }
       .all-internship-container {
         overflow: hidden;
         overflow-y: auto;
-        height: 35vh;
+        height: 100%;
         background-color: #d9d9d9;
+
         .all-internships {
           display: grid;
           grid-template-columns: 10rem auto;
@@ -288,6 +338,7 @@
 
           & > * {
             background-color: #fff;
+            border-radius: 1rem;
           }
 
           .img-internships {
