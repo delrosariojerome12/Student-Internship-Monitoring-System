@@ -1,9 +1,10 @@
-import React, {useState, useCallback, useEffect} from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import Intern from "../../components/coordinator/Intern";
-import {useSelector, useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import internWaiting from "../../assets/img/waiting.svg";
 
 const Interns = () => {
-  const {interns, isError} = useSelector((state) => state.intern);
+  const { interns, isError } = useSelector((state) => state.intern);
   const [searchIntern, setSearchIntern] = useState("");
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -13,7 +14,18 @@ const Interns = () => {
       return <h1>Loading...</h1>;
     }
     if (interns.length === 0) {
-      return <h1>No interns at the moment</h1>;
+      return (
+        <section className="interns ">
+          <div className="no-entries">
+            <h3>
+              Oops, there were no <b>interns</b> yet come back again later
+            </h3>
+            <div className="img-waiting">
+              <img src={internWaiting} alt="Approvals waiting image" />
+            </div>
+          </div>
+        </section>
+      );
     }
     return interns.map((intern, index) => {
       return <Intern intern={intern} key={index} />;

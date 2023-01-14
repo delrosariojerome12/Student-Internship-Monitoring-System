@@ -9,10 +9,6 @@
   padding: 1rem 9rem 1rem 13rem;
   background-color: #393e46;
   transition: all 0.2s ease-in-out;
-  // & > * {
-  //   border: solid 2px #000;
-  // }
-
   .main {
     height: 100%;
     width: 100%;
@@ -118,6 +114,27 @@
   @import "../pages/coordinator/intern";
   @import "../pages/coordinator/approvals";
   @import "../pages/coordinator/internship";
+  @import "../pages/coordinator/dashboard";
 
   @import "../pages/admin/documenets";
+}
+
+.dashboard-active {
+  @extend .dashboard;
+  padding: 2rem 9rem 2rem 29rem;
+}
+
+@media screen and(max-width: 1030px) {
+  .dashboard {
+    .sidebar-right {
+      display: none;
+    }
+  }
+}
+
+@media screen and(max-width: 600px) {
+  .dashboard {
+    // padding: 1rem !important;
+    padding: 10rem 1rem 1rem 1rem !important;
+  }
 }

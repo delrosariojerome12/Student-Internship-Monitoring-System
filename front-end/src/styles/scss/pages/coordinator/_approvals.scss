@@ -7,16 +7,37 @@
   display: grid;
   grid-template-rows: 7vh auto;
   gap: 1rem;
+
+  .no-entries {
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-content: center;
+    gap: 1rem;
+    h3 {
+      text-align: center;
+      padding: 1rem 0;
+      color: #fff;
+      b {
+        color: #109da1;
+      }
+    }
+    .img-waiting {
+      img {
+        height: 80%;
+      }
+    }
+  }
+
   header {
     padding: 1rem 0 0;
   }
   .approvals-intern-container {
-    // border: solid 1px #fff;
+    padding: 2rem;
+    border: solid 1px #fff;
     display: grid;
     grid-auto-rows: 12rem;
     gap: 1rem;
     height: 100%;
-    background-color: #fff;
     border-radius: 1rem;
 
     .approval-intern {
@@ -25,9 +46,14 @@
       grid-template-columns: 10rem auto;
       padding: 1rem;
       gap: 1rem;
-      background-color: $primary-bg-color-landing-compliment;
       border-radius: 1rem;
-      color: #fff;
+      // background-color: $primary-bg-color-landing-compliment;
+      // color: #fff;
+
+      & > * {
+        border-radius: 1rem;
+        background-color: #fff;
+      }
 
       .overlay {
         @include flexCenter;
@@ -38,12 +64,13 @@
         top: 0%;
         left: 0%;
         z-index: 8;
+
         .intern-modal {
           display: grid;
           background-color: #fff;
           color: #000;
-          width: 65vw;
-          min-height: 50vh;
+          width: 70vw;
+          min-height: 60vh;
           border-radius: 1rem;
           padding: 2rem;
           gap: 1rem;
@@ -79,7 +106,7 @@
             .schedule-details,
             .internship-details {
               background-color: #fff;
-              padding: 0 1rem;
+              padding: 1rem;
 
               h3 {
                 padding-bottom: 1rem;
@@ -123,8 +150,11 @@
       .intern-right {
         display: flex;
         gap: 2rem;
-        padding: 1rem;
+        padding: 0 2rem;
         align-items: center;
+        justify-content: space-between;
+        background-color: #d9d9d9;
+        // font-weight: 550;
       }
 
       .intern-left {
@@ -139,27 +169,29 @@
       }
     }
     button {
+      @include flexCenter;
       cursor: pointer;
       height: 4.5rem;
-      @include flexCenter;
-      // margin: 0 auto;
       padding: 1.6rem;
       border-radius: 5px;
       border: solid 1px transparent;
       outline: none;
       color: $primary-font-color;
       background-color: $primary-compliment-landing;
-      letter-spacing: 0.2rem;
       transition: all 0.3s ease-in-out;
       font-weight: 600;
+
+      // margin: 0 auto;
+      // letter-spacing: 0.2rem;
       &.decline-btn:hover {
         background-color: $red-primary-color;
       }
       &.back-btn:hover,
-      &.approve-btn:hover {
+      &.approve-btn:hover,
+      &.view:hover {
         background-color: #d9d9d9;
-        color: #000;
-        border: solid 1px #000;
+        color: $primary-compliment-landing;
+        border: solid 1px $primary-compliment-landing;
       }
     }
   }

@@ -28,6 +28,7 @@ const Signup = () => {
       hasEyeIcon: false,
       code: "profileImage",
       isVisible: true,
+      isDisabled: false,
     },
     {
       forInput: "First Name",
@@ -124,6 +125,7 @@ const Signup = () => {
           /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         let isValid = emailRegex.test(value);
         isValid ? (data[index].isError = false) : (data[index].isError = true);
+        data[index].value = data[index].value.slice(0).toLowerCase();
         setForm(data);
         return;
       case "Password":
@@ -161,6 +163,7 @@ const Signup = () => {
         uploadBytes(imageRef, value).then((res) => {
           getDownloadURL(res.ref).then((url) => {
             data[index].value = url;
+            data[index].isDisabled = true;
             setForm(data);
           });
         });
@@ -216,6 +219,7 @@ const Signup = () => {
         hasShownPassword,
         isVisible,
         code,
+        isDisabled,
       } = inputs;
 
       switch (type) {
@@ -285,6 +289,7 @@ const Signup = () => {
                   <p>Select Profile Image</p>
                 )}
                 <input
+                  disabled={isDisabled}
                   type="file"
                   name={forInput}
                   id={id}
