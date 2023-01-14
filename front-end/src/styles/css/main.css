@@ -155,13 +155,7 @@ button {
   border: solid 3px #457b9d;
   outline: none;
 }
-.login
-  .card-container
-  form
-  .input-contain
-  input:focus
-  + .placeholder-container
-  .placeholder-text {
+.login .card-container form .input-contain input:focus + .placeholder-container .placeholder-text {
   top: 0%;
   left: 0%;
   background-color: #fff;
@@ -318,13 +312,7 @@ button {
   border: solid 3px #457b9d;
   outline: none;
 }
-.login
-  .card-container
-  form
-  .input-contain
-  input:focus
-  + .placeholder-container
-  .placeholder-text {
+.login .card-container form .input-contain input:focus + .placeholder-container .placeholder-text {
   top: 0%;
   left: 0%;
   background-color: #fff;
@@ -471,13 +459,7 @@ button {
   border: solid 3px #457b9d;
   outline: none;
 }
-.signin
-  .card-container
-  form
-  .input-contain
-  input:focus
-  + .placeholder-container
-  .placeholder-text {
+.signin .card-container form .input-contain input:focus + .placeholder-container .placeholder-text {
   top: 0%;
   left: 0%;
   background-color: #fff;
@@ -553,7 +535,7 @@ button {
 .signin .card-container form .img-input label p .icons {
   color: green;
 }
-.signin .card-container form .img-input label input[type="file"] {
+.signin .card-container form .img-input label input[type=file] {
   display: none;
 }
 .signin .card-container form .img-input label .profile-con {
@@ -591,7 +573,7 @@ button {
   grid-template-rows: minmax(100vh, auto) 25rem;
   padding: 3rem 0 0 0;
   gap: 20rem;
-  background-color: #222831;
+  background-color: #212121;
 }
 .landing-page nav {
   height: 10vh;
@@ -602,7 +584,7 @@ button {
   z-index: 99;
   display: grid;
   grid-template-columns: 17rem auto;
-  background-color: #222831;
+  background-color: #212121;
   color: #eeeeee;
   padding: 0 5rem;
 }
@@ -640,7 +622,7 @@ button {
   height: 32px;
 }
 .landing-page nav .link-container {
-  background-color: #222831;
+  background-color: #212121;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -670,7 +652,7 @@ button {
   color: #eeeeee;
 }
 .landing-page nav .link-container .auth-links > *:hover {
-  background-color: #222831;
+  background-color: #212121;
   border: solid 1px #0d7377;
   color: #eeeeee;
   border-radius: 0.5rem;
@@ -738,7 +720,7 @@ button {
   width: 100%;
   height: 85%;
   -o-object-fit: contain;
-  object-fit: contain;
+     object-fit: contain;
   z-index: 1;
 }
 .landing-page .contents .landing-contents .img-container .landingBg {
@@ -809,12 +791,7 @@ button {
   grid-template-rows: 7rem 8rem auto;
   font-size: 1.6rem;
 }
-.landing-page
-  .contents
-  .mockup-contents
-  .card
-  .text-container
-  p:nth-of-type(1) {
+.landing-page .contents .mockup-contents .card .text-container p:nth-of-type(1) {
   display: flex;
   grid-column: 1/5;
   grid-row: 1/2;
@@ -823,12 +800,7 @@ button {
   align-self: center;
   text-align: center;
 }
-.landing-page
-  .contents
-  .mockup-contents
-  .card
-  .text-container
-  p:nth-of-type(2) {
+.landing-page .contents .mockup-contents .card .text-container p:nth-of-type(2) {
   display: flex;
   grid-row: 2/3;
   grid-column: 1/3;
@@ -836,12 +808,7 @@ button {
   justify-self: center;
   padding-left: 10%;
 }
-.landing-page
-  .contents
-  .mockup-contents
-  .card
-  .text-container
-  p:nth-of-type(3) {
+.landing-page .contents .mockup-contents .card .text-container p:nth-of-type(3) {
   display: flex;
   grid-row: 3/4;
   grid-column: 3/5;
@@ -872,7 +839,7 @@ button {
   height: 100%;
   width: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .landing-page footer {
   background-color: #323232;
@@ -906,8 +873,7 @@ button {
   height: 3rem;
 }
 
-.dashboard,
-.dashboard-active {
+.dashboard, .dashboard-active {
   display: grid;
   height: 100%;
   gap: 1rem;
@@ -930,8 +896,7 @@ button {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 }
-.dashboard .main,
-.dashboard-active .main {
+.dashboard .main, .dashboard-active .main {
   height: 100%;
   width: 100%;
   margin: 0 auto;
@@ -940,29 +905,24 @@ button {
   gap: 1rem;
   padding: 1rem;
 }
-.dashboard .main header,
-.dashboard-active .main header {
+.dashboard .main header, .dashboard-active .main header {
   height: 100%;
   display: flex;
   justify-content: space-between;
   padding: 0 0 0 1rem;
 }
-.dashboard .main header .name-container,
-.dashboard-active .main header .name-container {
+.dashboard .main header .name-container, .dashboard-active .main header .name-container {
   display: flex;
   flex-direction: column;
   color: #f1faee;
 }
-.dashboard .main header .name-container .name,
-.dashboard-active .main header .name-container .name {
+.dashboard .main header .name-container .name, .dashboard-active .main header .name-container .name {
   font-size: 4rem;
 }
-.dashboard .main header .name-container h4,
-.dashboard-active .main header .name-container h4 {
+.dashboard .main header .name-container h4, .dashboard-active .main header .name-container h4 {
   font-size: 2rem;
 }
-.dashboard .main header .search-box,
-.dashboard-active .main header .search-box {
+.dashboard .main header .search-box, .dashboard-active .main header .search-box {
   display: flex;
   background-color: #f1faee;
   width: 25rem;
@@ -971,37 +931,31 @@ button {
   padding: 0 1.5rem;
   margin: 1rem 1rem auto auto;
 }
-.dashboard .main header .search-box img,
-.dashboard-active .main header .search-box img {
+.dashboard .main header .search-box img, .dashboard-active .main header .search-box img {
   width: 1.8rem;
   cursor: pointer;
 }
-.dashboard .main header .search-box input,
-.dashboard-active .main header .search-box input {
+.dashboard .main header .search-box input, .dashboard-active .main header .search-box input {
   width: 100%;
   background: transparent;
   padding: 1rem;
   outline: none;
   border: 0;
 }
-.dashboard .main .content,
-.dashboard-active .main .content {
+.dashboard .main .content, .dashboard-active .main .content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.2rem;
 }
-.dashboard .main .content > *,
-.dashboard-active .main .content > * {
+.dashboard .main .content > *, .dashboard-active .main .content > * {
   border: solid 1.5px #fff;
   border-radius: 2rem;
 }
-.dashboard .main .content h4,
-.dashboard-active .main .content h4 {
+.dashboard .main .content h4, .dashboard-active .main .content h4 {
   color: #f1faee;
   text-align: center;
 }
-.dashboard .main .content .time-keeper,
-.dashboard-active .main .content .time-keeper {
+.dashboard .main .content .time-keeper, .dashboard-active .main .content .time-keeper {
   position: relative;
   grid-column: 1/3;
   padding: 1rem;
@@ -1011,15 +965,13 @@ button {
   gap: 1rem;
   gap: 0px;
 }
-.dashboard .main .content .time-keeper .time-keeper-contents,
-.dashboard-active .main .content .time-keeper .time-keeper-contents {
+.dashboard .main .content .time-keeper .time-keeper-contents, .dashboard-active .main .content .time-keeper .time-keeper-contents {
   background-color: #f1faee;
   height: 100%;
   border-radius: 2rem;
   padding: 1rem;
 }
-.dashboard .main .content .documents,
-.dashboard-active .main .content .documents {
+.dashboard .main .content .documents, .dashboard-active .main .content .documents {
   position: relative;
   padding: 1rem;
   grid-row: 2/4;
@@ -1028,28 +980,24 @@ button {
   flex-direction: column;
   gap: 1rem;
 }
-.dashboard .main .content .documents .document-contents,
-.dashboard-active .main .content .documents .document-contents {
+.dashboard .main .content .documents .document-contents, .dashboard-active .main .content .documents .document-contents {
   background-color: #f1faee;
   height: 100%;
   border-radius: 2rem;
   padding: 1rem;
 }
-.dashboard .main .content .internship-details,
-.dashboard-active .main .content .internship-details {
+.dashboard .main .content .internship-details, .dashboard-active .main .content .internship-details {
   padding: 1rem;
   background-color: #11999e;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.dashboard .main .content .map,
-.dashboard-active .main .content .map {
+.dashboard .main .content .map, .dashboard-active .main .content .map {
   padding: 1rem;
   background-color: #f1faee;
 }
-.dashboard .left-sidebar,
-.dashboard-active .left-sidebar {
+.dashboard .left-sidebar, .dashboard-active .left-sidebar {
   display: grid;
   position: fixed;
   width: 11rem;
@@ -1059,18 +1007,19 @@ button {
   grid-template-rows: 15rem 1fr;
   grid-template-columns: 100%;
   gap: 5px;
-  background-color: #222831;
+  background-color: #212121;
   transition: all 0.2s ease-in-out;
   z-index: 5;
 }
-.dashboard .left-sidebar > *,
-.dashboard-active .left-sidebar > * {
+.dashboard .left-sidebar .icons, .dashboard-active .left-sidebar .icons {
+  color: #fff;
+}
+.dashboard .left-sidebar > *, .dashboard-active .left-sidebar > * {
   border-top: solid 1px #a8dadc;
   border-bottom: solid 1px #a8dadc;
   margin: 0 1rem;
 }
-.dashboard .left-sidebar .img-con,
-.dashboard-active .left-sidebar .img-con {
+.dashboard .left-sidebar .img-con, .dashboard-active .left-sidebar .img-con {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -1079,18 +1028,16 @@ button {
   margin: 1.5rem;
   position: relative;
 }
-.dashboard .left-sidebar .img-con img,
-.dashboard-active .left-sidebar .img-con img {
+.dashboard .left-sidebar .img-con img, .dashboard-active .left-sidebar .img-con img {
   height: 4rem;
   transform: rotate(90deg);
   transition: all 0.2s ease-in;
   -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
-.dashboard .left-sidebar .img-con .collapse-icon,
-.dashboard-active .left-sidebar .img-con .collapse-icon {
+.dashboard .left-sidebar .img-con .collapse-icon, .dashboard-active .left-sidebar .img-con .collapse-icon {
   position: absolute;
   top: 50%;
   right: -20px;
@@ -1106,8 +1053,10 @@ button {
   background-color: #457b9d;
   z-index: 1;
 }
-.dashboard .left-sidebar .links-con,
-.dashboard-active .left-sidebar .links-con {
+.dashboard .left-sidebar > button, .dashboard-active .left-sidebar > button {
+  display: none;
+}
+.dashboard .left-sidebar .links-con, .dashboard-active .left-sidebar .links-con {
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -1115,8 +1064,10 @@ button {
   align-items: center;
   gap: 1rem;
 }
-.dashboard .left-sidebar .links-con .icon-con,
-.dashboard-active .left-sidebar .links-con .icon-con {
+.dashboard .left-sidebar .links-con .sub-container, .dashboard-active .left-sidebar .links-con .sub-container {
+  display: none;
+}
+.dashboard .left-sidebar .links-con .icon-con, .dashboard-active .left-sidebar .links-con .icon-con {
   height: 5rem;
   width: 5rem;
   border-radius: 50%;
@@ -1126,13 +1077,11 @@ button {
   transition: all 0.2s linear;
   background-color: #4c4c4c;
 }
-.dashboard .left-sidebar .links-con .icon-con:hover,
-.dashboard-active .left-sidebar .links-con .icon-con:hover {
+.dashboard .left-sidebar .links-con .icon-con:hover, .dashboard-active .left-sidebar .links-con .icon-con:hover {
   background-color: #457b9d;
   border-radius: 1rem;
 }
-.dashboard .left-sidebar .links-con .icon-con a,
-.dashboard-active .left-sidebar .links-con .icon-con a {
+.dashboard .left-sidebar .links-con .icon-con a, .dashboard-active .left-sidebar .links-con .icon-con a {
   transition: all 0.2s linear;
   text-decoration: none;
   display: inline-block;
@@ -1143,12 +1092,10 @@ button {
   align-items: center;
   justify-content: center;
 }
-.dashboard .left-sidebar .links-con .icon-con a .icons,
-.dashboard-active .left-sidebar .links-con .icon-con a .icons {
+.dashboard .left-sidebar .links-con .icon-con a .icons, .dashboard-active .left-sidebar .links-con .icon-con a .icons {
   font-size: 2.6rem;
 }
-.dashboard .left-sidebar .box,
-.dashboard-active .left-sidebar .box {
+.dashboard .left-sidebar .box, .dashboard-active .left-sidebar .box {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -1158,31 +1105,25 @@ button {
   border-radius: 2rem;
   margin: 2rem;
 }
-.dashboard .left-sidebar .box p,
-.dashboard-active .left-sidebar .box p {
+.dashboard .left-sidebar .box p, .dashboard-active .left-sidebar .box p {
   color: #fff;
 }
-.dashboard .left-sidebar .box img,
-.dashboard-active .left-sidebar .box img {
+.dashboard .left-sidebar .box img, .dashboard-active .left-sidebar .box img {
   height: 1px;
 }
-.dashboard .active-sidebar,
-.dashboard-active .active-sidebar {
+.dashboard .active-sidebar, .dashboard-active .active-sidebar {
   width: 26rem;
 }
-.dashboard .active-sidebar .img-con img,
-.dashboard-active .active-sidebar .img-con img {
+.dashboard .active-sidebar .img-con img, .dashboard-active .active-sidebar .img-con img {
   height: 5rem;
   transform: rotate(0deg);
 }
-.dashboard .active-sidebar .links-con .icon-con,
-.dashboard-active .active-sidebar .links-con .icon-con {
+.dashboard .active-sidebar .links-con .icon-con, .dashboard-active .active-sidebar .links-con .icon-con {
   border-radius: 0.5rem;
   background: transparent;
   width: 100%;
 }
-.dashboard .active-sidebar .links-con .icon-con a,
-.dashboard-active .active-sidebar .links-con .icon-con a {
+.dashboard .active-sidebar .links-con .icon-con a, .dashboard-active .active-sidebar .links-con .icon-con a {
   font-size: 1.8rem;
   gap: 1rem;
   width: 100%;
@@ -1191,20 +1132,135 @@ button {
   justify-content: flex-start;
   border-radius: 1rem;
 }
-.dashboard .active-sidebar .links-con .icon-con a:focus,
-.dashboard-active .active-sidebar .links-con .icon-con a:focus {
+.dashboard .active-sidebar .links-con .icon-con a:focus, .dashboard-active .active-sidebar .links-con .icon-con a:focus {
   background-color: #457b9d;
 }
-.dashboard .active-sidebar .box p,
-.dashboard-active .active-sidebar .box p {
+.dashboard .active-sidebar .box p, .dashboard-active .active-sidebar .box p {
   visibility: hidden;
 }
-.dashboard .active-sidebar .box img,
-.dashboard-active .active-sidebar .box img {
+.dashboard .active-sidebar .box img, .dashboard-active .active-sidebar .box img {
   height: 15rem;
 }
-.dashboard .sidebar-right,
-.dashboard-active .sidebar-right {
+@media screen and (max-width: 600px) {
+  .dashboard .left-sidebar, .dashboard-active .left-sidebar {
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 8rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .dashboard .left-sidebar > *, .dashboard-active .left-sidebar > * {
+    border: none;
+  }
+  .dashboard .left-sidebar .img-con img, .dashboard-active .left-sidebar .img-con img {
+    transform: rotate(0deg);
+    height: 3rem;
+  }
+  .dashboard .left-sidebar .img-con .collapse-icon, .dashboard-active .left-sidebar .img-con .collapse-icon {
+    display: none;
+  }
+  .dashboard .left-sidebar button, .dashboard-active .left-sidebar button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+  }
+  .dashboard .left-sidebar button .icons, .dashboard-active .left-sidebar button .icons {
+    font-size: 2.5rem;
+  }
+  .dashboard .left-sidebar button img, .dashboard-active .left-sidebar button img {
+    height: 2rem;
+    width: 2rem;
+  }
+  .dashboard .left-sidebar .links-con, .dashboard-active .left-sidebar .links-con {
+    position: absolute;
+    margin: 0;
+    top: 100%;
+    left: 0%;
+    width: 0%;
+    height: 90vh;
+    transition: all 0.2s ease-in-out;
+    overflow: auto;
+    padding: 0;
+  }
+  .dashboard .left-sidebar .links-con button, .dashboard-active .left-sidebar .links-con button {
+    margin-right: auto;
+    color: #fff;
+    font-size: 1.8rem;
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+  }
+  .dashboard .left-sidebar .links-con button .icons, .dashboard-active .left-sidebar .links-con button .icons {
+    font-size: 3rem;
+  }
+  .dashboard .left-sidebar .links-con .sub-container, .dashboard-active .left-sidebar .links-con .sub-container {
+    display: grid;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    height: 100%;
+    width: 100%;
+  }
+  .dashboard .left-sidebar .links-con .sub-container .link-container, .dashboard-active .left-sidebar .links-con .sub-container .link-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 78%;
+    gap: 1rem;
+  }
+  .dashboard .left-sidebar .links-con .sub-container .link-container .icon-con, .dashboard-active .left-sidebar .links-con .sub-container .link-container .icon-con {
+    display: flex;
+    border-radius: 0%;
+    height: auto;
+    width: 100%;
+    background-color: transparent;
+  }
+  .dashboard .left-sidebar .links-con .sub-container .link-container .icon-con:hover, .dashboard-active .left-sidebar .links-con .sub-container .link-container .icon-con:hover {
+    background-color: #457b9d;
+  }
+  .dashboard .left-sidebar .links-con .sub-container .link-container .icon-con a, .dashboard-active .left-sidebar .links-con .sub-container .link-container .icon-con a {
+    padding: 1rem;
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .dashboard .left-sidebar .links-con .sub-container .user, .dashboard-active .left-sidebar .links-con .sub-container .user {
+    display: grid;
+    grid-template-columns: 5rem auto auto;
+    gap: 1rem;
+    padding: 1rem;
+    color: #fff;
+    background-color: #1d3557;
+    border-radius: 1rem;
+  }
+  .dashboard .left-sidebar .links-con .sub-container .user img, .dashboard-active .left-sidebar .links-con .sub-container .user img {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    grid-row: 1/3;
+    grid-column: 1/2;
+    margin: auto;
+  }
+  .dashboard .left-sidebar .links-con .sub-container .user > p:nth-child(2), .dashboard-active .left-sidebar .links-con .sub-container .user > p:nth-child(2) {
+    grid-row: 2/3;
+    grid-column: 2/3;
+  }
+  .dashboard .left-sidebar .active, .dashboard-active .left-sidebar .active {
+    display: flex;
+    background-color: #323232;
+    width: 100vw;
+  }
+}
+.dashboard .sidebar-right, .dashboard-active .sidebar-right {
   position: fixed;
   top: 0%;
   right: 0%;
@@ -1213,12 +1269,11 @@ button {
   gap: 5px;
   display: grid;
   grid-template-rows: 1fr 1fr;
-  background-color: #222831;
+  background-color: #212121;
   transition: all 0.2s ease-in;
   z-index: 5;
 }
-.dashboard .sidebar-right span,
-.dashboard-active .sidebar-right span {
+.dashboard .sidebar-right span, .dashboard-active .sidebar-right span {
   background-color: #4c4c4c;
   height: 4rem;
   width: 4rem;
@@ -1229,19 +1284,16 @@ button {
   transition: all 0.2s linear;
   position: relative;
 }
-.dashboard .sidebar-right span:hover,
-.dashboard-active .sidebar-right span:hover {
+.dashboard .sidebar-right span:hover, .dashboard-active .sidebar-right span:hover {
   background-color: #457b9d;
   border-radius: 1rem;
 }
-.dashboard .sidebar-right .icon,
-.dashboard-active .sidebar-right .icon {
+.dashboard .sidebar-right .icon, .dashboard-active .sidebar-right .icon {
   font-size: 2.6rem;
   color: #fff;
   cursor: pointer;
 }
-.dashboard .sidebar-right .top,
-.dashboard-active .sidebar-right .top {
+.dashboard .sidebar-right .top, .dashboard-active .sidebar-right .top {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -1250,8 +1302,7 @@ button {
   padding: 1rem;
   width: 100%;
 }
-.dashboard .sidebar-right .top .profile-img,
-.dashboard-active .sidebar-right .top .profile-img {
+.dashboard .sidebar-right .top .profile-img, .dashboard-active .sidebar-right .top .profile-img {
   height: 5.2rem;
   width: 5.2rem;
   border-radius: 50%;
@@ -1259,22 +1310,19 @@ button {
   cursor: pointer;
   transition: all 0.2s linear;
 }
-.dashboard .sidebar-right .top .profile-img:hover img,
-.dashboard-active .sidebar-right .top .profile-img:hover img {
+.dashboard .sidebar-right .top .profile-img:hover img, .dashboard-active .sidebar-right .top .profile-img:hover img {
   border-radius: 1rem;
   background-color: #4c4c4c;
 }
-.dashboard .sidebar-right .top .profile-img > img,
-.dashboard-active .sidebar-right .top .profile-img > img {
+.dashboard .sidebar-right .top .profile-img > img, .dashboard-active .sidebar-right .top .profile-img > img {
   height: 100%;
   width: 100%;
   border-radius: 50%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   transition: all 0.2s linear;
 }
-.dashboard .sidebar-right .top .profile-img span,
-.dashboard-active .sidebar-right .top .profile-img span {
+.dashboard .sidebar-right .top .profile-img span, .dashboard-active .sidebar-right .top .profile-img span {
   position: absolute;
   right: -1px;
   bottom: -5px;
@@ -1286,13 +1334,11 @@ button {
   align-items: center;
   justify-content: center;
 }
-.dashboard .sidebar-right .top .profile-img span .icon,
-.dashboard-active .sidebar-right .top .profile-img span .icon {
+.dashboard .sidebar-right .top .profile-img span .icon, .dashboard-active .sidebar-right .top .profile-img span .icon {
   height: 1rem;
   width: 1rem;
 }
-.dashboard .sidebar-right .top .tab,
-.dashboard-active .sidebar-right .top .tab {
+.dashboard .sidebar-right .top .tab, .dashboard-active .sidebar-right .top .tab {
   position: absolute;
   top: 1rem;
   left: -31rem;
@@ -1307,8 +1353,7 @@ button {
   flex-direction: column;
   gap: 1rem;
 }
-.dashboard .sidebar-right .top .profile-tab .user,
-.dashboard-active .sidebar-right .top .profile-tab .user {
+.dashboard .sidebar-right .top .profile-tab .user, .dashboard-active .sidebar-right .top .profile-tab .user {
   border-radius: 1rem;
   text-transform: capitalize;
   background-color: #252525;
@@ -1319,21 +1364,18 @@ button {
   padding: 1rem;
   cursor: pointer;
 }
-.dashboard .sidebar-right .top .profile-tab .user:hover,
-.dashboard-active .sidebar-right .top .profile-tab .user:hover {
+.dashboard .sidebar-right .top .profile-tab .user:hover, .dashboard-active .sidebar-right .top .profile-tab .user:hover {
   background-color: #3f3f3f;
 }
-.dashboard .sidebar-right .top .profile-tab .user img,
-.dashboard-active .sidebar-right .top .profile-tab .user img {
+.dashboard .sidebar-right .top .profile-tab .user img, .dashboard-active .sidebar-right .top .profile-tab .user img {
   height: 7rem;
   width: 7rem;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   transition: all 0.2s linear;
   border-radius: 50%;
 }
-.dashboard .sidebar-right .top .profile-tab > *:not(.user),
-.dashboard-active .sidebar-right .top .profile-tab > *:not(.user) {
+.dashboard .sidebar-right .top .profile-tab > *:not(.user), .dashboard-active .sidebar-right .top .profile-tab > *:not(.user) {
   padding: 1rem;
   background-color: #252525;
   display: flex;
@@ -1343,117 +1385,63 @@ button {
   cursor: pointer;
   transition: all 0.2s linear;
 }
-.dashboard .sidebar-right .top .profile-tab > *:not(.user):hover,
-.dashboard-active .sidebar-right .top .profile-tab > *:not(.user):hover {
+.dashboard .sidebar-right .top .profile-tab > *:not(.user):hover, .dashboard-active .sidebar-right .top .profile-tab > *:not(.user):hover {
   background-color: #3f3f3f;
 }
-.dashboard .sidebar-right .top .profile-tab > *:not(.user) .icon-holder,
-.dashboard-active .sidebar-right .top .profile-tab > *:not(.user) .icon-holder {
+.dashboard .sidebar-right .top .profile-tab > *:not(.user) .icon-holder, .dashboard-active .sidebar-right .top .profile-tab > *:not(.user) .icon-holder {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
 }
-.dashboard
-  .sidebar-right
-  .top
-  .profile-tab
-  > *:not(.user)
-  .icon:not(.icon-holder .icon),
-.dashboard-active
-  .sidebar-right
-  .top
-  .profile-tab
-  > *:not(.user)
-  .icon:not(.icon-holder .icon) {
+.dashboard .sidebar-right .top .profile-tab > *:not(.user) .icon:not(.icon-holder .icon), .dashboard-active .sidebar-right .top .profile-tab > *:not(.user) .icon:not(.icon-holder .icon) {
   font-size: 1.5rem;
 }
-.dashboard .sidebar-right .top .notification-tab,
-.dashboard-active .sidebar-right .top .notification-tab {
+.dashboard .sidebar-right .top .notification-tab, .dashboard-active .sidebar-right .top .notification-tab {
   display: grid;
   width: 36rem;
   left: -39rem;
 }
-.dashboard .sidebar-right .top .notification-tab .display,
-.dashboard-active .sidebar-right .top .notification-tab .display {
+.dashboard .sidebar-right .top .notification-tab .display, .dashboard-active .sidebar-right .top .notification-tab .display {
   display: grid;
   gap: 1rem;
 }
-.dashboard .sidebar-right .top .notification-tab .display .notification,
-.dashboard-active .sidebar-right .top .notification-tab .display .notification {
+.dashboard .sidebar-right .top .notification-tab .display .notification, .dashboard-active .sidebar-right .top .notification-tab .display .notification {
   height: 5rem;
   cursor: pointer;
   display: grid;
   grid-template-columns: 5rem auto;
   gap: 1rem;
 }
-.dashboard
-  .sidebar-right
-  .top
-  .notification-tab
-  .display
-  .notification
-  .notif-icon,
-.dashboard-active
-  .sidebar-right
-  .top
-  .notification-tab
-  .display
-  .notification
-  .notif-icon {
+.dashboard .sidebar-right .top .notification-tab .display .notification .notif-icon, .dashboard-active .sidebar-right .top .notification-tab .display .notification .notif-icon {
   height: 100%;
   width: 100%;
 }
-.dashboard
-  .sidebar-right
-  .top
-  .notification-tab
-  .display
-  .notification
-  .notif-icon
-  img,
-.dashboard-active
-  .sidebar-right
-  .top
-  .notification-tab
-  .display
-  .notification
-  .notif-icon
-  img {
+.dashboard .sidebar-right .top .notification-tab .display .notification .notif-icon img, .dashboard-active .sidebar-right .top .notification-tab .display .notification .notif-icon img {
   height: 100%;
   width: 100%;
   -o-object-fit: contain;
-  object-fit: contain;
+     object-fit: contain;
   border-radius: 50%;
   border: solid 1px #fff;
 }
-.dashboard .sidebar-right .top .notification-tab .display .notification > *,
-.dashboard-active
-  .sidebar-right
-  .top
-  .notification-tab
-  .display
-  .notification
-  > * {
+.dashboard .sidebar-right .top .notification-tab .display .notification > *, .dashboard-active .sidebar-right .top .notification-tab .display .notification > * {
   border: solid 1px #fff;
 }
-.dashboard .sidebar-right .top .chat-tab,
-.dashboard-active .sidebar-right .top .chat-tab {
+.dashboard .sidebar-right .top .chat-tab, .dashboard-active .sidebar-right .top .chat-tab {
   display: grid;
   width: 32rem;
   left: -35rem;
   min-height: 20rem;
 }
-.dashboard .sidebar-right .top .chat-tab .display,
-.dashboard-active .sidebar-right .top .chat-tab .display {
+.dashboard .sidebar-right .top .chat-tab .display, .dashboard-active .sidebar-right .top .chat-tab .display {
   display: grid;
   justify-content: center;
   justify-items: center;
   text-align: center;
   gap: 1rem;
 }
-.dashboard .sidebar-right .top .chat-tab .display button,
-.dashboard-active .sidebar-right .top .chat-tab .display button {
+.dashboard .sidebar-right .top .chat-tab .display button, .dashboard-active .sidebar-right .top .chat-tab .display button {
   border-radius: 1rem;
   padding: 1rem;
   border: solid 2px transparent;
@@ -1462,14 +1450,12 @@ button {
   transition: all 0.3s linear;
   font-weight: 600;
 }
-.dashboard .sidebar-right .top .chat-tab .display button:hover,
-.dashboard-active .sidebar-right .top .chat-tab .display button:hover {
+.dashboard .sidebar-right .top .chat-tab .display button:hover, .dashboard-active .sidebar-right .top .chat-tab .display button:hover {
   background-color: #fff;
   color: #0f615d;
   border: solid 2px #0f615d;
 }
-.dashboard .sidebar-right .bottom,
-.dashboard-active .sidebar-right .bottom {
+.dashboard .sidebar-right .bottom, .dashboard-active .sidebar-right .bottom {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -1478,8 +1464,7 @@ button {
   gap: 2rem;
   padding: 1rem;
 }
-.dashboard .intern-container,
-.dashboard-active .intern-container {
+.dashboard .intern-container, .dashboard-active .intern-container {
   height: 100%;
   width: 100%;
   border-radius: 1rem;
@@ -1489,45 +1474,41 @@ button {
   gap: 1rem;
   padding: 1rem;
 }
-.dashboard .intern-container .no-entries {
+.dashboard .intern-container .no-entries, .dashboard-active .intern-container .no-entries {
   display: grid;
   grid-template-rows: auto auto;
   justify-content: center;
   gap: 1rem;
 }
-.dashboard .intern-container .no-entries h3 {
+.dashboard .intern-container .no-entries h3, .dashboard-active .intern-container .no-entries h3 {
   text-align: center;
   padding: 1rem 0;
   color: #fff;
 }
-.dashboard .intern-container .no-entries h3 b {
+.dashboard .intern-container .no-entries h3 b, .dashboard-active .intern-container .no-entries h3 b {
   color: #109da1;
 }
-.dashboard .intern-container .no-entries .img-waiting img {
+.dashboard .intern-container .no-entries .img-waiting img, .dashboard-active .intern-container .no-entries .img-waiting img {
   height: 60vh;
 }
-.dashboard .intern-container .preview-container {
+.dashboard .intern-container .preview-container, .dashboard-active .intern-container .preview-container {
   border: solid 1px #fff;
 }
-.dashboard .intern-container .navigation,
-.dashboard-active .intern-container .navigation {
+.dashboard .intern-container .navigation, .dashboard-active .intern-container .navigation {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   border: solid 1px #fff;
 }
-.dashboard .intern-container .navigation > *,
-.dashboard-active .intern-container .navigation > * {
+.dashboard .intern-container .navigation > *, .dashboard-active .intern-container .navigation > * {
   border: solid 1px #fff;
 }
-.dashboard .intern-container .navigation .left-side,
-.dashboard-active .intern-container .navigation .left-side {
+.dashboard .intern-container .navigation .left-side, .dashboard-active .intern-container .navigation .left-side {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 }
-.dashboard .intern-container .navigation .left-side button,
-.dashboard-active .intern-container .navigation .left-side button {
+.dashboard .intern-container .navigation .left-side button, .dashboard-active .intern-container .navigation .left-side button {
   cursor: pointer;
   height: 4rem;
   display: flex;
@@ -1544,40 +1525,34 @@ button {
   transition: all 0.3s ease-in-out;
   font-weight: 600;
 }
-.dashboard .intern-container .navigation .left-side button:hover,
-.dashboard-active .intern-container .navigation .left-side button:hover {
+.dashboard .intern-container .navigation .left-side button:hover, .dashboard-active .intern-container .navigation .left-side button:hover {
   background-color: #f1faee;
   color: #457b9d;
   border: solid 1px #457b9d;
 }
-.dashboard .intern-container .navigation .right-side,
-.dashboard-active .intern-container .navigation .right-side {
+.dashboard .intern-container .navigation .right-side, .dashboard-active .intern-container .navigation .right-side {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
-.dashboard .intern-container .navigation .right-side form,
-.dashboard-active .intern-container .navigation .right-side form {
+.dashboard .intern-container .navigation .right-side form, .dashboard-active .intern-container .navigation .right-side form {
   width: 80%;
 }
-.dashboard .intern-container .navigation .right-side form input,
-.dashboard-active .intern-container .navigation .right-side form input {
+.dashboard .intern-container .navigation .right-side form input, .dashboard-active .intern-container .navigation .right-side form input {
   padding: 1rem;
   width: 100%;
   border: none;
   outline: none;
   border-radius: 0.5rem;
 }
-.dashboard .intern-container .interns,
-.dashboard-active .intern-container .interns {
+.dashboard .intern-container .interns, .dashboard-active .intern-container .interns {
   position: relative;
   display: grid;
   grid-auto-rows: 10rem;
   gap: 1rem;
   padding: 1rem;
 }
-.dashboard .intern-container .interns .modal,
-.dashboard-active .intern-container .interns .modal {
+.dashboard .intern-container .interns .modal, .dashboard-active .intern-container .interns .modal {
   padding: 2rem;
   position: absolute;
   top: 10%;
@@ -1589,8 +1564,7 @@ button {
   border: solid 1px #000;
   border-radius: 1rem;
 }
-.dashboard .intern-container .interns .intern,
-.dashboard-active .intern-container .interns .intern {
+.dashboard .intern-container .interns .intern, .dashboard-active .intern-container .interns .intern {
   display: grid;
   grid-template-columns: 10rem auto;
   border: solid 1px #fff;
@@ -1599,50 +1573,45 @@ button {
   cursor: pointer;
   font-size: 1.4rem;
 }
-.dashboard .intern-container .interns .intern .img-container,
-.dashboard-active .intern-container .interns .intern .img-container {
+.dashboard .intern-container .interns .intern .img-container, .dashboard-active .intern-container .interns .intern .img-container {
   height: 10rem;
   width: 10rem;
 }
-.dashboard .intern-container .interns .intern .img-container img,
-.dashboard-active .intern-container .interns .intern .img-container img {
+.dashboard .intern-container .interns .intern .img-container img, .dashboard-active .intern-container .interns .intern .img-container img {
   height: 100%;
   width: 100%;
   border-radius: 1rem;
 }
-.dashboard .intern-container .interns .intern .intern-details,
-.dashboard-active .intern-container .interns .intern .intern-details {
+.dashboard .intern-container .interns .intern .intern-details, .dashboard-active .intern-container .interns .intern .intern-details {
   background-color: #fff;
   padding: 1rem;
   display: grid;
   grid-template-columns: auto auto;
 }
-.dashboard .approvals,
-.dashboard-active .approvals {
+.dashboard .approvals, .dashboard-active .approvals {
   height: 100%;
   width: 100%;
   display: grid;
   grid-template-rows: 7vh auto;
   gap: 1rem;
 }
-.dashboard .approvals .no-entries {
+.dashboard .approvals .no-entries, .dashboard-active .approvals .no-entries {
   display: grid;
   grid-template-rows: auto auto;
   justify-content: center;
   gap: 1rem;
 }
-.dashboard .approvals .no-entries h3 {
+.dashboard .approvals .no-entries h3, .dashboard-active .approvals .no-entries h3 {
   text-align: center;
   padding: 2rem 0;
 }
-.dashboard .approvals .no-entries h3 b {
+.dashboard .approvals .no-entries h3 b, .dashboard-active .approvals .no-entries h3 b {
   color: #074d50;
 }
-.dashboard .approvals header {
+.dashboard .approvals header, .dashboard-active .approvals header {
   padding: 1rem 0 0;
 }
-.dashboard .approvals .approvals-intern-container,
-.dashboard-active .approvals .approvals-intern-container {
+.dashboard .approvals .approvals-intern-container, .dashboard-active .approvals .approvals-intern-container {
   display: grid;
   grid-auto-rows: 12rem;
   gap: 1rem;
@@ -1650,8 +1619,7 @@ button {
   background-color: #fff;
   border-radius: 1rem;
 }
-.dashboard .approvals .approvals-intern-container .approval-intern,
-.dashboard-active .approvals .approvals-intern-container .approval-intern {
+.dashboard .approvals .approvals-intern-container .approval-intern, .dashboard-active .approvals .approvals-intern-container .approval-intern {
   border: solid 1px #fff;
   display: grid;
   grid-template-columns: 10rem auto;
@@ -1661,12 +1629,7 @@ button {
   border-radius: 1rem;
   color: #fff;
 }
-.dashboard .approvals .approvals-intern-container .approval-intern .overlay,
-.dashboard-active
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay {
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay, .dashboard-active .approvals .approvals-intern-container .approval-intern .overlay {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1678,18 +1641,7 @@ button {
   left: 0%;
   z-index: 8;
 }
-.dashboard
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal,
-.dashboard-active
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal {
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal, .dashboard-active .approvals .approvals-intern-container .approval-intern .overlay .intern-modal {
   display: grid;
   background-color: #fff;
   color: #000;
@@ -1700,351 +1652,90 @@ button {
   gap: 1rem;
   grid-template-rows: auto auto auto;
 }
-.dashboard
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  > *,
-.dashboard-active
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  > * {
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal > *, .dashboard-active .approvals .approvals-intern-container .approval-intern .overlay .intern-modal > * {
   padding: 1rem;
 }
-.dashboard
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .sent-details,
-.dashboard-active
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .sent-details {
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details, .dashboard-active .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details {
   display: grid;
   gap: 1rem;
   grid-template-columns: 14rem auto;
   grid-auto-rows: 14rem;
   background-color: #d9d9d9;
 }
-.dashboard
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .sent-details
-  img,
-.dashboard-active
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .sent-details
-  img {
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details img, .dashboard-active .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details img {
   height: 14rem;
   width: 14rem;
 }
-.dashboard
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .sent-details
-  .student-details,
-.dashboard-active
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .sent-details
-  .student-details {
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .student-details, .dashboard-active .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .student-details {
   background-color: #fff;
   padding: 0 1rem;
 }
-.dashboard
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .scedule-internship-details,
-.dashboard-active
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .scedule-internship-details {
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .scedule-internship-details, .dashboard-active .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .scedule-internship-details {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 1rem;
   background-color: #d9d9d9;
 }
-.dashboard
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .scedule-internship-details
-  .schedule-details,
-.dashboard-active
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .scedule-internship-details
-  .schedule-details,
-.dashboard
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .scedule-internship-details
-  .internship-details,
-.dashboard-active
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .scedule-internship-details
-  .internship-details {
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .scedule-internship-details .schedule-details, .dashboard-active .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .scedule-internship-details .schedule-details,
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .scedule-internship-details .internship-details,
+.dashboard-active .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .scedule-internship-details .internship-details {
   background-color: #fff;
   padding: 1rem;
 }
-.dashboard
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .scedule-internship-details
-  .schedule-details
-  h3,
-.dashboard-active
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .scedule-internship-details
-  .schedule-details
-  h3,
-.dashboard
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .scedule-internship-details
-  .internship-details
-  h3,
-.dashboard-active
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .scedule-internship-details
-  .internship-details
-  h3 {
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .scedule-internship-details .schedule-details h3, .dashboard-active .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .scedule-internship-details .schedule-details h3,
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .scedule-internship-details .internship-details h3,
+.dashboard-active .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .scedule-internship-details .internship-details h3 {
   padding-bottom: 1rem;
 }
-.dashboard
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .feedback-container,
-.dashboard-active
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .feedback-container {
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container, .dashboard-active .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container {
   display: grid;
   background-color: #d9d9d9;
 }
-.dashboard
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .feedback-container
-  form,
-.dashboard-active
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .feedback-container
-  form {
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form, .dashboard-active .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form {
   display: grid;
   grid-template-rows: 12rem auto;
 }
-.dashboard
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .feedback-container
-  form
-  .forms
-  label,
-.dashboard-active
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .feedback-container
-  form
-  .forms
-  label {
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form .forms label, .dashboard-active .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form .forms label {
   display: grid;
   grid-template-rows: auto 1fr;
   width: 100%;
   height: 100%;
   padding: 1rem;
 }
-.dashboard
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .feedback-container
-  form
-  .forms
-  label
-  textarea,
-.dashboard-active
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .feedback-container
-  form
-  .forms
-  label
-  textarea {
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form .forms label textarea, .dashboard-active .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form .forms label textarea {
   resize: none;
   padding: 1rem;
 }
-.dashboard
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .feedback-container
-  form
-  .btn-container,
-.dashboard-active
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .feedback-container
-  form
-  .btn-container {
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form .btn-container, .dashboard-active .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form .btn-container {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
 }
-.dashboard
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .feedback-container
-  form
-  .btn-container
-  span,
-.dashboard-active
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .overlay
-  .intern-modal
-  .feedback-container
-  form
-  .btn-container
-  span {
+.dashboard .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form .btn-container span, .dashboard-active .approvals .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form .btn-container span {
   display: flex;
   align-items: center;
   justify-content: center;
   padding-right: 0.3rem;
   font-size: 1.5rem;
 }
-.dashboard
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .intern-right,
-.dashboard-active
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .intern-right {
+.dashboard .approvals .approvals-intern-container .approval-intern .intern-right, .dashboard-active .approvals .approvals-intern-container .approval-intern .intern-right {
   display: flex;
   gap: 2rem;
   padding: 1rem;
   align-items: center;
 }
-.dashboard .approvals .approvals-intern-container .approval-intern .intern-left,
-.dashboard-active
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .intern-left {
+.dashboard .approvals .approvals-intern-container .approval-intern .intern-left, .dashboard-active .approvals .approvals-intern-container .approval-intern .intern-left {
   height: 10rem;
   width: 10rem;
 }
-.dashboard
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .intern-left
-  img,
-.dashboard-active
-  .approvals
-  .approvals-intern-container
-  .approval-intern
-  .intern-left
-  img {
+.dashboard .approvals .approvals-intern-container .approval-intern .intern-left img, .dashboard-active .approvals .approvals-intern-container .approval-intern .intern-left img {
   height: 100%;
   width: 100%;
   border: solid 1px #fff;
   border-radius: 1rem;
 }
-.dashboard .approvals .approvals-intern-container button,
-.dashboard-active .approvals .approvals-intern-container button {
+.dashboard .approvals .approvals-intern-container button, .dashboard-active .approvals .approvals-intern-container button {
   cursor: pointer;
   height: 4.5rem;
   display: flex;
@@ -2060,89 +1751,50 @@ button {
   transition: all 0.3s ease-in-out;
   font-weight: 600;
 }
-.dashboard .approvals .approvals-intern-container button.decline-btn:hover,
-.dashboard-active
-  .approvals
-  .approvals-intern-container
-  button.decline-btn:hover {
+.dashboard .approvals .approvals-intern-container button.decline-btn:hover, .dashboard-active .approvals .approvals-intern-container button.decline-btn:hover {
   background-color: #e63946;
 }
-.dashboard .approvals .approvals-intern-container button.back-btn:hover,
-.dashboard-active .approvals .approvals-intern-container button.back-btn:hover,
-.dashboard .approvals .approvals-intern-container button.approve-btn:hover,
-.dashboard-active
-  .approvals
-  .approvals-intern-container
-  button.approve-btn:hover {
+.dashboard .approvals .approvals-intern-container button.back-btn:hover, .dashboard-active .approvals .approvals-intern-container button.back-btn:hover, .dashboard .approvals .approvals-intern-container button.approve-btn:hover, .dashboard-active .approvals .approvals-intern-container button.approve-btn:hover {
   background-color: #d9d9d9;
   color: #000;
   border: solid 1px #000;
 }
-.dashboard .internship-container,
-.dashboard-active .internship-container {
+.dashboard .internship-container, .dashboard-active .internship-container {
   height: 100%;
   width: 100%;
   border: solid 1px #fff;
   border-radius: 1rem;
   padding: 2rem;
 }
-.dashboard .internship-container .internship-content .internship,
-.dashboard-active .internship-container .internship-content .internship {
+.dashboard .internship-container .internship-content .internship, .dashboard-active .internship-container .internship-content .internship {
   display: grid;
   grid-template-rows: 15rem 5.5rem auto;
   background-color: #33363a;
   padding: 1rem;
 }
-.dashboard .internship-container .internship-content .internship header,
-.dashboard-active .internship-container .internship-content .internship header {
+.dashboard .internship-container .internship-content .internship header, .dashboard-active .internship-container .internship-content .internship header {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   justify-content: center;
   color: #fff;
 }
-.dashboard .internship-container .internship-content .internship header p,
-.dashboard-active
-  .internship-container
-  .internship-content
-  .internship
-  header
-  p {
+.dashboard .internship-container .internship-content .internship header p, .dashboard-active .internship-container .internship-content .internship header p {
   width: 65%;
 }
-.dashboard .internship-container .internship-content .internship .mid,
-.dashboard-active .internship-container .internship-content .internship .mid {
+.dashboard .internship-container .internship-content .internship .mid, .dashboard-active .internship-container .internship-content .internship .mid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   border: solid 1px #fff;
   background-color: #404449;
 }
-.dashboard .internship-container .internship-content .internship .mid .left,
-.dashboard-active
-  .internship-container
-  .internship-content
-  .internship
-  .mid
-  .left {
+.dashboard .internship-container .internship-content .internship .mid .left, .dashboard-active .internship-container .internship-content .internship .mid .left {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 }
-.dashboard
-  .internship-container
-  .internship-content
-  .internship
-  .mid
-  .left
-  button,
-.dashboard-active
-  .internship-container
-  .internship-content
-  .internship
-  .mid
-  .left
-  button {
+.dashboard .internship-container .internship-content .internship .mid .left button, .dashboard-active .internship-container .internship-content .internship .mid .left button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2157,50 +1809,16 @@ button {
   gap: 0.4rem;
   cursor: pointer;
 }
-.dashboard
-  .internship-container
-  .internship-content
-  .internship
-  .mid
-  .left
-  button
-  span,
-.dashboard-active
-  .internship-container
-  .internship-content
-  .internship
-  .mid
-  .left
-  button
-  span {
+.dashboard .internship-container .internship-content .internship .mid .left button span, .dashboard-active .internship-container .internship-content .internship .mid .left button span {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.8rem;
 }
-.dashboard
-  .internship-container
-  .internship-content
-  .internship
-  .mid
-  .left
-  button:hover,
-.dashboard-active
-  .internship-container
-  .internship-content
-  .internship
-  .mid
-  .left
-  button:hover {
+.dashboard .internship-container .internship-content .internship .mid .left button:hover, .dashboard-active .internship-container .internship-content .internship .mid .left button:hover {
   background-color: #393e46;
 }
-.dashboard .internship-container .internship-content .internship .mid .right,
-.dashboard-active
-  .internship-container
-  .internship-content
-  .internship
-  .mid
-  .right {
+.dashboard .internship-container .internship-content .internship .mid .right, .dashboard-active .internship-container .internship-content .internship .mid .right {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2210,113 +1828,44 @@ button {
   padding: 0 1.5rem;
   margin: 1rem 1rem auto auto;
 }
-.dashboard
-  .internship-container
-  .internship-content
-  .internship
-  .mid
-  .right
-  span,
-.dashboard-active
-  .internship-container
-  .internship-content
-  .internship
-  .mid
-  .right
-  span {
+.dashboard .internship-container .internship-content .internship .mid .right span, .dashboard-active .internship-container .internship-content .internship .mid .right span {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
   cursor: pointer;
 }
-.dashboard
-  .internship-container
-  .internship-content
-  .internship
-  .mid
-  .right
-  input,
-.dashboard-active
-  .internship-container
-  .internship-content
-  .internship
-  .mid
-  .right
-  input {
+.dashboard .internship-container .internship-content .internship .mid .right input, .dashboard-active .internship-container .internship-content .internship .mid .right input {
   width: 100%;
   background: transparent;
   padding: 1rem;
   outline: none;
   border: 0;
 }
-.dashboard .internship-container .internship-content .internship .bottom,
-.dashboard-active
-  .internship-container
-  .internship-content
-  .internship
-  .bottom {
+.dashboard .internship-container .internship-content .internship .bottom, .dashboard-active .internship-container .internship-content .internship .bottom {
   border: solid 1px #fff;
   min-height: 70vh;
 }
-.dashboard
-  .internship-container
-  .internship-content
-  .internship
-  .bottom
-  .main-content,
-.dashboard-active
-  .internship-container
-  .internship-content
-  .internship
-  .bottom
-  .main-content {
+.dashboard .internship-container .internship-content .internship .bottom .main-content, .dashboard-active .internship-container .internship-content .internship .bottom .main-content {
   display: grid;
   grid-template-columns: 12rem auto;
   grid-auto-rows: 12rem;
   gap: 1rem;
   padding: 1.5rem;
 }
-.dashboard
-  .internship-container
-  .internship-content
-  .internship
-  .bottom
-  .main-content
-  .left-img,
-.dashboard-active
-  .internship-container
-  .internship-content
-  .internship
-  .bottom
-  .main-content
-  .left-img {
+.dashboard .internship-container .internship-content .internship .bottom .main-content .left-img, .dashboard-active .internship-container .internship-content .internship .bottom .main-content .left-img {
   height: auto;
   width: auto;
   background-color: #fff;
 }
-.dashboard
-  .internship-container
-  .internship-content
-  .internship
-  .bottom
-  .main-content
-  .right-content,
-.dashboard-active
-  .internship-container
-  .internship-content
-  .internship
-  .bottom
-  .main-content
-  .right-content {
+.dashboard .internship-container .internship-content .internship .bottom .main-content .right-content, .dashboard-active .internship-container .internship-content .internship .bottom .main-content .right-content {
   display: flex;
   align-items: center;
   background-color: #fff;
   font-size: 1.5rem;
   padding: 1rem;
 }
-.dashboard .coordinator-dashboard,
-.dashboard-active .coordinator-dashboard {
+.dashboard .coordinator-dashboard, .dashboard-active .coordinator-dashboard {
   display: grid;
   grid-template-rows: 12vh 0.35fr auto;
   width: 100%;
@@ -2324,33 +1873,27 @@ button {
   gap: 1rem;
   padding: 1rem;
 }
-.dashboard .coordinator-dashboard header,
-.dashboard-active .coordinator-dashboard header {
+.dashboard .coordinator-dashboard header, .dashboard-active .coordinator-dashboard header {
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 1rem;
 }
-.dashboard .coordinator-dashboard header .name-greet,
-.dashboard-active .coordinator-dashboard header .name-greet {
+.dashboard .coordinator-dashboard header .name-greet, .dashboard-active .coordinator-dashboard header .name-greet {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   color: #f1faee;
 }
-.dashboard .coordinator-dashboard header .name-greet h1,
-.dashboard-active .coordinator-dashboard header .name-greet h1 {
+.dashboard .coordinator-dashboard header .name-greet h1, .dashboard-active .coordinator-dashboard header .name-greet h1 {
   font-size: 4rem;
 }
-.dashboard .coordinator-dashboard header .name-greet h1 b,
-.dashboard-active .coordinator-dashboard header .name-greet h1 b {
+.dashboard .coordinator-dashboard header .name-greet h1 b, .dashboard-active .coordinator-dashboard header .name-greet h1 b {
   color: #0d7377;
 }
-.dashboard .coordinator-dashboard header .name-greet h4,
-.dashboard-active .coordinator-dashboard header .name-greet h4 {
+.dashboard .coordinator-dashboard header .name-greet h4, .dashboard-active .coordinator-dashboard header .name-greet h4 {
   font-size: 2rem;
 }
-.dashboard .coordinator-dashboard header .search-bar,
-.dashboard-active .coordinator-dashboard header .search-bar {
+.dashboard .coordinator-dashboard header .search-bar, .dashboard-active .coordinator-dashboard header .search-bar {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2360,24 +1903,21 @@ button {
   padding: 0 1.5rem;
   margin: 1rem 1rem auto auto;
 }
-.dashboard .coordinator-dashboard header .search-bar span,
-.dashboard-active .coordinator-dashboard header .search-bar span {
+.dashboard .coordinator-dashboard header .search-bar span, .dashboard-active .coordinator-dashboard header .search-bar span {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
   cursor: pointer;
 }
-.dashboard .coordinator-dashboard header .search-bar input,
-.dashboard-active .coordinator-dashboard header .search-bar input {
+.dashboard .coordinator-dashboard header .search-bar input, .dashboard-active .coordinator-dashboard header .search-bar input {
   width: 100%;
   background: transparent;
   padding: 1rem;
   outline: none;
   border: 0;
 }
-.dashboard .coordinator-dashboard .dashboard-intern,
-.dashboard-active .coordinator-dashboard .dashboard-intern {
+.dashboard .coordinator-dashboard .dashboard-intern, .dashboard-active .coordinator-dashboard .dashboard-intern {
   display: grid;
   grid-template-rows: 0.2fr auto;
   padding: 2rem;
@@ -2386,34 +1926,20 @@ button {
   border-radius: 2rem 2rem 0 0;
   background-image: linear-gradient(#212121 30%, #222222 31%, #484848 100%);
 }
-.dashboard .coordinator-dashboard .dashboard-intern h4,
-.dashboard-active .coordinator-dashboard .dashboard-intern h4 {
+.dashboard .coordinator-dashboard .dashboard-intern h4, .dashboard-active .coordinator-dashboard .dashboard-intern h4 {
   color: #fff;
   text-align: center;
   padding: 0.5rem 0;
   background-color: #555252;
   border-radius: 1rem 1rem 0 0;
 }
-.dashboard .coordinator-dashboard .dashboard-intern .all-intern-container,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-intern
-  .all-intern-container {
+.dashboard .coordinator-dashboard .dashboard-intern .all-intern-container, .dashboard-active .coordinator-dashboard .dashboard-intern .all-intern-container {
   overflow: hidden;
   overflow-y: auto;
   height: 30vh;
   background-color: #d9d9d9;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-intern
-  .all-intern-container
-  .all-interns,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-intern
-  .all-intern-container
-  .all-interns {
+.dashboard .coordinator-dashboard .dashboard-intern .all-intern-container .all-interns, .dashboard-active .coordinator-dashboard .dashboard-intern .all-intern-container .all-interns {
   display: grid;
   grid-template-columns: 10rem auto;
   padding: 1rem;
@@ -2421,81 +1947,32 @@ button {
   font-size: 1.4rem;
   cursor: pointer;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-intern
-  .all-intern-container
-  .all-interns
-  > *,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-intern
-  .all-intern-container
-  .all-interns
-  > * {
+.dashboard .coordinator-dashboard .dashboard-intern .all-intern-container .all-interns > *, .dashboard-active .coordinator-dashboard .dashboard-intern .all-intern-container .all-interns > * {
   background-color: #fff;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-intern
-  .all-intern-container
-  .all-interns
-  .img-intern,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-intern
-  .all-intern-container
-  .all-interns
-  .img-intern {
+.dashboard .coordinator-dashboard .dashboard-intern .all-intern-container .all-interns .img-intern, .dashboard-active .coordinator-dashboard .dashboard-intern .all-intern-container .all-interns .img-intern {
   height: 10rem;
   width: 10rem;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-intern
-  .all-intern-container
-  .all-interns
-  .img-intern
-  img,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-intern
-  .all-intern-container
-  .all-interns
-  .img-intern
-  img {
+.dashboard .coordinator-dashboard .dashboard-intern .all-intern-container .all-interns .img-intern img, .dashboard-active .coordinator-dashboard .dashboard-intern .all-intern-container .all-interns .img-intern img {
   height: 100%;
   width: 100%;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-intern
-  .all-intern-container
-  .all-interns
-  .intern-detail,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-intern
-  .all-intern-container
-  .all-interns
-  .intern-detail {
+.dashboard .coordinator-dashboard .dashboard-intern .all-intern-container .all-interns .intern-detail, .dashboard-active .coordinator-dashboard .dashboard-intern .all-intern-container .all-interns .intern-detail {
   padding: 1rem;
   display: grid;
   grid-template-columns: auto auto;
 }
-.dashboard .coordinator-dashboard .dashboard-content,
-.dashboard-active .coordinator-dashboard .dashboard-content {
+.dashboard .coordinator-dashboard .dashboard-content, .dashboard-active .coordinator-dashboard .dashboard-content {
   display: grid;
   grid-template-columns: 1fr 0.6fr;
   gap: 1rem;
 }
-.dashboard .coordinator-dashboard .dashboard-content > *,
-.dashboard-active .coordinator-dashboard .dashboard-content > * {
+.dashboard .coordinator-dashboard .dashboard-content > *, .dashboard-active .coordinator-dashboard .dashboard-content > * {
   border: solid 1px #fff;
   background-image: linear-gradient(#212121 30%, #222222 31%, #484848 100%);
 }
-.dashboard .coordinator-dashboard .dashboard-content .approvals-title,
-.dashboard-active .coordinator-dashboard .dashboard-content .approvals-title,
+.dashboard .coordinator-dashboard .dashboard-content .approvals-title, .dashboard-active .coordinator-dashboard .dashboard-content .approvals-title,
 .dashboard .coordinator-dashboard .dashboard-content .internships-title,
 .dashboard-active .coordinator-dashboard .dashboard-content .internships-title {
   color: #fff;
@@ -2505,43 +1982,19 @@ button {
   font-size: 1.6rem;
   padding: 0.5rem 0;
 }
-.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals {
   display: grid;
   grid-template-rows: 0.2fr auto;
   padding: 2rem;
   border-radius: 0 0 0 2rem;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container {
   overflow: hidden;
   overflow-y: auto;
   height: 35vh;
   background-color: #d9d9d9;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container {
   display: grid;
   grid-template-columns: 12rem auto;
   grid-auto-rows: 12rem;
@@ -2549,20 +2002,7 @@ button {
   gap: 1rem;
   padding: 1rem;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2574,22 +2014,7 @@ button {
   left: 0%;
   z-index: 8;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal {
   display: grid;
   background-color: #fff;
   color: #000;
@@ -2600,500 +2025,107 @@ button {
   gap: 1rem;
   grid-template-rows: auto auto auto;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  > *,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  > * {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal > *, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal > * {
   padding: 1rem;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .sent-details,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .sent-details {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .sent-details, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .sent-details {
   display: grid;
   gap: 1rem;
   grid-template-columns: 14rem auto;
   grid-auto-rows: 14rem;
   background-color: #d9d9d9;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .sent-details
-  img,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .sent-details
-  img {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .sent-details img, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .sent-details img {
   height: 14rem;
   width: 14rem;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .sent-details
-  .student-details,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .sent-details
-  .student-details {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .sent-details .student-details, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .sent-details .student-details {
   background-color: #fff;
   padding: 0 1rem;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .scedule-internship-details,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .scedule-internship-details {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .scedule-internship-details, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .scedule-internship-details {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 1rem;
   background-color: #d9d9d9;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .scedule-internship-details
-  .schedule-details,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .scedule-internship-details
-  .schedule-details,
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .scedule-internship-details
-  .internship-details,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .scedule-internship-details
-  .internship-details {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .scedule-internship-details .schedule-details, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .scedule-internship-details .schedule-details,
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .scedule-internship-details .internship-details,
+.dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .scedule-internship-details .internship-details {
   background-color: #fff;
   padding: 1rem;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .scedule-internship-details
-  .schedule-details
-  h3,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .scedule-internship-details
-  .schedule-details
-  h3,
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .scedule-internship-details
-  .internship-details
-  h3,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .scedule-internship-details
-  .internship-details
-  h3 {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .scedule-internship-details .schedule-details h3, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .scedule-internship-details .schedule-details h3,
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .scedule-internship-details .internship-details h3,
+.dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .scedule-internship-details .internship-details h3 {
   padding-bottom: 1rem;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .feedback-container,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .feedback-container {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .feedback-container, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .feedback-container {
   display: grid;
   background-color: #d9d9d9;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .feedback-container
-  form,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .feedback-container
-  form {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .feedback-container form, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .feedback-container form {
   display: grid;
   grid-template-rows: 12rem auto;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .feedback-container
-  form
-  .forms
-  label,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .feedback-container
-  form
-  .forms
-  label {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .feedback-container form .forms label, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .feedback-container form .forms label {
   display: grid;
   grid-template-rows: auto 1fr;
   width: 100%;
   height: 100%;
   padding: 1rem;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .feedback-container
-  form
-  .forms
-  label
-  textarea,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .feedback-container
-  form
-  .forms
-  label
-  textarea {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .feedback-container form .forms label textarea, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .feedback-container form .forms label textarea {
   resize: none;
   padding: 1rem;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .feedback-container
-  form
-  .btn-container,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .feedback-container
-  form
-  .btn-container {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .feedback-container form .btn-container, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .feedback-container form .btn-container {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .feedback-container
-  form
-  .btn-container
-  span,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .overlay
-  .intern-modal
-  .feedback-container
-  form
-  .btn-container
-  span {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .feedback-container form .btn-container span, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .feedback-container form .btn-container span {
   display: flex;
   align-items: center;
   justify-content: center;
   padding-right: 0.3rem;
   font-size: 1.5rem;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .img-approvals,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .img-approvals {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .img-approvals, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .img-approvals {
   background-color: #fff;
   height: 12rem;
   width: 12rem;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .img-approvals
-  img,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .img-approvals
-  img {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .img-approvals img, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .img-approvals img {
   height: 100%;
   width: 100%;
   border: solid 1px #fff;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .text-approvals,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .text-approvals {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .text-approvals, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .text-approvals {
   display: grid;
   background-color: #fff;
   padding: 1rem;
   gap: 0.5rem;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .text-approvals
-  .approvals-details
-  h4,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .text-approvals
-  .approvals-details
-  h4,
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .text-approvals
-  .approvals-details
-  p,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-approvals
-  .all-approvals-container
-  .approvals-container
-  .text-approvals
-  .approvals-details
-  p {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .text-approvals .approvals-details h4, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .text-approvals .approvals-details h4,
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .text-approvals .approvals-details p,
+.dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .text-approvals .approvals-details p {
   font-size: 1.5rem;
 }
-.dashboard .coordinator-dashboard .dashboard-content .dashboard-internships,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-internships {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-internships, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships {
   display: grid;
   grid-template-rows: 0.2fr auto;
   padding: 2rem;
   border-radius: 0 0 2rem 0;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-internships
-  .all-internship-container,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-internships
-  .all-internship-container {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container {
   overflow: hidden;
   overflow-y: auto;
   height: 35vh;
   background-color: #d9d9d9;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-internships
-  .all-internship-container
-  .all-internships,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-internships
-  .all-internship-container
-  .all-internships {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .all-internships, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .all-internships {
   display: grid;
   grid-template-columns: 10rem auto;
   grid-auto-rows: 10rem;
@@ -3101,86 +2133,27 @@ button {
   gap: 1rem;
   background-color: #d9d9d9;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-internships
-  .all-internship-container
-  .all-internships
-  > *,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-internships
-  .all-internship-container
-  .all-internships
-  > * {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .all-internships > *, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .all-internships > * {
   background-color: #fff;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-internships
-  .all-internship-container
-  .all-internships
-  .img-internships,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-internships
-  .all-internship-container
-  .all-internships
-  .img-internships {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .all-internships .img-internships, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .all-internships .img-internships {
   width: 10rem;
   height: 10rem;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-internships
-  .all-internship-container
-  .all-internships
-  .text-internships,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-internships
-  .all-internship-container
-  .all-internships
-  .text-internships {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .all-internships .text-internships, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .all-internships .text-internships {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 0.5rem;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-internships
-  .all-internship-container
-  .all-internships
-  .text-internships
-  p,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .dashboard-internships
-  .all-internship-container
-  .all-internships
-  .text-internships
-  p {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .all-internships .text-internships p, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .all-internships .text-internships p {
   padding: 1rem;
   font: 1.5rem;
 }
-.dashboard .coordinator-dashboard .dashboard-content .edit-details,
-.dashboard-active .coordinator-dashboard .dashboard-content .edit-details,
+.dashboard .coordinator-dashboard .dashboard-content .edit-details, .dashboard-active .coordinator-dashboard .dashboard-content .edit-details,
 .dashboard .coordinator-dashboard .dashboard-content .approvals-btn button,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .approvals-btn
-  button {
+.dashboard-active .coordinator-dashboard .dashboard-content .approvals-btn button {
   height: 3rem;
   padding: 0rem 2rem;
   border-radius: 1rem;
@@ -3192,28 +2165,14 @@ button {
   font-size: 1.2rem;
   cursor: pointer;
 }
-.dashboard .coordinator-dashboard .dashboard-content .edit-details:hover,
-.dashboard-active .coordinator-dashboard .dashboard-content .edit-details:hover,
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .approvals-btn
-  button:hover,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .approvals-btn
-  button:hover {
+.dashboard .coordinator-dashboard .dashboard-content .edit-details:hover, .dashboard-active .coordinator-dashboard .dashboard-content .edit-details:hover,
+.dashboard .coordinator-dashboard .dashboard-content .approvals-btn button:hover,
+.dashboard-active .coordinator-dashboard .dashboard-content .approvals-btn button:hover {
   background-color: #f1faee;
   color: #0d7377;
   border: solid 1px #0d7377;
 }
-.dashboard .coordinator-dashboard .dashboard-content .btn-container button,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .btn-container
-  button {
+.dashboard .coordinator-dashboard .dashboard-content .btn-container button, .dashboard-active .coordinator-dashboard .dashboard-content .btn-container button {
   cursor: pointer;
   height: 4.5rem;
   display: flex;
@@ -3229,52 +2188,22 @@ button {
   transition: all 0.3s ease-in-out;
   font-weight: 600;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .btn-container
-  button.decline-btn:hover,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .btn-container
-  button.decline-btn:hover {
+.dashboard .coordinator-dashboard .dashboard-content .btn-container button.decline-btn:hover, .dashboard-active .coordinator-dashboard .dashboard-content .btn-container button.decline-btn:hover {
   background-color: #e63946;
 }
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .btn-container
-  button.back-btn:hover,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .btn-container
-  button.back-btn:hover,
-.dashboard
-  .coordinator-dashboard
-  .dashboard-content
-  .btn-container
-  button.approve-btn:hover,
-.dashboard-active
-  .coordinator-dashboard
-  .dashboard-content
-  .btn-container
-  button.approve-btn:hover {
+.dashboard .coordinator-dashboard .dashboard-content .btn-container button.back-btn:hover, .dashboard-active .coordinator-dashboard .dashboard-content .btn-container button.back-btn:hover, .dashboard .coordinator-dashboard .dashboard-content .btn-container button.approve-btn:hover, .dashboard-active .coordinator-dashboard .dashboard-content .btn-container button.approve-btn:hover {
   background-color: #d9d9d9;
   color: #000;
   border: solid 1px #000;
 }
-.dashboard .admin-documents,
-.dashboard-active .admin-documents {
+.dashboard .admin-documents, .dashboard-active .admin-documents {
   height: 100%;
   width: 100%;
   display: grid;
   grid-template-rows: 6vh auto;
   gap: 1rem;
 }
-.dashboard .admin-documents .create-modal,
-.dashboard-active .admin-documents .create-modal {
+.dashboard .admin-documents .create-modal, .dashboard-active .admin-documents .create-modal {
   display: none !important;
   display: flex;
   flex-direction: column;
@@ -3292,30 +2221,26 @@ button {
   padding: 7rem 4rem 5rem;
   z-index: 2;
 }
-.dashboard .admin-documents .create-modal .folders,
-.dashboard-active .admin-documents .create-modal .folders {
+.dashboard .admin-documents .create-modal .folders, .dashboard-active .admin-documents .create-modal .folders {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.dashboard .admin-documents .create-modal .folders .folder-name p,
-.dashboard-active .admin-documents .create-modal .folders .folder-name p,
+.dashboard .admin-documents .create-modal .folders .folder-name p, .dashboard-active .admin-documents .create-modal .folders .folder-name p,
 .dashboard .admin-documents .create-modal .folders .subject p,
 .dashboard-active .admin-documents .create-modal .folders .subject p {
   font-weight: 700;
   width: 100%;
   font-size: 1.6rem;
 }
-.dashboard .admin-documents .create-modal .folders .folder-name input,
-.dashboard-active .admin-documents .create-modal .folders .folder-name input,
+.dashboard .admin-documents .create-modal .folders .folder-name input, .dashboard-active .admin-documents .create-modal .folders .folder-name input,
 .dashboard .admin-documents .create-modal .folders .subject input,
 .dashboard-active .admin-documents .create-modal .folders .subject input {
   padding: 0.8rem;
   flex: 1;
   width: 100%;
 }
-.dashboard .admin-documents .create-modal button,
-.dashboard-active .admin-documents .create-modal button {
+.dashboard .admin-documents .create-modal button, .dashboard-active .admin-documents .create-modal button {
   padding: 1rem 3rem;
   font-weight: 550;
   font-size: 1.5rem;
@@ -3324,14 +2249,12 @@ button {
   color: #fff;
   transition: all 0.3s linear;
 }
-.dashboard .admin-documents .create-modal button:hover,
-.dashboard-active .admin-documents .create-modal button:hover {
+.dashboard .admin-documents .create-modal button:hover, .dashboard-active .admin-documents .create-modal button:hover {
   background-color: #fff;
   color: #0d7377;
   border: solid 1px #0d7377;
 }
-.dashboard .admin-documents .requirments-modal,
-.dashboard-active .admin-documents .requirments-modal {
+.dashboard .admin-documents .requirments-modal, .dashboard-active .admin-documents .requirments-modal {
   display: none !important;
   display: flex;
   flex-direction: column;
@@ -3349,55 +2272,26 @@ button {
   padding: 7rem 4rem 5rem;
   z-index: 3;
 }
-.dashboard .admin-documents .requirments-modal .file-name,
-.dashboard-active .admin-documents .requirments-modal .file-name {
+.dashboard .admin-documents .requirments-modal .file-name, .dashboard-active .admin-documents .requirments-modal .file-name {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.dashboard .admin-documents .requirments-modal .file-name .requirements-name p,
-.dashboard-active
-  .admin-documents
-  .requirments-modal
-  .file-name
-  .requirements-name
-  p,
+.dashboard .admin-documents .requirments-modal .file-name .requirements-name p, .dashboard-active .admin-documents .requirments-modal .file-name .requirements-name p,
 .dashboard .admin-documents .requirments-modal .file-name .subject-req p,
-.dashboard-active
-  .admin-documents
-  .requirments-modal
-  .file-name
-  .subject-req
-  p {
+.dashboard-active .admin-documents .requirments-modal .file-name .subject-req p {
   font-weight: 700;
   width: 100%;
   font-size: 1.6rem;
 }
-.dashboard
-  .admin-documents
-  .requirments-modal
-  .file-name
-  .requirements-name
-  input,
-.dashboard-active
-  .admin-documents
-  .requirments-modal
-  .file-name
-  .requirements-name
-  input,
+.dashboard .admin-documents .requirments-modal .file-name .requirements-name input, .dashboard-active .admin-documents .requirments-modal .file-name .requirements-name input,
 .dashboard .admin-documents .requirments-modal .file-name .subject-req input,
-.dashboard-active
-  .admin-documents
-  .requirments-modal
-  .file-name
-  .subject-req
-  input {
+.dashboard-active .admin-documents .requirments-modal .file-name .subject-req input {
   padding: 0.8rem;
   flex: 1;
   width: 100%;
 }
-.dashboard .admin-documents .requirments-modal button,
-.dashboard-active .admin-documents .requirments-modal button {
+.dashboard .admin-documents .requirments-modal button, .dashboard-active .admin-documents .requirments-modal button {
   padding: 1rem 3rem;
   font-weight: 550;
   font-size: 1.5rem;
@@ -3406,14 +2300,12 @@ button {
   color: #fff;
   transition: all 0.3s linear;
 }
-.dashboard .admin-documents .requirments-modal button:hover,
-.dashboard-active .admin-documents .requirments-modal button:hover {
+.dashboard .admin-documents .requirments-modal button:hover, .dashboard-active .admin-documents .requirments-modal button:hover {
   background-color: #fff;
   color: #0d7377;
   border: solid 1px #0d7377;
 }
-.dashboard .admin-documents .delete-modal,
-.dashboard-active .admin-documents .delete-modal {
+.dashboard .admin-documents .delete-modal, .dashboard-active .admin-documents .delete-modal {
   display: none !important;
   display: flex;
   align-items: center;
@@ -3431,47 +2323,40 @@ button {
   width: 55rem;
   z-index: 4;
 }
-.dashboard .admin-documents .delete-modal .delete-icon,
-.dashboard-active .admin-documents .delete-modal .delete-icon {
+.dashboard .admin-documents .delete-modal .delete-icon, .dashboard-active .admin-documents .delete-modal .delete-icon {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 1rem;
 }
-.dashboard .admin-documents .delete-modal .delete-icon span,
-.dashboard-active .admin-documents .delete-modal .delete-icon span {
+.dashboard .admin-documents .delete-modal .delete-icon span, .dashboard-active .admin-documents .delete-modal .delete-icon span {
   background-color: #bababa;
   border-radius: 50%;
   padding: 2.5rem 3rem 1rem;
   font-size: 4rem;
 }
-.dashboard .admin-documents .delete-modal .delete-icon h5,
-.dashboard-active .admin-documents .delete-modal .delete-icon h5 {
+.dashboard .admin-documents .delete-modal .delete-icon h5, .dashboard-active .admin-documents .delete-modal .delete-icon h5 {
   color: #323232;
   font-weight: 500;
 }
-.dashboard .admin-documents .delete-modal .delete-btn,
-.dashboard-active .admin-documents .delete-modal .delete-btn {
+.dashboard .admin-documents .delete-modal .delete-btn, .dashboard-active .admin-documents .delete-modal .delete-btn {
   display: flex;
   gap: 3rem;
   cursor: pointer;
 }
-.dashboard .admin-documents .delete-modal .delete-btn .back,
-.dashboard-active .admin-documents .delete-modal .delete-btn .back {
+.dashboard .admin-documents .delete-modal .delete-btn .back, .dashboard-active .admin-documents .delete-modal .delete-btn .back {
   padding: 1rem 5.5rem;
   font-weight: 600;
   border: solid 1px #0d7377;
   transition: all 0.3s linear;
 }
-.dashboard .admin-documents .delete-modal .delete-btn .back:hover,
-.dashboard-active .admin-documents .delete-modal .delete-btn .back:hover {
+.dashboard .admin-documents .delete-modal .delete-btn .back:hover, .dashboard-active .admin-documents .delete-modal .delete-btn .back:hover {
   color: #fff;
   background-color: #0d7377;
   border-radius: 1rem;
 }
-.dashboard .admin-documents .delete-modal .delete-btn .confirm,
-.dashboard-active .admin-documents .delete-modal .delete-btn .confirm {
+.dashboard .admin-documents .delete-modal .delete-btn .confirm, .dashboard-active .admin-documents .delete-modal .delete-btn .confirm {
   padding: 1rem 4.5rem;
   font-weight: 600;
   border: solid 1px #0d7377;
@@ -3479,14 +2364,12 @@ button {
   color: #fff;
   transition: all 0.3s linear;
 }
-.dashboard .admin-documents .delete-modal .delete-btn .confirm:hover,
-.dashboard-active .admin-documents .delete-modal .delete-btn .confirm:hover {
+.dashboard .admin-documents .delete-modal .delete-btn .confirm:hover, .dashboard-active .admin-documents .delete-modal .delete-btn .confirm:hover {
   background-color: #fff;
   color: #000;
   border-radius: 1rem;
 }
-.dashboard .admin-documents header .search-box,
-.dashboard-active .admin-documents header .search-box {
+.dashboard .admin-documents header .search-box, .dashboard-active .admin-documents header .search-box {
   display: flex;
   background-color: #f1faee;
   width: 25rem;
@@ -3495,24 +2378,21 @@ button {
   padding: 0 1.5rem;
   margin: 1rem 1rem auto auto;
 }
-.dashboard .admin-documents header .search-box span,
-.dashboard-active .admin-documents header .search-box span {
+.dashboard .admin-documents header .search-box span, .dashboard-active .admin-documents header .search-box span {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.8rem;
   cursor: pointer;
 }
-.dashboard .admin-documents header .search-box input,
-.dashboard-active .admin-documents header .search-box input {
+.dashboard .admin-documents header .search-box input, .dashboard-active .admin-documents header .search-box input {
   width: 100%;
   background: transparent;
   padding: 1rem;
   outline: none;
   border: 0;
 }
-.dashboard .admin-documents .documents-content,
-.dashboard-active .admin-documents .documents-content {
+.dashboard .admin-documents .documents-content, .dashboard-active .admin-documents .documents-content {
   padding: 2rem;
   border: solid 1px #fff;
   border-radius: 1rem;
@@ -3524,78 +2404,58 @@ button {
   gap: 3rem;
   z-index: 1;
 }
-.dashboard .admin-documents .documents-content .inputs,
-.dashboard-active .admin-documents .documents-content .inputs {
+.dashboard .admin-documents .documents-content .inputs, .dashboard-active .admin-documents .documents-content .inputs {
   text-align: center;
 }
-.dashboard .admin-documents .documents-content .inputs input,
-.dashboard-active .admin-documents .documents-content .inputs input {
+.dashboard .admin-documents .documents-content .inputs input, .dashboard-active .admin-documents .documents-content .inputs input {
   width: 100%;
   height: 3.5rem;
   text-align: center;
   flex: 1;
 }
-.dashboard .admin-documents .documents-content .buttons,
-.dashboard-active .admin-documents .documents-content .buttons {
+.dashboard .admin-documents .documents-content .buttons, .dashboard-active .admin-documents .documents-content .buttons {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
   gap: 0.5rem;
 }
-.dashboard .admin-documents .documents-content .buttons button,
-.dashboard-active .admin-documents .documents-content .buttons button {
+.dashboard .admin-documents .documents-content .buttons button, .dashboard-active .admin-documents .documents-content .buttons button {
   padding: 1.5rem 3.5rem;
   border-radius: 1rem;
   border: none;
   transition: all 0.3s linear;
   font-weight: 520;
 }
-.dashboard .admin-documents .documents-content .buttons button:hover,
-.dashboard-active .admin-documents .documents-content .buttons button:hover {
+.dashboard .admin-documents .documents-content .buttons button:hover, .dashboard-active .admin-documents .documents-content .buttons button:hover {
   color: #fff;
   background-color: #0d7377;
 }
-.dashboard .admin-documents .documents-content .files-container,
-.dashboard-active .admin-documents .documents-content .files-container {
+.dashboard .admin-documents .documents-content .files-container, .dashboard-active .admin-documents .documents-content .files-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-auto-rows: 10rem;
   gap: 1rem;
   justify-content: center;
 }
-.dashboard .admin-documents .documents-content .files-container div,
-.dashboard-active .admin-documents .documents-content .files-container div {
+.dashboard .admin-documents .documents-content .files-container div, .dashboard-active .admin-documents .documents-content .files-container div {
   background-color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.8);
   width: 100%;
   cursor: pointer;
   border-radius: 1rem;
 }
-.dashboard .admin-documents .documents-content .files-container div span,
-.dashboard-active
-  .admin-documents
-  .documents-content
-  .files-container
-  div
-  span {
+.dashboard .admin-documents .documents-content .files-container div span, .dashboard-active .admin-documents .documents-content .files-container div span {
   display: flex;
   justify-content: flex-end;
   padding: 1rem 1rem 0 0;
   opacity: 0;
   transition: all 0.5s;
 }
-.dashboard .admin-documents .documents-content .files-container div:hover span,
-.dashboard-active
-  .admin-documents
-  .documents-content
-  .files-container
-  div:hover
-  span {
+.dashboard .admin-documents .documents-content .files-container div:hover span, .dashboard-active .admin-documents .documents-content .files-container div:hover span {
   opacity: 1;
 }
-.dashboard .admin-documents .documents-content::after,
-.dashboard-active .admin-documents .documents-content::after {
+.dashboard .admin-documents .documents-content::after, .dashboard-active .admin-documents .documents-content::after {
   content: "";
   background-color: rgba(50, 50, 50, 0.5019607843);
   position: absolute;
@@ -3612,19 +2472,13 @@ button {
 }
 
 @media screen and (max-width: 1030px) {
-  .dashboard .sidebar-right,
-  .dashboard-active .sidebar-right {
+  .dashboard .sidebar-right, .dashboard-active .sidebar-right {
     display: none;
   }
 }
 @media screen and (max-width: 600px) {
-  .dashboard,
-  .dashboard-active {
-    padding: 1rem !important;
-  }
-  .dashboard .left-sidebar,
-  .dashboard-active .left-sidebar {
-    display: none;
+  .dashboard, .dashboard-active {
+    padding: 10rem 1rem 1rem 1rem !important;
   }
 }
 .pending {
@@ -3779,33 +2633,21 @@ button {
   transition: all 0.3s ease-in-out;
   font-weight: 600;
 }
-.verification-container
-  .are-you-sure-modal
-  .button-container
-  button:first-child {
+.verification-container .are-you-sure-modal .button-container button:first-child {
   background-color: #fff;
   border: solid 1px #0d7377;
   color: #0d7377;
 }
-.verification-container
-  .are-you-sure-modal
-  .button-container
-  button:last-child {
+.verification-container .are-you-sure-modal .button-container button:last-child {
   background-color: #0d7377;
   color: #f1faee;
 }
-.verification-container
-  .are-you-sure-modal
-  .button-container
-  button:first-child:hover {
+.verification-container .are-you-sure-modal .button-container button:first-child:hover {
   background-color: #e63946;
   color: #fff;
   border: solid 1px #e63946;
 }
-.verification-container
-  .are-you-sure-modal
-  .button-container
-  button:last-child:hover {
+.verification-container .are-you-sure-modal .button-container button:last-child:hover {
   color: #0d7377;
   background-color: #f1faee;
   border: solid 1px #0d7377;
@@ -3893,24 +2735,9 @@ button {
   transition: all 0.2s ease-in-out;
   border: solid 3px #0d7377;
 }
-.verification-container
-  .verification-steps
-  .steps-container
-  .steps
-  .step-1
-  span,
-.verification-container
-  .verification-steps
-  .steps-container
-  .steps
-  .step-2
-  span,
-.verification-container
-  .verification-steps
-  .steps-container
-  .steps
-  .step-3
-  span {
+.verification-container .verification-steps .steps-container .steps .step-1 span,
+.verification-container .verification-steps .steps-container .steps .step-2 span,
+.verification-container .verification-steps .steps-container .steps .step-3 span {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -3922,11 +2749,7 @@ button {
 .verification-container .verification-steps .steps-container .steps .step-1 {
   position: relative;
 }
-.verification-container
-  .verification-steps
-  .steps-container
-  .steps
-  .step-1::after {
+.verification-container .verification-steps .steps-container .steps .step-1::after {
   content: " ";
   position: absolute;
   left: calc(100% + 1px);
@@ -3936,11 +2759,7 @@ button {
 .verification-container .verification-steps .steps-container .steps .step-2 {
   position: relative;
 }
-.verification-container
-  .verification-steps
-  .steps-container
-  .steps
-  .step-2::after {
+.verification-container .verification-steps .steps-container .steps .step-2::after {
   content: " ";
   position: absolute;
   left: calc(100% + 1px);
@@ -4108,12 +2927,7 @@ button {
   border: solid 3px #457b9d;
   outline: none;
 }
-.verification-container
-  form
-  .input-contain
-  input:focus
-  + .placeholder-container
-  .placeholder-text {
+.verification-container form .input-contain input:focus + .placeholder-container .placeholder-text {
   top: 0%;
   left: 0%;
   background-color: #fff;
@@ -4321,8 +3135,7 @@ button {
   }
 }
 @media screen and (max-width: 1030px) {
-  .dashboard,
-  .dashboard-active {
+  .dashboard, .dashboard-active {
     padding: 1rem 1rem 1rem 13rem;
   }
   .waiting-container-pending {
@@ -4406,7 +3219,7 @@ button {
   width: 100%;
   border-radius: 50%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .profile-page .content {
   display: grid;
@@ -5328,11 +4141,7 @@ button {
 .reports > .content .button-content .button-container button:nth-of-type(1) {
   border-radius: 1.5rem 0 0 0;
 }
-.reports
-  > .content
-  .button-content
-  .button-container
-  button:nth-last-of-type(1) {
+.reports > .content .button-content .button-container button:nth-last-of-type(1) {
   border-radius: 0 1.5rem 0 0;
 }
 .reports > .content .display {
@@ -5389,7 +4198,7 @@ button {
   grid-auto-rows: 10rem;
   padding: 1rem 2rem;
   -moz-column-gap: 1rem;
-  column-gap: 1rem;
+       column-gap: 1rem;
 }
 .reports .narrative-container .content .narrative-content > * {
   background-color: #d9d9d9;
@@ -5399,7 +4208,7 @@ button {
   flex-direction: column;
   padding: 1.8rem 0;
   -moz-column-gap: 1rem;
-  column-gap: 1rem;
+       column-gap: 1rem;
 }
 .reports .narrative-container .content .narrative-content .dateAndDay h5 {
   color: #000;
@@ -5410,31 +4219,16 @@ button {
   font-size: 1.3rem;
   padding: 0 0 0.5rem;
 }
-.reports
-  .narrative-container
-  .content
-  .narrative-content
-  .btn-column-container {
+.reports .narrative-container .content .narrative-content .btn-column-container {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-.reports
-  .narrative-container
-  .content
-  .narrative-content
-  .btn-column-container
-  .top {
+.reports .narrative-container .content .narrative-content .btn-column-container .top {
   padding: 0.5rem;
 }
-.reports
-  .narrative-container
-  .content
-  .narrative-content
-  .btn-column-container
-  .top
-  button {
+.reports .narrative-container .content .narrative-content .btn-column-container .top button {
   transition: all 0.3s linear;
   font-size: 1.5rem;
   font-weight: 600;
@@ -5445,35 +4239,18 @@ button {
   font-weight: 600;
   font-size: 1.5rem;
 }
-.reports
-  .narrative-container
-  .content
-  .narrative-content
-  .btn-column-container
-  .top
-  button:hover {
+.reports .narrative-container .content .narrative-content .btn-column-container .top button:hover {
   color: #fff;
   background-color: #0d7377;
 }
-.reports
-  .narrative-container
-  .content
-  .narrative-content
-  .btn-column-container
-  .bottom {
+.reports .narrative-container .content .narrative-content .btn-column-container .bottom {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.2rem 0.5rem 0.5rem;
   flex-direction: row;
 }
-.reports
-  .narrative-container
-  .content
-  .narrative-content
-  .btn-column-container
-  .bottom
-  button {
+.reports .narrative-container .content .narrative-content .btn-column-container .bottom button {
   margin: 0 0.5rem;
   color: #fff;
   border: solid 1px #0d7377;
@@ -5483,13 +4260,7 @@ button {
   background-color: #0d7377;
   font-weight: 600;
 }
-.reports
-  .narrative-container
-  .content
-  .narrative-content
-  .btn-column-container
-  .bottom
-  button:hover {
+.reports .narrative-container .content .narrative-content .btn-column-container .bottom button:hover {
   background-color: #d9d9d9;
   color: #0d7377;
 }
@@ -5498,12 +4269,7 @@ button {
   align-items: center;
   justify-content: center;
 }
-.reports
-  .narrative-container
-  .content
-  .narrative-content
-  .blank-container
-  .blank {
+.reports .narrative-container .content .narrative-content .blank-container .blank {
   height: 80%;
   width: 95%;
   background-color: #a4a4a4;
@@ -5636,7 +4402,7 @@ button {
     height: 13rem;
   }
   .server-error h1,
-  .server-error button {
+.server-error button {
     font-size: 1.5rem;
   }
 }
@@ -5645,7 +4411,7 @@ button {
     height: 10rem;
   }
   .server-error h1,
-  .server-error button {
+.server-error button {
     font-size: 1.3rem;
   }
 }
@@ -5732,13 +4498,7 @@ button {
   border: solid 3px #457b9d;
   outline: none;
 }
-.login
-  .card-container
-  form
-  .input-contain
-  input:focus
-  + .placeholder-container
-  .placeholder-text {
+.login .card-container form .input-contain input:focus + .placeholder-container .placeholder-text {
   top: 0%;
   left: 0%;
   background-color: #fff;
@@ -6103,7 +4863,7 @@ button {
     gap: 1rem;
   }
   .landing-page .contents .landing-contents .text p,
-  .landing-page .contents .landing-contents .text h3 {
+.landing-page .contents .landing-contents .text h3 {
     font-size: 2rem;
     text-align: center;
   }
@@ -6137,29 +4897,14 @@ button {
   .landing-page .contents .mockup-contents .card {
     grid-template-columns: 30rem auto;
   }
-  .landing-page
-    .contents
-    .mockup-contents
-    .card
-    .text-container
-    p:nth-of-type(1) {
+  .landing-page .contents .mockup-contents .card .text-container p:nth-of-type(1) {
     font-size: 2rem;
   }
-  .landing-page
-    .contents
-    .mockup-contents
-    .card
-    .text-container
-    p:nth-of-type(2) {
+  .landing-page .contents .mockup-contents .card .text-container p:nth-of-type(2) {
     grid-column: 1/4;
     padding: 0;
   }
-  .landing-page
-    .contents
-    .mockup-contents
-    .card
-    .text-container
-    p:nth-of-type(3) {
+  .landing-page .contents .mockup-contents .card .text-container p:nth-of-type(3) {
     grid-column: 3/5;
     padding: 0;
   }
@@ -6186,21 +4931,11 @@ button {
   }
 }
 @media screen and (max-width: 920px) {
-  .landing-page
-    .contents
-    .mockup-contents
-    .card
-    .text-container
-    p:nth-of-type(2) {
+  .landing-page .contents .mockup-contents .card .text-container p:nth-of-type(2) {
     grid-column: 1/4;
     padding: 0;
   }
-  .landing-page
-    .contents
-    .mockup-contents
-    .card
-    .text-container
-    p:nth-of-type(3) {
+  .landing-page .contents .mockup-contents .card .text-container p:nth-of-type(3) {
     grid-column: 4/5;
     padding: 0;
   }
@@ -6217,7 +4952,7 @@ button {
     padding: 2rem;
   }
   .landing-page .contents .landing-contents .text p,
-  .landing-page .contents .landing-contents .text h3 {
+.landing-page .contents .landing-contents .text h3 {
     font-size: 1.8rem;
     z-index: 2;
   }
@@ -6236,12 +4971,7 @@ button {
     align-items: center;
     justify-content: center;
   }
-  .landing-page
-    .contents
-    .feature-contents
-    .feature-Content-Img
-    .img-features
-    img {
+  .landing-page .contents .feature-contents .feature-Content-Img .img-features img {
     width: 55%;
     height: 55%;
   }
@@ -6257,22 +4987,12 @@ button {
   .landing-page .contents .mockup-contents .card .text-container {
     grid-template-rows: 0.3fr 0.5fr 1fr;
   }
-  .landing-page
-    .contents
-    .mockup-contents
-    .card
-    .text-container
-    p:nth-of-type(2) {
+  .landing-page .contents .mockup-contents .card .text-container p:nth-of-type(2) {
     align-items: center;
     grid-column: 1/4;
     padding: 0;
   }
-  .landing-page
-    .contents
-    .mockup-contents
-    .card
-    .text-container
-    p:nth-of-type(3) {
+  .landing-page .contents .mockup-contents .card .text-container p:nth-of-type(3) {
     grid-column: 3/5;
     padding: 0;
   }
@@ -6292,24 +5012,14 @@ button {
   .landing-page .contents .feature-contents .feature-Content-Img {
     width: 50%;
   }
-  .landing-page
-    .contents
-    .feature-contents
-    .feature-Content-Img
-    .img-features
-    img {
+  .landing-page .contents .feature-contents .feature-Content-Img .img-features img {
     width: 65%;
     height: 65%;
   }
   .landing-page .contents .mockup-contents .card .text-container {
     grid-template-rows: 0.3fr 0.8fr 1fr;
   }
-  .landing-page
-    .contents
-    .mockup-contents
-    .card
-    .text-container
-    p:nth-of-type(3) {
+  .landing-page .contents .mockup-contents .card .text-container p:nth-of-type(3) {
     grid-column: 3/5;
     padding: 0;
   }
@@ -6326,13 +5036,13 @@ button {
     grid-template-columns: auto;
   }
   .landing-page .contents .landing-contents .text p,
-  .landing-page .contents .landing-contents .text h3 {
+.landing-page .contents .landing-contents .text h3 {
     background-color: rgba(0, 0, 0, 0.4666666667);
     padding: 1rem;
     border-radius: 1rem;
   }
   .landing-page .contents .landing-contents .text .darkbg,
-  .landing-page .contents .landing-contents .text .darkbg2 {
+.landing-page .contents .landing-contents .text .darkbg2 {
     display: none !important;
   }
   .landing-page .contents .landing-contents .text .bg3 {
@@ -6380,7 +5090,7 @@ button {
     transition: all 0.2s ease-in-out;
   }
   .landing-page nav .link-container .links,
-  .landing-page nav .link-container .auth-links {
+.landing-page nav .link-container .auth-links {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -6421,11 +5131,11 @@ button {
 }
 .circle .circle-one {
   -webkit-animation: ring 2s linear infinite;
-  animation: ring 2s linear infinite;
+          animation: ring 2s linear infinite;
 }
 .circle .circle-two {
   -webkit-animation: ring2 2s linear infinite;
-  animation: ring2 2s linear infinite;
+          animation: ring2 2s linear infinite;
 }
 @-webkit-keyframes ring {
   0% {
@@ -6532,7 +5242,7 @@ button {
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   -webkit-animation: text 3s ease-in-out infinite;
-  animation: text 3s ease-in-out infinite;
+          animation: text 3s ease-in-out infinite;
 }
 @-webkit-keyframes text {
   50% {
@@ -6559,17 +5269,17 @@ button {
   border-radius: 50%;
   display: inline-block;
   -webkit-animation: dot 2s infinite ease-in-out;
-  animation: dot 2s infinite ease-in-out;
+          animation: dot 2s infinite ease-in-out;
 }
 .dots .dotted span:nth-child(2) {
   background-color: #65faff;
   -webkit-animation-delay: 0.4s;
-  animation-delay: 0.4s;
+          animation-delay: 0.4s;
 }
 .dots .dotted span:nth-child(3) {
   background-color: #ff6f7b;
   -webkit-animation-delay: 0.8s;
-  animation-delay: 0.8s;
+          animation-delay: 0.8s;
 }
 @-webkit-keyframes dot {
   50% {
@@ -6608,19 +5318,19 @@ button {
   left: 15%;
   transform-origin: 50%;
   -webkit-animation: circle 0.5s alternate infinite ease;
-  animation: circle 0.5s alternate infinite ease;
+          animation: circle 0.5s alternate infinite ease;
 }
 .bouncing .container .circle:nth-child(2) {
   left: 45%;
   -webkit-animation-delay: 0.2s;
-  animation-delay: 0.2s;
+          animation-delay: 0.2s;
   background-color: #65faff;
 }
 .bouncing .container .circle:nth-child(3) {
   left: auto;
   right: 15%;
   -webkit-animation-delay: 0.3s;
-  animation-delay: 0.3s;
+          animation-delay: 0.3s;
   background-color: #ff6f7b;
 }
 @-webkit-keyframes circle {
@@ -6667,18 +5377,18 @@ button {
   left: 15%;
   filter: blur(1px);
   -webkit-animation: shadow 0.5s alternate infinite ease;
-  animation: shadow 0.5s alternate infinite ease;
+          animation: shadow 0.5s alternate infinite ease;
 }
 .bouncing .container .shadow:nth-child(4) {
   left: 45%;
   -webkit-animation-delay: 0.2s;
-  animation-delay: 0.2s;
+          animation-delay: 0.2s;
 }
 .bouncing .container .shadow:nth-child(5) {
   left: auto;
   right: 15%;
   -webkit-animation-delay: 0.3s;
-  animation-delay: 0.3s;
+          animation-delay: 0.3s;
 }
 @-webkit-keyframes shadow {
   0% {
@@ -6717,7 +5427,7 @@ button {
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   -webkit-animation: loading 3s ease-in-out infinite;
-  animation: loading 3s ease-in-out infinite;
+          animation: loading 3s ease-in-out infinite;
 }
 @-webkit-keyframes loading {
   50% {
@@ -6728,4 +5438,4 @@ button {
   50% {
     color: #fffcfc;
   }
-} /*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */
