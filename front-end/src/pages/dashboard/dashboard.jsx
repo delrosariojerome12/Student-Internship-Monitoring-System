@@ -1,8 +1,8 @@
 import React from "react";
-import {Route, Routes, Navigate} from "react-router-dom";
-import {lazy, Suspense} from "react";
-import {useSelector} from "react-redux";
-import {auth} from "../../Firebase";
+import { Route, Routes, Navigate } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import { useSelector } from "react-redux";
+import { auth } from "../../Firebase";
 
 import DashboardMain from "./DashboardMain";
 import PendingContainer from "../verification/PendingContainer";
@@ -19,10 +19,11 @@ const DailyTimeRecord = lazy(() => import("./DailyTimeRecord"));
 const Documents = lazy(() => import("./Documents"));
 const Reports = lazy(() => import("./Reports"));
 const Settings = lazy(() => import("./Settings"));
+const Internships = lazy(() => import("./Internships"));
 
 const Dashboard = () => {
-  const {isSidebarOpen} = useSelector((state) => state.dashboard);
-  const {user} = useSelector((state) => state.user);
+  const { isSidebarOpen } = useSelector((state) => state.dashboard);
+  const { user } = useSelector((state) => state.user);
   // const dispatch = useDispatch();
 
   if (!user) {
@@ -79,6 +80,8 @@ const Dashboard = () => {
           <Route path="/documents/*" element={<Documents />} />
           <Route path="/reports/*" element={<Reports />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/internships" element={<Internships />} />
+
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Routes>
       </Suspense>
