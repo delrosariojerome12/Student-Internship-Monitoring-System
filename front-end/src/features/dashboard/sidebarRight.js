@@ -17,6 +17,9 @@ export const sidebarRightReducer = createSlice({
       state.isNotificationOpen = false;
       state.isChatOpen = false;
     },
+    closeProfile: (state, action) => {
+      state.isProfileOpen = false;
+    },
     handleNotification: (state, action) => {
       state.isNotificationOpen = !state.isNotificationOpen;
       state.isProfileOpen = false;
@@ -31,7 +34,7 @@ export const sidebarRightReducer = createSlice({
   extraReducers: (builder) => {},
 });
 
-export const {handleProfile, handleChat, handleNotification} =
+export const {handleProfile, closeProfile, handleChat, handleNotification} =
   sidebarRightReducer.actions;
 
 export default sidebarRightReducer.reducer;
