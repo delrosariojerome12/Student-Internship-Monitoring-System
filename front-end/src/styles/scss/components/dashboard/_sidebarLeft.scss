@@ -250,7 +250,7 @@
 
         .user {
           display: grid;
-          grid-template-columns: 5rem auto auto;
+          grid-template-columns: 5rem auto;
           gap: 1rem;
           padding: 1rem;
           color: #fff;
@@ -267,6 +267,7 @@
           & > p:nth-child(2) {
             grid-row: 2/3;
             grid-column: 2/3;
+            word-break: break-all;
           }
         }
       }

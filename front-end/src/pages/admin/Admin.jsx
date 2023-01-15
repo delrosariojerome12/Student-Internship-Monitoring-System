@@ -1,15 +1,15 @@
 import React from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import {Route, Routes, Navigate} from "react-router-dom";
+import {lazy, Suspense} from "react";
 import SidebarLeft from "../../components/dashboard/SidebarLeft";
 import SideBarRight from "../../components/dashboard/SidebarRight";
 
 const Documents = lazy(() => import("./Documents"));
 
-const Admin = React.memo(({ isSidebarOpen }) => {
+const Admin = React.memo(({isSidebarOpen}) => {
   return (
     <section
-      style={isSidebarOpen ? { padding: "2rem 9rem 2rem 29rem" } : null}
+      // style={isSidebarOpen ? { padding: "2rem 9rem 2rem 29rem" } : null}
       className="dashboard"
     >
       <SidebarLeft />

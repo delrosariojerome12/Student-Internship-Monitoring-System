@@ -3,15 +3,15 @@ import DashboardIntern from "../../components/coordinator/dashboardCoordinator/D
 import DashboardApprovals from "../../components/coordinator/dashboardCoordinator/DashboardApprovals";
 import DashboardInternship from "../../components/coordinator/dashboardCoordinator/DashboardInternship";
 
-import { useSelector, useDispatch } from "react-redux";
-import { BiSearchAlt } from "react-icons/bi";
+import {useSelector, useDispatch} from "react-redux";
+import {BiSearchAlt} from "react-icons/bi";
 
 import internImg from "../../assets/img/head.svg";
 import approvalImg from "../../assets/img/approvals.svg";
 import internshipImg from "../../assets/img/no-internship.svg";
 
 const Dashboard = () => {
-  const { approvalInterns, interns, isError } = useSelector(
+  const {approvalInterns, interns, isError} = useSelector(
     (state) => state.intern
   );
 
@@ -56,22 +56,22 @@ const Dashboard = () => {
     });
   };
 
-  const renderInternship = () => {
-    if (approvalInterns.length === 0) {
-      return (
-        <section className="dashboard-internships">
-          <div className="no-internship">
-            <img src={internshipImg} alt="No available internship" />
-            <h4>No available internship</h4>
-          </div>
-        </section>
-      );
-    }
+  // const renderInternship = () => {
+  //   if (approvalInterns.length === 0) {
+  //     return (
+  //       <section className="dashboard-internships">
+  //         <div className="no-internship">
+  //           <img src={internshipImg} alt="No available internship" />
+  //           <h4>No available internship</h4>
+  //         </div>
+  //       </section>
+  //     );
+  //   }
 
-    return approvalInterns.map((intern, index) => {
-      return <DashboardInternship intern={intern} key={index} index={index} />;
-    });
-  };
+  //   return approvalInterns.map((intern, index) => {
+  //     return <DashboardInternship intern={intern} key={index} index={index} />;
+  //   });
+  // };
 
   return (
     <section className="coordinator-dashboard">
@@ -104,7 +104,7 @@ const Dashboard = () => {
         </div>
         <div className="dashboard-internships">
           <h3 className="internships-title">Companies</h3>
-          <div className="all-internship-container">{renderInternship()}</div>
+          {/* <div className="all-internship-container">{renderInternship()}</div> */}
         </div>
       </div>
     </section>

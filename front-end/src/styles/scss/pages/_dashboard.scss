@@ -124,13 +124,10 @@
   padding: 2rem 9rem 2rem 29rem;
 }
 
-@media screen and(max-width: 1030px) {
-  .dashboard {
-    .sidebar-right {
-      display: none;
-    }
-  }
-}
+// @media screen and(max-width: 1030px) {
+//   .dashboard {
+//   }
+// }
 
 @media screen and(max-width: 600px) {
   .dashboard {
