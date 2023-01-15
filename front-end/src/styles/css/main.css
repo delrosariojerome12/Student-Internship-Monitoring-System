@@ -1113,6 +1113,121 @@ button {
 .dashboard .left-sidebar .box img, .dashboard-active .left-sidebar .box img {
   height: 1px;
 }
+.dashboard .left-sidebar .profile-img, .dashboard-active .left-sidebar .profile-img {
+  display: none;
+  height: 5.2rem;
+  width: 5.2rem;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s linear;
+  margin: auto;
+  border: none;
+}
+.dashboard .left-sidebar .profile-img:hover img, .dashboard-active .left-sidebar .profile-img:hover img {
+  border-radius: 1rem;
+}
+.dashboard .left-sidebar .profile-img > img, .dashboard-active .left-sidebar .profile-img > img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: all 0.2s linear;
+}
+.dashboard .left-sidebar .profile-img span, .dashboard-active .left-sidebar .profile-img span {
+  position: absolute;
+  right: -1px;
+  bottom: -5px;
+  border-radius: 50%;
+  background-color: #457b9d;
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dashboard .left-sidebar .profile-img span .icons, .dashboard-active .left-sidebar .profile-img span .icons {
+  height: 1rem;
+  width: 1rem;
+}
+.dashboard .left-sidebar .profile-tab, .dashboard-active .left-sidebar .profile-tab {
+  display: none !important;
+  position: absolute;
+  left: 12rem;
+  bottom: 0%;
+  height: auto;
+  min-width: 28rem;
+  z-index: 2;
+  background-color: #323232;
+  border-radius: 2rem;
+  padding: 2rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.dashboard .left-sidebar .profile-tab .user, .dashboard-active .left-sidebar .profile-tab .user {
+  border-radius: 1rem;
+  text-transform: capitalize;
+  background-color: #252525;
+  transition: all 0.2s linear;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+}
+.dashboard .left-sidebar .profile-tab .user:hover, .dashboard-active .left-sidebar .profile-tab .user:hover {
+  background-color: #3f3f3f;
+}
+.dashboard .left-sidebar .profile-tab .user img, .dashboard-active .left-sidebar .profile-tab .user img {
+  height: 7rem;
+  width: 7rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: all 0.2s linear;
+  border-radius: 50%;
+}
+.dashboard .left-sidebar .profile-tab > *:not(.user), .dashboard-active .left-sidebar .profile-tab > *:not(.user) {
+  padding: 1rem;
+  background-color: #252525;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+.dashboard .left-sidebar .profile-tab > *:not(.user):hover, .dashboard-active .left-sidebar .profile-tab > *:not(.user):hover {
+  background-color: #3f3f3f;
+}
+.dashboard .left-sidebar .profile-tab > *:not(.user) .icon-holder, .dashboard-active .left-sidebar .profile-tab > *:not(.user) .icon-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.dashboard .left-sidebar .profile-tab > *:not(.user) .icon:not(.icon-holder .icon), .dashboard-active .left-sidebar .profile-tab > *:not(.user) .icon:not(.icon-holder .icon) {
+  font-size: 1.5rem;
+}
+.dashboard .left-sidebar .open, .dashboard-active .left-sidebar .open {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  color: #fff;
+  gap: 1rem;
+  padding: 1rem;
+}
+.dashboard .left-sidebar .open img, .dashboard-active .left-sidebar .open img {
+  height: 5.2rem;
+  width: 5.2rem;
+}
+.dashboard .left-sidebar .open .text > p:last-child, .dashboard-active .left-sidebar .open .text > p:last-child {
+  text-transform: capitalize;
+}
 .dashboard .active-sidebar, .dashboard-active .active-sidebar {
   width: 26rem;
 }
@@ -1143,6 +1258,17 @@ button {
 .dashboard .active-sidebar .box img, .dashboard-active .active-sidebar .box img {
   height: 15rem;
 }
+@media screen and (max-width: 1030px) {
+  .dashboard .left-sidebar, .dashboard-active .left-sidebar {
+    grid-template-rows: 15rem 1fr 10rem;
+  }
+  .dashboard .left-sidebar .profile-img, .dashboard-active .left-sidebar .profile-img {
+    display: flex;
+  }
+  .dashboard .left-sidebar .profile-tab, .dashboard-active .left-sidebar .profile-tab {
+    display: flex !important;
+  }
+}
 @media screen and (max-width: 600px) {
   .dashboard .left-sidebar, .dashboard-active .left-sidebar {
     top: 0%;
@@ -1156,6 +1282,12 @@ button {
   }
   .dashboard .left-sidebar > *, .dashboard-active .left-sidebar > * {
     border: none;
+  }
+  .dashboard .left-sidebar .profile-img, .dashboard-active .left-sidebar .profile-img {
+    display: none;
+  }
+  .dashboard .left-sidebar .profile-tab, .dashboard-active .left-sidebar .profile-tab {
+    display: none !important;
   }
   .dashboard .left-sidebar .img-con img, .dashboard-active .left-sidebar .img-con img {
     transform: rotate(0deg);
@@ -1185,10 +1317,11 @@ button {
     top: 100%;
     left: 0%;
     width: 0%;
-    height: 90vh;
+    height: 88.5vh;
     transition: all 0.2s ease-in-out;
     overflow: auto;
     padding: 0;
+    display: flex;
   }
   .dashboard .left-sidebar .links-con button, .dashboard-active .left-sidebar .links-con button {
     margin-right: auto;
@@ -1203,18 +1336,16 @@ button {
   }
   .dashboard .left-sidebar .links-con .sub-container, .dashboard-active .left-sidebar .links-con .sub-container {
     display: grid;
-    display: flex;
-    flex-direction: column;
+    grid-template-rows: minmax(11rem, 12rem) auto 4rem;
     gap: 1rem;
-    padding: 1rem;
-    height: 100%;
+    padding: 1rem 1rem 2rem 1rem;
     width: 100%;
+    height: 100%;
   }
   .dashboard .left-sidebar .links-con .sub-container .link-container, .dashboard-active .left-sidebar .links-con .sub-container .link-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    min-height: 78%;
     gap: 1rem;
   }
   .dashboard .left-sidebar .links-con .sub-container .link-container .icon-con, .dashboard-active .left-sidebar .links-con .sub-container .link-container .icon-con {
@@ -1232,8 +1363,12 @@ button {
     height: auto;
     width: 100%;
     display: flex;
-    align-items: flex-start;
+    gap: 1rem;
+    align-items: center;
     justify-content: flex-start;
+  }
+  .dashboard .left-sidebar .links-con .sub-container .link-container .icon-con a .icons, .dashboard-active .left-sidebar .links-con .sub-container .link-container .icon-con a .icons {
+    font-size: 3.5rem;
   }
   .dashboard .left-sidebar .links-con .sub-container .user, .dashboard-active .left-sidebar .links-con .sub-container .user {
     display: grid;
