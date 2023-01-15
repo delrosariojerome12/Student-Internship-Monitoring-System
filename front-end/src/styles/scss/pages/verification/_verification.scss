@@ -80,11 +80,12 @@
       button {
         &:first-child {
           background-color: #fff;
-          border: solid 1px $primary-bg-color;
-          color: $primary-bg-color;
+          border: solid 1px $primary-compliment-landing;
+          color: $primary-compliment-landing;
         }
         &:last-child {
-          background-color: $primary-bg-color;
+          background-color: $primary-compliment-landing;
+          color: $primary-font-color;
         }
         cursor: pointer;
         height: 4.5rem;
@@ -104,9 +105,9 @@
           border: solid 1px $red-primary-color;
         }
         &:last-child:hover {
+          color: $primary-compliment-landing;
           background-color: $primary-font-color;
-          color: $primary-bg-color;
-          border: solid 1px $primary-bg-color;
+          border: solid 1px $primary-compliment-landing;
         }
       }
     }
@@ -222,15 +223,6 @@
             width: 148%;
           }
         }
-        // .step-2 {
-        //   &::before {
-        //     content: " ";
-        //     position: absolute;
-        //     right: 28.5%;
-        //     border: dashed 2px $primary-compliment-landing;
-        //     width: 14%;
-        //   }
-        // }
       }
     }
   }
@@ -455,15 +447,15 @@
       border-radius: 5px;
       border: solid 1px transparent;
       outline: none;
-      background-color: $primary-bg-color;
+      background-color: $primary-compliment-landing;
       color: $primary-font-color;
       letter-spacing: 0.2rem;
       transition: all 0.3s ease-in-out;
       font-weight: 600;
       &:hover {
+        color: $primary-compliment-landing;
         background-color: $primary-font-color;
-        color: $primary-bg-color;
-        border: solid 1px $primary-bg-color;
+        border: solid 1px $primary-compliment-landing;
       }
     }
   }

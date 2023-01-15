@@ -1,7 +1,8 @@
 import React from "react";
-import {Route, Routes, Navigate} from "react-router-dom";
-import {lazy, Suspense} from "react";
-import {useSelector} from "react-redux";
+import { Route, Routes, Navigate } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import { useSelector } from "react-redux";
+import { auth } from "../../Firebase";
 
 import DashboardMain from "./DashboardMain";
 import PendingContainer from "../verification/PendingContainer";
@@ -18,11 +19,16 @@ const DailyTimeRecord = lazy(() => import("./DailyTimeRecord"));
 const Documents = lazy(() => import("./Documents"));
 const Reports = lazy(() => import("./Reports"));
 const Settings = lazy(() => import("./Settings"));
+const Internships = lazy(() => import("./Internships"));
 
 const Dashboard = () => {
-  const {isSidebarOpen} = useSelector((state) => state.dashboard);
-  const {user} = useSelector((state) => state.user);
+  const { isSidebarOpen } = useSelector((state) => state.dashboard);
+  const { user } = useSelector((state) => state.user);
   // const dispatch = useDispatch();
+
+  if (!user) {
+    return <Bouncing />;
+  }
 
   if (!user && !localStorage.getItem("token")) {
     return <Navigate to={"/404"} />;
@@ -41,15 +47,15 @@ const Dashboard = () => {
   if (!isVerified) {
     return (
       <section
-        style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
+        // style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
+        // className={isSidebarOpen ? "dashboard-active" : "dashboard"}
         className="dashboard"
       >
         <SidebarLeft />
         <Suspense fallback={<Bouncing />}>
           <Routes>
             <Route path="/*" element={<PendingContainer />} />
-            <Route path="/documents/*" element={<Documents />} />
-            <Route path="/settings" element={<Settings />} />
+            {/* <Route path="/settings" element={<Settings />} /> */}
             <Route path="*" element={<Navigate to="/404" replace />} />
           </Routes>
         </Suspense>
@@ -61,7 +67,8 @@ const Dashboard = () => {
   // intern
   return (
     <section
-      style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
+      // style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
+      // className={isSidebarOpen ? "dashboard-active" : "dashboard"}
       className="dashboard"
     >
       <SidebarLeft />
@@ -73,6 +80,8 @@ const Dashboard = () => {
           <Route path="/documents/*" element={<Documents />} />
           <Route path="/reports/*" element={<Reports />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/internships" element={<Internships />} />
+
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Routes>
       </Suspense>

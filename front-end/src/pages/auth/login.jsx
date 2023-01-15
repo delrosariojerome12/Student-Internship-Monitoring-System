@@ -1,26 +1,17 @@
-import React, {useState, useCallback, useEffect} from "react";
+import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import logo from "../../assets/img/logo.svg";
-import {
-  FaUserAlt,
-  FaLock,
-  FaEye,
-  FaEyeSlash,
-  FaCheckCircle,
-} from "react-icons/fa";
+import {FaLock, FaEye, FaEyeSlash} from "react-icons/fa";
 import {GrMail} from "react-icons/gr";
 import {IconContext} from "react-icons";
 import {useRef} from "react";
 import {useNavigate} from "react-router-dom";
-// import {signInWithGoogle} from "../../Firebase";
 import {useSelector, useDispatch} from "react-redux";
 import {handleLogin} from "../../features/user/userReducer";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const {isError, errorMessage, isLoading, user} = useSelector(
-    (state) => state.user
-  );
+  const {isError, errorMessage} = useSelector((state) => state.user);
 
   const [form, setForm] = useState([
     {
@@ -49,7 +40,6 @@ const Login = () => {
   ]);
   const [isPasswordShown, setIsPasswordShown] = useState(false);
   const refPassword = useRef();
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -62,6 +52,9 @@ const Login = () => {
     value ? (data[index].isError = false) : (data[index].isError = true);
     setForm(data);
     // handleError(value, index);
+    if (index === 0) {
+      data[index].value = data[index].value.slice(0).toLowerCase();
+    }
   };
 
   // const handleError =
@@ -95,16 +88,7 @@ const Login = () => {
 
   const renderInputs = () => {
     return form.map((inputs, index) => {
-      const {
-        forInput,
-        id,
-        type,
-        value,
-        IconType,
-        isError,
-        errorMessage,
-        hasEyeIcon,
-      } = inputs;
+      const {forInput, id, type, value, IconType, hasEyeIcon} = inputs;
       return (
         <div className="input-contain" key={index}>
           {hasEyeIcon ? (
@@ -123,7 +107,6 @@ const Login = () => {
               type={type}
               name={forInput}
               id={id}
-              // className={isError ? "input-error" : null}
               value={value}
               required
               onChange={(e) => handleOnChange(e.target.value, index)}

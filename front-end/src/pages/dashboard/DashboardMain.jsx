@@ -1,6 +1,6 @@
 import React from "react";
 import searchIcon from "../../assets/img/search.svg";
-import {useSelector, useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 const DashboardMain = () => {
   const {
