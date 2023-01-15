@@ -25,7 +25,7 @@ const Coordinator = React.memo(({isSidebarOpen}) => {
 
   return (
     <section
-      style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
+      // style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
       className="dashboard"
     >
       <SidebarLeft />

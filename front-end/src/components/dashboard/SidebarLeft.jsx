@@ -105,7 +105,6 @@ const SidebarLeft = () => {
 
   const dispatch = useDispatch();
 
-  // const [isMobile, setMobile] = useState(false);
   const [isDropDownOpen, setDropDownOpen] = useState(false);
 
   const renderLinks = () => {
