@@ -1872,8 +1872,8 @@ button {
     display: flex;
     flex-direction: column;
     font-size: 1.7rem;
-    gap: 0.5rem;
-    padding: 1rem;
+    gap: 1rem;
+    padding: 2rem 1rem 1rem;
   }
   .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .img-container img, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .img-container img {
     height: 14rem;
