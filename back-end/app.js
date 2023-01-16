@@ -11,6 +11,7 @@ const authRouter = require("./routers/auth");
 const authUser = require("./middlewares/auth");
 const internsRouter = require("./routers/intern");
 const userRouter = require("./routers/user");
+const documentRouter = require("./routers/document");
 
 // error handler
 const notFound = require("./middlewares/notFound");
@@ -23,6 +24,7 @@ app.use(cors());
 app.use("/auth", authRouter);
 app.use("/intern", internsRouter);
 app.use("/user", userRouter);
+app.use("/document", documentRouter);
 
 app.use(notFound);
 app.use(errorHandler);

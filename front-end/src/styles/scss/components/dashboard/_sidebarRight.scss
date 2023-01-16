@@ -225,3 +225,9 @@
     padding: 1rem;
   }
 }
+
+@media screen and(max-width: 1030px) {
+  .sidebar-right {
+    display: none;
+  }
+}

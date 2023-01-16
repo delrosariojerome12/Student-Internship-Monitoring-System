@@ -2,21 +2,28 @@ import React, {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import {RiDashboardLine} from "react-icons/ri";
 import {HiPencilAlt} from "react-icons/hi";
-import {HiDocument, HiTrendingUp, HiMenu, HiMenuAlt3} from "react-icons/hi";
+import {HiDocument, HiTrendingUp, HiMenu} from "react-icons/hi";
 import {
   FaUserAlt,
   FaChevronLeft,
   FaChevronRight,
+  FaChevronDown,
   FaUsers,
   FaUserCheck,
 } from "react-icons/fa";
 import {MdOutlineWork, MdLogout} from "react-icons/md";
+import {FaRegBuilding} from "react-icons/fa";
 import {IconContext} from "react-icons";
 import logo from "../../assets/img/logo.svg";
 import {useSelector, useDispatch} from "react-redux";
 import {handleSidebar} from "../../features/dashboard/dashboard";
 import CrossSvg from "../../assets/img/cross.svg";
-import {FaRegBuilding} from "react-icons/fa";
+import ProfileTab from "../sidebarRight/ProfileTab";
+import {
+  handleProfile,
+  closeProfile,
+} from "../../features/dashboard/sidebarRight";
+
 const links = [
   {
     role: "intern",
@@ -98,14 +105,15 @@ const links = [
 
 const SidebarLeft = () => {
   const {isSidebarOpen} = useSelector((state) => state.dashboard);
+  const {isProfileOpen} = useSelector((state) => state.sidebarRight);
   const {user} = useSelector((state) => state.user);
+
   const {
     user: {email, firstName, lastName, profileImage, role},
   } = user;
 
   const dispatch = useDispatch();
 
-  // const [isMobile, setMobile] = useState(false);
   const [isDropDownOpen, setDropDownOpen] = useState(false);
 
   const renderLinks = () => {
@@ -113,7 +121,14 @@ const SidebarLeft = () => {
       return links[1].sidebar.map((item, index) => {
         const {path, link, IconType} = item;
         return (
-          <span className="icon-con" key={index}>
+          <span
+            className="icon-con"
+            key={index}
+            onClick={() => {
+              setDropDownOpen(false);
+              isSidebarOpen && dispatch(handleSidebar());
+            }}
+          >
             <Link to={path}>
               <IconType />
               {/* {isSidebarOpen && link} */}
@@ -128,7 +143,15 @@ const SidebarLeft = () => {
       return links[2].sidebar.map((item, index) => {
         const {path, link, IconType} = item;
         return (
-          <span className="icon-con" key={index}>
+          <span
+            className="icon-con"
+            key={index}
+            onClick={() => {
+              setDropDownOpen(false);
+              // dispatch(handleSidebar());
+              isSidebarOpen && dispatch(handleSidebar());
+            }}
+          >
             <Link to={path}>
               <IconType />
               {/* {isSidebarOpen && link} */}
@@ -144,7 +167,14 @@ const SidebarLeft = () => {
       return links[0].sidebar.map((item, index) => {
         const {path, link, IconType} = item;
         return (
-          <span className="icon-con" key={index}>
+          <span
+            className="icon-con"
+            key={index}
+            onClick={() => {
+              setDropDownOpen(false);
+              isSidebarOpen && dispatch(handleSidebar());
+            }}
+          >
             <Link to={path}>
               <IconType />
               {/* {isSidebarOpen && link} */}
@@ -159,7 +189,14 @@ const SidebarLeft = () => {
       .map((item, index) => {
         const {path, link, IconType} = item;
         return (
-          <span className="icon-con" key={index}>
+          <span
+            className="icon-con"
+            key={index}
+            onClick={() => {
+              setDropDownOpen(false);
+              isSidebarOpen && dispatch(handleSidebar());
+            }}
+          >
             <Link to={path}>
               <IconType />
               {isSidebarOpen ? link : isDropDownOpen ? link : null}
@@ -186,7 +223,10 @@ const SidebarLeft = () => {
         <div className="img-con">
           <img src={logo} alt="Logo.png " />
           <span
-            onClick={() => dispatch(handleSidebar())}
+            onClick={() => {
+              dispatch(handleSidebar());
+              isProfileOpen && dispatch(closeProfile());
+            }}
             onBlur={() => dispatch(handleSidebar())}
             className="collapse-icon"
           >
@@ -214,6 +254,32 @@ const SidebarLeft = () => {
           </div>
         )}
 
+        {isSidebarOpen && window.innerWidth <= 1030 ? (
+          <span className="profile-img open">
+            <img
+              // onClick={() => dispatch(handleProfile())}
+              src={profileImage}
+              alt="user-profile"
+            />
+            <div className="text">
+              <p>{`${firstName} ${lastName}`}</p>
+              <p>{role}</p>
+            </div>
+          </span>
+        ) : (
+          <span className="profile-img">
+            <img
+              onClick={() => dispatch(handleProfile())}
+              src={profileImage}
+              alt="user-profile"
+            />
+            <span onClick={() => dispatch(handleProfile())}>
+              <FaChevronDown />
+            </span>
+          </span>
+        )}
+
+        {isProfileOpen && <ProfileTab />}
         <button onClick={() => setDropDownOpen(!isDropDownOpen)}>
           {isDropDownOpen ? <img src={CrossSvg} alt="cross" /> : <HiMenu />}
         </button>
