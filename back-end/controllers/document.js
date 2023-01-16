@@ -2,6 +2,12 @@ const Document = require("../models/Document");
 const {StatusCodes} = require("http-status-codes");
 const {BadRequest, NotFound, Duplicate} = require("../errors");
 
+const getAllDocuments = async (req, res) => {
+  const documents = await Document.find({});
+
+  res.status(StatusCodes.OK).json({documents});
+};
+
 const createDocument = async (req, res) => {
   const {name, description, type} = req.body;
   if (!name || !description || !type) {
@@ -53,6 +59,7 @@ const deleteDocument = async (req, res) => {
 };
 
 module.exports = {
+  getAllDocuments,
   createDocument,
   updateDocument,
   deleteDocument,

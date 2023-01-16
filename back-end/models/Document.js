@@ -5,7 +5,7 @@ const DocumentSchema = new mongoose.Schema({
     type: String,
     trim: true,
     required: [true, "Document needs a name."],
-    maxlength: 15,
+    maxlength: 20,
     unique: true,
   },
   description: {
