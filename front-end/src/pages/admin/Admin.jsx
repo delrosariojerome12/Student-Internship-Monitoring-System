@@ -1,19 +1,35 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Route, Routes, Navigate} from "react-router-dom";
 import {lazy, Suspense} from "react";
 import SidebarLeft from "../../components/dashboard/SidebarLeft";
 import SideBarRight from "../../components/dashboard/SidebarRight";
+import {useDispatch, useSelector} from "react-redux";
+import {handleGetDocuments} from "../../features/admin/document";
+import Bouncing from "../../components/loading/Bouncing";
+import ServerError from "../serverError";
 
 const Documents = lazy(() => import("./Documents"));
 
-const Admin = React.memo(({isSidebarOpen}) => {
+const Admin = React.memo(() => {
+  const {isLoading, isError} = useSelector((state) => state.document);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(handleGetDocuments());
+  }, []);
+
+  if (isLoading) {
+    return <Bouncing />;
+  }
+
+  if (isError) {
+    return <ServerError />;
+  }
+
   return (
-    <section
-      // style={isSidebarOpen ? { padding: "2rem 9rem 2rem 29rem" } : null}
-      className="dashboard"
-    >
+    <section className="dashboard">
       <SidebarLeft />
-      <Suspense fallback={<h2>Loading...</h2>}>
+      <Suspense fallback={<Bouncing />}>
         <Routes>
           <Route path="/" element={<h1>ADMIN</h1>} />
           <Route path="/documents" element={<Documents />} />
