@@ -126,7 +126,7 @@ const SidebarLeft = () => {
             key={index}
             onClick={() => {
               setDropDownOpen(false);
-              dispatch(handleSidebar());
+              isSidebarOpen && dispatch(handleSidebar());
             }}
           >
             <Link to={path}>
@@ -148,7 +148,8 @@ const SidebarLeft = () => {
             key={index}
             onClick={() => {
               setDropDownOpen(false);
-              dispatch(handleSidebar());
+              // dispatch(handleSidebar());
+              isSidebarOpen && dispatch(handleSidebar());
             }}
           >
             <Link to={path}>
@@ -171,7 +172,7 @@ const SidebarLeft = () => {
             key={index}
             onClick={() => {
               setDropDownOpen(false);
-              dispatch(handleSidebar());
+              isSidebarOpen && dispatch(handleSidebar());
             }}
           >
             <Link to={path}>
@@ -193,7 +194,7 @@ const SidebarLeft = () => {
             key={index}
             onClick={() => {
               setDropDownOpen(false);
-              dispatch(handleSidebar());
+              isSidebarOpen && dispatch(handleSidebar());
             }}
           >
             <Link to={path}>
