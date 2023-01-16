@@ -1,83 +1,30 @@
-import React from "react";
+import React, {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {GoSearch} from "react-icons/go";
+import {FaTrash} from "react-icons/fa";
+import Document from "../../components/admin/Document";
 
-import { GoSearch } from "react-icons/go";
-import { FaTrash } from "react-icons/fa";
-const Documents = () => {
+const Documents = React.memo(() => {
+  const {documents} = useSelector((state) => state.document);
+  const dispatch = useDispatch();
+
   return (
-    <section className="admin-documents">
-      <div className="create-modal">
-        <div className="folders">
-          <div className="folder-name">
-            <p>Folder Name</p>
-            <input type="text" />
-          </div>
-          <div className="subject">
-            <p>Subject</p>
-            <input type="text" />
-          </div>
-        </div>
-        {/* <div className="modal-btn"> */}
-        <button>Create</button>
-        {/* </div> */}
-      </div>
-
-      <div className="requirments-modal">
-        <div className="file-name">
-          <div className="requirements-name">
-            <p>Requirment's Name</p>
-            <input type="text" />
-          </div>
-          <div className="subject-req">
-            <p>Subject</p>
-            <input type="text" />
-          </div>
-        </div>
-        {/* <div className="modal-btn"> */}
-        <button>Create</button>
-        {/* </div> */}
-      </div>
-
-      <div className="delete-modal">
-        <div className="delete-icon">
-          <span>
-            <FaTrash />
-          </span>
-          <h3>Are you sure do want to delete?</h3>
-          <h5>You can't recover it once you delete it</h5>
-        </div>
-        <div className="delete-btn">
-          <button className="back">Back</button>
-          <button className="confirm">Confirm</button>
-        </div>
-      </div>
-
+    <section className="admin-document-page">
       <header>
-        <div className="search-box">
-          <span>
-            <GoSearch />
-          </span>
-          <input type="text" placeholder="Search" />
-        </div>
+        <h2>Documents</h2>
       </header>
-      <div className="documents-content">
-        <div className="inputs">
-          <input type="text" />
+      <div className="document-container">
+        <div className="document-control">
+          <button>Add Document</button>
         </div>
-        <div className="buttons">
-          <button className="create">Create</button>
-          <button className="edit">Edit</button>
-          <button className="delete">Delete</button>
-        </div>
-        <div className="files-container">
-          <div>
-            <span>
-              <FaTrash />
-            </span>
-          </div>
+        <div className="documents">
+          {documents.map((doc, index) => {
+            return <Document doc={doc} key={index} />;
+          })}
         </div>
       </div>
     </section>
   );
-};
+});
 
 export default Documents;
