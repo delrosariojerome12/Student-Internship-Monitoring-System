@@ -1,11 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
+import {FaTrash, FaEdit} from "react-icons/fa";
+const Document = React.memo(({doc}) => {
+  const {name, description, type} = doc;
 
-const Document = React.memo(({doc: {name, description, type}}) => {
   return (
-    <div className="document">
-      <p>Name: {name}</p>
-      <p>Description: {description}</p>
-      <p>Type: {type}</p>
+    <div className="document" onClick={() => console.log("Test")}>
+      <div className="icon-container">
+        <FaTrash />
+        <FaEdit />
+      </div>
+      <p>{name}</p>
+      {/* <p>Description: {description}</p> */}
+      {/* <p>Type: {type}</p> */}
     </div>
   );
 });

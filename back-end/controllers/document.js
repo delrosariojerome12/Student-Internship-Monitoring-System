@@ -9,8 +9,8 @@ const getAllDocuments = async (req, res) => {
 };
 
 const createDocument = async (req, res) => {
-  const {name, description, type} = req.body;
-  if (!name || !description || !type) {
+  const {name, description, format} = req.body;
+  if (!name || !description || !format) {
     throw new BadRequest("Document details must be provided.");
   }
 

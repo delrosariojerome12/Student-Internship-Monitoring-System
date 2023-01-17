@@ -11,7 +11,9 @@ import ServerError from "../serverError";
 const Documents = lazy(() => import("./Documents"));
 
 const Admin = React.memo(() => {
-  const {isLoading, isError} = useSelector((state) => state.document);
+  const {isLoading, isError, documents} = useSelector(
+    (state) => state.document
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {

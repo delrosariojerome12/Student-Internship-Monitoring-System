@@ -12,17 +12,25 @@ const DocumentSchema = new mongoose.Schema({
     type: String,
     trim: true,
     required: [true, "Document needs a description."],
-    maxlength: 50,
+    maxlength: 100,
     minlength: 10,
   },
-  type: {
+  format: {
     type: String,
     enum: {
       values: ["pdf", "docx", "image"],
-      message: `{VALUE} is not supported`,
+      message: `{VALUE} is not supported.`,
     },
     required: [true, "Document needs a type."],
   },
+  // purpose: {
+  //   type: String,
+  //   enum: {
+  //     values: [""],
+  //     message: `{VALUE} is not supported.`,
+  //   },
+  //   required: [true, "Document needs a purpose."],
+  // },
 });
 
 module.exports = mongoose.model("Document", DocumentSchema);
