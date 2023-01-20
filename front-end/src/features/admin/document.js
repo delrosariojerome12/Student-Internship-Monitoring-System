@@ -1,8 +1,9 @@
-import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
+import {createSlice, createAsyncThunk, current} from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
   documents: null,
+  selectedDocument: null,
   isLoading: false,
   isError: false,
 };
@@ -33,12 +34,44 @@ export const handleCreateDocument = createAsyncThunk(
     }
   }
 );
+export const handleDeleteDocument = createAsyncThunk(
+  "/documents/deleteDocument",
+  async (id, {rejectWithValue}) => {
+    try {
+      const url = `http://localhost:5000/document/deleteDocument/${id}`;
+      const {data} = await axios.delete(url);
+      return {data};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+export const handleUpdateDocument = createAsyncThunk(
+  "/documents/updateDocument",
+  async ({form, id}, {rejectWithValue}) => {
+    try {
+      const url = `http://localhost:5000/document/updateDocument/${id}`;
+      const {data: res} = await axios.patch(url, form);
+      return {res};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 
 export const documentReducer = createSlice({
   name: "document",
   initialState,
   reducers: {
-    handleDelete: (state) => {},
+    handleSelect: (state, {payload}) => {
+      const newDocuments = current(state.documents).filter(
+        (item) => item._id === payload
+      );
+      state.selectedDocument = newDocuments[0];
+      // console.log(state.selectedDocument);
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -68,10 +101,43 @@ export const documentReducer = createSlice({
       .addCase(handleCreateDocument.rejected, (state, action) => {
         state.isError = true;
         state.isLoading = false;
+      })
+      // delete
+      .addCase(handleDeleteDocument.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(handleDeleteDocument.fulfilled, (state, {payload}) => {
+        state.isLoading = false;
+        const {
+          data: {data},
+        } = payload;
+        state.documents = current(state.documents).filter(
+          (item) => item._id !== data._id
+        );
+      })
+      .addCase(handleDeleteDocument.rejected, (state, action) => {
+        state.isError = true;
+        state.isLoading = false;
+      })
+      // update
+      .addCase(handleUpdateDocument.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(handleUpdateDocument.fulfilled, (state, {payload: {res}}) => {
+        const {
+          data: {allDocuments},
+        } = res;
+        state.isLoading = false;
+        state.documents = allDocuments;
+        console.log(allDocuments);
+      })
+      .addCase(handleUpdateDocument.rejected, (state, action) => {
+        state.isError = true;
+        state.isLoading = false;
       });
   },
 });
 
-export const {handleDelete} = documentReducer.actions;
+export const {handleSelect} = documentReducer.actions;
 
 export default documentReducer.reducer;

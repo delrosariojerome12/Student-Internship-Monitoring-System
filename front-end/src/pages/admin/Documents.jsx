@@ -3,13 +3,35 @@ import {useDispatch, useSelector} from "react-redux";
 import {IconContext} from "react-icons";
 import Document from "../../components/admin/Document";
 import Select from "react-select";
-import {handleCreateDocument} from "../../features/admin/document";
+import {
+  handleCreateDocument,
+  handleDeleteDocument,
+  handleUpdateDocument,
+} from "../../features/admin/document";
+import NoDocumentSvg from "../../assets/img/waiting.svg";
 
+import {storage} from "../../Firebase";
+import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
+import {v4} from "uuid";
 const Documents = React.memo(() => {
-  const {documents} = useSelector((state) => state.document);
+  const {documents, selectedDocument} = useSelector((state) => state.document);
   const dispatch = useDispatch();
 
   const [form, setForm] = useState([
+    {
+      type: "file",
+      id: "sample-image",
+      forInput: "Sample Image",
+      value:
+        "https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg",
+      isError: false,
+      errorMessage: "",
+      isDisabled: false,
+      code: "sample",
+      minLength: 0,
+      name: "",
+      link: "",
+    },
     {
       type: "text",
       id: "document-name",
@@ -21,18 +43,6 @@ const Documents = React.memo(() => {
       code: "name",
       minLength: 5,
       maxLength: 20,
-    },
-    {
-      type: "textArea",
-      id: "document-description",
-      forInput: "Description",
-      value: "",
-      isError: false,
-      errorMessage: "Atleast 10 characters and max of 100",
-      isDisabled: false,
-      code: "description",
-      minLength: 10,
-      maxLength: 100,
     },
     {
       type: "select",
@@ -60,8 +70,24 @@ const Documents = React.memo(() => {
         },
       ],
     },
+    {
+      type: "textArea",
+      id: "document-description",
+      forInput: "Description",
+      value: "",
+      isError: false,
+      errorMessage: "Atleast 10 characters and max of 100",
+      isDisabled: false,
+      code: "description",
+      minLength: 10,
+      maxLength: 100,
+    },
   ]);
+  const [isDocumentOpen, setDocumentOpen] = useState(false);
   const [isAddDocumentOpen, setAddDocumentOpen] = useState(false);
+  const [isDeleteDocumentOpen, setDeleteDocumentOpen] = useState(false);
+  const [isEditDocumentOpen, setEditDocumentOpen] = useState(false);
+
   const [isComplete, setComplete] = useState(false);
 
   const checkCompletion = () => {
@@ -75,14 +101,28 @@ const Documents = React.memo(() => {
     const lengthForms = form.length;
 
     if (numOfErrors === 0 && numOfValues === lengthForms) {
-      console.log("complete");
       setComplete(true);
     } else {
       setComplete(false);
-      console.log("not complete");
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  };
+
+  const handleDeleteModal = () => {
+    setDeleteDocumentOpen(true);
+  };
+  const handleEditModal = () => {
+    setEditDocumentOpen(true);
+  };
+  const clearValue = () => {
+    const newForm = form.map((item) => {
+      item.type === "file"
+        ? (item.value =
+            "https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg")
+        : (item.value = "");
+    });
+    setForm(newForm);
   };
 
   const handleOnChange = (value, index) => {
@@ -90,6 +130,28 @@ const Documents = React.memo(() => {
     const inputField = newForm[index].code;
 
     switch (inputField) {
+      case "sample":
+        // add catch error here
+        // if (schoolDetails) {
+        //   const {
+        //     validID: {name},
+        //   } = schoolDetails;
+        //   deleteDuplicateFirebase(name);
+        // }
+        const imageName = `images/documents/sample/${v4() + value.name}`;
+        const imageRef = ref(storage, imageName);
+
+        uploadBytes(imageRef, value).then((res) => {
+          getDownloadURL(res.ref).then((url) => {
+            newForm[index].link = url;
+            newForm[index].value = url;
+            newForm[index].name = imageName;
+            newForm[index].isDisabled = true;
+            setForm(newForm);
+            checkCompletion();
+          });
+        });
+        return;
       case "name":
         if (value.length <= 2) {
           newForm[index].isError = true;
@@ -142,7 +204,7 @@ const Documents = React.memo(() => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(handleCreateDocument(convertForm(form)));
-    // console.log(convertForm(form));
+    clearValue();
   };
 
   const customStyle = {
@@ -165,8 +227,32 @@ const Documents = React.memo(() => {
 
   const renderForm = () => {
     return form.map((item, index) => {
-      const {forInput, value, type, minLength, maxLength, id} = item;
+      const {forInput, value, type, minLength, maxLength, id, isDisabled} =
+        item;
       switch (type) {
+        case "file":
+          return (
+            <div key={index} className="img-input">
+              <label htmlFor={id}>
+                <div className="profile-con">
+                  <img src={value} alt="profile" />
+                </div>
+                {value.includes("firebase") ? (
+                  <p>Sample Added</p>
+                ) : (
+                  <p>Add Sample</p>
+                )}
+                <input
+                  disabled={isDisabled}
+                  type="file"
+                  name={forInput}
+                  id={id}
+                  accept="image/*"
+                  onChange={(e) => handleOnChange(e.target.files[0], index)}
+                />
+              </label>
+            </div>
+          );
         case "text":
           return (
             <div className="input-contain" key={index}>
@@ -252,10 +338,10 @@ const Documents = React.memo(() => {
           <>
             <div className="overlay"></div>
             <div className="add-document-modal">
-              <header>
+              <form onSubmit={handleSubmit}>
                 <h4>Add Document</h4>
-              </header>
-              <form onSubmit={handleSubmit}>{renderForm()}</form>
+                {renderForm()}
+              </form>
               <div className="btn-container">
                 <button onClick={() => setAddDocumentOpen(false)}>
                   Cancel
@@ -275,6 +361,59 @@ const Documents = React.memo(() => {
             </div>
           </>
         )}
+        {isDeleteDocumentOpen && (
+          <>
+            <div className="overlay"></div>
+            <div className="delete-document-modal">
+              <h4>You are about to delete this document.</h4>
+              <h3>Are you sure?</h3>
+              <button onClick={() => setDeleteDocumentOpen(false)}>
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  setDeleteDocumentOpen(false);
+                  dispatch(handleDeleteDocument(selectedDocument._id));
+                }}
+              >
+                Confirm
+              </button>
+            </div>
+          </>
+        )}
+        {isEditDocumentOpen && (
+          <>
+            <div className="overlay"></div>
+            <div className="edit-document-modal">
+              <form>
+                <h4>Edit Document</h4>
+                {renderForm()}
+              </form>
+              <div className="btn-container">
+                <button
+                  onClick={() => {
+                    setEditDocumentOpen(false);
+                  }}
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={() => {
+                    dispatch(
+                      handleUpdateDocument({
+                        form: convertForm(form),
+                        id: selectedDocument._id,
+                      })
+                    );
+                    setEditDocumentOpen(false);
+                  }}
+                >
+                  Confirm
+                </button>
+              </div>
+            </div>
+          </>
+        )}
         <header>
           <h2>Documents</h2>
         </header>
@@ -284,11 +423,25 @@ const Documents = React.memo(() => {
               Add Document
             </button>
           </div>
-          <div className="documents">
-            {documents.map((doc, index) => {
-              return <Document doc={doc} key={index} />;
-            })}
-          </div>
+          {documents.length > 0 ? (
+            <div className="documents">
+              {documents.map((doc, index) => {
+                return (
+                  <Document
+                    doc={doc}
+                    key={index}
+                    handleDeleteModal={handleDeleteModal}
+                    handleEditModal={handleEditModal}
+                  />
+                );
+              })}
+            </div>
+          ) : (
+            <div className="no-document">
+              <h3>No existing document at the moment.</h3>
+              <img src={NoDocumentSvg} alt="no-Document" />
+            </div>
+          )}
         </div>
       </IconContext.Provider>
     </section>

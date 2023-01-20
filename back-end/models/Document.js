@@ -23,6 +23,17 @@ const DocumentSchema = new mongoose.Schema({
     },
     required: [true, "Document needs a type."],
   },
+  sample: {
+    type: Object,
+    name: {
+      type: String,
+    },
+    link: {
+      type: String,
+      default:
+        "https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101028/pavelstasevich181101028.jpg?ver=6",
+    },
+  },
   // purpose: {
   //   type: String,
   //   enum: {

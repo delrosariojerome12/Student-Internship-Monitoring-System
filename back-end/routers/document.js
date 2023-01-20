@@ -10,7 +10,7 @@ const {
 
 router.route("/getAllDocuments").get(getAllDocuments);
 router.route("/createDocument").post(createDocument);
-router.route("/updateDocument/").patch(updateDocument);
-router.route("/deleteDocument/").delete(deleteDocument);
+router.route("/updateDocument/:id").patch(updateDocument);
+router.route("/deleteDocument/:id").delete(deleteDocument);
 
 module.exports = router;
