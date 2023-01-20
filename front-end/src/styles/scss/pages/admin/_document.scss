@@ -213,6 +213,16 @@
       }
     }
   }
+  .document-modal {
+    @extend .add-document-modal;
+    height: 50rem;
+    .content {
+      img {
+        height: 10rem;
+        width: 10rem;
+      }
+    }
+  }
   .delete-document-modal {
     @extend .add-document-modal;
   }

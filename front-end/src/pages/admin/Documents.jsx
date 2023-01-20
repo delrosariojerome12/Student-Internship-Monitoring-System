@@ -109,6 +109,9 @@ const Documents = React.memo(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   };
 
+  const handleDocumentModal = () => {
+    setDocumentOpen(true);
+  };
   const handleDeleteModal = () => {
     setDeleteDocumentOpen(true);
   };
@@ -334,6 +337,22 @@ const Documents = React.memo(() => {
   return (
     <section className="admin-document-page">
       <IconContext.Provider value={{className: "icon"}}>
+        {isDocumentOpen && (
+          <>
+            <div className="overlay"></div>
+            <div className="document-modal">
+              <div className="content">
+                <img src={selectedDocument.sample} alt="sample document" />
+                <p>Document: {selectedDocument.name}</p>
+                <p>Description{selectedDocument.description}</p>
+                <p>Format: {selectedDocument.format}</p>
+              </div>
+              <div className="btn-container">
+                <button onClick={() => setDocumentOpen(false)}>Cancel</button>
+              </div>
+            </div>
+          </>
+        )}
         {isAddDocumentOpen && (
           <>
             <div className="overlay"></div>
@@ -430,6 +449,7 @@ const Documents = React.memo(() => {
                   <Document
                     doc={doc}
                     key={index}
+                    handleDocumentModal={handleDocumentModal}
                     handleDeleteModal={handleDeleteModal}
                     handleEditModal={handleEditModal}
                   />
