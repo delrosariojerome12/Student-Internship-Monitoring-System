@@ -348,7 +348,7 @@ const Documents = React.memo(() => {
                 <p>Format: {selectedDocument.format}</p>
               </div>
               <div className="btn-container">
-                <button onClick={() => setDocumentOpen(false)}>Cancel</button>
+                <button onClick={() => setDocumentOpen(false)}>Close</button>
               </div>
             </div>
           </>
