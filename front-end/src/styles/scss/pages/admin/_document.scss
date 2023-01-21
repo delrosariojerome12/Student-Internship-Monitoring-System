@@ -3,24 +3,362 @@
 
 .admin-document-page {
   display: grid;
-  grid-template-rows: 12vh 1fr;
+  grid-template-rows: 8vh 1fr;
   gap: 1rem;
-  & > * {
-    border: solid 1px #fff;
+  // & > * {
+  //   border: solid 1px #fff;
+  // }
+  .overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(48, 47, 47, 0.753);
+    position: absolute;
+    filter: blur(20px);
+    top: 0%;
+    left: 0%;
+    z-index: 6;
+  }
+  .add-document-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    // height: 40rem;
+    z-index: 7;
+    width: 50rem;
+    border-radius: 1rem;
+    padding: 2rem;
+    display: grid;
+    grid-template-rows: auto 4rem;
+    gap: 1rem;
+    // background-color: #d1d1d1;
+
+    .btn-container {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+      button {
+        padding: 1rem 2rem;
+        outline: none;
+        border: none;
+        border-radius: 1rem;
+        transition: all 0.2s linear;
+        font-weight: 600;
+        &:first-child:hover {
+          background-color: $red-primary-color;
+          color: #fff;
+        }
+        &:last-child:hover {
+          background-color: $primary-bg-color;
+          color: #fff;
+        }
+      }
+    }
+    form {
+      display: grid;
+      grid-template-columns: 60% 40%;
+      // gap: 1rem;
+      row-gap: 1.5rem;
+      grid-template-rows: 9.5rem repeat(2, 5rem) 8rem;
+
+      & > *:nth-child(1) {
+        // grid-column: 1/3;
+        align-self: center;
+      }
+      & > *:nth-child(3) {
+        grid-column: 1/3;
+        align-self: center;
+      }
+      & > *:nth-child(4) {
+        grid-column: 1/3;
+      }
+      & > *:nth-child(5) {
+        grid-column: 1/3;
+      }
+      .img-input {
+        display: flex;
+        justify-content: flex-end;
+        label {
+          p {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            .icons {
+              color: green;
+            }
+          }
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          cursor: pointer;
+          font-size: 1.6rem;
+          input[type="file"] {
+            display: none;
+          }
+          .profile-con {
+            border-radius: 1rem;
+            border: solid 1px #000;
+            height: 7rem;
+            width: 7rem;
+            img {
+              height: 100%;
+              width: 100%;
+              border-radius: 1rem;
+            }
+          }
+        }
+      }
+      .input-contain {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        // border-radius: 0.5rem;
+        // justify-content: center;
+        width: fit-content;
+        gap: 0.5rem;
+        width: 100%;
+
+        .error-message {
+          font-size: 1.4rem;
+          color: red;
+        }
+
+        .placeholder-container {
+          position: absolute;
+          top: 0%;
+          left: 0rem;
+          height: 4.5rem;
+          width: 100%;
+          pointer-events: none;
+        }
+
+        input {
+          width: 100%;
+          height: 5rem;
+          border: solid 3px transparent;
+          outline: solid 1px #8b8b8b;
+          border-radius: 0.5rem;
+          padding: 1.1rem 3.5rem 1.1rem 2rem;
+          letter-spacing: 2px;
+          transition: all 0.3s ease-in-out;
+          &:focus {
+            border: solid 3px $primary-bg-color;
+            outline: none;
+          }
+
+          &:focus + .placeholder-container .placeholder-text {
+            top: 0%;
+            left: 0%;
+            background-color: #fff;
+            font-size: 1.1rem;
+            color: black;
+            scale: 0.8;
+          }
+        }
+
+        .placeholder-text {
+          position: absolute;
+          transition: all 0.2s ease-in-out;
+          pointer-events: none;
+          top: 50%;
+          left: 5%;
+          transform: translate(0%, -50%);
+          &:nth-child(1) {
+            left: 2% !important;
+          }
+          .text {
+            font-size: 1.4rem;
+            padding: 0 0.5rem;
+            background-color: transparent;
+            color: black;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+          }
+        }
+        .active {
+          top: 0%;
+          left: 0%;
+          background-color: #fff;
+          font-size: 1.1rem;
+          border-color: #8b8b8b;
+          scale: 0.8;
+        }
+      }
+
+      textarea {
+        resize: none;
+        height: 100%;
+        width: 100%;
+        border: solid 3px transparent;
+        outline: solid 1px #8b8b8b;
+        border-radius: 0.5rem;
+        padding: 1.1rem 3.5rem 1.1rem 2rem;
+        letter-spacing: 2px;
+        transition: all 0.3s ease-in-out;
+        &:focus {
+          border: solid 3px $primary-bg-color;
+          outline: none;
+        }
+
+        &:focus + .placeholder-container .placeholder-text {
+          top: 0%;
+          left: 0%;
+          background-color: #fff;
+          font-size: 1.1rem;
+          color: black;
+          scale: 0.8;
+        }
+      }
+    }
+  }
+  .document-modal {
+    @extend .add-document-modal;
+    height: 50rem;
+    .content {
+      display: grid;
+      grid-template-columns: 65% 35%;
+      & > * {
+        align-self: center;
+      }
+      & > *:nth-child(3) {
+        grid-column: 1/3;
+      }
+      & > p:last-child {
+        grid-column: 1/2;
+      }
+      img {
+        height: 15rem;
+        width: 15rem;
+        cursor: pointer;
+        grid-column: 2/3;
+        margin: auto;
+      }
+    }
+  }
+  .delete-document-modal {
+    @extend .add-document-modal;
+    grid-template-rows: auto auto 4rem;
+    height: 20rem;
+    .btn-container {
+      button {
+        &:first-child:hover {
+          background-color: $primary-bg-color;
+          color: #fff;
+        }
+        &:last-child:hover {
+          background-color: $red-primary-color;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .edit-document-modal {
+    @extend .add-document-modal;
+  }
+
+  & > header {
+    background-color: $primary-bg-color-landing;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 1rem;
+    h2 {
+      color: #fff;
+    }
   }
 
   .document-container {
     display: grid;
-    grid-template-rows: 5rem 1fr;
+    grid-template-rows: 7rem 1fr;
     gap: 1rem;
-    & > * {
-      border: solid 1px #fff;
+    // & > * {
+    //   border: solid 1px #fff;
+    // }
+    .document-control {
+      display: flex;
+      padding: 1rem;
+      background-color: $primary-bg-color-landing;
+      border-radius: 1rem;
+
+      button {
+        background-color: #d9d9d9;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 1rem 2rem;
+        transition: all 0.2s linear;
+        font-weight: 600;
+        &:hover {
+          background-color: $primary-bg-color;
+          color: #fff;
+          border-radius: 1rem;
+        }
+      }
     }
     .documents {
       display: grid;
+      grid-template-columns: repeat(auto-fill, 24rem);
+      grid-auto-rows: 12rem;
+      gap: 1rem;
+      padding: 1rem;
+      // background-color: #fff;
+      background-color: $primary-bg-color-landing;
+      border-radius: 1rem;
+      // word-break: break-all;
 
       .document {
-        border: solid 1px #fff;
+        background-color: #fff;
+        border-radius: 1rem;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s linear;
+        font-weight: 600;
+        position: relative;
+        word-break: break-all;
+        p {
+          font-size: 1.6rem;
+        }
+
+        .icon-container {
+          position: absolute;
+          display: flex;
+          gap: 1rem;
+          top: 1rem;
+          right: 1rem;
+          .icon {
+            transition: all 0.2s linear;
+            &:first-child:hover {
+              color: $red-primary-color;
+            }
+            &:last-child:hover {
+              color: lighten($color: $primary-feature-bg, $amount: 10);
+            }
+          }
+        }
+        &:hover {
+          background-color: $primary-compliment-landing;
+          color: #fff;
+          border-radius: 0;
+        }
+      }
+    }
+    .no-document {
+      background-color: $primary-bg-color-landing;
+      border-radius: 1rem;
+      color: #fff;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+      img {
+        height: 50rem;
       }
     }
   }

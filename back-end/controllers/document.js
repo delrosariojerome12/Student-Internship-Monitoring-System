@@ -9,8 +9,9 @@ const getAllDocuments = async (req, res) => {
 };
 
 const createDocument = async (req, res) => {
-  const {name, description, type} = req.body;
-  if (!name || !description || !type) {
+  const {name, description, format} = req.body;
+
+  if (!name || !description || !format) {
     throw new BadRequest("Document details must be provided.");
   }
 
@@ -28,11 +29,12 @@ const createDocument = async (req, res) => {
 };
 
 const updateDocument = async (req, res) => {
-  const {name, description, type, id} = req.body;
+  const {name, description, type} = req.body;
+  const {id} = req.params;
 
-  if (!name || !description || !type || !id) {
-    throw new BadRequest("Document details must be provided.");
-  }
+  // if (!name || !description || !type || !id) {
+  // throw new BadRequest("Document details must be provided.");
+  // }
 
   const documentExist = await Document.findOne({_id: id});
 
@@ -44,17 +46,28 @@ const updateDocument = async (req, res) => {
     runValidators: true,
   });
 
+  const allDocuments = await Document.find({});
+
   res.status(StatusCodes.OK).json({
-    document,
+    success: true,
+    message: "Document Updated Successfully",
+    data: {document, allDocuments},
   });
 };
 
 const deleteDocument = async (req, res) => {
-  const {id} = req.body;
+  const {id} = req.params;
+  console.log(id);
   const document = await Document.findOneAndDelete({_id: id});
 
+  if (!document) {
+    throw new NotFound("Document not found");
+  }
+
   res.status(StatusCodes.OK).json({
-    document,
+    success: true,
+    message: "Document Deleted Successfully",
+    data: document,
   });
 };
 
