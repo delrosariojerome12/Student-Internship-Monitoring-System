@@ -3,6 +3,8 @@ import Intern from "../../components/coordinator/Intern";
 import { useSelector, useDispatch } from "react-redux";
 import internWaiting from "../../assets/img/waiting.svg";
 
+import { BiSearchAlt } from "react-icons/bi";
+
 const Interns = () => {
   const { interns, isError } = useSelector((state) => state.intern);
   const [searchIntern, setSearchIntern] = useState("");
@@ -76,6 +78,9 @@ const Interns = () => {
         </div>
         <div className="right-side">
           <form action="" onSubmit={handleSubmitSearchIntern}>
+            <span>
+              <BiSearchAlt />
+            </span>
             <input
               placeholder="Search"
               type="text"
