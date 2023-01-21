@@ -17,12 +17,20 @@ const Document = React.memo(
         }}
       >
         <div className="icon-container">
-          <FaTrash onClick={handleDeleteModal} />
-          <FaEdit onClick={handleEditModal} />
+          <FaTrash
+            onClick={(e) => {
+              dispatch(handleSelect(_id));
+              handleDeleteModal(e);
+            }}
+          />
+          <FaEdit
+            onClick={(e) => {
+              dispatch(handleSelect(_id));
+              handleEditModal(e);
+            }}
+          />
         </div>
         <p>{name}</p>
-        {/* <p>Description: {description}</p> */}
-        {/* <p>Type: {type}</p> */}
       </div>
     );
   }
