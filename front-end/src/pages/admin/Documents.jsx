@@ -87,6 +87,7 @@ const Documents = React.memo(() => {
   const [isAddDocumentOpen, setAddDocumentOpen] = useState(false);
   const [isDeleteDocumentOpen, setDeleteDocumentOpen] = useState(false);
   const [isEditDocumentOpen, setEditDocumentOpen] = useState(false);
+  const [isSampleViewed, setSampleViewed] = useState(false);
 
   const [isComplete, setComplete] = useState(false);
 
@@ -122,10 +123,13 @@ const Documents = React.memo(() => {
   };
   const clearValue = () => {
     const newForm = form.map((item) => {
-      item.type === "file"
-        ? (item.value =
-            "https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg")
-        : (item.value = "");
+      return item.type === "file"
+        ? {
+            ...item,
+            value:
+              "https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg",
+          }
+        : {...item, value: ""};
     });
     setForm(newForm);
   };
@@ -345,7 +349,11 @@ const Documents = React.memo(() => {
             <div className="document-modal">
               <div className="content">
                 <h4>Document: {selectedDocument.name}</h4>
-                <img src={selectedDocument.sample} alt="sample document" />
+                <img
+                  onClick={() => setSampleViewed(true)}
+                  src={selectedDocument.sample}
+                  alt="sample document"
+                />
                 <p>Description: {selectedDocument.description}</p>
                 <p>Format: {selectedDocument.format}</p>
               </div>
@@ -355,16 +363,35 @@ const Documents = React.memo(() => {
             </div>
           </>
         )}
+        {isSampleViewed && (
+          <>
+            <div
+              className="overlay"
+              onClick={() => setSampleViewed(false)}
+            ></div>
+            <div className="sample-view-container">
+              <img src={selectedDocument.sample} alt="sample document" />
+            </div>
+          </>
+        )}
         {isAddDocumentOpen && (
           <>
-            <div className="overlay"></div>
+            <div
+              className="overlay"
+              onClick={() => setAddDocumentOpen(false)}
+            ></div>
             <div className="add-document-modal">
               <form onSubmit={handleSubmit}>
                 <h4>Add Document</h4>
                 {renderForm()}
               </form>
               <div className="btn-container">
-                <button onClick={() => setAddDocumentOpen(false)}>
+                <button
+                  onClick={() => {
+                    setAddDocumentOpen(false);
+                    clearValue();
+                  }}
+                >
                   Cancel
                 </button>
                 <button
@@ -384,12 +411,19 @@ const Documents = React.memo(() => {
         )}
         {isDeleteDocumentOpen && (
           <>
-            <div className="overlay"></div>
+            <div
+              className="overlay"
+              onClick={() => setDeleteDocumentOpen(false)}
+            ></div>
             <div className="delete-document-modal">
               <h4>You are about to delete this document.</h4>
               <h3>Are you sure?</h3>
               <div className="btn-container">
-                <button onClick={() => setDeleteDocumentOpen(false)}>
+                <button
+                  onClick={() => {
+                    setDeleteDocumentOpen(false);
+                  }}
+                >
                   Cancel
                 </button>
                 <button
@@ -406,7 +440,10 @@ const Documents = React.memo(() => {
         )}
         {isEditDocumentOpen && (
           <>
-            <div className="overlay"></div>
+            <div
+              className="overlay"
+              onClick={() => setEditDocumentOpen(false)}
+            ></div>
             <div className="edit-document-modal">
               <form>
                 <h4>Edit Document</h4>

@@ -237,6 +237,16 @@
       }
     }
   }
+  .sample-view-container {
+    @extend .add-document-modal;
+    display: flex;
+    height: 92vh;
+    width: 60rem;
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
   .delete-document-modal {
     @extend .add-document-modal;
     grid-template-rows: auto auto 4rem;
