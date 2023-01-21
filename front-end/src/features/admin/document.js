@@ -70,7 +70,6 @@ export const documentReducer = createSlice({
         (item) => item._id === payload
       );
       state.selectedDocument = newDocuments[0];
-      // console.log(state.selectedDocument);
     },
   },
   extraReducers: (builder) => {
