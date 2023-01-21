@@ -103,11 +103,8 @@
             padding: 2rem;
             gap: 1rem;
             grid-template-rows: auto auto;
-            // height: 80%;
-            // width: 80%;
-            height: 80vh;
-            width: 80vw;
-            overflow-y: auto;
+            height: auto;
+
             & > * {
               border-radius: 1rem;
 
@@ -253,12 +250,13 @@
         .approval-intern {
           .overlay {
             .intern-modal {
-              height: 90vh;
-              width: 90vw;
-              // overflow-y: auto;
-              // height: auto;
               grid-template-rows: auto auto;
               padding: 1rem;
+              overflow-y: auto;
+              height: 90vh;
+              width: 90vw;
+
+              // height: auto;
               .sent-details {
                 grid-template-columns: 1fr 1fr 1fr 1fr;
                 grid-template-rows: auto auto auto;

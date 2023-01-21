@@ -199,7 +199,7 @@ const DashboardApprovals = React.memo(({ intern, index }) => {
 
         <div className="approvals-btn">
           <button className="view-more" onClick={handleDetails}>
-            View More Metails
+            View More Details
           </button>
           {/* <button className="mark-done">Mark as done</button> */}
         </div>
