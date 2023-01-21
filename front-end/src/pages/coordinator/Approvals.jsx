@@ -2,6 +2,8 @@ import React from "react";
 import Approval from "../../components/coordinator/ApprovalIntern";
 import { useSelector } from "react-redux";
 import ApprovalWaiting from "../../assets/img/waiting.svg";
+import { BiSearchAlt } from "react-icons/bi";
+
 // import {useEffect} from "react";
 
 // import {GoSearch} from "react-icons/go";
@@ -36,8 +38,19 @@ const Approvals = React.memo(() => {
 
   return (
     <section className="approvals">
-      <header>Approvals</header>
-      <div className="approvals-intern-container">{renderApprovals()}</div>
+      <header>
+        <h2>Approvals</h2>
+        <div className="search">
+          <span>
+            <BiSearchAlt />
+          </span>
+          <input placeholder="Search" type="text" />
+        </div>
+      </header>
+      <div className="approval-container">
+        <h3>Bachelor of Science in Information Technology</h3>
+        <div className="approvals-intern-container">{renderApprovals()}</div>
+      </div>
     </section>
   );
 });

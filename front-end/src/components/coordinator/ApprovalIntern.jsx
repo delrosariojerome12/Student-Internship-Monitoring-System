@@ -82,62 +82,68 @@ const ApprovalIntern = React.memo(({ intern, index }) => {
         <div className="overlay">
           <div className="intern-modal">
             <div className="sent-details">
-              <img src={link} id="valid-id" alt="student image" />
+              <div className="img-container">
+                <img src={link} alt="" />
+              </div>
 
-              <div className="student-details">
-                <h3>Student Details</h3>
+              <div className="student-details-container">
+                <div className="student-details">
+                  <h4>Student Details</h4>
+                  <p>
+                    <b>Program: </b>
+                    {program}
+                  </p>
+                  <p>
+                    <b>Required Hours: </b>
+                    {requiredHours}
+                  </p>
+                  <p>
+                    <b>Email: </b>
+                    {email}
+                  </p>
+                  <p>
+                    <b>Contact Number: </b>
+                    {studentContact}
+                  </p>
+                </div>
+              </div>
+              <div className="schedule-details-container">
+                <h4>Schedule Details</h4>
                 <p>
-                  <b>Program: </b> {program}
+                  <b>Schedule Type: </b>
+                  {scheduleType}
                 </p>
                 <p>
-                  <b>Required Hours: </b> {requiredHours}
+                  <b>Days: </b>
+                  {scheduledDays}
+                </p>
+                <p>
+                  <b>Time: </b>
+                  {`${timeInSchedule} - ${timeOutSchedule}`}
+                </p>
+              </div>
+              <div className="internship-details-container">
+                <h4>Internship Details</h4>
+                <p>
+                  <b>Type of Work: </b>
+                  {typeOfWork}
+                </p>
+                <p>
+                  <b>Company: </b>
+                  {companyName}
+                </p>
+                <p>
+                  <b>Address: </b>
+                  {companyAddress}
+                </p>
+                <p>
+                  <b>Supervisor: </b>
+                  {supervisor}
                 </p>
                 <p>
                   <b>Contact: </b>
-                  {studentContact}
+                  {supervisorContact}
                 </p>
-                <p>
-                  <b>Email: </b>
-                  {email}
-                </p>
-              </div>
-            </div>
-
-            <div className="scedule-internship-details">
-              <div className="schedule-details">
-                <h3>Schedule Details</h3>
-                <div className="shced-paragraph">
-                  <p>
-                    <b>Schedule Type:</b> {scheduleType}
-                  </p>
-                  <p>
-                    <b>Days: </b> {scheduledDays}
-                  </p>
-                  <p>
-                    <b>Time:</b> {`${timeInSchedule} - ${timeOutSchedule}`}
-                  </p>
-                </div>
-              </div>
-
-              <div className="internship-details">
-                <h3>Internship Details</h3>
-                <div className="intern-paragraph">
-                  <p>
-                    <b>Company:</b> {companyName}
-                  </p>
-                  <p>
-                    <b>Address:</b> {companyAddress}
-                  </p>
-                  <p>
-                    <b>Supervisor:</b> {supervisor}
-                  </p>
-                  <p>
-                    <b>Contact:</b> {supervisorContact}
-                  </p>
-                  <p>
-                    <b>Type of Work:</b> {typeOfWork}
-                  </p>
-                </div>
               </div>
             </div>
             <div className="feedback-container">
@@ -185,13 +191,13 @@ const ApprovalIntern = React.memo(({ intern, index }) => {
       </div>
       <div className="intern-right">
         <div className="intern-details">
-          <p>
+          <p className="fullName">
             {firstName} {lastName}
           </p>
-          <p>{program}</p>
+          <p className="program">{program}</p>
         </div>
         <button className="view" onClick={handleDetails}>
-          View Sent Details
+          View More Details
         </button>
       </div>
     </section>
