@@ -2974,22 +2974,37 @@ button {
 }
 .dashboard .admin-document-page .document-modal .content, .dashboard-active .admin-document-page .document-modal .content {
   display: grid;
-  grid-template-columns: 65% 35%;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 17rem auto;
+  gap: 1rem;
+  background-color: #fff;
 }
 .dashboard .admin-document-page .document-modal .content > *, .dashboard-active .admin-document-page .document-modal .content > * {
-  align-self: center;
+  background-color: #efefef;
+  border-radius: 1rem;
+  padding: 2rem;
 }
-.dashboard .admin-document-page .document-modal .content > *:nth-child(3), .dashboard-active .admin-document-page .document-modal .content > *:nth-child(3) {
+.dashboard .admin-document-page .document-modal .content .document-name, .dashboard-active .admin-document-page .document-modal .content .document-name {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 3rem 2rem 2rem 2rem;
+}
+.dashboard .admin-document-page .document-modal .content .desc-container, .dashboard-active .admin-document-page .document-modal .content .desc-container {
   grid-column: 1/3;
 }
-.dashboard .admin-document-page .document-modal .content > p:last-child, .dashboard-active .admin-document-page .document-modal .content > p:last-child {
-  grid-column: 1/2;
+.dashboard .admin-document-page .document-modal .content .img-container, .dashboard-active .admin-document-page .document-modal .content .img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.dashboard .admin-document-page .document-modal .content img, .dashboard-active .admin-document-page .document-modal .content img {
-  height: 15rem;
-  width: 15rem;
+.dashboard .admin-document-page .document-modal .content .img-container img, .dashboard-active .admin-document-page .document-modal .content .img-container img {
+  height: 12rem;
+  width: 12rem;
   cursor: pointer;
   grid-column: 2/3;
+}
+.dashboard .admin-document-page .document-modal .btn-container, .dashboard-active .admin-document-page .document-modal .btn-container {
   margin: auto;
 }
 .dashboard .admin-document-page .sample-view-container, .dashboard-active .admin-document-page .sample-view-container {

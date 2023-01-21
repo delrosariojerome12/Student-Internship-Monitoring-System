@@ -13,6 +13,8 @@ import NoDocumentSvg from "../../assets/img/waiting.svg";
 import {storage} from "../../Firebase";
 import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
 import {v4} from "uuid";
+import {useEffect} from "react";
+
 const Documents = React.memo(() => {
   const {documents, selectedDocument} = useSelector((state) => state.document);
   const dispatch = useDispatch();
@@ -117,6 +119,7 @@ const Documents = React.memo(() => {
     e.stopPropagation();
     setDeleteDocumentOpen(true);
   };
+
   const handleEditModal = (e) => {
     e.stopPropagation();
     setEditDocumentOpen(true);
@@ -316,6 +319,13 @@ const Documents = React.memo(() => {
           const list = options.map((opt) => opt);
           return (
             <Select
+              defaultValue={
+                selectedDocument &&
+                isEditDocumentOpen && {
+                  label: selectedDocument.format,
+                  value: selectedDocument.format,
+                }
+              }
               tabIndex={-1}
               options={list}
               styles={customStyle}
@@ -340,6 +350,10 @@ const Documents = React.memo(() => {
     });
   };
 
+  useEffect(() => {
+    console.log("testing");
+  }, [selectedDocument]);
+
   return (
     <section className="admin-document-page">
       <IconContext.Provider value={{className: "icon"}}>
@@ -348,14 +362,21 @@ const Documents = React.memo(() => {
             <div className="overlay"></div>
             <div className="document-modal">
               <div className="content">
-                <h4>Document: {selectedDocument.name}</h4>
-                <img
-                  onClick={() => setSampleViewed(true)}
-                  src={selectedDocument.sample}
-                  alt="sample document"
-                />
-                <p>Description: {selectedDocument.description}</p>
-                <p>Format: {selectedDocument.format}</p>
+                <div className="document-name">
+                  <h4>Document</h4>
+                  <p>{selectedDocument.name}</p>
+                </div>
+                <div className="img-container">
+                  <img
+                    onClick={() => setSampleViewed(true)}
+                    src={selectedDocument.sample}
+                    alt="sample document"
+                  />
+                </div>
+                <div className="desc-container">
+                  <p>Description: {selectedDocument.description}</p>
+                  <p>Format: {selectedDocument.format}</p>
+                </div>
               </div>
               <div className="btn-container">
                 <button onClick={() => setDocumentOpen(false)}>Close</button>
@@ -438,6 +459,8 @@ const Documents = React.memo(() => {
             </div>
           </>
         )}
+
+        {console.log(selectedDocument)}
         {isEditDocumentOpen && (
           <>
             <div
