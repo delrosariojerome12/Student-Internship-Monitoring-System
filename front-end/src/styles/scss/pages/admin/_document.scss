@@ -217,14 +217,42 @@
     @extend .add-document-modal;
     height: 50rem;
     .content {
+      display: grid;
+      grid-template-columns: 65% 35%;
+      & > * {
+        align-self: center;
+      }
+      & > *:nth-child(3) {
+        grid-column: 1/3;
+      }
+      & > p:last-child {
+        grid-column: 1/2;
+      }
       img {
-        height: 10rem;
-        width: 10rem;
+        height: 15rem;
+        width: 15rem;
+        cursor: pointer;
+        grid-column: 2/3;
+        margin: auto;
       }
     }
   }
   .delete-document-modal {
     @extend .add-document-modal;
+    grid-template-rows: auto auto 4rem;
+    height: 20rem;
+    .btn-container {
+      button {
+        &:first-child:hover {
+          background-color: $primary-bg-color;
+          color: #fff;
+        }
+        &:last-child:hover {
+          background-color: $red-primary-color;
+          color: #fff;
+        }
+      }
+    }
   }
   .edit-document-modal {
     @extend .add-document-modal;

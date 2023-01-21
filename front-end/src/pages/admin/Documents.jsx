@@ -112,10 +112,12 @@ const Documents = React.memo(() => {
   const handleDocumentModal = () => {
     setDocumentOpen(true);
   };
-  const handleDeleteModal = () => {
+  const handleDeleteModal = (e) => {
+    e.stopPropagation();
     setDeleteDocumentOpen(true);
   };
-  const handleEditModal = () => {
+  const handleEditModal = (e) => {
+    e.stopPropagation();
     setEditDocumentOpen(true);
   };
   const clearValue = () => {
@@ -342,9 +344,9 @@ const Documents = React.memo(() => {
             <div className="overlay"></div>
             <div className="document-modal">
               <div className="content">
+                <h4>Document: {selectedDocument.name}</h4>
                 <img src={selectedDocument.sample} alt="sample document" />
-                <p>Document: {selectedDocument.name}</p>
-                <p>Description{selectedDocument.description}</p>
+                <p>Description: {selectedDocument.description}</p>
                 <p>Format: {selectedDocument.format}</p>
               </div>
               <div className="btn-container">
@@ -386,17 +388,19 @@ const Documents = React.memo(() => {
             <div className="delete-document-modal">
               <h4>You are about to delete this document.</h4>
               <h3>Are you sure?</h3>
-              <button onClick={() => setDeleteDocumentOpen(false)}>
-                Cancel
-              </button>
-              <button
-                onClick={() => {
-                  setDeleteDocumentOpen(false);
-                  dispatch(handleDeleteDocument(selectedDocument._id));
-                }}
-              >
-                Confirm
-              </button>
+              <div className="btn-container">
+                <button onClick={() => setDeleteDocumentOpen(false)}>
+                  Cancel
+                </button>
+                <button
+                  onClick={() => {
+                    setDeleteDocumentOpen(false);
+                    dispatch(handleDeleteDocument(selectedDocument._id));
+                  }}
+                >
+                  Confirm
+                </button>
+              </div>
             </div>
           </>
         )}

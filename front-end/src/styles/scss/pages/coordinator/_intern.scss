@@ -7,7 +7,7 @@
   border-radius: 1rem;
   border: solid 1px #fff;
   display: grid;
-  grid-template-rows: 13rem 5rem auto;
+  grid-template-rows: 18rem 5rem auto;
   gap: 1rem;
   padding: 1rem;
 
@@ -73,14 +73,26 @@
       display: flex;
       justify-content: flex-end;
       align-items: center;
+      padding: 0 1rem;
       form {
+        @include flexCenter;
+        background-color: $light-bg-color;
         width: 80%;
+        border-radius: 2rem;
+        padding: 0 1.5rem;
+        // margin: 1rem 1rem auto auto;
+
+        span {
+          @include flexCenter;
+          font-size: 2rem;
+          cursor: pointer;
+        }
         input {
-          padding: 1rem;
           width: 100%;
-          border: none;
+          background: transparent;
+          padding: 1rem;
           outline: none;
-          border-radius: 0.5rem;
+          border: 0;
         }
       }
     }
@@ -92,6 +104,9 @@
     grid-auto-rows: 12rem;
     gap: 1rem;
     padding: 1rem;
+
+    overflow-y: auto;
+    height: 70vh;
     .modal {
       padding: 2rem;
       position: absolute;
@@ -130,8 +145,38 @@
         background-color: #d9d9d9;
         padding: 1rem;
         display: grid;
-        grid-template-columns: auto auto;
+        // grid-template-columns: auto auto;
+        grid-template-columns: 1fr 1fr;
         border-radius: 1rem;
+        gap: 1rem;
+        .btnContainer {
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+          gap: 1rem;
+          button {
+            @include flexCenter;
+            padding: 1.6rem;
+            height: 3rem;
+            border-radius: 5px;
+            border: solid 1px transparent;
+            color: $primary-font-color;
+            background-color: $primary-compliment-landing;
+            transition: all 0.3s ease-in-out;
+            font-weight: 600;
+            cursor: pointer;
+
+            &.delete:hover {
+              background-color: $red-primary-color;
+            }
+            &.view:hover,
+            &.update:hover {
+              background-color: $primary-font-color;
+              color: $primary-compliment-landing;
+              border: solid 1px $primary-compliment-landing;
+            }
+          }
+        }
       }
     }
   }

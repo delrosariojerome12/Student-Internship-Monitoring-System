@@ -5,6 +5,7 @@ const DashboardIntern = React.memo(({ intern }) => {
     user: { firstName, lastName, profileImage },
     schoolDetails,
     verification: { isVerified, hasSentVerification },
+    internshipDetails,
   } = intern;
 
   return (
@@ -18,6 +19,10 @@ const DashboardIntern = React.memo(({ intern }) => {
         </p>
         <p className="program">{schoolDetails?.program}</p>
         <p className="is-verify">{isVerified ? "Verified" : "Not Verified"}</p>
+        <p className="rendered">
+          <b>Rendered Hours: </b>
+          {internshipDetails?.renderedHours}
+        </p>
       </div>
     </section>
   );
