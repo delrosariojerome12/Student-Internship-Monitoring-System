@@ -1,12 +1,15 @@
 import React from "react";
 import Approval from "../../components/coordinator/ApprovalIntern";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
+import ApprovalWaiting from "../../assets/img/waiting.svg";
+import { BiSearchAlt } from "react-icons/bi";
+
 // import {useEffect} from "react";
 
 // import {GoSearch} from "react-icons/go";
 
 const Approvals = React.memo(() => {
-  const {approvalInterns} = useSelector((state) => state.intern);
+  const { approvalInterns } = useSelector((state) => state.intern);
 
   const renderApprovals = () => {
     if (!approvalInterns) {
@@ -14,7 +17,18 @@ const Approvals = React.memo(() => {
     }
 
     if (approvalInterns.length === 0) {
-      return <h1>No approval request at the moment</h1>;
+      return (
+        <section className="approvals">
+          <div className="no-entries">
+            <h3>
+              Oops, there were no <b>entries</b> yet come back again later
+            </h3>
+            <div className="img-waiting">
+              <img src={ApprovalWaiting} alt="Approvals waiting image" />
+            </div>
+          </div>
+        </section>
+      );
     }
 
     return approvalInterns.map((intern, index) => {
@@ -24,8 +38,19 @@ const Approvals = React.memo(() => {
 
   return (
     <section className="approvals">
-      <header>Approvals</header>
-      <div className="approvals-intern-container">{renderApprovals()}</div>
+      <header>
+        <h2>Approvals</h2>
+        <div className="search">
+          <span>
+            <BiSearchAlt />
+          </span>
+          <input placeholder="Search" type="text" />
+        </div>
+      </header>
+      <div className="approval-container">
+        <h3>Bachelor of Science in Information Technology</h3>
+        <div className="approvals-intern-container">{renderApprovals()}</div>
+      </div>
     </section>
   );
 });

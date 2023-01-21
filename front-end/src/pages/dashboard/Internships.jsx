@@ -1,9 +1,9 @@
-import React, {useState} from "react";
-import {BiSearchAlt} from "react-icons/bi";
-import {TbArrowsSort} from "react-icons/tb";
-import {MdFilterList} from "react-icons/md";
+import React, { useState } from "react";
+import { BiSearchAlt } from "react-icons/bi";
+import { TbArrowsSort } from "react-icons/tb";
+import { MdFilterList } from "react-icons/md";
 
-const Internship = () => {
+const Internships = () => {
   return (
     <section className="internship">
       <header>
@@ -52,4 +52,4 @@ const Internship = () => {
   );
 };
 
-export default Internship;
+export default Internships;

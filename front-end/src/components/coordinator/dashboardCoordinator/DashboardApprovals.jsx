@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateIntern } from "../../features/interns/internReducer";
+import { updateIntern } from "../../../features/interns/internReducer";
 import { FaCheck, FaTrash } from "react-icons/fa";
-import { isRejected } from "@reduxjs/toolkit";
 
-const ApprovalIntern = React.memo(({ intern, index }) => {
-  // const {selectedIntern} = useSelector((state) => state.intern);
+const DashboardApprovals = React.memo(({ intern, index }) => {
   const dispatch = useDispatch();
 
   const {
@@ -77,7 +75,7 @@ const ApprovalIntern = React.memo(({ intern, index }) => {
   };
 
   return (
-    <section className="approval-intern">
+    <section className="approvals-container">
       {isDetailsOpen && (
         <div className="overlay">
           <div className="intern-modal">
@@ -186,22 +184,28 @@ const ApprovalIntern = React.memo(({ intern, index }) => {
           </div>
         </div>
       )}
-      <div className="intern-left">
+
+      <div className="img-approvals">
         <img src={profileImage} alt="profile-image" />
       </div>
-      <div className="intern-right">
-        <div className="intern-details">
-          <p className="fullName">
+
+      <div className="text-approvals">
+        <div className="approvals-details">
+          <h4>
             {firstName} {lastName}
-          </p>
-          <p className="program">{program}</p>
+          </h4>
+          <p>{program}</p>
         </div>
-        <button className="view" onClick={handleDetails}>
-          View More Details
-        </button>
+
+        <div className="approvals-btn">
+          <button className="view-more" onClick={handleDetails}>
+            View More Details
+          </button>
+          {/* <button className="mark-done">Mark as done</button> */}
+        </div>
       </div>
     </section>
   );
 });
 
-export default ApprovalIntern;
+export default DashboardApprovals;

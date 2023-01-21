@@ -14,7 +14,9 @@
   background-color: $primary-bg-color-landing;
   transition: all 0.2s ease-in-out;
   z-index: 5;
-
+  .icons {
+    color: #fff;
+  }
   & > * {
     border-top: solid 1px $ascent-color;
     border-bottom: solid 1px $ascent-color;
@@ -50,12 +52,18 @@
       z-index: 1;
     }
   }
+  & > button {
+    display: none;
+  }
   //middle
   .links-con {
     padding: 1rem;
     @include flexColumn;
     align-items: center;
     gap: 1rem;
+    .sub-container {
+      display: none;
+    }
 
     .icon-con {
       height: 5rem;
@@ -103,6 +111,138 @@
       height: 1px;
     }
   }
+  .profile-img {
+    display: none;
+    height: 5.2rem;
+    width: 5.2rem;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s linear;
+    margin: auto;
+    border: none;
+
+    &:hover {
+      img {
+        border-radius: 1rem;
+        // background-color: lighten(
+        //   $color: $primary-bg-color-landing-compliment,
+        //   $amount: 10
+        // );
+      }
+    }
+
+    & > img {
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      transition: all 0.2s linear;
+    }
+
+    span {
+      position: absolute;
+      right: -1px;
+      bottom: -5px;
+      border-radius: 50%;
+      background-color: $primary-bg-color;
+      height: 2rem;
+      width: 2rem;
+      @include flexCenter;
+      .icons {
+        height: 1rem;
+        width: 1rem;
+      }
+    }
+  }
+  .profile-tab {
+    display: none !important;
+    position: absolute;
+    left: 12rem;
+    bottom: 0%;
+    height: auto;
+    min-width: 28rem;
+    z-index: 2;
+    background-color: $primary-bg-color-landing-compliment;
+    border-radius: 2rem;
+    padding: 2rem;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    .user {
+      border-radius: 1rem;
+      text-transform: capitalize;
+      background-color: darken(
+        $color: $primary-bg-color-landing-compliment,
+        $amount: 5
+      );
+      transition: all 0.2s linear;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      cursor: pointer;
+      // display: grid;
+      // grid-template-columns: 7rem auto;
+      &:hover {
+        background-color: lighten(
+          $color: $primary-bg-color-landing-compliment,
+          $amount: 5
+        );
+      }
+      img {
+        height: 7rem;
+        width: 7rem;
+        object-fit: cover;
+        transition: all 0.2s linear;
+        border-radius: 50%;
+      }
+    }
+    & > *:not(.user) {
+      padding: 1rem;
+      background-color: darken(
+        $color: $primary-bg-color-landing-compliment,
+        $amount: 5
+      );
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 1rem;
+      cursor: pointer;
+      transition: all 0.2s linear;
+      &:hover {
+        background-color: lighten(
+          $color: $primary-bg-color-landing-compliment,
+          $amount: 5
+        );
+      }
+      .icon-holder {
+        @include flexCenter;
+        gap: 1rem;
+      }
+      .icon:not(.icon-holder .icon) {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .open {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    color: #fff;
+    gap: 1rem;
+    padding: 1rem;
+    img {
+      height: 5.2rem;
+      width: 5.2rem;
+    }
+    .text > p:last-child {
+      text-transform: capitalize;
+    }
+  }
 }
 
 .active-sidebar {
@@ -141,6 +281,160 @@
     }
     img {
       height: 15rem;
+    }
+  }
+}
+
+// tablet
+@media screen and(max-width: 1030px) {
+  .left-sidebar {
+    grid-template-rows: 15rem 1fr 10rem;
+    .profile-img {
+      display: flex;
+    }
+    .profile-tab {
+      display: flex !important;
+    }
+  }
+}
+
+// mobile
+@media screen and (max-width: 600px) {
+  .left-sidebar {
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 8rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    & > * {
+      border: none;
+    }
+
+    .profile-img {
+      display: none;
+    }
+    .profile-tab {
+      display: none !important;
+    }
+    .img-con {
+      img {
+        transform: rotate(0deg);
+        height: 3rem;
+      }
+      .collapse-icon {
+        display: none;
+      }
+    }
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      .icons {
+        font-size: 2.5rem;
+      }
+      img {
+        height: 2rem;
+        width: 2rem;
+      }
+    }
+    .links-con {
+      position: absolute;
+      margin: 0;
+      top: 100%;
+      left: 0%;
+      width: 0%;
+      height: 88.5vh;
+      // height: 90rem;
+      transition: all 0.2s ease-in-out;
+      overflow: auto;
+      padding: 0;
+      display: flex;
+
+      button {
+        margin-right: auto;
+        color: #fff;
+        font-size: 1.8rem;
+        padding: 1rem;
+        display: flex;
+        gap: 1rem;
+        .icons {
+          font-size: 3rem;
+        }
+      }
+      .sub-container {
+        // display: flex;
+        // flex-direction: column;
+        // align-items: flex-start;
+        display: grid;
+        grid-template-rows: minmax(11rem, 12rem) auto 4rem;
+        gap: 1rem;
+        padding: 1rem 1rem 2rem 1rem;
+        width: 100%;
+        height: 100%;
+
+        .link-container {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1rem;
+          .icon-con {
+            display: flex;
+            border-radius: 0%;
+            height: auto;
+            width: 100%;
+            background-color: transparent;
+            &:hover {
+              background-color: $primary-bg-color;
+            }
+            a {
+              padding: 1rem;
+              height: auto;
+              width: 100%;
+              display: flex;
+              gap: 1rem;
+              align-items: center;
+              justify-content: flex-start;
+              .icons {
+                font-size: 3.5rem;
+              }
+            }
+          }
+        }
+
+        .user {
+          display: grid;
+          grid-template-columns: 5rem auto;
+          gap: 1rem;
+          padding: 1rem;
+          color: #fff;
+          background-color: $secondary-bg-color;
+          border-radius: 1rem;
+          img {
+            border-radius: 50%;
+            height: 50px;
+            width: 50px;
+            grid-row: 1/3;
+            grid-column: 1/2;
+            margin: auto;
+          }
+          & > p:nth-child(2) {
+            grid-row: 2/3;
+            grid-column: 2/3;
+            word-break: break-all;
+          }
+        }
+      }
+    }
+    .active {
+      display: flex;
+      background-color: $primary-bg-color-landing-compliment;
+      width: 100vw;
     }
   }
 }

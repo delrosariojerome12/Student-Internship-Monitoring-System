@@ -3,6 +3,7 @@ const NotFound = require("./notFound");
 const Unauthorize = require("./unauthorize");
 const CustomError = require("./customError");
 const AlreadyExists = require("./accountAlreadyExists");
+const Duplicate = require("./duplicate");
 
 module.exports = {
   BadRequest,
@@ -10,4 +11,5 @@ module.exports = {
   Unauthorize,
   CustomError,
   AlreadyExists,
+  Duplicate,
 };
