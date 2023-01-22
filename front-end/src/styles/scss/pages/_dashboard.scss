@@ -18,10 +18,13 @@
     gap: 1rem;
     padding: 1rem;
     header {
-      height: 100%;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 0 0 1rem;
+      display: grid;
+      grid-template-columns: auto auto;
+      padding: 0 1rem;
+      gap: 1rem;
+
+      // display: flex;
+      // justify-content: space-between;
       .name-container {
         display: flex;
         flex-direction: column;
@@ -35,15 +38,16 @@
         }
       }
       .search-box {
-        display: flex;
+        @include flexCenter;
         background-color: $light-bg-color;
-        width: 25rem;
+        width: 80%;
         border-radius: 2rem;
-        align-items: center;
         padding: 0 1.5rem;
-        margin: 1rem 1rem auto auto;
-        img {
-          width: 1.8rem;
+        margin: auto;
+
+        span {
+          @include flexCenter;
+          font-size: 2rem;
           cursor: pointer;
         }
         input {
@@ -59,10 +63,13 @@
     .content {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 1fr 1fr 1fr;
       gap: 1.2rem;
       & > * {
         border: solid 1.5px #fff;
-        border-radius: 2rem;
+        // border-radius: 2rem;
+        padding: 1rem;
+        @include flexColumn;
       }
 
       h4 {
@@ -70,12 +77,13 @@
         text-align: center;
       }
       .time-keeper {
+        // @include flexColumn;
+        // padding: 1rem;
         position: relative;
         grid-column: 1/3;
-        padding: 1rem;
         z-index: 1;
-        @include flexColumn;
         gap: 0px;
+        border-radius: 2rem 2rem 0 0;
 
         .time-keeper-contents {
           background-color: $light-bg-color;
@@ -85,11 +93,13 @@
         }
       }
       .documents {
+        // @include flexColumn;
+        // padding: 1rem;
         position: relative;
-        padding: 1rem;
         grid-row: 2/4;
         z-index: 1;
-        @include flexColumn;
+        border-radius: 0 0 0 2rem;
+
         .document-contents {
           background-color: $light-bg-color;
           height: 100%;
@@ -98,13 +108,23 @@
         }
       }
       .internship-details {
-        padding: 1rem;
-        background-color: #11999e;
-        @include flexColumn;
+        // padding: 1rem;
+
+        .internship-contents {
+          background-color: #11999e;
+          height: 100%;
+          color: #fff;
+          padding: 1rem;
+          border-radius: 1rem;
+          & > * {
+            padding-bottom: 1rem;
+          }
+        }
       }
       .map {
-        padding: 1rem;
+        // padding: 1rem;
         background-color: $light-bg-color;
+        border-radius: 0 0 2rem 0;
       }
     }
   }
@@ -132,5 +152,24 @@
   .dashboard {
     // padding: 1rem !important;
     padding: 10rem 1rem 1rem 1rem !important;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .dashboard {
+    .main {
+      .content {
+        @include flexColumn;
+        & > * {
+          height: 100%;
+        }
+        .documents {
+          border-radius: 0;
+        }
+        .map {
+          border-radius: 0 0 2rem 2rem;
+        }
+      }
+    }
   }
 }
