@@ -5262,52 +5262,45 @@ button {
   row-gap: 1.5rem;
   grid-template-rows: 9.5rem repeat(2, 5rem) 10rem;
 }
-.dashboard .admin-document-page .add-document-modal form > *:nth-child(1),
-.dashboard-active
-  .admin-document-page
-  .add-document-modal
-  form
-  > *:nth-child(1),
-.dashboard .admin-document-page .edit-document-modal form > *:nth-child(1),
-.dashboard-active
-  .admin-document-page
-  .edit-document-modal
-  form
-  > *:nth-child(1),
-.dashboard .admin-document-page .delete-document-modal form > *:nth-child(1),
-.dashboard-active
-  .admin-document-page
-  .delete-document-modal
-  form
-  > *:nth-child(1),
-.dashboard .admin-document-page .document-modal form > *:nth-child(1),
-.dashboard-active .admin-document-page .document-modal form > *:nth-child(1) {
-  align-self: center;
-}
-.dashboard .admin-document-page .add-document-modal form > *:nth-child(3),
-.dashboard-active
-  .admin-document-page
-  .add-document-modal
-  form
-  > *:nth-child(3),
-.dashboard .admin-document-page .edit-document-modal form > *:nth-child(3),
-.dashboard-active
-  .admin-document-page
-  .edit-document-modal
-  form
-  > *:nth-child(3),
-.dashboard .admin-document-page .delete-document-modal form > *:nth-child(3),
-.dashboard-active
-  .admin-document-page
-  .delete-document-modal
-  form
-  > *:nth-child(3),
-.dashboard .admin-document-page .document-modal form > *:nth-child(3),
-.dashboard-active .admin-document-page .document-modal form > *:nth-child(3) {
+.dashboard .admin-document-page .add-document-modal form .textarea,
+.dashboard-active .admin-document-page .add-document-modal form .textarea,
+.dashboard .admin-document-page .edit-document-modal form .textarea,
+.dashboard-active .admin-document-page .edit-document-modal form .textarea,
+.dashboard .admin-document-page .delete-document-modal form .textarea,
+.dashboard-active .admin-document-page .delete-document-modal form .textarea,
+.dashboard .admin-document-page .sample-view-container form .textarea,
+.dashboard-active .admin-document-page .sample-view-container form .textarea,
+.dashboard .admin-document-page .document-modal form .textarea,
+.dashboard-active .admin-document-page .document-modal form .textarea {
   grid-column: 1/3;
   align-self: center;
   grid-row: 4/5;
   height: 100%;
+}
+.dashboard .admin-document-page .add-document-modal form .text,
+.dashboard-active .admin-document-page .add-document-modal form .text,
+.dashboard .admin-document-page .edit-document-modal form .text,
+.dashboard-active .admin-document-page .edit-document-modal form .text,
+.dashboard .admin-document-page .delete-document-modal form .text,
+.dashboard-active .admin-document-page .delete-document-modal form .text,
+.dashboard .admin-document-page .sample-view-container form .text,
+.dashboard-active .admin-document-page .sample-view-container form .text,
+.dashboard .admin-document-page .document-modal form .text,
+.dashboard-active .admin-document-page .document-modal form .text {
+  grid-column: 1/3;
+}
+.dashboard .admin-document-page .add-document-modal form .img-input,
+.dashboard-active .admin-document-page .add-document-modal form .img-input,
+.dashboard .admin-document-page .edit-document-modal form .img-input,
+.dashboard-active .admin-document-page .edit-document-modal form .img-input,
+.dashboard .admin-document-page .delete-document-modal form .img-input,
+.dashboard-active .admin-document-page .delete-document-modal form .img-input,
+.dashboard .admin-document-page .sample-view-container form .img-input,
+.dashboard-active .admin-document-page .sample-view-container form .img-input,
+.dashboard .admin-document-page .document-modal form .img-input,
+.dashboard-active .admin-document-page .document-modal form .img-input {
+  grid-column: 2/3;
+  grid-row: 1/2;
 }
 .dashboard .admin-document-page .add-document-modal form > *:nth-child(4),
 .dashboard-active
@@ -5331,34 +5324,14 @@ button {
 .dashboard-active .admin-document-page .document-modal form > *:nth-child(4) {
   grid-column: 1/3;
 }
-.dashboard .admin-document-page .add-document-modal form > *:nth-child(5),
-.dashboard-active
-  .admin-document-page
-  .add-document-modal
-  form
-  > *:nth-child(5),
-.dashboard .admin-document-page .edit-document-modal form > *:nth-child(5),
-.dashboard-active
-  .admin-document-page
-  .edit-document-modal
-  form
-  > *:nth-child(5),
-.dashboard .admin-document-page .delete-document-modal form > *:nth-child(5),
-.dashboard-active
-  .admin-document-page
-  .delete-document-modal
-  form
-  > *:nth-child(5),
-.dashboard .admin-document-page .document-modal form > *:nth-child(5),
-.dashboard-active .admin-document-page .document-modal form > *:nth-child(5) {
-  grid-column: 1/3;
-}
 .dashboard .admin-document-page .add-document-modal form .img-input,
 .dashboard-active .admin-document-page .add-document-modal form .img-input,
 .dashboard .admin-document-page .edit-document-modal form .img-input,
 .dashboard-active .admin-document-page .edit-document-modal form .img-input,
 .dashboard .admin-document-page .delete-document-modal form .img-input,
 .dashboard-active .admin-document-page .delete-document-modal form .img-input,
+.dashboard .admin-document-page .sample-view-container form .img-input,
+.dashboard-active .admin-document-page .sample-view-container form .img-input,
 .dashboard .admin-document-page .document-modal form .img-input,
 .dashboard-active .admin-document-page .document-modal form .img-input {
   display: flex;
