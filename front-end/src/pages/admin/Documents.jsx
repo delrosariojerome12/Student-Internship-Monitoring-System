@@ -13,10 +13,9 @@ import NoDocumentSvg from "../../assets/img/waiting.svg";
 import {storage} from "../../Firebase";
 import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
 import {v4} from "uuid";
-import {useEffect} from "react";
 
 const Documents = React.memo(() => {
-  const {documents, selectedDocument} = useSelector((state) => state.document);
+  const {documents} = useSelector((state) => state.document);
   const dispatch = useDispatch();
 
   const [form, setForm] = useState([
@@ -31,8 +30,6 @@ const Documents = React.memo(() => {
       isDisabled: false,
       code: "sample",
       minLength: 0,
-      name: "",
-      link: "",
     },
     {
       type: "text",
@@ -85,6 +82,7 @@ const Documents = React.memo(() => {
       maxLength: 100,
     },
   ]);
+  const [selectedDocument, setSelectedDocument] = useState(null);
   const [isDocumentOpen, setDocumentOpen] = useState(false);
   const [isAddDocumentOpen, setAddDocumentOpen] = useState(false);
   const [isDeleteDocumentOpen, setDeleteDocumentOpen] = useState(false);
@@ -112,6 +110,10 @@ const Documents = React.memo(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   };
 
+  const handleSelectedDocument = (document) => {
+    setSelectedDocument(document);
+  };
+
   const handleDocumentModal = () => {
     setDocumentOpen(true);
   };
@@ -120,10 +122,29 @@ const Documents = React.memo(() => {
     setDeleteDocumentOpen(true);
   };
 
-  const handleEditModal = (e) => {
+  const handleEditModal = (e, document) => {
     e.stopPropagation();
     setEditDocumentOpen(true);
+
+    const y = Object.entries(document);
+
+    const newValues = y.map((item) => {
+      const x = Object.assign({}, item);
+      return {[x[0]]: x[1], code: x[0], value: x[1]};
+    });
+
+    const final = newValues
+      .map((i) => {
+        const newForm = form.map(
+          (item) => item.code === i.code && {...item, value: i.value}
+        );
+        return newForm.filter((c) => c).sort((item) => item.type)[0];
+      })
+      .filter((x) => x);
+
+    setForm(final);
   };
+
   const clearValue = () => {
     const newForm = form.map((item) => {
       return item.type === "file"
@@ -155,9 +176,7 @@ const Documents = React.memo(() => {
 
         uploadBytes(imageRef, value).then((res) => {
           getDownloadURL(res.ref).then((url) => {
-            newForm[index].link = url;
             newForm[index].value = url;
-            newForm[index].name = imageName;
             newForm[index].isDisabled = true;
             setForm(newForm);
             checkCompletion();
@@ -203,11 +222,7 @@ const Documents = React.memo(() => {
 
     const newObject = Object.assign(
       {},
-      ...newData.map((item) =>
-        !item.name
-          ? {[item.code]: item.value}
-          : {[item.code]: {link: item.value, name: item.name}}
-      )
+      ...newData.map((item) => ({[item.code]: item.value}))
     );
 
     return newObject;
@@ -241,6 +256,7 @@ const Documents = React.memo(() => {
     return form.map((item, index) => {
       const {forInput, value, type, minLength, maxLength, id, isDisabled} =
         item;
+
       switch (type) {
         case "file":
           return (
@@ -267,8 +283,9 @@ const Documents = React.memo(() => {
           );
         case "text":
           return (
-            <div className="input-contain" key={index}>
+            <div className="input-contain text" key={index}>
               <input
+                className="text"
                 onChange={(e) => handleOnChange(e.target.value, index)}
                 key={index}
                 tabIndex={-1}
@@ -293,7 +310,7 @@ const Documents = React.memo(() => {
           );
         case "textArea":
           return (
-            <div className="input-contain" key={index}>
+            <div className="input-contain textarea" key={index}>
               <textarea
                 minLength={minLength}
                 maxLength={maxLength}
@@ -350,16 +367,18 @@ const Documents = React.memo(() => {
     });
   };
 
-  useEffect(() => {
-    console.log("testing");
-  }, [selectedDocument]);
-
   return (
     <section className="admin-document-page">
       <IconContext.Provider value={{className: "icon"}}>
         {isDocumentOpen && (
           <>
-            <div className="overlay"></div>
+            <div
+              className="overlay"
+              onClick={() => {
+                clearValue();
+                setDocumentOpen(false);
+              }}
+            ></div>
             <div className="document-modal">
               <div className="content">
                 <div className="document-name">
@@ -379,7 +398,14 @@ const Documents = React.memo(() => {
                 </div>
               </div>
               <div className="btn-container">
-                <button onClick={() => setDocumentOpen(false)}>Close</button>
+                <button
+                  onClick={() => {
+                    setDocumentOpen(false);
+                    clearValue();
+                  }}
+                >
+                  Close
+                </button>
               </div>
             </div>
           </>
@@ -399,7 +425,10 @@ const Documents = React.memo(() => {
           <>
             <div
               className="overlay"
-              onClick={() => setAddDocumentOpen(false)}
+              onClick={() => {
+                setAddDocumentOpen(false);
+                clearValue();
+              }}
             ></div>
             <div className="add-document-modal">
               <form onSubmit={handleSubmit}>
@@ -443,6 +472,7 @@ const Documents = React.memo(() => {
                 <button
                   onClick={() => {
                     setDeleteDocumentOpen(false);
+                    clearValue();
                   }}
                 >
                   Cancel
@@ -451,6 +481,7 @@ const Documents = React.memo(() => {
                   onClick={() => {
                     setDeleteDocumentOpen(false);
                     dispatch(handleDeleteDocument(selectedDocument._id));
+                    clearValue();
                   }}
                 >
                   Confirm
@@ -459,8 +490,6 @@ const Documents = React.memo(() => {
             </div>
           </>
         )}
-
-        {console.log(selectedDocument)}
         {isEditDocumentOpen && (
           <>
             <div
@@ -476,11 +505,17 @@ const Documents = React.memo(() => {
                 <button
                   onClick={() => {
                     setEditDocumentOpen(false);
+                    clearValue();
                   }}
                 >
                   Cancel
                 </button>
                 <button
+                  style={
+                    isComplete
+                      ? {pointerEvents: "auto"}
+                      : {pointerEvents: "none", opacity: ".5"}
+                  }
                   onClick={() => {
                     dispatch(
                       handleUpdateDocument({
@@ -488,6 +523,7 @@ const Documents = React.memo(() => {
                         id: selectedDocument._id,
                       })
                     );
+                    clearValue();
                     setEditDocumentOpen(false);
                   }}
                 >
@@ -513,6 +549,7 @@ const Documents = React.memo(() => {
                   <Document
                     doc={doc}
                     key={index}
+                    handleSelectedDocument={handleSelectedDocument}
                     handleDocumentModal={handleDocumentModal}
                     handleDeleteModal={handleDeleteModal}
                     handleEditModal={handleEditModal}
