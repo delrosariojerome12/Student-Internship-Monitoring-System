@@ -2,17 +2,20 @@ import React from "react";
 import searchIcon from "../../assets/img/search.svg";
 import { useSelector, useDispatch } from "react-redux";
 
+import { BiSearchAlt } from "react-icons/bi";
+
 const DashboardMain = () => {
   const {
     user: {
       firstName,
-      // internshipDetails: {
-      //   renderedHours,
-      //   requiredHours,
-      //   companyName,
-      //   companyAddress,
-      //   supervisor,
-      // },
+      internshipDetails: {
+        renderedHours,
+        requiredHours,
+        companyName,
+        companyAddress,
+        supervisor,
+        supervisorContact,
+      },
     },
   } = useSelector((state) => state.user);
 
@@ -20,12 +23,14 @@ const DashboardMain = () => {
     <section className="main">
       <header>
         <div className="name-container">
-          <h1 className="name">Hello {firstName}</h1>
+          <h1 className="name">Hello, {firstName}</h1>
           <h4>Welcome Back!</h4>
         </div>
         <div className="search-box">
-          <img src={searchIcon} alt="" />
-          <input type="text" placeholder="Search" />
+          <span>
+            <BiSearchAlt />
+          </span>
+          <input placeholder="Search" type="text" />
         </div>
       </header>
       <div className="content">
@@ -44,12 +49,23 @@ const DashboardMain = () => {
         <div className="internship-details">
           <h4>Intership Details</h4>
           <div className="internship-contents">
-            {/* <p>Company: {companyName}</p>
-            <p>Address: {companyAddress}</p>
-            <p>Supervisor: {supervisor}</p> */}
+            <p>
+              Company: <b>{companyName}</b>
+            </p>
+            <p>
+              Address: <b>{companyAddress}</b>
+            </p>
+            <p>
+              Supervisor: <b>{supervisor}</b>
+            </p>
+            <p>
+              Contact#: <b>{supervisorContact}</b>
+            </p>
           </div>
         </div>
-        <div className="map"></div>
+        <div className="map">
+          <p>Maps</p>
+        </div>
       </div>
     </section>
   );

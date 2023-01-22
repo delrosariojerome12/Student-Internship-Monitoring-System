@@ -427,6 +427,9 @@
 
 @media screen and(max-width: 1030px) {
   .coordinator-dashboard {
+    .dashboard-intern {
+      border-radius: 1rem 1rem 0 0;
+    }
     .dashboard-content {
       @include flexColumn;
       .dashboard-approvals {
@@ -480,7 +483,7 @@
         }
       }
       .dashboard-internships {
-        border-radius: 0 0 2rem 2rem;
+        border-radius: 0 0 1rem 1rem;
       }
     }
   }
@@ -494,9 +497,6 @@
         h1 {
           font-size: 3.5rem;
         }
-        // h4 {
-        //   font-size: 1.6rem;
-        // }
       }
     }
     .dashboard-intern {
