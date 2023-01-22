@@ -12,6 +12,7 @@ const authUser = require("./middlewares/auth");
 const internsRouter = require("./routers/intern");
 const userRouter = require("./routers/user");
 const documentRouter = require("./routers/document");
+const attendanceRouter = require("./routers/attendance");
 
 // error handler
 const notFound = require("./middlewares/notFound");
@@ -25,6 +26,7 @@ app.use("/auth", authRouter);
 app.use("/intern", internsRouter);
 app.use("/user", userRouter);
 app.use("/document", documentRouter);
+app.use("/attendance", attendanceRouter);
 
 app.use(notFound);
 app.use(errorHandler);
