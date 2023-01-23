@@ -3000,6 +3000,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .dashboard .admin-document-page .document-modal .content .img-container img, .dashboard-active .admin-document-page .document-modal .content .img-container img {
   height: 12rem;
@@ -3011,7 +3012,7 @@ button {
   margin: auto;
 }
 .dashboard .admin-document-page .sample-view-container, .dashboard-active .admin-document-page .sample-view-container {
-  display: flex;
+  display: grid;
   height: 92vh;
   width: 60rem;
 }

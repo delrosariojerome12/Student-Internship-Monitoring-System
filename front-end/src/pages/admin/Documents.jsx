@@ -13,6 +13,10 @@ import NoDocumentSvg from "../../assets/img/waiting.svg";
 import {storage} from "../../Firebase";
 import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
 import {v4} from "uuid";
+import {Viewer} from "@react-pdf-viewer/core";
+import "@react-pdf-viewer/core/lib/styles/index.css";
+
+import DocViewer, {DocViewerRenderers} from "@cyntler/react-doc-viewer";
 
 const Documents = React.memo(() => {
   const {documents} = useSelector((state) => state.document);
@@ -30,6 +34,7 @@ const Documents = React.memo(() => {
       isDisabled: false,
       code: "sample",
       minLength: 0,
+      format: "image",
     },
     {
       type: "text",
@@ -152,6 +157,8 @@ const Documents = React.memo(() => {
             ...item,
             value:
               "https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg",
+            format: "image",
+            isDisabled: false,
           }
         : {...item, value: ""};
     });
@@ -171,11 +178,13 @@ const Documents = React.memo(() => {
         //   } = schoolDetails;
         //   deleteDuplicateFirebase(name);
         // }
+        const {type} = value;
         const imageName = `images/documents/sample/${v4() + value.name}`;
         const imageRef = ref(storage, imageName);
 
         uploadBytes(imageRef, value).then((res) => {
           getDownloadURL(res.ref).then((url) => {
+            newForm[index].format = type;
             newForm[index].value = url;
             newForm[index].isDisabled = true;
             setForm(newForm);
@@ -254,8 +263,16 @@ const Documents = React.memo(() => {
 
   const renderForm = () => {
     return form.map((item, index) => {
-      const {forInput, value, type, minLength, maxLength, id, isDisabled} =
-        item;
+      const {
+        forInput,
+        value,
+        type,
+        minLength,
+        maxLength,
+        id,
+        isDisabled,
+        format,
+      } = item;
 
       switch (type) {
         case "file":
@@ -263,7 +280,16 @@ const Documents = React.memo(() => {
             <div key={index} className="img-input">
               <label htmlFor={id}>
                 <div className="profile-con">
-                  <img src={value} alt="profile" />
+                  {format.includes("doc") ? (
+                    <img
+                      src="https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg"
+                      alt="profile"
+                    />
+                  ) : format.includes("pdf") ? (
+                    <Viewer fileUrl={value} />
+                  ) : (
+                    <img src={value} alt="profile" />
+                  )}
                 </div>
                 {value.includes("firebase") ? (
                   <p>Sample Added</p>
@@ -275,7 +301,7 @@ const Documents = React.memo(() => {
                   type="file"
                   name={forInput}
                   id={id}
-                  accept="image/*"
+                  accept="image/*, application/pdf, .doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.documen,"
                   onChange={(e) => handleOnChange(e.target.files[0], index)}
                 />
               </label>
@@ -367,6 +393,19 @@ const Documents = React.memo(() => {
     });
   };
 
+  const renderDocumentDetails = () => {
+    if (selectedDocument.format === "pdf") {
+      if (isSampleViewed) {
+        return <Viewer fileUrl={selectedDocument.sample} />;
+      }
+      return <p>Click to View</p>;
+    } else if (selectedDocument.format === "image") {
+      return <img src={selectedDocument.sample} alt="profile" />;
+    } else if (selectedDocument.format === "docx") {
+      return <p>Click to View</p>;
+    }
+  };
+
   return (
     <section className="admin-document-page">
       <IconContext.Provider value={{className: "icon"}}>
@@ -385,12 +424,11 @@ const Documents = React.memo(() => {
                   <h4>Document</h4>
                   <p>{selectedDocument.name}</p>
                 </div>
-                <div className="img-container">
-                  <img
-                    onClick={() => setSampleViewed(true)}
-                    src={selectedDocument.sample}
-                    alt="sample document"
-                  />
+                <div
+                  className="img-container"
+                  onClick={() => setSampleViewed(true)}
+                >
+                  {renderDocumentDetails()}
                 </div>
                 <div className="desc-container">
                   <p>Description: {selectedDocument.description}</p>
@@ -417,7 +455,8 @@ const Documents = React.memo(() => {
               onClick={() => setSampleViewed(false)}
             ></div>
             <div className="sample-view-container">
-              <img src={selectedDocument.sample} alt="sample document" />
+              {/* <img src={selectedDocument.sample} alt="sample document" /> */}
+              {renderDocumentDetails()}
             </div>
           </>
         )}

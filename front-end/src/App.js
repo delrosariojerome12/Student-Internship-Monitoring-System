@@ -16,6 +16,8 @@ import jwt_decode from "jwt-decode";
 
 import Bouncing from "./components/loading/Bouncing";
 
+import {Worker} from "@react-pdf-viewer/core";
+
 const Dashboard = lazy(() => import("./pages/dashboard/dashboard"));
 const App = () => {
   const {user, isLoading, isError} = useSelector((state) => state.user);
@@ -31,31 +33,33 @@ const App = () => {
 
   return (
     <main className="container">
-      <Suspense fallback={<Bouncing />}>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          {!user ? (
-            <>
-              <Route path="/account/login" element={<Login />} />
-              <Route path="/account/signup" element={<Signup />} />
-            </>
-          ) : (
-            <>
-              <Route
-                path="/account/login"
-                element={<Navigate to={"/dashboard"} replace />}
-              />
-              <Route
-                path="/account/signup"
-                element={<Navigate to={"/dashboard"} replace />}
-              />
-            </>
-          )}
-          <Route path="/dashboard/*" element={<Dashboard />} />
-          <Route path="/404" element={<PageNotFound />} />
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-      </Suspense>
+      <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.1.81/build/pdf.worker.min.js">
+        <Suspense fallback={<Bouncing />}>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            {!user ? (
+              <>
+                <Route path="/account/login" element={<Login />} />
+                <Route path="/account/signup" element={<Signup />} />
+              </>
+            ) : (
+              <>
+                <Route
+                  path="/account/login"
+                  element={<Navigate to={"/dashboard"} replace />}
+                />
+                <Route
+                  path="/account/signup"
+                  element={<Navigate to={"/dashboard"} replace />}
+                />
+              </>
+            )}
+            <Route path="/dashboard/*" element={<Dashboard />} />
+            <Route path="/404" element={<PageNotFound />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </Suspense>
+      </Worker>
     </main>
   );
 };
