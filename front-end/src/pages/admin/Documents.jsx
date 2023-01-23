@@ -16,6 +16,8 @@ import {v4} from "uuid";
 import {Viewer} from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 
+import DocViewer, {DocViewerRenderers} from "@cyntler/react-doc-viewer";
+
 const Documents = React.memo(() => {
   const {documents} = useSelector((state) => state.document);
   const dispatch = useDispatch();
@@ -400,7 +402,7 @@ const Documents = React.memo(() => {
     } else if (selectedDocument.format === "image") {
       return <img src={selectedDocument.sample} alt="profile" />;
     } else if (selectedDocument.format === "docx") {
-      return <p>not supported atm</p>;
+      return <p>Click to View</p>;
     }
   };
 
