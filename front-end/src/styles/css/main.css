@@ -3000,6 +3000,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .dashboard .admin-document-page .document-modal .content .img-container img, .dashboard-active .admin-document-page .document-modal .content .img-container img {
   height: 12rem;
