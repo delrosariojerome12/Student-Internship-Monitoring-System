@@ -2772,14 +2772,18 @@ button {
     flex-direction: column;
   }
 }
+.dashboard body, .dashboard-active body {
+  height: 100%;
+}
 .dashboard .admin-document-page, .dashboard-active .admin-document-page {
   display: grid;
-  grid-template-rows: 8vh 1fr;
+  grid-template-rows: 8vh auto;
   gap: 1rem;
+  overflow: hidden;
 }
 .dashboard .admin-document-page .overlay, .dashboard-active .admin-document-page .overlay {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   background-color: rgba(48, 47, 47, 0.753);
   position: absolute;
   filter: blur(20px);
@@ -2787,7 +2791,7 @@ button {
   left: 0%;
   z-index: 6;
 }
-.dashboard .admin-document-page .add-document-modal, .dashboard-active .admin-document-page .add-document-modal, .dashboard .admin-document-page .edit-document-modal, .dashboard-active .admin-document-page .edit-document-modal, .dashboard .admin-document-page .delete-document-modal, .dashboard-active .admin-document-page .delete-document-modal, .dashboard .admin-document-page .sample-view-container, .dashboard-active .admin-document-page .sample-view-container, .dashboard .admin-document-page .document-modal, .dashboard-active .admin-document-page .document-modal {
+.dashboard .admin-document-page .add-document-modal, .dashboard-active .admin-document-page .add-document-modal, .dashboard .admin-document-page .edit-document-modal, .dashboard-active .admin-document-page .edit-document-modal, .dashboard .admin-document-page .delete-document-modal, .dashboard-active .admin-document-page .delete-document-modal, .dashboard .admin-document-page .document-modal, .dashboard-active .admin-document-page .document-modal {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -2801,12 +2805,12 @@ button {
   grid-template-rows: auto 4rem;
   gap: 1rem;
 }
-.dashboard .admin-document-page .add-document-modal .btn-container, .dashboard-active .admin-document-page .add-document-modal .btn-container, .dashboard .admin-document-page .edit-document-modal .btn-container, .dashboard-active .admin-document-page .edit-document-modal .btn-container, .dashboard .admin-document-page .delete-document-modal .btn-container, .dashboard-active .admin-document-page .delete-document-modal .btn-container, .dashboard .admin-document-page .sample-view-container .btn-container, .dashboard-active .admin-document-page .sample-view-container .btn-container, .dashboard .admin-document-page .document-modal .btn-container, .dashboard-active .admin-document-page .document-modal .btn-container {
+.dashboard .admin-document-page .add-document-modal .btn-container, .dashboard-active .admin-document-page .add-document-modal .btn-container, .dashboard .admin-document-page .edit-document-modal .btn-container, .dashboard-active .admin-document-page .edit-document-modal .btn-container, .dashboard .admin-document-page .delete-document-modal .btn-container, .dashboard-active .admin-document-page .delete-document-modal .btn-container, .dashboard .admin-document-page .document-modal .btn-container, .dashboard-active .admin-document-page .document-modal .btn-container {
   display: flex;
   gap: 1rem;
   justify-content: flex-end;
 }
-.dashboard .admin-document-page .add-document-modal .btn-container button, .dashboard-active .admin-document-page .add-document-modal .btn-container button, .dashboard .admin-document-page .edit-document-modal .btn-container button, .dashboard-active .admin-document-page .edit-document-modal .btn-container button, .dashboard .admin-document-page .delete-document-modal .btn-container button, .dashboard-active .admin-document-page .delete-document-modal .btn-container button, .dashboard .admin-document-page .sample-view-container .btn-container button, .dashboard-active .admin-document-page .sample-view-container .btn-container button, .dashboard .admin-document-page .document-modal .btn-container button, .dashboard-active .admin-document-page .document-modal .btn-container button {
+.dashboard .admin-document-page .add-document-modal .btn-container button, .dashboard-active .admin-document-page .add-document-modal .btn-container button, .dashboard .admin-document-page .edit-document-modal .btn-container button, .dashboard-active .admin-document-page .edit-document-modal .btn-container button, .dashboard .admin-document-page .delete-document-modal .btn-container button, .dashboard-active .admin-document-page .delete-document-modal .btn-container button, .dashboard .admin-document-page .document-modal .btn-container button, .dashboard-active .admin-document-page .document-modal .btn-container button {
   padding: 1rem 2rem;
   outline: none;
   border: none;
@@ -2814,70 +2818,77 @@ button {
   transition: all 0.2s linear;
   font-weight: 600;
 }
-.dashboard .admin-document-page .add-document-modal .btn-container button:first-child:hover, .dashboard-active .admin-document-page .add-document-modal .btn-container button:first-child:hover, .dashboard .admin-document-page .edit-document-modal .btn-container button:first-child:hover, .dashboard-active .admin-document-page .edit-document-modal .btn-container button:first-child:hover, .dashboard .admin-document-page .delete-document-modal .btn-container button:first-child:hover, .dashboard-active .admin-document-page .delete-document-modal .btn-container button:first-child:hover, .dashboard .admin-document-page .sample-view-container .btn-container button:first-child:hover, .dashboard-active .admin-document-page .sample-view-container .btn-container button:first-child:hover, .dashboard .admin-document-page .document-modal .btn-container button:first-child:hover, .dashboard-active .admin-document-page .document-modal .btn-container button:first-child:hover {
+.dashboard .admin-document-page .add-document-modal .btn-container button:first-child:hover, .dashboard-active .admin-document-page .add-document-modal .btn-container button:first-child:hover, .dashboard .admin-document-page .edit-document-modal .btn-container button:first-child:hover, .dashboard-active .admin-document-page .edit-document-modal .btn-container button:first-child:hover, .dashboard .admin-document-page .delete-document-modal .btn-container button:first-child:hover, .dashboard-active .admin-document-page .delete-document-modal .btn-container button:first-child:hover, .dashboard .admin-document-page .document-modal .btn-container button:first-child:hover, .dashboard-active .admin-document-page .document-modal .btn-container button:first-child:hover {
   background-color: #e63946;
   color: #fff;
 }
-.dashboard .admin-document-page .add-document-modal .btn-container button:last-child:hover, .dashboard-active .admin-document-page .add-document-modal .btn-container button:last-child:hover, .dashboard .admin-document-page .edit-document-modal .btn-container button:last-child:hover, .dashboard-active .admin-document-page .edit-document-modal .btn-container button:last-child:hover, .dashboard .admin-document-page .delete-document-modal .btn-container button:last-child:hover, .dashboard-active .admin-document-page .delete-document-modal .btn-container button:last-child:hover, .dashboard .admin-document-page .sample-view-container .btn-container button:last-child:hover, .dashboard-active .admin-document-page .sample-view-container .btn-container button:last-child:hover, .dashboard .admin-document-page .document-modal .btn-container button:last-child:hover, .dashboard-active .admin-document-page .document-modal .btn-container button:last-child:hover {
+.dashboard .admin-document-page .add-document-modal .btn-container button:last-child:hover, .dashboard-active .admin-document-page .add-document-modal .btn-container button:last-child:hover, .dashboard .admin-document-page .edit-document-modal .btn-container button:last-child:hover, .dashboard-active .admin-document-page .edit-document-modal .btn-container button:last-child:hover, .dashboard .admin-document-page .delete-document-modal .btn-container button:last-child:hover, .dashboard-active .admin-document-page .delete-document-modal .btn-container button:last-child:hover, .dashboard .admin-document-page .document-modal .btn-container button:last-child:hover, .dashboard-active .admin-document-page .document-modal .btn-container button:last-child:hover {
   background-color: #457b9d;
   color: #fff;
 }
-.dashboard .admin-document-page .add-document-modal form, .dashboard-active .admin-document-page .add-document-modal form, .dashboard .admin-document-page .edit-document-modal form, .dashboard-active .admin-document-page .edit-document-modal form, .dashboard .admin-document-page .delete-document-modal form, .dashboard-active .admin-document-page .delete-document-modal form, .dashboard .admin-document-page .sample-view-container form, .dashboard-active .admin-document-page .sample-view-container form, .dashboard .admin-document-page .document-modal form, .dashboard-active .admin-document-page .document-modal form {
+.dashboard .admin-document-page .add-document-modal form, .dashboard-active .admin-document-page .add-document-modal form, .dashboard .admin-document-page .edit-document-modal form, .dashboard-active .admin-document-page .edit-document-modal form, .dashboard .admin-document-page .delete-document-modal form, .dashboard-active .admin-document-page .delete-document-modal form, .dashboard .admin-document-page .document-modal form, .dashboard-active .admin-document-page .document-modal form {
   display: grid;
   grid-template-columns: 60% 40%;
   row-gap: 1.5rem;
   grid-template-rows: 9.5rem repeat(2, 5rem) 10rem;
 }
-.dashboard .admin-document-page .add-document-modal form .textarea, .dashboard-active .admin-document-page .add-document-modal form .textarea, .dashboard .admin-document-page .edit-document-modal form .textarea, .dashboard-active .admin-document-page .edit-document-modal form .textarea, .dashboard .admin-document-page .delete-document-modal form .textarea, .dashboard-active .admin-document-page .delete-document-modal form .textarea, .dashboard .admin-document-page .sample-view-container form .textarea, .dashboard-active .admin-document-page .sample-view-container form .textarea, .dashboard .admin-document-page .document-modal form .textarea, .dashboard-active .admin-document-page .document-modal form .textarea {
+.dashboard .admin-document-page .add-document-modal form .textarea, .dashboard-active .admin-document-page .add-document-modal form .textarea, .dashboard .admin-document-page .edit-document-modal form .textarea, .dashboard-active .admin-document-page .edit-document-modal form .textarea, .dashboard .admin-document-page .delete-document-modal form .textarea, .dashboard-active .admin-document-page .delete-document-modal form .textarea, .dashboard .admin-document-page .document-modal form .textarea, .dashboard-active .admin-document-page .document-modal form .textarea {
   grid-column: 1/3;
   align-self: center;
   grid-row: 4/5;
   height: 100%;
 }
-.dashboard .admin-document-page .add-document-modal form .text, .dashboard-active .admin-document-page .add-document-modal form .text, .dashboard .admin-document-page .edit-document-modal form .text, .dashboard-active .admin-document-page .edit-document-modal form .text, .dashboard .admin-document-page .delete-document-modal form .text, .dashboard-active .admin-document-page .delete-document-modal form .text, .dashboard .admin-document-page .sample-view-container form .text, .dashboard-active .admin-document-page .sample-view-container form .text, .dashboard .admin-document-page .document-modal form .text, .dashboard-active .admin-document-page .document-modal form .text {
+.dashboard .admin-document-page .add-document-modal form .text, .dashboard-active .admin-document-page .add-document-modal form .text, .dashboard .admin-document-page .edit-document-modal form .text, .dashboard-active .admin-document-page .edit-document-modal form .text, .dashboard .admin-document-page .delete-document-modal form .text, .dashboard-active .admin-document-page .delete-document-modal form .text, .dashboard .admin-document-page .document-modal form .text, .dashboard-active .admin-document-page .document-modal form .text {
   grid-column: 1/3;
 }
-.dashboard .admin-document-page .add-document-modal form .img-input, .dashboard-active .admin-document-page .add-document-modal form .img-input, .dashboard .admin-document-page .edit-document-modal form .img-input, .dashboard-active .admin-document-page .edit-document-modal form .img-input, .dashboard .admin-document-page .delete-document-modal form .img-input, .dashboard-active .admin-document-page .delete-document-modal form .img-input, .dashboard .admin-document-page .sample-view-container form .img-input, .dashboard-active .admin-document-page .sample-view-container form .img-input, .dashboard .admin-document-page .document-modal form .img-input, .dashboard-active .admin-document-page .document-modal form .img-input {
+.dashboard .admin-document-page .add-document-modal form .img-input, .dashboard-active .admin-document-page .add-document-modal form .img-input, .dashboard .admin-document-page .edit-document-modal form .img-input, .dashboard-active .admin-document-page .edit-document-modal form .img-input, .dashboard .admin-document-page .delete-document-modal form .img-input, .dashboard-active .admin-document-page .delete-document-modal form .img-input, .dashboard .admin-document-page .document-modal form .img-input, .dashboard-active .admin-document-page .document-modal form .img-input {
   grid-column: 2/3;
   grid-row: 1/2;
 }
-.dashboard .admin-document-page .add-document-modal form > *:nth-child(4), .dashboard-active .admin-document-page .add-document-modal form > *:nth-child(4), .dashboard .admin-document-page .edit-document-modal form > *:nth-child(4), .dashboard-active .admin-document-page .edit-document-modal form > *:nth-child(4), .dashboard .admin-document-page .delete-document-modal form > *:nth-child(4), .dashboard-active .admin-document-page .delete-document-modal form > *:nth-child(4), .dashboard .admin-document-page .sample-view-container form > *:nth-child(4), .dashboard-active .admin-document-page .sample-view-container form > *:nth-child(4), .dashboard .admin-document-page .document-modal form > *:nth-child(4), .dashboard-active .admin-document-page .document-modal form > *:nth-child(4) {
+.dashboard .admin-document-page .add-document-modal form > *:nth-child(4), .dashboard-active .admin-document-page .add-document-modal form > *:nth-child(4), .dashboard .admin-document-page .edit-document-modal form > *:nth-child(4), .dashboard-active .admin-document-page .edit-document-modal form > *:nth-child(4), .dashboard .admin-document-page .delete-document-modal form > *:nth-child(4), .dashboard-active .admin-document-page .delete-document-modal form > *:nth-child(4), .dashboard .admin-document-page .document-modal form > *:nth-child(4), .dashboard-active .admin-document-page .document-modal form > *:nth-child(4) {
   grid-column: 1/3;
 }
-.dashboard .admin-document-page .add-document-modal form .img-input, .dashboard-active .admin-document-page .add-document-modal form .img-input, .dashboard .admin-document-page .edit-document-modal form .img-input, .dashboard-active .admin-document-page .edit-document-modal form .img-input, .dashboard .admin-document-page .delete-document-modal form .img-input, .dashboard-active .admin-document-page .delete-document-modal form .img-input, .dashboard .admin-document-page .sample-view-container form .img-input, .dashboard-active .admin-document-page .sample-view-container form .img-input, .dashboard .admin-document-page .document-modal form .img-input, .dashboard-active .admin-document-page .document-modal form .img-input {
-  display: flex;
-  justify-content: flex-end;
+.dashboard .admin-document-page .add-document-modal form .img-input, .dashboard-active .admin-document-page .add-document-modal form .img-input, .dashboard .admin-document-page .edit-document-modal form .img-input, .dashboard-active .admin-document-page .edit-document-modal form .img-input, .dashboard .admin-document-page .delete-document-modal form .img-input, .dashboard-active .admin-document-page .delete-document-modal form .img-input, .dashboard .admin-document-page .document-modal form .img-input, .dashboard-active .admin-document-page .document-modal form .img-input {
+  color: #fff;
+  border-radius: 1rem;
+  background-color: #8b8b8b;
+  display: grid;
 }
-.dashboard .admin-document-page .add-document-modal form .img-input label, .dashboard-active .admin-document-page .add-document-modal form .img-input label, .dashboard .admin-document-page .edit-document-modal form .img-input label, .dashboard-active .admin-document-page .edit-document-modal form .img-input label, .dashboard .admin-document-page .delete-document-modal form .img-input label, .dashboard-active .admin-document-page .delete-document-modal form .img-input label, .dashboard .admin-document-page .sample-view-container form .img-input label, .dashboard-active .admin-document-page .sample-view-container form .img-input label, .dashboard .admin-document-page .document-modal form .img-input label, .dashboard-active .admin-document-page .document-modal form .img-input label {
+.dashboard .admin-document-page .add-document-modal form .img-input label, .dashboard-active .admin-document-page .add-document-modal form .img-input label, .dashboard .admin-document-page .edit-document-modal form .img-input label, .dashboard-active .admin-document-page .edit-document-modal form .img-input label, .dashboard .admin-document-page .delete-document-modal form .img-input label, .dashboard-active .admin-document-page .delete-document-modal form .img-input label, .dashboard .admin-document-page .document-modal form .img-input label, .dashboard-active .admin-document-page .document-modal form .img-input label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
   font-size: 1.6rem;
 }
-.dashboard .admin-document-page .add-document-modal form .img-input label p, .dashboard-active .admin-document-page .add-document-modal form .img-input label p, .dashboard .admin-document-page .edit-document-modal form .img-input label p, .dashboard-active .admin-document-page .edit-document-modal form .img-input label p, .dashboard .admin-document-page .delete-document-modal form .img-input label p, .dashboard-active .admin-document-page .delete-document-modal form .img-input label p, .dashboard .admin-document-page .sample-view-container form .img-input label p, .dashboard-active .admin-document-page .sample-view-container form .img-input label p, .dashboard .admin-document-page .document-modal form .img-input label p, .dashboard-active .admin-document-page .document-modal form .img-input label p {
+.dashboard .admin-document-page .add-document-modal form .img-input label p, .dashboard-active .admin-document-page .add-document-modal form .img-input label p, .dashboard .admin-document-page .edit-document-modal form .img-input label p, .dashboard-active .admin-document-page .edit-document-modal form .img-input label p, .dashboard .admin-document-page .delete-document-modal form .img-input label p, .dashboard-active .admin-document-page .delete-document-modal form .img-input label p, .dashboard .admin-document-page .document-modal form .img-input label p, .dashboard-active .admin-document-page .document-modal form .img-input label p {
+  font-weight: 600;
   display: flex;
   gap: 1rem;
+  font-size: 1.4rem;
   align-items: center;
 }
-.dashboard .admin-document-page .add-document-modal form .img-input label p .icons, .dashboard-active .admin-document-page .add-document-modal form .img-input label p .icons, .dashboard .admin-document-page .edit-document-modal form .img-input label p .icons, .dashboard-active .admin-document-page .edit-document-modal form .img-input label p .icons, .dashboard .admin-document-page .delete-document-modal form .img-input label p .icons, .dashboard-active .admin-document-page .delete-document-modal form .img-input label p .icons, .dashboard .admin-document-page .sample-view-container form .img-input label p .icons, .dashboard-active .admin-document-page .sample-view-container form .img-input label p .icons, .dashboard .admin-document-page .document-modal form .img-input label p .icons, .dashboard-active .admin-document-page .document-modal form .img-input label p .icons {
+.dashboard .admin-document-page .add-document-modal form .img-input label p .icons, .dashboard-active .admin-document-page .add-document-modal form .img-input label p .icons, .dashboard .admin-document-page .edit-document-modal form .img-input label p .icons, .dashboard-active .admin-document-page .edit-document-modal form .img-input label p .icons, .dashboard .admin-document-page .delete-document-modal form .img-input label p .icons, .dashboard-active .admin-document-page .delete-document-modal form .img-input label p .icons, .dashboard .admin-document-page .document-modal form .img-input label p .icons, .dashboard-active .admin-document-page .document-modal form .img-input label p .icons {
   color: green;
 }
-.dashboard .admin-document-page .add-document-modal form .img-input label input[type=file], .dashboard-active .admin-document-page .add-document-modal form .img-input label input[type=file], .dashboard .admin-document-page .edit-document-modal form .img-input label input[type=file], .dashboard-active .admin-document-page .edit-document-modal form .img-input label input[type=file], .dashboard .admin-document-page .delete-document-modal form .img-input label input[type=file], .dashboard-active .admin-document-page .delete-document-modal form .img-input label input[type=file], .dashboard .admin-document-page .sample-view-container form .img-input label input[type=file], .dashboard-active .admin-document-page .sample-view-container form .img-input label input[type=file], .dashboard .admin-document-page .document-modal form .img-input label input[type=file], .dashboard-active .admin-document-page .document-modal form .img-input label input[type=file] {
+.dashboard .admin-document-page .add-document-modal form .img-input label input[type=file], .dashboard-active .admin-document-page .add-document-modal form .img-input label input[type=file], .dashboard .admin-document-page .edit-document-modal form .img-input label input[type=file], .dashboard-active .admin-document-page .edit-document-modal form .img-input label input[type=file], .dashboard .admin-document-page .delete-document-modal form .img-input label input[type=file], .dashboard-active .admin-document-page .delete-document-modal form .img-input label input[type=file], .dashboard .admin-document-page .document-modal form .img-input label input[type=file], .dashboard-active .admin-document-page .document-modal form .img-input label input[type=file] {
   display: none;
 }
-.dashboard .admin-document-page .add-document-modal form .img-input label .profile-con, .dashboard-active .admin-document-page .add-document-modal form .img-input label .profile-con, .dashboard .admin-document-page .edit-document-modal form .img-input label .profile-con, .dashboard-active .admin-document-page .edit-document-modal form .img-input label .profile-con, .dashboard .admin-document-page .delete-document-modal form .img-input label .profile-con, .dashboard-active .admin-document-page .delete-document-modal form .img-input label .profile-con, .dashboard .admin-document-page .sample-view-container form .img-input label .profile-con, .dashboard-active .admin-document-page .sample-view-container form .img-input label .profile-con, .dashboard .admin-document-page .document-modal form .img-input label .profile-con, .dashboard-active .admin-document-page .document-modal form .img-input label .profile-con {
+.dashboard .admin-document-page .add-document-modal form .img-input label .profile-con, .dashboard-active .admin-document-page .add-document-modal form .img-input label .profile-con, .dashboard .admin-document-page .edit-document-modal form .img-input label .profile-con, .dashboard-active .admin-document-page .edit-document-modal form .img-input label .profile-con, .dashboard .admin-document-page .delete-document-modal form .img-input label .profile-con, .dashboard-active .admin-document-page .delete-document-modal form .img-input label .profile-con, .dashboard .admin-document-page .document-modal form .img-input label .profile-con, .dashboard-active .admin-document-page .document-modal form .img-input label .profile-con {
   border-radius: 1rem;
-  border: solid 1px #000;
-  height: 7rem;
-  width: 7rem;
+  height: 5rem;
+  width: 5rem;
 }
-.dashboard .admin-document-page .add-document-modal form .img-input label .profile-con img, .dashboard-active .admin-document-page .add-document-modal form .img-input label .profile-con img, .dashboard .admin-document-page .edit-document-modal form .img-input label .profile-con img, .dashboard-active .admin-document-page .edit-document-modal form .img-input label .profile-con img, .dashboard .admin-document-page .delete-document-modal form .img-input label .profile-con img, .dashboard-active .admin-document-page .delete-document-modal form .img-input label .profile-con img, .dashboard .admin-document-page .sample-view-container form .img-input label .profile-con img, .dashboard-active .admin-document-page .sample-view-container form .img-input label .profile-con img, .dashboard .admin-document-page .document-modal form .img-input label .profile-con img, .dashboard-active .admin-document-page .document-modal form .img-input label .profile-con img {
+.dashboard .admin-document-page .add-document-modal form .img-input label .profile-con img, .dashboard-active .admin-document-page .add-document-modal form .img-input label .profile-con img, .dashboard .admin-document-page .edit-document-modal form .img-input label .profile-con img, .dashboard-active .admin-document-page .edit-document-modal form .img-input label .profile-con img, .dashboard .admin-document-page .delete-document-modal form .img-input label .profile-con img, .dashboard-active .admin-document-page .delete-document-modal form .img-input label .profile-con img, .dashboard .admin-document-page .document-modal form .img-input label .profile-con img, .dashboard-active .admin-document-page .document-modal form .img-input label .profile-con img {
   height: 100%;
   width: 100%;
   border-radius: 1rem;
 }
-.dashboard .admin-document-page .add-document-modal form .input-contain, .dashboard-active .admin-document-page .add-document-modal form .input-contain, .dashboard .admin-document-page .edit-document-modal form .input-contain, .dashboard-active .admin-document-page .edit-document-modal form .input-contain, .dashboard .admin-document-page .delete-document-modal form .input-contain, .dashboard-active .admin-document-page .delete-document-modal form .input-contain, .dashboard .admin-document-page .sample-view-container form .input-contain, .dashboard-active .admin-document-page .sample-view-container form .input-contain, .dashboard .admin-document-page .document-modal form .input-contain, .dashboard-active .admin-document-page .document-modal form .input-contain {
+.dashboard .admin-document-page .add-document-modal form .input-contain, .dashboard-active .admin-document-page .add-document-modal form .input-contain, .dashboard .admin-document-page .edit-document-modal form .input-contain, .dashboard-active .admin-document-page .edit-document-modal form .input-contain, .dashboard .admin-document-page .delete-document-modal form .input-contain, .dashboard-active .admin-document-page .delete-document-modal form .input-contain, .dashboard .admin-document-page .document-modal form .input-contain, .dashboard-active .admin-document-page .document-modal form .input-contain {
   display: flex;
   position: relative;
   flex-direction: column;
@@ -2887,11 +2898,11 @@ button {
   gap: 0.5rem;
   width: 100%;
 }
-.dashboard .admin-document-page .add-document-modal form .input-contain .error-message, .dashboard-active .admin-document-page .add-document-modal form .input-contain .error-message, .dashboard .admin-document-page .edit-document-modal form .input-contain .error-message, .dashboard-active .admin-document-page .edit-document-modal form .input-contain .error-message, .dashboard .admin-document-page .delete-document-modal form .input-contain .error-message, .dashboard-active .admin-document-page .delete-document-modal form .input-contain .error-message, .dashboard .admin-document-page .sample-view-container form .input-contain .error-message, .dashboard-active .admin-document-page .sample-view-container form .input-contain .error-message, .dashboard .admin-document-page .document-modal form .input-contain .error-message, .dashboard-active .admin-document-page .document-modal form .input-contain .error-message {
+.dashboard .admin-document-page .add-document-modal form .input-contain .error-message, .dashboard-active .admin-document-page .add-document-modal form .input-contain .error-message, .dashboard .admin-document-page .edit-document-modal form .input-contain .error-message, .dashboard-active .admin-document-page .edit-document-modal form .input-contain .error-message, .dashboard .admin-document-page .delete-document-modal form .input-contain .error-message, .dashboard-active .admin-document-page .delete-document-modal form .input-contain .error-message, .dashboard .admin-document-page .document-modal form .input-contain .error-message, .dashboard-active .admin-document-page .document-modal form .input-contain .error-message {
   font-size: 1.4rem;
   color: red;
 }
-.dashboard .admin-document-page .add-document-modal form .input-contain .placeholder-container, .dashboard-active .admin-document-page .add-document-modal form .input-contain .placeholder-container, .dashboard .admin-document-page .edit-document-modal form .input-contain .placeholder-container, .dashboard-active .admin-document-page .edit-document-modal form .input-contain .placeholder-container, .dashboard .admin-document-page .delete-document-modal form .input-contain .placeholder-container, .dashboard-active .admin-document-page .delete-document-modal form .input-contain .placeholder-container, .dashboard .admin-document-page .sample-view-container form .input-contain .placeholder-container, .dashboard-active .admin-document-page .sample-view-container form .input-contain .placeholder-container, .dashboard .admin-document-page .document-modal form .input-contain .placeholder-container, .dashboard-active .admin-document-page .document-modal form .input-contain .placeholder-container {
+.dashboard .admin-document-page .add-document-modal form .input-contain .placeholder-container, .dashboard-active .admin-document-page .add-document-modal form .input-contain .placeholder-container, .dashboard .admin-document-page .edit-document-modal form .input-contain .placeholder-container, .dashboard-active .admin-document-page .edit-document-modal form .input-contain .placeholder-container, .dashboard .admin-document-page .delete-document-modal form .input-contain .placeholder-container, .dashboard-active .admin-document-page .delete-document-modal form .input-contain .placeholder-container, .dashboard .admin-document-page .document-modal form .input-contain .placeholder-container, .dashboard-active .admin-document-page .document-modal form .input-contain .placeholder-container {
   position: absolute;
   top: 0%;
   left: 0rem;
@@ -2899,7 +2910,7 @@ button {
   width: 100%;
   pointer-events: none;
 }
-.dashboard .admin-document-page .add-document-modal form .input-contain input, .dashboard-active .admin-document-page .add-document-modal form .input-contain input, .dashboard .admin-document-page .edit-document-modal form .input-contain input, .dashboard-active .admin-document-page .edit-document-modal form .input-contain input, .dashboard .admin-document-page .delete-document-modal form .input-contain input, .dashboard-active .admin-document-page .delete-document-modal form .input-contain input, .dashboard .admin-document-page .sample-view-container form .input-contain input, .dashboard-active .admin-document-page .sample-view-container form .input-contain input, .dashboard .admin-document-page .document-modal form .input-contain input, .dashboard-active .admin-document-page .document-modal form .input-contain input {
+.dashboard .admin-document-page .add-document-modal form .input-contain input, .dashboard-active .admin-document-page .add-document-modal form .input-contain input, .dashboard .admin-document-page .edit-document-modal form .input-contain input, .dashboard-active .admin-document-page .edit-document-modal form .input-contain input, .dashboard .admin-document-page .delete-document-modal form .input-contain input, .dashboard-active .admin-document-page .delete-document-modal form .input-contain input, .dashboard .admin-document-page .document-modal form .input-contain input, .dashboard-active .admin-document-page .document-modal form .input-contain input {
   width: 100%;
   height: 5rem;
   border: solid 3px transparent;
@@ -2909,11 +2920,11 @@ button {
   letter-spacing: 2px;
   transition: all 0.3s ease-in-out;
 }
-.dashboard .admin-document-page .add-document-modal form .input-contain input:focus, .dashboard-active .admin-document-page .add-document-modal form .input-contain input:focus, .dashboard .admin-document-page .edit-document-modal form .input-contain input:focus, .dashboard-active .admin-document-page .edit-document-modal form .input-contain input:focus, .dashboard .admin-document-page .delete-document-modal form .input-contain input:focus, .dashboard-active .admin-document-page .delete-document-modal form .input-contain input:focus, .dashboard .admin-document-page .sample-view-container form .input-contain input:focus, .dashboard-active .admin-document-page .sample-view-container form .input-contain input:focus, .dashboard .admin-document-page .document-modal form .input-contain input:focus, .dashboard-active .admin-document-page .document-modal form .input-contain input:focus {
+.dashboard .admin-document-page .add-document-modal form .input-contain input:focus, .dashboard-active .admin-document-page .add-document-modal form .input-contain input:focus, .dashboard .admin-document-page .edit-document-modal form .input-contain input:focus, .dashboard-active .admin-document-page .edit-document-modal form .input-contain input:focus, .dashboard .admin-document-page .delete-document-modal form .input-contain input:focus, .dashboard-active .admin-document-page .delete-document-modal form .input-contain input:focus, .dashboard .admin-document-page .document-modal form .input-contain input:focus, .dashboard-active .admin-document-page .document-modal form .input-contain input:focus {
   border: solid 3px #457b9d;
   outline: none;
 }
-.dashboard .admin-document-page .add-document-modal form .input-contain input:focus + .placeholder-container .placeholder-text, .dashboard-active .admin-document-page .add-document-modal form .input-contain input:focus + .placeholder-container .placeholder-text, .dashboard .admin-document-page .edit-document-modal form .input-contain input:focus + .placeholder-container .placeholder-text, .dashboard-active .admin-document-page .edit-document-modal form .input-contain input:focus + .placeholder-container .placeholder-text, .dashboard .admin-document-page .delete-document-modal form .input-contain input:focus + .placeholder-container .placeholder-text, .dashboard-active .admin-document-page .delete-document-modal form .input-contain input:focus + .placeholder-container .placeholder-text, .dashboard .admin-document-page .sample-view-container form .input-contain input:focus + .placeholder-container .placeholder-text, .dashboard-active .admin-document-page .sample-view-container form .input-contain input:focus + .placeholder-container .placeholder-text, .dashboard .admin-document-page .document-modal form .input-contain input:focus + .placeholder-container .placeholder-text, .dashboard-active .admin-document-page .document-modal form .input-contain input:focus + .placeholder-container .placeholder-text {
+.dashboard .admin-document-page .add-document-modal form .input-contain input:focus + .placeholder-container .placeholder-text, .dashboard-active .admin-document-page .add-document-modal form .input-contain input:focus + .placeholder-container .placeholder-text, .dashboard .admin-document-page .edit-document-modal form .input-contain input:focus + .placeholder-container .placeholder-text, .dashboard-active .admin-document-page .edit-document-modal form .input-contain input:focus + .placeholder-container .placeholder-text, .dashboard .admin-document-page .delete-document-modal form .input-contain input:focus + .placeholder-container .placeholder-text, .dashboard-active .admin-document-page .delete-document-modal form .input-contain input:focus + .placeholder-container .placeholder-text, .dashboard .admin-document-page .document-modal form .input-contain input:focus + .placeholder-container .placeholder-text, .dashboard-active .admin-document-page .document-modal form .input-contain input:focus + .placeholder-container .placeholder-text {
   top: 0%;
   left: 0%;
   background-color: #fff;
@@ -2921,7 +2932,7 @@ button {
   color: black;
   scale: 0.8;
 }
-.dashboard .admin-document-page .add-document-modal form .input-contain .placeholder-text, .dashboard-active .admin-document-page .add-document-modal form .input-contain .placeholder-text, .dashboard .admin-document-page .edit-document-modal form .input-contain .placeholder-text, .dashboard-active .admin-document-page .edit-document-modal form .input-contain .placeholder-text, .dashboard .admin-document-page .delete-document-modal form .input-contain .placeholder-text, .dashboard-active .admin-document-page .delete-document-modal form .input-contain .placeholder-text, .dashboard .admin-document-page .sample-view-container form .input-contain .placeholder-text, .dashboard-active .admin-document-page .sample-view-container form .input-contain .placeholder-text, .dashboard .admin-document-page .document-modal form .input-contain .placeholder-text, .dashboard-active .admin-document-page .document-modal form .input-contain .placeholder-text {
+.dashboard .admin-document-page .add-document-modal form .input-contain .placeholder-text, .dashboard-active .admin-document-page .add-document-modal form .input-contain .placeholder-text, .dashboard .admin-document-page .edit-document-modal form .input-contain .placeholder-text, .dashboard-active .admin-document-page .edit-document-modal form .input-contain .placeholder-text, .dashboard .admin-document-page .delete-document-modal form .input-contain .placeholder-text, .dashboard-active .admin-document-page .delete-document-modal form .input-contain .placeholder-text, .dashboard .admin-document-page .document-modal form .input-contain .placeholder-text, .dashboard-active .admin-document-page .document-modal form .input-contain .placeholder-text {
   position: absolute;
   transition: all 0.2s ease-in-out;
   pointer-events: none;
@@ -2929,10 +2940,10 @@ button {
   left: 5%;
   transform: translate(0%, -50%);
 }
-.dashboard .admin-document-page .add-document-modal form .input-contain .placeholder-text:nth-child(1), .dashboard-active .admin-document-page .add-document-modal form .input-contain .placeholder-text:nth-child(1), .dashboard .admin-document-page .edit-document-modal form .input-contain .placeholder-text:nth-child(1), .dashboard-active .admin-document-page .edit-document-modal form .input-contain .placeholder-text:nth-child(1), .dashboard .admin-document-page .delete-document-modal form .input-contain .placeholder-text:nth-child(1), .dashboard-active .admin-document-page .delete-document-modal form .input-contain .placeholder-text:nth-child(1), .dashboard .admin-document-page .sample-view-container form .input-contain .placeholder-text:nth-child(1), .dashboard-active .admin-document-page .sample-view-container form .input-contain .placeholder-text:nth-child(1), .dashboard .admin-document-page .document-modal form .input-contain .placeholder-text:nth-child(1), .dashboard-active .admin-document-page .document-modal form .input-contain .placeholder-text:nth-child(1) {
+.dashboard .admin-document-page .add-document-modal form .input-contain .placeholder-text:nth-child(1), .dashboard-active .admin-document-page .add-document-modal form .input-contain .placeholder-text:nth-child(1), .dashboard .admin-document-page .edit-document-modal form .input-contain .placeholder-text:nth-child(1), .dashboard-active .admin-document-page .edit-document-modal form .input-contain .placeholder-text:nth-child(1), .dashboard .admin-document-page .delete-document-modal form .input-contain .placeholder-text:nth-child(1), .dashboard-active .admin-document-page .delete-document-modal form .input-contain .placeholder-text:nth-child(1), .dashboard .admin-document-page .document-modal form .input-contain .placeholder-text:nth-child(1), .dashboard-active .admin-document-page .document-modal form .input-contain .placeholder-text:nth-child(1) {
   left: 2% !important;
 }
-.dashboard .admin-document-page .add-document-modal form .input-contain .placeholder-text .text, .dashboard-active .admin-document-page .add-document-modal form .input-contain .placeholder-text .text, .dashboard .admin-document-page .edit-document-modal form .input-contain .placeholder-text .text, .dashboard-active .admin-document-page .edit-document-modal form .input-contain .placeholder-text .text, .dashboard .admin-document-page .delete-document-modal form .input-contain .placeholder-text .text, .dashboard-active .admin-document-page .delete-document-modal form .input-contain .placeholder-text .text, .dashboard .admin-document-page .sample-view-container form .input-contain .placeholder-text .text, .dashboard-active .admin-document-page .sample-view-container form .input-contain .placeholder-text .text, .dashboard .admin-document-page .document-modal form .input-contain .placeholder-text .text, .dashboard-active .admin-document-page .document-modal form .input-contain .placeholder-text .text {
+.dashboard .admin-document-page .add-document-modal form .input-contain .placeholder-text .text, .dashboard-active .admin-document-page .add-document-modal form .input-contain .placeholder-text .text, .dashboard .admin-document-page .edit-document-modal form .input-contain .placeholder-text .text, .dashboard-active .admin-document-page .edit-document-modal form .input-contain .placeholder-text .text, .dashboard .admin-document-page .delete-document-modal form .input-contain .placeholder-text .text, .dashboard-active .admin-document-page .delete-document-modal form .input-contain .placeholder-text .text, .dashboard .admin-document-page .document-modal form .input-contain .placeholder-text .text, .dashboard-active .admin-document-page .document-modal form .input-contain .placeholder-text .text {
   font-size: 1.4rem;
   padding: 0 0.5rem;
   background-color: transparent;
@@ -2941,7 +2952,7 @@ button {
   gap: 0.5rem;
   align-items: center;
 }
-.dashboard .admin-document-page .add-document-modal form .input-contain .active, .dashboard-active .admin-document-page .add-document-modal form .input-contain .active, .dashboard .admin-document-page .edit-document-modal form .input-contain .active, .dashboard-active .admin-document-page .edit-document-modal form .input-contain .active, .dashboard .admin-document-page .delete-document-modal form .input-contain .active, .dashboard-active .admin-document-page .delete-document-modal form .input-contain .active, .dashboard .admin-document-page .sample-view-container form .input-contain .active, .dashboard-active .admin-document-page .sample-view-container form .input-contain .active, .dashboard .admin-document-page .document-modal form .input-contain .active, .dashboard-active .admin-document-page .document-modal form .input-contain .active {
+.dashboard .admin-document-page .add-document-modal form .input-contain .active, .dashboard-active .admin-document-page .add-document-modal form .input-contain .active, .dashboard .admin-document-page .edit-document-modal form .input-contain .active, .dashboard-active .admin-document-page .edit-document-modal form .input-contain .active, .dashboard .admin-document-page .delete-document-modal form .input-contain .active, .dashboard-active .admin-document-page .delete-document-modal form .input-contain .active, .dashboard .admin-document-page .document-modal form .input-contain .active, .dashboard-active .admin-document-page .document-modal form .input-contain .active {
   top: 0%;
   left: 0%;
   background-color: #fff;
@@ -2949,7 +2960,7 @@ button {
   border-color: #8b8b8b;
   scale: 0.8;
 }
-.dashboard .admin-document-page .add-document-modal form textarea, .dashboard-active .admin-document-page .add-document-modal form textarea, .dashboard .admin-document-page .edit-document-modal form textarea, .dashboard-active .admin-document-page .edit-document-modal form textarea, .dashboard .admin-document-page .delete-document-modal form textarea, .dashboard-active .admin-document-page .delete-document-modal form textarea, .dashboard .admin-document-page .sample-view-container form textarea, .dashboard-active .admin-document-page .sample-view-container form textarea, .dashboard .admin-document-page .document-modal form textarea, .dashboard-active .admin-document-page .document-modal form textarea {
+.dashboard .admin-document-page .add-document-modal form textarea, .dashboard-active .admin-document-page .add-document-modal form textarea, .dashboard .admin-document-page .edit-document-modal form textarea, .dashboard-active .admin-document-page .edit-document-modal form textarea, .dashboard .admin-document-page .delete-document-modal form textarea, .dashboard-active .admin-document-page .delete-document-modal form textarea, .dashboard .admin-document-page .document-modal form textarea, .dashboard-active .admin-document-page .document-modal form textarea {
   resize: none;
   height: 100%;
   width: 100%;
@@ -2960,11 +2971,11 @@ button {
   letter-spacing: 2px;
   transition: all 0.3s ease-in-out;
 }
-.dashboard .admin-document-page .add-document-modal form textarea:focus, .dashboard-active .admin-document-page .add-document-modal form textarea:focus, .dashboard .admin-document-page .edit-document-modal form textarea:focus, .dashboard-active .admin-document-page .edit-document-modal form textarea:focus, .dashboard .admin-document-page .delete-document-modal form textarea:focus, .dashboard-active .admin-document-page .delete-document-modal form textarea:focus, .dashboard .admin-document-page .sample-view-container form textarea:focus, .dashboard-active .admin-document-page .sample-view-container form textarea:focus, .dashboard .admin-document-page .document-modal form textarea:focus, .dashboard-active .admin-document-page .document-modal form textarea:focus {
+.dashboard .admin-document-page .add-document-modal form textarea:focus, .dashboard-active .admin-document-page .add-document-modal form textarea:focus, .dashboard .admin-document-page .edit-document-modal form textarea:focus, .dashboard-active .admin-document-page .edit-document-modal form textarea:focus, .dashboard .admin-document-page .delete-document-modal form textarea:focus, .dashboard-active .admin-document-page .delete-document-modal form textarea:focus, .dashboard .admin-document-page .document-modal form textarea:focus, .dashboard-active .admin-document-page .document-modal form textarea:focus {
   border: solid 3px #457b9d;
   outline: none;
 }
-.dashboard .admin-document-page .add-document-modal form textarea:focus + .placeholder-container .placeholder-text, .dashboard-active .admin-document-page .add-document-modal form textarea:focus + .placeholder-container .placeholder-text, .dashboard .admin-document-page .edit-document-modal form textarea:focus + .placeholder-container .placeholder-text, .dashboard-active .admin-document-page .edit-document-modal form textarea:focus + .placeholder-container .placeholder-text, .dashboard .admin-document-page .delete-document-modal form textarea:focus + .placeholder-container .placeholder-text, .dashboard-active .admin-document-page .delete-document-modal form textarea:focus + .placeholder-container .placeholder-text, .dashboard .admin-document-page .sample-view-container form textarea:focus + .placeholder-container .placeholder-text, .dashboard-active .admin-document-page .sample-view-container form textarea:focus + .placeholder-container .placeholder-text, .dashboard .admin-document-page .document-modal form textarea:focus + .placeholder-container .placeholder-text, .dashboard-active .admin-document-page .document-modal form textarea:focus + .placeholder-container .placeholder-text {
+.dashboard .admin-document-page .add-document-modal form textarea:focus + .placeholder-container .placeholder-text, .dashboard-active .admin-document-page .add-document-modal form textarea:focus + .placeholder-container .placeholder-text, .dashboard .admin-document-page .edit-document-modal form textarea:focus + .placeholder-container .placeholder-text, .dashboard-active .admin-document-page .edit-document-modal form textarea:focus + .placeholder-container .placeholder-text, .dashboard .admin-document-page .delete-document-modal form textarea:focus + .placeholder-container .placeholder-text, .dashboard-active .admin-document-page .delete-document-modal form textarea:focus + .placeholder-container .placeholder-text, .dashboard .admin-document-page .document-modal form textarea:focus + .placeholder-container .placeholder-text, .dashboard-active .admin-document-page .document-modal form textarea:focus + .placeholder-container .placeholder-text {
   top: 0%;
   left: 0%;
   background-color: #fff;
@@ -3012,9 +3023,17 @@ button {
   margin: auto;
 }
 .dashboard .admin-document-page .sample-view-container, .dashboard-active .admin-document-page .sample-view-container {
-  display: grid;
-  height: 92vh;
-  width: 60rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  z-index: 7;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 65rem;
+  height: 93vh;
+  overflow: auto;
 }
 .dashboard .admin-document-page .sample-view-container img, .dashboard-active .admin-document-page .sample-view-container img {
   height: 100%;

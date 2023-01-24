@@ -9,14 +9,14 @@ import {
   handleUpdateDocument,
 } from "../../features/admin/document";
 import NoDocumentSvg from "../../assets/img/waiting.svg";
+import DocumentSvg from "../../assets/img/document.svg";
+import DocumentDark from "../../assets/img/documentNigga.svg";
 
 import {storage} from "../../Firebase";
 import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
 import {v4} from "uuid";
 import {Viewer} from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
-
-import DocViewer, {DocViewerRenderers} from "@cyntler/react-doc-viewer";
 
 const Documents = React.memo(() => {
   const {documents} = useSelector((state) => state.document);
@@ -59,14 +59,14 @@ const Documents = React.memo(() => {
       code: "format",
       minLength: 0,
       maxLength: 0,
+      valuePlaceholder: {
+        value: "Format",
+        label: "Format",
+      },
       options: [
         {
           value: "pdf",
           label: "pdf",
-        },
-        {
-          value: "docx",
-          label: "docx",
         },
         {
           value: "image",
@@ -111,7 +111,6 @@ const Documents = React.memo(() => {
     } else {
       setComplete(false);
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   };
 
@@ -160,6 +159,15 @@ const Documents = React.memo(() => {
             format: "image",
             isDisabled: false,
           }
+        : item.type === "select"
+        ? {
+            ...item,
+            isDisabled: false,
+            valuePlaceholder: {
+              value: "Format",
+              label: "Format",
+            },
+          }
         : {...item, value: ""};
     });
     setForm(newForm);
@@ -184,6 +192,20 @@ const Documents = React.memo(() => {
 
         uploadBytes(imageRef, value).then((res) => {
           getDownloadURL(res.ref).then((url) => {
+            if (type.includes("image")) {
+              newForm[2].valuePlaceholder = {
+                value: "image",
+                label: "image",
+              };
+              newForm[2].value = "image";
+            } else {
+              newForm[2].valuePlaceholder = {
+                value: "pdf",
+                label: "pdf",
+              };
+              newForm[index + 2].value = "pdf";
+            }
+            newForm[2].isDisabled = true;
             newForm[index].format = type;
             newForm[index].value = url;
             newForm[index].isDisabled = true;
@@ -215,6 +237,10 @@ const Documents = React.memo(() => {
         return;
       case "format":
         newForm[index].value = value;
+        newForm[index].valuePlaceholder = {
+          value: value,
+          label: value,
+        };
         setForm(newForm);
         checkCompletion();
         return;
@@ -271,7 +297,7 @@ const Documents = React.memo(() => {
         maxLength,
         id,
         isDisabled,
-        format,
+        valuePlaceholder,
       } = item;
 
       switch (type) {
@@ -280,28 +306,22 @@ const Documents = React.memo(() => {
             <div key={index} className="img-input">
               <label htmlFor={id}>
                 <div className="profile-con">
-                  {format.includes("doc") ? (
-                    <img
-                      src="https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg"
-                      alt="profile"
-                    />
-                  ) : format.includes("pdf") ? (
-                    <Viewer fileUrl={value} />
-                  ) : (
-                    <img src={value} alt="profile" />
-                  )}
+                  <img src={DocumentSvg} alt="profile" />
                 </div>
-                {value.includes("firebase") ? (
-                  <p>Sample Added</p>
-                ) : (
+
+                {isEditDocumentOpen === false && value.includes("firebase") ? (
+                  <p>Click to View</p>
+                ) : isAddDocumentOpen ? (
                   <p>Add Sample</p>
+                ) : (
+                  <p>Edit Sample</p>
                 )}
                 <input
                   disabled={isDisabled}
                   type="file"
                   name={forInput}
                   id={id}
-                  accept="image/*, application/pdf, .doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.documen,"
+                  accept="image/*, application/pdf"
                   onChange={(e) => handleOnChange(e.target.files[0], index)}
                 />
               </label>
@@ -362,6 +382,14 @@ const Documents = React.memo(() => {
           const list = options.map((opt) => opt);
           return (
             <Select
+              value={
+                selectedDocument && isEditDocumentOpen
+                  ? {
+                      label: selectedDocument.format,
+                      value: selectedDocument.format,
+                    }
+                  : valuePlaceholder
+              }
               defaultValue={
                 selectedDocument &&
                 isEditDocumentOpen && {
@@ -369,6 +397,7 @@ const Documents = React.memo(() => {
                   value: selectedDocument.format,
                 }
               }
+              isDisabled={isDisabled}
               tabIndex={-1}
               options={list}
               styles={customStyle}
@@ -398,7 +427,12 @@ const Documents = React.memo(() => {
       if (isSampleViewed) {
         return <Viewer fileUrl={selectedDocument.sample} />;
       }
-      return <p>Click to View</p>;
+      return (
+        <div className="preview-container">
+          <img src={DocumentDark} alt="document click" />
+          <p>Click to View</p>
+        </div>
+      );
     } else if (selectedDocument.format === "image") {
       return <img src={selectedDocument.sample} alt="profile" />;
     } else if (selectedDocument.format === "docx") {
