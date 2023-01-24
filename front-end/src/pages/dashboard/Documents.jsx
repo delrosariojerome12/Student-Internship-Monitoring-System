@@ -1,10 +1,11 @@
 import React from "react";
-import { Route, Routes, Link, Navigate, useNavigate } from "react-router-dom";
+import {Route, Routes, Link, Navigate, useNavigate} from "react-router-dom";
 import Completion from "./documents/Completion";
 import Requirments from "./documents/Requirments";
 import ViewAsPdf from "./documents/ViewAsPdf";
-import { AiOutlineFileAdd } from "react-icons/ai";
-import { FaRegCommentDots } from "react-icons/fa";
+import {AiOutlineFileAdd} from "react-icons/ai";
+import {FaRegCommentDots} from "react-icons/fa";
+import {useSelector} from "react-redux";
 
 const buttons = [
   {
@@ -22,6 +23,11 @@ const buttons = [
 ];
 const Documents = () => {
   const navigate = useNavigate();
+  const {user} = useSelector((state) => state.user);
+
+  const {documentDetails} = user;
+
+  console.log(documentDetails);
 
   return (
     <section className="documents-page">
@@ -54,7 +60,7 @@ const Documents = () => {
       <div className="content">
         <div className="button-container">
           {buttons.map((item, index) => {
-            const { path, btnName } = item;
+            const {path, btnName} = item;
             return (
               <button key={index} onClick={() => navigate(path)}>
                 {btnName}
@@ -63,12 +69,13 @@ const Documents = () => {
           })}
         </div>
         <div className="display">
-          <Routes>
-            <Route path="/requirments" element={<Requirments />} />
-            <Route path="/completion" element={<Completion />} />
-            <Route path="/ViewAsPdf" element={<ViewAsPdf />} />
-            <Route path="*" element={<Navigate to="/404" replace />} />
-          </Routes>
+          {documentDetails.map((item, index) => {
+            const {
+              document: {name},
+              completion,
+            } = item;
+            return <p key={index}>{name}</p>;
+          })}
         </div>
       </div>
     </section>

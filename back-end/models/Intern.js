@@ -24,6 +24,9 @@ const InternSchema = new mongoose.Schema({
   internsAssets,
   schoolDetails,
   scheduleDetails,
+  documentDetails: {
+    type: Array,
+  },
 });
 
 module.exports = mongoose.model("Intern", InternSchema);
