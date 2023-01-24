@@ -18,7 +18,7 @@ const DocumentSchema = new mongoose.Schema({
   format: {
     type: String,
     enum: {
-      values: ["pdf", "docx", "image"],
+      values: ["pdf", "image"],
       message: `{VALUE} is not supported.`,
     },
     required: [true, "Document needs a type."],
@@ -34,14 +34,6 @@ const DocumentSchema = new mongoose.Schema({
         "https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101028/pavelstasevich181101028.jpg?ver=6",
     },
   },
-  // purpose: {
-  //   type: String,
-  //   enum: {
-  //     values: [""],
-  //     message: `{VALUE} is not supported.`,
-  //   },
-  //   required: [true, "Document needs a purpose."],
-  // },
 });
 
 module.exports = mongoose.model("Document", DocumentSchema);
