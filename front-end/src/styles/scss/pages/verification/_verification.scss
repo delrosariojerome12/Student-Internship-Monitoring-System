@@ -158,6 +158,9 @@
       color: $primary-compliment-landing;
     }
   }
+
+  // start
+
   .verification-steps {
     overflow: hidden;
     margin: auto;
@@ -456,6 +459,100 @@
         color: $primary-compliment-landing;
         background-color: $primary-font-color;
         border: solid 1px $primary-compliment-landing;
+      }
+    }
+  }
+}
+
+// Responsive
+
+@media screen and(max-width: 860px) {
+  .verification-container {
+    .verification-steps {
+      grid-template-rows: 10rem auto;
+      width: 100%;
+      height: 100%;
+      .steps-container {
+        h2 {
+          font-size: 2.2rem;
+        }
+        .steps {
+          .step-1,
+          .step-2,
+          .step-3 {
+            height: 6.5rem;
+            width: 6.5rem;
+          }
+        }
+      }
+    }
+    form {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+// @media screen and(max-width: 700px) {
+//   .verification-container {
+//     .verification-steps {
+//       grid-template-rows: 10rem auto;
+//       padding: 1rem;
+//       width: 100%;
+//       height: 100%;
+//       // .steps-container {
+//       //   h2 {
+//       //     font-size: 2.2rem;
+//       //   }
+//       //   .steps {
+//       //     .step-1,
+//       //     .step-2,
+//       //     .step-3 {
+//       //       height: 6.5rem;
+//       //       width: 6.5rem;
+//       //     }
+//       //   }
+//       // }
+//     }
+//   }
+// }
+
+@media screen and(max-width: 700px) {
+  .verification-container {
+    padding: 1rem;
+    border: none;
+    .verification-steps {
+      // grid-template-rows: 10rem auto;
+      // width: 100%;
+      // height: 100%;
+      // .steps-container {
+      //   h2 {
+      //     font-size: 2.2rem;
+      //   }
+      //   .steps {
+      //     .step-1,
+      //     .step-2,
+      //     .step-3 {
+      //       height: 6.5rem;
+      //       width: 6.5rem;
+      //     }
+      //   }
+      // }
+      form {
+        .student-details {
+          .forms-con {
+            .img-input {
+              height: auto;
+              padding: 1rem 0;
+              label {
+                flex-direction: column;
+                // input {
+
+                // }
+              }
+            }
+          }
+        }
       }
     }
   }

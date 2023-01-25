@@ -37,14 +37,30 @@ const Internships = () => {
         </div>
       </div>
       <div className="bottom">
-        <div className="main-content">
-          <div className="left-img"></div>
-          <div className="right-content">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
-            repellat dolores id saepe qui. Ad ullam a sed! Praesentium omnis
-            minus aliquam facere eum odio dolor saepe, modi dicta illo natus!
-            Atque, obcaecati sint! Quam qui, maiores ex molestias expedita velit
-            labore ab deleniti quos laudantium quo, odio aspernatur harum!
+        <div className="img-container"></div>
+        <div className="internship-details">
+          <div className="title">
+            <h4>Jolirat</h4>
+          </div>
+          <div className="internship-content">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
+              accusantium mollitia, sequi culpa, explicabo ducimus, doloremque
+              aliquid illum voluptas beatae non deleniti doloribus dolor nostrum
+              earum ab numquam ipsa nulla consequatur eius unde? Adipisci,
+              accusantium? Laboriosam, non eligendi, nihil dolor, consequuntur
+              ipsam voluptatem ut explicabo debitis fugit necessitatibus?
+              Expedita iste voluptatum eaque magni, tempore officia ex ea quasi
+              deserunt modi illum accusantium vero at assumenda repellat natus
+              tenetur reprehenderit maiores ducimus neque iusto ipsam quo sint
+              corrupti. Consequuntur aperiam tenetur soluta nobis omnis nulla
+              ducimus nesciunt, repellendus consectetur aliquid similique nam.
+              Molestias repellendus harum adipisci temporibus aliquid quasi
+              debitis accusamus.
+            </p>
+          </div>
+          <div className="viewMore">
+            <button className="viewMore-btn">View More</button>
           </div>
         </div>
       </div>
