@@ -51,7 +51,12 @@ const updateDocuments = async (req, res) => {
     const {_id, name, format, sample, description} = item;
     return {
       document: {_id, name, format, sample, description},
-      completion: {hasSent: false, isRejected: false, isApprove: false},
+      completion: {
+        hasSent: false,
+        isRejected: false,
+        isApproved: false,
+        sentDocument: null,
+      },
     };
   });
 

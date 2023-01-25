@@ -29,7 +29,6 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fff;
-    // height: 40rem;
     z-index: 7;
     width: 50rem;
     border-radius: 1rem;
@@ -37,7 +36,6 @@ body {
     display: grid;
     grid-template-rows: auto 4rem;
     gap: 1rem;
-    // background-color: #d1d1d1;
 
     .btn-container {
       display: flex;
