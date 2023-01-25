@@ -2772,9 +2772,6 @@ button {
     flex-direction: column;
   }
 }
-.dashboard body, .dashboard-active body {
-  height: 100%;
-}
 .dashboard .admin-document-page, .dashboard-active .admin-document-page {
   display: grid;
   grid-template-rows: 8vh auto;
@@ -4188,14 +4185,22 @@ button {
 
 .documents-page {
   display: grid;
-  height: 100%;
-  width: 100%;
   grid-template-rows: 25rem auto;
   gap: 2rem;
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+}
+.documents-page .overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(48, 47, 47, 0.753);
+  position: absolute;
+  filter: blur(20px);
+  top: 0%;
+  left: 0%;
+  z-index: 6;
 }
 .documents-page .top {
   border-radius: 1.5rem;
@@ -4205,43 +4210,23 @@ button {
   padding: 1rem;
   gap: 1rem;
 }
-.documents-page .top .private-comment {
+.documents-page .top .selected-document-indicator {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
   color: #fff;
-  border: solid 1px #fff;
 }
-.documents-page .top .private-comment .one {
+.documents-page .top .selected-document-indicator .sub-con {
+  color: #000;
+  height: 100%;
+  font-weight: 600;
+  border-radius: 1rem;
+  background-color: #d9d9d9;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
-  padding: 1rem 0 0;
-  cursor: pointer;
-}
-.documents-page .top .private-comment .one span {
-  padding-top: 0.4rem;
-  font-size: 2rem;
-}
-.documents-page .top .private-comment .one p {
-  font-size: 1.5rem;
-  padding: 0 0.8rem;
-}
-.documents-page .top .private-comment .two {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.documents-page .top .private-comment .two p {
-  color: #00adb5;
-  font-size: 1.5rem;
-  width: 22rem;
-  text-align: center;
+  flex-direction: column;
 }
 .documents-page .top .drop-file {
-  border: solid 1px #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4272,16 +4257,6 @@ button {
 }
 .documents-page .top .drop-file .drop-file-container .add-file-text p {
   color: grey;
-}
-.documents-page .overlay {
-  width: 100%;
-  min-height: 100%;
-  background-color: rgba(48, 47, 47, 0.753);
-  position: absolute;
-  filter: blur(20px);
-  top: 0%;
-  left: 0%;
-  z-index: 6;
 }
 .documents-page .required-document {
   position: absolute;
@@ -4371,8 +4346,8 @@ button {
 }
 .documents-page .display {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 20rem);
-  grid-auto-rows: 11rem;
+  grid-template-columns: repeat(auto-fill, 24rem);
+  grid-auto-rows: 12rem;
   gap: 1.5rem;
   padding: 2rem;
   color: #fff;

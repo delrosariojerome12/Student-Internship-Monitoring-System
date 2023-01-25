@@ -14,6 +14,7 @@ import {IconContext} from "react-icons";
 
 import DocumentDark from "../../assets/img/documentNigga.svg";
 import {Viewer} from "@react-pdf-viewer/core";
+import "@react-pdf-viewer/core/lib/styles/index.css";
 
 const Documents = () => {
   const {user} = useSelector((state) => state.user);
@@ -61,11 +62,16 @@ const Documents = () => {
             {selectedDocument ? (
               <>
                 <h4>Selected Document:</h4>
-                <p>{selectedDocument.name}</p>
+                <div className="sub-con">
+                  <p>{selectedDocument.name}</p>
+                </div>
               </>
             ) : (
               <>
-                <p>No Document Selected.</p>
+                <h4>Selected Document:</h4>
+                <div className="sub-con">
+                  <p>No Document Selected.</p>
+                </div>
               </>
             )}
           </div>

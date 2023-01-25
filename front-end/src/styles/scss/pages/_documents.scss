@@ -3,11 +3,18 @@
 
 .documents-page {
   display: grid;
-  height: 100%;
-  width: 100%;
   grid-template-rows: 25rem auto;
   gap: 2rem;
-
+  .overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(48, 47, 47, 0.753);
+    position: absolute;
+    filter: blur(20px);
+    top: 0%;
+    left: 0%;
+    z-index: 6;
+  }
   .top {
     border-radius: 1.5rem;
     background-color: lighten(
@@ -18,37 +25,24 @@
     grid-template-columns: 1fr 2fr;
     padding: 1rem;
     gap: 1rem;
-    .private-comment {
-      @include flexColumn;
+    .selected-document-indicator {
+      display: flex;
+      flex-direction: column;
       color: #fff;
-      border: solid 1px #fff;
-      .one {
-        @include flexCenter;
-        flex-direction: row;
-        padding: 1rem 0 0;
-        cursor: pointer;
-        span {
-          padding-top: 0.4rem;
-          font-size: 2rem;
-        }
-        p {
-          font-size: 1.5rem;
-          padding: 0 0.8rem;
-        }
-      }
-      .two {
-        cursor: pointer;
-        @include flexCenter;
-        p {
-          color: $primary-feature-bg;
-          font-size: 1.5rem;
-          width: 22rem;
-          text-align: center;
-        }
+      .sub-con {
+        color: #000;
+        height: 100%;
+        font-weight: 600;
+        border-radius: 1rem;
+        background-color: #d9d9d9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
       }
     }
+
     .drop-file {
-      border: solid 1px #fff;
       @include flexCenter;
       .drop-file-container {
         @include flexCenter;
@@ -77,16 +71,7 @@
       }
     }
   }
-  .overlay {
-    width: 100%;
-    min-height: 100%;
-    background-color: rgba(48, 47, 47, 0.753);
-    position: absolute;
-    filter: blur(20px);
-    top: 0%;
-    left: 0%;
-    z-index: 6;
-  }
+
   .required-document {
     position: absolute;
     top: 50%;
@@ -170,6 +155,7 @@
     width: 65rem;
     height: 93vh;
     overflow: auto;
+
     img {
       height: 100%;
       width: 100%;
@@ -178,8 +164,8 @@
 
   .display {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 20rem);
-    grid-auto-rows: 11rem;
+    grid-template-columns: repeat(auto-fill, 24rem);
+    grid-auto-rows: 12rem;
     gap: 1.5rem;
     padding: 2rem;
     color: #fff;
