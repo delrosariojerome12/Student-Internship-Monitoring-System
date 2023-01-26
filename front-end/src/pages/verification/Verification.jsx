@@ -580,7 +580,8 @@ const Verification = React.memo(() => {
           return (
             <div className="img-input" key={index}>
               <label htmlFor="valid-img">
-                School ID
+                {/* <b>School ID:</b> */}
+                <h4>School ID:</h4>
                 <input
                   disabled={isDisabled}
                   onChange={(e) =>

@@ -3787,7 +3787,7 @@ button {
   border-radius: 5px;
   border: solid 1px transparent;
   outline: none;
-  background-color: #457b9d;
+  background-color: #0d7377;
   color: #f1faee;
   letter-spacing: 0.2rem;
   transition: all 0.3s ease-in-out;
@@ -3795,8 +3795,8 @@ button {
 }
 .verification-container .valid-id-modal button:last-child:hover {
   background-color: #f1faee;
-  color: #457b9d;
-  border: solid 1px #457b9d;
+  color: #0d7377;
+  border: solid 1px #0d7377;
 }
 .verification-container .overlay {
   width: 100%;
@@ -3813,16 +3813,31 @@ button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50rem;
-  height: 300px;
+  width: 60rem;
+  height: 36rem;
   background-color: #fff;
   z-index: 7;
   border: solid 1px #323232;
   border-radius: 2rem;
-  padding: 2rem;
-  display: grid;
+  padding: 4rem 2rem;
+  gap: 1rem;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
   text-align: center;
+}
+.verification-container .are-you-sure-modal span {
+  color: #0d7377;
+  font-size: 7rem;
+}
+.verification-container .are-you-sure-modal h3,
+.verification-container .are-you-sure-modal p {
+  width: 80%;
+}
+.verification-container .are-you-sure-modal p {
+  color: #757575;
+  font-size: 1.6rem;
 }
 .verification-container .are-you-sure-modal .button-container {
   height: 100%;
@@ -3918,7 +3933,7 @@ button {
   display: grid;
   grid-template-rows: 12rem auto;
   gap: 2rem;
-  padding: 3rem;
+  padding: 4rem 3rem 3rem;
 }
 .verification-container .verification-steps p {
   font-size: 2.5rem;
@@ -3983,7 +3998,7 @@ button {
   width: 60rem;
   position: relative;
   margin: auto;
-  height: 50rem;
+  height: 45rem;
 }
 .verification-container form .inactive {
   transform: translate(-120%, 0%);
@@ -3999,6 +4014,11 @@ button {
 }
 .verification-container form .active-1 {
   transform: translate(-200%, 0%);
+}
+.verification-container form .internship-details,
+.verification-container form .student-details,
+.verification-container form .schedule-details {
+  background-color: #f3f3f3;
 }
 .verification-container form .internship-details {
   border: solid 1px #000;
@@ -4046,6 +4066,7 @@ button {
   display: flex;
   align-items: center;
   border: solid 1px #8b8b8b;
+  background-color: #fff;
   gap: 2rem;
   padding-left: 2rem;
   border-radius: 0.5rem;
@@ -4135,6 +4156,7 @@ button {
   padding: 1.1rem 3.5rem 1.1rem 2rem;
   letter-spacing: 2px;
   transition: all 0.3s ease-in-out;
+  background-color: #fff;
 }
 .verification-container form .input-contain input:focus {
   border: solid 3px #457b9d;
@@ -4200,29 +4222,63 @@ button {
 }
 
 @media screen and (max-width: 860px) {
+  .verification-container .valid-id-modal img {
+    height: 45rem;
+    width: 45rem;
+  }
+  .verification-container .are-you-sure-modal {
+    width: 55rem;
+  }
   .verification-container .verification-steps {
-    grid-template-rows: 10rem auto;
+    grid-template-rows: 11rem auto;
     width: 100%;
     height: 100%;
   }
-  .verification-container .verification-steps .steps-container h2 {
-    font-size: 2.2rem;
+  .verification-container .verification-steps .steps-container {
+    gap: 1rem;
   }
   .verification-container .verification-steps .steps-container .steps .step-1,
 .verification-container .verification-steps .steps-container .steps .step-2,
 .verification-container .verification-steps .steps-container .steps .step-3 {
-    height: 6.5rem;
-    width: 6.5rem;
+    height: 6.8rem;
+    width: 6.8rem;
   }
-  .verification-container form {
+  .verification-container .verification-steps .steps-container .step-1::after {
+    display: none;
+  }
+  .verification-container .verification-steps .steps-container .step-2::after {
+    display: none;
+  }
+  .verification-container .verification-steps form {
     width: 100%;
     height: 100%;
   }
 }
-@media screen and (max-width: 700px) {
-  .verification-container {
-    padding: 1rem;
-    border: none;
+@media screen and (max-width: 750px) {
+  .verification-container .valid-id-modal img {
+    height: 40rem;
+    width: 40rem;
+  }
+  .verification-container .are-you-sure-modal {
+    width: 45rem;
+    height: 40rem;
+  }
+  .verification-container .verification-steps {
+    grid-template-rows: 10rem auto;
+  }
+  .verification-container .verification-steps .steps-container h2 {
+    font-size: 2.5rem;
+  }
+  .verification-container .verification-steps .steps-container .steps .step-1,
+.verification-container .verification-steps .steps-container .steps .step-2,
+.verification-container .verification-steps .steps-container .steps .step-3 {
+    height: 6.2rem;
+    width: 6.2rem;
+  }
+  .verification-container .verification-steps form .internship-details,
+.verification-container .verification-steps form .student-details,
+.verification-container .verification-steps form .schedule-details {
+    overflow-y: auto;
   }
   .verification-container .verification-steps form .student-details .forms-con .img-input {
     height: auto;
@@ -4230,6 +4286,106 @@ button {
   }
   .verification-container .verification-steps form .student-details .forms-con .img-input label {
     flex-direction: column;
+  }
+  .verification-container .verification-steps form .student-details .forms-con .img-input label input {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 650px) {
+  .verification-container .valid-id-modal img {
+    height: 35rem;
+    width: 35rem;
+  }
+  .verification-container .valid-id-modal button {
+    height: 3.5rem;
+  }
+  .verification-container .are-you-sure-modal {
+    width: 35rem;
+    height: 42rem;
+    border-radius: 2rem;
+  }
+  .verification-container .are-you-sure-modal span {
+    font-size: 6rem;
+  }
+  .verification-container .are-you-sure-modal h3 {
+    font-size: 2rem;
+  }
+  .verification-container .are-you-sure-modal p {
+    font-size: 1.5rem;
+  }
+  .verification-container .are-you-sure-modal h3,
+.verification-container .are-you-sure-modal p {
+    width: 90%;
+  }
+  .verification-container .are-you-sure-modal .button-container button {
+    height: 3.5rem;
+  }
+  .verification-container .greetings {
+    font-size: 2.2rem;
+  }
+  .verification-container .verification-steps .steps-container h2 {
+    font-size: 2.3rem;
+  }
+  .verification-container .verification-steps .steps-container .steps .step-1,
+.verification-container .verification-steps .steps-container .steps .step-2,
+.verification-container .verification-steps .steps-container .steps .step-3 {
+    height: 6rem;
+    width: 6rem;
+  }
+  .verification-container .verification-steps form .student-details .forms-con .img-input label input {
+    width: 60%;
+  }
+  .verification-container .verification-steps form button {
+    height: 3rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .verification-container {
+    padding: 1rem;
+    border: none;
+  }
+  .verification-container .valid-id-modal img {
+    height: 30rem;
+    width: 30rem;
+  }
+  .verification-container .verification-steps {
+    padding: 2rem;
+    grid-template-rows: 8rem auto;
+  }
+  .verification-container .verification-steps .steps-container h2 {
+    font-size: 2rem;
+  }
+  .verification-container .verification-steps .steps-container .steps .step-1,
+.verification-container .verification-steps .steps-container .steps .step-2,
+.verification-container .verification-steps .steps-container .steps .step-3 {
+    height: 5.7rem;
+    width: 5.7rem;
+  }
+  .verification-container .verification-steps form .student-details .forms-con .img-input label input {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .verification-container .valid-id-modal img {
+    height: 25rem;
+    width: 25rem;
+  }
+  .verification-container .are-you-sure-modal {
+    width: 80%;
+  }
+  .verification-container .verification-steps form .btn-con {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+@media screen and (max-width: 350px) {
+  .verification-container {
+    padding: 1rem;
+    border: none;
+  }
+  .verification-container .verification-steps form .student-details .forms-con .img-input label input {
+    width: 90%;
   }
 }
 .waiting-container-sent {
