@@ -7,6 +7,9 @@ const initialState = {
   isSampleViewed: false,
   isLoading: false,
   isError: false,
+  sendLoading: false,
+  sendError: false,
+  sentDocument: null,
 };
 
 export const updateDocumentsOnLoad = createAsyncThunk(
@@ -23,18 +26,36 @@ export const updateDocumentsOnLoad = createAsyncThunk(
   }
 );
 
+export const sendDocument = createAsyncThunk(
+  "",
+  async ({form, email}, {rejectWithValue}) => {
+    try {
+      const url = `http://localhost:5000/intern/sendDocument/${email}`;
+      const {data: res} = await axios.patch(url);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 export const internDocumentReducer = createSlice({
   name: "intern-document",
   initialState,
   reducers: {
     handleSelectedDocument: (state, {payload}) => {
-      state.selectedDocument = payload.document;
+      state.selectedDocument = payload;
     },
     handleDocumentOpen: (state, {payload}) => {
       state.isDocumentOpen = !state.isDocumentOpen;
     },
     handleSampleViewed: (state, {payload}) => {
       state.isSampleViewed = !state.isSampleViewed;
+    },
+    handleSentDocument: (state, {payload}) => {
+      // state.selectedDocument  = payload
+      console.log(payload);
     },
   },
   extraReducers: (builder) => {
@@ -49,10 +70,24 @@ export const internDocumentReducer = createSlice({
         state.isLoading = false;
         state.isError = true;
       });
+    builder
+      .addCase(sendDocument.pending, (state, action) => {
+        state.sendLoading = true;
+      })
+      .addCase(sendDocument.fulfilled, (state, action) => {
+        state.sendLoading = false;
+      })
+      .addCase(sendDocument.rejected, (state, action) => {
+        state.sendLoading = false;
+      });
   },
 });
 
-export const {handleSelectedDocument, handleDocumentOpen, handleSampleViewed} =
-  internDocumentReducer.actions;
+export const {
+  handleSelectedDocument,
+  handleDocumentOpen,
+  handleSampleViewed,
+  handleSentDocument,
+} = internDocumentReducer.actions;
 
 export default internDocumentReducer.reducer;

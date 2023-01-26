@@ -4227,9 +4227,18 @@ button {
   flex-direction: column;
 }
 .documents-page .top .drop-file {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+}
+.documents-page .top .drop-file form {
+  display: grid;
+}
+.documents-page .top .drop-file form label {
+  display: grid;
+  border: solid 1px #fff;
+  padding: 2rem;
+}
+.documents-page .top .drop-file form input[type=file] {
+  display: none;
 }
 .documents-page .top .drop-file .drop-file-container {
   display: flex;
@@ -4238,8 +4247,8 @@ button {
   flex-direction: column;
   border: dashed 2px #fff;
   background-color: rgb(59, 59, 59);
-  height: 80%;
-  width: 80%;
+  height: 100%;
+  width: 100%;
 }
 .documents-page .top .drop-file .drop-file-container .add-icon {
   cursor: pointer;

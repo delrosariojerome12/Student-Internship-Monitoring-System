@@ -11,7 +11,7 @@ import {RiMailSendFill} from "react-icons/ri";
 
 const DocumentIntern = React.memo(({item}) => {
   const {
-    document: {description, format, sample, name},
+    document: {format, sample, name},
     completion: {isApproved, hasSent, isRejected, sentDocument},
   } = item;
   const dispatch = useDispatch();

@@ -43,14 +43,26 @@
     }
 
     .drop-file {
-      @include flexCenter;
+      // @include flexCenter;
+      display: grid;
+      form {
+        display: grid;
+        label {
+          display: grid;
+          border: solid 1px #fff;
+          padding: 2rem;
+        }
+        input[type="file"] {
+          display: none;
+        }
+      }
       .drop-file-container {
         @include flexCenter;
         flex-direction: column;
         border: dashed 2px #fff;
         background-color: rgb(59, 59, 59);
-        height: 80%;
-        width: 80%;
+        height: 100%;
+        width: 100%;
         .add-icon {
           cursor: pointer;
           span {
