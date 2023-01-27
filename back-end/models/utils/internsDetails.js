@@ -90,6 +90,7 @@ const documentDetails = [
       isRejected: Boolean,
       isApproved: Boolean,
       sentDocument: String,
+      filePath: String,
     },
   }),
 ];

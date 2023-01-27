@@ -4276,7 +4276,6 @@ button {
   color: #fff;
 }
 .documents-page .top .drop-file form label .document-preview {
-  cursor: pointer;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -4297,11 +4296,16 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
 }
 .documents-page .top .drop-file form label .document-preview .details .left {
   display: flex;
   align-items: center;
   gap: 1rem;
+  cursor: pointer;
+}
+.documents-page .top .drop-file form label .document-preview .details .left p {
+  word-break: break-all;
 }
 .documents-page .top .drop-file form label .document-preview .details button {
   border: none;

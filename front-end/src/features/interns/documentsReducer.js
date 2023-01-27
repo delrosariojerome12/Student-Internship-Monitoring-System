@@ -9,10 +9,11 @@ const initialState = {
   isError: false,
   sendLoading: false,
   sendError: false,
+  documentDetails: null,
 };
 
 export const updateDocumentsOnLoad = createAsyncThunk(
-  "/uer/internDocuments",
+  "/intern/loadDocuments",
   async (email, {rejectWithValue}) => {
     try {
       const url = `http://localhost:5000/intern/updateDocuments/${email}`;
@@ -26,14 +27,40 @@ export const updateDocumentsOnLoad = createAsyncThunk(
 );
 
 export const sendDocument = createAsyncThunk(
-  "",
-  async ({form, email}, {rejectWithValue, getState}) => {
-    // console.log(form);
-    // console.log(getState);
+  "intern/sendDocument",
+  async ({id, sentDocument, filePath}, {rejectWithValue, getState}) => {
+    const {
+      user: {
+        user: {email, documentDetails},
+      },
+    } = getState();
+
+    const newDocument = [...documentDetails]
+      .filter((item) => item._id === id)
+      .map((item) => {
+        const {document} = item;
+        return {
+          completion: {
+            sentDocument,
+            filePath,
+            hasSent: true,
+            isApproved: false,
+            isRejected: false,
+          },
+          document,
+          _id: id,
+        };
+      });
+
+    const allDocuments = [...documentDetails].filter((item) => item._id !== id);
+    const completeDocumentDetails = [...allDocuments, newDocument[0]];
+
     try {
-      // const url = `http://localhost:5000/intern/sendDocument/${email}`;
-      // const {data: res} = await axios.patch(url);
-      // console.log(res);
+      const url = `http://localhost:5000/intern/sendDocument/${email}`;
+      const {data: res} = await axios.patch(url, {
+        documentDetails: completeDocumentDetails,
+      });
+      return {res: res.documentDetails};
     } catch (error) {
       console.log(error);
       return rejectWithValue(error.response.data);
@@ -54,6 +81,10 @@ export const internDocumentReducer = createSlice({
     handleSampleViewed: (state, {payload}) => {
       state.isSampleViewed = !state.isSampleViewed;
     },
+    handleDocumentDetails: (state, {payload}) => {
+      console.log(payload);
+      state.documentDetails = payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -73,6 +104,7 @@ export const internDocumentReducer = createSlice({
       })
       .addCase(sendDocument.fulfilled, (state, action) => {
         state.sendLoading = false;
+        state.documentDetails = action.payload.res;
       })
       .addCase(sendDocument.rejected, (state, action) => {
         state.sendLoading = false;
@@ -80,7 +112,11 @@ export const internDocumentReducer = createSlice({
   },
 });
 
-export const {handleSelectedDocument, handleDocumentOpen, handleSampleViewed} =
-  internDocumentReducer.actions;
+export const {
+  handleSelectedDocument,
+  handleDocumentOpen,
+  handleSampleViewed,
+  handleDocumentDetails,
+} = internDocumentReducer.actions;
 
 export default internDocumentReducer.reducer;

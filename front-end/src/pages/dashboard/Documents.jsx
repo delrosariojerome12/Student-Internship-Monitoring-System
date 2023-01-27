@@ -7,6 +7,7 @@ import {
   handleDocumentOpen,
   handleSampleViewed,
   sendDocument,
+  handleDocumentDetails,
 } from "../../features/interns/documentsReducer";
 import ServerError from "../serverError";
 import Bouncing from "../../components/loading/Bouncing";
@@ -22,18 +23,22 @@ import {v4} from "uuid";
 
 const Documents = () => {
   const {user} = useSelector((state) => state.user);
-  const {isLoading, isError, selectedDocument, isDocumentOpen, isSampleViewed} =
-    useSelector((state) => state.internDocument);
+  const {
+    isLoading,
+    isError,
+    selectedDocument,
+    isDocumentOpen,
+    isSampleViewed,
+    documentDetails,
+  } = useSelector((state) => state.internDocument);
   const dispatch = useDispatch();
 
   const [sentDocument, setSentDocument] = useState(null);
-  const [sendConfirmation, setSendConfirmation] = useState(false);
   const [isSentDocumentOpen, setSentDocumentOpen] = useState(false);
 
-  const {documentDetails} = user;
-
   useEffect(() => {
-    // change this to update or make a button for it
+    // change this to update or make a button for
+    dispatch(handleDocumentDetails(user.documentDetails));
     user.documentDetails.length === 0 &&
       dispatch(updateDocumentsOnLoad(user.email));
   }, []);
@@ -46,8 +51,56 @@ const Documents = () => {
     return <ServerError />;
   }
 
-  console.log(user.documentDetails);
-  console.log(sentDocument);
+  if (!documentDetails) {
+    return <Bouncing />;
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(
+      sendDocument({
+        sentDocument: sentDocument.sample,
+        id: selectedDocument._id,
+        filePath: sentDocument.filePath,
+      })
+    );
+  };
+
+  const handleImageInput = (file) => {
+    if (file) {
+      const imageName = `images/documents/sample/${v4() + file.name}`;
+      const {type} = file;
+      const imageRef = ref(storage, imageName);
+      // add delete
+      uploadBytes(imageRef, file).then((res) => {
+        getDownloadURL(res.ref).then((url) => {
+          setSentDocument({
+            sample: url,
+            name: file.name,
+            format: type,
+            filePath: imageName,
+          });
+          // setSendConfirmation(true);
+        });
+      });
+    }
+  };
+
+  const renderClickable = () => {
+    if (selectedDocument && !sentDocument) {
+      return false;
+    } else if (selectedDocument && sendDocument) {
+      return true;
+    } else {
+      return true;
+    }
+  };
+  const checkFormat = () => {
+    if (selectedDocument.document.format === "pdf") {
+      return "application/pdf";
+    }
+    return "image/*";
+  };
 
   const renderDocumentDetails = () => {
     if (selectedDocument.document.format === "pdf") {
@@ -62,37 +115,14 @@ const Documents = () => {
       );
     } else if (selectedDocument.document.format === "image") {
       return <img src={selectedDocument.document.sample} alt="profile" />;
-    } else if (selectedDocument.document.format === "docx") {
-      return <p>Click to View</p>;
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // dispatch(sendDocument(user.documentDetails));
-    console.log("submitted");
-  };
-
-  const handleImageInput = (file) => {
-    const imageName = `images/documents/sample/${v4() + file.name}`;
-    const imageRef = ref(storage, imageName);
-    // add delete
-    uploadBytes(imageRef, file).then((res) => {
-      getDownloadURL(res.ref).then((url) => {
-        setSentDocument({url, fileName: file.name});
-        setSendConfirmation(true);
-      });
-    });
-  };
-
-  const renderClickable = () => {
-    if (selectedDocument && !sentDocument) {
-      return false;
-    } else if (selectedDocument && sendDocument) {
-      return true;
-    } else {
-      return true;
+  const renderSentDocument = () => {
+    if (sentDocument.format.includes("pdf")) {
+      return <Viewer fileUrl={sentDocument.sample} />;
     }
+    return <img src={sentDocument.sample} alt={sentDocument.name} />;
   };
 
   return (
@@ -124,13 +154,18 @@ const Documents = () => {
                     <div className="overlay-document"></div>
                     <div className="document-preview">
                       <div className="details">
-                        <div className="left">
+                        <div
+                          className="left"
+                          onClick={() =>
+                            setSentDocumentOpen(!isSentDocumentOpen)
+                          }
+                        >
                           <img src={DocumentDark} alt="document" />
-                          <p>{sentDocument.fileName}</p>
+                          <p>{sentDocument.name}</p>
                         </div>
                         <button
                           type="button"
-                          onClick={() => console.log("remove")}
+                          onClick={() => setSentDocument(null)}
                         >
                           <ImCross />
                         </button>
@@ -139,21 +174,6 @@ const Documents = () => {
                     </div>
                   </>
                 )}
-                {/* {sendConfirmation && (
-                  <>
-                    <div className="overlay-confirmation"></div>
-                    <div className="send-confirmation">
-                      <button
-                        onClick={() => {
-                          setSendConfirmation(false);
-                        }}
-                      >
-                        Cancel
-                      </button>
-                      <button type="submit">Send</button>
-                    </div>
-                  </>
-                )} */}
                 <div className="file-con">
                   {selectedDocument ? (
                     <div className="drop-file-container">
@@ -182,19 +202,19 @@ const Documents = () => {
                     </div>
                   )}
                 </div>
-                <input
-                  disabled={renderClickable()}
-                  onChange={(e) => handleImageInput(e.target.files[0])}
-                  id="document"
-                  type="file"
-                  onSubmit={handleSubmit}
-                />
+                {selectedDocument && (
+                  <input
+                    disabled={renderClickable()}
+                    onChange={(e) => handleImageInput(e.target.files[0])}
+                    id="document"
+                    type="file"
+                    onSubmit={handleSubmit}
+                    accept={checkFormat()}
+                  />
+                )}
               </label>
             </form>
           </div>
-          {/* <div className="drop-file">
-        
-          </div> */}
         </div>
         <div className="display">
           {documentDetails.map((item, index) => {
@@ -241,6 +261,17 @@ const Documents = () => {
             <div className="sample-view-container">
               {renderDocumentDetails()}
             </div>
+          </>
+        )}
+        {isSentDocumentOpen && (
+          <>
+            <div
+              className="overlay"
+              onClick={() => {
+                setSentDocumentOpen(!isSentDocumentOpen);
+              }}
+            ></div>
+            <div className="sample-view-container">{renderSentDocument()}</div>
           </>
         )}
       </IconContext.Provider>

@@ -56,6 +56,7 @@ const updateDocuments = async (req, res) => {
         isRejected: false,
         isApproved: false,
         sentDocument: null,
+        filePath: "",
       },
     };
   });
