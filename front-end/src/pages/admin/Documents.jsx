@@ -489,7 +489,6 @@ const Documents = React.memo(() => {
               onClick={() => setSampleViewed(false)}
             ></div>
             <div className="sample-view-container">
-              {/* <img src={selectedDocument.sample} alt="sample document" /> */}
               {renderDocumentDetails()}
             </div>
           </>

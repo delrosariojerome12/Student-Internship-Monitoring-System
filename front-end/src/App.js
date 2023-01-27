@@ -31,6 +31,10 @@ const App = () => {
     }
   }, []);
 
+  // add different state for error and login
+  // if (Error) {
+  // }
+
   return (
     <main className="container">
       <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.1.81/build/pdf.worker.min.js">
