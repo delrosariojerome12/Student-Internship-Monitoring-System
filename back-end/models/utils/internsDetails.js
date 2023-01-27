@@ -1,3 +1,5 @@
+const mongoose = require("mongoose");
+
 const internshipDetails = {
   companyName: {
     type: String,
@@ -75,4 +77,27 @@ const verification = {
   },
 };
 
-module.exports = {internshipDetails, internsAssets, verification};
+const documentDetails = [
+  new mongoose.Schema({
+    document: {
+      name: String,
+      format: String,
+      sample: String,
+      description: String,
+    },
+    completion: {
+      hasSent: Boolean,
+      isRejected: Boolean,
+      isApproved: Boolean,
+      sentDocument: String,
+      filePath: String,
+    },
+  }),
+];
+
+module.exports = {
+  internshipDetails,
+  internsAssets,
+  verification,
+  documentDetails,
+};

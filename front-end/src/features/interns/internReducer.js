@@ -96,19 +96,6 @@ export const internReducer = createSlice({
       .addCase(getIntern.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-      })
-      // update intern
-      .addCase(updateIntern.pending, (state, action) => {
-        state.isLoading = true;
-      })
-      .addCase(updateIntern.fulfilled, (state, action) => {
-        const {newApprovalIntern} = action.payload;
-        state.isLoading = false;
-        state.approvalInterns = newApprovalIntern;
-      })
-      .addCase(updateIntern.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
       });
   },
 });

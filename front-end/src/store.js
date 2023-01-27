@@ -4,6 +4,7 @@ import userReducer from "./features/user/userReducer";
 import dashboard from "./features/dashboard/dashboard";
 import sidebarRight from "./features/dashboard/sidebarRight";
 import intern from "./features/interns/internReducer";
+import internDocument from "./features/interns/documentsReducer";
 import document from "./features/admin/document";
 
 export const store = configureStore({
@@ -13,6 +14,7 @@ export const store = configureStore({
     dashboard: dashboard,
     sidebarRight: sidebarRight,
     intern: intern,
+    internDocument: internDocument,
     document: document,
   },
 });
