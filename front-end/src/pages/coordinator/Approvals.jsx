@@ -20,9 +20,9 @@ const Approvals = React.memo(() => {
       return (
         <section className="approvals">
           <div className="no-entries">
-            <h3>
+            <h4>
               Oops, there were no <b>entries</b> yet come back again later
-            </h3>
+            </h4>
             <div className="img-waiting">
               <img src={ApprovalWaiting} alt="Approvals waiting image" />
             </div>

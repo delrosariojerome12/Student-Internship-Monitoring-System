@@ -1636,8 +1636,14 @@ button {
 .dashboard .intern-container .no-entries h3 b, .dashboard-active .intern-container .no-entries h3 b {
   color: #109da1;
 }
+.dashboard .intern-container .no-entries .img-waiting, .dashboard-active .intern-container .no-entries .img-waiting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .dashboard .intern-container .no-entries .img-waiting img, .dashboard-active .intern-container .no-entries .img-waiting img {
-  height: 60vh;
+  height: 50rem;
+  width: 50rem;
 }
 .dashboard .intern-container .preview-container, .dashboard-active .intern-container .preview-container {
   border: solid 1px #fff;
@@ -1797,16 +1803,23 @@ button {
   justify-content: center;
   gap: 1rem;
 }
-.dashboard .approvals .no-entries h3, .dashboard-active .approvals .no-entries h3 {
+.dashboard .approvals .no-entries h4, .dashboard-active .approvals .no-entries h4 {
+  font-size: 2.5rem;
   text-align: center;
   padding: 1rem 0;
   color: #fff;
 }
-.dashboard .approvals .no-entries h3 b, .dashboard-active .approvals .no-entries h3 b {
+.dashboard .approvals .no-entries h4 b, .dashboard-active .approvals .no-entries h4 b {
   color: #109da1;
 }
+.dashboard .approvals .no-entries .img-waiting, .dashboard-active .approvals .no-entries .img-waiting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .dashboard .approvals .no-entries .img-waiting img, .dashboard-active .approvals .no-entries .img-waiting img {
-  height: 80%;
+  height: 57rem;
+  width: 57rem;
 }
 .dashboard .approvals header, .dashboard-active .approvals header {
   display: grid;
@@ -2014,6 +2027,13 @@ button {
   border: solid 1px #0d7377;
 }
 @media screen and (max-width: 1030px) {
+  .dashboard .approvals .no-entries h4, .dashboard-active .approvals .no-entries h4 {
+    font-size: 2.2rem;
+  }
+  .dashboard .approvals .no-entries .img-waiting img, .dashboard-active .approvals .no-entries .img-waiting img {
+    height: 52rem;
+    width: 52rem;
+  }
   .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal {
     grid-template-rows: auto auto;
     padding: 1rem;
@@ -2052,6 +2072,14 @@ button {
   }
 }
 @media screen and (max-width: 750px) {
+  .dashboard .approvals .no-entries h4, .dashboard-active .approvals .no-entries h4 {
+    color: #000;
+    font-size: 2rem;
+  }
+  .dashboard .approvals .no-entries .img-waiting img, .dashboard-active .approvals .no-entries .img-waiting img {
+    height: 40rem;
+    width: 40rem;
+  }
   .dashboard .approvals .approval-container h3, .dashboard-active .approvals .approval-container h3 {
     display: flex;
     color: #fff;
@@ -2088,6 +2116,16 @@ button {
   }
 }
 @media screen and (max-width: 500px) {
+  .dashboard .approvals .no-entries h4, .dashboard-active .approvals .no-entries h4 {
+    font-size: 2rem;
+  }
+  .dashboard .approvals .no-entries .img-waiting img, .dashboard-active .approvals .no-entries .img-waiting img {
+    height: 25rem;
+    width: 25rem;
+  }
+  .dashboard .approvals .approval-container h3, .dashboard-active .approvals .approval-container h3 {
+    font-size: 2rem;
+  }
   .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal {
     width: 100vh;
   }
@@ -2827,8 +2865,8 @@ button {
   gap: 1rem;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
   gap: 1;
+  padding: 3rem 0 0 0;
 }
 .dashboard .coordinator-dashboard .dashboard-intern .all-intern-container .no-intern img, .dashboard-active .coordinator-dashboard .dashboard-intern .all-intern-container .no-intern img {
   height: 15rem;
@@ -2888,21 +2926,6 @@ button {
   padding: 2rem;
   border-radius: 0 0 0 2rem;
 }
-.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .no-approvals, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .no-approvals {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  justify-content: center;
-  align-items: center;
-  gap: 1;
-}
-.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .no-approvals img, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .no-approvals img {
-  height: 15rem;
-  width: 15rem;
-}
-.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .no-approvals h4, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .no-approvals h4 {
-  color: #0d7377;
-}
 .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .course, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .course {
   display: none;
 }
@@ -2911,6 +2934,22 @@ button {
   overflow-y: auto;
   height: 35vh;
   background-color: #d9d9d9;
+}
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .no-approvals, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .no-approvals {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1;
+  padding: 4rem 0 0 0;
+}
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .no-approvals img, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .no-approvals img {
+  height: 15rem;
+  width: 15rem;
+}
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .no-approvals h4, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .no-approvals h4 {
+  color: #0d7377;
 }
 .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container {
   display: grid;
@@ -3055,26 +3094,27 @@ button {
   padding: 2rem;
   border-radius: 0 0 2rem 0;
 }
-.dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .no-internship, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .no-internship {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container {
+  overflow: hidden;
+  overflow-y: auto;
+  height: 35vh;
+  background-color: #d9d9d9;
+}
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .no-internship, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .no-internship {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   justify-content: center;
   align-items: center;
   gap: 1;
+  padding: 4rem 0 0 0;
 }
-.dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .no-internship img, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .no-internship img {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .no-internship img, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .no-internship img {
   height: 15rem;
   width: 15rem;
 }
-.dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .no-internship h4, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .no-internship h4 {
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .no-internship h4, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .no-internship h4 {
   color: #0d7377;
-}
-.dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container {
-  overflow: hidden;
-  overflow-y: auto;
-  height: 35vh;
-  background-color: #d9d9d9;
 }
 .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .all-internships, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .all-internships {
   display: grid;
@@ -3152,6 +3192,10 @@ button {
   .dashboard .coordinator-dashboard .dashboard-intern, .dashboard-active .coordinator-dashboard .dashboard-intern {
     border-radius: 1rem 1rem 0 0;
   }
+  .dashboard .coordinator-dashboard .dashboard-intern .no-intern .no-intern-img, .dashboard-active .coordinator-dashboard .dashboard-intern .no-intern .no-intern-img {
+    height: 13rem;
+    width: 13rem;
+  }
   .dashboard .coordinator-dashboard .dashboard-content, .dashboard-active .coordinator-dashboard .dashboard-content {
     display: flex;
     flex-direction: column;
@@ -3159,6 +3203,10 @@ button {
   }
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals {
     border-radius: 0;
+  }
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .no-approvals img, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .no-approvals img {
+    height: 13rem;
+    width: 13rem;
   }
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container {
     grid-template-columns: 10rem auto;
@@ -3199,6 +3247,10 @@ button {
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships {
     border-radius: 0 0 1rem 1rem;
   }
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .no-internship img, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .no-internship img {
+    height: 13rem;
+    width: 13rem;
+  }
 }
 @media screen and (max-width: 750px) {
   .dashboard .coordinator-dashboard, .dashboard-active .coordinator-dashboard {
@@ -3225,6 +3277,13 @@ button {
   }
   .dashboard .coordinator-dashboard .dashboard-intern .all-intern-container, .dashboard-active .coordinator-dashboard .dashboard-intern .all-intern-container {
     height: 100%;
+  }
+  .dashboard .coordinator-dashboard .dashboard-intern .all-intern-container .no-intern, .dashboard-active .coordinator-dashboard .dashboard-intern .all-intern-container .no-intern {
+    padding: 0;
+  }
+  .dashboard .coordinator-dashboard .dashboard-intern .all-intern-container .no-intern .no-intern-img, .dashboard-active .coordinator-dashboard .dashboard-intern .all-intern-container .no-intern .no-intern-img {
+    height: 11rem;
+    width: 11rem;
   }
   .dashboard .coordinator-dashboard .dashboard-intern .all-intern-container .all-interns .intern-detail, .dashboard-active .coordinator-dashboard .dashboard-intern .all-intern-container .all-interns .intern-detail {
     display: flex;
@@ -3255,6 +3314,13 @@ button {
   }
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container {
     height: 100%;
+  }
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .no-approvals, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .no-approvals {
+    padding: 0;
+  }
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .no-approvals img, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .no-approvals img {
+    height: 10rem;
+    width: 10rem;
   }
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .sent-details, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .sent-details {
     display: flex;
@@ -3295,6 +3361,10 @@ button {
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container {
     height: 100%;
     border-radius: 0 0 1rem 1rem;
+  }
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .no-internship img, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .no-internship img {
+    height: 10rem;
+    width: 10rem;
   }
 }
 @media screen and (max-width: 500px) {
