@@ -51,6 +51,97 @@
           display: grid;
           border: solid 1px #fff;
           padding: 2rem;
+          // cursor: pointer;
+          position: relative;
+          .overlay-document {
+            @extend .overlay;
+            z-index: 2;
+          }
+          .overlay-confirmation {
+            @extend .overlay;
+            z-index: 4;
+          }
+          .send-confirmation {
+            z-index: 5;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            width: 50%;
+            height: 50%;
+            @include flexCenter;
+            gap: 1rem;
+            button {
+              background-color: #d9d9d9;
+              border: none;
+              outline: none;
+              cursor: pointer;
+              padding: 1rem 2rem;
+              transition: all 0.2s linear;
+              font-weight: 600;
+              &:first-child:hover {
+                background-color: $red-primary-color;
+                color: #fff;
+              }
+              &:last-child:hover {
+                background-color: $primary-bg-color;
+                color: #fff;
+              }
+            }
+          }
+          .document-preview {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: calc(100% - 6rem);
+            // height: 14rem;
+            // background-color: darken($color: #d9d9d9, $amount: 10);
+            background-color: #fff;
+            z-index: 3;
+            transition: all 0.2s linear;
+            font-weight: 600;
+            display: grid;
+            padding: 1.5rem;
+            gap: 1rem;
+            img {
+              width: 5rem;
+            }
+            .details {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              .left {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+              }
+              button {
+                border: none;
+                outline: none;
+              }
+            }
+            & > button {
+              height: 4rem;
+              background-color: $primary-compliment-landing;
+              transition: all 0.2s linear;
+              outline: none;
+              border: none;
+              font-weight: 600;
+              color: #fff;
+              border-radius: 1rem;
+              letter-spacing: 0.5rem;
+              &:hover {
+                // background-color: $primary-feature-bg;
+                background-color: darken(
+                  $color: $primary-compliment-landing,
+                  $amount: 10%
+                );
+              }
+            }
+          }
         }
         input[type="file"] {
           display: none;
