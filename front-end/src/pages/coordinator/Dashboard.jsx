@@ -56,22 +56,22 @@ const Dashboard = () => {
     });
   };
 
-  const renderInternship = () => {
-    if (approvalInterns.length === 0) {
-      return (
-        <section className="all-internship-container">
-          <div className="no-internship">
-            <img src={internshipImg} alt="No available internship" />
-            <h4>No available internship</h4>
-          </div>
-        </section>
-      );
-    }
+  // const renderInternship = () => {
+  //   if (approvalInterns.length === 0) {
+  //     return (
+  //       <section className="all-internship-container">
+  //         <div className="no-internship">
+  //           <img src={internshipImg} alt="No available internship" />
+  //           <h4>No available internship</h4>
+  //         </div>
+  //       </section>
+  //     );
+  //   }
 
-    return approvalInterns.map((intern, index) => {
-      return <DashboardInternship intern={intern} key={index} index={index} />;
-    });
-  };
+  //   return approvalInterns.map((intern, index) => {
+  //     return <DashboardInternship intern={intern} key={index} index={index} />;
+  //   });
+  // };
 
   return (
     <section className="coordinator-dashboard">
@@ -108,7 +108,9 @@ const Dashboard = () => {
         </div>
         <div className="dashboard-internships">
           <h3 className="internships-title">Companies</h3>
-          <div className="all-internship-container">{renderInternship()}</div>
+          <div className="all-internship-container">
+            {/* {renderInternship()} */}
+          </div>
         </div>
       </div>
     </section>
