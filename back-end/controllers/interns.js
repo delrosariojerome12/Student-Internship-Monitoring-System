@@ -27,6 +27,23 @@ const getIntern = async (req, res) => {
   return res.status(StatusCodes.OK).json({user});
 };
 
+const requestVerification = async (req, res) => {
+  const {email} = req.body;
+  const user = await Intern.findOneAndUpdate({email}, req.body, {
+    new: true,
+    runValidators: true,
+  }).populate({
+    path: "user",
+    model: "User",
+  });
+
+  if (!user) {
+    throw new NotFound(`No intern with email ${email}`);
+  }
+
+  res.status(StatusCodes.OK).json({user});
+};
+
 const updateIntern = async (req, res) => {
   const {email} = req.body;
   const user = await Intern.findOneAndUpdate({email}, req.body, {
@@ -57,6 +74,7 @@ const updateDocuments = async (req, res) => {
         isApproved: false,
         sentDocument: null,
         filePath: "",
+        fileName: "",
       },
     };
   });
@@ -93,21 +111,17 @@ const sendDocument = async (req, res) => {
   res.status(StatusCodes.OK).json(intern);
 };
 
-const requestVerification = async (req, res) => {
-  const {email} = req.body;
-  const user = await Intern.findOneAndUpdate({email}, req.body, {
-    new: true,
-    runValidators: true,
-  }).populate({
-    path: "user",
-    model: "User",
-  });
+const removeDocument = async (req, res) => {
+  const {email} = req.params;
+  const {documentDetails} = req.body;
 
-  if (!user) {
-    throw new NotFound(`No intern with email ${email}`);
-  }
+  const intern = await Intern.findOneAndUpdate(
+    {email},
+    {documentDetails},
+    {new: true}
+  ).populate({path: "user", model: "User"});
 
-  res.status(StatusCodes.OK).json({user});
+  res.status(StatusCodes.OK).json("Test");
 };
 
 module.exports = {
@@ -117,4 +131,5 @@ module.exports = {
   requestVerification,
   updateDocuments,
   sendDocument,
+  removeDocument,
 };
