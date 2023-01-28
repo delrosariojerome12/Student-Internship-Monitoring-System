@@ -75,13 +75,15 @@ export const sendDocument = createAsyncThunk(
 
 export const removeDocument = createAsyncThunk(
   "intern/removeDocument",
-  async ({id, sentDocument, filePath}, {rejectWithValue, getState}) => {
+  async (
+    {id, sentDocument, filePath, fileName},
+    {rejectWithValue, getState}
+  ) => {
     const {
       user: {
         user: {email},
       },
     } = getState();
-    console.log("Remove");
     try {
       const url = `http://localhost:5000/intern/removeDocument/${email}`;
       // const {data: res} = await axios.patch(url, {
@@ -108,7 +110,6 @@ export const internDocumentReducer = createSlice({
       state.isSampleViewed = !state.isSampleViewed;
     },
     handleDocumentDetails: (state, {payload}) => {
-      console.log(payload);
       state.documentDetails = payload;
     },
   },
