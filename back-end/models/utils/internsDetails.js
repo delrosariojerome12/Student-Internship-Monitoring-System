@@ -91,6 +91,7 @@ const documentDetails = [
       isApproved: Boolean,
       sentDocument: String,
       filePath: String,
+      fileName: String,
     },
   }),
 ];
