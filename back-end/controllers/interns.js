@@ -121,7 +121,7 @@ const removeDocument = async (req, res) => {
     {new: true}
   ).populate({path: "user", model: "User"});
 
-  res.status(StatusCodes.OK).json("Test");
+  res.status(StatusCodes.OK).json(intern);
 };
 
 module.exports = {
