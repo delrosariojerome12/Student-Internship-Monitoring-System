@@ -4325,6 +4325,39 @@ button {
 .documents-page .top .drop-file form label .document-preview > button:hover {
   background-color: #084749;
 }
+.documents-page .top .drop-file form label .error-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 6rem);
+  background-color: #fff;
+  z-index: 7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 1rem;
+}
+.documents-page .top .drop-file form label .error-container img {
+  height: 8rem;
+  width: 8rem;
+}
+.documents-page .top .drop-file form label .error-container button {
+  background-color: #d9d9d9;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  transition: all 0.2s linear;
+  font-weight: 600;
+}
+.documents-page .top .drop-file form label .error-container button:hover {
+  border-radius: 1rem;
+  background-color: #457b9d;
+  color: #fff;
+}
 .documents-page .top .drop-file form input[type=file] {
   display: none;
 }
@@ -4464,10 +4497,15 @@ button {
   position: relative;
   font-size: 1.4rem;
 }
+.documents-page .display .document-intern img {
+  height: 3rem;
+  width: 3rem;
+}
 .documents-page .display .document-intern .icon {
   font-size: 1.8rem;
 }
-.documents-page .display .document-intern .icon:nth-child(1) {
+.documents-page .display .document-intern .icon:nth-child(1),
+.documents-page .display .document-intern img {
   position: absolute;
   top: 1rem;
   left: 1rem;
