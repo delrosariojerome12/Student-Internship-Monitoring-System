@@ -96,21 +96,21 @@ const Documents = React.memo(() => {
 
   const renderClickable = () => {
     if (selectedDocument && !sentDocument) {
-      console.log(1);
+      // console.log(1);
       if (selectedDocument.completion.sentDocument) {
-        console.log(1.1);
+        // console.log(1.1);
         return true;
       }
       if (isInputError) {
-        console.log(1.2);
+        // console.log(1.2);
         return true;
       }
       return false;
     } else if (selectedDocument && sendDocument) {
-      console.log(2);
+      // console.log(2);
       return true;
     } else {
-      console.log(4);
+      // console.log(4);
       return true;
     }
   };
@@ -156,6 +156,13 @@ const Documents = React.memo(() => {
     return <img src={sentDocument.sample} alt={sentDocument.name} />;
   };
 
+  const handleDeleteDocument = () => {
+    setSentDocument(null);
+    if (selectedDocument.completion.sentDocument) {
+      dispatch(removeDocument({id: selectedDocument._id}));
+    }
+  };
+
   const renderSentDocument = () => {
     if (sentDocument) {
       return (
@@ -170,14 +177,7 @@ const Documents = React.memo(() => {
                 <img src={DocumentDark} alt="document" />
                 <p>{sentDocument.name}</p>
               </div>
-              <button
-                type="button"
-                onClick={() => {
-                  setSentDocument(null);
-                  dispatch(removeDocument());
-                  console.log("remove");
-                }}
-              >
+              <button type="button" onClick={handleDeleteDocument}>
                 <ImCross />
               </button>
             </div>
@@ -199,14 +199,7 @@ const Documents = React.memo(() => {
                   <img src={DocumentDark} alt="document" />
                   <p>{selectedDocument.completion.fileName}</p>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSentDocument(null);
-                    dispatch(removeDocument());
-                    console.log("remove");
-                  }}
-                >
+                <button type="button" onClick={handleDeleteDocument}>
                   <ImCross />
                 </button>
               </div>
@@ -217,6 +210,8 @@ const Documents = React.memo(() => {
       }
     }
   };
+
+  console.log(documentDetails);
 
   return (
     <section className="documents-page">

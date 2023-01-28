@@ -75,20 +75,40 @@ export const sendDocument = createAsyncThunk(
 
 export const removeDocument = createAsyncThunk(
   "intern/removeDocument",
-  async (
-    {id, sentDocument, filePath, fileName},
-    {rejectWithValue, getState}
-  ) => {
+  async ({id}, {rejectWithValue, getState}) => {
     const {
       user: {
-        user: {email},
+        user: {email, documentDetails},
       },
     } = getState();
+
+    const newDocument = [...documentDetails]
+      .filter((item) => item._id === id)
+      .map((item) => {
+        const {document} = item;
+        return {
+          completion: {
+            sentDocument: "",
+            filePath: "",
+            fileName: "",
+            hasSent: false,
+            isApproved: false,
+            isRejected: false,
+          },
+          document,
+          _id: id,
+        };
+      });
+
+    const allDocuments = [...documentDetails].filter((item) => item._id !== id);
+    const completeDocumentDetails = [...allDocuments, newDocument[0]];
+
     try {
       const url = `http://localhost:5000/intern/removeDocument/${email}`;
-      // const {data: res} = await axios.patch(url, {
-      //   documentDetails: completeDocumentDetails,
-      // });
+      const {data: res} = await axios.patch(url, {
+        documentDetails: completeDocumentDetails,
+      });
+      return {res: res.documentDetails};
     } catch (error) {
       console.log(error);
       return rejectWithValue(error.response.data);
@@ -144,6 +164,8 @@ export const internDocumentReducer = createSlice({
       })
       .addCase(removeDocument.fulfilled, (state, action) => {
         state.sendLoading = false;
+        console.log(action.payload.res);
+        state.selectedDocument = null;
         state.documentDetails = action.payload.res;
       })
       .addCase(removeDocument.rejected, (state, action) => {
