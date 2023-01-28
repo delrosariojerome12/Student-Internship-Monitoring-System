@@ -144,6 +144,37 @@
               }
             }
           }
+          .error-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: calc(100% - 6rem);
+            background-color: #fff;
+            z-index: 7;
+            @include flexCenter;
+            flex-direction: column;
+            padding: 1.5rem;
+            gap: 1rem;
+            img {
+              height: 8rem;
+              width: 8rem;
+            }
+            button {
+              background-color: #d9d9d9;
+              border: none;
+              outline: none;
+              cursor: pointer;
+              padding: 1rem 2rem;
+              transition: all 0.2s linear;
+              font-weight: 600;
+              &:hover {
+                border-radius: 1rem;
+                background-color: $primary-bg-color;
+                color: #fff;
+              }
+            }
+          }
         }
         input[type="file"] {
           display: none;
@@ -292,10 +323,15 @@
       position: relative;
       font-size: 1.4rem;
 
+      img {
+        height: 3rem;
+        width: 3rem;
+      }
       .icon {
         font-size: 1.8rem;
       }
-      .icon:nth-child(1) {
+      .icon:nth-child(1),
+      img {
         position: absolute;
         top: 1rem;
         left: 1rem;

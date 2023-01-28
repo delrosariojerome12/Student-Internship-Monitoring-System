@@ -8,6 +8,8 @@ import {FaEye, FaCheck} from "react-icons/fa";
 import {GrDocumentMissing} from "react-icons/gr";
 import {ImCross} from "react-icons/im";
 import {RiMailSendFill} from "react-icons/ri";
+import DarkSent from "../../assets/img/sentDocumentDark.svg";
+import LightSent from "../../assets/img/sentDocumentLight.svg";
 
 const DocumentIntern = React.memo(({item}) => {
   const {
@@ -36,6 +38,7 @@ const DocumentIntern = React.memo(({item}) => {
       return <ImCross />;
     } else if (hasSent) {
       return <RiMailSendFill />;
+      // return <img src={DarkSent} alt="sent" />;
     } else {
       return <GrDocumentMissing />;
     }

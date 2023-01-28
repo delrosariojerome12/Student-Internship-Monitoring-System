@@ -15,6 +15,7 @@ import Bouncing from "../../components/loading/Bouncing";
 import {IconContext} from "react-icons";
 import {ImCross} from "react-icons/im";
 import DocumentDark from "../../assets/img/documentNigga.svg";
+import ErrorInput from "../../assets/img/errorInput.svg";
 import {Viewer} from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 
@@ -36,6 +37,7 @@ const Documents = React.memo(() => {
 
   const [sentDocument, setSentDocument] = useState(null);
   const [isSentDocumentOpen, setSentDocumentOpen] = useState(false);
+  const [isInputError, setInputError] = useState(false);
 
   useEffect(() => {
     // change this to update or make a button for
@@ -74,26 +76,41 @@ const Documents = React.memo(() => {
       const {type} = file;
       const imageRef = ref(storage, imageName);
       // add delete
-      uploadBytes(imageRef, file).then((res) => {
-        getDownloadURL(res.ref).then((url) => {
-          setSentDocument({
-            sample: url,
-            name: file.name,
-            format: type,
-            filePath: imageName,
+      if (type.includes(selectedDocument.document.format)) {
+        uploadBytes(imageRef, file).then((res) => {
+          getDownloadURL(res.ref).then((url) => {
+            setSentDocument({
+              sample: url,
+              name: file.name,
+              format: type,
+              filePath: imageName,
+            });
           });
-          // setSendConfirmation(true);
         });
-      });
+      } else {
+        console.log("error");
+        setInputError(true);
+      }
     }
   };
 
   const renderClickable = () => {
     if (selectedDocument && !sentDocument) {
+      console.log(1);
+      if (selectedDocument.completion.sentDocument) {
+        console.log(1.1);
+        return true;
+      }
+      if (isInputError) {
+        console.log(1.2);
+        return true;
+      }
       return false;
     } else if (selectedDocument && sendDocument) {
+      console.log(2);
       return true;
     } else {
+      console.log(4);
       return true;
     }
   };
@@ -251,6 +268,21 @@ const Documents = React.memo(() => {
                       </div>
                     </div>
                   )}
+                  {isInputError && (
+                    <>
+                      <div className="overlay"></div>
+                      <div className="error-container">
+                        <h4>Invalid file format</h4>
+                        <img src={ErrorInput} alt="error input" />
+                        <button
+                          type="button"
+                          onClick={() => setInputError(false)}
+                        >
+                          Close
+                        </button>
+                      </div>
+                    </>
+                  )}
                 </div>
                 {selectedDocument && (
                   <input
@@ -271,6 +303,7 @@ const Documents = React.memo(() => {
             return <DocumentIntern key={index} item={item} />;
           })}
         </div>
+
         {isDocumentOpen && (
           <>
             <div
