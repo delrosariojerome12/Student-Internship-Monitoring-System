@@ -7,6 +7,7 @@ import {
   handleDocumentOpen,
   handleSampleViewed,
   sendDocument,
+  removeDocument,
   handleDocumentDetails,
 } from "../../features/interns/documentsReducer";
 import ServerError from "../serverError";
@@ -21,7 +22,7 @@ import {storage} from "../../Firebase";
 import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
 import {v4} from "uuid";
 
-const Documents = () => {
+const Documents = React.memo(() => {
   const {user} = useSelector((state) => state.user);
   const {
     isLoading,
@@ -62,6 +63,7 @@ const Documents = () => {
         sentDocument: sentDocument.sample,
         id: selectedDocument._id,
         filePath: sentDocument.filePath,
+        fileName: sentDocument.name,
       })
     );
   };
@@ -118,11 +120,85 @@ const Documents = () => {
     }
   };
 
-  const renderSentDocument = () => {
-    if (sentDocument.format.includes("pdf")) {
-      return <Viewer fileUrl={sentDocument.sample} />;
+  const renderViewDocument = () => {
+    if (sentDocument) {
+      if (sentDocument.format.includes("pdf")) {
+        return <Viewer fileUrl={sentDocument.sample} />;
+      }
+    } else if (selectedDocument) {
+      if (selectedDocument.document.format.includes("pdf")) {
+        return <Viewer fileUrl={selectedDocument.completion.sentDocument} />;
+      }
+      return (
+        <img
+          src={selectedDocument.completion.sentDocument}
+          alt={selectedDocument.completion.fileName}
+        />
+      );
     }
     return <img src={sentDocument.sample} alt={sentDocument.name} />;
+  };
+
+  const renderSentDocument = () => {
+    if (sentDocument) {
+      return (
+        <>
+          <div className="overlay-document"></div>
+          <div className="document-preview">
+            <div className="details">
+              <div
+                className="left"
+                onClick={() => setSentDocumentOpen(!isSentDocumentOpen)}
+              >
+                <img src={DocumentDark} alt="document" />
+                <p>{sentDocument.name}</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  setSentDocument(null);
+                  dispatch(removeDocument());
+                  console.log("remove");
+                }}
+              >
+                <ImCross />
+              </button>
+            </div>
+            <button className="submit">Submit</button>
+          </div>
+        </>
+      );
+    } else if (selectedDocument) {
+      if (selectedDocument.completion.sentDocument) {
+        return (
+          <>
+            <div className="overlay-document"></div>
+            <div className="document-preview">
+              <div className="details">
+                <div
+                  className="left"
+                  onClick={() => setSentDocumentOpen(!isSentDocumentOpen)}
+                >
+                  <img src={DocumentDark} alt="document" />
+                  <p>{selectedDocument.completion.fileName}</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSentDocument(null);
+                    dispatch(removeDocument());
+                    console.log("remove");
+                  }}
+                >
+                  <ImCross />
+                </button>
+              </div>
+              <button className="submit">Unsubmit</button>
+            </div>
+          </>
+        );
+      }
+    }
   };
 
   return (
@@ -149,31 +225,7 @@ const Documents = () => {
           <div className="drop-file">
             <form onSubmit={handleSubmit}>
               <label htmlFor="document">
-                {sentDocument && (
-                  <>
-                    <div className="overlay-document"></div>
-                    <div className="document-preview">
-                      <div className="details">
-                        <div
-                          className="left"
-                          onClick={() =>
-                            setSentDocumentOpen(!isSentDocumentOpen)
-                          }
-                        >
-                          <img src={DocumentDark} alt="document" />
-                          <p>{sentDocument.name}</p>
-                        </div>
-                        <button
-                          type="button"
-                          onClick={() => setSentDocument(null)}
-                        >
-                          <ImCross />
-                        </button>
-                      </div>
-                      <button className="submit">Submit</button>
-                    </div>
-                  </>
-                )}
+                {renderSentDocument()}
                 <div className="file-con">
                   {selectedDocument ? (
                     <div className="drop-file-container">
@@ -183,8 +235,7 @@ const Documents = () => {
                         </span>
                       </div>
                       <div className="add-file-text">
-                        <h5>Drag and drop files, or Browse</h5>
-                        <p>Support zip or rar files</p>
+                        <h5>Select File to Submit</h5>
                       </div>
                     </div>
                   ) : (
@@ -196,8 +247,7 @@ const Documents = () => {
                         </span>
                       </div>
                       <div className="add-file-text">
-                        <h5>Drag and drop files, or Browse</h5>
-                        <p>Support zip or rar files</p>
+                        <h5>Select File to Submit</h5>
                       </div>
                     </div>
                   )}
@@ -271,12 +321,12 @@ const Documents = () => {
                 setSentDocumentOpen(!isSentDocumentOpen);
               }}
             ></div>
-            <div className="sample-view-container">{renderSentDocument()}</div>
+            <div className="sample-view-container">{renderViewDocument()}</div>
           </>
         )}
       </IconContext.Provider>
     </section>
   );
-};
+});
 
 export default Documents;

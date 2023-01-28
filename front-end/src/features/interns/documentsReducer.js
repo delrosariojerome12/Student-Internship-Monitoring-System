@@ -1,3 +1,4 @@
+import {async} from "@firebase/util";
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -28,7 +29,10 @@ export const updateDocumentsOnLoad = createAsyncThunk(
 
 export const sendDocument = createAsyncThunk(
   "intern/sendDocument",
-  async ({id, sentDocument, filePath}, {rejectWithValue, getState}) => {
+  async (
+    {id, sentDocument, filePath, fileName},
+    {rejectWithValue, getState}
+  ) => {
     const {
       user: {
         user: {email, documentDetails},
@@ -43,6 +47,7 @@ export const sendDocument = createAsyncThunk(
           completion: {
             sentDocument,
             filePath,
+            fileName,
             hasSent: true,
             isApproved: false,
             isRejected: false,
@@ -61,6 +66,27 @@ export const sendDocument = createAsyncThunk(
         documentDetails: completeDocumentDetails,
       });
       return {res: res.documentDetails};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const removeDocument = createAsyncThunk(
+  "intern/removeDocument",
+  async ({id, sentDocument, filePath}, {rejectWithValue, getState}) => {
+    const {
+      user: {
+        user: {email},
+      },
+    } = getState();
+    console.log("Remove");
+    try {
+      const url = `http://localhost:5000/intern/removeDocument/${email}`;
+      // const {data: res} = await axios.patch(url, {
+      //   documentDetails: completeDocumentDetails,
+      // });
     } catch (error) {
       console.log(error);
       return rejectWithValue(error.response.data);
@@ -98,6 +124,7 @@ export const internDocumentReducer = createSlice({
         state.isLoading = false;
         state.isError = true;
       });
+    // send document
     builder
       .addCase(sendDocument.pending, (state, action) => {
         state.sendLoading = true;
@@ -107,6 +134,18 @@ export const internDocumentReducer = createSlice({
         state.documentDetails = action.payload.res;
       })
       .addCase(sendDocument.rejected, (state, action) => {
+        state.sendLoading = false;
+      });
+    // remove document
+    builder
+      .addCase(removeDocument.pending, (state, action) => {
+        state.sendLoading = true;
+      })
+      .addCase(removeDocument.fulfilled, (state, action) => {
+        state.sendLoading = false;
+        state.documentDetails = action.payload.res;
+      })
+      .addCase(removeDocument.rejected, (state, action) => {
         state.sendLoading = false;
       });
   },
