@@ -24,7 +24,7 @@ const ProfileTab = () => {
             <p>{role}</p>
           </div>
         </div>
-        <div className="dark-mode">
+        {/* <div className="dark-mode">
           <div className="icon-holder">
             <MdNightlight />
             <p>Dark Mode</p>
@@ -37,7 +37,7 @@ const ProfileTab = () => {
             <p>Feed back</p>
           </div>
           <FaChevronRight />
-        </div>
+        </div> */}
         <div
           onClick={() => {
             dispatch(handleLogout());

@@ -1,5 +1,4 @@
-import {async} from "@firebase/util";
-import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
+import {createSlice, createAsyncThunk, current} from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
@@ -19,7 +18,7 @@ export const updateDocumentsOnLoad = createAsyncThunk(
     try {
       const url = `http://localhost:5000/intern/updateDocuments/${email}`;
       const {data: res} = await axios.patch(url);
-      //   console.log(res);
+      return {res: res.intern.documentDetails};
     } catch (error) {
       console.log(error);
       return rejectWithValue(error.response.data);
@@ -139,7 +138,9 @@ export const internDocumentReducer = createSlice({
         state.isLoading = true;
       })
       .addCase(updateDocumentsOnLoad.fulfilled, (state, action) => {
+        console.log(action.payload.res);
         state.isLoading = false;
+        state.documentDetails = action.payload.res;
       })
       .addCase(updateDocumentsOnLoad.rejected, (state, action) => {
         state.isLoading = false;
