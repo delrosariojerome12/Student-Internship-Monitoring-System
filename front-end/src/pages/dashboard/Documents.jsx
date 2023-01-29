@@ -41,10 +41,13 @@ const Documents = React.memo(() => {
 
   useEffect(() => {
     // change this to update or make a button for
-    dispatch(handleDocumentDetails(user.documentDetails));
     user.documentDetails.length === 0 &&
       dispatch(updateDocumentsOnLoad(user.email));
+    dispatch(handleDocumentDetails(user.documentDetails));
   }, []);
+
+  // console.log(documentDetails);
+  // console.log(user.documentDetails);
 
   if (isLoading) {
     return <Bouncing />;
@@ -210,8 +213,6 @@ const Documents = React.memo(() => {
       }
     }
   };
-
-  console.log(documentDetails);
 
   return (
     <section className="documents-page">
