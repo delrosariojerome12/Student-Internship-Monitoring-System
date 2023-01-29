@@ -1,22 +1,27 @@
-import React, {useEffect, useState, useCallback} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import React, { useEffect, useState, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
-import {requestVerification} from "../../features/user/userReducer";
+import { requestVerification } from "../../features/user/userReducer";
 import AreYouSureModal from "../../components/verification/AreYouSureModal";
 // import SuccessModal from "../../components/verification/SuccessModal";
 
-import {storage} from "../../Firebase";
-import {ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage";
-import {v4} from "uuid";
+import { storage } from "../../Firebase";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  deleteObject,
+} from "firebase/storage";
+import { v4 } from "uuid";
 
-import {FaCheck} from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
 const Verification = React.memo(() => {
   const dispatch = useDispatch();
-  const {user} = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
 
   const {
-    user: {firstName},
+    user: { firstName },
     schoolDetails,
   } = user;
 
@@ -227,7 +232,7 @@ const Verification = React.memo(() => {
     // });
 
     const newData = form.map((input) => {
-      const {code, value, name} = input;
+      const { code, value, name } = input;
       if (name) {
         return {
           code,
@@ -245,8 +250,8 @@ const Verification = React.memo(() => {
       {},
       ...newData.map((item) =>
         !item.name
-          ? {[item.code]: item.value}
-          : {[item.code]: {link: item.value, name: item.name}}
+          ? { [item.code]: item.value }
+          : { [item.code]: { link: item.value, name: item.name } }
       )
     );
 
@@ -418,7 +423,7 @@ const Verification = React.memo(() => {
           // add catch error here
           if (schoolDetails) {
             const {
-              validID: {name},
+              validID: { name },
             } = schoolDetails;
             deleteDuplicateFirebase(name);
           }
@@ -575,7 +580,8 @@ const Verification = React.memo(() => {
           return (
             <div className="img-input" key={index}>
               <label htmlFor="valid-img">
-                School ID
+                {/* <b>School ID:</b> */}
+                <h4>School ID:</h4>
                 <input
                   disabled={isDisabled}
                   onChange={(e) =>
@@ -595,7 +601,7 @@ const Verification = React.memo(() => {
             </div>
           );
         case "select":
-          const {options, placeholder} = item;
+          const { options, placeholder } = item;
           const list = options.map((opt) => opt);
           return (
             <Select
@@ -618,7 +624,7 @@ const Verification = React.memo(() => {
             />
           );
         case "list":
-          const {optionItems} = item;
+          const { optionItems } = item;
           return (
             <CreatableSelect
               tabIndex={-1}
@@ -640,7 +646,7 @@ const Verification = React.memo(() => {
             />
           );
         case "time":
-          const {optionTime} = item;
+          const { optionTime } = item;
           return (
             <Select
               tabIndex={-1}
@@ -663,7 +669,7 @@ const Verification = React.memo(() => {
             />
           );
         case "scheduleType":
-          const {scheduleType} = item;
+          const { scheduleType } = item;
           return (
             <Select
               tabIndex={-1}
@@ -693,7 +699,7 @@ const Verification = React.memo(() => {
 
   const renderSteps = () => {
     return steps.map((item, index) => {
-      const {step, isCompleted} = item;
+      const { step, isCompleted } = item;
       return (
         <div
           className={

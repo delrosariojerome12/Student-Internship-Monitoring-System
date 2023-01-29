@@ -1,8 +1,8 @@
 import React from "react";
 import waitingImg from "../../assets/img/verification/waiting.svg";
-import {useNavigate} from "react-router";
-import {IconContext} from "react-icons";
-import {FaChevronDown} from "react-icons/fa";
+import { useNavigate } from "react-router";
+import { IconContext } from "react-icons";
+import { FaChevronDown } from "react-icons/fa";
 import RejectErrorSvg from "../../assets/ERROR IMAGE/RejectError.svg";
 const Waiting = React.memo((user) => {
   const {
@@ -11,7 +11,7 @@ const Waiting = React.memo((user) => {
       schoolDetails: {
         program,
         studentContact,
-        validID: {link},
+        validID: { link },
         requiredHours,
       },
       internshipDetails: {
@@ -27,7 +27,7 @@ const Waiting = React.memo((user) => {
         timeInSchedule,
         timeOutSchedule,
       },
-      verification: {isRejected, remarks, hasSentVerification},
+      verification: { isRejected, remarks, hasSentVerification },
     },
   } = user;
 
@@ -47,7 +47,7 @@ const Waiting = React.memo((user) => {
 
   return (
     <div className="waiting-container-pending">
-      <IconContext.Provider value={{className: "icons"}}>
+      <IconContext.Provider value={{ className: "icons" }}>
         <header>
           <div className="text">
             <h3>Your request for approval has been rejected.</h3>
@@ -60,7 +60,7 @@ const Waiting = React.memo((user) => {
             <h5>Remarks:</h5>
             <div className="remarks">
               <img src={RejectErrorSvg} alt="" />
-              <p>{remarks}</p>
+              <h6>{remarks}</h6>
             </div>
           </div>
         </header>
@@ -70,25 +70,23 @@ const Waiting = React.memo((user) => {
           </div>
 
           <div className="student-details-container">
-            <div className="student-details">
-              <h4>Student Details</h4>
-              <p>
-                <b>Program: </b>
-                {program}
-              </p>
-              <p>
-                <b>Required Hours: </b>
-                {requiredHours}
-              </p>
-              <p>
-                <b>Email: </b>
-                {email}
-              </p>
-              <p>
-                <b>Contact Number: </b>
-                {studentContact}
-              </p>
-            </div>
+            <h4>Student Details</h4>
+            <p>
+              <b>Program: </b>
+              {program}
+            </p>
+            <p>
+              <b>Required Hours: </b>
+              {requiredHours}
+            </p>
+            <p>
+              <b>Email: </b>
+              {email}
+            </p>
+            <p>
+              <b>Contact Number: </b>
+              {studentContact}
+            </p>
           </div>
           <div className="schedule-details-container">
             <h4>Schedule Details</h4>

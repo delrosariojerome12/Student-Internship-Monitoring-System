@@ -7,6 +7,7 @@ const initialState = {
   selectedIntern: null,
   isLoading: false,
   isError: false,
+  isLoginError: false,
 };
 
 export const getAllInterns = createAsyncThunk(
@@ -47,11 +48,10 @@ export const updateIntern = createAsyncThunk(
       const url = `http://localhost:5000/intern/updateIntern`;
       const {data: res} = await axios.patch(url, form);
 
-      console.log(form);
-
       const newApprovalIntern = [...state.intern.approvalInterns].filter(
         (intern) => intern.email !== email
       );
+      console.log(newApprovalIntern);
       return {user: res.user, newApprovalIntern};
     } catch (error) {
       console.log(error);
@@ -94,6 +94,20 @@ export const internReducer = createSlice({
         console.log(action.payload);
       })
       .addCase(getIntern.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+      });
+    // update intern
+    builder
+      .addCase(updateIntern.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(updateIntern.fulfilled, (state, action) => {
+        console.log(action.payload.newApprovalIntern);
+        state.isLoading = false;
+        state.approvalInterns = action.payload.newApprovalIntern;
+      })
+      .addCase(updateIntern.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
       });

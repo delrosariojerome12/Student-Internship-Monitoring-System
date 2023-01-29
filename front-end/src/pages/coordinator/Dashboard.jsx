@@ -3,15 +3,15 @@ import DashboardIntern from "../../components/coordinator/dashboardCoordinator/D
 import DashboardApprovals from "../../components/coordinator/dashboardCoordinator/DashboardApprovals";
 import DashboardInternship from "../../components/coordinator/dashboardCoordinator/DashboardInternship";
 
-import {useSelector, useDispatch} from "react-redux";
-import {BiSearchAlt} from "react-icons/bi";
+import { useSelector, useDispatch } from "react-redux";
+import { BiSearchAlt } from "react-icons/bi";
 
 import internImg from "../../assets/img/head.svg";
 import approvalImg from "../../assets/img/approvals.svg";
 import internshipImg from "../../assets/img/no-internship.svg";
 
 const Dashboard = () => {
-  const {approvalInterns, interns, isError} = useSelector(
+  const { approvalInterns, interns, isError } = useSelector(
     (state) => state.intern
   );
 
@@ -24,7 +24,7 @@ const Dashboard = () => {
       return (
         <section className="all-intern-container">
           <div className="no-intern">
-            <img src={internImg} alt="" />
+            <img src={internImg} alt="" className="no-intern-img" />
             <h3>No user found!</h3>
           </div>
         </section>
@@ -42,7 +42,7 @@ const Dashboard = () => {
 
     if (approvalInterns.length === 0) {
       return (
-        <section className="dashboard-approvals">
+        <section className="all-approvals-container">
           <div className="no-approvals">
             <img src={approvalImg} alt="No Intern Found" />
             <h4>No approvals found!</h4>
@@ -59,7 +59,7 @@ const Dashboard = () => {
   // const renderInternship = () => {
   //   if (approvalInterns.length === 0) {
   //     return (
-  //       <section className="dashboard-internships">
+  //       <section className="all-internship-container">
   //         <div className="no-internship">
   //           <img src={internshipImg} alt="No available internship" />
   //           <h4>No available internship</h4>
@@ -108,7 +108,9 @@ const Dashboard = () => {
         </div>
         <div className="dashboard-internships">
           <h3 className="internships-title">Companies</h3>
-          <div className="all-internship-container"></div>
+          <div className="all-internship-container">
+            {/* {renderInternship()} */}
+          </div>
         </div>
       </div>
     </section>
