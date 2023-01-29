@@ -33,8 +33,9 @@ export const sendDocument = createAsyncThunk(
     {rejectWithValue, getState}
   ) => {
     const {
+      internDocument: {documentDetails},
       user: {
-        user: {email, documentDetails},
+        user: {email},
       },
     } = getState();
 
@@ -64,6 +65,7 @@ export const sendDocument = createAsyncThunk(
       const {data: res} = await axios.patch(url, {
         documentDetails: completeDocumentDetails,
       });
+      console.log(res);
       return {res: res.documentDetails};
     } catch (error) {
       console.log(error);
@@ -138,7 +140,6 @@ export const internDocumentReducer = createSlice({
         state.isLoading = true;
       })
       .addCase(updateDocumentsOnLoad.fulfilled, (state, action) => {
-        console.log(action.payload.res);
         state.isLoading = false;
         state.documentDetails = action.payload.res;
       })
