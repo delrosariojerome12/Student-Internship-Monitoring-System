@@ -49,18 +49,21 @@ const DashboardMain = () => {
         <div className="internship-details">
           <h4>Intership Details</h4>
           <div className="internship-contents">
-            <p>
-              Company: <b>{companyName}</b>
+            {/* <p>
+              <b> Company:</b> {companyName}
             </p>
             <p>
-              Address: <b>{companyAddress}</b>
+              <b> Address: </b>
+              {companyAddress}
             </p>
             <p>
-              Supervisor: <b>{supervisor}</b>
+              <b> Supervisor: </b>
+              {supervisor}
             </p>
             <p>
-              Contact#: <b>{supervisorContact}</b>
-            </p>
+              <b> Contact No.: </b>
+              {supervisorContact}
+            </p> */}
           </div>
         </div>
         <div className="map">

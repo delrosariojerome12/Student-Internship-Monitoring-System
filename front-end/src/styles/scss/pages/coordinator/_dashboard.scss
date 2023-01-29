@@ -56,7 +56,7 @@
 
   .dashboard-intern {
     display: grid;
-    grid-template-rows: 0.2fr auto auto;
+    grid-template-rows: 3.5vh auto auto;
     // gap: 1rem;
     padding: 2rem;
     grid-auto-rows: 12rem;
@@ -76,9 +76,8 @@
     }
 
     .all-intern-container {
-      overflow: hidden;
       overflow-y: auto;
-      height: 30vh;
+      max-height: 30vh;
       background-color: #d9d9d9;
 
       .no-intern {
@@ -148,17 +147,16 @@
 
     .dashboard-approvals {
       display: grid;
-      grid-template-rows: 0.2fr auto auto;
+      grid-template-rows: 3.5vh auto;
       padding: 2rem;
       border-radius: 0 0 0 2rem;
-
+      height: 100%;
       .course {
         display: none;
       }
       .all-approvals-container {
-        overflow: hidden;
         overflow-y: auto;
-        height: 35vh;
+        max-height: 35vh;
         background-color: #d9d9d9;
 
         .no-approvals {
@@ -185,7 +183,6 @@
           background-color: #d9d9d9;
           gap: 1rem;
           padding: 1rem;
-
           .overlay {
             @include flexCenter;
             width: 100%;
@@ -325,14 +322,13 @@
     }
     .dashboard-internships {
       display: grid;
-      grid-template-rows: 0.2fr auto;
+      grid-template-rows: 3.5vh auto;
       padding: 2rem;
       border-radius: 0 0 2rem 0;
 
       .all-internship-container {
-        overflow: hidden;
         overflow-y: auto;
-        height: 35vh;
+        max-height: 35vh;
         background-color: #d9d9d9;
         .no-internship {
           @include flexColumn;
@@ -527,7 +523,6 @@
     .dashboard-intern {
       padding: 1rem;
       height: 35vh;
-      overflow: hidden;
 
       .course {
         display: flex;
@@ -567,7 +562,6 @@
       .dashboard-approvals {
         padding: 1rem;
         height: 35vh;
-        overflow: hidden;
 
         .course {
           display: flex;
@@ -642,7 +636,6 @@
       .dashboard-internships {
         padding: 1rem;
         height: 35vh;
-        overflow: hidden;
 
         .all-internship-container {
           height: 100%;
