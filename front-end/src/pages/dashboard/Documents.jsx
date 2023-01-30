@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { AiOutlineFileAdd } from "react-icons/ai";
-import { useSelector, useDispatch } from "react-redux";
+import React, {useEffect, useState} from "react";
+import {AiOutlineFileAdd} from "react-icons/ai";
+import {useSelector, useDispatch} from "react-redux";
 import DocumentIntern from "../../components/documents/DocumentIntern";
 import {
   updateDocumentsOnLoad,
@@ -12,19 +12,19 @@ import {
 } from "../../features/interns/documentsReducer";
 import ServerError from "../serverError";
 import Bouncing from "../../components/loading/Bouncing";
-import { IconContext } from "react-icons";
-import { ImCross } from "react-icons/im";
+import {IconContext} from "react-icons";
+import {ImCross} from "react-icons/im";
 import DocumentDark from "../../assets/img/documentNigga.svg";
 import ErrorInput from "../../assets/img/errorInput.svg";
-import { Viewer } from "@react-pdf-viewer/core";
+import {Viewer} from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 
-import { storage } from "../../Firebase";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { v4 } from "uuid";
+import {storage} from "../../Firebase";
+import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
+import {v4} from "uuid";
 
 const Documents = React.memo(() => {
-  const { user } = useSelector((state) => state.user);
+  const {user} = useSelector((state) => state.user);
   const {
     isLoading,
     isError,
@@ -38,12 +38,16 @@ const Documents = React.memo(() => {
   const [sentDocument, setSentDocument] = useState(null);
   const [isSentDocumentOpen, setSentDocumentOpen] = useState(false);
   const [isInputError, setInputError] = useState(false);
+  const [status, setStatus] = useState("");
+  const [isStatusOpen, setStatusOpen] = useState(false);
 
   useEffect(() => {
     // change this to update or make a button for
     user.documentDetails.length === 0 &&
       dispatch(updateDocumentsOnLoad(user.email));
     dispatch(handleDocumentDetails(user.documentDetails));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // console.log(documentDetails);
@@ -72,12 +76,16 @@ const Documents = React.memo(() => {
         fileName: sentDocument.name,
       })
     );
+    setStatus("add");
+    setStatusOpen(true);
+    const timer = setTimeout(() => setStatusOpen(false), 3000);
+    return () => clearTimeout(timer);
   };
 
   const handleImageInput = (file) => {
     if (file) {
       const imageName = `images/documents/sample/${v4() + file.name}`;
-      const { type } = file;
+      const {type} = file;
       const imageRef = ref(storage, imageName);
       // add delete
       if (type.includes(selectedDocument.document.format)) {
@@ -98,23 +106,22 @@ const Documents = React.memo(() => {
     }
   };
 
+  const handleSentDocument = () => {
+    setSentDocument(null);
+  };
+
   const renderClickable = () => {
     if (selectedDocument && !sentDocument) {
-      // console.log(1);
       if (selectedDocument.completion.sentDocument) {
-        // console.log(1.1);
         return true;
       }
       if (isInputError) {
-        // console.log(1.2);
         return true;
       }
       return false;
-    } else if (selectedDocument && sendDocument) {
-      // console.log(2);
+    } else if (selectedDocument && sentDocument) {
       return true;
     } else {
-      // console.log(4);
       return true;
     }
   };
@@ -160,15 +167,21 @@ const Documents = React.memo(() => {
     return <img src={sentDocument.sample} alt={sentDocument.name} />;
   };
 
-  const handleDeleteDocument = () => {
+  const handleDeleteDocument = (e) => {
+    e.stopPropagation();
     setSentDocument(null);
     if (selectedDocument.completion.sentDocument) {
-      dispatch(removeDocument({ id: selectedDocument._id }));
+      dispatch(removeDocument({id: selectedDocument._id}));
+      setStatus("remove");
+      setStatusOpen(true);
+      const timer = setTimeout(() => setStatusOpen(false), 3000);
+      return () => clearTimeout(timer);
     }
   };
 
   const renderSentDocument = () => {
-    if (sentDocument) {
+    if (sentDocument && selectedDocument) {
+      console.log(1);
       return (
         <>
           <div className="overlay-document"></div>
@@ -190,7 +203,9 @@ const Documents = React.memo(() => {
         </>
       );
     } else if (selectedDocument) {
+      console.log(2);
       if (selectedDocument.completion.sentDocument) {
+        console.log(2.1);
         return (
           <>
             <div className="overlay-document"></div>
@@ -207,8 +222,11 @@ const Documents = React.memo(() => {
                   <ImCross />
                 </button>
               </div>
-
-              <button className="submit" type="button">
+              <button
+                type="button"
+                className="submit"
+                onClick={handleDeleteDocument}
+              >
                 Unsubmit
               </button>
             </div>
@@ -218,9 +236,18 @@ const Documents = React.memo(() => {
     }
   };
 
+  const renderStatus = () => {
+    if (status === "add") {
+      return "Document Submitted";
+    }
+    if (status === "remove") {
+      return "Document Removed.";
+    }
+  };
+
   return (
     <section className="documents-page">
-      <IconContext.Provider value={{ className: "icon" }}>
+      <IconContext.Provider value={{className: "icon"}}>
         <div className="top">
           <div className="selected-document-indicator">
             {selectedDocument ? (
@@ -243,7 +270,7 @@ const Documents = React.memo(() => {
             <form onSubmit={handleSubmit}>
               <label htmlFor="document">
                 {renderSentDocument()}
-                <div className="file-con">
+                <div className="file-con" onClick={(e) => e.stopPropagation()}>
                   {selectedDocument ? (
                     <div className="drop-file-container">
                       <div className="add-icon">
@@ -257,7 +284,7 @@ const Documents = React.memo(() => {
                     </div>
                   ) : (
                     <div className="drop-file-container">
-                      <div className="overlay"></div>
+                      <div className="overlay-document"></div>
                       <div className="add-icon">
                         <span>
                           <AiOutlineFileAdd />
@@ -299,8 +326,17 @@ const Documents = React.memo(() => {
           </div>
         </div>
         <div className="display">
+          <div className={isStatusOpen ? "status active" : "status"}>
+            <p>{renderStatus()}</p>
+          </div>
           {documentDetails.map((item, index) => {
-            return <DocumentIntern key={index} item={item} />;
+            return (
+              <DocumentIntern
+                key={index}
+                item={item}
+                handleSentDocument={handleSentDocument}
+              />
+            );
           })}
         </div>
 
