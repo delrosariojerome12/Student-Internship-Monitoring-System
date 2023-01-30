@@ -5382,6 +5382,8 @@ button {
   color: #fff;
   border-radius: 0 1.5rem 1.5rem 1.5rem;
   background-color: #4c4c4c;
+  overflow: hidden;
+  position: relative;
 }
 .documents-page .display .document-intern {
   display: flex;
@@ -5421,6 +5423,25 @@ button {
   background-color: #0d7377;
   color: #fff;
   border-radius: 0;
+}
+.documents-page .display .status {
+  position: absolute;
+  bottom: 0%;
+  left: 100%;
+  width: 35rem;
+  height: 6rem;
+  background-color: #0d7377;
+  z-index: 2;
+  border-radius: 1rem;
+  color: #fff;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+}
+.documents-page .display .active {
+  transform: translate(-100%);
 }
 .documents-page .completion-container {
   display: grid;

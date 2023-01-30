@@ -159,6 +159,7 @@ export const internDocumentReducer = createSlice({
       .addCase(sendDocument.fulfilled, (state, action) => {
         state.sendLoading = false;
         state.documentDetails = action.payload.res;
+        state.selectedDocument = null;
       })
       .addCase(sendDocument.rejected, (state, action) => {
         state.sendLoading = false;

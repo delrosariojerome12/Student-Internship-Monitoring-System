@@ -38,12 +38,19 @@ const Documents = React.memo(() => {
   const [sentDocument, setSentDocument] = useState(null);
   const [isSentDocumentOpen, setSentDocumentOpen] = useState(false);
   const [isInputError, setInputError] = useState(false);
+  const [status, setStatus] = useState("");
+  const [isStatusOpen, setStatusOpen] = useState(false);
 
   useEffect(() => {
     // change this to update or make a button for
     user.documentDetails.length === 0 &&
       dispatch(updateDocumentsOnLoad(user.email));
     dispatch(handleDocumentDetails(user.documentDetails));
+
+    // if (isStatusOpen) {
+    // const timer = setTimeout(() => setStatusOpen(false), 3000);
+    // return () => clearTimeout(timer);
+    // }
   }, []);
 
   // console.log(documentDetails);
@@ -71,6 +78,10 @@ const Documents = React.memo(() => {
         fileName: sentDocument.name,
       })
     );
+    setStatus("add");
+    setStatusOpen(true);
+    const timer = setTimeout(() => setStatusOpen(false), 3000);
+    return () => clearTimeout(timer);
   };
 
   const handleImageInput = (file) => {
@@ -103,21 +114,16 @@ const Documents = React.memo(() => {
 
   const renderClickable = () => {
     if (selectedDocument && !sentDocument) {
-      // console.log(1);
       if (selectedDocument.completion.sentDocument) {
-        // console.log(1.1);
         return true;
       }
       if (isInputError) {
-        // console.log(1.2);
         return true;
       }
       return false;
     } else if (selectedDocument && sentDocument) {
-      console.log(2);
       return true;
     } else {
-      // console.log(4);
       return true;
     }
   };
@@ -168,11 +174,16 @@ const Documents = React.memo(() => {
     setSentDocument(null);
     if (selectedDocument.completion.sentDocument) {
       dispatch(removeDocument({id: selectedDocument._id}));
+      setStatus("remove");
+      setStatusOpen(true);
+      const timer = setTimeout(() => setStatusOpen(false), 3000);
+      return () => clearTimeout(timer);
     }
   };
 
   const renderSentDocument = () => {
     if (sentDocument && selectedDocument) {
+      console.log(1);
       return (
         <>
           <div className="overlay-document"></div>
@@ -194,7 +205,9 @@ const Documents = React.memo(() => {
         </>
       );
     } else if (selectedDocument) {
+      console.log(2);
       if (selectedDocument.completion.sentDocument) {
+        console.log(2.1);
         return (
           <>
             <div className="overlay-document"></div>
@@ -222,6 +235,15 @@ const Documents = React.memo(() => {
           </>
         );
       }
+    }
+  };
+
+  const renderStatus = () => {
+    if (status === "add") {
+      return "Document Submitted";
+    }
+    if (status === "remove") {
+      return "Document Removed.";
     }
   };
 
@@ -306,6 +328,9 @@ const Documents = React.memo(() => {
           </div>
         </div>
         <div className="display">
+          <div className={isStatusOpen ? "status active" : "status"}>
+            <p>{renderStatus()}</p>
+          </div>
           {documentDetails.map((item, index) => {
             return (
               <DocumentIntern

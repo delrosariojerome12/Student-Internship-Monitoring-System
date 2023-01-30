@@ -322,6 +322,8 @@
       $color: $primary-bg-color-landing-compliment,
       $amount: 10
     );
+    overflow: hidden;
+    position: relative;
     .document-intern {
       display: flex;
       align-items: center;
@@ -362,6 +364,23 @@
         color: #fff;
         border-radius: 0;
       }
+    }
+    .status {
+      position: absolute;
+      bottom: 0%;
+      left: 100%;
+      width: 35rem;
+      height: 6rem;
+      background-color: $primary-compliment-landing;
+      z-index: 2;
+      border-radius: 1rem;
+      color: #fff;
+      font-weight: 600;
+      @include flexCenter;
+      transition: all 0.2s ease-in-out;
+    }
+    .active {
+      transform: translate(-100%);
     }
   }
   @import "../pages/documents/completion";
