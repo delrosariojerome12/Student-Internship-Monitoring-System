@@ -47,10 +47,7 @@ const Documents = React.memo(() => {
       dispatch(updateDocumentsOnLoad(user.email));
     dispatch(handleDocumentDetails(user.documentDetails));
 
-    // if (isStatusOpen) {
-    // const timer = setTimeout(() => setStatusOpen(false), 3000);
-    // return () => clearTimeout(timer);
-    // }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // console.log(documentDetails);
