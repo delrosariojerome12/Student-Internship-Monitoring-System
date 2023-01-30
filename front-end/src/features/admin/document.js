@@ -47,6 +47,7 @@ export const handleDeleteDocument = createAsyncThunk(
     }
   }
 );
+
 export const handleUpdateDocument = createAsyncThunk(
   "/documents/updateDocument",
   async ({form, id}, {rejectWithValue}) => {
@@ -70,7 +71,6 @@ export const documentReducer = createSlice({
         (item) => item._id === payload
       );
       state.selectedDocument = newDocuments[0];
-      // console.log(state.selectedDocument);
     },
   },
   extraReducers: (builder) => {
@@ -129,7 +129,6 @@ export const documentReducer = createSlice({
         } = res;
         state.isLoading = false;
         state.documents = allDocuments;
-        console.log(allDocuments);
       })
       .addCase(handleUpdateDocument.rejected, (state, action) => {
         state.isError = true;

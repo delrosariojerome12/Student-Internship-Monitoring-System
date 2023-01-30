@@ -34,15 +34,15 @@
       border-radius: 5px;
       border: solid 1px transparent;
       outline: none;
-      background-color: $primary-bg-color;
+      background-color: $primary-compliment-landing;
       color: $primary-font-color;
       letter-spacing: 0.2rem;
       transition: all 0.3s ease-in-out;
       font-weight: 600;
       &:last-child:hover {
         background-color: $primary-font-color;
-        color: $primary-bg-color;
-        border: solid 1px $primary-bg-color;
+        color: $primary-compliment-landing;
+        border: solid 1px $primary-compliment-landing;
       }
     }
   }
@@ -61,16 +61,31 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 50rem;
-    height: 300px;
+    width: 60rem;
+    height: 36rem;
     background-color: #fff;
     z-index: 7;
     border: solid 1px $primary-bg-color-landing-compliment;
     border-radius: 2rem;
-    padding: 2rem;
-    display: grid;
-    align-items: center;
+    padding: 4rem 2rem;
+    gap: 1rem;
+    @include flexCenter;
+    flex-direction: column;
+    // display: grid;
+    // align-items: center;
     text-align: center;
+    span {
+      color: $primary-compliment-landing;
+      font-size: 7rem;
+    }
+    h3,
+    p {
+      width: 80%;
+    }
+    p {
+      color: #757575;
+      font-size: 1.6rem;
+    }
     .button-container {
       height: 100%;
       display: flex;
@@ -158,6 +173,9 @@
       color: $primary-compliment-landing;
     }
   }
+
+  // start
+
   .verification-steps {
     overflow: hidden;
     margin: auto;
@@ -166,7 +184,8 @@
     display: grid;
     grid-template-rows: 12rem auto;
     gap: 2rem;
-    padding: 3rem;
+    padding: 4rem 3rem 3rem;
+
     p {
       font-size: 2.5rem;
       font-weight: 600;
@@ -232,7 +251,7 @@
     position: relative;
     margin: auto;
     // overflow: hidden;
-    height: 50rem;
+    height: 45rem;
     .inactive {
       transform: translate(-120%, 0%);
     }
@@ -250,6 +269,11 @@
       transform: translate(-200%, 0%);
     }
 
+    .internship-details,
+    .student-details,
+    .schedule-details {
+      background-color: #f3f3f3;
+    }
     .internship-details {
       border: solid 1px #000;
       z-index: 3;
@@ -298,6 +322,7 @@
           display: flex;
           align-items: center;
           border: solid 1px #8b8b8b;
+          background-color: #fff;
           gap: 2rem;
           padding-left: 2rem;
           border-radius: 0.5rem;
@@ -392,6 +417,8 @@
         padding: 1.1rem 3.5rem 1.1rem 2rem;
         letter-spacing: 2px;
         transition: all 0.3s ease-in-out;
+        background-color: #fff;
+
         &:focus {
           border: solid 3px $primary-bg-color;
           outline: none;
@@ -456,6 +483,280 @@
         color: $primary-compliment-landing;
         background-color: $primary-font-color;
         border: solid 1px $primary-compliment-landing;
+      }
+    }
+  }
+}
+
+// Responsive
+
+@media screen and(max-width: 860px) {
+  .verification-container {
+    .valid-id-modal {
+      img {
+        height: 45rem;
+        width: 45rem;
+      }
+    }
+
+    .are-you-sure-modal {
+      width: 55rem;
+    }
+    .verification-steps {
+      grid-template-rows: 11rem auto;
+      width: 100%;
+      height: 100%;
+
+      .steps-container {
+        gap: 1rem;
+        .steps {
+          .step-1,
+          .step-2,
+          .step-3 {
+            height: 6.8rem;
+            width: 6.8rem;
+          }
+        }
+        .step-1 {
+          &::after {
+            display: none;
+          }
+        }
+        .step-2 {
+          &::after {
+            display: none;
+          }
+        }
+      }
+      form {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 750px) {
+  .verification-container {
+    .valid-id-modal {
+      img {
+        height: 40rem;
+        width: 40rem;
+      }
+    }
+    .are-you-sure-modal {
+      width: 45rem;
+      height: 40rem;
+    }
+
+    .verification-steps {
+      grid-template-rows: 10rem auto;
+
+      .steps-container {
+        h2 {
+          font-size: 2.5rem;
+        }
+        .steps {
+          .step-1,
+          .step-2,
+          .step-3 {
+            height: 6.2rem;
+            width: 6.2rem;
+          }
+        }
+      }
+      form {
+        .internship-details,
+        .student-details,
+        .schedule-details {
+          overflow-y: auto;
+        }
+        .student-details {
+          .forms-con {
+            .img-input {
+              height: auto;
+              padding: 1rem 0;
+              label {
+                flex-direction: column;
+                input {
+                  width: 50%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 650px) {
+  .verification-container {
+    .valid-id-modal {
+      img {
+        height: 35rem;
+        width: 35rem;
+      }
+      button {
+        height: 3.5rem;
+      }
+    }
+
+    .are-you-sure-modal {
+      width: 35rem;
+      height: 42rem;
+      border-radius: 2rem;
+
+      span {
+        font-size: 6rem;
+      }
+      h3 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 1.5rem;
+      }
+      h3,
+      p {
+        width: 90%;
+      }
+      .button-container {
+        button {
+          height: 3.5rem;
+        }
+      }
+    }
+
+    .greetings {
+      font-size: 2.2rem;
+    }
+    .verification-steps {
+      .steps-container {
+        h2 {
+          font-size: 2.3rem;
+        }
+        .steps {
+          .step-1,
+          .step-2,
+          .step-3 {
+            height: 6rem;
+            width: 6rem;
+          }
+        }
+      }
+      form {
+        .student-details {
+          .forms-con {
+            .img-input {
+              label {
+                input {
+                  width: 60%;
+                }
+              }
+            }
+          }
+        }
+
+        button {
+          height: 3rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 500px) {
+  .verification-container {
+    padding: 1rem;
+    border: none;
+
+    .valid-id-modal {
+      img {
+        height: 30rem;
+        width: 30rem;
+      }
+    }
+
+    // .are-you-sure-modal {
+    // width: 38rem;
+    // height: 40rem;
+    //   padding: 2rem;
+    // }
+    .verification-steps {
+      padding: 2rem;
+      grid-template-rows: 8rem auto;
+
+      .steps-container {
+        h2 {
+          font-size: 2rem;
+        }
+        .steps {
+          .step-1,
+          .step-2,
+          .step-3 {
+            height: 5.7rem;
+            width: 5.7rem;
+          }
+        }
+      }
+
+      form {
+        .student-details {
+          .forms-con {
+            .img-input {
+              label {
+                input {
+                  width: 80%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 400px) {
+  .verification-container {
+    .valid-id-modal {
+      img {
+        height: 25rem;
+        width: 25rem;
+      }
+    }
+
+    .are-you-sure-modal {
+      width: 80%;
+    }
+
+    .verification-steps {
+      form {
+        .btn-con {
+          @include flexColumn;
+        }
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 350px) {
+  .verification-container {
+    padding: 1rem;
+    border: none;
+    .verification-steps {
+      form {
+        .student-details {
+          .forms-con {
+            .img-input {
+              label {
+                input {
+                  width: 90%;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

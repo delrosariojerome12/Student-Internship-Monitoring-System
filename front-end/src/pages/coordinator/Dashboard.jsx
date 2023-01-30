@@ -24,7 +24,7 @@ const Dashboard = () => {
       return (
         <section className="all-intern-container">
           <div className="no-intern">
-            <img src={internImg} alt="" />
+            <img src={internImg} alt="" className="no-intern-img" />
             <h3>No user found!</h3>
           </div>
         </section>
@@ -42,7 +42,7 @@ const Dashboard = () => {
 
     if (approvalInterns.length === 0) {
       return (
-        <section className="dashboard-approvals">
+        <section className="all-approvals-container">
           <div className="no-approvals">
             <img src={approvalImg} alt="No Intern Found" />
             <h4>No approvals found!</h4>
@@ -56,22 +56,22 @@ const Dashboard = () => {
     });
   };
 
-  const renderInternship = () => {
-    if (approvalInterns.length === 0) {
-      return (
-        <section className="dashboard-internships">
-          <div className="no-internship">
-            <img src={internshipImg} alt="No available internship" />
-            <h4>No available internship</h4>
-          </div>
-        </section>
-      );
-    }
+  // const renderInternship = () => {
+  //   if (approvalInterns.length === 0) {
+  //     return (
+  //       <section className="all-internship-container">
+  //         <div className="no-internship">
+  //           <img src={internshipImg} alt="No available internship" />
+  //           <h4>No available internship</h4>
+  //         </div>
+  //       </section>
+  //     );
+  //   }
 
-    return approvalInterns.map((intern, index) => {
-      return <DashboardInternship intern={intern} key={index} index={index} />;
-    });
-  };
+  //   return approvalInterns.map((intern, index) => {
+  //     return <DashboardInternship intern={intern} key={index} index={index} />;
+  //   });
+  // };
 
   return (
     <section className="coordinator-dashboard">
@@ -108,7 +108,9 @@ const Dashboard = () => {
         </div>
         <div className="dashboard-internships">
           <h3 className="internships-title">Companies</h3>
-          <div className="all-internship-container">{renderInternship()}</div>
+          <div className="all-internship-container">
+            {/* {renderInternship()} */}
+          </div>
         </div>
       </div>
     </section>
