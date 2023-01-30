@@ -97,6 +97,10 @@ const Documents = React.memo(() => {
     }
   };
 
+  const handleSentDocument = () => {
+    setSentDocument(null);
+  };
+
   const renderClickable = () => {
     if (selectedDocument && !sentDocument) {
       // console.log(1);
@@ -109,8 +113,8 @@ const Documents = React.memo(() => {
         return true;
       }
       return false;
-    } else if (selectedDocument && sendDocument) {
-      // console.log(2);
+    } else if (selectedDocument && sentDocument) {
+      console.log(2);
       return true;
     } else {
       // console.log(4);
@@ -159,7 +163,8 @@ const Documents = React.memo(() => {
     return <img src={sentDocument.sample} alt={sentDocument.name} />;
   };
 
-  const handleDeleteDocument = () => {
+  const handleDeleteDocument = (e) => {
+    e.stopPropagation();
     setSentDocument(null);
     if (selectedDocument.completion.sentDocument) {
       dispatch(removeDocument({id: selectedDocument._id}));
@@ -167,7 +172,7 @@ const Documents = React.memo(() => {
   };
 
   const renderSentDocument = () => {
-    if (sentDocument) {
+    if (sentDocument && selectedDocument) {
       return (
         <>
           <div className="overlay-document"></div>
@@ -206,7 +211,13 @@ const Documents = React.memo(() => {
                   <ImCross />
                 </button>
               </div>
-              <button className="submit">Unsubmit</button>
+              <button
+                type="button"
+                className="submit"
+                onClick={handleDeleteDocument}
+              >
+                Unsubmit
+              </button>
             </div>
           </>
         );
@@ -239,7 +250,7 @@ const Documents = React.memo(() => {
             <form onSubmit={handleSubmit}>
               <label htmlFor="document">
                 {renderSentDocument()}
-                <div className="file-con">
+                <div className="file-con" onClick={(e) => e.stopPropagation()}>
                   {selectedDocument ? (
                     <div className="drop-file-container">
                       <div className="add-icon">
@@ -253,7 +264,7 @@ const Documents = React.memo(() => {
                     </div>
                   ) : (
                     <div className="drop-file-container">
-                      <div className="overlay"></div>
+                      <div className="overlay-document"></div>
                       <div className="add-icon">
                         <span>
                           <AiOutlineFileAdd />
@@ -296,7 +307,13 @@ const Documents = React.memo(() => {
         </div>
         <div className="display">
           {documentDetails.map((item, index) => {
-            return <DocumentIntern key={index} item={item} />;
+            return (
+              <DocumentIntern
+                key={index}
+                item={item}
+                handleSentDocument={handleSentDocument}
+              />
+            );
           })}
         </div>
 

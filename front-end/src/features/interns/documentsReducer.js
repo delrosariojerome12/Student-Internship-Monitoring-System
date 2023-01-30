@@ -65,7 +65,8 @@ export const sendDocument = createAsyncThunk(
       const {data: res} = await axios.patch(url, {
         documentDetails: completeDocumentDetails,
       });
-      console.log(res);
+      console.log("sent");
+      console.log(res.documentDetails);
       return {res: res.documentDetails};
     } catch (error) {
       console.log(error);
@@ -79,8 +80,9 @@ export const removeDocument = createAsyncThunk(
   async ({id}, {rejectWithValue, getState}) => {
     const {
       user: {
-        user: {email, documentDetails},
+        user: {email},
       },
+      internDocument: {documentDetails},
     } = getState();
 
     const newDocument = [...documentDetails]
@@ -104,6 +106,8 @@ export const removeDocument = createAsyncThunk(
     const allDocuments = [...documentDetails].filter((item) => item._id !== id);
     const completeDocumentDetails = [...allDocuments, newDocument[0]];
 
+    console.log(documentDetails);
+    console.log(allDocuments);
     try {
       const url = `http://localhost:5000/intern/removeDocument/${email}`;
       const {data: res} = await axios.patch(url, {
@@ -166,8 +170,8 @@ export const internDocumentReducer = createSlice({
       })
       .addCase(removeDocument.fulfilled, (state, action) => {
         state.sendLoading = false;
-        console.log(action.payload.res);
         state.selectedDocument = null;
+        console.log(action.payload.res);
         state.documentDetails = action.payload.res;
       })
       .addCase(removeDocument.rejected, (state, action) => {
