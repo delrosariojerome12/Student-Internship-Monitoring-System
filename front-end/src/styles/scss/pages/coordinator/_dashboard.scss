@@ -3,7 +3,7 @@
 
 .coordinator-dashboard {
   display: grid;
-  grid-template-rows: 14vh 0.35fr auto;
+  grid-template-rows: 14vh 0.8fr 1fr;
   width: 100%;
   height: 100%;
   gap: 1rem;
@@ -63,7 +63,6 @@
     border: solid 1px #fff;
     border-radius: 2rem 2rem 0 0;
     background-image: linear-gradient(#212121 30%, #222222 31%, #484848 100%);
-
     .container-title {
       color: #fff;
       text-align: center;
@@ -156,7 +155,7 @@
       }
       .all-approvals-container {
         overflow-y: auto;
-        max-height: 35vh;
+        max-height: 40vh;
         background-color: #d9d9d9;
 
         .no-approvals {
@@ -328,7 +327,7 @@
 
       .all-internship-container {
         overflow-y: auto;
-        max-height: 35vh;
+        max-height: 40vh;
         background-color: #d9d9d9;
         .no-internship {
           @include flexColumn;
