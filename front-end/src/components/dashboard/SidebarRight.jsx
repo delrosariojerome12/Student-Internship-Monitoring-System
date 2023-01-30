@@ -29,9 +29,8 @@ const SideBarRight = () => {
       <aside className="sidebar-right">
         <div className="top">
           {isProfileOpen && <ProfileTab />}
-          {isNotificationOpen && <NotificationTab />}
-          {isChatOpen && <ChatTab />}
-
+          {/* {isNotificationOpen && <NotificationTab />} */}
+          {/* {isChatOpen && <ChatTab />} */}
           <span className="profile-img">
             <img
               onClick={() => dispatch(handleProfile())}
@@ -42,7 +41,7 @@ const SideBarRight = () => {
               <FaChevronDown />
             </span>
           </span>
-          <span
+          {/* <span
             onClick={() => dispatch(handleNotification())}
             className="notification"
           >
@@ -50,7 +49,7 @@ const SideBarRight = () => {
           </span>
           <span onClick={() => dispatch(handleChat())} className="chat">
             <TbMessageCircle />
-          </span>
+          </span> */}
         </div>
         <div className="bottom">
           <span className="info">

@@ -11,7 +11,7 @@ import {RiMailSendFill} from "react-icons/ri";
 import DarkSent from "../../assets/img/sentDocumentDark.svg";
 import LightSent from "../../assets/img/sentDocumentLight.svg";
 
-const DocumentIntern = React.memo(({item}) => {
+const DocumentIntern = React.memo(({item, handleSentDocument}) => {
   const {
     document: {format, sample, name},
     completion: {isApproved, hasSent, isRejected, sentDocument},
@@ -27,7 +27,9 @@ const DocumentIntern = React.memo(({item}) => {
     }
   };
 
-  const handleDocumentClick = () => {
+  const handleDocumentClick = (e) => {
+    e.stopPropagation();
+    handleSentDocument();
     dispatch(handleSelectedDocument(item));
   };
 
@@ -45,7 +47,7 @@ const DocumentIntern = React.memo(({item}) => {
   };
 
   return (
-    <div className="document-intern" onClick={handleDocumentClick}>
+    <div className="document-intern" onClick={(e) => handleDocumentClick(e)}>
       {renderDocumentStatus()}
       <FaEye onClick={() => dispatch(handleDocumentOpen())} />
       <p>{name}</p>

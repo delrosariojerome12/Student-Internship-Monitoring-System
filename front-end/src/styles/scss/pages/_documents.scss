@@ -54,11 +54,23 @@
           // cursor: pointer;
           position: relative;
           .overlay-document {
-            @extend .overlay;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(48, 47, 47, 0.753);
+            position: absolute;
+            filter: blur(20px);
+            top: 0%;
+            left: 0%;
             z-index: 2;
           }
           .overlay-confirmation {
-            @extend .overlay;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(48, 47, 47, 0.753);
+            position: absolute;
+            filter: blur(20px);
+            top: 0%;
+            left: 0%;
             z-index: 4;
           }
           .send-confirmation {
@@ -310,6 +322,8 @@
       $color: $primary-bg-color-landing-compliment,
       $amount: 10
     );
+    overflow: hidden;
+    position: relative;
     .document-intern {
       display: flex;
       align-items: center;
@@ -350,6 +364,23 @@
         color: #fff;
         border-radius: 0;
       }
+    }
+    .status {
+      position: absolute;
+      bottom: 0%;
+      left: 100%;
+      width: 35rem;
+      height: 6rem;
+      background-color: $primary-compliment-landing;
+      z-index: 2;
+      border-radius: 1rem;
+      color: #fff;
+      font-weight: 600;
+      @include flexCenter;
+      transition: all 0.2s ease-in-out;
+    }
+    .active {
+      transform: translate(-100%);
     }
   }
   @import "../pages/documents/completion";

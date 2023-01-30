@@ -1,5 +1,4 @@
-import {async} from "@firebase/util";
-import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
+import {createSlice, createAsyncThunk, current} from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
@@ -19,7 +18,7 @@ export const updateDocumentsOnLoad = createAsyncThunk(
     try {
       const url = `http://localhost:5000/intern/updateDocuments/${email}`;
       const {data: res} = await axios.patch(url);
-      //   console.log(res);
+      return {res: res.intern.documentDetails};
     } catch (error) {
       console.log(error);
       return rejectWithValue(error.response.data);
@@ -34,8 +33,9 @@ export const sendDocument = createAsyncThunk(
     {rejectWithValue, getState}
   ) => {
     const {
+      internDocument: {documentDetails},
       user: {
-        user: {email, documentDetails},
+        user: {email},
       },
     } = getState();
 
@@ -65,6 +65,8 @@ export const sendDocument = createAsyncThunk(
       const {data: res} = await axios.patch(url, {
         documentDetails: completeDocumentDetails,
       });
+      console.log("sent");
+      console.log(res.documentDetails);
       return {res: res.documentDetails};
     } catch (error) {
       console.log(error);
@@ -78,8 +80,9 @@ export const removeDocument = createAsyncThunk(
   async ({id}, {rejectWithValue, getState}) => {
     const {
       user: {
-        user: {email, documentDetails},
+        user: {email},
       },
+      internDocument: {documentDetails},
     } = getState();
 
     const newDocument = [...documentDetails]
@@ -103,6 +106,8 @@ export const removeDocument = createAsyncThunk(
     const allDocuments = [...documentDetails].filter((item) => item._id !== id);
     const completeDocumentDetails = [...allDocuments, newDocument[0]];
 
+    console.log(documentDetails);
+    console.log(allDocuments);
     try {
       const url = `http://localhost:5000/intern/removeDocument/${email}`;
       const {data: res} = await axios.patch(url, {
@@ -140,6 +145,7 @@ export const internDocumentReducer = createSlice({
       })
       .addCase(updateDocumentsOnLoad.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.documentDetails = action.payload.res;
       })
       .addCase(updateDocumentsOnLoad.rejected, (state, action) => {
         state.isLoading = false;
@@ -153,6 +159,7 @@ export const internDocumentReducer = createSlice({
       .addCase(sendDocument.fulfilled, (state, action) => {
         state.sendLoading = false;
         state.documentDetails = action.payload.res;
+        state.selectedDocument = null;
       })
       .addCase(sendDocument.rejected, (state, action) => {
         state.sendLoading = false;
@@ -164,8 +171,8 @@ export const internDocumentReducer = createSlice({
       })
       .addCase(removeDocument.fulfilled, (state, action) => {
         state.sendLoading = false;
-        console.log(action.payload.res);
         state.selectedDocument = null;
+        console.log(action.payload.res);
         state.documentDetails = action.payload.res;
       })
       .addCase(removeDocument.rejected, (state, action) => {
