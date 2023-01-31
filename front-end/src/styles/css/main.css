@@ -950,7 +950,7 @@ button {
 }
 .dashboard .main .content, .dashboard-active .main .content {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   gap: 1.2rem;
 }
@@ -2784,7 +2784,7 @@ button {
 }
 .dashboard .coordinator-dashboard, .dashboard-active .coordinator-dashboard {
   display: grid;
-  grid-template-rows: 14vh 0.35fr auto;
+  grid-template-rows: 14vh 0.8fr 1fr;
   width: 100%;
   height: 100%;
   gap: 1rem;
@@ -2836,7 +2836,7 @@ button {
 }
 .dashboard .coordinator-dashboard .dashboard-intern, .dashboard-active .coordinator-dashboard .dashboard-intern {
   display: grid;
-  grid-template-rows: 0.2fr auto auto;
+  grid-template-rows: 3.5vh auto auto;
   padding: 2rem;
   grid-auto-rows: 12rem;
   border: solid 1px #fff;
@@ -2854,9 +2854,8 @@ button {
   display: none;
 }
 .dashboard .coordinator-dashboard .dashboard-intern .all-intern-container, .dashboard-active .coordinator-dashboard .dashboard-intern .all-intern-container {
-  overflow: hidden;
   overflow-y: auto;
-  height: 30vh;
+  max-height: 30vh;
   background-color: #d9d9d9;
 }
 .dashboard .coordinator-dashboard .dashboard-intern .all-intern-container .no-intern, .dashboard-active .coordinator-dashboard .dashboard-intern .all-intern-container .no-intern {
@@ -2922,17 +2921,17 @@ button {
 }
 .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals {
   display: grid;
-  grid-template-rows: 0.2fr auto auto;
+  grid-template-rows: 3.5vh auto;
   padding: 2rem;
   border-radius: 0 0 0 2rem;
+  height: 100%;
 }
 .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .course, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .course {
   display: none;
 }
 .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container {
-  overflow: hidden;
   overflow-y: auto;
-  height: 35vh;
+  max-height: 40vh;
   background-color: #d9d9d9;
 }
 .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .no-approvals, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .no-approvals {
@@ -3090,14 +3089,13 @@ button {
 }
 .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships {
   display: grid;
-  grid-template-rows: 0.2fr auto;
+  grid-template-rows: 3.5vh auto;
   padding: 2rem;
   border-radius: 0 0 2rem 0;
 }
 .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container {
-  overflow: hidden;
   overflow-y: auto;
-  height: 35vh;
+  max-height: 40vh;
   background-color: #d9d9d9;
 }
 .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .no-internship, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .no-internship {
@@ -3264,7 +3262,6 @@ button {
   .dashboard .coordinator-dashboard .dashboard-intern, .dashboard-active .coordinator-dashboard .dashboard-intern {
     padding: 1rem;
     height: 35vh;
-    overflow: hidden;
   }
   .dashboard .coordinator-dashboard .dashboard-intern .course, .dashboard-active .coordinator-dashboard .dashboard-intern .course {
     display: flex;
@@ -3301,7 +3298,6 @@ button {
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals {
     padding: 1rem;
     height: 35vh;
-    overflow: hidden;
   }
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .course, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .course {
     display: flex;
@@ -3356,7 +3352,6 @@ button {
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships {
     padding: 1rem;
     height: 35vh;
-    overflow: hidden;
   }
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container {
     height: 100%;
@@ -4529,19 +4524,19 @@ button {
 }
 
 .waiting-container-pending {
-  height: 85rem;
-  width: 90%;
+  height: 98%;
+  width: 95%;
   background-color: #fff;
   margin: auto;
   border-radius: 1rem;
   display: grid;
-  grid-template-rows: 16rem 1fr 8rem;
+  grid-template-rows: 16rem 1fr auto;
   padding: 2rem;
   gap: 1rem;
 }
 .waiting-container-pending header {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
   background-color: #d9d9d9;
   padding: 1rem;
@@ -4566,7 +4561,7 @@ button {
 }
 .waiting-container-pending header .remarks-container {
   height: 11rem;
-  padding: 1rem;
+  padding: 0.5rem 1rem 1rem;
   margin-top: auto;
   border: solid 1px #000;
   display: flex;
@@ -4587,6 +4582,7 @@ button {
 .waiting-container-pending header .remarks-container .remarks h6 {
   font-size: 1.5rem;
   text-align: center;
+  word-break: break-word;
 }
 .waiting-container-pending .sent-details {
   display: grid;
@@ -4651,20 +4647,6 @@ button {
   color: #0d7377;
 }
 
-@media screen and (max-width: 1100px) {
-  .waiting-container-pending header .text h3 {
-    font-size: 1.8rem;
-  }
-  .waiting-container-pending header .text p {
-    font-size: 1.5rem;
-  }
-  .waiting-container-pending header .remarks-container {
-    height: 80%;
-  }
-  .waiting-container-pending header .remarks-container .remarks img {
-    height: 5rem;
-  }
-}
 @media screen and (max-width: 1030px) {
   .dashboard, .dashboard-active {
     padding: 1rem 1rem 1rem 13rem;
@@ -4700,6 +4682,7 @@ button {
   .waiting-container-pending .sent-details {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: auto auto auto;
+    gap: 1rem;
   }
   .waiting-container-pending .sent-details .img-container {
     background-color: transparent;
@@ -4752,6 +4735,9 @@ button {
   }
   .waiting-container-pending header .text p {
     font-size: 1.5rem;
+  }
+  .waiting-container-pending header .remarks-container {
+    height: auto;
   }
   .waiting-container-pending .sent-details {
     font-size: 1.6rem;
