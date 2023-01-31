@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React, {useState, Suspense} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {IconContext} from "react-icons";
+import {FaPlus} from "react-icons/fa";
 import Document from "../../components/admin/Document";
 import Select from "react-select";
 import {
@@ -17,10 +18,13 @@ import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
 import {v4} from "uuid";
 import {Viewer} from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
+import {Route, Routes, Link, Navigate, useNavigate} from "react-router-dom";
+import Bouncing from "../../components/loading/Bouncing";
 
 const Documents = React.memo(() => {
   const {documents} = useSelector((state) => state.document);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [form, setForm] = useState([
     {
@@ -608,34 +612,57 @@ const Documents = React.memo(() => {
         <header>
           <h2>Documents</h2>
         </header>
-        <div className="document-container">
-          <div className="document-control">
-            <button onClick={() => setAddDocumentOpen(!isAddDocumentOpen)}>
-              Add Document
-            </button>
-          </div>
-          {documents.length > 0 ? (
-            <div className="documents">
-              {documents.map((doc, index) => {
-                return (
-                  <Document
-                    doc={doc}
-                    key={index}
-                    handleSelectedDocument={handleSelectedDocument}
-                    handleDocumentModal={handleDocumentModal}
-                    handleDeleteModal={handleDeleteModal}
-                    handleEditModal={handleEditModal}
-                  />
-                );
-              })}
-            </div>
-          ) : (
-            <div className="no-document">
-              <h3>No existing document at the moment.</h3>
-              <img src={NoDocumentSvg} alt="no-Document" />
-            </div>
-          )}
+
+        <div className="btn-routes">
+          <button onClick={() => navigate("/dashboard/documents/format")}>
+            Document Format
+          </button>
+          <button onClick={() => navigate("/dashboard/documents/approval")}>
+            Document Approvals
+          </button>
         </div>
+        <Suspense fallback={<Bouncing />}>
+          <Routes>
+            <Route
+              path="/format"
+              element={
+                <div className="document-container">
+                  <div className="document-control">
+                    <button
+                      onClick={() => setAddDocumentOpen(!isAddDocumentOpen)}
+                    >
+                      <p>Add Document</p>
+                      <FaPlus />
+                    </button>
+                  </div>
+                  {documents.length > 0 ? (
+                    <div className="documents">
+                      {documents.map((doc, index) => {
+                        return (
+                          <Document
+                            doc={doc}
+                            key={index}
+                            handleSelectedDocument={handleSelectedDocument}
+                            handleDocumentModal={handleDocumentModal}
+                            handleDeleteModal={handleDeleteModal}
+                            handleEditModal={handleEditModal}
+                          />
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <div className="no-document">
+                      <h3>No existing document at the moment.</h3>
+                      <img src={NoDocumentSvg} alt="no-Document" />
+                    </div>
+                  )}
+                </div>
+              }
+            />
+            <Route path="/approval" element={<h1>Approvals</h1>} />
+            <Route path="*" element={<Navigate to="/404" replace />} />
+          </Routes>
+        </Suspense>
       </IconContext.Provider>
     </section>
   );

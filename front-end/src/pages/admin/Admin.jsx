@@ -34,7 +34,7 @@ const Admin = React.memo(() => {
       <Suspense fallback={<Bouncing />}>
         <Routes>
           <Route path="/" element={<h1>ADMIN</h1>} />
-          <Route path="/documents" element={<Documents />} />
+          <Route path="/documents/*" element={<Documents />} />
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Routes>
       </Suspense>

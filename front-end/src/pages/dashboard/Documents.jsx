@@ -46,11 +46,11 @@ const Documents = React.memo(() => {
     user.documentDetails.length === 0 &&
       dispatch(updateDocumentsOnLoad(user.email));
     dispatch(handleDocumentDetails(user.documentDetails));
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // console.log(documentDetails);
+  console.log(selectedDocument);
   // console.log(user.documentDetails);
 
   if (isLoading) {
@@ -88,18 +88,25 @@ const Documents = React.memo(() => {
       const imageRef = ref(storage, imageName);
       // add delete
       if (type.includes(selectedDocument.document.format)) {
-        uploadBytes(imageRef, file).then((res) => {
-          getDownloadURL(res.ref).then((url) => {
-            setSentDocument({
-              sample: url,
-              name: file.name,
-              format: type,
-              filePath: imageName,
-            });
+        uploadBytes(imageRef, file)
+          .then((res) => {
+            getDownloadURL(res.ref)
+              .then((url) => {
+                setSentDocument({
+                  sample: url,
+                  name: file.name,
+                  format: type,
+                  filePath: imageName,
+                });
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          })
+          .catch((error) => {
+            console.log(error);
           });
-        });
       } else {
-        console.log("error");
         setInputError(true);
       }
     }
@@ -180,7 +187,6 @@ const Documents = React.memo(() => {
 
   const renderSentDocument = () => {
     if (sentDocument && selectedDocument) {
-      console.log(1);
       return (
         <>
           <div className="overlay-document"></div>
@@ -202,9 +208,7 @@ const Documents = React.memo(() => {
         </>
       );
     } else if (selectedDocument) {
-      console.log(2);
       if (selectedDocument.completion.sentDocument) {
-        console.log(2.1);
         return (
           <>
             <div className="overlay-document"></div>
@@ -241,6 +245,18 @@ const Documents = React.memo(() => {
     }
     if (status === "remove") {
       return "Document Removed.";
+    }
+  };
+
+  const renderAdminResponse = () => {
+    if (selectedDocument.completion.isRejected) {
+      return <p>Document Rejected.</p>;
+    }
+    if (selectedDocument.completion.isApproved) {
+      return <p>Document Approved.</p>;
+    }
+    if (selectedDocument.completion.hasSent) {
+      return <p>Document Submitted.</p>;
     }
   };
 
@@ -389,7 +405,10 @@ const Documents = React.memo(() => {
                 setSentDocumentOpen(!isSentDocumentOpen);
               }}
             ></div>
-            <div className="sample-view-container">{renderViewDocument()}</div>
+            <div className="sample-view-container">
+              {renderAdminResponse()}
+              {renderViewDocument()}
+            </div>
           </>
         )}
       </IconContext.Provider>

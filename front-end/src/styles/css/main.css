@@ -3386,7 +3386,7 @@ button {
 }
 .dashboard .admin-document-page, .dashboard-active .admin-document-page {
   display: grid;
-  grid-template-rows: 8vh auto;
+  grid-template-rows: 8vh 7rem auto;
   gap: 1rem;
   overflow: hidden;
 }
@@ -3670,6 +3670,29 @@ button {
 .dashboard .admin-document-page > header h2, .dashboard-active .admin-document-page > header h2 {
   color: #fff;
 }
+.dashboard .admin-document-page .btn-routes, .dashboard-active .admin-document-page .btn-routes {
+  background-color: #212121;
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.dashboard .admin-document-page .btn-routes button, .dashboard-active .admin-document-page .btn-routes button {
+  height: 100%;
+  background-color: #d9d9d9;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  transition: all 0.2s linear;
+  font-weight: 600;
+}
+.dashboard .admin-document-page .btn-routes button:hover, .dashboard-active .admin-document-page .btn-routes button:hover {
+  background-color: #457b9d;
+  border-radius: 1rem;
+  color: #fff;
+}
 .dashboard .admin-document-page .document-container, .dashboard-active .admin-document-page .document-container {
   display: grid;
   grid-template-rows: 7rem 1fr;
@@ -3680,6 +3703,7 @@ button {
   padding: 1rem;
   background-color: #212121;
   border-radius: 1rem;
+  justify-content: flex-end;
 }
 .dashboard .admin-document-page .document-container .document-control button, .dashboard-active .admin-document-page .document-container .document-control button {
   background-color: #d9d9d9;
@@ -3689,6 +3713,16 @@ button {
   padding: 1rem 2rem;
   transition: all 0.2s linear;
   font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.dashboard .admin-document-page .document-container .document-control button .icon, .dashboard-active .admin-document-page .document-container .document-control button .icon {
+  font-size: 1.2rem;
+}
+.dashboard .admin-document-page .document-container .document-control button p, .dashboard-active .admin-document-page .document-container .document-control button p {
+  padding-top: 0.2rem;
 }
 .dashboard .admin-document-page .document-container .document-control button:hover, .dashboard-active .admin-document-page .document-container .document-control button:hover {
   background-color: #457b9d;
