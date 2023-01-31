@@ -20,6 +20,7 @@ import {Viewer} from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import {Route, Routes, Link, Navigate, useNavigate} from "react-router-dom";
 import Bouncing from "../../components/loading/Bouncing";
+import DocumentApproval from "../../components/admin/DocumentApproval";
 
 const Documents = React.memo(() => {
   const {documents} = useSelector((state) => state.document);
@@ -659,7 +660,7 @@ const Documents = React.memo(() => {
                 </div>
               }
             />
-            <Route path="/approval" element={<h1>Approvals</h1>} />
+            <Route path="/approval" element={<DocumentApproval />} />
             <Route path="*" element={<Navigate to="/404" replace />} />
           </Routes>
         </Suspense>
