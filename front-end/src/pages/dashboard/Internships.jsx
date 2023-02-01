@@ -41,7 +41,7 @@ const Internships = () => {
       <div className="bottom">
         <div className="img-container">
           <input type="checkbox" id="collapsible-head" />
-          <label for="collapsible-head">
+          <label htmlFor="collapsible-head">
             <img src={pic} alt="" />
             <span>
               <FaArrowRight />
@@ -66,7 +66,7 @@ const Internships = () => {
             </p>
           </div>
         </div>
-        <div className="img-container">
+        {/* <div className="img-container">
           <input type="checkbox" id="collapsible-head2" />
           <label for="collapsible-head2">
             <img src={pic} alt="" />
@@ -93,7 +93,7 @@ const Internships = () => {
               debitis accusamus.
             </p>
           </div>
-        </div>
+        </div> */}
 
         <div className="img-content">
           <img className="img" src={pic} alt="" />

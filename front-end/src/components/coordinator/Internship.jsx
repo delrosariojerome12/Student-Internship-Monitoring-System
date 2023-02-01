@@ -8,19 +8,6 @@ const Internship = () => {
     setDetailsOpen(!isDetailsOpen);
   };
 
-  const [position, setPosition] = useState(0);
-
-  const handleReturn = (e) => {
-    e.preventDefault();
-    if (position !== 0) {
-      setPosition((prev) => prev - 1);
-    }
-  };
-
-  const handleNext = (e) => {
-    e.preventDefault();
-  };
-
   return (
     <section className="coordinator-internship">
       {/* overlays */}
