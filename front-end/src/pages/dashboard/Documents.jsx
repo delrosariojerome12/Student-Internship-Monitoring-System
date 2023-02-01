@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react";
-import {AiOutlineFileAdd} from "react-icons/ai";
-import {useSelector, useDispatch} from "react-redux";
+import React, { useEffect, useState } from "react";
+import { AiOutlineFileAdd } from "react-icons/ai";
+import { useSelector, useDispatch } from "react-redux";
 import DocumentIntern from "../../components/documents/DocumentIntern";
 import {
   updateDocumentsOnLoad,
@@ -12,19 +12,19 @@ import {
 } from "../../features/interns/documentsReducer";
 import ServerError from "../serverError";
 import Bouncing from "../../components/loading/Bouncing";
-import {IconContext} from "react-icons";
-import {ImCross} from "react-icons/im";
+import { IconContext } from "react-icons";
+import { ImCross } from "react-icons/im";
 import DocumentDark from "../../assets/img/documentNigga.svg";
 import ErrorInput from "../../assets/img/errorInput.svg";
-import {Viewer} from "@react-pdf-viewer/core";
+import { Viewer } from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 
-import {storage} from "../../Firebase";
-import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
-import {v4} from "uuid";
+import { storage } from "../../Firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { v4 } from "uuid";
 
 const Documents = React.memo(() => {
-  const {user} = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
   const {
     isLoading,
     isError,
@@ -84,7 +84,7 @@ const Documents = React.memo(() => {
   const handleImageInput = (file) => {
     if (file) {
       const imageName = `images/documents/sample/${v4() + file.name}`;
-      const {type} = file;
+      const { type } = file;
       const imageRef = ref(storage, imageName);
       // add delete
       if (type.includes(selectedDocument.document.format)) {
@@ -170,7 +170,7 @@ const Documents = React.memo(() => {
     e.stopPropagation();
     setSentDocument(null);
     if (selectedDocument.completion.sentDocument) {
-      dispatch(removeDocument({id: selectedDocument._id}));
+      dispatch(removeDocument({ id: selectedDocument._id }));
       setStatus("remove");
       setStatusOpen(true);
       const timer = setTimeout(() => setStatusOpen(false), 3000);
@@ -197,7 +197,9 @@ const Documents = React.memo(() => {
                 <ImCross />
               </button>
             </div>
-            <button className="submit">Submit</button>
+            <div className="btn">
+              <button className="submit">Submit</button>
+            </div>
           </div>
         </>
       );
@@ -221,13 +223,15 @@ const Documents = React.memo(() => {
                   <ImCross />
                 </button>
               </div>
-              <button
-                type="button"
-                className="submit"
-                onClick={handleDeleteDocument}
-              >
-                Unsubmit
-              </button>
+              <div className="btn">
+                <button
+                  type="button"
+                  className="submit"
+                  onClick={handleDeleteDocument}
+                >
+                  Unsubmit
+                </button>
+              </div>
             </div>
           </>
         );
@@ -246,7 +250,7 @@ const Documents = React.memo(() => {
 
   return (
     <section className="documents-page">
-      <IconContext.Provider value={{className: "icon"}}>
+      <IconContext.Provider value={{ className: "icon" }}>
         <div className="top">
           <div className="selected-document-indicator">
             {selectedDocument ? (
@@ -358,8 +362,14 @@ const Documents = React.memo(() => {
                   {renderDocumentDetails()}
                 </div>
                 <div className="desc-container">
-                  <p>Description: {selectedDocument.document.description}</p>
-                  <p>Format: {selectedDocument.document.format}</p>
+                  <p>
+                    <b>Description: </b>
+                    {selectedDocument.document.description}
+                  </p>
+                  <p>
+                    <b>Format: </b>
+                    {selectedDocument.document.format}
+                  </p>
                 </div>
               </div>
               <div className="btn-container">
