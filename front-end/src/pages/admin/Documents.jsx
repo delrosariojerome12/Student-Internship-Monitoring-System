@@ -1,4 +1,4 @@
-import React, {useState, Suspense} from "react";
+import React, {useState, Suspense, lazy} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {IconContext} from "react-icons";
 import {FaPlus} from "react-icons/fa";
@@ -20,7 +20,8 @@ import {Viewer} from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import {Route, Routes, Link, Navigate, useNavigate} from "react-router-dom";
 import Bouncing from "../../components/loading/Bouncing";
-import DocumentApproval from "../../components/admin/DocumentApproval";
+
+const DocumentApproval = lazy(() => import("./DocumentApproval"));
 
 const Documents = React.memo(() => {
   const {documents} = useSelector((state) => state.document);
