@@ -130,7 +130,10 @@ const getAllVerifiedInterns = async (req, res) => {
     path: "user",
     model: "User",
   });
-  res.status(StatusCodes.OK).json({interns});
+
+  const documents = await Document.find({});
+
+  res.status(StatusCodes.OK).json({interns, totalDocuments: documents.length});
 };
 
 module.exports = {
