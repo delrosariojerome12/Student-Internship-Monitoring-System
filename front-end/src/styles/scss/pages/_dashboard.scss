@@ -62,7 +62,7 @@
 
     .content {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr 1fr;
       gap: 1.2rem;
       & > * {
@@ -77,8 +77,6 @@
         text-align: center;
       }
       .time-keeper {
-        // @include flexColumn;
-        // padding: 1rem;
         position: relative;
         grid-column: 1/3;
         z-index: 1;

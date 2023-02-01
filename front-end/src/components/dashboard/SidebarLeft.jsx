@@ -69,7 +69,7 @@ const links = [
         IconType: RiDashboardLine,
       },
       {
-        path: "/dashboard/documents",
+        path: "/dashboard/documents/format",
         link: "Documents",
         IconType: HiDocument,
       },
