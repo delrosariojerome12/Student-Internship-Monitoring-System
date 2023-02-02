@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {FaChevronDown, FaChevronUp} from "react-icons/fa";
 import {useSelector} from "react-redux";
+import DocumentSVG from "../../assets/img/noDocument.svg";
 
 import {Viewer} from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
@@ -13,8 +14,6 @@ const DocumentIntern = React.memo(({intern}) => {
   } = intern;
   const [isDropDown, setDropDown] = useState(false);
   const {totalDocuments} = useSelector((state) => state.documentApproval);
-
-  console.log(documentDetails);
 
   const renderDocuments = () => {
     if (isDropDown) {
@@ -38,16 +37,32 @@ const DocumentIntern = React.memo(({intern}) => {
           );
         });
       } else {
-        return <h1>No Document to Check.</h1>;
+        return (
+          <div className="no-document">
+            <img src={DocumentSVG} alt="document-none" />
+            <h4>No Document to Check.</h4>
+          </div>
+        );
       }
     }
+  };
+
+  const renderStyle = () => {
+    if (isDropDown) {
+      if (documentDetails.length > 0) {
+        return "text active";
+      } else {
+        return "text active-1";
+      }
+    }
+    return "text";
   };
   return (
     <div className="document-intern">
       <div className="img-container">
         <img src={profileImage} alt={`${lastName}.img`} />
       </div>
-      <div className={isDropDown ? "text active" : "text"}>
+      <div className={renderStyle()}>
         <div className="top">
           <p>{`${firstName} ${lastName}`}</p>
           <p>Internship at: {companyName}</p>

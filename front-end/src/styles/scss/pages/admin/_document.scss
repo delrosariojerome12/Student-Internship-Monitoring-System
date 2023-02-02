@@ -490,6 +490,7 @@
             display: grid;
             grid-auto-rows: 8rem;
             gap: 1rem;
+            border-radius: 0 0 1rem 0;
             // overflow-y: auto;
             .drop-btn {
               display: flex;
@@ -501,6 +502,7 @@
               bottom: 0%;
               left: 50%;
               transform: translateX(-50%);
+              border-radius: 1rem !important;
               height: 2rem;
               .icon {
                 color: #fff;
@@ -509,41 +511,51 @@
             .document {
               background-color: #d9d9d9;
               border-radius: 1rem;
-              gap: 2rem;
               color: #000;
               display: grid;
               grid-template-columns: 2fr 1fr;
               gap: 1rem;
               padding: 1rem;
 
-              & > * {
-                border: solid 1px #000;
-              }
               .left {
                 display: flex;
-                gap: 1rem;
                 flex-direction: column;
+                overflow: auto;
               }
               .btn-container {
                 display: flex;
                 align-items: center;
-
                 gap: 1rem;
                 button {
-                  height: 5rem;
+                  height: 4rem;
                   border: none;
                   outline: none;
                   cursor: pointer;
                   padding: 1rem 2rem;
                   transition: all 0.2s linear;
                   font-weight: 600;
-
-                  &:hover {
+                  &:first-child:hover {
                     background-color: $primary-bg-color;
                     border-radius: 1rem;
                     color: #fff;
                   }
+                  &:nth-child(2):hover {
+                    background-color: $red-primary-color;
+                    border-radius: 1rem;
+                    color: #fff;
+                  }
                 }
+              }
+            }
+            .no-document {
+              color: #fff;
+              display: flex;
+              padding: 1rem;
+              align-items: center;
+              gap: 1rem;
+              img {
+                height: 5rem;
+                width: 5rem;
               }
             }
           }
@@ -551,6 +563,9 @@
       }
       .active {
         grid-template-rows: 10rem 48rem;
+      }
+      .active-1 {
+        grid-template-rows: 10rem 10rem;
       }
       & > * {
         background-color: #fff;
