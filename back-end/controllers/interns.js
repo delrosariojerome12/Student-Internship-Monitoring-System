@@ -3,7 +3,6 @@ const Document = require("../models/Document");
 
 const {StatusCodes} = require("http-status-codes");
 const {BadRequest, NotFound} = require("../errors");
-const {findOne} = require("../models/Intern");
 
 const getAllInterns = async (req, res) => {
   const {users} = req.body;
@@ -124,6 +123,19 @@ const removeDocument = async (req, res) => {
   res.status(StatusCodes.OK).json(intern);
 };
 
+const getAllVerifiedInterns = async (req, res) => {
+  const interns = await Intern.find({
+    // verification: {isVerified: true},
+  }).populate({
+    path: "user",
+    model: "User",
+  });
+
+  const documents = await Document.find({});
+
+  res.status(StatusCodes.OK).json({interns, totalDocuments: documents.length});
+};
+
 module.exports = {
   updateIntern,
   getIntern,
@@ -132,4 +144,5 @@ module.exports = {
   updateDocuments,
   sendDocument,
   removeDocument,
+  getAllVerifiedInterns,
 };

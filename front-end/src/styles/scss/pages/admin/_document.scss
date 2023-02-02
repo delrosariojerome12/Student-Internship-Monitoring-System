@@ -3,7 +3,7 @@
 
 .admin-document-page {
   display: grid;
-  grid-template-rows: 8vh auto;
+  grid-template-rows: 8vh 7rem auto;
   gap: 1rem;
   overflow: hidden;
   // & > * {
@@ -314,19 +314,43 @@
       color: #fff;
     }
   }
+  .btn-routes {
+    background-color: $primary-bg-color-landing;
+    border-radius: 1rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    button {
+      height: 100%;
+      background-color: #d9d9d9;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 1rem 2rem;
+      transition: all 0.2s linear;
+      font-weight: 600;
+
+      &:hover {
+        background-color: $primary-bg-color;
+        border-radius: 1rem;
+        color: #fff;
+      }
+    }
+  }
 
   .document-container {
     display: grid;
     grid-template-rows: 7rem 1fr;
     gap: 1rem;
-    // & > * {
-    //   border: solid 1px #fff;
-    // }
+
     .document-control {
       display: flex;
       padding: 1rem;
       background-color: $primary-bg-color-landing;
       border-radius: 1rem;
+      justify-content: flex-end;
 
       button {
         background-color: #d9d9d9;
@@ -336,6 +360,16 @@
         padding: 1rem 2rem;
         transition: all 0.2s linear;
         font-weight: 600;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        .icon {
+          font-size: 1.2rem;
+        }
+        p {
+          padding-top: 0.2rem;
+        }
         &:hover {
           background-color: $primary-bg-color;
           color: #fff;
@@ -405,6 +439,136 @@
       gap: 1rem;
       img {
         height: 50rem;
+      }
+    }
+  }
+  .document-approval-container {
+    padding: 2rem;
+    background-color: $primary-bg-color-landing;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    .document-intern {
+      display: grid;
+      min-height: 12rem;
+      grid-template-columns: 12rem 1fr;
+      gap: 2rem;
+      .img-container {
+        border-radius: 1rem 0 0 1rem;
+        height: 12rem;
+        width: 12rem;
+        img {
+          border-radius: 1rem 0 0 1rem;
+          height: 100%;
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+      .text {
+        height: 100%;
+        width: 100%;
+        border-radius: 0 1rem 1rem 0;
+        display: grid;
+        grid-template-rows: 10rem 2rem;
+        transition: all 0.2s linear;
+        .top {
+          padding: 1rem;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .bottom {
+          transition: all 0.2s linear;
+          .dropdown-container {
+            padding: 1rem;
+            transition: all 0.2s linear;
+            width: 100%;
+            height: 100%;
+            background-color: $primary-compliment-landing;
+            cursor: pointer;
+            position: relative;
+            display: grid;
+            grid-auto-rows: 8rem;
+            gap: 1rem;
+            border-radius: 0 0 1rem 0;
+            // overflow-y: auto;
+            .drop-btn {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              position: absolute;
+              background-color: $primary-compliment-landing;
+              width: 100%;
+              bottom: 0%;
+              left: 50%;
+              transform: translateX(-50%);
+              border-radius: 1rem !important;
+              height: 2rem;
+              .icon {
+                color: #fff;
+              }
+            }
+            .document {
+              background-color: #d9d9d9;
+              border-radius: 1rem;
+              color: #000;
+              display: grid;
+              grid-template-columns: 2fr 1fr;
+              gap: 1rem;
+              padding: 1rem;
+
+              .left {
+                display: flex;
+                flex-direction: column;
+                overflow: auto;
+              }
+              .btn-container {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                button {
+                  height: 4rem;
+                  border: none;
+                  outline: none;
+                  cursor: pointer;
+                  padding: 1rem 2rem;
+                  transition: all 0.2s linear;
+                  font-weight: 600;
+                  &:first-child:hover {
+                    background-color: $primary-bg-color;
+                    border-radius: 1rem;
+                    color: #fff;
+                  }
+                  &:nth-child(2):hover {
+                    background-color: $red-primary-color;
+                    border-radius: 1rem;
+                    color: #fff;
+                  }
+                }
+              }
+            }
+            .no-document {
+              color: #fff;
+              display: flex;
+              padding: 1rem;
+              align-items: center;
+              gap: 1rem;
+              img {
+                height: 5rem;
+                width: 5rem;
+              }
+            }
+          }
+        }
+      }
+      .active {
+        grid-template-rows: 10rem 48rem;
+      }
+      .active-1 {
+        grid-template-rows: 10rem 10rem;
+      }
+      & > * {
+        background-color: #fff;
       }
     }
   }
