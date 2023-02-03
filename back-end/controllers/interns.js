@@ -136,6 +136,38 @@ const getAllVerifiedInterns = async (req, res) => {
   res.status(StatusCodes.OK).json({interns, totalDocuments: documents.length});
 };
 
+const approveDocument = async (req, res) => {
+  const {email} = req.params;
+  const {documentDetails} = req.body;
+
+  const intern = await Intern.findOneAndUpdate(
+    {email},
+    {documentDetails},
+    {new: true}
+  ).populate({
+    path: "user",
+    model: "User",
+  });
+
+  res.status(StatusCodes.OK).json(intern);
+};
+
+const rejectDocument = async (req, res) => {
+  const {email} = req.params;
+  const {documentDetails} = req.body;
+
+  const intern = await Intern.findOneAndUpdate(
+    {email},
+    {documentDetails},
+    {new: true}
+  ).populate({
+    path: "user",
+    model: "User",
+  });
+
+  res.status(StatusCodes.OK).json(intern);
+};
+
 module.exports = {
   updateIntern,
   getIntern,
@@ -145,4 +177,6 @@ module.exports = {
   sendDocument,
   removeDocument,
   getAllVerifiedInterns,
+  approveDocument,
+  rejectDocument,
 };

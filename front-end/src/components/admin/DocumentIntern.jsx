@@ -2,9 +2,13 @@ import React, {useState} from "react";
 import {FaChevronDown, FaChevronUp} from "react-icons/fa";
 import {useSelector} from "react-redux";
 import DocumentSVG from "../../assets/img/noDocument.svg";
-
-import {Viewer} from "@react-pdf-viewer/core";
-import "@react-pdf-viewer/core/lib/styles/index.css";
+import ViewDocument from "../../assets/img/documentNigga.svg";
+import {useDispatch} from "react-redux";
+import {
+  handleOpenDocument,
+  rejectDocumentRequest,
+  approveDocumentRequest,
+} from "../../features/admin/documentApproval";
 
 const DocumentIntern = React.memo(({intern}) => {
   const {
@@ -12,6 +16,7 @@ const DocumentIntern = React.memo(({intern}) => {
     internshipDetails: {companyName},
     documentDetails,
   } = intern;
+  const dispatch = useDispatch();
   const [isDropDown, setDropDown] = useState(false);
   const {totalDocuments} = useSelector((state) => state.documentApproval);
 
@@ -22,16 +27,33 @@ const DocumentIntern = React.memo(({intern}) => {
           const {
             completion: {fileName},
             document: {name},
+            _id,
           } = document;
+
           return (
             <div className="document" key={index}>
+              <img
+                src={ViewDocument}
+                alt="view docs"
+                onClick={() => dispatch(handleOpenDocument(document))}
+              />
               <div className="left">
                 <p>{name}</p>
                 <p>{fileName}</p>
               </div>
               <div className="btn-container">
-                <button>Approve</button>
-                <button>Reject</button>
+                <button
+                  onClick={() =>
+                    dispatch(
+                      approveDocumentRequest({email, id: _id, documentDetails})
+                    )
+                  }
+                >
+                  Approve
+                </button>
+                <button onClick={() => dispatch(rejectDocumentRequest())}>
+                  Reject
+                </button>
               </div>
             </div>
           );
@@ -57,6 +79,7 @@ const DocumentIntern = React.memo(({intern}) => {
     }
     return "text";
   };
+
   return (
     <div className="document-intern">
       <div className="img-container">
