@@ -10,6 +10,8 @@ const {
   sendDocument,
   removeDocument,
   getAllVerifiedInterns,
+  approveDocument,
+  rejectDocument,
 } = require("../controllers/interns");
 
 router.route("/getAllInterns").get(getAllInterns);
@@ -21,5 +23,8 @@ router.route("/updateDocuments/:email").patch(updateDocuments);
 router.route("/sendDocument/:email").patch(sendDocument);
 router.route("/removeDocument/:email").patch(removeDocument);
 router.route("/getAllVerifiedInterns").get(getAllVerifiedInterns);
+
+router.route("/approveDocument/:email").patch(approveDocument);
+router.route("/rejectDocument/:email").patch(rejectDocument);
 
 module.exports = router;
