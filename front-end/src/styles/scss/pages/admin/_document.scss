@@ -569,8 +569,8 @@
         }
       }
       .active {
-        grid-template-rows: 10rem minmax(30rem, auto);
-        margin-bottom: 1.5rem;
+        grid-template-rows: 10rem minmax(10rem, auto);
+        margin-bottom: 1rem;
       }
       .active-1 {
         grid-template-rows: 10rem 10rem;

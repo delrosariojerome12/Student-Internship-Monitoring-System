@@ -21,16 +21,18 @@ const DocumentIntern = React.memo(({intern}) => {
   const {totalDocuments} = useSelector((state) => state.documentApproval);
 
   const filteredDocumentDetails = [...documentDetails].filter(
-    (item) => item.completion.isApproved !== true
+    (item) => item.completion.isApproved !== true && item.completion.hasSent
   );
 
   const approvedDocuments = [...documentDetails].filter(
     (item) => item.completion.isApproved === true
   );
 
+  // console.log(documentDetails);
+
   const renderDocuments = () => {
     if (isDropDown) {
-      if (documentDetails.length > 0) {
+      if (filteredDocumentDetails.length !== 0) {
         return filteredDocumentDetails.map((document, index) => {
           const {
             completion: {fileName},
@@ -51,11 +53,12 @@ const DocumentIntern = React.memo(({intern}) => {
               </div>
               <div className="btn-container">
                 <button
-                  onClick={() =>
+                  onClick={() => {
+                    console.log(documentDetails);
                     dispatch(
                       approveDocumentRequest({email, id: _id, documentDetails})
-                    )
-                  }
+                    );
+                  }}
                 >
                   Approve
                 </button>
