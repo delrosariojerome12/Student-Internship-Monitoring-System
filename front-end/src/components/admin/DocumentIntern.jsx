@@ -20,10 +20,18 @@ const DocumentIntern = React.memo(({intern}) => {
   const [isDropDown, setDropDown] = useState(false);
   const {totalDocuments} = useSelector((state) => state.documentApproval);
 
+  const filteredDocumentDetails = [...documentDetails].filter(
+    (item) => item.completion.isApproved !== true
+  );
+
+  const approvedDocuments = [...documentDetails].filter(
+    (item) => item.completion.isApproved === true
+  );
+
   const renderDocuments = () => {
     if (isDropDown) {
       if (documentDetails.length > 0) {
-        return documentDetails.map((document, index) => {
+        return filteredDocumentDetails.map((document, index) => {
           const {
             completion: {fileName},
             document: {name},
@@ -89,7 +97,7 @@ const DocumentIntern = React.memo(({intern}) => {
         <div className="top">
           <p>{`${firstName} ${lastName}`}</p>
           <p>Internship at: {companyName}</p>
-          <p>Documents: {`${documentDetails.length}/${totalDocuments}`}</p>
+          <p>Approved: {`${approvedDocuments.length}/${totalDocuments}`}</p>
         </div>
         <div className="bottom">
           <div className="dropdown-container">

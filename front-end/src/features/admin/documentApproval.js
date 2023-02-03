@@ -63,21 +63,20 @@ export const approveDocumentRequest = createAsyncThunk(
           _id: id,
         };
       });
-    const allDocuments = [...documentDetails];
-    // const completeDocumentDetails = [...allDocuments, newDocumentDetails[0]];
 
-    console.log(allDocuments);
+    const allDocuments = [...documentDetails].filter((item) => item._id !== id);
+    const completeDocumentDetails = [...allDocuments, newDocumentDetails[0]];
 
-    // try {
-    // const url = `http://localhost:5000/intern/approveDocument/${email}`;
-    // const {data: res} = await axios.patch(url, {
-    // documentDetails: completeDocumentDetails,
-    // });
-    // console.log(res.documentDetails);
-    // } catch (error) {
-    // console.log(error);
-    // return rejectWithValue(error.response.data);
-    // }
+    try {
+      const url = `http://localhost:5000/intern/approveDocument/${email}`;
+      const {data: res} = await axios.patch(url, {
+        documentDetails: completeDocumentDetails,
+      });
+      return {res: res.documentDetails};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
   }
 );
 
@@ -125,6 +124,8 @@ export const documentApprovalReducer = createSlice({
       })
       .addCase(approveDocumentRequest.fulfilled, (state, action) => {
         state.isSentLoading = false;
+        // state.interns = action.payload.res;
+        console.log(action.payload.res);
       })
       .addCase(approveDocumentRequest.rejected, (state, action) => {
         state.isSentLoading = false;
