@@ -3845,7 +3845,7 @@ button {
   position: absolute;
   background-color: #0d7377;
   width: 100%;
-  bottom: 0%;
+  bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 1rem !important;
@@ -3910,7 +3910,8 @@ button {
   width: 5rem;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .active, .dashboard-active .admin-document-page .document-approval-container .document-intern .active {
-  grid-template-rows: 10rem 48rem;
+  grid-template-rows: 10rem minmax(30rem, auto);
+  margin-bottom: 1.5rem;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .active-1, .dashboard-active .admin-document-page .document-approval-container .document-intern .active-1 {
   grid-template-rows: 10rem 10rem;
