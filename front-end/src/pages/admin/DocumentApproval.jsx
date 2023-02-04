@@ -31,8 +31,6 @@ const DocumentApproval = () => {
     return <Bouncing />;
   }
 
-  // console.log(selectedDocument);
-
   const renderDocumentDetails = () => {
     if (selectedDocument.document.format === "pdf") {
       return <Viewer fileUrl={selectedDocument.completion.sentDocument} />;
