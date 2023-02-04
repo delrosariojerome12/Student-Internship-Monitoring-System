@@ -7,7 +7,9 @@ import { BiSearchAlt } from "react-icons/bi";
 const DashboardMain = () => {
   const {
     user: {
+      user: {
       firstName,
+      },
       internshipDetails: {
         renderedHours,
         requiredHours,

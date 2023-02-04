@@ -18,7 +18,7 @@
     z-index: 6;
   }
   .top {
-    border: solid 1px #fff;
+    // border: solid 1px #fff;
     border-radius: 1.5rem;
     background-image: linear-gradient(#282b30 10%, #393e46 31%, #333333 80%);
     // background-color: lighten(
@@ -348,7 +348,7 @@
     gap: 1.5rem;
     padding: 2rem;
     color: #fff;
-    border: solid 1px #fff;
+    // border: solid 1px #fff;
     border-radius: 1.5rem;
     background-image: linear-gradient(#282b30 10%, #393e46 31%, #333333 80%);
     // background-color: lighten(
@@ -366,7 +366,6 @@
       cursor: pointer;
       background-color: $primary-compliment-landing;
       border-radius: 1rem;
-      transition: all 0.2s linear;
       position: relative;
       font-size: 1.4rem;
 
