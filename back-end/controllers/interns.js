@@ -63,20 +63,33 @@ const updateDocuments = async (req, res) => {
   const {email} = req.params;
   const documents = await Document.find({});
 
-  const modifiedDocuments = documents.map((item) => {
-    const {_id, name, format, sample, description} = item;
-    return {
-      document: {_id, name, format, sample, description},
-      completion: {
-        hasSent: false,
-        isRejected: false,
-        isApproved: false,
-        sentDocument: null,
-        filePath: "",
-        fileName: "",
-      },
-    };
-  });
+  const modifiedDocuments = documents
+    .map((item) => {
+      const {_id, name, format, sample, description} = item;
+      return {
+        document: {_id, name, format, sample, description},
+        completion: {
+          hasSent: false,
+          isRejected: false,
+          isApproved: false,
+          sentDocument: null,
+          filePath: "",
+          fileName: "",
+        },
+      };
+    })
+    .sort((a, b) => {
+      let fa = a.document.name.toLowerCase(),
+        fb = b.document.name.toLowerCase();
+
+      if (fa < fb) {
+        return -1;
+      }
+      if (fa > fb) {
+        return 1;
+      }
+      return 0;
+    });
 
   const intern = await Intern.findOneAndUpdate(
     {email},
