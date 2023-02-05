@@ -3910,8 +3910,8 @@ button {
   width: 5rem;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .active, .dashboard-active .admin-document-page .document-approval-container .document-intern .active {
-  grid-template-rows: 10rem minmax(30rem, auto);
-  margin-bottom: 1.5rem;
+  grid-template-rows: 10rem minmax(10rem, auto);
+  margin-bottom: 1rem;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .active-1, .dashboard-active .admin-document-page .document-approval-container .document-intern .active-1 {
   grid-template-rows: 10rem 10rem;
@@ -5312,7 +5312,7 @@ button {
 .documents-page .top .drop-file form label .overlay-document {
   width: 100%;
   height: 100%;
-  background-color: #393e46;
+  background-color: rgba(48, 47, 47, 0.753);
   position: absolute;
   filter: blur(20px);
   top: 0%;

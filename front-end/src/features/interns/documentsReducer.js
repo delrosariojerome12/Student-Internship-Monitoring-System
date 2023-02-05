@@ -18,6 +18,7 @@ export const updateDocumentsOnLoad = createAsyncThunk(
     try {
       const url = `http://localhost:5000/intern/updateDocuments/${email}`;
       const {data: res} = await axios.patch(url);
+
       return {res: res.intern.documentDetails};
     } catch (error) {
       console.log(error);
@@ -66,7 +67,20 @@ export const sendDocument = createAsyncThunk(
         documentDetails: completeDocumentDetails,
       });
       console.log("sent");
-      console.log(res.documentDetails);
+
+      res.documentDetails.sort((a, b) => {
+        let fa = a.document.name.toLowerCase(),
+          fb = b.document.name.toLowerCase();
+
+        if (fa < fb) {
+          return -1;
+        }
+        if (fa > fb) {
+          return 1;
+        }
+        return 0;
+      });
+
       return {res: res.documentDetails};
     } catch (error) {
       console.log(error);
@@ -112,6 +126,19 @@ export const removeDocument = createAsyncThunk(
       const url = `http://localhost:5000/intern/removeDocument/${email}`;
       const {data: res} = await axios.patch(url, {
         documentDetails: completeDocumentDetails,
+      });
+
+      res.documentDetails.sort((a, b) => {
+        let fa = a.document.name.toLowerCase(),
+          fb = b.document.name.toLowerCase();
+
+        if (fa < fb) {
+          return -1;
+        }
+        if (fa > fb) {
+          return 1;
+        }
+        return 0;
       });
       return {res: res.documentDetails};
     } catch (error) {
@@ -172,7 +199,6 @@ export const internDocumentReducer = createSlice({
       .addCase(removeDocument.fulfilled, (state, action) => {
         state.sendLoading = false;
         state.selectedDocument = null;
-        console.log(action.payload.res);
         state.documentDetails = action.payload.res;
       })
       .addCase(removeDocument.rejected, (state, action) => {

@@ -24,18 +24,25 @@ export const getAllVerifiedInterns = createAsyncThunk(
         .map((item) => {
           const {
             verification: {isVerified},
-            documentDetails,
           } = item;
-          if (isVerified && documentDetails.length !== 0) {
-            const filteredDocumentDetails = documentDetails.filter((docs) => {
-              const {completion} = docs;
-              return completion.hasSent && {docs};
-            });
-            return {...item, documentDetails: filteredDocumentDetails};
+          if (isVerified) {
+            return {...item};
           }
         })
         .filter((item) => {
           return item;
+        })
+        .sort((a, b) => {
+          let fa = a.user.lastName.toLowerCase(),
+            fb = b.user.lastName.toLowerCase();
+
+          if (fa < fb) {
+            return -1;
+          }
+          if (fa > fb) {
+            return 1;
+          }
+          return 0;
         });
 
       return {res: newInterns, totalDocuments: res.totalDocuments};
@@ -48,7 +55,11 @@ export const getAllVerifiedInterns = createAsyncThunk(
 
 export const approveDocumentRequest = createAsyncThunk(
   "/documentApproval/approveDocument",
-  async ({email, id, documentDetails}, {rejectWithValue}) => {
+  async ({email, id, documentDetails}, {rejectWithValue, getState}) => {
+    const {
+      documentApproval: {interns},
+    } = getState();
+
     const newDocumentDetails = [...documentDetails]
       .filter((item) => item._id === id)
       .map((item) => {
@@ -67,12 +78,28 @@ export const approveDocumentRequest = createAsyncThunk(
     const allDocuments = [...documentDetails].filter((item) => item._id !== id);
     const completeDocumentDetails = [...allDocuments, newDocumentDetails[0]];
 
+    const allInterns = [...interns].filter((item) => item.email !== email);
+
     try {
       const url = `http://localhost:5000/intern/approveDocument/${email}`;
       const {data: res} = await axios.patch(url, {
         documentDetails: completeDocumentDetails,
       });
-      return {res: res.documentDetails};
+
+      const completeInterns = [...allInterns, res].sort((a, b) => {
+        let fa = a.user.lastName.toLowerCase(),
+          fb = b.user.lastName.toLowerCase();
+
+        if (fa < fb) {
+          return -1;
+        }
+        if (fa > fb) {
+          return 1;
+        }
+        return 0;
+      });
+
+      return {res: completeInterns};
     } catch (error) {
       console.log(error);
       return rejectWithValue(error.response.data);
@@ -123,9 +150,8 @@ export const documentApprovalReducer = createSlice({
         state.isSentLoading = true;
       })
       .addCase(approveDocumentRequest.fulfilled, (state, action) => {
+        state.interns = action.payload.res;
         state.isSentLoading = false;
-        // state.interns = action.payload.res;
-        console.log(action.payload.res);
       })
       .addCase(approveDocumentRequest.rejected, (state, action) => {
         state.isSentLoading = false;
