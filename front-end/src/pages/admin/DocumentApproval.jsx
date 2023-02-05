@@ -1,14 +1,19 @@
-import React from "react";
-import {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
-import {getAllVerifiedInterns} from "../../features/admin/documentApproval";
+import {
+  getAllVerifiedInterns,
+  handleCloseDocument,
+} from "../../features/admin/documentApproval";
 import Bouncing from "../../components/loading/Bouncing";
 import ServerError from "../serverError";
 import DocumentIntern from "../../components/admin/DocumentIntern";
+import {Viewer} from "@react-pdf-viewer/core";
+import "@react-pdf-viewer/core/lib/styles/index.css";
+
 const DocumentApproval = () => {
-  const {isLoading, isError, interns, selectedIntern} = useSelector(
-    (state) => state.documentApproval
-  );
+  const {isLoading, isError, interns, selectedDocument, isDocumentOpen} =
+    useSelector((state) => state.documentApproval);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,11 +31,32 @@ const DocumentApproval = () => {
     return <Bouncing />;
   }
 
+  const renderDocumentDetails = () => {
+    if (selectedDocument.document.format === "pdf") {
+      return <Viewer fileUrl={selectedDocument.completion.sentDocument} />;
+    } else if (selectedDocument.format === "image") {
+      return (
+        <img src={selectedDocument.completion.sentDocument} alt="profile" />
+      );
+    }
+  };
+
   return (
     <div className="document-approval-container">
       {interns.map((item, index) => (
         <DocumentIntern key={index} intern={item} />
       ))}
+      {isDocumentOpen && (
+        <>
+          <div
+            className="overlay"
+            onClick={() => dispatch(handleCloseDocument())}
+          ></div>
+          <div className="view-document-container">
+            {renderDocumentDetails()}
+          </div>
+        </>
+      )}
     </div>
   );
 };
