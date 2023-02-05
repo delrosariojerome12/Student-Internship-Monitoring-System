@@ -9,7 +9,7 @@
   // gap: 1rem;
 
   .time-in-modal {
-    display: none !important;
+    // display: none !important;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -79,7 +79,7 @@
     }
   }
   .time-in-modals2 {
-    display: none !important;
+    // display: none !important;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -318,10 +318,27 @@
           }
         }
       }
-      // .DTR-content {
-      //   max-height: ;
-      //   overflow-y: scroll;
-      // }
+    }
+  }
+}
+
+@media screen and(max-width: 400px) {
+  .daily-time-record {
+    .content {
+      .user {
+        grid-template-columns: 10rem auto;
+        gap: 0.5rem;
+        p,
+        h4 {
+          font-size: 1.6rem;
+        }
+        .profile-img {
+          img {
+            height: 9rem;
+            width: 9rem;
+          }
+        }
+      }
     }
   }
 }
