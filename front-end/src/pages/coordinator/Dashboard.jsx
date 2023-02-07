@@ -1,17 +1,15 @@
 import React from "react";
 import DashboardIntern from "../../components/coordinator/dashboardCoordinator/DashboardIntern";
 import DashboardApprovals from "../../components/coordinator/dashboardCoordinator/DashboardApprovals";
-import DashboardInternship from "../../components/coordinator/dashboardCoordinator/DashboardInternship";
 
-import { useSelector, useDispatch } from "react-redux";
-import { BiSearchAlt } from "react-icons/bi";
+import {useSelector, useDispatch} from "react-redux";
+import {BiSearchAlt} from "react-icons/bi";
 
 import internImg from "../../assets/img/head.svg";
 import approvalImg from "../../assets/img/approvals.svg";
-import internshipImg from "../../assets/img/no-internship.svg";
 
 const Dashboard = () => {
-  const { approvalInterns, interns, isError } = useSelector(
+  const {approvalInterns, interns, isError} = useSelector(
     (state) => state.intern
   );
 
@@ -30,9 +28,15 @@ const Dashboard = () => {
         </section>
       );
     }
-    return interns.map((intern, index) => {
-      return <DashboardIntern intern={intern} key={index} />;
-    });
+
+    // can make conditional
+    return (
+      interns
+        // .filter((intern) => intern.verification.isVerified)
+        .map((intern, index) => {
+          return <DashboardIntern intern={intern} key={index} />;
+        })
+    );
   };
 
   const renderApprovals = () => {
