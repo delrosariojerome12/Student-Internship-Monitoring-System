@@ -19,9 +19,9 @@ const Coordinator = React.memo(({isSidebarOpen}) => {
   const {isLoading, isError, interns} = useSelector((state) => state.intern);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getAllInterns());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getAllInterns());
+  // }, []);
 
   return (
     <section
