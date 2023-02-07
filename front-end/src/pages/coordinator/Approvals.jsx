@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Approval from "../../components/coordinator/ApprovalIntern";
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 import ApprovalWaiting from "../../assets/img/waiting.svg";
 import {BiSearchAlt} from "react-icons/bi";
 import Bouncing from "../../components/loading/Bouncing";
 import ServerError from "../serverError";
+
 const Approvals = React.memo(() => {
   const {approvalInterns, isLoading, isError} = useSelector(
     (state) => state.intern
@@ -41,7 +42,7 @@ const Approvals = React.memo(() => {
   if (isError) {
     return <ServerError />;
   }
-  console.log(approvalInterns);
+
   return (
     <section className="approvals">
       <header>
