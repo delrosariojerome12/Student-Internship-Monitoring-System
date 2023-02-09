@@ -132,7 +132,7 @@
 
 // Responsive
 
-@media screen and(max-width: 750px) {
+@media screen and (max-width: 750px) {
   .internship {
     @include flexColumn;
     border-radius: 0;
@@ -239,7 +239,7 @@
   }
 }
 
-@media screen and(max-width: 500px) {
+@media screen and (max-width: 500px) {
   .internship {
     // @include flexColumn;
     // border-radius: 0;
