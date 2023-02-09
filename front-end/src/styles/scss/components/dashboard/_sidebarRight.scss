@@ -87,9 +87,9 @@
     .tab {
       position: absolute;
       top: 1rem;
-      left: -31rem;
+      left: -30rem;
       height: auto;
-      min-width: 28rem;
+      max-width: 28rem;
       z-index: 2;
       background-color: $primary-bg-color-landing-compliment;
       border-radius: 2rem;
@@ -129,6 +129,11 @@
           object-fit: cover;
           transition: all 0.2s linear;
           border-radius: 50%;
+        }
+        .text {
+          p {
+            word-break: break-all;
+          }
         }
       }
       & > *:not(.user) {
@@ -226,7 +231,7 @@
   }
 }
 
-@media screen and(max-width: 1030px) {
+@media screen and (max-width: 1030px) {
   .sidebar-right {
     display: none;
   }

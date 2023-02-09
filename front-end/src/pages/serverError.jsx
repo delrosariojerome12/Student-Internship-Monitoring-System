@@ -8,7 +8,9 @@ const ServerError = () => {
     <section className="server-error">
       <img src={error500} alt="" />
       <h1>Oh no, Something went wrong!</h1>
-      <button onClick={() => navigate("/")}>Go back to home page</button>
+      <button onClick={() => navigate("/dashboard")}>
+        Go back to home page
+      </button>
     </section>
   );
 };

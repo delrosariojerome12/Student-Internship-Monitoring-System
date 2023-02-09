@@ -96,18 +96,18 @@ const Dashboard = () => {
 
       <div className="dashboard-intern">
         <h4 className="container-title">Interns</h4>
-        <h4 className="course">
+        {/* <h4 className="course">
           Bachelor of Science in Information Technology
-        </h4>
+        </h4> */}
         <div className="all-intern-container">{renderInterns()}</div>
       </div>
 
       <div className="dashboard-content">
         <div className="dashboard-approvals">
           <h3 className="approvals-title">Approvals</h3>
-          <h4 className="course">
+          {/* <h4 className="course">
             Bachelor of Science in Information Technology
-          </h4>
+          </h4> */}
           <div className="all-approvals-container">{renderApprovals()}</div>
         </div>
         <div className="dashboard-internships">

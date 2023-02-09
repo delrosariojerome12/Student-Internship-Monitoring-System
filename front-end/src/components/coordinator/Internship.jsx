@@ -150,10 +150,7 @@ const Internship = () => {
       </div>
 
       {/* page-content */}
-
-      <form action="">
-        <input type="text" />
-      </form>
+      <div className="des"></div>
 
       <div className="btn-container">
         <button className="create" onClick={handleDetails}>

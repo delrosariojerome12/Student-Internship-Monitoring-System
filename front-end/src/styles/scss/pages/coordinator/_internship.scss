@@ -9,7 +9,9 @@
   padding: 2rem;
 
   .coordinator-internship {
-    @include flexColumn;
+    // @include flexColumn;
+    display: grid;
+    grid-template-rows: 3.5rem 4vh auto;
     gap: 2rem;
     background-color: #33363a;
     border: solid 1px #fff;
@@ -351,20 +353,10 @@
       }
     }
 
-    form {
-      @include flexCenter;
+    .des {
       background-color: $light-bg-color;
       width: 100%;
-      padding: 0 1.5rem;
-      margin: auto;
       border-radius: 1rem 1rem 0 0;
-      input {
-        width: 100%;
-        background: transparent;
-        padding: 1rem;
-        outline: none;
-        border: 0;
-      }
     }
 
     .btn-container {
@@ -449,7 +441,7 @@
 }
 
 // Responsive
-@media screen and(max-width: 1030px) {
+@media screen and (max-width: 1030px) {
   .internship-container {
     .coordinator-internship {
       .next-overlay {
@@ -477,7 +469,7 @@
     }
   }
 }
-@media screen and(max-width: 750px) {
+@media screen and (max-width: 750px) {
   .internship-container {
     .coordinator-internship {
       .next-overlay {
@@ -578,7 +570,7 @@
   }
 }
 
-@media screen and(max-width: 500px) {
+@media screen and (max-width: 500px) {
   .internship-container {
     .coordinator-internship {
       .view-overlay {
@@ -675,7 +667,7 @@
   }
 }
 
-@media screen and(max-width: 400px) {
+@media screen and (max-width: 400px) {
   .internship-container {
     .coordinator-internship {
       .create-overlay {
