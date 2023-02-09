@@ -1,4 +1,4 @@
-import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
+import {createSlice, createAsyncThunk, current} from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
@@ -16,7 +16,24 @@ export const getAllInterns = createAsyncThunk(
     try {
       const url = "http://localhost:5000/intern/getAllInterns";
       const {data: res} = await axios.get(url);
-      return {res: res.interns};
+      console.log(res.interns);
+
+      const interns = [...res.interns].sort((a, b) => {
+        let fa = a.user.lastName.toLowerCase(),
+          fb = b.user.lastName.toLowerCase();
+
+        if (fa < fb) {
+          return -1;
+        }
+        if (fa > fb) {
+          return 1;
+        }
+        return 0;
+      });
+
+      console.log(interns);
+
+      return {res: interns};
     } catch (error) {
       console.log(error);
       // change error
@@ -51,8 +68,20 @@ export const updateIntern = createAsyncThunk(
       const newApprovalIntern = [...state.intern.approvalInterns].filter(
         (intern) => intern.email !== email
       );
-      console.log(newApprovalIntern);
-      return {user: res.user, newApprovalIntern};
+      const interns = [...res.interns].sort((a, b) => {
+        let fa = a.user.lastName.toLowerCase(),
+          fb = b.user.lastName.toLowerCase();
+
+        if (fa < fb) {
+          return -1;
+        }
+        if (fa > fb) {
+          return 1;
+        }
+        return 0;
+      });
+
+      return {user: res.user, interns, newApprovalIntern};
     } catch (error) {
       console.log(error);
       return rejectWithValue(error.response.data);
@@ -103,8 +132,10 @@ export const internReducer = createSlice({
         state.isLoading = true;
       })
       .addCase(updateIntern.fulfilled, (state, action) => {
-        console.log(action.payload.newApprovalIntern);
+        console.log(action.payload.interns);
+        console.log(current(state.interns));
         state.isLoading = false;
+        state.interns = action.payload.interns;
         state.approvalInterns = action.payload.newApprovalIntern;
       })
       .addCase(updateIntern.rejected, (state, action) => {

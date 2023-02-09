@@ -3363,7 +3363,7 @@ button {
 }
 .dashboard .admin-document-page, .dashboard-active .admin-document-page {
   display: grid;
-  grid-template-rows: 8vh 7rem auto;
+  grid-template-rows: 8rem 7rem 60rem;
   gap: 1rem;
   overflow: hidden;
 }
@@ -3721,7 +3721,6 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   transition: all 0.2s linear;
   font-weight: 600;
   position: relative;
@@ -3769,12 +3768,12 @@ button {
   padding: 2rem;
   background-color: #212121;
   border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
   gap: 2rem;
+  overflow-y: auto;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern, .dashboard-active .admin-document-page .document-approval-container .document-intern {
   display: grid;
+  margin-bottom: 2rem;
   min-height: 12rem;
   grid-template-columns: 12rem 1fr;
   gap: 2rem;
@@ -3813,7 +3812,6 @@ button {
   width: 100%;
   height: 100%;
   background-color: #0d7377;
-  cursor: pointer;
   position: relative;
   display: grid;
   grid-auto-rows: 8rem;
@@ -3821,13 +3819,14 @@ button {
   border-radius: 0 0 1rem 0;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .drop-btn, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .drop-btn {
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
   background-color: #0d7377;
   width: 100%;
-  bottom: 0%;
+  bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 1rem !important;
@@ -3841,9 +3840,15 @@ button {
   border-radius: 1rem;
   color: #000;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 5rem 2fr 1fr;
   gap: 1rem;
   padding: 1rem;
+}
+.dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document img, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document img {
+  height: 5rem;
+  width: 5rem;
+  margin: auto;
+  cursor: pointer;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document .left, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document .left {
   display: flex;
@@ -3886,13 +3891,41 @@ button {
   width: 5rem;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .active, .dashboard-active .admin-document-page .document-approval-container .document-intern .active {
-  grid-template-rows: 10rem 48rem;
+  grid-template-rows: 10rem minmax(10rem, auto);
+  margin-bottom: 1rem;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .active-1, .dashboard-active .admin-document-page .document-approval-container .document-intern .active-1 {
   grid-template-rows: 10rem 10rem;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern > *, .dashboard-active .admin-document-page .document-approval-container .document-intern > * {
   background-color: #fff;
+}
+.dashboard .admin-document-page .document-approval-container .overlay, .dashboard-active .admin-document-page .document-approval-container .overlay {
+  width: 100%;
+  min-height: 100%;
+  background-color: rgba(48, 47, 47, 0.753);
+  position: absolute;
+  filter: blur(20px);
+  top: 0%;
+  left: 0%;
+  z-index: 6;
+}
+.dashboard .admin-document-page .document-approval-container .view-document-container, .dashboard-active .admin-document-page .document-approval-container .view-document-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  z-index: 7;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 65rem;
+  height: 93vh;
+  overflow: auto;
+}
+.dashboard .admin-document-page .document-approval-container .view-document-container img, .dashboard-active .admin-document-page .document-approval-container .view-document-container img {
+  height: 100%;
+  width: 100%;
 }
 
 .dashboard-active {
@@ -5340,7 +5373,7 @@ button {
 .documents-page .top .drop-file form label .overlay-document {
   width: 100%;
   height: 100%;
-  background-color: #393e46;
+  background-color: rgba(48, 47, 47, 0.753);
   position: absolute;
   filter: blur(20px);
   top: 0%;
