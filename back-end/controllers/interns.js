@@ -53,10 +53,15 @@ const updateIntern = async (req, res) => {
     model: "User",
   });
 
+  const interns = await Intern.find({}).populate({
+    path: "user",
+    model: "User",
+  });
+
   if (!user) {
     throw new NotFound(`Email not found`);
   }
-  return res.status(StatusCodes.OK).json({user});
+  return res.status(StatusCodes.OK).json({user, interns});
 };
 
 const updateDocuments = async (req, res) => {

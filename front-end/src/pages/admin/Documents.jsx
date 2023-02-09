@@ -185,6 +185,40 @@ const Documents = React.memo(() => {
 
     switch (inputField) {
       case "sample":
+        if (value) {
+          const {type} = value;
+          const imageName = `images/documents/sample/${v4() + value.name}`;
+          const imageRef = ref(storage, imageName);
+
+          uploadBytes(imageRef, value)
+            .then((res) => {
+              getDownloadURL(res.ref)
+                .then((url) => {
+                  if (type.includes("image")) {
+                    newForm[2].valuePlaceholder = {
+                      value: "image",
+                      label: "image",
+                    };
+                    newForm[2].value = "image";
+                  } else {
+                    newForm[2].valuePlaceholder = {
+                      value: "pdf",
+                      label: "pdf",
+                    };
+                    newForm[index + 2].value = "pdf";
+                  }
+                  newForm[2].isDisabled = true;
+                  newForm[index].format = type;
+                  newForm[index].value = url;
+                  newForm[index].isDisabled = true;
+                  setForm(newForm);
+                  checkCompletion();
+                })
+                .catch((err) => console.log(err));
+            })
+            .catch((err) => console.log(err));
+        }
+
         // add catch error here
         // if (schoolDetails) {
         //   const {
@@ -192,33 +226,7 @@ const Documents = React.memo(() => {
         //   } = schoolDetails;
         //   deleteDuplicateFirebase(name);
         // }
-        const {type} = value;
-        const imageName = `images/documents/sample/${v4() + value.name}`;
-        const imageRef = ref(storage, imageName);
 
-        uploadBytes(imageRef, value).then((res) => {
-          getDownloadURL(res.ref).then((url) => {
-            if (type.includes("image")) {
-              newForm[2].valuePlaceholder = {
-                value: "image",
-                label: "image",
-              };
-              newForm[2].value = "image";
-            } else {
-              newForm[2].valuePlaceholder = {
-                value: "pdf",
-                label: "pdf",
-              };
-              newForm[index + 2].value = "pdf";
-            }
-            newForm[2].isDisabled = true;
-            newForm[index].format = type;
-            newForm[index].value = url;
-            newForm[index].isDisabled = true;
-            setForm(newForm);
-            checkCompletion();
-          });
-        });
         return;
       case "name":
         if (value.length <= 2) {

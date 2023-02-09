@@ -171,7 +171,7 @@
 //   }
 // }
 // 1030px below
-@media screen and(max-width: 1030px) {
+@media screen and (max-width: 1030px) {
   .dashboard {
     padding: 1rem 1rem 1rem 13rem;
   }
@@ -228,7 +228,7 @@
   }
 }
 
-@media screen and(max-width: 820px) {
+@media screen and (max-width: 820px) {
   .waiting-container-pending {
     .sent-details {
       display: flex;
@@ -236,7 +236,7 @@
     }
   }
 }
-@media screen and(max-width: 750px) {
+@media screen and (max-width: 750px) {
   .waiting-container-pending {
     width: 96%;
 
@@ -272,7 +272,7 @@
   }
 }
 
-@media screen and(max-width: 500px) {
+@media screen and (max-width: 500px) {
   .waiting-container-pending {
     header {
       .text {

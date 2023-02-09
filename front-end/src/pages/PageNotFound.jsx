@@ -10,7 +10,7 @@ const PageNotFound = () => {
       <h1>
         The page that were you looking for doesn’t <b>"exist"</b>
       </h1>
-      <button onClick={() => navigate("/")}>Go back to home page</button>
+      <button onClick={() => navigate("/dashboard")}>Go back to home page</button>
     </section>
   );
 };

@@ -1,17 +1,15 @@
 import React from "react";
 import DashboardIntern from "../../components/coordinator/dashboardCoordinator/DashboardIntern";
 import DashboardApprovals from "../../components/coordinator/dashboardCoordinator/DashboardApprovals";
-import DashboardInternship from "../../components/coordinator/dashboardCoordinator/DashboardInternship";
 
-import { useSelector, useDispatch } from "react-redux";
-import { BiSearchAlt } from "react-icons/bi";
+import {useSelector, useDispatch} from "react-redux";
+import {BiSearchAlt} from "react-icons/bi";
 
 import internImg from "../../assets/img/head.svg";
 import approvalImg from "../../assets/img/approvals.svg";
-import internshipImg from "../../assets/img/no-internship.svg";
 
 const Dashboard = () => {
-  const { approvalInterns, interns, isError } = useSelector(
+  const {approvalInterns, interns, isError} = useSelector(
     (state) => state.intern
   );
 
@@ -30,9 +28,15 @@ const Dashboard = () => {
         </section>
       );
     }
-    return interns.map((intern, index) => {
-      return <DashboardIntern intern={intern} key={index} />;
-    });
+
+    // can make conditional
+    return (
+      interns
+        // .filter((intern) => intern.verification.isVerified)
+        .map((intern, index) => {
+          return <DashboardIntern intern={intern} key={index} />;
+        })
+    );
   };
 
   const renderApprovals = () => {
@@ -92,18 +96,18 @@ const Dashboard = () => {
 
       <div className="dashboard-intern">
         <h4 className="container-title">Interns</h4>
-        <h4 className="course">
+        {/* <h4 className="course">
           Bachelor of Science in Information Technology
-        </h4>
+        </h4> */}
         <div className="all-intern-container">{renderInterns()}</div>
       </div>
 
       <div className="dashboard-content">
         <div className="dashboard-approvals">
           <h3 className="approvals-title">Approvals</h3>
-          <h4 className="course">
+          {/* <h4 className="course">
             Bachelor of Science in Information Technology
-          </h4>
+          </h4> */}
           <div className="all-approvals-container">{renderApprovals()}</div>
         </div>
         <div className="dashboard-internships">
