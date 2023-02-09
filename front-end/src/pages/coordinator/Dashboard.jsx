@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useEffect} from "react";
 import DashboardIntern from "../../components/coordinator/dashboardCoordinator/DashboardIntern";
 import DashboardApprovals from "../../components/coordinator/dashboardCoordinator/DashboardApprovals";
 
 import {useSelector, useDispatch} from "react-redux";
+import {getAllInterns} from "../../features/interns/internReducer";
 import {BiSearchAlt} from "react-icons/bi";
 
 import internImg from "../../assets/img/head.svg";
@@ -12,6 +13,12 @@ const Dashboard = () => {
   const {approvalInterns, interns, isError} = useSelector(
     (state) => state.intern
   );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllInterns());
+    console.log(interns);
+  }, []);
 
   const renderInterns = () => {
     if (!interns) {
