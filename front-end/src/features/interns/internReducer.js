@@ -16,7 +16,6 @@ export const getAllInterns = createAsyncThunk(
     try {
       const url = "http://localhost:5000/intern/getAllInterns";
       const {data: res} = await axios.get(url);
-      console.log(res.interns);
 
       const interns = [...res.interns].sort((a, b) => {
         let fa = a.user.lastName.toLowerCase(),
@@ -30,8 +29,6 @@ export const getAllInterns = createAsyncThunk(
         }
         return 0;
       });
-
-      console.log(interns);
 
       return {res: interns};
     } catch (error) {
