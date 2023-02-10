@@ -430,14 +430,14 @@
       background-color: $primary-bg-color-landing;
       border-radius: 1rem;
       color: #fff;
-      padding: 1rem;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      justify-content: center;
+      padding: 2rem;
+      display: grid;
+      grid-template-rows: auto 1fr;
       gap: 1rem;
+      align-items: center;
+      justify-items: center;
       img {
-        height: 50rem;
+        height: 35rem;
       }
     }
   }
@@ -605,6 +605,9 @@
         height: 100%;
         width: 100%;
       }
+    }
+    .no-approval {
+      color: #fff;
     }
   }
 }

@@ -7,31 +7,9 @@
   border-radius: 1rem;
   border: solid 1px #fff;
   display: grid;
-  grid-template-rows: 18rem 5rem auto;
+  grid-template-rows: 15rem 5rem auto;
   gap: 1rem;
   padding: 1rem;
-
-  .no-entries {
-    display: grid;
-    grid-template-rows: auto auto;
-    justify-content: center;
-    gap: 1rem;
-    h3 {
-      text-align: center;
-      padding: 1rem 0;
-      color: #fff;
-      b {
-        color: #109da1;
-      }
-    }
-    .img-waiting {
-      @include flexCenter;
-      img {
-        height: 50rem;
-        width: 50rem;
-      }
-    }
-  }
 
   .preview-container {
     border: solid 1px #fff;
@@ -48,12 +26,12 @@
     .left-side {
       display: flex;
       align-items: center;
-      justify-content: space-evenly;
+      gap: 1rem;
       button {
         cursor: pointer;
         height: 4rem;
         @include flexCenter;
-        margin: auto;
+        // margin: auto;
         padding: 0rem 2rem;
         border-radius: 5px;
         border: solid 1px transparent;
@@ -100,21 +78,51 @@
     }
   }
   .interns {
-    position: relative;
     display: grid;
-    // grid-template-rows: 8rem;
-    grid-auto-rows: 12rem;
     gap: 1rem;
     padding: 1rem;
-
     overflow-y: auto;
-    height: 70vh;
+    height: 100%;
+
+    .overlay {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(48, 47, 47, 0.753);
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      z-index: 8;
+    }
+
+    .no-entries {
+      height: 100%;
+      display: grid;
+      grid-template-rows: auto auto;
+      justify-content: center;
+      gap: 1rem;
+      h3 {
+        text-align: center;
+        padding: 1rem 0;
+        color: #fff;
+        b {
+          color: #109da1;
+        }
+      }
+      .img-waiting {
+        @include flexCenter;
+        img {
+          height: 40rem;
+          width: 40rem;
+        }
+      }
+    }
     .modal {
+      z-index: 9;
       padding: 2rem;
       position: absolute;
-      top: 10%;
+      top: 50%;
       left: 50%;
-      transform: translate(-50%, -10%);
+      transform: translate(-50%, -50%);
       width: 50rem;
       height: 40rem;
       background-color: #fff;
@@ -181,5 +189,8 @@
         }
       }
     }
+  }
+  .interns-active {
+    grid-auto-rows: 12rem;
   }
 }
