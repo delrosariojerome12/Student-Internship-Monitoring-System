@@ -43,9 +43,13 @@ const DocumentApproval = () => {
 
   return (
     <div className="document-approval-container">
-      {interns.map((item, index) => (
-        <DocumentIntern key={index} intern={item} />
-      ))}
+      {interns.length === 0 ? (
+        <div className="no-approval">No Request At the moment.</div>
+      ) : (
+        interns.map((item, index) => (
+          <DocumentIntern key={index} intern={item} />
+        ))
+      )}
       {isDocumentOpen && (
         <>
           <div
