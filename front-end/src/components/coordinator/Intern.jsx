@@ -1,16 +1,14 @@
 import React from "react";
 
-const Intern = React.memo(({ intern }) => {
+const Intern = React.memo(({intern}) => {
   const {
-    user: { firstName, lastName, profileImage },
+    user: {firstName, lastName, profileImage},
     schoolDetails,
-    verification: { isVerified, hasSentVerification },
+    verification: {isVerified, hasSentVerification},
   } = intern;
 
-  // console.log(schoolDetails);
-
   return (
-    <div className="intern">
+    <div className="intern" onClick={() => console.log(firstName)}>
       <div className="img-container">
         <img src={profileImage} alt="profile-image" />
       </div>
