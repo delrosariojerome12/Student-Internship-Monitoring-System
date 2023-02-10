@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useEffect} from "react";
 import DashboardIntern from "../../components/coordinator/dashboardCoordinator/DashboardIntern";
 import DashboardApprovals from "../../components/coordinator/dashboardCoordinator/DashboardApprovals";
 
 import {useSelector, useDispatch} from "react-redux";
+import {getAllInterns} from "../../features/interns/internReducer";
 import {BiSearchAlt} from "react-icons/bi";
 
 import internImg from "../../assets/img/head.svg";
@@ -12,31 +13,37 @@ const Dashboard = () => {
   const {approvalInterns, interns, isError} = useSelector(
     (state) => state.intern
   );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllInterns());
+    console.log(interns);
+  }, []);
 
   const renderInterns = () => {
     if (!interns) {
       return <h1>Loading...</h1>;
     }
 
-    if (interns.length === 0) {
+    if (
+      interns.filter((intern) => intern.verification.isVerified).length === 0
+    ) {
       return (
         <section className="all-intern-container">
           <div className="no-intern">
             <img src={internImg} alt="" className="no-intern-img" />
-            <h3>No user found!</h3>
+            <h3>No verified intern found!</h3>
           </div>
         </section>
       );
     }
 
     // can make conditional
-    return (
-      interns
-        // .filter((intern) => intern.verification.isVerified)
-        .map((intern, index) => {
-          return <DashboardIntern intern={intern} key={index} />;
-        })
-    );
+    return interns
+      .filter((intern) => intern.verification.isVerified)
+      .map((intern, index) => {
+        return <DashboardIntern intern={intern} key={index} />;
+      });
   };
 
   const renderApprovals = () => {
@@ -59,23 +66,6 @@ const Dashboard = () => {
       return <DashboardApprovals intern={intern} key={index} index={index} />;
     });
   };
-
-  // const renderInternship = () => {
-  //   if (approvalInterns.length === 0) {
-  //     return (
-  //       <section className="all-internship-container">
-  //         <div className="no-internship">
-  //           <img src={internshipImg} alt="No available internship" />
-  //           <h4>No available internship</h4>
-  //         </div>
-  //       </section>
-  //     );
-  //   }
-
-  //   return approvalInterns.map((intern, index) => {
-  //     return <DashboardInternship intern={intern} key={index} index={index} />;
-  //   });
-  // };
 
   return (
     <section className="coordinator-dashboard">

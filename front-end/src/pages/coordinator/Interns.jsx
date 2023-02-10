@@ -16,29 +16,53 @@ const Interns = () => {
 
   const renderInterns = () => {
     if (!interns) {
-      // different loading
-      return <h1>Loading...</h1>;
+      return <Bouncing />;
     }
-    if (interns.length === 0) {
+    if (
+      interns.filter((intern) => intern.verification.isVerified).length <= 0
+    ) {
       return (
-        <section className="interns ">
+        <div className="interns">
           <div className="no-entries">
             <h3>
-              Oops, there were no <b>interns</b> yet come back again later
+              There are no <b>interns</b> curently in the sytem
             </h3>
             <div className="img-waiting">
-              <img src={internWaiting} alt="Approvals waiting image" />
+              <img src={internWaiting} alt="approval" />
             </div>
           </div>
-        </section>
+        </div>
+      );
+    } else {
+      return (
+        <div className="interns interns-active">
+          {interns
+            .filter((intern) => intern.verification.isVerified)
+            .map((intern, index) => {
+              return <Intern intern={intern} key={index} />;
+            })}
+          {isSortOpen && (
+            <>
+              <div className="overlay"></div>
+              <div onClick={(e) => e.stopPropagation()} className="sort modal">
+                <p>sort</p>
+              </div>
+            </>
+          )}
+          {isFilterOpen && (
+            <>
+              <div className="overlay"></div>
+              <div
+                onClick={(e) => e.stopPropagation()}
+                className="filter modal"
+              >
+                <p>filter</p>
+              </div>
+            </>
+          )}
+        </div>
       );
     }
-
-    return interns
-      .filter((intern) => intern.verification.isVerified)
-      .map((intern, index) => {
-        return <Intern intern={intern} key={index} />;
-      });
   };
 
   const handleSubmitSearchIntern = useCallback((e) => {
@@ -57,6 +81,7 @@ const Interns = () => {
     },
     [isFilterOpen]
   );
+
   const handleSort = useCallback(
     (e) => {
       e.stopPropagation();
@@ -73,7 +98,6 @@ const Interns = () => {
 
   useEffect(() => {
     dispatch(getAllInterns());
-    console.log(interns);
   }, []);
 
   return (
@@ -101,19 +125,7 @@ const Interns = () => {
           </form>
         </div>
       </nav>
-      <div className="interns">
-        {isSortOpen && (
-          <div onClick={(e) => e.stopPropagation()} className="sort modal">
-            <p>sort</p>
-          </div>
-        )}
-        {isFilterOpen && (
-          <div onClick={(e) => e.stopPropagation()} className="filter modal">
-            <p>filter</p>
-          </div>
-        )}
-        {renderInterns()}
-      </div>
+      {renderInterns()}
     </section>
   );
 };

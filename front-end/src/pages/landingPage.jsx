@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {HiMenu} from "react-icons/hi";
-import {FaPlus} from "react-icons/fa";
 
 import logo from "../assets/img/landingPage/Logo.png";
 import landingImg from "../assets/img/landingPage/landing-image.png";
@@ -11,7 +10,6 @@ import landingBg from "../assets/img/landingPage/landing-bg.png";
 import featureImg1 from "../assets/img/landingPage/imageFeature1.png";
 import featureImg2 from "../assets/img/landingPage/imageFeature2.png";
 import featureImg3 from "../assets/img/landingPage/imageFeature3.png";
-// import featureBg from "../assets/img/landingPage/featureBg.png";
 import mainMockup from "../assets/img/landingPage/MainMockup.png";
 import mockupImage from "../assets/img/landingPage/imageLowerContainer.png";
 // Footer
@@ -20,6 +18,8 @@ import socialIcon2 from "../assets/img/landingPage/ICON SOCIALS/INSTA.png";
 import socialIcon3 from "../assets/img/landingPage/ICON SOCIALS/LINKIN.png";
 import socialIcon4 from "../assets/img/landingPage/ICON SOCIALS/TWITTER.png";
 import {useCallback} from "react";
+
+import {useSelector} from "react-redux";
 
 const links = [
   {
@@ -53,6 +53,8 @@ const authLinks = [
 const LandingPage = () => {
   const [isNavbarOpen, setNavbarOpen] = useState(false);
   const navigate = useNavigate();
+
+  const {user} = useSelector((state) => state.user);
 
   const handleResize = useCallback(() => {
     setNavbarOpen(false);
@@ -95,19 +97,23 @@ const LandingPage = () => {
             })}
           </ul>
           <ul className="auth-links">
-            {authLinks.map((item, index) => {
-              const {path, link} = item;
-              return (
-                <button
-                  onClick={() => {
-                    navigate(path);
-                  }}
-                  key={index}
-                >
-                  {link}
-                </button>
-              );
-            })}
+            {user ? (
+              <button onClick={() => navigate("/dashboard")}>Dashboard</button>
+            ) : (
+              authLinks.map((item, index) => {
+                const {path, link} = item;
+                return (
+                  <button
+                    onClick={() => {
+                      navigate(path);
+                    }}
+                    key={index}
+                  >
+                    {link}
+                  </button>
+                );
+              })
+            )}
           </ul>
         </div>
         <span
