@@ -89,7 +89,15 @@ export const updateIntern = createAsyncThunk(
 export const internReducer = createSlice({
   name: "intern",
   initialState,
-  reducers: {},
+  reducers: {
+    handleSelectedIntern: (state, action) => {
+      state.selectedIntern = action.payload;
+      console.log(state.selectedIntern);
+    },
+    handleSort: (state, action) => {
+      console.log("sort");
+    },
+  },
   extraReducers: (builder) => {
     builder
       // all interns
@@ -142,6 +150,6 @@ export const internReducer = createSlice({
   },
 });
 
-export const {} = internReducer.actions;
+export const {handleSelectedIntern, handleSort} = internReducer.actions;
 
 export default internReducer.reducer;

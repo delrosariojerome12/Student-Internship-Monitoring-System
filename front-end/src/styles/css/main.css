@@ -1638,12 +1638,31 @@ button {
   border-radius: 1rem;
   border: solid 1px #fff;
   display: grid;
-  grid-template-rows: 15rem 5rem auto;
+  grid-template-rows: minmax(15rem, 10vh) minmax(5rem, 5vh) minmax(30rem, 67vh);
   gap: 1rem;
   padding: 1rem;
 }
 .dashboard .intern-container .preview-container, .dashboard-active .intern-container .preview-container {
-  border: solid 1px #fff;
+  background-color: #d9d9d9;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.dashboard .intern-container .preview-container .selected-intern, .dashboard-active .intern-container .preview-container .selected-intern {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 10rem repeat(2, auto);
+  gap: 1rem;
+  overflow-y: auto;
+}
+.dashboard .intern-container .preview-container .selected-intern > *, .dashboard-active .intern-container .preview-container .selected-intern > * {
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.dashboard .intern-container .preview-container .selected-intern img, .dashboard-active .intern-container .preview-container .selected-intern img {
+  height: 10rem;
+  width: 10rem;
 }
 .dashboard .intern-container .navigation, .dashboard-active .intern-container .navigation {
   display: grid;
@@ -1716,15 +1735,6 @@ button {
   overflow-y: auto;
   height: 100%;
 }
-.dashboard .intern-container .interns .overlay, .dashboard-active .intern-container .interns .overlay {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(48, 47, 47, 0.753);
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  z-index: 8;
-}
 .dashboard .intern-container .interns .no-entries, .dashboard-active .intern-container .interns .no-entries {
   height: 100%;
   display: grid;
@@ -1749,32 +1759,21 @@ button {
   height: 40rem;
   width: 40rem;
 }
-.dashboard .intern-container .interns .modal, .dashboard-active .intern-container .interns .modal {
-  z-index: 9;
-  padding: 2rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50rem;
-  height: 40rem;
-  background-color: #fff;
-  border: solid 1px #000;
-  border-radius: 1rem;
-}
 .dashboard .intern-container .interns .intern, .dashboard-active .intern-container .interns .intern {
   display: grid;
-  grid-template-columns: 10rem auto;
+  grid-template-columns: 12rem auto;
   border: solid 1px #fff;
   padding: 1rem;
   border-radius: 1rem;
   gap: 1rem;
   cursor: pointer;
   font-size: 1.4rem;
+  transition: all 0.2s linear;
+  background-color: #d9d9d9;
 }
 .dashboard .intern-container .interns .intern .img-container, .dashboard-active .intern-container .interns .intern .img-container {
-  height: 10rem;
-  width: 10rem;
+  height: 12rem;
+  width: 12rem;
 }
 .dashboard .intern-container .interns .intern .img-container img, .dashboard-active .intern-container .interns .intern .img-container img {
   border-radius: 1rem;
@@ -1783,10 +1782,9 @@ button {
   background-color: #d9d9d9;
 }
 .dashboard .intern-container .interns .intern .intern-details, .dashboard-active .intern-container .interns .intern .intern-details {
-  background-color: #d9d9d9;
+  background-color: #fff;
   padding: 1rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
   border-radius: 1rem;
   gap: 1rem;
 }
@@ -1810,16 +1808,43 @@ button {
   font-weight: 600;
   cursor: pointer;
 }
-.dashboard .intern-container .interns .intern .intern-details .btnContainer button.delete:hover, .dashboard-active .intern-container .interns .intern .intern-details .btnContainer button.delete:hover {
-  background-color: #e63946;
-}
-.dashboard .intern-container .interns .intern .intern-details .btnContainer button.view:hover, .dashboard-active .intern-container .interns .intern .intern-details .btnContainer button.view:hover, .dashboard .intern-container .interns .intern .intern-details .btnContainer button.update:hover, .dashboard-active .intern-container .interns .intern .intern-details .btnContainer button.update:hover {
+.dashboard .intern-container .interns .intern .intern-details .btnContainer button:hover, .dashboard-active .intern-container .interns .intern .intern-details .btnContainer button:hover {
   background-color: #f1faee;
   color: #0d7377;
   border: solid 1px #0d7377;
 }
+.dashboard .intern-container .interns .active-intern, .dashboard-active .intern-container .interns .active-intern {
+  color: #fff;
+  background-color: #0d7377;
+}
+.dashboard .intern-container .interns .active-intern .intern-details, .dashboard-active .intern-container .interns .active-intern .intern-details {
+  background-color: #10898e;
+}
 .dashboard .intern-container .interns-active, .dashboard-active .intern-container .interns-active {
-  grid-auto-rows: 12rem;
+  grid-auto-rows: 14rem;
+  grid-template-columns: repeat(auto-fill, 35.5rem);
+}
+.dashboard .intern-container .overlay, .dashboard-active .intern-container .overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(48, 47, 47, 0.753);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: 8;
+}
+.dashboard .intern-container .modal, .dashboard-active .intern-container .modal {
+  z-index: 9;
+  padding: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50rem;
+  height: 40rem;
+  background-color: #fff;
+  border: solid 1px #000;
+  border-radius: 1rem;
 }
 .dashboard .approvals, .dashboard-active .approvals {
   height: 100%;
@@ -3375,7 +3400,7 @@ button {
 }
 .dashboard .admin-document-page, .dashboard-active .admin-document-page {
   display: grid;
-  grid-template-rows: 8rem 7rem 60rem;
+  grid-template-rows: repeat(2, minmax(8rem, 10vh)) minmax(60rem, 75vh);
   gap: 1rem;
   overflow: hidden;
 }
