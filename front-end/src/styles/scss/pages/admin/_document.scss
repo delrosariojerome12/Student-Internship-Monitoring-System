@@ -3,7 +3,7 @@
 
 .admin-document-page {
   display: grid;
-  grid-template-rows: 8rem 7rem 60rem;
+  grid-template-rows: repeat(2, minmax(8rem, 10vh)) minmax(60rem, 75vh);
   gap: 1rem;
   overflow: hidden;
   // & > * {
