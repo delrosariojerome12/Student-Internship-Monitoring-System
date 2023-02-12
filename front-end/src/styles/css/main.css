@@ -3400,7 +3400,7 @@ button {
 }
 .dashboard .admin-document-page, .dashboard-active .admin-document-page {
   display: grid;
-  grid-template-rows: repeat(2, minmax(8rem, 10vh)) minmax(60rem, 75vh);
+  grid-template-rows: repeat(2, minmax(7rem, 8vh)) minmax(55rem, 77vh);
   gap: 1rem;
   overflow: hidden;
 }
@@ -3674,7 +3674,7 @@ button {
   color: #fff;
 }
 .dashboard .admin-document-page > header, .dashboard-active .admin-document-page > header {
-  background-color: #212121;
+  background-color: #282b30;
   display: flex;
   align-items: center;
   padding: 1rem;
@@ -3684,15 +3684,15 @@ button {
   color: #fff;
 }
 .dashboard .admin-document-page .btn-routes, .dashboard-active .admin-document-page .btn-routes {
-  background-color: #212121;
+  background-color: #282b30;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 2rem;
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 .dashboard .admin-document-page .btn-routes button, .dashboard-active .admin-document-page .btn-routes button {
-  height: 100%;
+  height: 5rem;
   background-color: #d9d9d9;
   border: none;
   outline: none;
@@ -3702,7 +3702,7 @@ button {
   font-weight: 600;
 }
 .dashboard .admin-document-page .btn-routes button:hover, .dashboard-active .admin-document-page .btn-routes button:hover {
-  background-color: #457b9d;
+  background-color: #00adb5;
   border-radius: 1rem;
   color: #fff;
 }
@@ -3713,8 +3713,8 @@ button {
 }
 .dashboard .admin-document-page .document-container .document-control, .dashboard-active .admin-document-page .document-container .document-control {
   display: flex;
-  padding: 1rem;
-  background-color: #212121;
+  padding: 1rem 2rem 1rem 1rem;
+  background-color: #282b30;
   border-radius: 1rem;
   justify-content: flex-end;
 }
@@ -3728,6 +3728,7 @@ button {
   font-weight: 600;
   display: flex;
   justify-content: center;
+  height: 5rem;
   align-items: center;
   gap: 1rem;
 }
@@ -3738,7 +3739,7 @@ button {
   padding-top: 0.2rem;
 }
 .dashboard .admin-document-page .document-container .document-control button:hover, .dashboard-active .admin-document-page .document-container .document-control button:hover {
-  background-color: #457b9d;
+  background-color: #00adb5;
   color: #fff;
   border-radius: 1rem;
 }
@@ -3747,12 +3748,14 @@ button {
   grid-template-columns: repeat(auto-fill, 24rem);
   grid-auto-rows: 12rem;
   gap: 1rem;
-  padding: 1rem;
-  background-color: #212121;
+  padding: 2rem;
+  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
   border-radius: 1rem;
+  overflow-y: auto;
 }
 .dashboard .admin-document-page .document-container .documents .document, .dashboard-active .admin-document-page .document-container .documents .document {
-  background-color: #fff;
+  background-color: #0d7377;
+  color: #d9d9d9;
   border-radius: 1rem;
   padding: 1rem;
   display: flex;
@@ -3762,6 +3765,7 @@ button {
   font-weight: 600;
   position: relative;
   word-break: break-all;
+  cursor: pointer;
 }
 .dashboard .admin-document-page .document-container .documents .document p, .dashboard-active .admin-document-page .document-container .documents .document p {
   font-size: 1.6rem;
@@ -3780,23 +3784,25 @@ button {
   color: #e63946;
 }
 .dashboard .admin-document-page .document-container .documents .document .icon-container .icon:last-child:hover, .dashboard-active .admin-document-page .document-container .documents .document .icon-container .icon:last-child:hover {
-  color: #00dee8;
+  color: #000;
 }
 .dashboard .admin-document-page .document-container .documents .document:hover, .dashboard-active .admin-document-page .document-container .documents .document:hover {
-  background-color: #0d7377;
+  background-color: #00adb5;
   color: #fff;
   border-radius: 0;
 }
 .dashboard .admin-document-page .document-container .no-document, .dashboard-active .admin-document-page .document-container .no-document {
-  background-color: #212121;
+  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
   border-radius: 1rem;
   color: #fff;
   padding: 2rem;
   display: grid;
   grid-template-rows: auto 1fr;
   gap: 1rem;
-  align-items: center;
   justify-items: center;
+}
+.dashboard .admin-document-page .document-container .no-document h3, .dashboard-active .admin-document-page .document-container .no-document h3 {
+  text-align: center;
 }
 .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
   height: 35rem;
@@ -3966,6 +3972,50 @@ button {
 }
 .dashboard .admin-document-page .document-approval-container .no-approval, .dashboard-active .admin-document-page .document-approval-container .no-approval {
   color: #fff;
+}
+@media screen and (max-width: 1030px) {
+  .dashboard .admin-document-page .document-container .documents, .dashboard-active .admin-document-page .document-container .documents {
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 750px) {
+  .dashboard .admin-document-page .btn-routes, .dashboard-active .admin-document-page .btn-routes {
+    justify-content: center;
+    padding: 1rem;
+  }
+  .dashboard .admin-document-page .document-container .document-control, .dashboard-active .admin-document-page .document-container .document-control {
+    padding: 1rem;
+    justify-content: center;
+  }
+  .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
+    height: 30rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .dashboard .admin-document-page, .dashboard-active .admin-document-page {
+    grid-template-rows: repeat(2, minmax(7rem, 8vh)) minmax(40rem, 65vh);
+  }
+  .dashboard .admin-document-page header, .dashboard-active .admin-document-page header {
+    justify-content: center;
+  }
+  .dashboard .admin-document-page .document-container .documents, .dashboard-active .admin-document-page .document-container .documents {
+    grid-auto-rows: 7rem;
+    grid-template-columns: 30rem;
+  }
+  .dashboard .admin-document-page .document-container .documents .document, .dashboard-active .admin-document-page .document-container .documents .document {
+    border-radius: 0;
+  }
+  .dashboard .admin-document-page .document-container .documents .document:hover, .dashboard-active .admin-document-page .document-container .documents .document:hover {
+    border-radius: 1rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  .dashboard .admin-document-page .document-container .documents, .dashboard-active .admin-document-page .document-container .documents {
+    grid-template-columns: 1fr;
+  }
+  .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
+    height: 25rem;
+  }
 }
 
 .dashboard-active {
@@ -5707,6 +5757,7 @@ button {
   border-radius: 1rem;
   position: relative;
   font-size: 1.4rem;
+  transition: all 0.2s linear;
 }
 .documents-page .display .document-intern img {
   color: #fff;
@@ -5947,7 +5998,6 @@ button {
     gap: 0.8rem;
   }
   .documents-page .display .document-intern {
-    border: solid 1px #fff;
     border-radius: 0;
   }
   .documents-page .display .document-intern:hover {

@@ -3,11 +3,12 @@
 
 .admin-document-page {
   display: grid;
-  grid-template-rows: repeat(2, minmax(8rem, 10vh)) minmax(60rem, 75vh);
+  grid-template-rows: repeat(2, minmax(7rem, 8vh)) minmax(55rem, 77vh);
+
   gap: 1rem;
   overflow: hidden;
   // & > * {
-  //   border: solid 1px #fff;
+  //      background-image: linear-gradient(#282b30 10%, #393e46 31%, #333333 80%);
   // }
   .overlay {
     width: 100%;
@@ -305,25 +306,28 @@
   }
 
   & > header {
-    background-color: $primary-bg-color-landing;
+    // background-color: $primary-bg-color-landing;
+    background-color: #282b30;
     display: flex;
     align-items: center;
     padding: 1rem;
     border-radius: 1rem;
+
     h2 {
       color: #fff;
     }
   }
   .btn-routes {
-    background-color: $primary-bg-color-landing;
+    // background-color: $primary-bg-color-landing;
+    background-color: #282b30;
     border-radius: 1rem;
-    padding: 1rem;
+    padding: 1rem 1rem 1rem 2rem;
     display: flex;
     align-items: center;
     gap: 1rem;
 
     button {
-      height: 100%;
+      height: 5rem;
       background-color: #d9d9d9;
       border: none;
       outline: none;
@@ -333,7 +337,7 @@
       font-weight: 600;
 
       &:hover {
-        background-color: $primary-bg-color;
+        background-color: $primary-feature-bg;
         border-radius: 1rem;
         color: #fff;
       }
@@ -347,8 +351,9 @@
 
     .document-control {
       display: flex;
-      padding: 1rem;
-      background-color: $primary-bg-color-landing;
+      padding: 1rem 2rem 1rem 1rem;
+      // background-color: $primary-bg-color-landing;
+      background-color: #282b30;
       border-radius: 1rem;
       justify-content: flex-end;
 
@@ -362,6 +367,7 @@
         font-weight: 600;
         display: flex;
         justify-content: center;
+        height: 5rem;
         align-items: center;
         gap: 1rem;
         .icon {
@@ -371,7 +377,7 @@
           padding-top: 0.2rem;
         }
         &:hover {
-          background-color: $primary-bg-color;
+          background-color: $primary-feature-bg;
           color: #fff;
           border-radius: 1rem;
         }
@@ -382,14 +388,13 @@
       grid-template-columns: repeat(auto-fill, 24rem);
       grid-auto-rows: 12rem;
       gap: 1rem;
-      padding: 1rem;
-      // background-color: #fff;
-      background-color: $primary-bg-color-landing;
+      padding: 2rem;
+      background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
       border-radius: 1rem;
-      // word-break: break-all;
-
+      overflow-y: auto;
       .document {
-        background-color: #fff;
+        background-color: $primary-compliment-landing;
+        color: #d9d9d9;
         border-radius: 1rem;
         padding: 1rem;
         display: flex;
@@ -399,6 +404,7 @@
         font-weight: 600;
         position: relative;
         word-break: break-all;
+        cursor: pointer;
         p {
           font-size: 1.6rem;
         }
@@ -415,27 +421,32 @@
               color: $red-primary-color;
             }
             &:last-child:hover {
-              color: lighten($color: $primary-feature-bg, $amount: 10);
+              // color: lighten($color: $primary-feature-bg, $amount: 10);
+              color: #000;
             }
           }
         }
         &:hover {
-          background-color: $primary-compliment-landing;
+          background-color: $primary-feature-bg;
           color: #fff;
           border-radius: 0;
         }
       }
     }
     .no-document {
-      background-color: $primary-bg-color-landing;
+      // background-color: $primary-bg-color-landing;
+      background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
       border-radius: 1rem;
       color: #fff;
       padding: 2rem;
       display: grid;
       grid-template-rows: auto 1fr;
       gap: 1rem;
-      align-items: center;
+      // align-items: center;
       justify-items: center;
+      h3 {
+        text-align: center;
+      }
       img {
         height: 35rem;
       }
@@ -608,6 +619,77 @@
     }
     .no-approval {
       color: #fff;
+    }
+  }
+}
+
+// Responsive
+
+@media screen and (max-width: 1030px) {
+  .admin-document-page {
+    .document-container {
+      .documents {
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .admin-document-page {
+    .btn-routes {
+      justify-content: center;
+      padding: 1rem;
+    }
+    .document-container {
+      .document-control {
+        padding: 1rem;
+        justify-content: center;
+      }
+
+      .no-document {
+        img {
+          height: 30rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .admin-document-page {
+    grid-template-rows: repeat(2, minmax(7rem, 8vh)) minmax(40rem, 65vh);
+
+    header {
+      justify-content: center;
+    }
+    .document-container {
+      .documents {
+        grid-auto-rows: 7rem;
+        grid-template-columns: 30rem;
+        .document {
+          border-radius: 0;
+          &:hover {
+            border-radius: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .admin-document-page {
+    .document-container {
+      .documents {
+        grid-template-columns: 1fr;
+      }
+
+      .no-document {
+        img {
+          height: 25rem;
+        }
+      }
     }
   }
 }

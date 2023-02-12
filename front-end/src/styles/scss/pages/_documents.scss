@@ -368,7 +368,7 @@
       border-radius: 1rem;
       position: relative;
       font-size: 1.4rem;
-
+      transition: all 0.2s linear;
       img {
         color: #fff;
         height: 3rem;
@@ -602,7 +602,6 @@
       grid-template-columns: 1fr;
       gap: 0.8rem;
       .document-intern {
-        border: solid 1px #fff;
         border-radius: 0;
         &:hover {
           border-radius: 1rem;
