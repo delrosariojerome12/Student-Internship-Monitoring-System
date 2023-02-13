@@ -4,7 +4,6 @@ import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
 import {requestVerification} from "../../features/user/userReducer";
 import AreYouSureModal from "../../components/verification/AreYouSureModal";
-// import SuccessModal from "../../components/verification/SuccessModal";
 
 import {storage} from "../../Firebase";
 import {ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage";
@@ -25,34 +24,16 @@ const Verification = React.memo(() => {
       group: "Internship Details",
       forms: [
         {
-          type: "list",
-          id: "duties",
-          forInput: "Duties",
+          type: "image",
+          id: "logo",
+          code: "logo",
+          forInput: "Logo",
           value: "",
+          isError: false,
+          errorMessage: "",
           isDisabled: false,
-          code: "typeOfWork",
-          optionItems: [
-            {
-              value: "Encoding",
-              label: "Encoding",
-            },
-            {
-              value: "Paper Works",
-              label: "Paper Works",
-            },
-            {
-              value: "Sofware Development",
-              label: "Sofware Development",
-            },
-            {
-              value: "Hardware Related",
-              label: "Hardware Related",
-            },
-            {
-              value: "Not specified",
-              label: "Not specified",
-            },
-          ],
+          name: "",
+          link: "",
         },
         {
           type: "text",
@@ -94,6 +75,48 @@ const Verification = React.memo(() => {
           errorMessage: "This phone number format is not recognized. ",
           isDisabled: false,
         },
+        {
+          type: "textArea",
+          id: "description",
+          forInput: "Description",
+          value: "",
+          isError: false,
+          errorMessage: "Atleast 20 characters and max of 100",
+          isDisabled: false,
+          code: "description",
+          minLength: 20,
+          maxLength: 100,
+        },
+        {
+          type: "list",
+          id: "duties",
+          forInput: "Duties",
+          value: "",
+          isDisabled: false,
+          code: "typeOfWork",
+          optionItems: [
+            {
+              value: "Encoding",
+              label: "Encoding",
+            },
+            {
+              value: "Paper Works",
+              label: "Paper Works",
+            },
+            {
+              value: "Sofware Development",
+              label: "Sofware Development",
+            },
+            {
+              value: "Hardware Related",
+              label: "Hardware Related",
+            },
+            {
+              value: "Not specified",
+              label: "Not specified",
+            },
+          ],
+        },
       ],
     },
     {
@@ -117,7 +140,7 @@ const Verification = React.memo(() => {
           type: "image",
           id: "valid-id",
           code: "validID",
-          forInput: "",
+          forInput: "School ID",
           value: "",
           isError: false,
           errorMessage: "",
@@ -155,6 +178,7 @@ const Verification = React.memo(() => {
           id: "schedule-type",
           forInput: "Schedule Type",
           value: "",
+
           isDisabled: true,
           code: "scheduleType",
           scheduleType: [
@@ -288,8 +312,6 @@ const Verification = React.memo(() => {
             };
 
             dispatch(requestVerification(finalForm));
-
-            console.log(finalForm);
           }
         }
       }
@@ -415,6 +437,7 @@ const Verification = React.memo(() => {
           checkCompletion(mainIndex);
           return;
         case "valid-id":
+        case "logo":
           // add catch error here
           if (schoolDetails) {
             const {
@@ -459,6 +482,20 @@ const Verification = React.memo(() => {
           if (numOfErrors === 0 && numOfValues === lengthForms) {
             setComplete(true);
           }
+          setForm(newForm);
+          checkCompletion(mainIndex);
+          return;
+        case "description":
+          if (
+            value.length >= newForm[mainIndex].forms[index].minLength &&
+            value.length <= newForm[mainIndex].forms[index].maxLength
+          ) {
+            newForm[mainIndex].forms[index].isError = false;
+          } else {
+            newForm[mainIndex].forms[index].isError = true;
+          }
+
+          newForm[mainIndex].forms[index].value = value;
           setForm(newForm);
           checkCompletion(mainIndex);
           return;
@@ -575,8 +612,7 @@ const Verification = React.memo(() => {
           return (
             <div className="img-input" key={index}>
               <label htmlFor="valid-img">
-                {/* <b>School ID:</b> */}
-                <h4>School ID:</h4>
+                <h4>{forInput}:</h4>
                 <input
                   disabled={isDisabled}
                   onChange={(e) =>
@@ -589,9 +625,7 @@ const Verification = React.memo(() => {
                   id="valid-img"
                   accept="image/*"
                 />
-                {link && (
-                  <img onClick={handleImageView} src={link} alt={`valid-id`} />
-                )}
+                {link && <img onClick={handleImageView} src={link} alt={id} />}
               </label>
             </div>
           );
@@ -685,6 +719,31 @@ const Verification = React.memo(() => {
               })}
               key={index}
             />
+          );
+        case "textArea":
+          return (
+            <div className="input-contain textarea" key={index}>
+              <textarea
+                minLength={minLength}
+                maxLength={maxLength}
+                key={index}
+                id={id}
+                value={value}
+                onChange={(e) =>
+                  handleOnChange(e.target.value, group, index, mainIndex)
+                }
+              ></textarea>
+              <div className="placeholder-container">
+                <label
+                  htmlFor={id}
+                  className={
+                    value ? "placeholder-text active" : "placeholder-text"
+                  }
+                >
+                  <div className="text">{forInput}</div>
+                </label>
+              </div>
+            </div>
           );
         default:
           return null;
