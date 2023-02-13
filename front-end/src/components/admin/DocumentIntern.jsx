@@ -1,24 +1,24 @@
-import React, {useState} from "react";
-import {FaChevronDown, FaChevronUp} from "react-icons/fa";
-import {useSelector} from "react-redux";
+import React, { useState } from "react";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { useSelector } from "react-redux";
 import DocumentSVG from "../../assets/img/noDocument.svg";
 import ViewDocument from "../../assets/img/documentNigga.svg";
-import {useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   handleOpenDocument,
   rejectDocumentRequest,
   approveDocumentRequest,
 } from "../../features/admin/documentApproval";
 
-const DocumentIntern = React.memo(({intern}) => {
+const DocumentIntern = React.memo(({ intern }) => {
   const {
-    user: {firstName, lastName, email, profileImage},
-    internshipDetails: {companyName},
+    user: { firstName, lastName, email, profileImage },
+    internshipDetails: { companyName },
     documentDetails,
   } = intern;
   const dispatch = useDispatch();
   const [isDropDown, setDropDown] = useState(false);
-  const {totalDocuments} = useSelector((state) => state.documentApproval);
+  const { totalDocuments } = useSelector((state) => state.documentApproval);
 
   const filteredDocumentDetails = [...documentDetails].filter(
     (item) => item.completion.isApproved !== true && item.completion.hasSent
@@ -33,8 +33,8 @@ const DocumentIntern = React.memo(({intern}) => {
       if (filteredDocumentDetails.length !== 0) {
         return filteredDocumentDetails.map((document, index) => {
           const {
-            completion: {fileName},
-            document: {name},
+            completion: { fileName },
+            document: { name },
             _id,
           } = document;
 
@@ -45,16 +45,23 @@ const DocumentIntern = React.memo(({intern}) => {
                 alt="view docs"
                 onClick={() => dispatch(handleOpenDocument(document))}
               />
-              <div className="left">
+              <div
+                className="left"
+                onClick={() => dispatch(handleOpenDocument(document))}
+              >
                 <p>{name}</p>
-                <p>{fileName}</p>
+                <p className="filename">{fileName}</p>
               </div>
               <div className="btn-container">
                 <button
                   onClick={() => {
                     console.log(documentDetails);
                     dispatch(
-                      approveDocumentRequest({email, id: _id, documentDetails})
+                      approveDocumentRequest({
+                        email,
+                        id: _id,
+                        documentDetails,
+                      })
                     );
                   }}
                 >
@@ -96,9 +103,17 @@ const DocumentIntern = React.memo(({intern}) => {
       </div>
       <div className={renderStyle()}>
         <div className="top">
-          <p>{`${firstName} ${lastName}`}</p>
-          <p>Internship at: {companyName}</p>
-          <p>Approved: {`${approvedDocuments.length}/${totalDocuments}`}</p>
+          <p>
+            <b>{`${firstName} ${lastName}`}</b>
+          </p>
+          <p>
+            <b>Internship at: </b>
+            {companyName}
+          </p>
+          <p>
+            <b>Approved: </b>
+            {`${approvedDocuments.length}/${totalDocuments}`}
+          </p>
         </div>
         <div className="bottom">
           <div className="dropdown-container">
