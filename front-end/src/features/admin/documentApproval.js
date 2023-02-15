@@ -109,9 +109,50 @@ export const approveDocumentRequest = createAsyncThunk(
 
 export const rejectDocumentRequest = createAsyncThunk(
   "/documentApproval/rejectDocument",
-  async (x, {rejectWithValue}) => {
-    console.log("reject");
+  async ({email, id, documentDetails}, {rejectWithValue, getState}) => {
+    const {
+      documentApproval: {interns},
+    } = getState();
+
+    const newDocumentDetails = [...documentDetails]
+      .filter((item) => item._id === id)
+      .map((item) => {
+        const {document, completion} = item;
+        return {
+          completion: {
+            ...completion,
+            isApproved: false,
+            isRejected: true,
+          },
+          document,
+          _id: id,
+        };
+      });
+
+    const allDocuments = [...documentDetails].filter((item) => item._id !== id);
+    const completeDocumentDetails = [...allDocuments, newDocumentDetails[0]];
+
+    const allInterns = [...interns].filter((item) => item.email !== email);
     try {
+      const url = `http://localhost:5000/intern/approveDocument/${email}`;
+      const {data: res} = await axios.patch(url, {
+        documentDetails: completeDocumentDetails,
+      });
+
+      const completeInterns = [...allInterns, res].sort((a, b) => {
+        let fa = a.user.lastName.toLowerCase(),
+          fb = b.user.lastName.toLowerCase();
+
+        if (fa < fb) {
+          return -1;
+        }
+        if (fa > fb) {
+          return 1;
+        }
+        return 0;
+      });
+
+      return {res: completeInterns};
     } catch (error) {
       console.log(error);
       return rejectWithValue(error.response.data);
