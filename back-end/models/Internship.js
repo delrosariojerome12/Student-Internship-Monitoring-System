@@ -39,6 +39,10 @@ const InternshipSchema = new mongoose.Schema({
     maxlength: 100,
     minlength: 20,
   },
+  students: {
+    type: String,
+    default: "0",
+  },
 });
 
 module.exports = mongoose.model("Internship", InternshipSchema);

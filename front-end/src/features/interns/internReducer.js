@@ -59,9 +59,6 @@ export const updateIntern = createAsyncThunk(
 
     try {
       const {form} = payload;
-
-      console.log(form);
-
       const {email} = form;
       const url = `http://localhost:5000/intern/updateIntern`;
       const {data: res} = await axios.patch(url, form);
@@ -81,8 +78,6 @@ export const updateIntern = createAsyncThunk(
         }
         return 0;
       });
-
-      console.log(res);
 
       return {user: res.user, interns, newApprovalIntern};
     } catch (error) {
