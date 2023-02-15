@@ -13,8 +13,9 @@ const internsRouter = require("./routers/intern");
 const userRouter = require("./routers/user");
 const documentRouter = require("./routers/document");
 const attendanceRouter = require("./routers/attendance");
+const dailyRecordRouter = require("./routers/dailyRecord");
 
-// error handler
+// error handlerrequire("./routers/attendance");
 const notFound = require("./middlewares/notFound");
 const errorHandler = require("./middlewares/errorHandler");
 
@@ -27,6 +28,7 @@ app.use("/intern", internsRouter);
 app.use("/user", userRouter);
 app.use("/document", documentRouter);
 app.use("/attendance", attendanceRouter);
+app.use("/dailyRecord", dailyRecordRouter);
 
 app.use(notFound);
 app.use(errorHandler);

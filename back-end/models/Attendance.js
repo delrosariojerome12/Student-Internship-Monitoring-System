@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 
 const AttendanceSchema = new mongoose.Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, ref: "Intern" },
-  img: {},
+  //intern: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
+  //img: {},
+
   dateStarted: {
     type: String,
     required: [true, "Please enter the date started."],
