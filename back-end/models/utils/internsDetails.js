@@ -19,6 +19,9 @@ const internshipDetails = {
   supervisorContact: {
     type: String,
   },
+  description: {
+    type: String,
+  },
   typeOfWork: {
     type: String,
     maxlength: 20,

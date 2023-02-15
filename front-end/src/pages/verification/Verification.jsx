@@ -312,6 +312,7 @@ const Verification = React.memo(() => {
             };
 
             dispatch(requestVerification(finalForm));
+            console.log(finalForm);
           }
         }
       }

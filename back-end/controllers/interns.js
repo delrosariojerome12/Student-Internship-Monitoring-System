@@ -60,15 +60,27 @@ const updateIntern = async (req, res) => {
   }
 
   // const filtered = internshipDetails.map(item => )
-  delete internshipDetails.renderedHours;
 
-  const doesExist = await Internship.findOne({
-    companyName: internshipDetails.companyName,
-  });
+  if (internshipDetails) {
+    delete internshipDetails.renderedHours;
 
-  if (!doesExist) {
-    var internship = await Internship.create({...internshipDetails});
-    Internship.createIndexes();
+    const doesExist = await Internship.findOne({
+      companyName: internshipDetails.companyName,
+    });
+
+    if (!doesExist) {
+      var internship = await Internship.create({...internshipDetails});
+      Internship.createIndexes();
+    }
+
+    const interns = await Intern.find({}).populate({
+      path: "user",
+      model: "User",
+    });
+
+    return res
+      .status(StatusCodes.OK)
+      .json({user, interns, internship, doesExist});
   }
 
   const interns = await Intern.find({}).populate({
@@ -76,9 +88,7 @@ const updateIntern = async (req, res) => {
     model: "User",
   });
 
-  return res
-    .status(StatusCodes.OK)
-    .json({user, interns, internship, doesExist});
+  return res.status(StatusCodes.OK).json({user, interns});
 };
 
 const updateDocuments = async (req, res) => {

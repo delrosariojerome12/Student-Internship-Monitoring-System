@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { updateIntern } from "../../features/interns/internReducer";
-import { FaCheck, FaTrash } from "react-icons/fa";
-import { isRejected } from "@reduxjs/toolkit";
+import React, {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {updateIntern} from "../../features/interns/internReducer";
+import {FaCheck, FaTrash} from "react-icons/fa";
+import {isRejected} from "@reduxjs/toolkit";
 
-const ApprovalIntern = React.memo(({ intern, index }) => {
+const ApprovalIntern = React.memo(({intern, index}) => {
   // const {selectedIntern} = useSelector((state) => state.intern);
   const dispatch = useDispatch();
 
   const {
-    user: { firstName, lastName, email, profileImage },
+    user: {firstName, lastName, email, profileImage},
     schoolDetails: {
       program,
       studentContact,
-      validID: { link },
+      validID: {link},
       requiredHours,
     },
     internshipDetails: {
@@ -23,7 +23,7 @@ const ApprovalIntern = React.memo(({ intern, index }) => {
       supervisorContact,
       typeOfWork,
     },
-    verification: { isVerified, hasSentVerification },
+    verification: {isVerified, hasSentVerification},
     scheduleDetails: {
       scheduleType,
       scheduledDays,
@@ -59,8 +59,7 @@ const ApprovalIntern = React.memo(({ intern, index }) => {
         },
       };
       console.log("Request Rejected");
-      dispatch(updateIntern({ form, index }));
-      console.log(remarks);
+      dispatch(updateIntern({form, index}));
     } else {
       const form = {
         email,
@@ -70,8 +69,9 @@ const ApprovalIntern = React.memo(({ intern, index }) => {
           isRejected: false,
           remarks,
         },
+        internshipDetails: {...intern.internshipDetails},
       };
-      dispatch(updateIntern({ form, index }));
+      dispatch(updateIntern({form, index}));
       console.log("Request Accepted");
     }
   };
