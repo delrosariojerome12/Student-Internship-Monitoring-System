@@ -6,6 +6,9 @@ const initialState = {
   selectedInternship: null,
   isLoading: false,
   isError: false,
+  isEditOpen: false,
+  isViewOpen: false,
+  isAddOpen: false,
 };
 
 export const getAllInternship = createAsyncThunk(
@@ -26,7 +29,20 @@ export const getAllInternship = createAsyncThunk(
 export const internshipReducer = createSlice({
   name: "internship",
   initialState,
-  reducers: {},
+  reducers: {
+    handleView: (state, action) => {
+      state.isViewOpen = !state.isViewOpen;
+    },
+    handleEdit: (state, action) => {
+      state.isEditOpen = !state.isEditOpen;
+    },
+    handleDelete: (state, action) => {
+      console.log("delete");
+    },
+    handleAdd: (state, action) => {
+      state.isAddOpen = !state.isAddOpen;
+    },
+  },
   extraReducers: (build) => {
     build
       .addCase(getAllInternship.pending, (state, action) => {
@@ -43,6 +59,7 @@ export const internshipReducer = createSlice({
   },
 });
 
-export const {} = internshipReducer.actions;
+export const {handleEdit, handleView, handleDelete, handleAdd} =
+  internshipReducer.actions;
 
 export default internshipReducer.reducer;

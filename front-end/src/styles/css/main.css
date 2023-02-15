@@ -2218,7 +2218,11 @@ button {
   padding: 1rem 2rem;
 }
 .dashboard .internship-container .btn-container button, .dashboard-active .internship-container .btn-container button {
-  background-color: #d9d9d9;
+  height: 5rem;
+  width: 12rem;
+}
+.dashboard .internship-container button, .dashboard-active .internship-container button {
+  background-color: #fff;
   border: none;
   outline: none;
   cursor: pointer;
@@ -2230,13 +2234,13 @@ button {
   align-items: center;
   gap: 1rem;
 }
-.dashboard .internship-container .btn-container button .icon, .dashboard-active .internship-container .btn-container button .icon {
+.dashboard .internship-container button .icon, .dashboard-active .internship-container button .icon {
   font-size: 1.2rem;
 }
-.dashboard .internship-container .btn-container button p, .dashboard-active .internship-container .btn-container button p {
+.dashboard .internship-container button p, .dashboard-active .internship-container button p {
   padding-top: 0.2rem;
 }
-.dashboard .internship-container .btn-container button:hover, .dashboard-active .internship-container .btn-container button:hover {
+.dashboard .internship-container button:hover, .dashboard-active .internship-container button:hover {
   background-color: #457b9d;
   color: #fff;
   border-radius: 1rem;
@@ -2246,28 +2250,68 @@ button {
   background-color: #212121;
   padding: 2rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 40rem);
-  grid-auto-rows: 15rem;
+  grid-template-columns: repeat(auto-fill, 42rem);
+  grid-auto-rows: 17rem;
   gap: 1rem;
+  overflow-y: auto;
 }
 .dashboard .internship-container .content .internship, .dashboard-active .internship-container .content .internship {
   background-color: #fff;
   border-radius: 1rem;
   padding: 1rem;
   display: grid;
-  grid-template-columns: 10rem 1fr;
+  grid-template-columns: 13rem 1fr;
   gap: 1rem;
 }
 .dashboard .internship-container .content .internship .img-con, .dashboard-active .internship-container .content .internship .img-con {
-  height: 10rem;
-  width: 10rem;
-  border: solid 1px #000;
+  height: 13rem;
+  width: 13rem;
+  margin: auto;
 }
 .dashboard .internship-container .content .internship .img-con img, .dashboard-active .internship-container .content .internship .img-con img {
   height: 100%;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+.dashboard .internship-container .content .internship .controls, .dashboard-active .internship-container .content .internship .controls {
+  display: grid;
+  gap: 1rem;
+  background-color: #d9d9d9;
+  padding: 1rem;
+}
+.dashboard .internship-container .content .internship .controls .internship-btn, .dashboard-active .internship-container .content .internship .controls .internship-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.dashboard .internship-container .content .internship .controls .internship-btn button, .dashboard-active .internship-container .content .internship .controls .internship-btn button {
+  background-color: #fff;
+}
+.dashboard .internship-container .content .internship .controls .internship-btn button:hover, .dashboard-active .internship-container .content .internship .controls .internship-btn button:hover {
+  background-color: #457b9d;
+}
+.dashboard .internship-container .overlay, .dashboard-active .internship-container .overlay {
+  width: 100%;
+  min-height: 100%;
+  background-color: rgba(48, 47, 47, 0.753);
+  position: absolute;
+  filter: blur(20px);
+  top: 0%;
+  left: 0%;
+  z-index: 6;
+}
+.dashboard .internship-container .modal, .dashboard-active .internship-container .modal {
+  background-color: #fff;
+  border-radius: 1rem;
+  width: 60rem;
+  height: 50rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 7;
+  padding: 1rem;
 }
 .dashboard .coordinator-dashboard, .dashboard-active .coordinator-dashboard {
   display: grid;
