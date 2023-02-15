@@ -106,7 +106,7 @@ const DocumentIntern = React.memo(({ intern }) => {
           <p>
             <b>{`${firstName} ${lastName}`}</b>
           </p>
-          <p>
+          <p className="internship-at">
             <b>Internship at: </b>
             {companyName}
           </p>
