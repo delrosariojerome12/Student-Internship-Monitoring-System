@@ -3,29 +3,38 @@ const mongoose = require("mongoose");
 const internshipDetails = {
   companyName: {
     type: String,
-    // required: [true, "Please provide company name"],
     maxlength: 30,
     minlength: 2,
   },
   companyAddress: {
     type: String,
-    // required: [true, "Please provide company address"],
     maxlength: 70,
     minlength: 5,
   },
   supervisor: {
     type: String,
-    // required: [true, "Please provide supervisor name"],
     maxlength: 20,
     minlength: 2,
   },
   supervisorContact: {
     type: String,
   },
+  description: {
+    type: String,
+  },
   typeOfWork: {
     type: String,
     maxlength: 20,
     minlength: 2,
+  },
+  logo: {
+    type: Object,
+    name: {
+      type: String,
+    },
+    link: {
+      type: String,
+    },
   },
   renderedHours: {
     type: String,

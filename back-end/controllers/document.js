@@ -32,10 +32,6 @@ const updateDocument = async (req, res) => {
   const {name, description, type} = req.body;
   const {id} = req.params;
 
-  // if (!name || !description || !type || !id) {
-  // throw new BadRequest("Document details must be provided.");
-  // }
-
   const documentExist = await Document.findOne({_id: id});
 
   if (!documentExist) {
@@ -57,7 +53,6 @@ const updateDocument = async (req, res) => {
 
 const deleteDocument = async (req, res) => {
   const {id} = req.params;
-  console.log(id);
   const document = await Document.findOneAndDelete({_id: id});
 
   if (!document) {

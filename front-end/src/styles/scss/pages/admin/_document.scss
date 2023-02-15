@@ -3,7 +3,7 @@
 
 .admin-document-page {
   display: grid;
-  grid-template-rows: 8rem 7rem 60rem;
+  grid-template-rows: repeat(2, minmax(8rem, 10vh)) minmax(60rem, 75vh);
   gap: 1rem;
   overflow: hidden;
   // & > * {
@@ -82,8 +82,6 @@
         color: #fff;
         border-radius: 1rem;
         background-color: #8b8b8b;
-        // display: flex;
-        // justify-content: flex-end;
         display: grid;
         label {
           display: flex;
@@ -430,14 +428,14 @@
       background-color: $primary-bg-color-landing;
       border-radius: 1rem;
       color: #fff;
-      padding: 1rem;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      justify-content: center;
+      padding: 2rem;
+      display: grid;
+      grid-template-rows: auto 1fr;
       gap: 1rem;
+      align-items: center;
+      justify-items: center;
       img {
-        height: 50rem;
+        height: 35rem;
       }
     }
   }
@@ -605,6 +603,9 @@
         height: 100%;
         width: 100%;
       }
+    }
+    .no-approval {
+      color: #fff;
     }
   }
 }

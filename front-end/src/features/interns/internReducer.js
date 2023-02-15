@@ -16,7 +16,6 @@ export const getAllInterns = createAsyncThunk(
     try {
       const url = "http://localhost:5000/intern/getAllInterns";
       const {data: res} = await axios.get(url);
-      console.log(res.interns);
 
       const interns = [...res.interns].sort((a, b) => {
         let fa = a.user.lastName.toLowerCase(),
@@ -30,8 +29,6 @@ export const getAllInterns = createAsyncThunk(
         }
         return 0;
       });
-
-      console.log(interns);
 
       return {res: interns};
     } catch (error) {
@@ -59,8 +56,9 @@ export const updateIntern = createAsyncThunk(
   "/intern/updateIntern",
   async (payload, {getState, rejectWithValue}) => {
     const state = getState();
+
     try {
-      const {form, index} = payload;
+      const {form} = payload;
       const {email} = form;
       const url = `http://localhost:5000/intern/updateIntern`;
       const {data: res} = await axios.patch(url, form);
@@ -92,7 +90,15 @@ export const updateIntern = createAsyncThunk(
 export const internReducer = createSlice({
   name: "intern",
   initialState,
-  reducers: {},
+  reducers: {
+    handleSelectedIntern: (state, action) => {
+      state.selectedIntern = action.payload;
+      console.log(state.selectedIntern);
+    },
+    handleSort: (state, action) => {
+      console.log("sort");
+    },
+  },
   extraReducers: (builder) => {
     builder
       // all interns
@@ -132,8 +138,6 @@ export const internReducer = createSlice({
         state.isLoading = true;
       })
       .addCase(updateIntern.fulfilled, (state, action) => {
-        console.log(action.payload.interns);
-        console.log(current(state.interns));
         state.isLoading = false;
         state.interns = action.payload.interns;
         state.approvalInterns = action.payload.newApprovalIntern;
@@ -145,6 +149,6 @@ export const internReducer = createSlice({
   },
 });
 
-export const {} = internReducer.actions;
+export const {handleSelectedIntern, handleSort} = internReducer.actions;
 
 export default internReducer.reducer;

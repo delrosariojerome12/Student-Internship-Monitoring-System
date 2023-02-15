@@ -71,6 +71,16 @@
       display: grid;
       grid-auto-rows: 12rem;
       gap: 1rem;
+
+      .approvals {
+        .img-waiting {
+          img {
+            height: 35rem;
+            width: 35rem;
+          }
+        }
+      }
+
       .approval-intern {
         // border: solid 1px #fff;
         padding: 1rem;

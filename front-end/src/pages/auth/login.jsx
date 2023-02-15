@@ -39,11 +39,31 @@ const Login = () => {
     },
   ]);
   const [isPasswordShown, setIsPasswordShown] = useState(false);
+  const [isComplete, setComplete] = useState(false);
   const refPassword = useRef();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(handleLogin(form));
+  };
+
+  const checkCompletion = () => {
+    let numOfErrors = 0;
+    let numOfValues = 0;
+
+    form.forEach((item) => {
+      item.isError && numOfErrors++;
+      item.value && numOfValues++;
+    });
+
+    const lengthForms = form.length;
+
+    if (numOfErrors === 0 && numOfValues === lengthForms) {
+      setComplete(true);
+    } else {
+      setComplete(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   };
 
   const handleOnChange = (value, index) => {
@@ -55,6 +75,7 @@ const Login = () => {
     if (index === 0) {
       data[index].value = data[index].value.slice(0).toLowerCase();
     }
+    checkCompletion();
   };
 
   // const handleError =
@@ -146,7 +167,16 @@ const Login = () => {
               <p>Already have an account?</p>
               <Link to="/account/signup">Sign up</Link>
             </span>
-            <button type="submit">Login</button>
+            <button
+              style={
+                isComplete
+                  ? {opacity: "1"}
+                  : {opacity: ".7", pointerEvents: "none"}
+              }
+              type="submit"
+            >
+              Login
+            </button>
           </IconContext.Provider>
         </form>
       </section>

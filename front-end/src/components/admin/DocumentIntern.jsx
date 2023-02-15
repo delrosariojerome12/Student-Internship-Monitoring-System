@@ -28,8 +28,6 @@ const DocumentIntern = React.memo(({intern}) => {
     (item) => item.completion.isApproved === true
   );
 
-  // console.log(documentDetails);
-
   const renderDocuments = () => {
     if (isDropDown) {
       if (filteredDocumentDetails.length !== 0) {

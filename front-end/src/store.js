@@ -7,6 +7,7 @@ import intern from "./features/interns/internReducer";
 import internDocument from "./features/interns/documentsReducer";
 import document from "./features/admin/document";
 import documentApproval from "./features/admin/documentApproval";
+import internship from "./features/coordinator/internship";
 
 export const store = configureStore({
   reducer: {
@@ -18,5 +19,6 @@ export const store = configureStore({
     internDocument: internDocument,
     document: document,
     documentApproval: documentApproval,
+    internship: internship,
   },
 });
