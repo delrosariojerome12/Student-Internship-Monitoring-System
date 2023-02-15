@@ -56,8 +56,9 @@ export const updateIntern = createAsyncThunk(
   "/intern/updateIntern",
   async (payload, {getState, rejectWithValue}) => {
     const state = getState();
+
     try {
-      const {form, index} = payload;
+      const {form} = payload;
       const {email} = form;
       const url = `http://localhost:5000/intern/updateIntern`;
       const {data: res} = await axios.patch(url, form);
@@ -137,8 +138,6 @@ export const internReducer = createSlice({
         state.isLoading = true;
       })
       .addCase(updateIntern.fulfilled, (state, action) => {
-        console.log(action.payload.interns);
-        console.log(current(state.interns));
         state.isLoading = false;
         state.interns = action.payload.interns;
         state.approvalInterns = action.payload.newApprovalIntern;
