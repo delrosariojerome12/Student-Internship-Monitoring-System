@@ -1,8 +1,9 @@
 const Intern = require("../models/Intern");
 const Document = require("../models/Document");
+const Internship = require("../models/Internship");
 
 const {StatusCodes} = require("http-status-codes");
-const {BadRequest, NotFound} = require("../errors");
+const {BadRequest, NotFound, Duplicate} = require("../errors");
 
 const getAllInterns = async (req, res) => {
   const {users} = req.body;
@@ -44,7 +45,8 @@ const requestVerification = async (req, res) => {
 };
 
 const updateIntern = async (req, res) => {
-  const {email} = req.body;
+  const {email, internshipDetails} = req.body;
+
   const user = await Intern.findOneAndUpdate({email}, req.body, {
     new: true,
     runValidators: true,
@@ -53,14 +55,39 @@ const updateIntern = async (req, res) => {
     model: "User",
   });
 
+  if (!user) {
+    throw new NotFound(`Email not found`);
+  }
+
+  // const filtered = internshipDetails.map(item => )
+
+  if (internshipDetails) {
+    delete internshipDetails.renderedHours;
+
+    const doesExist = await Internship.findOne({
+      companyName: internshipDetails.companyName,
+    });
+
+    if (!doesExist) {
+      var internship = await Internship.create({...internshipDetails});
+      Internship.createIndexes();
+    }
+
+    const interns = await Intern.find({}).populate({
+      path: "user",
+      model: "User",
+    });
+
+    return res
+      .status(StatusCodes.OK)
+      .json({user, interns, internship, doesExist});
+  }
+
   const interns = await Intern.find({}).populate({
     path: "user",
     model: "User",
   });
 
-  if (!user) {
-    throw new NotFound(`Email not found`);
-  }
   return res.status(StatusCodes.OK).json({user, interns});
 };
 
