@@ -3453,7 +3453,7 @@ button {
   font-weight: 600;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document .btn-container button:first-child:hover, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document .btn-container button:first-child:hover {
-  background-color: #457b9d;
+  background-color: #0d7377;
   border-radius: 1rem;
   color: #fff;
 }
