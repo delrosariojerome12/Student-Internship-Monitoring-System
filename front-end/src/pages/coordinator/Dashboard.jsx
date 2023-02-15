@@ -17,7 +17,6 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(getAllInterns());
-    console.log(interns);
   }, []);
 
   const renderInterns = () => {

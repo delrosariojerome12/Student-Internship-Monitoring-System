@@ -52,7 +52,6 @@ const DocumentIntern = React.memo(({intern}) => {
               <div className="btn-container">
                 <button
                   onClick={() => {
-                    console.log(documentDetails);
                     dispatch(
                       approveDocumentRequest({email, id: _id, documentDetails})
                     );
