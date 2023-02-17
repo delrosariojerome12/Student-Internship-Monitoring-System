@@ -3807,6 +3807,16 @@ button {
 .verification-container form .schedule-details {
   background-color: #f3f3f3;
 }
+.verification-container form .internship-details input[type=file],
+.verification-container form .student-details input[type=file],
+.verification-container form .schedule-details input[type=file] {
+  display: none;
+}
+.verification-container form .internship-details p,
+.verification-container form .student-details p,
+.verification-container form .schedule-details p {
+  font-size: 1.8rem;
+}
 .verification-container form .internship-details {
   border: solid 1px #000;
   z-index: 3;
@@ -3846,6 +3856,11 @@ button {
   display: flex;
   align-items: center;
   gap: 1rem;
+  cursor: pointer;
+}
+.verification-container form .internship-details .forms-con .img-input label p {
+  font-size: 1.8rem;
+  font-weight: 400;
 }
 .verification-container form .internship-details .forms-con .img-input label img {
   height: 4rem;
@@ -3883,6 +3898,7 @@ button {
   border-radius: 0.5rem;
 }
 .verification-container form .student-details .forms-con .img-input label {
+  cursor: pointer;
   width: 100%;
   height: 100%;
   display: flex;
@@ -3942,7 +3958,7 @@ button {
   flex-direction: column;
   width: -moz-fit-content;
   width: fit-content;
-  gap: 0.5rem;
+  gap: 1rem;
   width: 100%;
 }
 .verification-container form .input-contain textarea {
@@ -3958,6 +3974,14 @@ button {
 .verification-container form .input-contain textarea:focus {
   border: solid 3px #457b9d;
   outline: none;
+}
+.verification-container form .input-contain textarea .placeholder-container {
+  position: absolute;
+  top: 0%;
+  left: 0rem;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
 }
 .verification-container form .input-contain textarea:focus + .placeholder-container .placeholder-text {
   top: 0%;

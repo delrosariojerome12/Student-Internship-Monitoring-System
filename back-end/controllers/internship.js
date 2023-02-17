@@ -19,4 +19,28 @@ const getInternship = async (req, res) => {
 
   res.status(StatusCodes.OK).json({success: true, data: internship});
 };
-module.exports = {getAllInternship, getInternship};
+
+const createInternship = async (req, res) => {
+  const {} = req.body;
+
+  res.status(StatusCodes.OK).json({success: true, data: {test: "Test"}});
+};
+
+const updateInternship = async (req, res) => {
+  const {id} = req.params;
+  res.status(StatusCodes.OK).json({success: true, data: {id}});
+};
+
+const deleteInternship = async (req, res) => {
+  const {id} = req.params;
+
+  res.status(StatusCodes.OK).json({success: true, data: {id}});
+};
+
+module.exports = {
+  getAllInternship,
+  getInternship,
+  updateInternship,
+  deleteInternship,
+  createInternship,
+};
