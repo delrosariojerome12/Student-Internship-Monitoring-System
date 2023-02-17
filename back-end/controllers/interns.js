@@ -193,6 +193,9 @@ const approveDocument = async (req, res) => {
     path: "user",
     model: "User",
   });
+  if (!intern) {
+    throw new NotFound("Intern not found");
+  }
 
   res.status(StatusCodes.OK).json(intern);
 };
@@ -209,6 +212,10 @@ const rejectDocument = async (req, res) => {
     path: "user",
     model: "User",
   });
+
+  if (!intern) {
+    throw new NotFound("Intern not found");
+  }
 
   res.status(StatusCodes.OK).json(intern);
 };

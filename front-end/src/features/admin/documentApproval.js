@@ -69,6 +69,7 @@ export const approveDocumentRequest = createAsyncThunk(
             ...completion,
             isApproved: true,
             isRejected: false,
+            // hasSent: false,
           },
           document,
           _id: id,
@@ -123,6 +124,7 @@ export const rejectDocumentRequest = createAsyncThunk(
             ...completion,
             isApproved: false,
             isRejected: true,
+            hasSent: false,
           },
           document,
           _id: id,
@@ -134,7 +136,7 @@ export const rejectDocumentRequest = createAsyncThunk(
 
     const allInterns = [...interns].filter((item) => item.email !== email);
     try {
-      const url = `http://localhost:5000/intern/approveDocument/${email}`;
+      const url = `http://localhost:5000/intern/rejectDocument/${email}`;
       const {data: res} = await axios.patch(url, {
         documentDetails: completeDocumentDetails,
       });
@@ -203,6 +205,7 @@ export const documentApprovalReducer = createSlice({
         state.isSentLoading = true;
       })
       .addCase(rejectDocumentRequest.fulfilled, (state, action) => {
+        state.interns = action.payload.res;
         state.isSentLoading = false;
       })
       .addCase(rejectDocumentRequest.rejected, (state, action) => {
