@@ -39,6 +39,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -4501,6 +4503,16 @@ button {
     width: 20rem;
   }
 }
+.internship-container-intern {
+  border: solid 1px #fff;
+  display: grid;
+  grid-template-rows: 15rem 1fr;
+  gap: 1rem;
+}
+.internship-container-intern > * {
+  border: solid 1px #fff;
+}
+
 .profile-page {
   display: grid;
   height: 100%;
