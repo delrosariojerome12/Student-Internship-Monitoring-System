@@ -23,25 +23,30 @@ const SelectedIntern = () => {
       <img src={profileImage} alt="profile-intern" />
       <div className="middle-con">
         <p>
-          <b>Student: </b> {`${firstName} ${lastName}`}
+          Student:
+          <b> {`${firstName} ${lastName}`}</b>
         </p>
         <p>
-          <b>Program: </b> {program}
+          Program:
+          <b> {program}</b>
         </p>
         <p>
-          <b>Total Hours: </b>
-          {`${renderedHours}/${requiredHours}`}
+          Total Hours:
+          <b> {`${renderedHours}/${requiredHours}`}</b>
         </p>
       </div>
       <div className="right-con">
         <p>
-          <b>Internship: </b> {companyName}
+          Internship:
+          <b> {companyName} </b>
         </p>
         <p>
-          <b>Address: </b> {companyAddress}
+          Address:
+          <b> {companyAddress} </b>
         </p>
         <p>
-          <b>Work: </b> {typeOfWork}
+          Work:
+          <b> {typeOfWork}</b>
         </p>
       </div>
     </div>

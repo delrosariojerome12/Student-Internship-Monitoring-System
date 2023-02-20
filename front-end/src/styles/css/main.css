@@ -1645,11 +1645,22 @@ button {
   border-radius: 1rem;
   padding: 1rem;
 }
+.dashboard .intern-container .preview-container .selects, .dashboard-active .intern-container .preview-container .selects {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.dashboard .intern-container .preview-container .selects img, .dashboard-active .intern-container .preview-container .selects img {
+  height: 9rem;
+  width: 9rem;
+}
 .dashboard .intern-container .preview-container .selected-intern, .dashboard-active .intern-container .preview-container .selected-intern {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: 10rem repeat(2, auto);
+  grid-template-columns: 12rem repeat(2, auto);
   gap: 1rem;
   overflow-y: auto;
 }
@@ -1659,8 +1670,9 @@ button {
   padding: 1rem;
 }
 .dashboard .intern-container .preview-container .selected-intern img, .dashboard-active .intern-container .preview-container .selected-intern img {
-  height: 10rem;
-  width: 10rem;
+  height: 12rem;
+  margin: auto;
+  width: 12rem;
 }
 .dashboard .intern-container .navigation, .dashboard-active .intern-container .navigation {
   display: grid;
@@ -1701,7 +1713,6 @@ button {
   align-items: center;
   justify-content: center;
   border-left: 1px solid #fff;
-  padding: 0 1rem;
 }
 .dashboard .intern-container .navigation .right-side form, .dashboard-active .intern-container .navigation .right-side form {
   display: flex;
@@ -1844,6 +1855,65 @@ button {
   background-color: #fff;
   border: solid 1px #000;
   border-radius: 1rem;
+}
+@media screen and (max-width: 1030px) {
+  .dashboard .intern-container, .dashboard-active .intern-container {
+    grid-template-rows: minmax(17rem, 20vh) minmax(5rem, 5vh) minmax(30rem, 64vh);
+  }
+}
+@media screen and (max-width: 750px) {
+  .dashboard .intern-container, .dashboard-active .intern-container {
+    grid-template-rows: minmax(17rem, 20vh) minmax(5rem, 5vh) minmax(25rem, 52vh);
+  }
+}
+@media screen and (max-width: 600px) {
+  .dashboard .intern-container .preview-container .selected-intern, .dashboard-active .intern-container .preview-container .selected-intern {
+    grid-template-columns: auto auto;
+  }
+  .dashboard .intern-container .preview-container .selected-intern img, .dashboard-active .intern-container .preview-container .selected-intern img {
+    display: none;
+  }
+}
+@media screen and (max-width: 500px) {
+  .dashboard .intern-container, .dashboard-active .intern-container {
+    grid-template-rows: minmax(17rem, 20vh) minmax(10rem, 10vh) minmax(25rem, 52vh);
+  }
+  .dashboard .intern-container .navigation, .dashboard-active .intern-container .navigation {
+    grid-template-columns: auto;
+    gap: 0rem;
+  }
+  .dashboard .intern-container .navigation .left-side, .dashboard-active .intern-container .navigation .left-side,
+  .dashboard .intern-container .navigation .right-side,
+  .dashboard-active .intern-container .navigation .right-side {
+    border: none;
+  }
+  .dashboard .intern-container .interns .intern, .dashboard-active .intern-container .interns .intern {
+    grid-template-columns: 10rem auto;
+  }
+  .dashboard .intern-container .interns .intern .img-container, .dashboard-active .intern-container .interns .intern .img-container {
+    height: 10rem;
+    width: 10rem;
+  }
+  .dashboard .intern-container .interns .intern .intern-details, .dashboard-active .intern-container .interns .intern .intern-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.2rem;
+  }
+  .dashboard .intern-container .interns-active, .dashboard-active .intern-container .interns-active {
+    grid-auto-rows: 12rem;
+    grid-template-columns: 1fr;
+  }
+}
+@media screen and (max-width: 400px) {
+  .dashboard .intern-container .interns .intern, .dashboard-active .intern-container .interns .intern {
+    grid-template-columns: auto;
+  }
+  .dashboard .intern-container .interns .intern .img-container, .dashboard-active .intern-container .interns .intern .img-container {
+    display: none;
+  }
 }
 .dashboard .approvals, .dashboard-active .approvals {
   height: 100%;

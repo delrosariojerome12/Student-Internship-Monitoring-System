@@ -9,6 +9,7 @@ import { getAllInterns } from "../../features/interns/internReducer";
 import { BiSearchAlt } from "react-icons/bi";
 import Bouncing from "../../components/loading/Bouncing";
 import SelectedIntern from "../../components/coordinator/dashboardCoordinator/SelectedIntern";
+import approvalImg from "../../assets/img/approvals.svg";
 
 const Interns = () => {
   const { interns, isError, selectedIntern } = useSelector(
@@ -173,7 +174,14 @@ const Interns = () => {
   return (
     <section className="intern-container" onClick={handleResetFocus}>
       <div className="preview-container">
-        {selectedIntern ? <SelectedIntern /> : <p>No Selected Intern</p>}
+        {selectedIntern ? (
+          <SelectedIntern />
+        ) : (
+          <div className="selects">
+            <h1>No Selected Intern</h1>
+            <img src={approvalImg} alt="" />
+          </div>
+        )}
       </div>
       <nav className="navigation">
         <div className="left-side">
