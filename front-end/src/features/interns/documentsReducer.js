@@ -14,11 +14,11 @@ const initialState = {
 
 export const updateDocumentsOnLoad = createAsyncThunk(
   "/intern/loadDocuments",
-  async (email, {rejectWithValue}) => {
+  async (email, { rejectWithValue }) => {
+    console.log("updateDocuments");
     try {
       const url = `http://localhost:5000/intern/updateDocuments/${email}`;
       const {data: res} = await axios.patch(url);
-
       return {res: res.intern.documentDetails};
     } catch (error) {
       console.log(error);
@@ -163,6 +163,7 @@ export const internDocumentReducer = createSlice({
     },
     handleDocumentDetails: (state, {payload}) => {
       state.documentDetails = payload;
+      console.log("documentDetails");
     },
   },
   extraReducers: (builder) => {

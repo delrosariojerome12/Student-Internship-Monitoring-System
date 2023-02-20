@@ -120,7 +120,6 @@ const Signup = () => {
     switch (input) {
       case "First Name":
         data[index].value = value;
-
         let firstNameRegex = /(\b[a-z](?!\s))/g;
         value.length > 2 && value.length < 20
           ? (data[index].isError = false)
@@ -334,14 +333,6 @@ const Signup = () => {
                 ) : (
                   <p>Select Profile</p>
                 )}
-                {/* {value.includes("firebase") ? (
-                  <p>
-                    Profile Selected
-                    <FaCheck />
-                  </p>
-                ) : (
-                  <p>Select Profile Image</p>
-                )} */}
                 <input
                   disabled={isDisabled}
                   type="file"
