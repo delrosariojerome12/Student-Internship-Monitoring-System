@@ -1,4 +1,4 @@
-import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
+import {createSlice, createAsyncThunk, current} from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
@@ -7,6 +7,7 @@ const initialState = {
   selectedIntern: null,
   isLoading: false,
   isError: false,
+  isLoginError: false,
 };
 
 export const getAllInterns = createAsyncThunk(
@@ -15,7 +16,21 @@ export const getAllInterns = createAsyncThunk(
     try {
       const url = "http://localhost:5000/intern/getAllInterns";
       const {data: res} = await axios.get(url);
-      return {res: res.interns};
+
+      const interns = [...res.interns].sort((a, b) => {
+        let fa = a.user.lastName.toLowerCase(),
+          fb = b.user.lastName.toLowerCase();
+
+        if (fa < fb) {
+          return -1;
+        }
+        if (fa > fb) {
+          return 1;
+        }
+        return 0;
+      });
+
+      return {res: interns};
     } catch (error) {
       console.log(error);
       // change error
@@ -41,18 +56,30 @@ export const updateIntern = createAsyncThunk(
   "/intern/updateIntern",
   async (payload, {getState, rejectWithValue}) => {
     const state = getState();
+
     try {
-      const {form, index} = payload;
+      const {form} = payload;
       const {email} = form;
       const url = `http://localhost:5000/intern/updateIntern`;
       const {data: res} = await axios.patch(url, form);
 
-      console.log(form);
-
       const newApprovalIntern = [...state.intern.approvalInterns].filter(
         (intern) => intern.email !== email
       );
-      return {user: res.user, newApprovalIntern};
+      const interns = [...res.interns].sort((a, b) => {
+        let fa = a.user.lastName.toLowerCase(),
+          fb = b.user.lastName.toLowerCase();
+
+        if (fa < fb) {
+          return -1;
+        }
+        if (fa > fb) {
+          return 1;
+        }
+        return 0;
+      });
+
+      return {user: res.user, interns, newApprovalIntern};
     } catch (error) {
       console.log(error);
       return rejectWithValue(error.response.data);
@@ -63,7 +90,15 @@ export const updateIntern = createAsyncThunk(
 export const internReducer = createSlice({
   name: "intern",
   initialState,
-  reducers: {},
+  reducers: {
+    handleSelectedIntern: (state, action) => {
+      state.selectedIntern = action.payload;
+      console.log(state.selectedIntern);
+    },
+    handleSort: (state, action) => {
+      console.log("sort");
+    },
+  },
   extraReducers: (builder) => {
     builder
       // all interns
@@ -96,15 +131,16 @@ export const internReducer = createSlice({
       .addCase(getIntern.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-      })
-      // update intern
+      });
+    // update intern
+    builder
       .addCase(updateIntern.pending, (state, action) => {
         state.isLoading = true;
       })
       .addCase(updateIntern.fulfilled, (state, action) => {
-        const {newApprovalIntern} = action.payload;
         state.isLoading = false;
-        state.approvalInterns = newApprovalIntern;
+        state.interns = action.payload.interns;
+        state.approvalInterns = action.payload.newApprovalIntern;
       })
       .addCase(updateIntern.rejected, (state, action) => {
         state.isLoading = false;
@@ -113,6 +149,6 @@ export const internReducer = createSlice({
   },
 });
 
-export const {} = internReducer.actions;
+export const {handleSelectedIntern, handleSort} = internReducer.actions;
 
 export default internReducer.reducer;

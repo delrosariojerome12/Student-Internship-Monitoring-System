@@ -4,7 +4,6 @@ import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
 import {requestVerification} from "../../features/user/userReducer";
 import AreYouSureModal from "../../components/verification/AreYouSureModal";
-// import SuccessModal from "../../components/verification/SuccessModal";
 
 import {storage} from "../../Firebase";
 import {ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage";
@@ -25,34 +24,16 @@ const Verification = React.memo(() => {
       group: "Internship Details",
       forms: [
         {
-          type: "list",
-          id: "duties",
-          forInput: "Duties",
+          type: "image",
+          id: "logo",
+          code: "logo",
+          forInput: "Logo",
           value: "",
+          isError: false,
+          errorMessage: "",
           isDisabled: false,
-          code: "typeOfWork",
-          optionItems: [
-            {
-              value: "Encoding",
-              label: "Encoding",
-            },
-            {
-              value: "Paper Works",
-              label: "Paper Works",
-            },
-            {
-              value: "Sofware Development",
-              label: "Sofware Development",
-            },
-            {
-              value: "Hardware Related",
-              label: "Hardware Related",
-            },
-            {
-              value: "Not specified",
-              label: "Not specified",
-            },
-          ],
+          name: "",
+          link: "",
         },
         {
           type: "text",
@@ -94,6 +75,58 @@ const Verification = React.memo(() => {
           errorMessage: "This phone number format is not recognized. ",
           isDisabled: false,
         },
+        {
+          type: "email",
+          id: "email",
+          code: "email",
+          forInput: "Email",
+          value: "",
+          isError: false,
+          errorMessage: "Please provide valid email",
+          isDisabled: false,
+        },
+        {
+          type: "textArea",
+          id: "description",
+          forInput: "Description",
+          value: "",
+          isError: false,
+          errorMessage: "Atleast 20 characters and max of 100",
+          isDisabled: false,
+          code: "description",
+          minLength: 20,
+          maxLength: 100,
+        },
+        {
+          type: "list",
+          id: "duties",
+          forInput: "Duties",
+          value: "",
+          isDisabled: false,
+          code: "typeOfWork",
+          optionItems: [
+            {
+              value: "Encoding",
+              label: "Encoding",
+            },
+            {
+              value: "Paper Works",
+              label: "Paper Works",
+            },
+            {
+              value: "Sofware Development",
+              label: "Sofware Development",
+            },
+            {
+              value: "Hardware Related",
+              label: "Hardware Related",
+            },
+            {
+              value: "Not specified",
+              label: "Not specified",
+            },
+          ],
+        },
       ],
     },
     {
@@ -117,7 +150,7 @@ const Verification = React.memo(() => {
           type: "image",
           id: "valid-id",
           code: "validID",
-          forInput: "",
+          forInput: "School ID",
           value: "",
           isError: false,
           errorMessage: "",
@@ -155,6 +188,7 @@ const Verification = React.memo(() => {
           id: "schedule-type",
           forInput: "Schedule Type",
           value: "",
+
           isDisabled: true,
           code: "scheduleType",
           scheduleType: [
@@ -287,9 +321,8 @@ const Verification = React.memo(() => {
               },
             };
 
-            dispatch(requestVerification(finalForm));
-
             console.log(finalForm);
+            dispatch(requestVerification(finalForm));
           }
         }
       }
@@ -415,26 +448,42 @@ const Verification = React.memo(() => {
           checkCompletion(mainIndex);
           return;
         case "valid-id":
-          // add catch error here
+        case "logo":
           if (schoolDetails) {
             const {
               validID: {name},
             } = schoolDetails;
             deleteDuplicateFirebase(name);
           }
-          const imageName = `images/validID/${v4() + value.name}`;
-          const imageRef = ref(storage, imageName);
-
-          uploadBytes(imageRef, value).then((res) => {
-            getDownloadURL(res.ref).then((url) => {
-              newForm[mainIndex].forms[index].link = url;
-              newForm[mainIndex].forms[index].value = url;
-              newForm[mainIndex].forms[index].name = imageName;
-              newForm[mainIndex].forms[index].isDisabled = true;
+          if (value) {
+            const {name, type} = value;
+            if (!type.includes("image")) {
+              newForm[mainIndex].forms[index].isError = true;
+              newForm[mainIndex].forms[index].errorMessage =
+                "Invalid file type";
+              newForm[mainIndex].forms[index].value = "";
               setForm(newForm);
-              checkCompletion(mainIndex);
-            });
-          });
+            } else {
+              const imageName = `images/validID/${v4() + name}`;
+              const imageRef = ref(storage, imageName);
+
+              uploadBytes(imageRef, value)
+                .then((res) => {
+                  getDownloadURL(res.ref)
+                    .then((url) => {
+                      newForm[mainIndex].forms[index].isError = false;
+                      newForm[mainIndex].forms[index].link = url;
+                      newForm[mainIndex].forms[index].value = url;
+                      newForm[mainIndex].forms[index].name = imageName;
+                      newForm[mainIndex].forms[index].isDisabled = true;
+                      setForm(newForm);
+                      checkCompletion(mainIndex);
+                    })
+                    .catch((err) => console.log(err));
+                })
+                .catch((err) => console.log(err));
+            }
+          }
 
           return;
         case "schedule-type":
@@ -459,6 +508,32 @@ const Verification = React.memo(() => {
           if (numOfErrors === 0 && numOfValues === lengthForms) {
             setComplete(true);
           }
+          setForm(newForm);
+          checkCompletion(mainIndex);
+          return;
+        case "description":
+          if (
+            value.length >= newForm[mainIndex].forms[index].minLength &&
+            value.length <= newForm[mainIndex].forms[index].maxLength
+          ) {
+            newForm[mainIndex].forms[index].isError = false;
+          } else {
+            newForm[mainIndex].forms[index].isError = true;
+          }
+
+          newForm[mainIndex].forms[index].value = value;
+          setForm(newForm);
+          checkCompletion(mainIndex);
+          return;
+        case "email":
+          const emailRegex =
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          let isValid = emailRegex.test(value);
+          isValid
+            ? (newForm[mainIndex].forms[index].isError = false)
+            : (newForm[mainIndex].forms[index].isError = true);
+
+          newForm[mainIndex].forms[index].value = value.slice(0).toLowerCase();
           setForm(newForm);
           checkCompletion(mainIndex);
           return;
@@ -541,6 +616,7 @@ const Verification = React.memo(() => {
         link,
       } = item;
       switch (type) {
+        case "email":
         case "text":
           return (
             <div className="input-contain" key={index}>
@@ -574,8 +650,8 @@ const Verification = React.memo(() => {
         case "image":
           return (
             <div className="img-input" key={index}>
-              <label htmlFor="valid-img">
-                School ID
+              <label htmlFor={id}>
+                <h4>{forInput}:</h4>
                 <input
                   disabled={isDisabled}
                   onChange={(e) =>
@@ -584,13 +660,20 @@ const Verification = React.memo(() => {
                   tabIndex={-1}
                   required
                   type="file"
-                  name="valid-img"
-                  id="valid-img"
+                  name={id}
+                  id={id}
                   accept="image/*"
                 />
-                {link && (
-                  <img onClick={handleImageView} src={link} alt={`valid-id`} />
+                {!isError && !value && <p>Select File</p>}
+                {isError && (
+                  <p
+                    style={{color: "red", fontSize: "18px"}}
+                    className="error-message"
+                  >
+                    {errorMessage}{" "}
+                  </p>
                 )}
+                {link && <img onClick={handleImageView} src={link} alt={id} />}
               </label>
             </div>
           );
@@ -685,6 +768,50 @@ const Verification = React.memo(() => {
               key={index}
             />
           );
+        case "textArea":
+          return (
+            <div className="input-contain" key={index}>
+              {/* <input
+                tabIndex={-1}
+                disabled={isDisabled}
+                required
+                value={value}
+                onChange={(e) =>
+                  handleOnChange(e.target.value, group, index, mainIndex)
+                }
+                onKeyDown={handleKeydown}
+                minLength={minLength}
+                maxLength={maxLength}
+                type={type}
+                name={forInput}
+              /> */}
+              <textarea
+                tabIndex={-1}
+                disabled={isDisabled}
+                required
+                value={value}
+                onChange={(e) =>
+                  handleOnChange(e.target.value, group, index, mainIndex)
+                }
+                onKeyDown={handleKeydown}
+                minLength={minLength}
+                maxLength={maxLength}
+                type={type}
+                name={forInput}
+              ></textarea>
+              <div className="placeholder-container">
+                <label
+                  htmlFor={id}
+                  className={
+                    value ? "placeholder-text active" : "placeholder-text"
+                  }
+                >
+                  <div className="text">{forInput}</div>
+                </label>
+              </div>
+              {isError && <p className="error-message">{errorMessage}</p>}
+            </div>
+          );
         default:
           return null;
       }
@@ -753,10 +880,9 @@ const Verification = React.memo(() => {
           setSubmitted={setSubmitted}
         />
       )}
+
       <div className="greetings">
-        <h1>
-          Welcome, <span>{firstName}</span>
-        </h1>
+        <h1>Verification</h1>
       </div>
       {isImageOpen && (
         <div className="valid-id-modal">

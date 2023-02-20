@@ -3,7 +3,7 @@
 
 .coordinator-dashboard {
   display: grid;
-  grid-template-rows: 14vh 0.35fr auto;
+  grid-template-rows: 14vh 0.8fr 1fr;
   width: 100%;
   height: 100%;
   gap: 1rem;
@@ -56,7 +56,7 @@
 
   .dashboard-intern {
     display: grid;
-    grid-template-rows: 0.2fr auto auto;
+    grid-template-rows: 3.5vh auto;
     // gap: 1rem;
     padding: 2rem;
     grid-auto-rows: 12rem;
@@ -71,22 +71,21 @@
       background-color: #555252;
       border-radius: 1rem 1rem 0 0;
     }
-    .course {
-      display: none;
-    }
+    // .course {
+    //   display: none;
+    // }
 
     .all-intern-container {
-      overflow: hidden;
       overflow-y: auto;
-      height: 30vh;
+      max-height: 30vh;
       background-color: #d9d9d9;
 
       .no-intern {
         @include flexColumn;
         justify-content: center;
         align-items: center;
-        padding: 2rem;
         gap: 1;
+        padding: 3rem 0 0 0;
 
         img {
           height: 15rem;
@@ -148,32 +147,34 @@
 
     .dashboard-approvals {
       display: grid;
-      grid-template-rows: 0.2fr auto auto;
+      grid-template-rows: 3.5vh auto;
       padding: 2rem;
       border-radius: 0 0 0 2rem;
-      .no-approvals {
-        @include flexColumn;
-        justify-content: center;
-        align-items: center;
-        // flex-direction: column;
-        gap: 1;
-
-        img {
-          height: 15rem;
-          width: 15rem;
-        }
-        h4 {
-          color: $primary-compliment-landing;
-        }
-      }
-      .course {
-        display: none;
-      }
+      height: 100%;
+      // .course {
+      //   display: none;
+      // }
       .all-approvals-container {
-        overflow: hidden;
         overflow-y: auto;
-        height: 35vh;
+        max-height: 37vh;
         background-color: #d9d9d9;
+
+        .no-approvals {
+          @include flexColumn;
+          justify-content: center;
+          align-items: center;
+          // flex-direction: column;
+          gap: 1;
+          padding: 4rem 0 0 0;
+
+          img {
+            height: 15rem;
+            width: 15rem;
+          }
+          h4 {
+            color: $primary-compliment-landing;
+          }
+        }
 
         .approvals-container {
           display: grid;
@@ -182,7 +183,6 @@
           background-color: #d9d9d9;
           gap: 1rem;
           padding: 1rem;
-
           .overlay {
             @include flexCenter;
             width: 100%;
@@ -322,30 +322,28 @@
     }
     .dashboard-internships {
       display: grid;
-      grid-template-rows: 0.2fr auto;
+      grid-template-rows: 3.5vh auto;
       padding: 2rem;
       border-radius: 0 0 2rem 0;
 
-      .no-internship {
-        @include flexColumn;
-        justify-content: center;
-        align-items: center;
-        gap: 1;
-
-        img {
-          height: 15rem;
-          width: 15rem;
-        }
-        h4 {
-          color: $primary-compliment-landing;
-        }
-      }
       .all-internship-container {
-        overflow: hidden;
         overflow-y: auto;
-        height: 35vh;
+        max-height: 37vh;
         background-color: #d9d9d9;
-
+        .no-internship {
+          @include flexColumn;
+          justify-content: center;
+          align-items: center;
+          gap: 1;
+          padding: 4rem 0 0 0;
+          img {
+            height: 15rem;
+            width: 15rem;
+          }
+          h4 {
+            color: $primary-compliment-landing;
+          }
+        }
         .all-internships {
           display: grid;
           grid-template-columns: 10rem auto;
@@ -425,16 +423,34 @@
 
 // Responsive
 
-@media screen and(max-width: 1030px) {
+@media screen and (max-width: 1030px) {
   .coordinator-dashboard {
+    .dashboard-intern {
+      border-radius: 1rem 1rem 0 0;
+      .no-intern {
+        .no-intern-img {
+          height: 13rem;
+          width: 13rem;
+        }
+      }
+    }
     .dashboard-content {
       @include flexColumn;
+
       .dashboard-approvals {
         border-radius: 0;
+
         .all-approvals-container {
+          .no-approvals {
+            img {
+              height: 13rem;
+              width: 13rem;
+            }
+          }
           .approvals-container {
             grid-template-columns: 10rem auto;
             grid-auto-rows: 10rem;
+
             .overlay {
               // height: 120%;
               // top: -20%;
@@ -480,13 +496,21 @@
         }
       }
       .dashboard-internships {
-        border-radius: 0 0 2rem 2rem;
+        border-radius: 0 0 1rem 1rem;
+        .all-internship-container {
+          .no-internship {
+            img {
+              height: 13rem;
+              width: 13rem;
+            }
+          }
+        }
       }
     }
   }
 }
 
-@media screen and(max-width: 750px) {
+@media screen and (max-width: 750px) {
   .coordinator-dashboard {
     @include flexColumn;
     header {
@@ -494,27 +518,31 @@
         h1 {
           font-size: 3.5rem;
         }
-        // h4 {
-        //   font-size: 1.6rem;
-        // }
       }
     }
     .dashboard-intern {
       padding: 1rem;
       height: 35vh;
-      overflow: hidden;
-      .course {
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        background-color: #d9d9d9;
-        color: #000;
-        padding: 0.5rem 2rem;
-        text-decoration: underline;
-      }
+
+      // .course {
+      //   display: flex;
+      //   justify-content: center;
+      //   text-align: center;
+      //   background-color: #d9d9d9;
+      //   color: #000;
+      //   padding: 0.5rem 2rem;
+      //   text-decoration: underline;
+      // }
       .all-intern-container {
         height: 100%;
+        .no-intern {
+          padding: 0;
 
+          .no-intern-img {
+            height: 11rem;
+            width: 11rem;
+          }
+        }
         .all-interns {
           .intern-detail {
             @include flexColumn;
@@ -534,18 +562,26 @@
       .dashboard-approvals {
         padding: 1rem;
         height: 35vh;
-        overflow: hidden;
-        .course {
-          display: flex;
-          justify-content: center;
-          text-align: center;
-          background-color: #d9d9d9;
-          color: #000;
-          padding: 0.5rem 2rem;
-          text-decoration: underline;
-        }
+
+        // .course {
+        //   display: flex;
+        //   justify-content: center;
+        //   text-align: center;
+        //   background-color: #d9d9d9;
+        //   color: #000;
+        //   padding: 0.5rem 2rem;
+        //   text-decoration: underline;
+        // }
         .all-approvals-container {
           height: 100%;
+          .no-approvals {
+            padding: 0;
+
+            img {
+              height: 10rem;
+              width: 10rem;
+            }
+          }
           .approvals-container {
             .overlay {
               .intern-modal {
@@ -600,17 +636,23 @@
       .dashboard-internships {
         padding: 1rem;
         height: 35vh;
-        overflow: hidden;
+
         .all-internship-container {
           height: 100%;
           border-radius: 0 0 1rem 1rem;
+          .no-internship {
+            img {
+              height: 10rem;
+              width: 10rem;
+            }
+          }
         }
       }
     }
   }
 }
 
-@media screen and(max-width: 500px) {
+@media screen and (max-width: 500px) {
   .coordinator-dashboard {
     .dashboard-content {
       .dashboard-approvals {
@@ -637,7 +679,7 @@
   }
 }
 
-@media screen and(max-width: 350px) {
+@media screen and (max-width: 350px) {
   .coordinator-dashboard {
     .dashboard-content {
       .dashboard-approvals {

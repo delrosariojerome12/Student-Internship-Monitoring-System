@@ -1,38 +1,48 @@
-import React from "react";
+import React, {useEffect} from "react";
 import DashboardIntern from "../../components/coordinator/dashboardCoordinator/DashboardIntern";
 import DashboardApprovals from "../../components/coordinator/dashboardCoordinator/DashboardApprovals";
-import DashboardInternship from "../../components/coordinator/dashboardCoordinator/DashboardInternship";
 
-import { useSelector, useDispatch } from "react-redux";
-import { BiSearchAlt } from "react-icons/bi";
+import {useSelector, useDispatch} from "react-redux";
+import {getAllInterns} from "../../features/interns/internReducer";
+import {BiSearchAlt} from "react-icons/bi";
 
 import internImg from "../../assets/img/head.svg";
 import approvalImg from "../../assets/img/approvals.svg";
-import internshipImg from "../../assets/img/no-internship.svg";
 
 const Dashboard = () => {
-  const { approvalInterns, interns, isError } = useSelector(
+  const {approvalInterns, interns, isError} = useSelector(
     (state) => state.intern
   );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllInterns());
+  }, []);
 
   const renderInterns = () => {
     if (!interns) {
       return <h1>Loading...</h1>;
     }
 
-    if (interns.length === 0) {
+    if (
+      interns.filter((intern) => intern.verification.isVerified).length === 0
+    ) {
       return (
         <section className="all-intern-container">
           <div className="no-intern">
-            <img src={internImg} alt="" />
-            <h3>No user found!</h3>
+            <img src={internImg} alt="" className="no-intern-img" />
+            <h3>No verified intern found!</h3>
           </div>
         </section>
       );
     }
-    return interns.map((intern, index) => {
-      return <DashboardIntern intern={intern} key={index} />;
-    });
+
+    // can make conditional
+    return interns
+      .filter((intern) => intern.verification.isVerified)
+      .map((intern, index) => {
+        return <DashboardIntern intern={intern} key={index} />;
+      });
   };
 
   const renderApprovals = () => {
@@ -42,7 +52,7 @@ const Dashboard = () => {
 
     if (approvalInterns.length === 0) {
       return (
-        <section className="dashboard-approvals">
+        <section className="all-approvals-container">
           <div className="no-approvals">
             <img src={approvalImg} alt="No Intern Found" />
             <h4>No approvals found!</h4>
@@ -53,23 +63,6 @@ const Dashboard = () => {
 
     return approvalInterns.map((intern, index) => {
       return <DashboardApprovals intern={intern} key={index} index={index} />;
-    });
-  };
-
-  const renderInternship = () => {
-    if (approvalInterns.length === 0) {
-      return (
-        <section className="dashboard-internships">
-          <div className="no-internship">
-            <img src={internshipImg} alt="No available internship" />
-            <h4>No available internship</h4>
-          </div>
-        </section>
-      );
-    }
-
-    return approvalInterns.map((intern, index) => {
-      return <DashboardInternship intern={intern} key={index} index={index} />;
     });
   };
 
@@ -92,23 +85,25 @@ const Dashboard = () => {
 
       <div className="dashboard-intern">
         <h4 className="container-title">Interns</h4>
-        <h4 className="course">
+        {/* <h4 className="course">
           Bachelor of Science in Information Technology
-        </h4>
+        </h4> */}
         <div className="all-intern-container">{renderInterns()}</div>
       </div>
 
       <div className="dashboard-content">
         <div className="dashboard-approvals">
           <h3 className="approvals-title">Approvals</h3>
-          <h4 className="course">
+          {/* <h4 className="course">
             Bachelor of Science in Information Technology
-          </h4>
+          </h4> */}
           <div className="all-approvals-container">{renderApprovals()}</div>
         </div>
         <div className="dashboard-internships">
           <h3 className="internships-title">Companies</h3>
-          <div className="all-internship-container">{renderInternship()}</div>
+          <div className="all-internship-container">
+            {/* {renderInternship()} */}
+          </div>
         </div>
       </div>
     </section>

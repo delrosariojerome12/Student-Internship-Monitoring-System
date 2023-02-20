@@ -1,8 +1,8 @@
 import React from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
-import { lazy, Suspense } from "react";
-import { useSelector } from "react-redux";
-import { auth } from "../../Firebase";
+import {Route, Routes, Navigate} from "react-router-dom";
+import {lazy, Suspense} from "react";
+import {useSelector} from "react-redux";
+import {auth} from "../../Firebase";
 
 import DashboardMain from "./DashboardMain";
 import PendingContainer from "../verification/PendingContainer";
@@ -22,8 +22,8 @@ const Settings = lazy(() => import("./Settings"));
 const Internships = lazy(() => import("./Internships"));
 
 const Dashboard = () => {
-  const { isSidebarOpen } = useSelector((state) => state.dashboard);
-  const { user } = useSelector((state) => state.user);
+  const {isSidebarOpen} = useSelector((state) => state.dashboard);
+  const {user} = useSelector((state) => state.user);
   // const dispatch = useDispatch();
 
   if (!user) {
@@ -46,11 +46,7 @@ const Dashboard = () => {
   // not validated
   if (!isVerified) {
     return (
-      <section
-        // style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
-        // className={isSidebarOpen ? "dashboard-active" : "dashboard"}
-        className="dashboard"
-      >
+      <section className="dashboard">
         <SidebarLeft />
         <Suspense fallback={<Bouncing />}>
           <Routes>
@@ -66,20 +62,16 @@ const Dashboard = () => {
 
   // intern
   return (
-    <section
-      // style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
-      // className={isSidebarOpen ? "dashboard-active" : "dashboard"}
-      className="dashboard"
-    >
+    <section className="dashboard">
       <SidebarLeft />
       <Suspense fallback={<Bouncing />}>
         <Routes>
           <Route path="/" element={<DashboardMain />} />
           <Route path="/profile/*" element={<Profile />} />
           <Route path="/daily-time-record" element={<DailyTimeRecord />} />
-          <Route path="/documents/*" element={<Documents />} />
+          <Route path="/documents" element={<Documents />} />
           <Route path="/reports/*" element={<Reports />} />
-          <Route path="/settings" element={<Settings />} />
+          {/* <Route path="/settings" element={<Settings />} /> */}
           <Route path="/internships" element={<Internships />} />
 
           <Route path="*" element={<Navigate to="/404" replace />} />

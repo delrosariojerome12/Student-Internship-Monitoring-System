@@ -94,12 +94,32 @@ const Signup = () => {
       isVisible: false,
     },
   ]);
+  const [isComplete, setComplete] = useState(false);
+
+  const checkCompletion = () => {
+    let numOfErrors = 0;
+    let numOfValues = 0;
+
+    form.forEach((item) => {
+      item.isError && numOfErrors++;
+      item.value && numOfValues++;
+    });
+
+    const lengthForms = form.length;
+
+    if (numOfErrors === 0 && numOfValues - 1 === lengthForms - 1) {
+      setComplete(true);
+    } else {
+      setComplete(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  };
 
   const handleOnChange = (value, index, input) => {
     const data = [...form];
-    data[index].value = value;
     switch (input) {
       case "First Name":
+        data[index].value = value;
         let firstNameRegex = /(\b[a-z](?!\s))/g;
         value.length > 2 && value.length < 20
           ? (data[index].isError = false)
@@ -109,26 +129,35 @@ const Signup = () => {
           x.charAt(0).toUpperCase()
         );
         data[index].value = firstNameValue;
-
         setForm(data);
+        checkCompletion();
         return;
       case "Last Name":
+        data[index].value = value;
+
         value.length > 2 && value.length < 20
           ? (data[index].isError = false)
           : (data[index].isError = true);
         data[index].value =
           value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
         setForm(data);
+        checkCompletion();
+
         return;
       case "Email":
+        data[index].value = value;
         const emailRegex =
           /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         let isValid = emailRegex.test(value);
         isValid ? (data[index].isError = false) : (data[index].isError = true);
         data[index].value = data[index].value.slice(0).toLowerCase();
         setForm(data);
+        checkCompletion();
+
         return;
       case "Password":
+        data[index].value = value;
+
         const passwordRegex =
           /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_.-]).*$/;
         let isPasswordValid = passwordRegex.test(value);
@@ -141,8 +170,11 @@ const Signup = () => {
           data[index + 1].value = "";
         }
         setForm(data);
+        checkCompletion();
+
         return;
       case "Confirm Password":
+        data[index].value = value;
         const password = form[index - 1].value;
         const confirmPassword = form[index];
         const confirmPasswordRegex =
@@ -153,20 +185,37 @@ const Signup = () => {
           : (confirmPassword.isError = true);
 
         setForm(data);
+        checkCompletion();
 
         return;
       case "Profile Image":
-        const imageRef = ref(
-          storage,
-          `images/users/profileImages/${v4() + value.name}`
-        );
-        uploadBytes(imageRef, value).then((res) => {
-          getDownloadURL(res.ref).then((url) => {
-            data[index].value = url;
-            data[index].isDisabled = true;
+        if (value) {
+          const {name, type} = value;
+          if (!type.includes("image")) {
+            console.log("error");
+            data[index].isError = true;
+            data[index].errorMessage = "Invalid File Type";
             setForm(data);
-          });
-        });
+          } else {
+            const imageRef = ref(
+              storage,
+              `images/users/profileImages/${v4() + name}`
+            );
+            uploadBytes(imageRef, value)
+              .then((res) => {
+                getDownloadURL(res.ref)
+                  .then((url) => {
+                    data[index].isError = false;
+                    data[index].value = url;
+                    data[index].isDisabled = true;
+                    setForm(data);
+                    checkCompletion();
+                  })
+                  .catch((err) => console.log(err));
+              })
+              .catch((err) => console.log(err));
+          }
+        }
         return;
       default:
         break;
@@ -273,20 +322,16 @@ const Signup = () => {
               <label htmlFor={id}>
                 <div className="profile-con">
                   <img src={value} alt="profile" />
-
-                  {/* {value ? (
-                    <img src={value} alt="profile image" />
-                  ) : (
-                    <img src={defaultImage} alt="profile image" />
-                  )} */}
                 </div>
-                {value.includes("firebase") ? (
+                {isError ? (
+                  <p style={{color: "red"}}>{errorMessage}</p>
+                ) : value.includes("firebase") ? (
                   <p>
                     Profile Selected
                     <FaCheck />
                   </p>
                 ) : (
-                  <p>Select Profile Image</p>
+                  <p>Select Profile</p>
                 )}
                 <input
                   disabled={isDisabled}
@@ -322,7 +367,16 @@ const Signup = () => {
               <p>Already have an account?</p>
               <Link to="/account/login">Log in</Link>
             </span>
-            <button type="submit">Sign up</button>
+            <button
+              style={
+                isComplete
+                  ? {opacity: "1"}
+                  : {opacity: ".7", pointerEvents: "none"}
+              }
+              type="submit"
+            >
+              Sign up
+            </button>
           </IconContext.Provider>
         </form>
       </section>

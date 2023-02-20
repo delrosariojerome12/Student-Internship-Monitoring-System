@@ -12,14 +12,13 @@ const authUser = require("./middlewares/auth");
 const internsRouter = require("./routers/intern");
 const userRouter = require("./routers/user");
 const documentRouter = require("./routers/document");
-const attendanceRouter = require("./routers/attendance");
-const dailyRecordRouter = require("./routers/dailyRecord");
+const internshipRouter = require("./routers/internship");
 
 // error handlerrequire("./routers/attendance");
 const notFound = require("./middlewares/notFound");
 const errorHandler = require("./middlewares/errorHandler");
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(cors());
 // routes
@@ -27,8 +26,7 @@ app.use("/auth", authRouter);
 app.use("/intern", internsRouter);
 app.use("/user", userRouter);
 app.use("/document", documentRouter);
-app.use("/attendance", attendanceRouter);
-app.use("/dailyRecord", dailyRecordRouter);
+app.use("/internship", internshipRouter);
 
 app.use(notFound);
 app.use(errorHandler);

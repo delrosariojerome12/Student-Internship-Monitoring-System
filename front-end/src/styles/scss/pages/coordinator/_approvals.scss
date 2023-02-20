@@ -13,7 +13,8 @@
     grid-template-rows: auto auto;
     justify-content: center;
     gap: 1rem;
-    h3 {
+    h4 {
+      font-size: 2.5rem;
       text-align: center;
       padding: 1rem 0;
       color: #fff;
@@ -22,8 +23,10 @@
       }
     }
     .img-waiting {
+      @include flexCenter;
       img {
-        height: 80%;
+        height: 57rem;
+        width: 57rem;
       }
     }
   }
@@ -41,8 +44,7 @@
       width: 80%;
       border-radius: 2rem;
       padding: 0 1.5rem;
-      margin: 1rem 1rem auto auto;
-
+      margin: auto;
       span {
         @include flexCenter;
         font-size: 2rem;
@@ -69,6 +71,16 @@
       display: grid;
       grid-auto-rows: 12rem;
       gap: 1rem;
+
+      .approvals {
+        .img-waiting {
+          img {
+            height: 35rem;
+            width: 35rem;
+          }
+        }
+      }
+
       .approval-intern {
         // border: solid 1px #fff;
         padding: 1rem;
@@ -94,7 +106,6 @@
           top: 0%;
           left: 0%;
           z-index: 8;
-
           .intern-modal {
             display: grid;
             background-color: #fff;
@@ -243,8 +254,19 @@
 
 //Responsive
 
-@media screen and(max-width: 1030px) {
+@media screen and (max-width: 1030px) {
   .approvals {
+    .no-entries {
+      h4 {
+        font-size: 2.2rem;
+      }
+      .img-waiting {
+        img {
+          height: 52rem;
+          width: 52rem;
+        }
+      }
+    }
     .approval-container {
       .approvals-intern-container {
         .approval-intern {
@@ -284,7 +306,7 @@
   }
 }
 
-@media screen and(max-width: 850px) {
+@media screen and (max-width: 850px) {
   .approvals {
     .approval-container {
       .approvals-intern-container {
@@ -304,8 +326,20 @@
   }
 }
 
-@media screen and(max-width: 750px) {
+@media screen and (max-width: 750px) {
   .approvals {
+    .no-entries {
+      h4 {
+        color: #000;
+        font-size: 2rem;
+      }
+      .img-waiting {
+        img {
+          height: 40rem;
+          width: 40rem;
+        }
+      }
+    }
     .approval-container {
       h3 {
         display: flex;
@@ -368,9 +402,23 @@
   }
 }
 
-@media screen and(max-width: 500px) {
+@media screen and (max-width: 500px) {
   .approvals {
+    .no-entries {
+      h4 {
+        font-size: 2rem;
+      }
+      .img-waiting {
+        img {
+          height: 25rem;
+          width: 25rem;
+        }
+      }
+    }
     .approval-container {
+      h3 {
+        font-size: 2rem;
+      }
       .approvals-intern-container {
         .approval-intern {
           .overlay {
@@ -393,7 +441,7 @@
   }
 }
 
-@media screen and(max-width: 350px) {
+@media screen and (max-width: 350px) {
   .approvals {
     .approval-container {
       .approvals-intern-container {

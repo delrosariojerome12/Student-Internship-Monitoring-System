@@ -1,15 +1,20 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Approval from "../../components/coordinator/ApprovalIntern";
-import { useSelector } from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 import ApprovalWaiting from "../../assets/img/waiting.svg";
-import { BiSearchAlt } from "react-icons/bi";
-
-// import {useEffect} from "react";
-
-// import {GoSearch} from "react-icons/go";
-
+import {BiSearchAlt} from "react-icons/bi";
+import Bouncing from "../../components/loading/Bouncing";
+import ServerError from "../serverError";
+import {getAllInterns} from "../../features/interns/internReducer";
 const Approvals = React.memo(() => {
-  const { approvalInterns } = useSelector((state) => state.intern);
+  const {approvalInterns, isLoading, isError} = useSelector(
+    (state) => state.intern
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllInterns());
+  }, []);
 
   const renderApprovals = () => {
     if (!approvalInterns) {
@@ -20,9 +25,9 @@ const Approvals = React.memo(() => {
       return (
         <section className="approvals">
           <div className="no-entries">
-            <h3>
+            <h4>
               Oops, there were no <b>entries</b> yet come back again later
-            </h3>
+            </h4>
             <div className="img-waiting">
               <img src={ApprovalWaiting} alt="Approvals waiting image" />
             </div>
@@ -35,6 +40,13 @@ const Approvals = React.memo(() => {
       return <Approval intern={intern} key={index} index={index} />;
     });
   };
+
+  if (isLoading) {
+    return <Bouncing />;
+  }
+  if (isError) {
+    return <ServerError />;
+  }
 
   return (
     <section className="approvals">

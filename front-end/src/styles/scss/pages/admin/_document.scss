@@ -3,14 +3,15 @@
 
 .admin-document-page {
   display: grid;
-  grid-template-rows: 8vh 1fr;
+  grid-template-rows: repeat(2, minmax(8rem, 10vh)) minmax(60rem, 75vh);
   gap: 1rem;
+  overflow: hidden;
   // & > * {
   //   border: solid 1px #fff;
   // }
   .overlay {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     background-color: rgba(48, 47, 47, 0.753);
     position: absolute;
     filter: blur(20px);
@@ -24,7 +25,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fff;
-    // height: 40rem;
     z-index: 7;
     width: 50rem;
     border-radius: 1rem;
@@ -32,7 +32,6 @@
     display: grid;
     grid-template-rows: auto 4rem;
     gap: 1rem;
-    // background-color: #d1d1d1;
 
     .btn-container {
       display: flex;
@@ -60,29 +59,40 @@
       grid-template-columns: 60% 40%;
       // gap: 1rem;
       row-gap: 1.5rem;
-      grid-template-rows: 9.5rem repeat(2, 5rem) 8rem;
+      grid-template-rows: 9.5rem repeat(2, 5rem) 10rem;
 
-      & > *:nth-child(1) {
-        // grid-column: 1/3;
-        align-self: center;
-      }
-      & > *:nth-child(3) {
+      .textarea {
         grid-column: 1/3;
         align-self: center;
+        grid-row: 4/5;
+        height: 100%;
+      }
+      .text {
+        grid-column: 1/3;
+      }
+      .img-input {
+        grid-column: 2/3;
+        grid-row: 1/2;
       }
       & > *:nth-child(4) {
         grid-column: 1/3;
       }
-      & > *:nth-child(5) {
-        grid-column: 1/3;
-      }
+
       .img-input {
-        display: flex;
-        justify-content: flex-end;
+        color: #fff;
+        border-radius: 1rem;
+        background-color: #8b8b8b;
+        display: grid;
         label {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          padding: 1rem;
           p {
+            font-weight: 600;
             display: flex;
             gap: 1rem;
+            font-size: 1.4rem;
             align-items: center;
             .icons {
               color: green;
@@ -98,9 +108,8 @@
           }
           .profile-con {
             border-radius: 1rem;
-            border: solid 1px #000;
-            height: 7rem;
-            width: 7rem;
+            height: 5rem;
+            width: 5rem;
             img {
               height: 100%;
               width: 100%;
@@ -218,23 +227,58 @@
     height: 50rem;
     .content {
       display: grid;
-      grid-template-columns: 65% 35%;
+      grid-template-columns: 3fr 1fr;
+      grid-template-rows: 17rem auto;
+      gap: 1rem;
+      background-color: #fff;
+
       & > * {
-        align-self: center;
+        background-color: #efefef;
+        border-radius: 1rem;
+        padding: 2rem;
       }
-      & > *:nth-child(3) {
+      .document-name {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 3rem 2rem 2rem 2rem;
+      }
+      .desc-container {
         grid-column: 1/3;
       }
-      & > p:last-child {
-        grid-column: 1/2;
-      }
-      img {
-        height: 15rem;
-        width: 15rem;
+      .img-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         cursor: pointer;
-        grid-column: 2/3;
-        margin: auto;
+        img {
+          height: 12rem;
+          width: 12rem;
+          cursor: pointer;
+          grid-column: 2/3;
+        }
       }
+    }
+    .btn-container {
+      margin: auto;
+    }
+  }
+  .sample-view-container {
+    // @extend .add-document-modal;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    z-index: 7;
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 65rem;
+    height: 93vh;
+    overflow: auto;
+    img {
+      height: 100%;
+      width: 100%;
     }
   }
   .delete-document-modal {
@@ -268,19 +312,43 @@
       color: #fff;
     }
   }
+  .btn-routes {
+    background-color: $primary-bg-color-landing;
+    border-radius: 1rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    button {
+      height: 100%;
+      background-color: #d9d9d9;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 1rem 2rem;
+      transition: all 0.2s linear;
+      font-weight: 600;
+
+      &:hover {
+        background-color: $primary-bg-color;
+        border-radius: 1rem;
+        color: #fff;
+      }
+    }
+  }
 
   .document-container {
     display: grid;
     grid-template-rows: 7rem 1fr;
     gap: 1rem;
-    // & > * {
-    //   border: solid 1px #fff;
-    // }
+
     .document-control {
       display: flex;
       padding: 1rem;
       background-color: $primary-bg-color-landing;
       border-radius: 1rem;
+      justify-content: flex-end;
 
       button {
         background-color: #d9d9d9;
@@ -290,6 +358,16 @@
         padding: 1rem 2rem;
         transition: all 0.2s linear;
         font-weight: 600;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        .icon {
+          font-size: 1.2rem;
+        }
+        p {
+          padding-top: 0.2rem;
+        }
         &:hover {
           background-color: $primary-bg-color;
           color: #fff;
@@ -315,7 +393,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        cursor: pointer;
         transition: all 0.2s linear;
         font-weight: 600;
         position: relative;
@@ -351,15 +428,184 @@
       background-color: $primary-bg-color-landing;
       border-radius: 1rem;
       color: #fff;
-      padding: 1rem;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      justify-content: center;
+      padding: 2rem;
+      display: grid;
+      grid-template-rows: auto 1fr;
       gap: 1rem;
+      align-items: center;
+      justify-items: center;
       img {
-        height: 50rem;
+        height: 35rem;
       }
+    }
+  }
+  .document-approval-container {
+    padding: 2rem;
+    background-color: $primary-bg-color-landing;
+    border-radius: 1rem;
+    gap: 2rem;
+    overflow-y: auto;
+    .document-intern {
+      display: grid;
+      // remove if you can use flex
+      margin-bottom: 2rem;
+      min-height: 12rem;
+      grid-template-columns: 12rem 1fr;
+      gap: 2rem;
+      .img-container {
+        border-radius: 1rem 0 0 1rem;
+        height: 12rem;
+        width: 12rem;
+        img {
+          border-radius: 1rem 0 0 1rem;
+          height: 100%;
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+      .text {
+        height: 100%;
+        width: 100%;
+        border-radius: 0 1rem 1rem 0;
+        display: grid;
+        grid-template-rows: 10rem 2rem;
+        transition: all 0.2s linear;
+        .top {
+          padding: 1rem;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .bottom {
+          transition: all 0.2s linear;
+          .dropdown-container {
+            padding: 1rem;
+            transition: all 0.2s linear;
+            width: 100%;
+            height: 100%;
+            background-color: $primary-compliment-landing;
+            position: relative;
+            display: grid;
+            grid-auto-rows: 8rem;
+            gap: 1rem;
+            border-radius: 0 0 1rem 0;
+            // overflow-y: auto;
+            .drop-btn {
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              position: absolute;
+              background-color: $primary-compliment-landing;
+              width: 100%;
+              bottom: 0px;
+              left: 50%;
+              transform: translateX(-50%);
+              border-radius: 1rem !important;
+              height: 2rem;
+              .icon {
+                color: #fff;
+              }
+            }
+            .document {
+              background-color: #d9d9d9;
+              border-radius: 1rem;
+              color: #000;
+              display: grid;
+              grid-template-columns: 5rem 2fr 1fr;
+              gap: 1rem;
+              padding: 1rem;
+
+              img {
+                height: 5rem;
+                width: 5rem;
+                margin: auto;
+                cursor: pointer;
+              }
+
+              .left {
+                display: flex;
+                flex-direction: column;
+                overflow: auto;
+              }
+              .btn-container {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                button {
+                  height: 4rem;
+                  border: none;
+                  outline: none;
+                  cursor: pointer;
+                  padding: 1rem 2rem;
+                  transition: all 0.2s linear;
+                  font-weight: 600;
+                  &:first-child:hover {
+                    background-color: $primary-bg-color;
+                    border-radius: 1rem;
+                    color: #fff;
+                  }
+                  &:nth-child(2):hover {
+                    background-color: $red-primary-color;
+                    border-radius: 1rem;
+                    color: #fff;
+                  }
+                }
+              }
+            }
+            .no-document {
+              color: #fff;
+              display: flex;
+              padding: 1rem;
+              align-items: center;
+              gap: 1rem;
+              img {
+                height: 5rem;
+                width: 5rem;
+              }
+            }
+          }
+        }
+      }
+      .active {
+        grid-template-rows: 10rem minmax(10rem, auto);
+        margin-bottom: 1rem;
+      }
+      .active-1 {
+        grid-template-rows: 10rem 10rem;
+      }
+      & > * {
+        background-color: #fff;
+      }
+    }
+    .overlay {
+      width: 100%;
+      min-height: 100%;
+      background-color: rgba(48, 47, 47, 0.753);
+      position: absolute;
+      filter: blur(20px);
+      top: 0%;
+      left: 0%;
+      z-index: 6;
+    }
+    .view-document-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      z-index: 7;
+      border-radius: 1rem;
+      padding: 2rem;
+      width: 65rem;
+      height: 93vh;
+      overflow: auto;
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .no-approval {
+      color: #fff;
     }
   }
 }

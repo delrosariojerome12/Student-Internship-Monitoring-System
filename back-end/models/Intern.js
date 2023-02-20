@@ -3,6 +3,7 @@ const {
   internshipDetails,
   internsAssets,
   verification,
+  documentDetails,
 } = require("./utils/internsDetails");
 
 const schoolDetails = require("./utils/schoolDetails");
@@ -24,6 +25,7 @@ const InternSchema = new mongoose.Schema({
   internsAssets,
   schoolDetails,
   scheduleDetails,
+  documentDetails,
 });
 
 module.exports = mongoose.model("Intern", InternSchema);

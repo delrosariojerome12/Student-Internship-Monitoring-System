@@ -2,102 +2,132 @@
 @import "../../variables";
 
 .internship-container {
-  height: 100%;
-  width: 100%;
-  border: solid 1px #fff;
-  border-radius: 1rem;
-  padding: 2rem;
-  .internship-content {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 1rem;
+
+  header {
+    color: #fff;
+    padding: 2rem;
+    background-color: $primary-bg-color-landing;
+    border-radius: 1rem;
+  }
+  .btn-container {
+    background-color: $primary-bg-color-landing;
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    button {
+      height: 5rem;
+      width: 12rem;
+    }
+  }
+  button {
+    background-color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    transition: all 0.2s linear;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    .icon {
+      font-size: 1.2rem;
+    }
+    p {
+      padding-top: 0.2rem;
+    }
+    &:hover {
+      background-color: $primary-bg-color;
+      color: #fff;
+      border-radius: 1rem;
+    }
+  }
+  .content {
+    border-radius: 1rem;
+    background-color: $primary-bg-color-landing;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 42rem);
+    grid-auto-rows: 17rem;
+    gap: 1rem;
+    overflow-y: auto;
     .internship {
-      display: grid;
-      grid-template-rows: 15rem 5.5rem auto;
-      background-color: #33363a;
+      background-color: #fff;
+      border-radius: 1rem;
       padding: 1rem;
-      header {
-        @include flexColumn;
-        justify-content: center;
-        color: #fff;
-        p {
-          width: 65%;
+      display: grid;
+      grid-template-columns: 13rem 1fr;
+      gap: 1rem;
+      .img-con {
+        height: 13rem;
+        width: 13rem;
+        margin: auto;
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
         }
       }
-      .mid {
+      .controls {
         display: grid;
-        grid-template-columns: 1fr 1fr;
         gap: 1rem;
-        border: solid 1px #fff;
-        background-color: #404449;
-
-        .left {
+        background-color: #d9d9d9;
+        padding: 1rem;
+        .internship-btn {
           display: flex;
           align-items: center;
-          justify-content: space-evenly;
+          gap: 1rem;
           button {
-            @include flexCenter;
-            height: 4rem;
-            padding: 0rem 2rem;
-            border-radius: 1rem;
-            border: transparent 1px solid;
-            background-color: #404449;
-            color: $primary-font-color;
-            transition: all 0.4s ease-in-out;
-            font-weight: 650;
-            gap: 0.4rem;
-            cursor: pointer;
-            span {
-              @include flexCenter;
-              font-size: 1.8rem;
-            }
+            background-color: #fff;
             &:hover {
-              background-color: #393e46;
+              background-color: $primary-bg-color;
             }
-          }
-        }
-        .right {
-          @include flexCenter;
-          background-color: $light-bg-color;
-          width: 80%;
-          border-radius: 2rem;
-          padding: 0 1.5rem;
-          margin: 1rem 1rem auto auto;
-
-          span {
-            @include flexCenter;
-            font-size: 2rem;
-            cursor: pointer;
-          }
-          input {
-            width: 100%;
-            background: transparent;
-            padding: 1rem;
-            outline: none;
-            border: 0;
           }
         }
       }
-      .bottom {
-        border: solid 1px #fff;
-        min-height: 70vh;
-        .main-content {
-          display: grid;
-          grid-template-columns: 12rem auto;
-          grid-auto-rows: 12rem;
-          gap: 1rem;
-          padding: 1.5rem;
-          .left-img {
-            height: auto;
-            width: auto;
-            background-color: #fff;
-          }
-          .right-content {
-            display: flex;
-            align-items: center;
-            // color: #000;
-            background-color: #fff;
-            font-size: 1.5rem;
-            padding: 1rem;
-          }
-        }
+    }
+  }
+
+  .overlay {
+    width: 100%;
+    min-height: 100%;
+    background-color: rgba(48, 47, 47, 0.753);
+    position: absolute;
+    filter: blur(20px);
+    top: 0%;
+    left: 0%;
+    z-index: 6;
+  }
+  .modal {
+    background-color: #fff;
+    border-radius: 1rem;
+    width: 60rem;
+    height: 50rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 7;
+    padding: 1rem;
+  }
+
+  .add-modal {
+    width: 100rem;
+    height: 80vh;
+    display: flex;
+
+    form {
+      height: 100%;
+      width: 100%;
+      display: grid;
+      gap: 1rem;
+      & > * {
+        border: solid 1px #000;
       }
     }
   }
