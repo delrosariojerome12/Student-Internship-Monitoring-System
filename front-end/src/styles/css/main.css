@@ -1,3 +1,4 @@
+/** @format */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
@@ -901,13 +902,13 @@ button {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
@@ -1667,13 +1668,12 @@ button {
   gap: 1rem;
   border: solid 1px #fff;
 }
-.dashboard .intern-container .navigation > *, .dashboard-active .intern-container .navigation > * {
-  border: solid 1px #fff;
-}
 .dashboard .intern-container .navigation .left-side, .dashboard-active .intern-container .navigation .left-side {
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
   gap: 1rem;
+  border-right: 1px solid #fff;
 }
 .dashboard .intern-container .navigation .left-side button, .dashboard-active .intern-container .navigation .left-side button {
   cursor: pointer;
@@ -1685,21 +1685,22 @@ button {
   border-radius: 5px;
   border: solid 1px transparent;
   outline: none;
-  background-color: #457b9d;
+  background-color: #0d7377;
   color: #f1faee;
   letter-spacing: 0.2rem;
   transition: all 0.3s ease-in-out;
   font-weight: 600;
 }
 .dashboard .intern-container .navigation .left-side button:hover, .dashboard-active .intern-container .navigation .left-side button:hover {
-  background-color: #f1faee;
-  color: #457b9d;
-  border: solid 1px #457b9d;
+  background-color: #00adb5;
+  color: #fff;
+  border: solid 1px #00adb5;
 }
 .dashboard .intern-container .navigation .right-side, .dashboard-active .intern-container .navigation .right-side {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
+  justify-content: center;
+  border-left: 1px solid #fff;
   padding: 0 1rem;
 }
 .dashboard .intern-container .navigation .right-side form, .dashboard-active .intern-container .navigation .right-side form {
@@ -1819,6 +1820,7 @@ button {
 }
 .dashboard .intern-container .interns-active, .dashboard-active .intern-container .interns-active {
   grid-auto-rows: 14rem;
+  justify-content: center;
   grid-template-columns: repeat(auto-fill, 35.5rem);
 }
 .dashboard .intern-container .overlay, .dashboard-active .intern-container .overlay {
@@ -2314,7 +2316,7 @@ button {
 }
 .dashboard .coordinator-dashboard, .dashboard-active .coordinator-dashboard {
   display: grid;
-  grid-template-rows: 14vh 0.8fr 1fr;
+  grid-template-rows: 14rem 0.8fr 1fr;
   width: 100%;
   height: 100%;
   gap: 1rem;
@@ -2366,7 +2368,7 @@ button {
 }
 .dashboard .coordinator-dashboard .dashboard-intern, .dashboard-active .coordinator-dashboard .dashboard-intern {
   display: grid;
-  grid-template-rows: 3.5vh auto;
+  grid-template-rows: 3.5rem auto;
   padding: 2rem;
   grid-auto-rows: 12rem;
   border: solid 1px #fff;
@@ -2448,7 +2450,7 @@ button {
 }
 .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals {
   display: grid;
-  grid-template-rows: 3.5vh auto;
+  grid-template-rows: 3.5rem auto;
   padding: 2rem;
   border-radius: 0 0 0 2rem;
   height: 100%;
@@ -2613,7 +2615,7 @@ button {
 }
 .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships {
   display: grid;
-  grid-template-rows: 3.5vh auto;
+  grid-template-rows: 3.5rem auto;
   padding: 2rem;
   border-radius: 0 0 2rem 0;
 }
@@ -2714,6 +2716,9 @@ button {
   .dashboard .coordinator-dashboard .dashboard-intern, .dashboard-active .coordinator-dashboard .dashboard-intern {
     border-radius: 1rem 1rem 0 0;
   }
+  .dashboard .coordinator-dashboard .dashboard-intern .no-intern, .dashboard-active .coordinator-dashboard .dashboard-intern .no-intern {
+    padding: 2rem 0;
+  }
   .dashboard .coordinator-dashboard .dashboard-intern .no-intern .no-intern-img, .dashboard-active .coordinator-dashboard .dashboard-intern .no-intern .no-intern-img {
     height: 13rem;
     width: 13rem;
@@ -2725,6 +2730,9 @@ button {
   }
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals {
     border-radius: 0;
+  }
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .no-approvals, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .no-approvals {
+    padding: 2rem 0;
   }
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .no-approvals img, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .no-approvals img {
     height: 13rem;
@@ -2769,6 +2777,9 @@ button {
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships {
     border-radius: 0 0 1rem 1rem;
   }
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .no-internship, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .no-internship {
+    padding: 2rem 0;
+  }
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .no-internship img, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container .no-internship img {
     height: 13rem;
     width: 13rem;
@@ -2789,9 +2800,6 @@ button {
   }
   .dashboard .coordinator-dashboard .dashboard-intern .all-intern-container, .dashboard-active .coordinator-dashboard .dashboard-intern .all-intern-container {
     height: 100%;
-  }
-  .dashboard .coordinator-dashboard .dashboard-intern .all-intern-container .no-intern, .dashboard-active .coordinator-dashboard .dashboard-intern .all-intern-container .no-intern {
-    padding: 0;
   }
   .dashboard .coordinator-dashboard .dashboard-intern .all-intern-container .no-intern .no-intern-img, .dashboard-active .coordinator-dashboard .dashboard-intern .all-intern-container .no-intern .no-intern-img {
     height: 11rem;
@@ -2816,9 +2824,6 @@ button {
   }
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container {
     height: 100%;
-  }
-  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .no-approvals, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .no-approvals {
-    padding: 0;
   }
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .no-approvals img, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .no-approvals img {
     height: 10rem;
@@ -2869,6 +2874,12 @@ button {
   }
 }
 @media screen and (max-width: 500px) {
+  .dashboard .coordinator-dashboard .dashboard-intern .all-intern-container .no-intern, .dashboard-active .coordinator-dashboard .dashboard-intern .all-intern-container .no-intern {
+    padding: 1rem 0;
+  }
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .no-approvals, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .no-approvals {
+    padding: 1rem 0;
+  }
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal {
     width: 100vh;
   }
@@ -2878,6 +2889,9 @@ button {
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .sent-details .img-container img, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approvals-container .overlay .intern-modal .sent-details .img-container img {
     height: 12rem;
     width: 12rem;
+  }
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .no-internship, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .no-internship {
+    padding: 1rem 0;
   }
 }
 @media screen and (max-width: 350px) {

@@ -1,3 +1,5 @@
+/** @format */
+
 @import "../../utils";
 @import "../../variables";
 
@@ -40,39 +42,38 @@
     gap: 1rem;
     border: solid 1px #fff;
 
-    & > * {
-      border: solid 1px #fff;
-    }
+    // & > * {
+    //   border: solid 1px #fff;
+    // }
     .left-side {
       display: flex;
       align-items: center;
+      justify-content: space-evenly;
       gap: 1rem;
+      border-right: 1px solid #fff;
       button {
         cursor: pointer;
         height: 4rem;
         @include flexCenter;
-        // margin: auto;
         padding: 0rem 2rem;
         border-radius: 5px;
         border: solid 1px transparent;
         outline: none;
-        background-color: $primary-bg-color;
+        background-color: $primary-compliment-landing;
         color: $primary-font-color;
         letter-spacing: 0.2rem;
         transition: all 0.3s ease-in-out;
         font-weight: 600;
         &:hover {
-          background-color: $primary-font-color;
-          color: $primary-bg-color;
-          border: solid 1px $primary-bg-color;
+          background-color: $primary-feature-bg;
+          color: #fff;
+          border: solid 1px $primary-feature-bg;
         }
       }
     }
     .right-side {
-      // @include flexCenter;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
+      @include flexCenter;
+      border-left: 1px solid #fff;
       padding: 0 1rem;
       form {
         @include flexCenter;
@@ -198,6 +199,7 @@
   }
   .interns-active {
     grid-auto-rows: 14rem;
+    justify-content: center;
     grid-template-columns: repeat(auto-fill, 35.5rem);
   }
 
