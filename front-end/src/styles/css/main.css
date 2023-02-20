@@ -2317,17 +2317,237 @@ button {
 }
 .dashboard .internship-container .add-modal, .dashboard-active .internship-container .add-modal {
   width: 100rem;
-  height: 80vh;
+  min-height: 80vh;
   display: flex;
+  background-color: #d9d9d9;
 }
 .dashboard .internship-container .add-modal form, .dashboard-active .internship-container .add-modal form {
   height: 100%;
   width: 100%;
   display: grid;
+  grid-template-columns: 22rem 1fr 1fr 22rem;
+  grid-template-rows: repeat(6, 11rem);
   gap: 1rem;
+  padding: 2rem;
 }
-.dashboard .internship-container .add-modal form > *, .dashboard-active .internship-container .add-modal form > * {
-  border: solid 1px #000;
+.dashboard .internship-container .add-modal form .input-contain, .dashboard-active .internship-container .add-modal form .input-contain {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: -moz-fit-content;
+  width: fit-content;
+  justify-content: space-evenly;
+  width: 100%;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.dashboard .internship-container .add-modal form .input-contain textarea, .dashboard-active .internship-container .add-modal form .input-contain textarea {
+  resize: none;
+  height: 100%;
+  border: solid 3px transparent;
+  outline: solid 1px #8b8b8b;
+  border-radius: 0.5rem;
+  padding: 1.1rem 3.5rem 1.1rem 2rem;
+  letter-spacing: 2px;
+  transition: all 0.3s ease-in-out;
+}
+.dashboard .internship-container .add-modal form .input-contain textarea:focus, .dashboard-active .internship-container .add-modal form .input-contain textarea:focus {
+  border: solid 3px #457b9d;
+  outline: none;
+}
+.dashboard .internship-container .add-modal form .input-contain textarea .placeholder-container, .dashboard-active .internship-container .add-modal form .input-contain textarea .placeholder-container {
+  position: absolute;
+  top: 0%;
+  left: 0rem;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  font-size: 2rem;
+}
+.dashboard .internship-container .add-modal form .input-contain textarea:focus + .placeholder-container .placeholder-text, .dashboard-active .internship-container .add-modal form .input-contain textarea:focus + .placeholder-container .placeholder-text {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  color: black;
+  scale: 0.8;
+}
+.dashboard .internship-container .add-modal form .input-contain .error-message, .dashboard-active .internship-container .add-modal form .input-contain .error-message {
+  font-size: 1.4rem;
+  color: red;
+}
+.dashboard .internship-container .add-modal form .input-contain .placeholder-container, .dashboard-active .internship-container .add-modal form .input-contain .placeholder-container {
+  position: absolute;
+  top: 0%;
+  left: 0rem;
+  height: 4.5rem;
+  width: 100%;
+  pointer-events: none;
+}
+.dashboard .internship-container .add-modal form .input-contain input, .dashboard-active .internship-container .add-modal form .input-contain input {
+  width: 100%;
+  height: 5rem;
+  border: solid 3px transparent;
+  outline: solid 1px #8b8b8b;
+  border-radius: 0.5rem;
+  padding: 1.1rem 3.5rem 1.1rem 2rem;
+  letter-spacing: 2px;
+  transition: all 0.3s ease-in-out;
+  background-color: #fff;
+}
+.dashboard .internship-container .add-modal form .input-contain input:focus, .dashboard-active .internship-container .add-modal form .input-contain input:focus {
+  border: solid 3px #457b9d;
+  outline: none;
+}
+.dashboard .internship-container .add-modal form .input-contain input:focus + .placeholder-container .placeholder-text, .dashboard-active .internship-container .add-modal form .input-contain input:focus + .placeholder-container .placeholder-text {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  color: black;
+  scale: 0.8;
+}
+.dashboard .internship-container .add-modal form .input-contain .placeholder-text, .dashboard-active .internship-container .add-modal form .input-contain .placeholder-text {
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+  top: 50%;
+  left: 5%;
+  transform: translate(0%, -50%);
+}
+.dashboard .internship-container .add-modal form .input-contain .placeholder-text:nth-child(1), .dashboard-active .internship-container .add-modal form .input-contain .placeholder-text:nth-child(1) {
+  left: 2% !important;
+}
+.dashboard .internship-container .add-modal form .input-contain .placeholder-text .text, .dashboard-active .internship-container .add-modal form .input-contain .placeholder-text .text {
+  font-size: 1.4rem;
+  padding: 0 0.5rem;
+  background-color: transparent;
+  color: black;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.dashboard .internship-container .add-modal form .input-contain .active, .dashboard-active .internship-container .add-modal form .input-contain .active {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  border-color: #8b8b8b;
+  scale: 0.8;
+}
+.dashboard .internship-container .add-modal form .img-input, .dashboard-active .internship-container .add-modal form .img-input {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  gap: 2rem;
+  border-radius: 1rem;
+}
+.dashboard .internship-container .add-modal form .img-input input[type=file], .dashboard-active .internship-container .add-modal form .img-input input[type=file] {
+  display: none;
+}
+.dashboard .internship-container .add-modal form .img-input p, .dashboard-active .internship-container .add-modal form .img-input p {
+  font-size: 1.8rem;
+}
+.dashboard .internship-container .add-modal form .img-input label, .dashboard-active .internship-container .add-modal form .img-input label {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 1rem;
+}
+.dashboard .internship-container .add-modal form .img-input label p, .dashboard-active .internship-container .add-modal form .img-input label p {
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-align: center;
+}
+.dashboard .internship-container .add-modal form .img-input label img, .dashboard-active .internship-container .add-modal form .img-input label img {
+  width: 100%;
+  height: 80%;
+  margin: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+  cursor: pointer;
+}
+.dashboard .internship-container .add-modal form > :nth-child(1), .dashboard-active .internship-container .add-modal form > :nth-child(1) {
+  height: 100%;
+  width: 100%;
+  grid-row: 1/3;
+  grid-column: 1/2;
+}
+.dashboard .internship-container .add-modal form > :nth-child(2), .dashboard-active .internship-container .add-modal form > :nth-child(2) {
+  height: 100%;
+  width: 100%;
+  grid-column: 2/5;
+  grid-row: 1/2;
+}
+.dashboard .internship-container .add-modal form > :nth-child(3), .dashboard-active .internship-container .add-modal form > :nth-child(3) {
+  height: 100%;
+  width: 100%;
+  grid-column: 2/5;
+  grid-row: 2/3;
+}
+.dashboard .internship-container .add-modal form > :nth-child(4), .dashboard-active .internship-container .add-modal form > :nth-child(4) {
+  height: 100%;
+  width: 100%;
+  grid-row: 3/4;
+  grid-column: 1/3;
+}
+.dashboard .internship-container .add-modal form > :nth-child(5), .dashboard-active .internship-container .add-modal form > :nth-child(5) {
+  height: 100%;
+  width: 100%;
+  grid-row: 3/4;
+  grid-column: 3/5;
+}
+.dashboard .internship-container .add-modal form > :nth-child(6), .dashboard-active .internship-container .add-modal form > :nth-child(6) {
+  height: 100%;
+  width: 100%;
+  grid-row: 4/5;
+  grid-column: 3/5;
+}
+.dashboard .internship-container .add-modal form > :nth-child(7), .dashboard-active .internship-container .add-modal form > :nth-child(7) {
+  height: 100%;
+  width: 100%;
+  grid-row: 4/5;
+  grid-column: 1/3;
+}
+.dashboard .internship-container .add-modal form > :nth-child(8), .dashboard-active .internship-container .add-modal form > :nth-child(8) {
+  height: 100%;
+  width: 100%;
+  grid-row: 5/7;
+  grid-column: 1/5;
+}
+.dashboard .internship-container .add-modal form .btn-holder, .dashboard-active .internship-container .add-modal form .btn-holder {
+  grid-column: 2/4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: none;
+}
+.dashboard .internship-container .add-modal form .btn-holder button, .dashboard-active .internship-container .add-modal form .btn-holder button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 4.5rem;
+  padding: 1.6rem;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  color: #f1faee;
+  background-color: #0d7377;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.dashboard .internship-container .add-modal form .btn-holder button.decline-btn:hover, .dashboard-active .internship-container .add-modal form .btn-holder button.decline-btn:hover {
+  background-color: #e63946;
+}
+.dashboard .internship-container .add-modal form .btn-holder button.back-btn:hover, .dashboard-active .internship-container .add-modal form .btn-holder button.back-btn:hover, .dashboard .internship-container .add-modal form .btn-holder button.approve-btn:hover, .dashboard-active .internship-container .add-modal form .btn-holder button.approve-btn:hover, .dashboard .internship-container .add-modal form .btn-holder button.view:hover, .dashboard-active .internship-container .add-modal form .btn-holder button.view:hover {
+  background-color: #d9d9d9;
+  color: #0d7377;
+  border: solid 1px #0d7377;
 }
 .dashboard .coordinator-dashboard, .dashboard-active .coordinator-dashboard {
   display: grid;

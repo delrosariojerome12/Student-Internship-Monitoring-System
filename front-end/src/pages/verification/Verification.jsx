@@ -41,7 +41,7 @@ const Verification = React.memo(() => {
           forInput: "Company Name",
           value: "",
           isError: false,
-          errorMessage: "Atleast 2 characters and max of 30",
+          errorMessage: "Atleast 2 characters and max of 40",
           isDisabled: false,
           code: "companyName",
         },
@@ -404,7 +404,7 @@ const Verification = React.memo(() => {
       const inputField = newForm[mainIndex].forms[index].id;
       switch (inputField) {
         case "company-name":
-          value.length >= 2 && value.length <= 30
+          value.length >= 2 && value.length <= 40
             ? (newForm[mainIndex].forms[index].isError = false)
             : (newForm[mainIndex].forms[index].isError = true);
           newForm[mainIndex].forms[index].value = value;
@@ -771,20 +771,6 @@ const Verification = React.memo(() => {
         case "textArea":
           return (
             <div className="input-contain" key={index}>
-              {/* <input
-                tabIndex={-1}
-                disabled={isDisabled}
-                required
-                value={value}
-                onChange={(e) =>
-                  handleOnChange(e.target.value, group, index, mainIndex)
-                }
-                onKeyDown={handleKeydown}
-                minLength={minLength}
-                maxLength={maxLength}
-                type={type}
-                name={forInput}
-              /> */}
               <textarea
                 tabIndex={-1}
                 disabled={isDisabled}
