@@ -23,6 +23,8 @@ const getInternship = async (req, res) => {
 const createInternship = async (req, res) => {
   const {} = req.body;
 
+  const internship = await Internship.create({...req.body});
+
   res.status(StatusCodes.OK).json({success: true, data: {test: "Test"}});
 };
 

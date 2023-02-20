@@ -2315,6 +2315,20 @@ button {
   z-index: 7;
   padding: 1rem;
 }
+.dashboard .internship-container .add-modal, .dashboard-active .internship-container .add-modal {
+  width: 100rem;
+  height: 80vh;
+  display: flex;
+}
+.dashboard .internship-container .add-modal form, .dashboard-active .internship-container .add-modal form {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  gap: 1rem;
+}
+.dashboard .internship-container .add-modal form > *, .dashboard-active .internship-container .add-modal form > * {
+  border: solid 1px #000;
+}
 .dashboard .coordinator-dashboard, .dashboard-active .coordinator-dashboard {
   display: grid;
   grid-template-rows: 14vh 0.8fr 1fr;
