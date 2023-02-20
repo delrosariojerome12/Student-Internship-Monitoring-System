@@ -59,8 +59,6 @@ const updateIntern = async (req, res) => {
     throw new NotFound(`Email not found`);
   }
 
-  // const filtered = internshipDetails.map(item => )
-
   if (internshipDetails) {
     delete internshipDetails.renderedHours;
 

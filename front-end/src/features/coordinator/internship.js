@@ -26,6 +26,51 @@ export const getAllInternship = createAsyncThunk(
   }
 );
 
+export const createInternship = createAsyncThunk(
+  "/internship/createInternship",
+  async ({internship}, {rejectWithValue}) => {
+    console.log(internship);
+    try {
+      const url = `http://localhost:5000/internship/createInternship`;
+      const {data: res} = await axios.post(url, internship);
+      console.log(res);
+      return {res};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const updateInternship = createAsyncThunk(
+  "/internship/updateInternship",
+  async ({x, id}, {rejectWithValue}) => {
+    try {
+      const url = `http://localhost:5000/internship/updateInternship/${id}`;
+      const {data: res} = await axios.patch(url, x);
+      console.log(res);
+      return {res};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+export const deleteInternship = createAsyncThunk(
+  "/internship/deleteInternship",
+  async ({id}, {rejectWithValue}) => {
+    try {
+      const url = `http://localhost:5000/internship/deleteInternship/${id}`;
+      const {data: res} = await axios.get(url);
+      console.log(res);
+      return {res};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 export const internshipReducer = createSlice({
   name: "internship",
   initialState,
@@ -53,6 +98,45 @@ export const internshipReducer = createSlice({
         state.isLoading = false;
       })
       .addCase(getAllInternship.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+      });
+    // create
+    build
+      .addCase(createInternship.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(createInternship.fulfilled, (state, {payload: {res}}) => {
+        // state.internships = res.data;
+        state.isLoading = false;
+      })
+      .addCase(createInternship.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+      });
+    // update
+    build
+      .addCase(updateInternship.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(updateInternship.fulfilled, (state, {payload: {res}}) => {
+        // state.internships = res.data;
+        state.isLoading = false;
+      })
+      .addCase(updateInternship.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+      });
+    // delete
+    build
+      .addCase(deleteInternship.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteInternship.fulfilled, (state, {payload: {res}}) => {
+        // state.internships = res.data;
+        state.isLoading = false;
+      })
+      .addCase(deleteInternship.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
       });
