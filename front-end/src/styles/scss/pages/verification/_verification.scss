@@ -174,8 +174,6 @@
     }
   }
 
-  // start
-
   .verification-steps {
     overflow: hidden;
     margin: auto;
@@ -274,6 +272,13 @@
     .student-details,
     .schedule-details {
       background-color: #f3f3f3;
+
+      input[type="file"] {
+        display: none;
+      }
+      p {
+        font-size: 1.8rem;
+      }
     }
     .internship-details {
       border: solid 1px #000;
@@ -296,6 +301,7 @@
         flex-direction: column;
         gap: 1.2rem;
         width: 100%;
+
         .img-input {
           height: 5rem;
           display: flex;
@@ -311,6 +317,11 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            cursor: pointer;
+            p {
+              font-size: 1.8rem;
+              font-weight: 400;
+            }
             img {
               height: 4rem;
               width: 4rem;
@@ -350,6 +361,7 @@
           padding-left: 2rem;
           border-radius: 0.5rem;
           label {
+            cursor: pointer;
             width: 100%;
             height: 100%;
             display: flex;
@@ -412,7 +424,7 @@
       position: relative;
       flex-direction: column;
       width: fit-content;
-      gap: 0.5rem;
+      gap: 1rem;
       width: 100%;
 
       textarea {
@@ -427,6 +439,15 @@
         &:focus {
           border: solid 3px $primary-bg-color;
           outline: none;
+        }
+
+        .placeholder-container {
+          position: absolute;
+          top: 0%;
+          left: 0rem;
+          height: 100%;
+          width: 100%;
+          pointer-events: none;
         }
 
         &:focus + .placeholder-container .placeholder-text {

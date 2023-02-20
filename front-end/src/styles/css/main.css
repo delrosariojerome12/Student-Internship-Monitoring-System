@@ -39,6 +39,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -2313,6 +2315,20 @@ button {
   z-index: 7;
   padding: 1rem;
 }
+.dashboard .internship-container .add-modal, .dashboard-active .internship-container .add-modal {
+  width: 100rem;
+  height: 80vh;
+  display: flex;
+}
+.dashboard .internship-container .add-modal form, .dashboard-active .internship-container .add-modal form {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  gap: 1rem;
+}
+.dashboard .internship-container .add-modal form > *, .dashboard-active .internship-container .add-modal form > * {
+  border: solid 1px #000;
+}
 .dashboard .coordinator-dashboard, .dashboard-active .coordinator-dashboard {
   display: grid;
   grid-template-rows: 14vh 0.8fr 1fr;
@@ -3807,6 +3823,16 @@ button {
 .verification-container form .schedule-details {
   background-color: #f3f3f3;
 }
+.verification-container form .internship-details input[type=file],
+.verification-container form .student-details input[type=file],
+.verification-container form .schedule-details input[type=file] {
+  display: none;
+}
+.verification-container form .internship-details p,
+.verification-container form .student-details p,
+.verification-container form .schedule-details p {
+  font-size: 1.8rem;
+}
 .verification-container form .internship-details {
   border: solid 1px #000;
   z-index: 3;
@@ -3846,6 +3872,11 @@ button {
   display: flex;
   align-items: center;
   gap: 1rem;
+  cursor: pointer;
+}
+.verification-container form .internship-details .forms-con .img-input label p {
+  font-size: 1.8rem;
+  font-weight: 400;
 }
 .verification-container form .internship-details .forms-con .img-input label img {
   height: 4rem;
@@ -3883,6 +3914,7 @@ button {
   border-radius: 0.5rem;
 }
 .verification-container form .student-details .forms-con .img-input label {
+  cursor: pointer;
   width: 100%;
   height: 100%;
   display: flex;
@@ -3942,7 +3974,7 @@ button {
   flex-direction: column;
   width: -moz-fit-content;
   width: fit-content;
-  gap: 0.5rem;
+  gap: 1rem;
   width: 100%;
 }
 .verification-container form .input-contain textarea {
@@ -3958,6 +3990,14 @@ button {
 .verification-container form .input-contain textarea:focus {
   border: solid 3px #457b9d;
   outline: none;
+}
+.verification-container form .input-contain textarea .placeholder-container {
+  position: absolute;
+  top: 0%;
+  left: 0rem;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
 }
 .verification-container form .input-contain textarea:focus + .placeholder-container .placeholder-text {
   top: 0%;
@@ -4477,6 +4517,16 @@ button {
     width: 20rem;
   }
 }
+.internship-container-intern {
+  border: solid 1px #fff;
+  display: grid;
+  grid-template-rows: 15rem 1fr;
+  gap: 1rem;
+}
+.internship-container-intern > * {
+  border: solid 1px #fff;
+}
+
 .profile-page {
   display: grid;
   height: 100%;

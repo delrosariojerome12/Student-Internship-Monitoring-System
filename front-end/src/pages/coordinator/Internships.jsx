@@ -34,6 +34,11 @@ const Internships = React.memo(() => {
       <Internship key={index} internship={item} />
     ));
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Test");
+  };
   return (
     <div className="internship-container">
       <header>
@@ -48,7 +53,10 @@ const Internships = React.memo(() => {
         <>
           <div onClick={() => dispatch(handleAdd())} className="overlay"></div>
           <div className="add-modal modal">
-            <p>Add</p>
+            <form onSubmit={handleSubmit}>
+              <div className="modal-header"></div>
+              <div className="modal-body"></div>
+            </form>
           </div>
         </>
       )}

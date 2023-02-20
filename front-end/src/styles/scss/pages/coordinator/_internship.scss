@@ -115,4 +115,20 @@
     z-index: 7;
     padding: 1rem;
   }
+
+  .add-modal {
+    width: 100rem;
+    height: 80vh;
+    display: flex;
+
+    form {
+      height: 100%;
+      width: 100%;
+      display: grid;
+      gap: 1rem;
+      & > * {
+        border: solid 1px #000;
+      }
+    }
+  }
 }
