@@ -3,14 +3,14 @@ const { StatusCodes } = require("http-status-codes");
 const { BadRequest, NotFound, Duplicate } = require("../errors");
 
 const createAttendance = async (req, res) => {
-  /*const { intern } = req.body;
+  const { intern } = req.body;
 
   const isDuplicate = await Attendance.findOne({ intern });
 
   if (isDuplicate) {
     throw new Duplicate("User already exists.");
-  }*/
-  /*const {
+  }
+  const {
     dateStarted,
     dateEnded,
     estimatedCompletion,
@@ -22,9 +22,9 @@ const createAttendance = async (req, res) => {
     regularHours,
     OTHours,
     remarks,
-  } = req.body;*/
+  } = req.body;
 
-  req.body.user = req.user.userId;
+
 
   if (
     !dateStarted ||
