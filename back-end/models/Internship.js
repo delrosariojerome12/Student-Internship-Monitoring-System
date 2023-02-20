@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const InternshipSchema = new mongoose.Schema({
   companyName: {
     type: String,
-    maxlength: 30,
+    maxlength: 40,
     minlength: 2,
     required: [true, "Please provide company name"],
   },
