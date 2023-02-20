@@ -115,4 +115,262 @@
     z-index: 7;
     padding: 1rem;
   }
+
+  .add-modal {
+    width: 100rem;
+    min-height: 80vh;
+    display: flex;
+    background-color: #d9d9d9;
+
+    form {
+      height: 100%;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 22rem 1fr 1fr 22rem;
+      grid-template-rows: repeat(6, 11rem);
+      gap: 1rem;
+      padding: 2rem;
+
+      .input-contain {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        width: fit-content;
+        justify-content: space-evenly;
+        width: 100%;
+        background-color: #fff;
+        padding: 1rem;
+        border-radius: 1rem;
+
+        textarea {
+          resize: none;
+          height: 100%;
+          border: solid 3px transparent;
+          outline: solid 1px #8b8b8b;
+          border-radius: 0.5rem;
+          padding: 1.1rem 3.5rem 1.1rem 2rem;
+          letter-spacing: 2px;
+          transition: all 0.3s ease-in-out;
+          &:focus {
+            border: solid 3px $primary-bg-color;
+            outline: none;
+          }
+
+          .placeholder-container {
+            position: absolute;
+            top: 0%;
+            left: 0rem;
+            height: 100%;
+            width: 100%;
+            pointer-events: none;
+            font-size: 2rem;
+          }
+
+          &:focus + .placeholder-container .placeholder-text {
+            top: 0%;
+            left: 0%;
+            background-color: #fff;
+            font-size: 1.1rem;
+            color: black;
+            scale: 0.8;
+          }
+        }
+
+        .error-message {
+          font-size: 1.4rem;
+          color: red;
+        }
+
+        .placeholder-container {
+          position: absolute;
+          top: 0%;
+          left: 0rem;
+          height: 4.5rem;
+          width: 100%;
+          pointer-events: none;
+        }
+
+        input {
+          // margin: auto;
+          width: 100%;
+          height: 5rem;
+          // height: 100%;
+          border: solid 3px transparent;
+          outline: solid 1px #8b8b8b;
+          border-radius: 0.5rem;
+          padding: 1.1rem 3.5rem 1.1rem 2rem;
+          letter-spacing: 2px;
+          transition: all 0.3s ease-in-out;
+          background-color: #fff;
+
+          &:focus {
+            border: solid 3px $primary-bg-color;
+            outline: none;
+          }
+
+          &:focus + .placeholder-container .placeholder-text {
+            top: 0%;
+            left: 0%;
+            background-color: #fff;
+            font-size: 1.1rem;
+            color: black;
+            // border: solid 1px #8b8b8b;
+            scale: 0.8;
+          }
+        }
+
+        .placeholder-text {
+          position: absolute;
+          transition: all 0.2s ease-in-out;
+          pointer-events: none;
+          top: 50%;
+          left: 5%;
+          transform: translate(0%, -50%);
+          &:nth-child(1) {
+            left: 2% !important;
+          }
+          .text {
+            font-size: 1.4rem;
+            padding: 0 0.5rem;
+            background-color: transparent;
+            color: black;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+          }
+        }
+        .active {
+          top: 0%;
+          left: 0%;
+          background-color: #fff;
+          font-size: 1.1rem;
+          border-color: #8b8b8b;
+          scale: 0.8;
+        }
+      }
+
+      .img-input {
+        height: 5rem;
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        gap: 2rem;
+        border-radius: 1rem;
+
+        input[type="file"] {
+          display: none;
+        }
+        p {
+          font-size: 1.8rem;
+        }
+        label {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          cursor: pointer;
+          padding: 1rem;
+          p {
+            font-size: 1.8rem;
+            font-weight: 400;
+            text-align: center;
+          }
+          img {
+            width: 100%;
+            height: 80%;
+            margin: auto;
+            object-fit: contain;
+            cursor: pointer;
+          }
+        }
+      }
+
+      & > :nth-child(1) {
+        height: 100%;
+        width: 100%;
+        grid-row: 1/3;
+        grid-column: 1/2;
+      }
+
+      & > :nth-child(2) {
+        height: 100%;
+        width: 100%;
+        grid-column: 2/5;
+        grid-row: 1/2;
+      }
+      & > :nth-child(3) {
+        height: 100%;
+        width: 100%;
+        grid-column: 2/5;
+        grid-row: 2/3;
+      }
+      & > :nth-child(4) {
+        height: 100%;
+        width: 100%;
+        grid-row: 3/4;
+        grid-column: 1/3;
+      }
+      & > :nth-child(5) {
+        height: 100%;
+        width: 100%;
+        grid-row: 3/4;
+        grid-column: 3/5;
+      }
+      & > :nth-child(6) {
+        height: 100%;
+        width: 100%;
+        grid-row: 4/5;
+        grid-column: 3/5;
+      }
+      & > :nth-child(7) {
+        height: 100%;
+        width: 100%;
+        grid-row: 4/5;
+        grid-column: 1/3;
+      }
+
+      & > :nth-child(8) {
+        height: 100%;
+        width: 100%;
+        grid-row: 5/7;
+        grid-column: 1/5;
+      }
+
+      .btn-holder {
+        grid-column: 2/4;
+        @include flexCenter;
+        background-color: none;
+        button {
+          @include flexCenter;
+          cursor: pointer;
+          height: 4.5rem;
+          padding: 1.6rem;
+          border-radius: 5px;
+          border: solid 1px transparent;
+          outline: none;
+          color: $primary-font-color;
+          background-color: $primary-compliment-landing;
+          transition: all 0.3s ease-in-out;
+          font-weight: 600;
+
+          // margin: 0 auto;
+          // letter-spacing: 0.2rem;
+          &.decline-btn:hover {
+            background-color: $red-primary-color;
+          }
+          &.back-btn:hover,
+          &.approve-btn:hover,
+          &.view:hover {
+            background-color: #d9d9d9;
+            color: $primary-compliment-landing;
+            border: solid 1px $primary-compliment-landing;
+          }
+        }
+      }
+
+      // & > * {
+      //   border: solid 1px #000;
+      // }
+    }
+  }
 }

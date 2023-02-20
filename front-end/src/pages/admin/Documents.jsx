@@ -105,6 +105,7 @@ const Documents = React.memo(() => {
   const checkCompletion = () => {
     let numOfErrors = 0;
     let numOfValues = 0;
+
     form.forEach((item) => {
       item.isError && numOfErrors++;
       item.value && numOfValues++;
