@@ -910,7 +910,7 @@ button {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 }
@@ -3802,6 +3802,9 @@ button {
   }
   .dashboard .admin-document-page .document-container .documents, .dashboard-active .admin-document-page .document-container .documents {
     grid-auto-rows: 6rem;
+  }
+  .dashboard .admin-document-page .document-container .documents .document, .dashboard-active .admin-document-page .document-container .documents .document {
+    justify-content: flex-start;
   }
   .dashboard .admin-document-page .document-approval-container .document-intern, .dashboard-active .admin-document-page .document-approval-container .document-intern {
     min-height: 8rem !important;

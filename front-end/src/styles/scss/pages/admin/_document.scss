@@ -1,3 +1,5 @@
+/** @format */
+
 @import "../../utils";
 @import "../../variables";
 
@@ -871,6 +873,10 @@
       }
       .documents {
         grid-auto-rows: 6rem;
+        .document {
+          justify-content: flex-start;
+          padding-right: 1rem;
+        }
       }
     }
     .document-approval-container {
