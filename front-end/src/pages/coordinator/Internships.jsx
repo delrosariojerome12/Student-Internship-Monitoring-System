@@ -66,7 +66,7 @@ const Internships = React.memo(() => {
       forInput: "Company Address",
       value: "",
       isError: false,
-      errorMessage: "Atleast 5 characters and max of 50",
+      errorMessage: "Atleast 5 characters and max of 70",
       isDisabled: false,
     },
     {
