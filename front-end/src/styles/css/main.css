@@ -2255,7 +2255,8 @@ button {
   grid-template-columns: repeat(auto-fill, 42rem);
   grid-auto-rows: 17rem;
   gap: 1rem;
-  overflow-y: auto;
+  overflow: hidden;
+  position: relative;
 }
 .dashboard .internship-container .content .internship, .dashboard-active .internship-container .content .internship {
   background-color: #fff;
@@ -2273,8 +2274,8 @@ button {
 .dashboard .internship-container .content .internship .img-con img, .dashboard-active .internship-container .content .internship .img-con img {
   height: 100%;
   width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .dashboard .internship-container .content .internship .controls, .dashboard-active .internship-container .content .internship .controls {
   display: grid;
@@ -2292,6 +2293,36 @@ button {
 }
 .dashboard .internship-container .content .internship .controls .internship-btn button:hover, .dashboard-active .internship-container .content .internship .controls .internship-btn button:hover {
   background-color: #457b9d;
+}
+.dashboard .internship-container .content .message-con, .dashboard-active .internship-container .content .message-con {
+  position: absolute;
+  bottom: 0%;
+  left: 100%;
+  min-width: 35rem;
+  height: 6rem;
+  background-color: #00adb5;
+  z-index: 2;
+  border-radius: 1rem;
+  color: #fff;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+}
+.dashboard .internship-container .content .active, .dashboard-active .internship-container .content .active {
+  transform: translate(-100%);
+  transition: all 0.2s ease-in-out;
+}
+.dashboard .internship-container .no-internship, .dashboard-active .internship-container .no-internship {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #212121;
+  border-radius: 1rem;
+  color: #fff;
+  gap: 1rem;
 }
 .dashboard .internship-container .overlay, .dashboard-active .internship-container .overlay {
   width: 100%;
@@ -2525,6 +2556,7 @@ button {
   align-items: center;
   justify-content: center;
   background-color: none;
+  gap: 1rem;
 }
 .dashboard .internship-container .add-modal form .btn-holder button, .dashboard-active .internship-container .add-modal form .btn-holder button {
   display: flex;
@@ -2541,13 +2573,17 @@ button {
   transition: all 0.3s ease-in-out;
   font-weight: 600;
 }
-.dashboard .internship-container .add-modal form .btn-holder button.decline-btn:hover, .dashboard-active .internship-container .add-modal form .btn-holder button.decline-btn:hover {
+.dashboard .internship-container .add-modal form .btn-holder button:first-child:hover, .dashboard-active .internship-container .add-modal form .btn-holder button:first-child:hover {
   background-color: #e63946;
 }
 .dashboard .internship-container .add-modal form .btn-holder button.back-btn:hover, .dashboard-active .internship-container .add-modal form .btn-holder button.back-btn:hover, .dashboard .internship-container .add-modal form .btn-holder button.approve-btn:hover, .dashboard-active .internship-container .add-modal form .btn-holder button.approve-btn:hover, .dashboard .internship-container .add-modal form .btn-holder button.view:hover, .dashboard-active .internship-container .add-modal form .btn-holder button.view:hover {
   background-color: #d9d9d9;
   color: #0d7377;
   border: solid 1px #0d7377;
+}
+.dashboard .internship-container .view-modal, .dashboard-active .internship-container .view-modal {
+  min-height: 80vh;
+  width: 70rem;
 }
 .dashboard .coordinator-dashboard, .dashboard-active .coordinator-dashboard {
   display: grid;
