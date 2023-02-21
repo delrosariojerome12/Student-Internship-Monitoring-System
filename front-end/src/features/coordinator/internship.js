@@ -36,7 +36,6 @@ export const createInternship = createAsyncThunk(
     try {
       const url = `http://localhost:5000/internship/createInternship`;
       const {data: res} = await axios.post(url, internship);
-      console.log(res);
       return {res};
     } catch (error) {
       return rejectWithValue({
@@ -67,8 +66,7 @@ export const deleteInternship = createAsyncThunk(
   async ({id}, {rejectWithValue}) => {
     try {
       const url = `http://localhost:5000/internship/deleteInternship/${id}`;
-      const {data: res} = await axios.get(url);
-      console.log(res);
+      const {data: res} = await axios.delete(url);
       return {res};
     } catch (error) {
       console.log(error);
@@ -81,7 +79,13 @@ export const internshipReducer = createSlice({
   name: "internship",
   initialState,
   reducers: {
-    handleView: (state, action) => {
+    handleView: (state, {payload}) => {
+      if (payload) {
+        const internship = current(state.internships).filter(
+          (item) => item._id === payload.id
+        );
+        state.selectedInternship = internship;
+      }
       state.isViewOpen = !state.isViewOpen;
     },
     handleEdit: (state, action) => {
@@ -114,7 +118,6 @@ export const internshipReducer = createSlice({
     build
       .addCase(createInternship.pending, (state, action) => {
         state.isLoading = true;
-        state.isCreating = true;
       })
       .addCase(createInternship.fulfilled, (state, {payload: {res}}) => {
         state.internships = [...state.internships, res.data.internship];
@@ -154,8 +157,10 @@ export const internshipReducer = createSlice({
         state.isLoading = true;
       })
       .addCase(deleteInternship.fulfilled, (state, {payload: {res}}) => {
-        // state.internships = res.data;
+        state.internships = [...res.data.allInternships];
         state.isLoading = false;
+        state.isMessageOpen = true;
+        state.requestMessage = res.data.message;
       })
       .addCase(deleteInternship.rejected, (state, action) => {
         state.isLoading = false;

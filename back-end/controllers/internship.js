@@ -111,7 +111,7 @@ const deleteInternship = async (req, res) => {
 
   res.status(StatusCodes.OK).json({
     success: true,
-    data: {message: "Document Deleted Successfully", allInternships},
+    data: {message: "Document Deleted Successfully.", allInternships},
   });
 };
 
