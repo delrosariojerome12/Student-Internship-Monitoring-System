@@ -1636,14 +1636,18 @@ button {
   border-radius: 1rem;
   border: solid 1px #fff;
   display: grid;
-  grid-template-rows: minmax(15rem, 10vh) minmax(5rem, 5vh) minmax(30rem, 67vh);
+  grid-template-rows: minmax(15rem, 15vh) minmax(5rem, 5vh) minmax(30rem, 64vh);
   gap: 1rem;
+  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
   padding: 1rem;
 }
 .dashboard .intern-container .preview-container, .dashboard-active .intern-container .preview-container {
   background-color: #d9d9d9;
   border-radius: 1rem;
   padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .dashboard .intern-container .preview-container .selects, .dashboard-active .intern-container .preview-container .selects {
   display: flex;
@@ -1858,26 +1862,55 @@ button {
 }
 @media screen and (max-width: 1030px) {
   .dashboard .intern-container, .dashboard-active .intern-container {
-    grid-template-rows: minmax(17rem, 20vh) minmax(5rem, 5vh) minmax(30rem, 64vh);
+    grid-template-rows: minmax(28.5rem, 30vh) minmax(5rem, 5vh) minmax(30rem, 49vh);
+  }
+  .dashboard .intern-container .preview-container .selected-intern, .dashboard-active .intern-container .preview-container .selected-intern {
+    grid-template-columns: 15rem auto;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .dashboard .intern-container .preview-container .selected-intern img, .dashboard-active .intern-container .preview-container .selected-intern img {
+    grid-column: 1/2;
+    grid-row: 1/3;
+    height: 15rem;
+    width: 15rem;
+  }
+}
+@media screen and (max-width: 920px) {
+  .dashboard .intern-container .interns-active, .dashboard-active .intern-container .interns-active {
+    grid-template-columns: 40rem;
   }
 }
 @media screen and (max-width: 750px) {
   .dashboard .intern-container, .dashboard-active .intern-container {
-    grid-template-rows: minmax(17rem, 20vh) minmax(5rem, 5vh) minmax(25rem, 52vh);
+    grid-template-rows: minmax(30rem, 30vh) minmax(5rem, 5vh) minmax(30rem, 47vh);
+  }
+  .dashboard .intern-container .preview-container .selected-intern, .dashboard-active .intern-container .preview-container .selected-intern {
+    grid-template-columns: 12rem auto;
+  }
+  .dashboard .intern-container .preview-container .selected-intern > *, .dashboard-active .intern-container .preview-container .selected-intern > * {
+    font-size: 1.7rem;
+  }
+  .dashboard .intern-container .preview-container .selected-intern img, .dashboard-active .intern-container .preview-container .selected-intern img {
+    height: 12rem;
+    width: 12rem;
   }
 }
 @media screen and (max-width: 600px) {
+  .dashboard .intern-container, .dashboard-active .intern-container {
+    grid-template-rows: minmax(28rem, 25vh) minmax(8rem, 8vh) minmax(25rem, 35vh);
+  }
   .dashboard .intern-container .preview-container .selected-intern, .dashboard-active .intern-container .preview-container .selected-intern {
-    grid-template-columns: auto auto;
+    grid-template-columns: auto;
   }
   .dashboard .intern-container .preview-container .selected-intern img, .dashboard-active .intern-container .preview-container .selected-intern img {
     display: none;
   }
+  .dashboard .intern-container .interns-active, .dashboard-active .intern-container .interns-active {
+    grid-template-columns: 35rem;
+  }
 }
 @media screen and (max-width: 500px) {
-  .dashboard .intern-container, .dashboard-active .intern-container {
-    grid-template-rows: minmax(17rem, 20vh) minmax(10rem, 10vh) minmax(25rem, 52vh);
-  }
   .dashboard .intern-container .navigation, .dashboard-active .intern-container .navigation {
     grid-template-columns: auto;
     gap: 0rem;
@@ -1886,6 +1919,9 @@ button {
   .dashboard .intern-container .navigation .right-side,
   .dashboard-active .intern-container .navigation .right-side {
     border: none;
+  }
+  .dashboard .intern-container .navigation .left-side button, .dashboard-active .intern-container .navigation .left-side button {
+    height: 3rem;
   }
   .dashboard .intern-container .interns .intern, .dashboard-active .intern-container .interns .intern {
     grid-template-columns: 10rem auto;
