@@ -10,6 +10,7 @@ import {
   handleEdit,
   handleView,
   createInternship,
+  handleMessage,
 } from "../../features/coordinator/internship";
 import {handleAdd} from "../../features/coordinator/internship";
 import Select from "react-select";
@@ -20,10 +21,19 @@ import {ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage";
 import {v4} from "uuid";
 
 import noImageDark from "../../assets/img/noimageDark.svg";
+import NoDocumentSvg from "../../assets/img/waiting.svg";
 
 const Internships = React.memo(() => {
-  const {internships, isLoading, isError, isEditOpen, isViewOpen, isAddOpen} =
-    useSelector((state) => state.internship);
+  const {
+    internships,
+    isLoading,
+    isError,
+    isEditOpen,
+    isViewOpen,
+    isAddOpen,
+    requestMessage,
+    isMessageOpen,
+  } = useSelector((state) => state.internship);
   const dispatch = useDispatch();
 
   const [form, setForm] = useState([
@@ -149,9 +159,24 @@ const Internships = React.memo(() => {
   }
 
   const renderInternship = () => {
-    return internships.map((item, index) => (
-      <Internship key={index} internship={item} />
-    ));
+    if (internships.length > 0) {
+      return (
+        <div className="content">
+          {internships.map((item, index) => (
+            <Internship key={index} internship={item} />
+          ))}
+          <div className={isMessageOpen ? "message-con active" : "message-con"}>
+            <p>{requestMessage}</p>
+          </div>
+        </div>
+      );
+    }
+    return (
+      <div className="no-internship">
+        <h3>No existing internships at the moment.</h3>
+        <img src={NoDocumentSvg} alt="no-internship" />
+      </div>
+    );
   };
 
   const checkCompletion = () => {
@@ -167,10 +192,8 @@ const Internships = React.memo(() => {
 
     if (numOfErrors === 0 && numOfValues - 1 === lengthForms - 1) {
       setComplete(true);
-      console.log("ok");
     } else {
       setComplete(false);
-      console.log("not ok");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   };
@@ -438,6 +461,19 @@ const Internships = React.memo(() => {
     e.preventDefault();
     const internship = convertForm(form);
     dispatch(createInternship({internship}));
+
+    const timer = setTimeout(() => dispatch(handleMessage()), 3000);
+    return () => clearTimeout(timer);
+  };
+
+  const handleClose = () => {
+    const newForm = [...form].map((item) => {
+      item.value = "";
+      return {...item};
+    });
+    setForm(newForm);
+    dispatch(handleAdd());
+    console.log(newForm);
   };
 
   return (
@@ -448,7 +484,7 @@ const Internships = React.memo(() => {
       <div className="btn-container">
         <button onClick={() => dispatch(handleAdd())}>Add</button>
       </div>
-      <div className="content">{renderInternship()}</div>
+      {renderInternship()}
 
       {isAddOpen && (
         <>
@@ -457,6 +493,9 @@ const Internships = React.memo(() => {
             <form onSubmit={handleSubmit}>
               {renderInputs()}
               <div className="btn-holder">
+                <button type="button" onClick={handleClose}>
+                  Close
+                </button>
                 <button
                   style={
                     isComplete

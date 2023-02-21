@@ -6,6 +6,10 @@ import {
   handleView,
   handleDelete,
 } from "../../features/coordinator/internship";
+
+// import noImageDark from "../../assets/img/noimageDark.svg";
+import noImageDark from "../../assets/img/noimageDark.svg";
+
 const Internship = React.memo(({internship}) => {
   const {
     companyName,
@@ -18,7 +22,6 @@ const Internship = React.memo(({internship}) => {
     description,
   } = internship;
   const dispatch = useDispatch();
-  console.log(internship);
   return (
     <div className="internship">
       <div className="img-con">
