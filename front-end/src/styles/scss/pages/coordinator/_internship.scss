@@ -147,7 +147,7 @@
 
   .add-modal {
     width: 100rem;
-    min-height: 80vh;
+    min-height: 85%;
     display: flex;
     background-color: #d9d9d9;
 
@@ -404,7 +404,30 @@
     }
   }
   .view-modal {
-    min-height: 80vh;
+    min-height: 85%;
     width: 70rem;
+    display: grid;
+    grid-template-columns: 20rem 1fr;
+    grid-template-rows: 20rem;
+
+    & > * {
+      border: solid 1px #000;
+    }
+    .input {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      img {
+        height: 20rem;
+        width: 20rem;
+        // height: 100%;
+        // width: 100%;
+      }
+    }
+
+    & > :nth-child(7) {
+      grid-row: 1/2;
+      grid-column: 1/3;
+    }
   }
 }
