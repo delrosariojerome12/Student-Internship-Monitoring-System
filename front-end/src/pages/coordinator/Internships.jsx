@@ -23,6 +23,8 @@ import {v4} from "uuid";
 import noImageDark from "../../assets/img/noimageDark.svg";
 import NoDocumentSvg from "../../assets/img/waiting.svg";
 
+import ViewModal from "../../components/coordinator/ViewModal";
+
 const Internships = React.memo(() => {
   const {
     internships,
@@ -33,6 +35,7 @@ const Internships = React.memo(() => {
     isAddOpen,
     requestMessage,
     isMessageOpen,
+    selectedInternship,
   } = useSelector((state) => state.internship);
   const dispatch = useDispatch();
 
@@ -66,7 +69,7 @@ const Internships = React.memo(() => {
       forInput: "Company Address",
       value: "",
       isError: false,
-      errorMessage: "Atleast 5 characters and max of 50",
+      errorMessage: "Atleast 5 characters and max of 70",
       isDisabled: false,
     },
     {
@@ -519,14 +522,7 @@ const Internships = React.memo(() => {
           </div>
         </>
       )}
-      {isViewOpen && (
-        <>
-          <div onClick={() => dispatch(handleView())} className="overlay"></div>
-          <div className="view-modal modal">
-            <p>View</p>
-          </div>
-        </>
-      )}
+      {isViewOpen && <ViewModal form={form} />}
     </div>
   );
 });
