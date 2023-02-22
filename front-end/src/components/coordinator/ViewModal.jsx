@@ -35,15 +35,14 @@ const ViewModal = React.memo(({form}) => {
               value: {link, name},
             } = item;
             return (
-              <div key={index} className="input">
-                <h3>{forInput}</h3>
+              <div key={index} className="input img-con">
                 <img src={link} alt="logo" />
               </div>
             );
           }
           return (
-            <div key={index} className="input">
-              <h3>{forInput}</h3>
+            <div key={index} className="input text-con">
+              <h4>{forInput}</h4>
               <p>{value}</p>
             </div>
           );
