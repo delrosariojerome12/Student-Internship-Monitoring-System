@@ -88,7 +88,13 @@ export const internshipReducer = createSlice({
       }
       state.isViewOpen = !state.isViewOpen;
     },
-    handleEdit: (state, action) => {
+    handleEdit: (state, {payload}) => {
+      if (payload) {
+        const internship = current(state.internships).filter(
+          (item) => item._id === payload.id
+        );
+        state.selectedInternship = internship;
+      }
       state.isEditOpen = !state.isEditOpen;
     },
     handleDelete: (state, action) => {

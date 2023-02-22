@@ -25,6 +25,7 @@ const Internship = React.memo(({internship}) => {
     _id,
   } = internship;
   const dispatch = useDispatch();
+
   return (
     <div className="internship">
       <div className="img-con">
