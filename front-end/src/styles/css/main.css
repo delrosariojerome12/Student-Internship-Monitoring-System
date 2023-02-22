@@ -1863,7 +1863,7 @@ button {
 }
 @media screen and (max-width: 1030px) {
   .dashboard .intern-container, .dashboard-active .intern-container {
-    grid-template-rows: minmax(28.5rem, 30vh) minmax(5rem, 5vh) minmax(30rem, 49vh);
+    grid-template-rows: 27.5rem 5rem minmax(30rem, 49vh);
   }
   .dashboard .intern-container .preview-container .selected-intern, .dashboard-active .intern-container .preview-container .selected-intern {
     grid-template-columns: 15rem auto;
@@ -1885,7 +1885,7 @@ button {
 }
 @media screen and (max-width: 750px) {
   .dashboard .intern-container, .dashboard-active .intern-container {
-    grid-template-rows: minmax(30rem, 30vh) minmax(5rem, 5vh) minmax(30rem, 47vh);
+    grid-template-rows: 26rem 5rem minmax(30rem, 47vh);
   }
   .dashboard .intern-container .preview-container .selected-intern, .dashboard-active .intern-container .preview-container .selected-intern {
     grid-template-columns: 12rem auto;
@@ -1930,16 +1930,10 @@ button {
     width: 10rem;
   }
   .dashboard .intern-container .interns .intern .intern-details, .dashboard-active .intern-container .interns .intern .intern-details {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
     gap: 0.2rem;
   }
   .dashboard .intern-container .interns-active, .dashboard-active .intern-container .interns-active {
     grid-auto-rows: 12rem;
-    grid-template-columns: 1fr;
   }
 }
 @media screen and (max-width: 400px) {
@@ -1948,6 +1942,14 @@ button {
   }
   .dashboard .intern-container .interns .intern .img-container, .dashboard-active .intern-container .interns .intern .img-container {
     display: none;
+  }
+  .dashboard .intern-container .interns .intern .intern-details, .dashboard-active .intern-container .interns .intern .intern-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.2rem;
   }
 }
 .dashboard .approvals, .dashboard-active .approvals {

@@ -242,10 +242,7 @@
 
 @media screen and (max-width: 1030px) {
   .intern-container {
-    grid-template-rows: minmax(28.5rem, 30vh) minmax(5rem, 5vh) minmax(
-        30rem,
-        49vh
-      );
+    grid-template-rows: 27.5rem 5rem minmax(30rem, 49vh);
     .preview-container {
       .selected-intern {
         grid-template-columns: 15rem auto;
@@ -273,10 +270,7 @@
 
 @media screen and (max-width: 750px) {
   .intern-container {
-    grid-template-rows: minmax(30rem, 30vh) minmax(5rem, 5vh) minmax(
-        30rem,
-        47vh
-      );
+    grid-template-rows: 26rem 5rem minmax(30rem, 47vh);
     .preview-container {
       .selected-intern {
         grid-template-columns: 12rem auto;
@@ -332,16 +326,12 @@
           width: 10rem;
         }
         .intern-details {
-          @include flexCenter;
-          flex-direction: column;
-          text-align: center;
           gap: 0.2rem;
         }
       }
     }
     .interns-active {
       grid-auto-rows: 12rem;
-      grid-template-columns: 1fr;
     }
   }
 }
@@ -353,6 +343,12 @@
         grid-template-columns: auto;
         .img-container {
           display: none;
+        }
+        .intern-details {
+          @include flexCenter;
+          flex-direction: column;
+          text-align: center;
+          gap: 0.2rem;
         }
       }
     }
