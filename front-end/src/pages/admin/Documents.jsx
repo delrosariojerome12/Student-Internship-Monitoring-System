@@ -1,7 +1,7 @@
 import React, {useState, Suspense, lazy} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {IconContext} from "react-icons";
-import {FaPlus} from "react-icons/fa";
+import {FaPlus, FaTrash} from "react-icons/fa";
 import Document from "../../components/admin/Document";
 import Select from "react-select";
 import {
@@ -484,8 +484,14 @@ const Documents = React.memo(() => {
                   {renderDocumentDetails()}
                 </div>
                 <div className="desc-container">
-                  <p>Description: {selectedDocument.description}</p>
-                  <p>Format: {selectedDocument.format}</p>
+                  <p>
+                    <b>Description: </b>
+                    {selectedDocument.description}
+                  </p>
+                  <p>
+                    <b>Format: </b>
+                    {selectedDocument.format}
+                  </p>
                 </div>
               </div>
               <div className="btn-container">
@@ -557,6 +563,9 @@ const Documents = React.memo(() => {
               onClick={() => setDeleteDocumentOpen(false)}
             ></div>
             <div className="delete-document-modal">
+              <span>
+                <FaTrash />
+              </span>
               <h4>You are about to delete this document.</h4>
               <h3>Are you sure?</h3>
               <div className="btn-container">

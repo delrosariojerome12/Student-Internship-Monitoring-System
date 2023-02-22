@@ -1,11 +1,13 @@
+/** @format */
+
 import React from "react";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 
 const SelectedIntern = () => {
-  const {selectedIntern} = useSelector((state) => state.intern);
+  const { selectedIntern } = useSelector((state) => state.intern);
 
   const {
-    user: {email, firstName, lastName, profileImage},
+    user: { email, firstName, lastName, profileImage },
     internshipDetails: {
       companyAddress,
       companyName,
@@ -13,21 +15,39 @@ const SelectedIntern = () => {
       supervisor,
       typeOfWork,
     },
-    schoolDetails: {requiredHours, program, studentContact},
-    scheduleDetails: {scheduleType, timeInSchedule, timeOutSchedule},
+    schoolDetails: { requiredHours, program, studentContact },
+    scheduleDetails: { scheduleType, timeInSchedule, timeOutSchedule },
   } = selectedIntern;
   return (
     <div className="selected-intern">
       <img src={profileImage} alt="profile-intern" />
       <div className="middle-con">
-        <p>Student: {`${firstName} ${lastName}`}</p>
-        <p>Program: {program}</p>
-        <p>{`Total Hours: ${renderedHours}/${requiredHours}`}</p>
+        <p>
+          Student:
+          <b> {`${firstName} ${lastName}`}</b>
+        </p>
+        <p>
+          Program:
+          <b> {program}</b>
+        </p>
+        <p>
+          Total Hours:
+          <b> {`${renderedHours}/${requiredHours}`}</b>
+        </p>
       </div>
       <div className="right-con">
-        <p>Internship: {companyName}</p>
-        <p>Address: {companyAddress}</p>
-        <p>Work: {typeOfWork}</p>
+        <p>
+          Internship:
+          <b> {companyName} </b>
+        </p>
+        <p>
+          Address:
+          <b> {companyAddress} </b>
+        </p>
+        <p>
+          Work:
+          <b> {typeOfWork}</b>
+        </p>
       </div>
     </div>
   );

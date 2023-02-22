@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {useSelector, useDispatch} from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   getAllVerifiedInterns,
   handleCloseDocument,
@@ -7,11 +7,11 @@ import {
 import Bouncing from "../../components/loading/Bouncing";
 import ServerError from "../serverError";
 import DocumentIntern from "../../components/admin/DocumentIntern";
-import {Viewer} from "@react-pdf-viewer/core";
+import { Viewer } from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 
 const DocumentApproval = () => {
-  const {isLoading, isError, interns, selectedDocument, isDocumentOpen} =
+  const { isLoading, isError, interns, selectedDocument, isDocumentOpen } =
     useSelector((state) => state.documentApproval);
 
   const dispatch = useDispatch();
