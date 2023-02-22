@@ -1866,7 +1866,7 @@ button {
 }
 @media screen and (max-width: 1030px) {
   .dashboard .intern-container, .dashboard-active .intern-container {
-    grid-template-rows: 27.5rem 5rem minmax(30rem, 49vh);
+    grid-template-rows: 29rem 5rem minmax(30rem, 55vh);
   }
   .dashboard .intern-container .preview-container .selected-intern, .dashboard-active .intern-container .preview-container .selected-intern {
     grid-template-columns: 15rem auto;
@@ -1887,9 +1887,6 @@ button {
   }
 }
 @media screen and (max-width: 750px) {
-  .dashboard .intern-container, .dashboard-active .intern-container {
-    grid-template-rows: 26rem 5rem minmax(30rem, 47vh);
-  }
   .dashboard .intern-container .preview-container .selected-intern, .dashboard-active .intern-container .preview-container .selected-intern {
     grid-template-columns: 12rem auto;
   }
@@ -1903,7 +1900,7 @@ button {
 }
 @media screen and (max-width: 600px) {
   .dashboard .intern-container, .dashboard-active .intern-container {
-    grid-template-rows: minmax(28rem, 25vh) minmax(8rem, 8vh) minmax(25rem, 35vh);
+    grid-template-rows: 28rem 8rem minmax(25rem, 40vh);
   }
   .dashboard .intern-container .preview-container .selected-intern, .dashboard-active .intern-container .preview-container .selected-intern {
     grid-template-columns: auto;

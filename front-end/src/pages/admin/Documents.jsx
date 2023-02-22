@@ -1,7 +1,9 @@
-import React, {useState, Suspense, lazy} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {IconContext} from "react-icons";
-import {FaPlus} from "react-icons/fa";
+/** @format */
+
+import React, { useState, Suspense, lazy } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { IconContext } from "react-icons";
+import { FaPlus } from "react-icons/fa";
 import Document from "../../components/admin/Document";
 import Select from "react-select";
 import {
@@ -13,19 +15,20 @@ import NoDocumentSvg from "../../assets/img/waiting.svg";
 import DocumentSvg from "../../assets/img/document.svg";
 import DocumentDark from "../../assets/img/documentNigga.svg";
 
-import {storage} from "../../Firebase";
-import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
-import {v4} from "uuid";
-import {Viewer} from "@react-pdf-viewer/core";
+import { storage } from "../../Firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { v4 } from "uuid";
+import { Viewer } from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
-import {Route, Routes, Link, Navigate, useNavigate} from "react-router-dom";
+import { Route, Routes, Link, Navigate, useNavigate } from "react-router-dom";
 import Bouncing from "../../components/loading/Bouncing";
 import ServerError from "../../pages/serverError";
+import { FaTrash } from "react-icons/fa";
 
 const DocumentApproval = lazy(() => import("./DocumentApproval"));
 
 const Documents = React.memo(() => {
-  const {documents, isError} = useSelector((state) => state.document);
+  const { documents, isError } = useSelector((state) => state.document);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -151,13 +154,13 @@ const Documents = React.memo(() => {
 
     const newValues = y.map((item) => {
       const x = Object.assign({}, item);
-      return {[x[0]]: x[1], code: x[0], value: x[1]};
+      return { [x[0]]: x[1], code: x[0], value: x[1] };
     });
 
     const final = newValues
       .map((i) => {
         const newForm = form.map(
-          (item) => item.code === i.code && {...item, value: i.value}
+          (item) => item.code === i.code && { ...item, value: i.value }
         );
         return newForm.filter((c) => c).sort((item) => item.type)[0];
       })
@@ -186,7 +189,7 @@ const Documents = React.memo(() => {
               label: "Format",
             },
           }
-        : {...item, value: ""};
+        : { ...item, value: "" };
     });
     setForm(newForm);
     setComplete(false);
@@ -199,7 +202,7 @@ const Documents = React.memo(() => {
     switch (inputField) {
       case "sample":
         if (value) {
-          const {type} = value;
+          const { type } = value;
           const imageName = `images/documents/sample/${v4() + value.name}`;
           const imageRef = ref(storage, imageName);
 
@@ -270,13 +273,13 @@ const Documents = React.memo(() => {
 
   const convertForm = (form) => {
     const newData = form.filter((input) => {
-      const {code, value, name} = input;
-      return name ? {code, value, name} : {code, value};
+      const { code, value, name } = input;
+      return name ? { code, value, name } : { code, value };
     });
 
     const newObject = Object.assign(
       {},
-      ...newData.map((item) => ({[item.code]: item.value}))
+      ...newData.map((item) => ({ [item.code]: item.value }))
     );
 
     return newObject;
@@ -366,8 +369,7 @@ const Documents = React.memo(() => {
                   htmlFor={id}
                   className={
                     value ? "placeholder-text active" : "placeholder-text"
-                  }
-                >
+                  }>
                   <div className="text">{forInput}</div>
                 </label>
               </div>
@@ -382,22 +384,22 @@ const Documents = React.memo(() => {
                 key={index}
                 id={id}
                 value={value}
-                onChange={(e) => handleOnChange(e.target.value, index)}
-              ></textarea>
+                onChange={(e) =>
+                  handleOnChange(e.target.value, index)
+                }></textarea>
               <div className="placeholder-container">
                 <label
                   htmlFor={id}
                   className={
                     value ? "placeholder-text active" : "placeholder-text"
-                  }
-                >
+                  }>
                   <div className="text">{forInput}</div>
                 </label>
               </div>
             </div>
           );
         case "select":
-          const {options} = item;
+          const { options } = item;
           const list = options.map((opt) => opt);
           return (
             <Select
@@ -461,7 +463,7 @@ const Documents = React.memo(() => {
 
   return (
     <section className="admin-document-page">
-      <IconContext.Provider value={{className: "icon"}}>
+      <IconContext.Provider value={{ className: "icon" }}>
         {isDocumentOpen && (
           <>
             <div
@@ -469,8 +471,7 @@ const Documents = React.memo(() => {
               onClick={() => {
                 clearValue();
                 setDocumentOpen(false);
-              }}
-            ></div>
+              }}></div>
             <div className="document-modal">
               <div className="content">
                 <div className="document-name">
@@ -479,8 +480,7 @@ const Documents = React.memo(() => {
                 </div>
                 <div
                   className="img-container"
-                  onClick={() => setSampleViewed(true)}
-                >
+                  onClick={() => setSampleViewed(true)}>
                   {renderDocumentDetails()}
                 </div>
                 <div className="desc-container">
@@ -499,8 +499,7 @@ const Documents = React.memo(() => {
                   onClick={() => {
                     setDocumentOpen(false);
                     clearValue();
-                  }}
-                >
+                  }}>
                   Close
                 </button>
               </div>
@@ -511,8 +510,7 @@ const Documents = React.memo(() => {
           <>
             <div
               className="overlay"
-              onClick={() => setSampleViewed(false)}
-            ></div>
+              onClick={() => setSampleViewed(false)}></div>
             <div className="sample-view-container">
               {renderDocumentDetails()}
             </div>
@@ -525,8 +523,7 @@ const Documents = React.memo(() => {
               onClick={() => {
                 setAddDocumentOpen(false);
                 clearValue();
-              }}
-            ></div>
+              }}></div>
             <div className="add-document-modal">
               <form onSubmit={handleSubmit}>
                 <h4>Add Document</h4>
@@ -537,19 +534,17 @@ const Documents = React.memo(() => {
                   onClick={() => {
                     setAddDocumentOpen(false);
                     clearValue();
-                  }}
-                >
+                  }}>
                   Cancel
                 </button>
                 <button
                   style={
                     isComplete
-                      ? {pointerEvents: "auto"}
-                      : {pointerEvents: "none", opacity: ".5"}
+                      ? { pointerEvents: "auto" }
+                      : { pointerEvents: "none", opacity: ".5" }
                   }
                   type="submit"
-                  onClick={handleSubmit}
-                >
+                  onClick={handleSubmit}>
                   Add
                 </button>
               </div>
@@ -560,8 +555,7 @@ const Documents = React.memo(() => {
           <>
             <div
               className="overlay"
-              onClick={() => setDeleteDocumentOpen(false)}
-            ></div>
+              onClick={() => setDeleteDocumentOpen(false)}></div>
             <div className="delete-document-modal">
               <span>
                 <FaTrash />
@@ -573,8 +567,7 @@ const Documents = React.memo(() => {
                   onClick={() => {
                     setDeleteDocumentOpen(false);
                     clearValue();
-                  }}
-                >
+                  }}>
                   Cancel
                 </button>
                 <button
@@ -582,8 +575,7 @@ const Documents = React.memo(() => {
                     setDeleteDocumentOpen(false);
                     dispatch(handleDeleteDocument(selectedDocument._id));
                     clearValue();
-                  }}
-                >
+                  }}>
                   Confirm
                 </button>
               </div>
@@ -597,8 +589,7 @@ const Documents = React.memo(() => {
               onClick={() => {
                 setEditDocumentOpen(false);
                 clearValue();
-              }}
-            ></div>
+              }}></div>
             <div className="edit-document-modal">
               <form>
                 <h4>Edit Document</h4>
@@ -609,15 +600,14 @@ const Documents = React.memo(() => {
                   onClick={() => {
                     setEditDocumentOpen(false);
                     clearValue();
-                  }}
-                >
+                  }}>
                   Cancel
                 </button>
                 <button
                   style={
                     isComplete
-                      ? {pointerEvents: "auto"}
-                      : {pointerEvents: "none", opacity: ".5"}
+                      ? { pointerEvents: "auto" }
+                      : { pointerEvents: "none", opacity: ".5" }
                   }
                   onClick={() => {
                     dispatch(
@@ -628,8 +618,7 @@ const Documents = React.memo(() => {
                     );
                     clearValue();
                     setEditDocumentOpen(false);
-                  }}
-                >
+                  }}>
                   Confirm
                 </button>
               </div>
@@ -656,8 +645,7 @@ const Documents = React.memo(() => {
                 <div className="document-container">
                   <div className="document-control">
                     <button
-                      onClick={() => setAddDocumentOpen(!isAddDocumentOpen)}
-                    >
+                      onClick={() => setAddDocumentOpen(!isAddDocumentOpen)}>
                       <p>Add Document</p>
                       <FaPlus />
                     </button>
