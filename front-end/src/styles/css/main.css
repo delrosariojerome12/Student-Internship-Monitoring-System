@@ -3289,6 +3289,8 @@ button {
   height: 100%;
   width: 100%;
   border-radius: 1rem;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .dashboard .admin-document-page .add-document-modal form .input-contain, .dashboard-active .admin-document-page .add-document-modal form .input-contain, .dashboard .admin-document-page .edit-document-modal form .input-contain, .dashboard-active .admin-document-page .edit-document-modal form .input-contain, .dashboard .admin-document-page .delete-document-modal form .input-contain, .dashboard-active .admin-document-page .delete-document-modal form .input-contain, .dashboard .admin-document-page .document-modal form .input-contain, .dashboard-active .admin-document-page .document-modal form .input-contain {
   display: flex;
