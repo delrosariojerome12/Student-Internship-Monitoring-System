@@ -59,8 +59,6 @@ const updateIntern = async (req, res) => {
     throw new NotFound(`Email not found`);
   }
 
-  // const filtered = internshipDetails.map(item => )
-
   if (internshipDetails) {
     delete internshipDetails.renderedHours;
 
@@ -193,6 +191,9 @@ const approveDocument = async (req, res) => {
     path: "user",
     model: "User",
   });
+  if (!intern) {
+    throw new NotFound("Intern not found");
+  }
 
   res.status(StatusCodes.OK).json(intern);
 };
@@ -209,6 +210,10 @@ const rejectDocument = async (req, res) => {
     path: "user",
     model: "User",
   });
+
+  if (!intern) {
+    throw new NotFound("Intern not found");
+  }
 
   res.status(StatusCodes.OK).json(intern);
 };

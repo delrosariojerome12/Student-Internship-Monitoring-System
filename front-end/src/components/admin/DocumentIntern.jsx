@@ -55,7 +55,6 @@ const DocumentIntern = React.memo(({ intern }) => {
               <div className="btn-container">
                 <button
                   onClick={() => {
-                    console.log(documentDetails);
                     dispatch(
                       approveDocumentRequest({
                         email,
@@ -67,7 +66,13 @@ const DocumentIntern = React.memo(({ intern }) => {
                 >
                   Approve
                 </button>
-                <button onClick={() => dispatch(rejectDocumentRequest())}>
+                <button
+                  onClick={() =>
+                    dispatch(
+                      rejectDocumentRequest({email, id: _id, documentDetails})
+                    )
+                  }
+                >
                   Reject
                 </button>
               </div>

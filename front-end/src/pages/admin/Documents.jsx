@@ -1,7 +1,7 @@
-import React, { useState, Suspense, lazy } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { IconContext } from "react-icons";
-import { FaPlus } from "react-icons/fa";
+import React, {useState, Suspense, lazy} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {IconContext} from "react-icons";
+import {FaPlus} from "react-icons/fa";
 import Document from "../../components/admin/Document";
 import Select from "react-select";
 import {
@@ -13,19 +13,19 @@ import NoDocumentSvg from "../../assets/img/waiting.svg";
 import DocumentSvg from "../../assets/img/document.svg";
 import DocumentDark from "../../assets/img/documentNigga.svg";
 
-import { storage } from "../../Firebase";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { v4 } from "uuid";
-import { Viewer } from "@react-pdf-viewer/core";
+import {storage} from "../../Firebase";
+import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
+import {v4} from "uuid";
+import {Viewer} from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
-import { Route, Routes, Link, Navigate, useNavigate } from "react-router-dom";
+import {Route, Routes, Link, Navigate, useNavigate} from "react-router-dom";
 import Bouncing from "../../components/loading/Bouncing";
-import { FaTrash } from "react-icons/fa";
+import ServerError from "../../pages/serverError";
 
 const DocumentApproval = lazy(() => import("./DocumentApproval"));
 
 const Documents = React.memo(() => {
-  const { documents } = useSelector((state) => state.document);
+  const {documents, isError} = useSelector((state) => state.document);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -34,8 +34,7 @@ const Documents = React.memo(() => {
       type: "file",
       id: "sample-image",
       forInput: "Sample Image",
-      value:
-        "https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg",
+      value: "",
       isError: false,
       errorMessage: "",
       isDisabled: false,
@@ -103,9 +102,17 @@ const Documents = React.memo(() => {
 
   const [isComplete, setComplete] = useState(false);
 
+  if (!documents) {
+    return <Bouncing />;
+  }
+  if (isError) {
+    return <ServerError />;
+  }
+
   const checkCompletion = () => {
     let numOfErrors = 0;
     let numOfValues = 0;
+
     form.forEach((item) => {
       item.isError && numOfErrors++;
       item.value && numOfValues++;
@@ -114,8 +121,10 @@ const Documents = React.memo(() => {
     const lengthForms = form.length;
 
     if (numOfErrors === 0 && numOfValues === lengthForms) {
+      console.log("ok");
       setComplete(true);
     } else {
+      console.log("not ok");
       setComplete(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -128,6 +137,7 @@ const Documents = React.memo(() => {
   const handleDocumentModal = () => {
     setDocumentOpen(true);
   };
+
   const handleDeleteModal = (e) => {
     e.stopPropagation();
     setDeleteDocumentOpen(true);
@@ -141,18 +151,19 @@ const Documents = React.memo(() => {
 
     const newValues = y.map((item) => {
       const x = Object.assign({}, item);
-      return { [x[0]]: x[1], code: x[0], value: x[1] };
+      return {[x[0]]: x[1], code: x[0], value: x[1]};
     });
 
     const final = newValues
       .map((i) => {
         const newForm = form.map(
-          (item) => item.code === i.code && { ...item, value: i.value }
+          (item) => item.code === i.code && {...item, value: i.value}
         );
         return newForm.filter((c) => c).sort((item) => item.type)[0];
       })
       .filter((x) => x);
 
+    console.log(final);
     setForm(final);
   };
 
@@ -175,9 +186,10 @@ const Documents = React.memo(() => {
               label: "Format",
             },
           }
-        : { ...item, value: "" };
+        : {...item, value: ""};
     });
     setForm(newForm);
+    setComplete(false);
   };
 
   const handleOnChange = (value, index) => {
@@ -187,7 +199,7 @@ const Documents = React.memo(() => {
     switch (inputField) {
       case "sample":
         if (value) {
-          const { type } = value;
+          const {type} = value;
           const imageName = `images/documents/sample/${v4() + value.name}`;
           const imageRef = ref(storage, imageName);
 
@@ -206,12 +218,14 @@ const Documents = React.memo(() => {
                       value: "pdf",
                       label: "pdf",
                     };
-                    newForm[index + 2].value = "pdf";
+                    newForm[2].value = "pdf";
                   }
                   newForm[2].isDisabled = true;
                   newForm[index].format = type;
                   newForm[index].value = url;
                   newForm[index].isDisabled = true;
+
+                  console.log(newForm);
                   setForm(newForm);
                   checkCompletion();
                 })
@@ -219,15 +233,6 @@ const Documents = React.memo(() => {
             })
             .catch((err) => console.log(err));
         }
-
-        // add catch error here
-        // if (schoolDetails) {
-        //   const {
-        //     validID: {name},
-        //   } = schoolDetails;
-        //   deleteDuplicateFirebase(name);
-        // }
-
         return;
       case "name":
         if (value.length <= 2) {
@@ -248,7 +253,6 @@ const Documents = React.memo(() => {
         newForm[index].value = value;
         setForm(newForm);
         checkCompletion();
-
         return;
       case "format":
         newForm[index].value = value;
@@ -266,13 +270,13 @@ const Documents = React.memo(() => {
 
   const convertForm = (form) => {
     const newData = form.filter((input) => {
-      const { code, value, name } = input;
-      return name ? { code, value, name } : { code, value };
+      const {code, value, name} = input;
+      return name ? {code, value, name} : {code, value};
     });
 
     const newObject = Object.assign(
       {},
-      ...newData.map((item) => ({ [item.code]: item.value }))
+      ...newData.map((item) => ({[item.code]: item.value}))
     );
 
     return newObject;
@@ -393,7 +397,7 @@ const Documents = React.memo(() => {
             </div>
           );
         case "select":
-          const { options } = item;
+          const {options} = item;
           const list = options.map((opt) => opt);
           return (
             <Select
@@ -412,7 +416,7 @@ const Documents = React.memo(() => {
                   value: selectedDocument.format,
                 }
               }
-              isDisabled={isDisabled}
+              isDisabled={isEditDocumentOpen ? true : isDisabled}
               tabIndex={-1}
               options={list}
               styles={customStyle}
@@ -457,7 +461,7 @@ const Documents = React.memo(() => {
 
   return (
     <section className="admin-document-page">
-      <IconContext.Provider value={{ className: "icon" }}>
+      <IconContext.Provider value={{className: "icon"}}>
         {isDocumentOpen && (
           <>
             <div
@@ -540,8 +544,8 @@ const Documents = React.memo(() => {
                 <button
                   style={
                     isComplete
-                      ? { pointerEvents: "auto" }
-                      : { pointerEvents: "none", opacity: ".5" }
+                      ? {pointerEvents: "auto"}
+                      : {pointerEvents: "none", opacity: ".5"}
                   }
                   type="submit"
                   onClick={handleSubmit}
@@ -590,7 +594,10 @@ const Documents = React.memo(() => {
           <>
             <div
               className="overlay"
-              onClick={() => setEditDocumentOpen(false)}
+              onClick={() => {
+                setEditDocumentOpen(false);
+                clearValue();
+              }}
             ></div>
             <div className="edit-document-modal">
               <form>
@@ -609,8 +616,8 @@ const Documents = React.memo(() => {
                 <button
                   style={
                     isComplete
-                      ? { pointerEvents: "auto" }
-                      : { pointerEvents: "none", opacity: ".5" }
+                      ? {pointerEvents: "auto"}
+                      : {pointerEvents: "none", opacity: ".5"}
                   }
                   onClick={() => {
                     dispatch(

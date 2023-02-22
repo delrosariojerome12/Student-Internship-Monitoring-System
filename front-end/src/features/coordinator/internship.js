@@ -9,6 +9,10 @@ const initialState = {
   isEditOpen: false,
   isViewOpen: false,
   isAddOpen: false,
+  typeError: null,
+  requestMessage: null,
+  isMessageOpen: false,
+  errorType: null,
 };
 
 export const getAllInternship = createAsyncThunk(
@@ -26,11 +30,62 @@ export const getAllInternship = createAsyncThunk(
   }
 );
 
+export const createInternship = createAsyncThunk(
+  "/internship/createInternship",
+  async ({internship}, {rejectWithValue}) => {
+    try {
+      const url = `http://localhost:5000/internship/createInternship`;
+      const {data: res} = await axios.post(url, internship);
+      return {res};
+    } catch (error) {
+      return rejectWithValue({
+        error: error.response.data,
+        status: error.response.status,
+      });
+    }
+  }
+);
+
+export const updateInternship = createAsyncThunk(
+  "/internship/updateInternship",
+  async ({x, id}, {rejectWithValue}) => {
+    try {
+      const url = `http://localhost:5000/internship/updateInternship/${id}`;
+      const {data: res} = await axios.patch(url, x);
+      console.log(res);
+      return {res};
+    } catch (error) {
+      console.log(error);
+
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+export const deleteInternship = createAsyncThunk(
+  "/internship/deleteInternship",
+  async ({id}, {rejectWithValue}) => {
+    try {
+      const url = `http://localhost:5000/internship/deleteInternship/${id}`;
+      const {data: res} = await axios.delete(url);
+      return {res};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 export const internshipReducer = createSlice({
   name: "internship",
   initialState,
   reducers: {
-    handleView: (state, action) => {
+    handleView: (state, {payload}) => {
+      if (payload) {
+        const internship = current(state.internships).filter(
+          (item) => item._id === payload.id
+        );
+        state.selectedInternship = internship;
+      }
       state.isViewOpen = !state.isViewOpen;
     },
     handleEdit: (state, action) => {
@@ -41,6 +96,9 @@ export const internshipReducer = createSlice({
     },
     handleAdd: (state, action) => {
       state.isAddOpen = !state.isAddOpen;
+    },
+    handleMessage: (state, action) => {
+      state.isMessageOpen = !state.isMessageOpen;
     },
   },
   extraReducers: (build) => {
@@ -56,10 +114,62 @@ export const internshipReducer = createSlice({
         state.isLoading = false;
         state.isError = true;
       });
+    // create
+    build
+      .addCase(createInternship.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(createInternship.fulfilled, (state, {payload: {res}}) => {
+        state.internships = [...state.internships, res.data.internship];
+        state.isLoading = false;
+        state.isAddOpen = false;
+        state.requestMessage = res.data.message;
+        state.isMessageOpen = true;
+      })
+      .addCase(createInternship.rejected, (state, action) => {
+        const {error, status} = action.payload;
+        if (status === 400) {
+          state.typeError = "Duplicate";
+          state.isLoading = false;
+          state.isMessageOpen = true;
+          state.requestMessage = error.msg;
+          state.isAddOpen = false;
+        } else {
+          state.isError = true;
+        }
+      });
+    // update
+    build
+      .addCase(updateInternship.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(updateInternship.fulfilled, (state, {payload: {res}}) => {
+        // state.internships = res.data;
+        state.isLoading = false;
+      })
+      .addCase(updateInternship.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+      });
+    // delete
+    build
+      .addCase(deleteInternship.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteInternship.fulfilled, (state, {payload: {res}}) => {
+        state.internships = [...res.data.allInternships];
+        state.isLoading = false;
+        state.isMessageOpen = true;
+        state.requestMessage = res.data.message;
+      })
+      .addCase(deleteInternship.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+      });
   },
 });
 
-export const {handleEdit, handleView, handleDelete, handleAdd} =
+export const {handleEdit, handleView, handleDelete, handleAdd, handleMessage} =
   internshipReducer.actions;
 
 export default internshipReducer.reducer;
