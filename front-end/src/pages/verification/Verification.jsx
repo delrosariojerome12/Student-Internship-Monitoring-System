@@ -41,7 +41,7 @@ const Verification = React.memo(() => {
           forInput: "Company Name",
           value: "",
           isError: false,
-          errorMessage: "Atleast 2 characters and max of 40",
+          errorMessage: "Atleast 2 characters and max of 75",
           isDisabled: false,
           code: "companyName",
         },
@@ -52,7 +52,7 @@ const Verification = React.memo(() => {
           forInput: "Company Address",
           value: "",
           isError: false,
-          errorMessage: "Atleast 5 characters and max of 50",
+          errorMessage: "Atleast 5 characters and max of 100",
           isDisabled: false,
         },
         {
@@ -62,7 +62,7 @@ const Verification = React.memo(() => {
           forInput: "Supervisor",
           value: "",
           isError: false,
-          errorMessage: "Atleast 2 characters and  max of 20",
+          errorMessage: "Atleast 2 characters and  max of 50",
           isDisabled: false,
         },
         {
@@ -404,7 +404,7 @@ const Verification = React.memo(() => {
       const inputField = newForm[mainIndex].forms[index].id;
       switch (inputField) {
         case "company-name":
-          value.length >= 2 && value.length <= 40
+          value.length >= 2 && value.length <= 75
             ? (newForm[mainIndex].forms[index].isError = false)
             : (newForm[mainIndex].forms[index].isError = true);
           newForm[mainIndex].forms[index].value = value;
@@ -412,7 +412,7 @@ const Verification = React.memo(() => {
           checkCompletion(mainIndex);
           return;
         case "company-address":
-          value.length >= 5 && value.length <= 50
+          value.length >= 5 && value.length <= 100
             ? (newForm[mainIndex].forms[index].isError = false)
             : (newForm[mainIndex].forms[index].isError = true);
           newForm[mainIndex].forms[index].value = value;
@@ -420,7 +420,7 @@ const Verification = React.memo(() => {
           checkCompletion(mainIndex);
           return;
         case "supervisor":
-          value.length >= 2 && value.length <= 20
+          value.length >= 2 && value.length <= 50
             ? (newForm[mainIndex].forms[index].isError = false)
             : (newForm[mainIndex].forms[index].isError = true);
           newForm[mainIndex].forms[index].value = value;

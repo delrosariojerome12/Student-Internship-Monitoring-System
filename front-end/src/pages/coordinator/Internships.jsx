@@ -58,7 +58,7 @@ const Internships = React.memo(() => {
       forInput: "Company Name",
       value: "",
       isError: false,
-      errorMessage: "Atleast 2 characters and max of 50",
+      errorMessage: "Atleast 2 characters and max of 75",
       isDisabled: false,
       code: "companyName",
     },
@@ -69,7 +69,7 @@ const Internships = React.memo(() => {
       forInput: "Company Address",
       value: "",
       isError: false,
-      errorMessage: "Atleast 5 characters and max of 70",
+      errorMessage: "Atleast 5 characters and max of 100",
       isDisabled: false,
     },
     {
@@ -79,7 +79,7 @@ const Internships = React.memo(() => {
       forInput: "Supervisor",
       value: "",
       isError: false,
-      errorMessage: "Atleast 2 characters and  max of 20",
+      errorMessage: "Atleast 2 characters and  max of 50",
       isDisabled: false,
     },
     {
@@ -89,7 +89,7 @@ const Internships = React.memo(() => {
       forInput: "Supervisor Contact",
       value: "",
       isError: false,
-      errorMessage: "This phone number format is not recognized. ",
+      errorMessage: "This phone number format is not recognized.",
       isDisabled: false,
     },
     {
@@ -99,7 +99,7 @@ const Internships = React.memo(() => {
       forInput: "Email",
       value: "",
       isError: false,
-      errorMessage: "Please provide valid email",
+      errorMessage: "Please provide valid email.",
       isDisabled: false,
     },
     {
