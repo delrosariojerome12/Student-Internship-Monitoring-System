@@ -1,7 +1,7 @@
 import React, {useState, Suspense, lazy} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {IconContext} from "react-icons";
-import {FaPlus} from "react-icons/fa";
+import {FaPlus, FaTrash} from "react-icons/fa";
 import Document from "../../components/admin/Document";
 import Select from "react-select";
 import {
