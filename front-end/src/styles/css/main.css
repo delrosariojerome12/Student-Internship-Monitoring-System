@@ -1891,7 +1891,7 @@ button {
     grid-template-columns: 12rem auto;
   }
   .dashboard .intern-container .preview-container .selected-intern > *, .dashboard-active .intern-container .preview-container .selected-intern > * {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
   }
   .dashboard .intern-container .preview-container .selected-intern img, .dashboard-active .intern-container .preview-container .selected-intern img {
     height: 12rem;
