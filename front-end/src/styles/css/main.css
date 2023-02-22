@@ -1787,6 +1787,7 @@ button {
 .dashboard .intern-container .interns .intern .img-container, .dashboard-active .intern-container .interns .intern .img-container {
   height: 12rem;
   width: 12rem;
+  margin: auto;
 }
 .dashboard .intern-container .interns .intern .img-container img, .dashboard-active .intern-container .interns .intern .img-container img {
   border-radius: 1rem;
@@ -1799,7 +1800,7 @@ button {
   padding: 1rem;
   display: grid;
   border-radius: 1rem;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 .dashboard .intern-container .interns .intern .intern-details .btnContainer, .dashboard-active .intern-container .interns .intern .intern-details .btnContainer {
   display: flex;
@@ -1834,7 +1835,7 @@ button {
   background-color: #10898e;
 }
 .dashboard .intern-container .interns-active, .dashboard-active .intern-container .interns-active {
-  grid-auto-rows: 14rem;
+  grid-auto-rows: 16rem;
   justify-content: center;
   grid-template-columns: repeat(auto-fill, 35.5rem);
 }
@@ -1878,7 +1879,8 @@ button {
 }
 @media screen and (max-width: 920px) {
   .dashboard .intern-container .interns-active, .dashboard-active .intern-container .interns-active {
-    grid-template-columns: 40rem;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 14rem;
   }
 }
 @media screen and (max-width: 750px) {
@@ -1905,9 +1907,6 @@ button {
   }
   .dashboard .intern-container .preview-container .selected-intern img, .dashboard-active .intern-container .preview-container .selected-intern img {
     display: none;
-  }
-  .dashboard .intern-container .interns-active, .dashboard-active .intern-container .interns-active {
-    grid-template-columns: 35rem;
   }
 }
 @media screen and (max-width: 500px) {
@@ -3805,6 +3804,7 @@ button {
   }
   .dashboard .admin-document-page .document-container .documents .document, .dashboard-active .admin-document-page .document-container .documents .document {
     justify-content: flex-start;
+    padding-right: 1rem;
   }
   .dashboard .admin-document-page .document-approval-container .document-intern, .dashboard-active .admin-document-page .document-approval-container .document-intern {
     min-height: 8rem !important;
