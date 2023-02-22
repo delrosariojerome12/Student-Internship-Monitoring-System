@@ -1,6 +1,6 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Internship from "../../components/coordinator/Internship";
-import {useSelector, useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Bouncing from "../../components/loading/Bouncing";
 import ServerError from "../serverError";
 import {
@@ -12,13 +12,18 @@ import {
   createInternship,
   handleMessage,
 } from "../../features/coordinator/internship";
-import {handleAdd} from "../../features/coordinator/internship";
+import { handleAdd } from "../../features/coordinator/internship";
 import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
 
-import {storage} from "../../Firebase";
-import {ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage";
-import {v4} from "uuid";
+import { storage } from "../../Firebase";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  deleteObject,
+} from "firebase/storage";
+import { v4 } from "uuid";
 
 import noImageDark from "../../assets/img/noimageDark.svg";
 import NoDocumentSvg from "../../assets/img/waiting.svg";
@@ -202,7 +207,7 @@ const Internships = React.memo(() => {
   };
   const convertForm = (form) => {
     const newData = form.map((input) => {
-      const {code, value, name} = input;
+      const { code, value, name } = input;
       if (name) {
         return {
           code,
@@ -220,8 +225,8 @@ const Internships = React.memo(() => {
       {},
       ...newData.map((item) =>
         !item.name
-          ? {[item.code]: item.value}
-          : {[item.code]: {link: item.value, name: item.name}}
+          ? { [item.code]: item.value }
+          : { [item.code]: { link: item.value, name: item.name } }
       )
     );
 
@@ -233,7 +238,7 @@ const Internships = React.memo(() => {
     const inputField = newForm[index].id;
     switch (inputField) {
       case "company-name":
-        value.length >= 2 && value.length <= 40
+        value.length >= 2 && value.length <= 78
           ? (newForm[index].isError = false)
           : (newForm[index].isError = true);
         newForm[index].value = value;
@@ -241,7 +246,7 @@ const Internships = React.memo(() => {
         checkCompletion();
         return;
       case "company-address":
-        value.length >= 5 && value.length <= 50
+        value.length >= 5 && value.length <= 100
           ? (newForm[index].isError = false)
           : (newForm[index].isError = true);
         newForm[index].value = value;
@@ -249,7 +254,7 @@ const Internships = React.memo(() => {
         checkCompletion();
         return;
       case "supervisor":
-        value.length >= 2 && value.length <= 20
+        value.length >= 2 && value.length <= 50
           ? (newForm[index].isError = false)
           : (newForm[index].isError = true);
         newForm[index].value = value;
@@ -270,7 +275,7 @@ const Internships = React.memo(() => {
         return;
       case "logo":
         if (value) {
-          const {name, type} = value;
+          const { name, type } = value;
           if (!type.includes("image")) {
             newForm[index].isError = true;
             newForm[index].errorMessage = "Invalid file type";
@@ -401,7 +406,7 @@ const Internships = React.memo(() => {
             </div>
           );
         case "list":
-          const {optionItems} = item;
+          const { optionItems } = item;
           return (
             <div className="input-contain" key={index}>
               <h3>{forInput}</h3>
@@ -445,7 +450,7 @@ const Internships = React.memo(() => {
                 )}
                 {isError && (
                   <p
-                    style={{color: "red", fontSize: "18px"}}
+                    style={{ color: "red", fontSize: "18px" }}
                     className="error-message"
                   >
                     {errorMessage}
@@ -463,7 +468,7 @@ const Internships = React.memo(() => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const internship = convertForm(form);
-    dispatch(createInternship({internship}));
+    dispatch(createInternship({ internship }));
 
     const timer = setTimeout(() => dispatch(handleMessage()), 3000);
     return () => clearTimeout(timer);
@@ -472,7 +477,7 @@ const Internships = React.memo(() => {
   const handleClose = () => {
     const newForm = [...form].map((item) => {
       item.value = "";
-      return {...item};
+      return { ...item };
     });
     setForm(newForm);
     dispatch(handleAdd());
@@ -502,8 +507,8 @@ const Internships = React.memo(() => {
                 <button
                   style={
                     isComplete
-                      ? {opacity: "1"}
-                      : {opacity: ".7", pointerEvents: "none"}
+                      ? { opacity: "1" }
+                      : { opacity: ".7", pointerEvents: "none" }
                   }
                   type="submit"
                 >
