@@ -14,9 +14,22 @@ const EditModal = React.memo(({renderInputs, form}) => {
 
     const final = entries
       .map((i) => {
-        const newForm = form.map(
-          (item) => item.code === i.code && {...item, value: i.value}
-        );
+        const newForm = form.map((item) => {
+          console.log(item);
+          if (item.code === i.code) {
+            if (item.code === "typeOfWork") {
+              return {
+                ...item,
+                valuePlaceholder: {
+                  value: i.value,
+                  label: i.value,
+                },
+                value: i.value,
+              };
+            }
+            return item.code === i.code && {...item, value: i.value};
+          }
+        });
         return newForm.filter((c) => c).sort((item) => item.type)[0];
       })
       .filter((x) => x);
