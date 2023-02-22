@@ -54,7 +54,8 @@
     grid-template-columns: repeat(auto-fill, 42rem);
     grid-auto-rows: 17rem;
     gap: 1rem;
-    overflow-y: auto;
+    overflow: hidden;
+    position: relative;
     .internship {
       background-color: #fff;
       border-radius: 1rem;
@@ -70,7 +71,7 @@
         img {
           height: 100%;
           width: 100%;
-          object-fit: cover;
+          object-fit: contain;
         }
       }
       .controls {
@@ -91,6 +92,34 @@
         }
       }
     }
+    .message-con {
+      position: absolute;
+      bottom: 0%;
+      left: 100%;
+      min-width: 35rem;
+      height: 6rem;
+      background-color: $primary-feature-bg;
+      z-index: 2;
+      border-radius: 1rem;
+      color: #fff;
+      font-weight: 600;
+      @include flexCenter;
+      transition: all 0.2s ease-in-out;
+    }
+    .active {
+      transform: translate(-100%);
+      transition: all 0.2s ease-in-out;
+    }
+  }
+  .no-internship {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: $primary-bg-color-landing;
+    border-radius: 1rem;
+    color: #fff;
+    gap: 1rem;
   }
 
   .overlay {
@@ -118,7 +147,7 @@
 
   .add-modal {
     width: 100rem;
-    min-height: 80vh;
+    min-height: 85%;
     display: flex;
     background-color: #d9d9d9;
 
@@ -340,6 +369,7 @@
         grid-column: 2/4;
         @include flexCenter;
         background-color: none;
+        gap: 1rem;
         button {
           @include flexCenter;
           cursor: pointer;
@@ -355,7 +385,7 @@
 
           // margin: 0 auto;
           // letter-spacing: 0.2rem;
-          &.decline-btn:hover {
+          &:first-child:hover {
             background-color: $red-primary-color;
           }
           &.back-btn:hover,
@@ -371,6 +401,33 @@
       // & > * {
       //   border: solid 1px #000;
       // }
+    }
+  }
+  .view-modal {
+    min-height: 85%;
+    width: 70rem;
+    display: grid;
+    grid-template-columns: 20rem 1fr;
+    grid-template-rows: 20rem;
+
+    & > * {
+      border: solid 1px #000;
+    }
+    .input {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      img {
+        height: 20rem;
+        width: 20rem;
+        // height: 100%;
+        // width: 100%;
+      }
+    }
+
+    & > :nth-child(7) {
+      grid-row: 1/2;
+      grid-column: 1/3;
     }
   }
 }

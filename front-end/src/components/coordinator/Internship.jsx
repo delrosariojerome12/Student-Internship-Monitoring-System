@@ -5,7 +5,13 @@ import {
   handleEdit,
   handleView,
   handleDelete,
+  deleteInternship,
+  handleMessage,
 } from "../../features/coordinator/internship";
+
+// import noImageDark from "../../assets/img/noimageDark.svg";
+import noImageDark from "../../assets/img/noimageDark.svg";
+
 const Internship = React.memo(({internship}) => {
   const {
     companyName,
@@ -16,9 +22,9 @@ const Internship = React.memo(({internship}) => {
     students,
     typeOfWork,
     description,
+    _id,
   } = internship;
   const dispatch = useDispatch();
-  console.log(internship);
   return (
     <div className="internship">
       <div className="img-con">
@@ -29,21 +35,23 @@ const Internship = React.memo(({internship}) => {
         <div className="internship-btn">
           <button
             onClick={() => {
-              dispatch(handleView());
+              dispatch(handleView({id: _id}));
             }}
           >
             View
           </button>
           <button
             onClick={() => {
-              dispatch(handleEdit());
+              dispatch(handleEdit({id: _id}));
             }}
           >
             Edit
           </button>
           <button
             onClick={() => {
-              dispatch(handleDelete());
+              dispatch(deleteInternship({id: _id}));
+              const timer = setTimeout(() => dispatch(handleMessage()), 3000);
+              return () => clearTimeout(timer);
             }}
           >
             Delete

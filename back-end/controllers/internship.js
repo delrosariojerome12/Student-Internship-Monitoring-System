@@ -60,7 +60,7 @@ const createInternship = async (req, res) => {
   res.status(StatusCodes.OK).json({
     success: true,
     data: {
-      message: "Internship successfully added",
+      message: "Internship successfully added.",
       internship,
       allInternships,
     },
@@ -111,7 +111,7 @@ const deleteInternship = async (req, res) => {
 
   res.status(StatusCodes.OK).json({
     success: true,
-    data: {message: "Document Deleted Successfully", allInternships},
+    data: {message: "Document Deleted Successfully.", allInternships},
   });
 };
 

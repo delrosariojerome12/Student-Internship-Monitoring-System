@@ -3,21 +3,22 @@ const mongoose = require("mongoose");
 const internshipDetails = {
   companyName: {
     type: String,
-    maxlength: 30,
+    maxlength: 75,
     minlength: 2,
   },
   companyAddress: {
     type: String,
-    maxlength: 70,
+    maxlength: 100,
     minlength: 5,
   },
   supervisor: {
     type: String,
-    maxlength: 20,
+    maxlength: 50,
     minlength: 2,
   },
   supervisorContact: {
     type: String,
+    match: [/^(09|\+639)\d{9}$/, "Please provide a valid number"],
   },
   email: {
     type: String,
@@ -28,6 +29,8 @@ const internshipDetails = {
   },
   description: {
     type: String,
+    maxlength: 100,
+    minlength: 20,
   },
   typeOfWork: {
     type: String,

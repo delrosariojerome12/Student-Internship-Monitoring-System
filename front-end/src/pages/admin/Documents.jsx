@@ -20,11 +20,12 @@ import {Viewer} from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import {Route, Routes, Link, Navigate, useNavigate} from "react-router-dom";
 import Bouncing from "../../components/loading/Bouncing";
+import ServerError from "../../pages/serverError";
 
 const DocumentApproval = lazy(() => import("./DocumentApproval"));
 
 const Documents = React.memo(() => {
-  const {documents} = useSelector((state) => state.document);
+  const {documents, isError} = useSelector((state) => state.document);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -33,8 +34,7 @@ const Documents = React.memo(() => {
       type: "file",
       id: "sample-image",
       forInput: "Sample Image",
-      value:
-        "https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg",
+      value: "",
       isError: false,
       errorMessage: "",
       isDisabled: false,
@@ -102,6 +102,13 @@ const Documents = React.memo(() => {
 
   const [isComplete, setComplete] = useState(false);
 
+  if (!documents) {
+    return <Bouncing />;
+  }
+  if (isError) {
+    return <ServerError />;
+  }
+
   const checkCompletion = () => {
     let numOfErrors = 0;
     let numOfValues = 0;
@@ -114,8 +121,10 @@ const Documents = React.memo(() => {
     const lengthForms = form.length;
 
     if (numOfErrors === 0 && numOfValues === lengthForms) {
+      console.log("ok");
       setComplete(true);
     } else {
+      console.log("not ok");
       setComplete(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -128,6 +137,7 @@ const Documents = React.memo(() => {
   const handleDocumentModal = () => {
     setDocumentOpen(true);
   };
+
   const handleDeleteModal = (e) => {
     e.stopPropagation();
     setDeleteDocumentOpen(true);
@@ -153,6 +163,7 @@ const Documents = React.memo(() => {
       })
       .filter((x) => x);
 
+    console.log(final);
     setForm(final);
   };
 
@@ -178,6 +189,7 @@ const Documents = React.memo(() => {
         : {...item, value: ""};
     });
     setForm(newForm);
+    setComplete(false);
   };
 
   const handleOnChange = (value, index) => {
@@ -206,12 +218,14 @@ const Documents = React.memo(() => {
                       value: "pdf",
                       label: "pdf",
                     };
-                    newForm[index + 2].value = "pdf";
+                    newForm[2].value = "pdf";
                   }
                   newForm[2].isDisabled = true;
                   newForm[index].format = type;
                   newForm[index].value = url;
                   newForm[index].isDisabled = true;
+
+                  console.log(newForm);
                   setForm(newForm);
                   checkCompletion();
                 })
@@ -219,15 +233,6 @@ const Documents = React.memo(() => {
             })
             .catch((err) => console.log(err));
         }
-
-        // add catch error here
-        // if (schoolDetails) {
-        //   const {
-        //     validID: {name},
-        //   } = schoolDetails;
-        //   deleteDuplicateFirebase(name);
-        // }
-
         return;
       case "name":
         if (value.length <= 2) {
@@ -248,7 +253,6 @@ const Documents = React.memo(() => {
         newForm[index].value = value;
         setForm(newForm);
         checkCompletion();
-
         return;
       case "format":
         newForm[index].value = value;
@@ -412,7 +416,7 @@ const Documents = React.memo(() => {
                   value: selectedDocument.format,
                 }
               }
-              isDisabled={isDisabled}
+              isDisabled={isEditDocumentOpen ? true : isDisabled}
               tabIndex={-1}
               options={list}
               styles={customStyle}
@@ -480,8 +484,14 @@ const Documents = React.memo(() => {
                   {renderDocumentDetails()}
                 </div>
                 <div className="desc-container">
-                  <p>Description: {selectedDocument.description}</p>
-                  <p>Format: {selectedDocument.format}</p>
+                  <p>
+                    <b>Description: </b>
+                    {selectedDocument.description}
+                  </p>
+                  <p>
+                    <b>Format: </b>
+                    {selectedDocument.format}
+                  </p>
                 </div>
               </div>
               <div className="btn-container">
@@ -553,6 +563,9 @@ const Documents = React.memo(() => {
               onClick={() => setDeleteDocumentOpen(false)}
             ></div>
             <div className="delete-document-modal">
+              <span>
+                <FaTrash />
+              </span>
               <h4>You are about to delete this document.</h4>
               <h3>Are you sure?</h3>
               <div className="btn-container">
@@ -581,7 +594,10 @@ const Documents = React.memo(() => {
           <>
             <div
               className="overlay"
-              onClick={() => setEditDocumentOpen(false)}
+              onClick={() => {
+                setEditDocumentOpen(false);
+                clearValue();
+              }}
             ></div>
             <div className="edit-document-modal">
               <form>

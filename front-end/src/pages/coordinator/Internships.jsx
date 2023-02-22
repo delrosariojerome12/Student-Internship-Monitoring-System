@@ -10,6 +10,7 @@ import {
   handleEdit,
   handleView,
   createInternship,
+  handleMessage,
 } from "../../features/coordinator/internship";
 import {handleAdd} from "../../features/coordinator/internship";
 import Select from "react-select";
@@ -20,10 +21,22 @@ import {ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage";
 import {v4} from "uuid";
 
 import noImageDark from "../../assets/img/noimageDark.svg";
+import NoDocumentSvg from "../../assets/img/waiting.svg";
+
+import ViewModal from "../../components/coordinator/ViewModal";
 
 const Internships = React.memo(() => {
-  const {internships, isLoading, isError, isEditOpen, isViewOpen, isAddOpen} =
-    useSelector((state) => state.internship);
+  const {
+    internships,
+    isLoading,
+    isError,
+    isEditOpen,
+    isViewOpen,
+    isAddOpen,
+    requestMessage,
+    isMessageOpen,
+    selectedInternship,
+  } = useSelector((state) => state.internship);
   const dispatch = useDispatch();
 
   const [form, setForm] = useState([
@@ -45,7 +58,7 @@ const Internships = React.memo(() => {
       forInput: "Company Name",
       value: "",
       isError: false,
-      errorMessage: "Atleast 2 characters and max of 50",
+      errorMessage: "Atleast 2 characters and max of 75",
       isDisabled: false,
       code: "companyName",
     },
@@ -56,7 +69,7 @@ const Internships = React.memo(() => {
       forInput: "Company Address",
       value: "",
       isError: false,
-      errorMessage: "Atleast 5 characters and max of 50",
+      errorMessage: "Atleast 5 characters and max of 100",
       isDisabled: false,
     },
     {
@@ -66,7 +79,7 @@ const Internships = React.memo(() => {
       forInput: "Supervisor",
       value: "",
       isError: false,
-      errorMessage: "Atleast 2 characters and  max of 20",
+      errorMessage: "Atleast 2 characters and  max of 50",
       isDisabled: false,
     },
     {
@@ -76,7 +89,7 @@ const Internships = React.memo(() => {
       forInput: "Supervisor Contact",
       value: "",
       isError: false,
-      errorMessage: "This phone number format is not recognized. ",
+      errorMessage: "This phone number format is not recognized.",
       isDisabled: false,
     },
     {
@@ -86,7 +99,7 @@ const Internships = React.memo(() => {
       forInput: "Email",
       value: "",
       isError: false,
-      errorMessage: "Please provide valid email",
+      errorMessage: "Please provide valid email.",
       isDisabled: false,
     },
     {
@@ -149,9 +162,24 @@ const Internships = React.memo(() => {
   }
 
   const renderInternship = () => {
-    return internships.map((item, index) => (
-      <Internship key={index} internship={item} />
-    ));
+    if (internships.length > 0) {
+      return (
+        <div className="content">
+          {internships.map((item, index) => (
+            <Internship key={index} internship={item} />
+          ))}
+          <div className={isMessageOpen ? "message-con active" : "message-con"}>
+            <p>{requestMessage}</p>
+          </div>
+        </div>
+      );
+    }
+    return (
+      <div className="no-internship">
+        <h3>No existing internships at the moment.</h3>
+        <img src={NoDocumentSvg} alt="no-internship" />
+      </div>
+    );
   };
 
   const checkCompletion = () => {
@@ -167,10 +195,8 @@ const Internships = React.memo(() => {
 
     if (numOfErrors === 0 && numOfValues - 1 === lengthForms - 1) {
       setComplete(true);
-      console.log("ok");
     } else {
       setComplete(false);
-      console.log("not ok");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   };
@@ -207,7 +233,7 @@ const Internships = React.memo(() => {
     const inputField = newForm[index].id;
     switch (inputField) {
       case "company-name":
-        value.length >= 2 && value.length <= 40
+        value.length >= 2 && value.length <= 75
           ? (newForm[index].isError = false)
           : (newForm[index].isError = true);
         newForm[index].value = value;
@@ -215,7 +241,7 @@ const Internships = React.memo(() => {
         checkCompletion();
         return;
       case "company-address":
-        value.length >= 5 && value.length <= 50
+        value.length >= 5 && value.length <= 100
           ? (newForm[index].isError = false)
           : (newForm[index].isError = true);
         newForm[index].value = value;
@@ -223,7 +249,7 @@ const Internships = React.memo(() => {
         checkCompletion();
         return;
       case "supervisor":
-        value.length >= 2 && value.length <= 20
+        value.length >= 2 && value.length <= 50
           ? (newForm[index].isError = false)
           : (newForm[index].isError = true);
         newForm[index].value = value;
@@ -438,6 +464,19 @@ const Internships = React.memo(() => {
     e.preventDefault();
     const internship = convertForm(form);
     dispatch(createInternship({internship}));
+
+    const timer = setTimeout(() => dispatch(handleMessage()), 3000);
+    return () => clearTimeout(timer);
+  };
+
+  const handleClose = () => {
+    const newForm = [...form].map((item) => {
+      item.value = "";
+      return {...item};
+    });
+    setForm(newForm);
+    dispatch(handleAdd());
+    console.log(newForm);
   };
 
   return (
@@ -448,7 +487,7 @@ const Internships = React.memo(() => {
       <div className="btn-container">
         <button onClick={() => dispatch(handleAdd())}>Add</button>
       </div>
-      <div className="content">{renderInternship()}</div>
+      {renderInternship()}
 
       {isAddOpen && (
         <>
@@ -457,6 +496,9 @@ const Internships = React.memo(() => {
             <form onSubmit={handleSubmit}>
               {renderInputs()}
               <div className="btn-holder">
+                <button type="button" onClick={handleClose}>
+                  Close
+                </button>
                 <button
                   style={
                     isComplete
@@ -480,14 +522,7 @@ const Internships = React.memo(() => {
           </div>
         </>
       )}
-      {isViewOpen && (
-        <>
-          <div onClick={() => dispatch(handleView())} className="overlay"></div>
-          <div className="view-modal modal">
-            <p>View</p>
-          </div>
-        </>
-      )}
+      {isViewOpen && <ViewModal form={form} />}
     </div>
   );
 });
