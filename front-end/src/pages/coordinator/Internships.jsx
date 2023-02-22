@@ -29,6 +29,7 @@ import noImageDark from "../../assets/img/noimageDark.svg";
 import NoDocumentSvg from "../../assets/img/waiting.svg";
 
 import ViewModal from "../../components/coordinator/ViewModal";
+import EditModal from "../../components/coordinator/EditModal";
 
 const Internships = React.memo(() => {
   const {
@@ -354,8 +355,8 @@ const Internships = React.memo(() => {
     }),
   };
 
-  const renderInputs = () => {
-    return form.map((item, index) => {
+  const renderInputs = (formArray) => {
+    return formArray.map((item, index) => {
       const {
         type,
         id,
@@ -499,7 +500,7 @@ const Internships = React.memo(() => {
           <div onClick={() => dispatch(handleAdd())} className="overlay"></div>
           <div className="add-modal modal">
             <form onSubmit={handleSubmit}>
-              {renderInputs()}
+              {renderInputs(form)}
               <div className="btn-holder">
                 <button type="button" onClick={handleClose}>
                   Close
@@ -519,14 +520,7 @@ const Internships = React.memo(() => {
           </div>
         </>
       )}
-      {isEditOpen && (
-        <>
-          <div onClick={() => dispatch(handleEdit())} className="overlay"></div>
-          <div className="edit-modal modal">
-            <p>Edit</p>
-          </div>
-        </>
-      )}
+      {isEditOpen && <EditModal form={form} renderInputs={renderInputs} />}
       {isViewOpen && <ViewModal form={form} />}
     </div>
   );
