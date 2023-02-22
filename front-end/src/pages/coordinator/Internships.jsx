@@ -233,7 +233,7 @@ const Internships = React.memo(() => {
     const inputField = newForm[index].id;
     switch (inputField) {
       case "company-name":
-        value.length >= 2 && value.length <= 40
+        value.length >= 2 && value.length <= 75
           ? (newForm[index].isError = false)
           : (newForm[index].isError = true);
         newForm[index].value = value;
@@ -241,7 +241,7 @@ const Internships = React.memo(() => {
         checkCompletion();
         return;
       case "company-address":
-        value.length >= 5 && value.length <= 50
+        value.length >= 5 && value.length <= 100
           ? (newForm[index].isError = false)
           : (newForm[index].isError = true);
         newForm[index].value = value;
@@ -249,7 +249,7 @@ const Internships = React.memo(() => {
         checkCompletion();
         return;
       case "supervisor":
-        value.length >= 2 && value.length <= 20
+        value.length >= 2 && value.length <= 50
           ? (newForm[index].isError = false)
           : (newForm[index].isError = true);
         newForm[index].value = value;
