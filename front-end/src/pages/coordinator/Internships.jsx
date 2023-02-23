@@ -24,6 +24,7 @@ import noImageDark from "../../assets/img/noimageDark.svg";
 import NoDocumentSvg from "../../assets/img/waiting.svg";
 
 import ViewModal from "../../components/coordinator/ViewModal";
+import EditModal from "../../components/coordinator/EditModal";
 
 const Internships = React.memo(() => {
   const {
@@ -40,18 +41,6 @@ const Internships = React.memo(() => {
   const dispatch = useDispatch();
 
   const [form, setForm] = useState([
-    {
-      type: "image",
-      id: "logo",
-      code: "logo",
-      forInput: "Logo",
-      value: "",
-      isError: false,
-      errorMessage: "",
-      isDisabled: false,
-      name: "",
-      link: "",
-    },
     {
       type: "text",
       id: "company-name",
@@ -109,6 +98,10 @@ const Internships = React.memo(() => {
       value: "",
       isDisabled: false,
       code: "typeOfWork",
+      valuePlaceholder: {
+        value: "Duties",
+        label: "Duties",
+      },
       optionItems: [
         {
           value: "Encoding",
@@ -131,6 +124,18 @@ const Internships = React.memo(() => {
           label: "Not specified",
         },
       ],
+    },
+    {
+      type: "image",
+      id: "logo",
+      code: "logo",
+      forInput: "Logo",
+      value: "",
+      isError: false,
+      errorMessage: "",
+      isDisabled: false,
+      name: "",
+      link: "",
     },
     {
       type: "textArea",
@@ -166,7 +171,7 @@ const Internships = React.memo(() => {
       return (
         <div className="content">
           {internships.map((item, index) => (
-            <Internship key={index} internship={item} />
+            <Internship key={index} internship={item} editForm={editForm} />
           ))}
           <div className={isMessageOpen ? "message-con active" : "message-con"}>
             <p>{requestMessage}</p>
@@ -199,6 +204,32 @@ const Internships = React.memo(() => {
       setComplete(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  };
+
+  const clearValue = () => {
+    const newForm = form.map((item) => {
+      return item.type === "file"
+        ? {
+            ...item,
+            value: "",
+            isDisabled: false,
+            name: "",
+            link: "",
+          }
+        : item.type === "list"
+        ? {
+            ...item,
+            isDisabled: false,
+            valuePlaceholder: {
+              value: "Duties",
+              label: "Duties",
+            },
+            value: "",
+          }
+        : {...item, value: ""};
+    });
+    setForm(newForm);
+    setComplete(false);
   };
   const convertForm = (form) => {
     const newData = form.map((input) => {
@@ -349,8 +380,37 @@ const Internships = React.memo(() => {
     }),
   };
 
-  const renderInputs = () => {
-    return form.map((item, index) => {
+  const editForm = (givenInternship) => {
+    const entries = Object.entries(givenInternship).map((item) => {
+      const x = Object.assign({}, item);
+      return {[x[0]]: x[1], code: x[0], value: x[1]};
+    });
+    const final = entries
+      .map((i) => {
+        const newForm = form.map((item) => {
+          if (item.code === i.code) {
+            if (item.code === "typeOfWork") {
+              return {
+                ...item,
+                valuePlaceholder: {
+                  value: i.value,
+                  label: i.value,
+                },
+                value: i.value,
+              };
+            }
+            return item.code === i.code && {...item, value: i.value};
+          }
+        });
+        return newForm.filter((c) => c).sort((item) => item.type)[0];
+      })
+      .filter((x) => x);
+
+    setForm(final);
+  };
+
+  const renderInputs = (formArray) => {
+    return formArray.map((item, index) => {
       const {
         type,
         id,
@@ -363,6 +423,7 @@ const Internships = React.memo(() => {
         maxLength,
         minLength,
         link,
+        valuePlaceholder,
       } = item;
       switch (type) {
         case "text":
@@ -406,6 +467,14 @@ const Internships = React.memo(() => {
             <div className="input-contain" key={index}>
               <h3>{forInput}</h3>
               <CreatableSelect
+                value={
+                  value
+                    ? {
+                        label: value,
+                        value: value,
+                      }
+                    : valuePlaceholder
+                }
                 onChange={(e) => handleOnChange(e.value, index)}
                 styles={customStyle}
                 required
@@ -441,7 +510,7 @@ const Internships = React.memo(() => {
                 {link ? (
                   <img src={link} alt={id} />
                 ) : (
-                  <img src={noImageDark} alt="no image" />
+                  <img src={noImageDark} alt="placeholder" />
                 )}
                 {isError && (
                   <p
@@ -464,7 +533,7 @@ const Internships = React.memo(() => {
     e.preventDefault();
     const internship = convertForm(form);
     dispatch(createInternship({internship}));
-
+    clearValue();
     const timer = setTimeout(() => dispatch(handleMessage()), 3000);
     return () => clearTimeout(timer);
   };
@@ -476,7 +545,6 @@ const Internships = React.memo(() => {
     });
     setForm(newForm);
     dispatch(handleAdd());
-    console.log(newForm);
   };
 
   return (
@@ -494,7 +562,7 @@ const Internships = React.memo(() => {
           <div onClick={() => dispatch(handleAdd())} className="overlay"></div>
           <div className="add-modal modal">
             <form onSubmit={handleSubmit}>
-              {renderInputs()}
+              {renderInputs(form)}
               <div className="btn-holder">
                 <button type="button" onClick={handleClose}>
                   Close
@@ -515,12 +583,13 @@ const Internships = React.memo(() => {
         </>
       )}
       {isEditOpen && (
-        <>
-          <div onClick={() => dispatch(handleEdit())} className="overlay"></div>
-          <div className="edit-modal modal">
-            <p>Edit</p>
-          </div>
-        </>
+        <EditModal
+          renderInputs={renderInputs}
+          form={form}
+          clearValue={clearValue}
+          isComplete={isComplete}
+          convertForm={convertForm}
+        />
       )}
       {isViewOpen && <ViewModal form={form} />}
     </div>
