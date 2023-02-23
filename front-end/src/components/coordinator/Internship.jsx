@@ -12,7 +12,7 @@ import {
 // import noImageDark from "../../assets/img/noimageDark.svg";
 import noImageDark from "../../assets/img/noimageDark.svg";
 
-const Internship = React.memo(({internship}) => {
+const Internship = React.memo(({internship, editForm}) => {
   const {
     companyName,
     companyAddress,
@@ -44,6 +44,7 @@ const Internship = React.memo(({internship}) => {
           <button
             onClick={() => {
               dispatch(handleEdit({id: _id}));
+              editForm(internship);
             }}
           >
             Edit

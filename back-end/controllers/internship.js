@@ -73,7 +73,7 @@ const updateInternship = async (req, res) => {
 
   const isDuplicate = await Internship.findOne({companyName});
 
-  if (isDuplicate) {
+  if (!isDuplicate._id.equals(id)) {
     throw new Duplicate("Internship already exists");
   }
 
@@ -91,7 +91,7 @@ const updateInternship = async (req, res) => {
   res.status(StatusCodes.OK).json({
     success: true,
     data: {
-      message: "Internship successfully updated",
+      message: "Internship Updated successfully.",
       internship,
       allInternships,
     },
