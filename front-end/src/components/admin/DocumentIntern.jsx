@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { useSelector } from "react-redux";
@@ -47,8 +49,7 @@ const DocumentIntern = React.memo(({ intern }) => {
               />
               <div
                 className="left"
-                onClick={() => dispatch(handleOpenDocument(document))}
-              >
+                onClick={() => dispatch(handleOpenDocument(document))}>
                 <p>{name}</p>
                 <p className="filename">{fileName}</p>
               </div>
@@ -62,17 +63,15 @@ const DocumentIntern = React.memo(({ intern }) => {
                         documentDetails,
                       })
                     );
-                  }}
-                >
+                  }}>
                   Approve
                 </button>
                 <button
                   onClick={() =>
                     dispatch(
-                      rejectDocumentRequest({email, id: _id, documentDetails})
+                      rejectDocumentRequest({ email, id: _id, documentDetails })
                     )
-                  }
-                >
+                  }>
                   Reject
                 </button>
               </div>
@@ -112,12 +111,12 @@ const DocumentIntern = React.memo(({ intern }) => {
             <b>{`${firstName} ${lastName}`}</b>
           </p>
           <p className="internship-at">
-            <b>Internship at: </b>
-            {companyName}
+            Internship at:
+            <b> {companyName}</b>
           </p>
           <p>
-            <b>Approved: </b>
-            {`${approvedDocuments.length}/${totalDocuments}`}
+            Approved:
+            <b> {`${approvedDocuments.length}/${totalDocuments}`}</b>
           </p>
         </div>
         <div className="bottom">
