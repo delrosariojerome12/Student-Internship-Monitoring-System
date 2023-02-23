@@ -1218,9 +1218,9 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: all 0.2s linear;
   border-radius: 1rem;
   cursor: pointer;
-  transition: all 0.2s linear;
 }
 .dashboard .left-sidebar .profile-tab > *:not(.user):hover, .dashboard-active .left-sidebar .profile-tab > *:not(.user):hover {
   background-color: #3f3f3f;
@@ -1374,9 +1374,9 @@ button {
   .dashboard .left-sidebar .links-con .sub-container .link-container .icon-con, .dashboard-active .left-sidebar .links-con .sub-container .link-container .icon-con {
     display: flex;
     border-radius: 0%;
+    background-color: transparent;
     height: auto;
     width: 100%;
-    background-color: transparent;
   }
   .dashboard .left-sidebar .links-con .sub-container .link-container .icon-con:hover, .dashboard-active .left-sidebar .links-con .sub-container .link-container .icon-con:hover {
     background-color: #457b9d;
@@ -1414,6 +1414,23 @@ button {
     grid-row: 2/3;
     grid-column: 2/3;
     word-break: break-all;
+  }
+  .dashboard .left-sidebar .links-con .sub-container .logout, .dashboard-active .left-sidebar .links-con .sub-container .logout {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    color: #fff;
+    padding: 1rem;
+  }
+  .dashboard .left-sidebar .links-con .sub-container .logout span, .dashboard-active .left-sidebar .links-con .sub-container .logout span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+  }
+  .dashboard .left-sidebar .links-con .sub-container .logout:hover, .dashboard-active .left-sidebar .links-con .sub-container .logout:hover {
+    background-color: #3f3f3f;
   }
   .dashboard .left-sidebar .active, .dashboard-active .left-sidebar .active {
     display: flex;
@@ -4210,6 +4227,7 @@ button {
   height: 50rem;
 }
 
+/** @format */
 .verification-container {
   border: solid 1px #fff;
   height: 100%;
@@ -4817,9 +4835,6 @@ button {
   .verification-container .verification-steps form .student-details .forms-con .img-input label {
     flex-direction: column;
   }
-  .verification-container .verification-steps form .student-details .forms-con .img-input label input {
-    width: 50%;
-  }
 }
 @media screen and (max-width: 650px) {
   .verification-container .valid-id-modal img {
@@ -4862,9 +4877,6 @@ button {
     height: 6rem;
     width: 6rem;
   }
-  .verification-container .verification-steps form .student-details .forms-con .img-input label input {
-    width: 60%;
-  }
   .verification-container .verification-steps form button {
     height: 3rem;
   }
@@ -4891,9 +4903,6 @@ button {
     height: 5.7rem;
     width: 5.7rem;
   }
-  .verification-container .verification-steps form .student-details .forms-con .img-input label input {
-    width: 80%;
-  }
 }
 @media screen and (max-width: 400px) {
   .verification-container .valid-id-modal img {
@@ -4901,21 +4910,21 @@ button {
     width: 25rem;
   }
   .verification-container .are-you-sure-modal {
-    width: 80%;
+    width: 95%;
   }
   .verification-container .verification-steps form .btn-con {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto auto;
     gap: 1rem;
+  }
+  .verification-container .verification-steps form .btn-con :nth-last-child(1) {
+    grid-row: 1/2;
   }
 }
 @media screen and (max-width: 350px) {
   .verification-container {
     padding: 1rem;
     border: none;
-  }
-  .verification-container .verification-steps form .student-details .forms-con .img-input label input {
-    width: 90%;
   }
 }
 .waiting-container-sent {

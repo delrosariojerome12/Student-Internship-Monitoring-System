@@ -485,12 +485,12 @@ const Documents = React.memo(() => {
                 </div>
                 <div className="desc-container">
                   <p>
-                    <b>Description: </b>
-                    {selectedDocument.description}
+                    Description:
+                    <b> {selectedDocument.description}</b>
                   </p>
                   <p>
-                    <b>Format: </b>
-                    {selectedDocument.format}
+                    Format:
+                    <b> {selectedDocument.format} </b>
                   </p>
                 </div>
               </div>

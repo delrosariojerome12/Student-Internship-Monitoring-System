@@ -1,3 +1,5 @@
+/** @format */
+
 @import "../../variables";
 @import "../../utils";
 
@@ -644,9 +646,6 @@
               padding: 1rem 0;
               label {
                 flex-direction: column;
-                input {
-                  width: 50%;
-                }
               }
             }
           }
@@ -711,17 +710,17 @@
         }
       }
       form {
-        .student-details {
-          .forms-con {
-            .img-input {
-              label {
-                input {
-                  width: 60%;
-                }
-              }
-            }
-          }
-        }
+        // .student-details {
+        //   .forms-con {
+        //     .img-input {
+        //       label {
+        //         input {
+        //           width: 60%;
+        //         }
+        //       }
+        //     }
+        //   }
+        // }
 
         button {
           height: 3rem;
@@ -766,19 +765,19 @@
         }
       }
 
-      form {
-        .student-details {
-          .forms-con {
-            .img-input {
-              label {
-                input {
-                  width: 80%;
-                }
-              }
-            }
-          }
-        }
-      }
+      // form {
+      //   .student-details {
+      //     .forms-con {
+      //       .img-input {
+      //         label {
+      //           input {
+      //             width: 80%;
+      //           }
+      //         }
+      //       }
+      //     }
+      //   }
+      // }
     }
   }
 }
@@ -793,13 +792,18 @@
     }
 
     .are-you-sure-modal {
-      width: 80%;
+      width: 95%;
     }
 
     .verification-steps {
       form {
         .btn-con {
-          @include flexColumn;
+          display: grid;
+          grid-template-rows: auto auto;
+          gap: 1rem;
+          :nth-last-child(1) {
+            grid-row: 1/2;
+          }
         }
       }
     }
@@ -810,20 +814,20 @@
   .verification-container {
     padding: 1rem;
     border: none;
-    .verification-steps {
-      form {
-        .student-details {
-          .forms-con {
-            .img-input {
-              label {
-                input {
-                  width: 90%;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+    // .verification-steps {
+    //   form {
+    //     .student-details {
+    //       .forms-con {
+    //         .img-input {
+    //           label {
+    //             input {
+    //               width: 90%;
+    //             }
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
   }
 }
