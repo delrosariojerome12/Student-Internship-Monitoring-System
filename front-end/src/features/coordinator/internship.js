@@ -21,7 +21,6 @@ export const getAllInternship = createAsyncThunk(
     try {
       const url = `http://localhost:5000/internship/getAllInternship`;
       const {data: res} = await axios.get(url);
-      console.log(res);
       return {res};
     } catch (error) {
       console.log(error);
@@ -48,16 +47,16 @@ export const createInternship = createAsyncThunk(
 
 export const updateInternship = createAsyncThunk(
   "/internship/updateInternship",
-  async ({x, id}, {rejectWithValue}) => {
+  async ({form, id}, {rejectWithValue}) => {
     try {
       const url = `http://localhost:5000/internship/updateInternship/${id}`;
-      const {data: res} = await axios.patch(url, x);
-      console.log(res);
+      const {data: res} = await axios.patch(url, form);
       return {res};
     } catch (error) {
-      console.log(error);
-
-      return rejectWithValue(error.response.data);
+      return rejectWithValue({
+        error: error.response.data,
+        status: error.response.status,
+      });
     }
   }
 );
@@ -88,7 +87,13 @@ export const internshipReducer = createSlice({
       }
       state.isViewOpen = !state.isViewOpen;
     },
-    handleEdit: (state, action) => {
+    handleEdit: (state, {payload}) => {
+      if (payload) {
+        const internship = current(state.internships).filter(
+          (item) => item._id === payload.id
+        );
+        state.selectedInternship = internship;
+      }
       state.isEditOpen = !state.isEditOpen;
     },
     handleDelete: (state, action) => {
@@ -144,12 +149,27 @@ export const internshipReducer = createSlice({
         state.isLoading = true;
       })
       .addCase(updateInternship.fulfilled, (state, {payload: {res}}) => {
-        // state.internships = res.data;
+        state.internships = [...res.data.allInternships];
         state.isLoading = false;
+        state.isEditOpen = false;
+        state.requestMessage = res.data.message;
+        state.isMessageOpen = true;
       })
       .addCase(updateInternship.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
+        const {error, status} = action.payload;
+
+        console.log(status, error);
+
+        if (status === 400) {
+          state.typeError = "Duplicate";
+          state.isLoading = false;
+          state.isMessageOpen = true;
+          state.requestMessage = error.msg;
+          state.isAddOpen = false;
+          state.isEditOpen = false;
+        } else {
+          state.isError = true;
+        }
       });
     // delete
     build
