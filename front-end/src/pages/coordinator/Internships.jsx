@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import Internship from "../../components/coordinator/Internship";
-import { useSelector, useDispatch } from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 import Bouncing from "../../components/loading/Bouncing";
 import ServerError from "../serverError";
 import {
@@ -12,18 +12,13 @@ import {
   createInternship,
   handleMessage,
 } from "../../features/coordinator/internship";
-import { handleAdd } from "../../features/coordinator/internship";
+import {handleAdd} from "../../features/coordinator/internship";
 import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
 
-import { storage } from "../../Firebase";
-import {
-  ref,
-  uploadBytes,
-  getDownloadURL,
-  deleteObject,
-} from "firebase/storage";
-import { v4 } from "uuid";
+import {storage} from "../../Firebase";
+import {ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage";
+import {v4} from "uuid";
 
 import noImageDark from "../../assets/img/noimageDark.svg";
 import NoDocumentSvg from "../../assets/img/waiting.svg";
@@ -46,18 +41,6 @@ const Internships = React.memo(() => {
   const dispatch = useDispatch();
 
   const [form, setForm] = useState([
-    {
-      type: "image",
-      id: "logo",
-      code: "logo",
-      forInput: "Logo",
-      value: "",
-      isError: false,
-      errorMessage: "",
-      isDisabled: false,
-      name: "",
-      link: "",
-    },
     {
       type: "text",
       id: "company-name",
@@ -115,6 +98,10 @@ const Internships = React.memo(() => {
       value: "",
       isDisabled: false,
       code: "typeOfWork",
+      valuePlaceholder: {
+        value: "Duties",
+        label: "Duties",
+      },
       optionItems: [
         {
           value: "Encoding",
@@ -137,6 +124,18 @@ const Internships = React.memo(() => {
           label: "Not specified",
         },
       ],
+    },
+    {
+      type: "image",
+      id: "logo",
+      code: "logo",
+      forInput: "Logo",
+      value: "",
+      isError: false,
+      errorMessage: "",
+      isDisabled: false,
+      name: "",
+      link: "",
     },
     {
       type: "textArea",
@@ -172,7 +171,7 @@ const Internships = React.memo(() => {
       return (
         <div className="content">
           {internships.map((item, index) => (
-            <Internship key={index} internship={item} />
+            <Internship key={index} internship={item} editForm={editForm} />
           ))}
           <div className={isMessageOpen ? "message-con active" : "message-con"}>
             <p>{requestMessage}</p>
@@ -206,9 +205,35 @@ const Internships = React.memo(() => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   };
+
+  const clearValue = () => {
+    const newForm = form.map((item) => {
+      return item.type === "file"
+        ? {
+            ...item,
+            value: "",
+            isDisabled: false,
+            name: "",
+            link: "",
+          }
+        : item.type === "list"
+        ? {
+            ...item,
+            isDisabled: false,
+            valuePlaceholder: {
+              value: "Duties",
+              label: "Duties",
+            },
+            value: "",
+          }
+        : {...item, value: ""};
+    });
+    setForm(newForm);
+    setComplete(false);
+  };
   const convertForm = (form) => {
     const newData = form.map((input) => {
-      const { code, value, name } = input;
+      const {code, value, name} = input;
       if (name) {
         return {
           code,
@@ -226,8 +251,8 @@ const Internships = React.memo(() => {
       {},
       ...newData.map((item) =>
         !item.name
-          ? { [item.code]: item.value }
-          : { [item.code]: { link: item.value, name: item.name } }
+          ? {[item.code]: item.value}
+          : {[item.code]: {link: item.value, name: item.name}}
       )
     );
 
@@ -276,7 +301,7 @@ const Internships = React.memo(() => {
         return;
       case "logo":
         if (value) {
-          const { name, type } = value;
+          const {name, type} = value;
           if (!type.includes("image")) {
             newForm[index].isError = true;
             newForm[index].errorMessage = "Invalid file type";
@@ -355,6 +380,35 @@ const Internships = React.memo(() => {
     }),
   };
 
+  const editForm = (givenInternship) => {
+    const entries = Object.entries(givenInternship).map((item) => {
+      const x = Object.assign({}, item);
+      return {[x[0]]: x[1], code: x[0], value: x[1]};
+    });
+    const final = entries
+      .map((i) => {
+        const newForm = form.map((item) => {
+          if (item.code === i.code) {
+            if (item.code === "typeOfWork") {
+              return {
+                ...item,
+                valuePlaceholder: {
+                  value: i.value,
+                  label: i.value,
+                },
+                value: i.value,
+              };
+            }
+            return item.code === i.code && {...item, value: i.value};
+          }
+        });
+        return newForm.filter((c) => c).sort((item) => item.type)[0];
+      })
+      .filter((x) => x);
+
+    setForm(final);
+  };
+
   const renderInputs = (formArray) => {
     return formArray.map((item, index) => {
       const {
@@ -369,6 +423,7 @@ const Internships = React.memo(() => {
         maxLength,
         minLength,
         link,
+        valuePlaceholder,
       } = item;
       switch (type) {
         case "text":
@@ -407,11 +462,19 @@ const Internships = React.memo(() => {
             </div>
           );
         case "list":
-          const { optionItems } = item;
+          const {optionItems} = item;
           return (
             <div className="input-contain" key={index}>
               <h3>{forInput}</h3>
               <CreatableSelect
+                value={
+                  value
+                    ? {
+                        label: value,
+                        value: value,
+                      }
+                    : valuePlaceholder
+                }
                 onChange={(e) => handleOnChange(e.value, index)}
                 styles={customStyle}
                 required
@@ -447,11 +510,11 @@ const Internships = React.memo(() => {
                 {link ? (
                   <img src={link} alt={id} />
                 ) : (
-                  <img src={noImageDark} alt="no image" />
+                  <img src={noImageDark} alt="placeholder" />
                 )}
                 {isError && (
                   <p
-                    style={{ color: "red", fontSize: "18px" }}
+                    style={{color: "red", fontSize: "18px"}}
                     className="error-message"
                   >
                     {errorMessage}
@@ -469,8 +532,8 @@ const Internships = React.memo(() => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const internship = convertForm(form);
-    dispatch(createInternship({ internship }));
-
+    dispatch(createInternship({internship}));
+    clearValue();
     const timer = setTimeout(() => dispatch(handleMessage()), 3000);
     return () => clearTimeout(timer);
   };
@@ -478,11 +541,10 @@ const Internships = React.memo(() => {
   const handleClose = () => {
     const newForm = [...form].map((item) => {
       item.value = "";
-      return { ...item };
+      return {...item};
     });
     setForm(newForm);
     dispatch(handleAdd());
-    console.log(newForm);
   };
 
   return (
@@ -508,8 +570,8 @@ const Internships = React.memo(() => {
                 <button
                   style={
                     isComplete
-                      ? { opacity: "1" }
-                      : { opacity: ".7", pointerEvents: "none" }
+                      ? {opacity: "1"}
+                      : {opacity: ".7", pointerEvents: "none"}
                   }
                   type="submit"
                 >
@@ -520,7 +582,15 @@ const Internships = React.memo(() => {
           </div>
         </>
       )}
-      {isEditOpen && <EditModal form={form} renderInputs={renderInputs} />}
+      {isEditOpen && (
+        <EditModal
+          renderInputs={renderInputs}
+          form={form}
+          clearValue={clearValue}
+          isComplete={isComplete}
+          convertForm={convertForm}
+        />
+      )}
       {isViewOpen && <ViewModal form={form} />}
     </div>
   );

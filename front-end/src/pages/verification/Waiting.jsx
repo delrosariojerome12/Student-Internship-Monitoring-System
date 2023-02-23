@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import waitingImg from "../../assets/img/verification/waiting.svg";
 import { useNavigate } from "react-router";
@@ -72,58 +74,58 @@ const Waiting = React.memo((user) => {
           <div className="student-details-container">
             <h4>Student Details</h4>
             <p>
-              <b>Program: </b>
-              {program}
+              Program:
+              <b> {program}</b>
             </p>
             <p>
-              <b>Required Hours: </b>
-              {requiredHours}
+              Required Hours:
+              <b> {requiredHours}</b>
             </p>
             <p>
-              <b>Email: </b>
-              {email}
+              Email:
+              <b> {email}</b>
             </p>
             <p>
-              <b>Contact Number: </b>
-              {studentContact}
+              Contact Number:
+              <b> {studentContact}</b>
             </p>
           </div>
           <div className="schedule-details-container">
             <h4>Schedule Details</h4>
             <p>
-              <b>Schedule Type: </b>
-              {scheduleType}
+              Schedule Type:
+              <b> {scheduleType}</b>
             </p>
             <p>
-              <b>Days: </b>
-              {scheduledDays}
+              Days:
+              <b> {scheduledDays}</b>
             </p>
             <p>
-              <b>Time: </b>
-              {`${timeInSchedule} - ${timeOutSchedule}`}
+              Time:
+              <b> {`${timeInSchedule} - ${timeOutSchedule}`}</b>
             </p>
           </div>
           <div className="internship-details-container">
             <h4>Internship Details</h4>
             <p>
-              <b>Type of Work: </b>
-              {typeOfWork}
+              Type of Work:
+              <b> {typeOfWork} </b>
             </p>
             <p>
-              <b>Company: </b>
-              {companyName}
+              Company:
+              <b> {companyName}</b>
             </p>
             <p>
-              <b>Address: </b>
-              {companyAddress}
+              Address:
+              <b> {companyAddress} </b>
             </p>
             <p>
-              <b>Supervisor: </b>
-              {supervisor}
+              Supervisor:
+              <b> {supervisor}</b>
             </p>
             <p>
-              <b>Contact: </b>
-              {supervisorContact}
+              Contact:
+              <b> {supervisorContact}</b>
             </p>
           </div>
         </div>
