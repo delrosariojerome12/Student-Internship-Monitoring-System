@@ -21,6 +21,7 @@ import "@react-pdf-viewer/core/lib/styles/index.css";
 import {Route, Routes, Link, Navigate, useNavigate} from "react-router-dom";
 import Bouncing from "../../components/loading/Bouncing";
 import ServerError from "../../pages/serverError";
+import {FaTrash} from "react-icons/fa";
 
 const DocumentApproval = lazy(() => import("./DocumentApproval"));
 
@@ -485,12 +486,12 @@ const Documents = React.memo(() => {
                 </div>
                 <div className="desc-container">
                   <p>
-                    <b>Description: </b>
-                    {selectedDocument.description}
+                    Description:
+                    <b> {selectedDocument.description}</b>
                   </p>
                   <p>
-                    <b>Format: </b>
-                    {selectedDocument.format}
+                    Format:
+                    <b> {selectedDocument.format} </b>
                   </p>
                 </div>
               </div>

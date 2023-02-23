@@ -75,9 +75,9 @@
       transition: all 0.2s linear;
       background-color: lighten(
         $color: $primary-bg-color-landing-compliment,
+
         $amount: 10
       );
-
       &:hover {
         background-color: $primary-bg-color;
         border-radius: 1rem;
@@ -121,9 +121,9 @@
     position: relative;
     cursor: pointer;
     transition: all 0.2s linear;
+
     margin: auto;
     border: none;
-
     &:hover {
       img {
         border-radius: 1rem;
@@ -184,9 +184,9 @@
       align-items: center;
       gap: 1rem;
       padding: 1rem;
+      // grid-template-columns: 7rem auto;
       cursor: pointer;
       // display: grid;
-      // grid-template-columns: 7rem auto;
       &:hover {
         background-color: lighten(
           $color: $primary-bg-color-landing-compliment,
@@ -210,9 +210,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      transition: all 0.2s linear;
       border-radius: 1rem;
       cursor: pointer;
-      transition: all 0.2s linear;
       &:hover {
         background-color: lighten(
           $color: $primary-bg-color-landing-compliment,
@@ -388,9 +388,9 @@
           .icon-con {
             display: flex;
             border-radius: 0%;
+            background-color: transparent;
             height: auto;
             width: 100%;
-            background-color: transparent;
             &:hover {
               background-color: $primary-bg-color;
             }
@@ -429,6 +429,25 @@
             grid-row: 2/3;
             grid-column: 2/3;
             word-break: break-all;
+          }
+        }
+
+        .logout {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 1rem;
+          color: #fff;
+          padding: 1rem;
+          span {
+            @include flexCenter;
+            font-size: 2.5rem;
+          }
+          &:hover {
+            background-color: lighten(
+              $color: $primary-bg-color-landing-compliment,
+              $amount: 5
+            );
           }
         }
       }
