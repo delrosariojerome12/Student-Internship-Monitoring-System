@@ -41,6 +41,10 @@ const AttendanceSchema = new mongoose.Schema({
     default: "pending",
     // required: [true, "Please provide a timout"],
   },
+  totalRendered: {
+    type: String,
+    default: "0",
+  },
   isComplete: {
     type: Boolean,
     default: false,
@@ -54,10 +58,14 @@ const AttendanceSchema = new mongoose.Schema({
     type: String,
     default: "0",
   },
-  //   narrative: {
-  //     type: mongoose.Schema.Types.ObjectId,
-  //     ref: "Narrative",
-  //   },
+  narrative: {
+    // type: mongoose.Schema.Types.ObjectId,
+    // ref: "Narrative",
+    content: String,
+    // remarks: {
+    //   type: String,
+    // },
+  },
 });
 
 module.exports = mongoose.model("Attendance", AttendanceSchema);
