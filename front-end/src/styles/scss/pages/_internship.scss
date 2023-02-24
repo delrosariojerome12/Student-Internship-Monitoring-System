@@ -212,6 +212,10 @@
         grid-row: 8/9;
         grid-column: 1/4;
       }
+      &:nth-child(9) {
+        grid-row: 9/10;
+        grid-column: 1/4;
+      }
     }
     .img-con {
       img {
