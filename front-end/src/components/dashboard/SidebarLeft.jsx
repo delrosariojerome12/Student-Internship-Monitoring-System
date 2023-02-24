@@ -169,25 +169,27 @@ const SidebarLeft = () => {
 
     const isVerified = user.verification.isVerified;
     if (isVerified) {
-      return links[0].sidebar.map((item, index) => {
-        const {path, link, IconType} = item;
-        return (
-          <span
-            className="icon-con"
-            key={index}
-            onClick={() => {
-              setDropDownOpen(false);
-              isSidebarOpen && dispatch(handleSidebar());
-            }}
-          >
-            <Link to={path}>
-              <IconType />
-              {/* {isSidebarOpen && link} */}
-              {isSidebarOpen ? link : isDropDownOpen ? link : null}
-            </Link>
-          </span>
-        );
-      });
+      return links[0].sidebar
+        .filter((item) => item.link !== "Internships")
+        .map((item, index) => {
+          const {path, link, IconType} = item;
+          return (
+            <span
+              className="icon-con"
+              key={index}
+              onClick={() => {
+                setDropDownOpen(false);
+                isSidebarOpen && dispatch(handleSidebar());
+              }}
+            >
+              <Link to={path}>
+                <IconType />
+                {/* {isSidebarOpen && link} */}
+                {isSidebarOpen ? link : isDropDownOpen ? link : null}
+              </Link>
+            </span>
+          );
+        });
     }
     return links[0].sidebar
       .filter(
