@@ -2756,6 +2756,10 @@ button {
   grid-row: 8/9;
   grid-column: 1/4;
 }
+.dashboard .internship-container .view-modal .input:nth-child(9), .dashboard-active .internship-container .view-modal .input:nth-child(9) {
+  grid-row: 9/10;
+  grid-column: 1/4;
+}
 .dashboard .internship-container .view-modal .img-con, .dashboard-active .internship-container .view-modal .img-con {
   display: flex;
   align-items: center;
@@ -5438,6 +5442,10 @@ button {
 }
 .internship-container-intern .view-modal .input:nth-child(8) {
   grid-row: 8/9;
+  grid-column: 1/4;
+}
+.internship-container-intern .view-modal .input:nth-child(9) {
+  grid-row: 9/10;
   grid-column: 1/4;
 }
 .internship-container-intern .view-modal .img-con {

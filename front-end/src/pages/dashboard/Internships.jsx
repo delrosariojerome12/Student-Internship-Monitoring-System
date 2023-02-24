@@ -125,6 +125,11 @@ const Internships = React.memo(() => {
   const {internships, isLoading, isError, isViewOpen, selectedInternship} =
     useSelector((state) => state.internship);
 
+  const [isSortOpen, setSortOpen] = useState(false);
+  const [sortValue, setSortValue] = useState(null);
+  const [isFilterOpen, setFilterOpen] = useState(false);
+  const [isFilterValue, setFilterValue] = useState(null);
+
   useEffect(() => {
     dispatch(getAllInternship());
   }, []);
@@ -162,11 +167,89 @@ const Internships = React.memo(() => {
         <h3>Looking for Internship?</h3>
       </header>
       <div className="btn-contoller">
-        <button type="button">Sort</button>
-        <button type="button">Filter</button>
+        <button
+          onClick={() => {
+            setSortOpen(!isSortOpen);
+          }}
+          type="button"
+        >
+          Sort
+        </button>
+        <button
+          onClick={() => {
+            setFilterOpen(!isFilterOpen);
+          }}
+          type="button"
+        >
+          Filter
+        </button>
       </div>
       {renderInternship()}
       {isViewOpen && <ViewModal form={form} />}
+      {/* not working */}
+      {isFilterOpen && (
+        <>
+          <div className="overlay" onClick={() => setFilterOpen(false)}></div>
+          <div onClick={(e) => e.stopPropagation()} className="filter modal">
+            <p>filter</p>
+          </div>
+        </>
+      )}
+      {isSortOpen && (
+        <>
+          <div className="overlay" onClick={() => setSortOpen(false)}></div>
+          <div onClick={(e) => e.stopPropagation()} className="sort modal">
+            <h4>Sort By</h4>
+            <form>
+              <div className="name-sort">
+                <label htmlFor="name-ascending">
+                  <input
+                    type="radio"
+                    name="sort"
+                    id="name-ascending"
+                    value="name-ascending"
+                    onChange={(e) => setSortValue(e.target.value)}
+                  />
+                  Name A-Z
+                </label>
+                <label htmlFor="name-descending">
+                  <input
+                    type="radio"
+                    name="sort"
+                    id="name-descending"
+                    value="name-descending"
+                    onChange={(e) => setSortValue(e.target.value)}
+                  />
+                  Name Z-A
+                </label>
+              </div>
+              <div className="time-sort">
+                <label htmlFor="time-ascending">
+                  <input
+                    type="radio"
+                    name="sort"
+                    id="time-ascending"
+                    value="time-ascending"
+                    onChange={(e) => setSortValue(e.target.value)}
+                  />
+                  Least Rendered Hours
+                </label>
+
+                <label htmlFor="time-descending">
+                  <input
+                    type="radio"
+                    name="sort"
+                    id="time-descending"
+                    value="time-descending"
+                    onChange={(e) => setSortValue(e.target.value)}
+                  />
+                  Most Rendered Hours
+                </label>
+              </div>
+            </form>
+          </div>
+        </>
+      )}
     </section>
   );
 });

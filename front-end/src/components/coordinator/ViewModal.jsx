@@ -24,6 +24,8 @@ const ViewModal = React.memo(({form}) => {
     return final;
   };
 
+  const {students} = selectedInternship[0];
+
   return (
     <>
       <div onClick={() => dispatch(handleView())} className="overlay"></div>
@@ -47,6 +49,10 @@ const ViewModal = React.memo(({form}) => {
             </div>
           );
         })}
+        <div className="input text-con">
+          <h4>Enrolled Students</h4>
+          <p>{students}</p>
+        </div>
       </div>
     </>
   );
