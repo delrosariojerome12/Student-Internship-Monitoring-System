@@ -17,7 +17,6 @@ const AttendanceSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please enter estimated completion."],
   },
-
   dateOfDuty: {
     type: String,
     required: [true, "Please enter the date."],
