@@ -2,7 +2,6 @@ const {BadRequest, NotFound, Duplicate} = require("../errors");
 const {StatusCodes} = require("http-status-codes");
 const Attendance = require("../models/Attendance");
 const Intern = require("../models/Intern");
-const {create} = require("../models/Attendance");
 const mongoose = require("mongoose");
 
 const getAllAttendance = async (req, res) => {
@@ -32,7 +31,7 @@ const getAttendance = async (req, res) => {
   res.status(StatusCodes.OK).json({success: true, data: attendance});
 };
 
-const createAttendance = async (req, res) => {
+const timeIn = async (req, res) => {
   const {email} = req.params;
 
   if (!email) {
@@ -40,11 +39,26 @@ const createAttendance = async (req, res) => {
   }
   const attendance = await Attendance.create({email, ...req.body});
   Attendance.createIndexes();
+
+  res.status(StatusCodes.OK).json({success: true, data: attendance});
+};
+
+const timeOut = async (req, res) => {
+  const {email} = req.params;
+
+  if (!email) {
+    throw new NotFound("Email not found");
+  }
+  const attendance = await Attendance.findByIdAndUpdate({email, ...req.body});
+
+  // add patch for updating time rendered for intern
+
   res.status(StatusCodes.OK).json({success: true, data: attendance});
 };
 
 module.exports = {
   getAllAttendance,
   getAttendance,
-  createAttendance,
+  timeIn,
+  timeOut,
 };

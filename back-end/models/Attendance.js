@@ -6,10 +6,6 @@ const AttendanceSchema = new mongoose.Schema({
     default: Date.now,
     required: [true, "Please provide a valid date"],
   },
-  //   internID: {
-  //     type: mongoose.Schema.Types.ObjectId,
-  //     ref: "Intern",
-  //   },
   email: {
     type: String,
     required: [true, "Please provide email"],
@@ -42,11 +38,21 @@ const AttendanceSchema = new mongoose.Schema({
   },
   timeOut: {
     type: String,
-    required: [true, "Please provide a timout"],
+    default: "pending",
+    // required: [true, "Please provide a timout"],
+  },
+  isComplete: {
+    type: Boolean,
+    default: false,
   },
   isLate: {
     type: Boolean,
     default: false,
+  },
+
+  OT: {
+    type: String,
+    default: "0",
   },
   //   narrative: {
   //     type: mongoose.Schema.Types.ObjectId,
