@@ -79,7 +79,7 @@ const LandingPage = () => {
   }, [isNavbarOpen, handleResize]);
 
   return (
-    <IconContext.Provider value={{ className: "icons", color: "red" }}>
+    <IconContext.Provider value={{ className: "icons", color: "#ffff" }}>
       <section className="landing-page">
         <nav>
           <div className="logo">
