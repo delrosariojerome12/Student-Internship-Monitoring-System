@@ -139,20 +139,18 @@
 
 .main-carousel {
   border: 1px solid #ffff;
-  width: 1700px;
   height: 636px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+  width: 100%;
+  padding: 3rem;
   background-color: #323232;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(40%, 50rem) minmax(60%, 70rem);
 
   .text-container-left {
     border: 1px solid #ffff;
-    width: 550px;
-    height: 80%;
+    width: 100%;
+    height: 100%;
     & {
       p {
         color: #ffff;
@@ -170,8 +168,8 @@
   }
 
   .slides {
-    width: 1000px;
-    height: 80%;
+    width: 100%;
+    height: 100%;
     border: 1px solid #ffff;
     // border-radius: 10px;
     position: relative;
