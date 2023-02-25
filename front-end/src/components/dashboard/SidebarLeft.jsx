@@ -218,7 +218,8 @@ const SidebarLeft = () => {
     <aside
       className={
         isSidebarOpen ? "left-sidebar active-sidebar" : "left-sidebar "
-      }>
+      }
+    >
       <IconContext.Provider value={{ className: "icons" }}>
         <div className="img-con">
           <img src={logo} alt="Logo.png " />

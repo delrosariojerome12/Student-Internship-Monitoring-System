@@ -62,6 +62,7 @@ const Documents = React.memo(() => {
   }
 
   const handleSubmit = (e) => {
+    // console.log(sentDocument.sample);
     e.preventDefault();
     dispatch(
       sendDocument({
