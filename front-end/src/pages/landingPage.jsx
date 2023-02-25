@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from "react";
-import {Link, useNavigate} from "react-router-dom";
-import {HiMenu} from "react-icons/hi";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { HiMenu } from "react-icons/hi";
 
 import logo from "../assets/img/landingPage/Logo.png";
 import landingImg from "../assets/img/landingPage/landing-image.png";
@@ -17,13 +17,13 @@ import socialIcon1 from "../assets/img/landingPage/ICON SOCIALS/FB.png";
 import socialIcon2 from "../assets/img/landingPage/ICON SOCIALS/INSTA.png";
 import socialIcon3 from "../assets/img/landingPage/ICON SOCIALS/LINKIN.png";
 import socialIcon4 from "../assets/img/landingPage/ICON SOCIALS/TWITTER.png";
-import {useCallback} from "react";
+import { useCallback } from "react";
 
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 
-import {FaChevronLeft, FaChevronRight} from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-import {IconContext} from "react-icons";
+import { IconContext } from "react-icons";
 
 const links = [
   {
@@ -32,11 +32,11 @@ const links = [
   },
   {
     link: "Testimonial",
-    path: "/testimonials",
+    path: "feature-Content-Img",
   },
   {
     link: "FAQ",
-    path: "/faqs",
+    path: "faq",
   },
   {
     link: "About Us ",
@@ -53,12 +53,16 @@ const authLinks = [
     path: "/account/login",
   },
 ];
+const handleScroll = (path) => {
+  const featureContent = document.getElementById(path);
+  featureContent.scrollIntoView({ behavior: "smooth", block: "center" });
+};
 
 const LandingPage = () => {
   const [isNavbarOpen, setNavbarOpen] = useState(false);
   const navigate = useNavigate();
 
-  const {user} = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
 
   const handleResize = useCallback(() => {
     setNavbarOpen(false);
@@ -79,7 +83,7 @@ const LandingPage = () => {
   }, [isNavbarOpen, handleResize]);
 
   return (
-    <IconContext.Provider value={{className: "icons", color: "#ffff"}}>
+    <IconContext.Provider value={{ className: "icons", color: "#ffff" }}>
       <section className="landing-page">
         <nav>
           <div className="logo">
@@ -93,15 +97,11 @@ const LandingPage = () => {
           >
             <ul className="links">
               {links.map((item, index) => {
-                const {path, link} = item;
+                const { path, link } = item;
                 return (
-                  <button
-                    key={index}
-                    to={path}
-                    onClick={() => console.log(link)}
-                  >
+                  <a key={index} onClick={() => handleScroll(path)}>
                     {link}
-                  </button>
+                  </a>
                 );
               })}
             </ul>
@@ -112,7 +112,7 @@ const LandingPage = () => {
                 </button>
               ) : (
                 authLinks.map((item, index) => {
-                  const {path, link} = item;
+                  const { path, link } = item;
                   return (
                     <button
                       onClick={() => {
@@ -158,7 +158,7 @@ const LandingPage = () => {
               <img className="landingBg" src={landingBg} alt="" />
             </div>
           </div>
-          <div className="feature-contents">
+          <div className="feature-contents" id="feature-Content-Img">
             <div className="feature-Content-Img">
               <div className="img-features">
                 <img src={featureImg1} alt="" />
@@ -172,7 +172,7 @@ const LandingPage = () => {
             </div>
           </div>
 
-          <div className="mockup-contents">
+          <div className="mockup-contents" id="faq">
             <div className="card">
               <div className="text-container">
                 <p>Do you need assistance with your internship?</p>
