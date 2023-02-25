@@ -7734,6 +7734,73 @@ button {
     height: 2.5rem;
   }
 }
+.main-carousel {
+  border: 1px solid white;
+  width: 1700px;
+  height: 636px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #323232;
+}
+.main-carousel .text-container-left {
+  border: 1px solid white;
+  width: 550px;
+  height: 80%;
+}
+.main-carousel .text-container-left p {
+  color: white;
+}
+.main-carousel .text-container-left p:nth-of-type(1) {
+  font-size: 68px;
+}
+.main-carousel .text-container-left p:nth-of-type(2) {
+  font-size: 36px;
+}
+.main-carousel .text-container-left p:nth-of-type(3) {
+  opacity: 0.5;
+}
+.main-carousel .slides {
+  width: 1000px;
+  height: 80%;
+  border: 1px solid white;
+  position: relative;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-points-x: repeat(100%);
+  scroll-snap-type: mandatory;
+  background-color: #014805;
+}
+.main-carousel .slides .content {
+  border: 1px solid white;
+  width: 550px;
+  height: 80%;
+  position: absolute;
+}
+.main-carousel .slides .btn-prev,
+.main-carousel .slides .btn-next {
+  width: 80px;
+  height: 100%;
+}
+.main-carousel .slides .btn-prev {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translateY(-50%);
+}
+.main-carousel .slides .btn-next {
+  position: absolute;
+  right: 0%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 @media screen and (max-width: 920px) {
   .landing-page .contents .mockup-contents .card .text-container p:nth-of-type(2) {
     grid-column: 1/4;
