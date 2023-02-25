@@ -22,6 +22,9 @@ const ApprovalIntern = React.memo(({intern, index}) => {
       supervisor,
       supervisorContact,
       typeOfWork,
+      logo,
+      startingDate,
+      description,
     },
     verification: {isVerified, hasSentVerification},
     scheduleDetails: {
@@ -31,6 +34,8 @@ const ApprovalIntern = React.memo(({intern, index}) => {
       timeOutSchedule,
     },
   } = intern;
+
+  const {internshipDetails} = intern;
 
   const [isDetailsOpen, setDetailsOpen] = useState(false);
   const [remarks, setRemarks] = useState("");
@@ -75,6 +80,8 @@ const ApprovalIntern = React.memo(({intern, index}) => {
       console.log("Request Accepted");
     }
   };
+
+  console.log(intern);
 
   return (
     <section className="approval-intern">
@@ -121,13 +128,14 @@ const ApprovalIntern = React.memo(({intern, index}) => {
                   <b>Time: </b>
                   {`${timeInSchedule} - ${timeOutSchedule}`}
                 </p>
+                <p>
+                  <b>Starting Date: </b>
+                  {startingDate}
+                </p>
               </div>
               <div className="internship-details-container">
                 <h4>Internship Details</h4>
-                <p>
-                  <b>Type of Work: </b>
-                  {typeOfWork}
-                </p>
+                <img src={logo.link} alt={logo.name} />
                 <p>
                   <b>Company: </b>
                   {companyName}
@@ -141,8 +149,20 @@ const ApprovalIntern = React.memo(({intern, index}) => {
                   {supervisor}
                 </p>
                 <p>
+                  <b>Email</b>
+                  {internshipDetails.email}
+                </p>
+                <p>
                   <b>Contact: </b>
                   {supervisorContact}
+                </p>
+                <p>
+                  <b>Type of Work: </b>
+                  {typeOfWork}
+                </p>
+                <p>
+                  <b>Description: </b>
+                  {description}
                 </p>
               </div>
             </div>
