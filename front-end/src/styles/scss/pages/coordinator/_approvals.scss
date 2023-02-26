@@ -142,6 +142,7 @@
                   width: 17rem;
                   border-radius: 1rem;
                   border: solid 2px $primary-compliment-landing;
+                  margin: auto;
                 }
               }
               .student-details-container {
@@ -171,9 +172,11 @@
                   grid-row: 1/2;
                 }
                 img {
+                  margin: auto;
                   grid-row: 2/4;
                   grid-column: 1/2;
-                  height: 10rem;
+                  // height: 10rem;
+                  height: 100%;
                   width: 10rem;
                   object-fit: contain;
                 }

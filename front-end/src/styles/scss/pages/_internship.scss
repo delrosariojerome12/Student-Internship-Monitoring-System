@@ -82,6 +82,11 @@
         padding: 1rem;
         color: #000;
         font-weight: 600;
+        p {
+          white-space: nowrap; /* Prevents text from wrapping */
+          overflow: hidden; /* Hides any overflowed text */
+          text-overflow: ellipsis;
+        }
         .internship-btn {
           display: flex;
           align-items: center;
@@ -160,11 +165,12 @@
 
     .input {
       display: grid;
-      grid-template-columns: 18rem auto;
+      grid-template-columns: 18rem 1fr;
       align-items: center;
       gap: 1rem;
       p {
         font-size: 1.4rem;
+        word-break: break-all;
       }
       h4 {
         font-size: 1.6rem;
