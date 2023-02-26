@@ -219,8 +219,8 @@ const LandingPage = () => {
           </div>
 
           <div className="aboutUs-container">
-            <div className="inner-container">
-              <div className="contents">
+            <div className="aboutUs-contents">
+              <div className="aboutUs-Text">
                 <p>About Us</p>
                 <p>
                   As former intern students, we are concerned about the upcoming
@@ -235,14 +235,16 @@ const LandingPage = () => {
                 </p>
               </div>
               <div className="getStarted">
-                <div className="getStarted-content">
+                {/* <div className="getStarted-content"> */}
+                <div className="getStarted-P">
                   <p>Ready to get started?</p>
                   <p>
                     Discover a quick and simple approach to organize your time
                     and provide guidance throughout your internship.
                   </p>
                 </div>
-                <button>Create Account</button>
+                <button className="btn-CreateAcc">Create Account</button>
+                {/* </div> */}
               </div>
             </div>
           </div>

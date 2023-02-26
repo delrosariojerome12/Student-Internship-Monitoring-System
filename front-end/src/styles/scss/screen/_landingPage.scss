@@ -180,7 +180,7 @@
     -webkit-overflow-scrolling: touch;
     scroll-snap-points-x: repeat(100%);
     scroll-snap-type: mandatory;
-    background-color: #014805;
+
     & {
       .content {
         border: 1px solid #ffff;
@@ -211,55 +211,95 @@
     }
   }
 }
+
+// ABOUT US
 .aboutUs-container {
+  position: relative;
+  // width: 80%;
+  display: flex;
+  align-items: center;
+  padding: 1em;
+  // background-color: #d9d9d9;
+
   border: 1px solid #ffff;
-  height: 500px;
+  height: 100%;
   padding: 5em;
   display: grid;
-  // grid-template-columns: minmax(30%, 50rem) minmax(50%, 100rem);
+  grid-template-columns: minmax(30%, 50rem) minmax(50%, 100rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
   color: #fff;
-  .inner-container {
-    height: 100%;
+
+  .aboutUs-contents {
     padding: 2em;
     display: flex;
+    align-items: center;
     flex-direction: column;
     justify-content: center;
+    border-radius: 10px;
     background-color: #323232;
   }
-  .contents {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    // grid-template-columns: minmax(30%, 40rem) minmax(50%, 60rem);
+  .aboutUs-Text {
+    position: relative;
+    width: 85%;
+    padding-bottom: 20px;
+    // border: 1px solid #fff;
+
+    p:nth-of-type(1) {
+      text-align: center;
+      padding: 1em;
+      font-size: 32px;
+    }
+    p:nth-of-type(2) {
+      text-align: justify;
+      padding: 1em;
+    }
   }
   .getStarted {
-    background-color: #d9d9d9;
-    height: 100%;
-    padding: 2em;
-    border-radius: 10px;
-    border: 1px solid #ffff;
-    color: #323232;
+    padding: 1em;
     display: flex;
-    display: grid;
-    grid-template-columns: minmax(60%, 70rem) minmax(40%, 60rem);
-
+    position: relative;
     align-items: center;
-    justify-content: center;
-    .getStarted-content {
-      display: flex;
-    }
-    .button {
-      position: relative;
-      width: 50%;
-    }
+    width: 85%;
+    background-color: #d9d9d9;
+    // border: 1px solid #fff;
+    border-radius: 20px;
+    color: #323232;
+    height: 100%;
   }
 }
+.getStarted-P {
+  padding: 1em;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  flex-direction: column;
+
+  p:nth-of-type(1) {
+    text-align: left;
+    font-size: 32px;
+    padding: 20px 0px;
+    font-weight: 600;
+  }
+  p:nth-of-type(2) {
+    position: relative;
+    width: 80%;
+    font-weight: 400;
+  }
+}
+.btn-CreateAcc {
+  // right: 10%;
+  background-color: #0d7377;
+  padding: 1.5em 3em;
+  color: #fff;
+  border-radius: 10px;
+  border-style: none;
+  font-size: 1.5rem;
+}
+// ABOUT US END.
 
 @media screen and (max-width: 920px) {
   .landing-page {

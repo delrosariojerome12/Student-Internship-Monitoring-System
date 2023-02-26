@@ -7773,7 +7773,6 @@ button {
   -webkit-overflow-scrolling: touch;
   scroll-snap-points-x: repeat(100%);
   scroll-snap-type: mandatory;
-  background-color: #014805;
 }
 .main-carousel .slides .content {
   border: 1px solid white;
@@ -7800,10 +7799,15 @@ button {
 }
 
 .aboutUs-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 1em;
   border: 1px solid white;
-  height: 500px;
+  height: 100%;
   padding: 5em;
   display: grid;
+  grid-template-columns: minmax(30%, 50rem) minmax(50%, 100rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -7811,39 +7815,67 @@ button {
   position: relative;
   color: #fff;
 }
-.aboutUs-container .inner-container {
-  height: 100%;
+.aboutUs-container .aboutUs-contents {
   padding: 2em;
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
+  border-radius: 10px;
   background-color: #323232;
 }
-.aboutUs-container .contents {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.aboutUs-container .aboutUs-Text {
+  position: relative;
+  width: 85%;
+  padding-bottom: 20px;
+}
+.aboutUs-container .aboutUs-Text p:nth-of-type(1) {
+  text-align: center;
+  padding: 1em;
+  font-size: 32px;
+}
+.aboutUs-container .aboutUs-Text p:nth-of-type(2) {
+  text-align: justify;
+  padding: 1em;
 }
 .aboutUs-container .getStarted {
-  background-color: #d9d9d9;
-  height: 100%;
-  padding: 2em;
-  border-radius: 10px;
-  border: 1px solid white;
-  color: #323232;
+  padding: 1em;
   display: flex;
-  display: grid;
-  grid-template-columns: minmax(60%, 70rem) minmax(40%, 60rem);
-  align-items: center;
-  justify-content: center;
-}
-.aboutUs-container .getStarted .getStarted-content {
-  display: flex;
-}
-.aboutUs-container .getStarted .button {
   position: relative;
-  width: 50%;
+  align-items: center;
+  width: 85%;
+  background-color: #d9d9d9;
+  border-radius: 20px;
+  color: #323232;
+  height: 100%;
+}
+
+.getStarted-P {
+  padding: 1em;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.getStarted-P p:nth-of-type(1) {
+  text-align: left;
+  font-size: 32px;
+  padding: 20px 0px;
+  font-weight: 600;
+}
+.getStarted-P p:nth-of-type(2) {
+  position: relative;
+  width: 80%;
+  font-weight: 400;
+}
+
+.btn-CreateAcc {
+  background-color: #0d7377;
+  padding: 1.5em 3em;
+  color: #fff;
+  border-radius: 10px;
+  border-style: none;
+  font-size: 1.5rem;
 }
 
 @media screen and (max-width: 920px) {
