@@ -909,7 +909,7 @@ button {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
@@ -1856,7 +1856,6 @@ button {
 }
 .dashboard .intern-container .interns-active, .dashboard-active .intern-container .interns-active {
   grid-auto-rows: 16rem;
-  justify-content: center;
   grid-template-columns: repeat(auto-fill, 35.5rem);
 }
 .dashboard .intern-container .overlay, .dashboard-active .intern-container .overlay {
@@ -2382,20 +2381,23 @@ button {
 }
 .dashboard .internship-container, .dashboard-active .internship-container {
   display: grid;
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: repeat(2, minmax(7rem, auto)) minmax(30rem, 75.5vh);
   gap: 1rem;
 }
 .dashboard .internship-container header, .dashboard-active .internship-container header {
   color: #fff;
   padding: 2rem;
-  background-color: #212121;
+  background-color: #282b30;
   border-radius: 1rem;
+  display: flex;
+  align-items: center;
 }
 .dashboard .internship-container .btn-container, .dashboard-active .internship-container .btn-container {
-  background-color: #212121;
+  background-color: #282b30;
   display: flex;
   align-items: center;
   padding: 1rem 2rem;
+  border-radius: 1rem;
 }
 .dashboard .internship-container .btn-container button, .dashboard-active .internship-container .btn-container button {
   height: 5rem;
@@ -2421,23 +2423,24 @@ button {
   padding-top: 0.2rem;
 }
 .dashboard .internship-container button:hover, .dashboard-active .internship-container button:hover {
-  background-color: #457b9d;
-  color: #fff;
+  background-color: #00adb5;
   border-radius: 1rem;
+  color: #fff;
 }
 .dashboard .internship-container .content, .dashboard-active .internship-container .content {
   border-radius: 1rem;
-  background-color: #212121;
+  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
   padding: 2rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 42rem);
+  grid-template-columns: repeat(auto-fill, 42.5rem);
   grid-auto-rows: 17rem;
   gap: 1rem;
   overflow: hidden;
+  overflow-y: auto;
   position: relative;
 }
 .dashboard .internship-container .content .internship, .dashboard-active .internship-container .content .internship {
-  background-color: #fff;
+  background-color: #d9d9d9;
   border-radius: 1rem;
   padding: 1rem;
   display: grid;
@@ -2458,10 +2461,11 @@ button {
 .dashboard .internship-container .content .internship .controls, .dashboard-active .internship-container .content .internship .controls {
   display: grid;
   gap: 1rem;
-  background-color: #d9d9d9;
-  padding: 1rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
 }
-.dashboard .internship-container .content .internship .controls p, .dashboard-active .internship-container .content .internship .controls p {
+.dashboard .internship-container .content .internship .controls h4, .dashboard-active .internship-container .content .internship .controls h4 {
   white-space: nowrap; /* Prevents text from wrapping */
   overflow: hidden; /* Hides any overflowed text */
   text-overflow: ellipsis;
@@ -2472,10 +2476,13 @@ button {
   gap: 1rem;
 }
 .dashboard .internship-container .content .internship .controls .internship-btn button, .dashboard-active .internship-container .content .internship .controls .internship-btn button {
-  background-color: #fff;
+  border-radius: 1rem;
+  background-color: #d9d9d9;
 }
 .dashboard .internship-container .content .internship .controls .internship-btn button:hover, .dashboard-active .internship-container .content .internship .controls .internship-btn button:hover {
-  background-color: #457b9d;
+  background-color: #0d7377;
+  border-radius: 0;
+  color: #fff;
 }
 .dashboard .internship-container .content .message-con, .dashboard-active .internship-container .content .message-con {
   position: absolute;
@@ -2500,12 +2507,17 @@ button {
 .dashboard .internship-container .no-internship, .dashboard-active .internship-container .no-internship {
   display: flex;
   align-items: center;
-  justify-content: center;
+  text-align: center;
   flex-direction: column;
-  background-color: #212121;
+  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
   border-radius: 1rem;
   color: #fff;
   gap: 1rem;
+  padding: 2rem;
+}
+.dashboard .internship-container .no-internship img, .dashboard-active .internship-container .no-internship img {
+  height: 45rem;
+  width: 45rem;
 }
 .dashboard .internship-container .overlay, .dashboard-active .internship-container .overlay {
   width: 100%;
@@ -2530,20 +2542,21 @@ button {
   padding: 1rem;
 }
 .dashboard .internship-container .add-modal, .dashboard-active .internship-container .add-modal, .dashboard .internship-container .edit-modal, .dashboard-active .internship-container .edit-modal {
-  width: 100rem;
-  min-height: 85%;
+  width: 75rem;
+  min-height: 75rem;
   display: flex;
   background-color: #d9d9d9;
-  overflow-y: auto;
 }
 .dashboard .internship-container .add-modal form, .dashboard-active .internship-container .add-modal form, .dashboard .internship-container .edit-modal form, .dashboard-active .internship-container .edit-modal form {
   height: 100%;
   width: 100%;
   display: grid;
   grid-template-columns: 22rem 1fr 1fr 22rem;
-  grid-template-rows: repeat(6, 11rem);
+  grid-template-rows: repeat(6, 9.5rem) auto;
   gap: 1rem;
   padding: 2rem;
+  overflow: hidden;
+  overflow-y: auto;
 }
 .dashboard .internship-container .add-modal form .input-contain, .dashboard-active .internship-container .add-modal form .input-contain, .dashboard .internship-container .edit-modal form .input-contain, .dashboard-active .internship-container .edit-modal form .input-contain {
   display: flex;
@@ -2591,6 +2604,7 @@ button {
 .dashboard .internship-container .add-modal form .input-contain .error-message, .dashboard-active .internship-container .add-modal form .input-contain .error-message, .dashboard .internship-container .edit-modal form .input-contain .error-message, .dashboard-active .internship-container .edit-modal form .input-contain .error-message {
   font-size: 1.4rem;
   color: red;
+  text-align: center;
 }
 .dashboard .internship-container .add-modal form .input-contain .placeholder-container, .dashboard-active .internship-container .add-modal form .input-contain .placeholder-container, .dashboard .internship-container .edit-modal form .input-contain .placeholder-container, .dashboard-active .internship-container .edit-modal form .input-contain .placeholder-container {
   position: absolute;
@@ -2602,7 +2616,7 @@ button {
 }
 .dashboard .internship-container .add-modal form .input-contain input, .dashboard-active .internship-container .add-modal form .input-contain input, .dashboard .internship-container .edit-modal form .input-contain input, .dashboard-active .internship-container .edit-modal form .input-contain input {
   width: 100%;
-  height: 5rem;
+  height: 4rem;
   border: solid 3px transparent;
   outline: solid 1px #8b8b8b;
   border-radius: 0.5rem;
@@ -2679,8 +2693,8 @@ button {
   text-align: center;
 }
 .dashboard .internship-container .add-modal form .img-input label img, .dashboard-active .internship-container .add-modal form .img-input label img, .dashboard .internship-container .edit-modal form .img-input label img, .dashboard-active .internship-container .edit-modal form .img-input label img {
-  width: 100%;
-  height: 80%;
+  width: 90%;
+  height: 90%;
   margin: auto;
   -o-object-fit: contain;
      object-fit: contain;
@@ -2723,7 +2737,7 @@ button {
   grid-column: 1/5;
 }
 .dashboard .internship-container .add-modal form .btn-holder, .dashboard-active .internship-container .add-modal form .btn-holder, .dashboard .internship-container .edit-modal form .btn-holder, .dashboard-active .internship-container .edit-modal form .btn-holder {
-  grid-column: 2/4;
+  grid-column: 1/5;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2754,11 +2768,11 @@ button {
   border: solid 1px #0d7377;
 }
 .dashboard .internship-container .view-modal, .dashboard-active .internship-container .view-modal {
-  min-height: 85%;
+  height: 92%;
   width: 70rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 15rem repeat(6, minmax(6rem, auto)) 15rem;
+  grid-template-rows: 18rem repeat(6, auto) 15rem repeat(2, auto);
   gap: 1rem;
   overflow-y: auto;
   padding: 3rem;
@@ -2771,10 +2785,13 @@ button {
 }
 .dashboard .internship-container .view-modal .input p, .dashboard-active .internship-container .view-modal .input p {
   font-size: 1.4rem;
-  word-break: break-all;
 }
 .dashboard .internship-container .view-modal .input h4, .dashboard-active .internship-container .view-modal .input h4 {
   font-size: 1.6rem;
+  word-break: keep-all;
+}
+.dashboard .internship-container .view-modal .input > *, .dashboard-active .internship-container .view-modal .input > * {
+  word-break: break-all;
 }
 .dashboard .internship-container .view-modal .input > *:nth-child(2), .dashboard-active .internship-container .view-modal .input > *:nth-child(2) {
   border: solid 1px rgba(0, 0, 0, 0.3137254902);
@@ -2825,14 +2842,239 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  border: solid 1px rgba(0, 0, 0, 0.3137254902);
+  border-radius: 1rem;
 }
 .dashboard .internship-container .view-modal .img-con img, .dashboard-active .internship-container .view-modal .img-con img {
-  border: solid 1px rgba(0, 0, 0, 0.3137254902);
-  height: 100%;
+  height: 90%;
   width: 100%;
   -o-object-fit: contain;
      object-fit: contain;
+}
+.dashboard .internship-container .view-modal .close-btn, .dashboard-active .internship-container .view-modal .close-btn {
+  grid-column: 1/4;
+  margin: auto;
+}
+.dashboard .internship-container .view-modal .close-btn button, .dashboard-active .internship-container .view-modal .close-btn button {
   border-radius: 1rem;
+  height: 4.5rem;
+  color: #fff;
+  background-color: #0d7377;
+}
+.dashboard .internship-container .view-modal .close-btn button:hover, .dashboard-active .internship-container .view-modal .close-btn button:hover {
+  border-radius: 0;
+  background-color: #00adb5;
+}
+@media screen and (max-width: 1500px) {
+  .dashboard .internship-container .content, .dashboard-active .internship-container .content {
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 1030px) {
+  .dashboard .internship-container .content, .dashboard-active .internship-container .content {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+  .dashboard .internship-container .content .internship, .dashboard-active .internship-container .content .internship {
+    grid-template-columns: 13rem 1fr;
+  }
+  .dashboard .internship-container .content .internship .img-con, .dashboard-active .internship-container .content .internship .img-con {
+    height: 12rem;
+    width: 12rem;
+  }
+  .dashboard .internship-container .add-modal, .dashboard-active .internship-container .add-modal, .dashboard .internship-container .edit-modal, .dashboard-active .internship-container .edit-modal {
+    width: 85%;
+  }
+  .dashboard .internship-container .add-modal form, .dashboard-active .internship-container .add-modal form, .dashboard .internship-container .edit-modal form, .dashboard-active .internship-container .edit-modal form {
+    grid-template-rows: repeat(2, 9.5rem) auto repeat(3, 9.5rem) auto;
+  }
+  .dashboard .internship-container .view-modal, .dashboard-active .internship-container .view-modal {
+    width: 72rem;
+    height: 95%;
+  }
+  .dashboard .internship-container .no-internship h2, .dashboard-active .internship-container .no-internship h2 {
+    font-size: 2.2rem;
+  }
+  .dashboard .internship-container .no-internship img, .dashboard-active .internship-container .no-internship img {
+    height: 35rem;
+    width: 35rem;
+  }
+}
+@media screen and (max-width: 750px) {
+  .dashboard .internship-container .add-modal, .dashboard-active .internship-container .add-modal, .dashboard .internship-container .edit-modal, .dashboard-active .internship-container .edit-modal {
+    width: 100%;
+  }
+  .dashboard .internship-container .add-modal form, .dashboard-active .internship-container .add-modal form, .dashboard .internship-container .edit-modal form, .dashboard-active .internship-container .edit-modal form {
+    grid-template-rows: repeat(3, 9.5rem) auto repeat(3, 9.5rem) auto;
+  }
+  .dashboard .internship-container .add-modal form .input-contain h3, .dashboard-active .internship-container .add-modal form .input-contain h3, .dashboard .internship-container .edit-modal form .input-contain h3, .dashboard-active .internship-container .edit-modal form .input-contain h3 {
+    font-size: 1.9rem;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(1), .dashboard-active .internship-container .add-modal form > :nth-child(1), .dashboard .internship-container .edit-modal form > :nth-child(1), .dashboard-active .internship-container .edit-modal form > :nth-child(1) {
+    grid-column: 1/3;
+    grid-row: 3/4;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(2), .dashboard-active .internship-container .add-modal form > :nth-child(2), .dashboard .internship-container .edit-modal form > :nth-child(2), .dashboard-active .internship-container .edit-modal form > :nth-child(2) {
+    grid-column: 3/5;
+    grid-row: 3/4;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(3), .dashboard-active .internship-container .add-modal form > :nth-child(3), .dashboard .internship-container .edit-modal form > :nth-child(3), .dashboard-active .internship-container .edit-modal form > :nth-child(3) {
+    grid-column: 1/3;
+    grid-row: 4/5;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(4), .dashboard-active .internship-container .add-modal form > :nth-child(4), .dashboard .internship-container .edit-modal form > :nth-child(4), .dashboard-active .internship-container .edit-modal form > :nth-child(4) {
+    grid-column: 3/5;
+    grid-row: 4/5;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(5), .dashboard-active .internship-container .add-modal form > :nth-child(5), .dashboard .internship-container .edit-modal form > :nth-child(5), .dashboard-active .internship-container .edit-modal form > :nth-child(5) {
+    grid-column: 1/3;
+    grid-row: 5/6;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(6), .dashboard-active .internship-container .add-modal form > :nth-child(6), .dashboard .internship-container .edit-modal form > :nth-child(6), .dashboard-active .internship-container .edit-modal form > :nth-child(6) {
+    grid-column: 3/5;
+    grid-row: 5/6;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(7), .dashboard-active .internship-container .add-modal form > :nth-child(7), .dashboard .internship-container .edit-modal form > :nth-child(7), .dashboard-active .internship-container .edit-modal form > :nth-child(7) {
+    height: 100%;
+    width: 100%;
+    grid-row: 1/3;
+    grid-column: 1/5;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(8), .dashboard-active .internship-container .add-modal form > :nth-child(8), .dashboard .internship-container .edit-modal form > :nth-child(8), .dashboard-active .internship-container .edit-modal form > :nth-child(8) {
+    height: 100%;
+    width: 100%;
+    grid-row: 6/8;
+    grid-column: 1/5;
+  }
+  .dashboard .internship-container .view-modal, .dashboard-active .internship-container .view-modal {
+    width: 90%;
+    height: 92%;
+  }
+}
+@media screen and (max-width: 650px) {
+  .dashboard .internship-container .add-modal, .dashboard-active .internship-container .add-modal, .dashboard .internship-container .edit-modal, .dashboard-active .internship-container .edit-modal {
+    width: 100%;
+  }
+  .dashboard .internship-container .add-modal form, .dashboard-active .internship-container .add-modal form, .dashboard .internship-container .edit-modal form, .dashboard-active .internship-container .edit-modal form {
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: 15rem repeat(6, 9.5rem) 15rem auto;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(1), .dashboard-active .internship-container .add-modal form > :nth-child(1), .dashboard .internship-container .edit-modal form > :nth-child(1), .dashboard-active .internship-container .edit-modal form > :nth-child(1) {
+    grid-column: 1/5;
+    grid-row: 2/3;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(2), .dashboard-active .internship-container .add-modal form > :nth-child(2), .dashboard .internship-container .edit-modal form > :nth-child(2), .dashboard-active .internship-container .edit-modal form > :nth-child(2) {
+    grid-column: 1/5;
+    grid-row: 3/4;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(3), .dashboard-active .internship-container .add-modal form > :nth-child(3), .dashboard .internship-container .edit-modal form > :nth-child(3), .dashboard-active .internship-container .edit-modal form > :nth-child(3) {
+    grid-column: 1/5;
+    grid-row: 4/5;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(4), .dashboard-active .internship-container .add-modal form > :nth-child(4), .dashboard .internship-container .edit-modal form > :nth-child(4), .dashboard-active .internship-container .edit-modal form > :nth-child(4) {
+    grid-column: 1/5;
+    grid-row: 5/6;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(5), .dashboard-active .internship-container .add-modal form > :nth-child(5), .dashboard .internship-container .edit-modal form > :nth-child(5), .dashboard-active .internship-container .edit-modal form > :nth-child(5) {
+    grid-column: 1/5;
+    grid-row: 6/7;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(6), .dashboard-active .internship-container .add-modal form > :nth-child(6), .dashboard .internship-container .edit-modal form > :nth-child(6), .dashboard-active .internship-container .edit-modal form > :nth-child(6) {
+    grid-column: 1/5;
+    grid-row: 7/8;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(7), .dashboard-active .internship-container .add-modal form > :nth-child(7), .dashboard .internship-container .edit-modal form > :nth-child(7), .dashboard-active .internship-container .edit-modal form > :nth-child(7) {
+    height: 100%;
+    width: 100%;
+    grid-row: 1/2;
+    grid-column: 1/5;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(8), .dashboard-active .internship-container .add-modal form > :nth-child(8), .dashboard .internship-container .edit-modal form > :nth-child(8), .dashboard-active .internship-container .edit-modal form > :nth-child(8) {
+    height: 100%;
+    width: 100%;
+    grid-row: 8/9;
+    grid-column: 1/5;
+  }
+}
+@media screen and (max-width: 600px) {
+  .dashboard .internship-container, .dashboard-active .internship-container {
+    grid-template-rows: repeat(2, minmax(7rem, auto)) minmax(30rem, 63vh);
+  }
+  .dashboard .internship-container .content .internship, .dashboard-active .internship-container .content .internship {
+    grid-template-columns: 11rem 1fr;
+  }
+  .dashboard .internship-container .content .internship .img-con, .dashboard-active .internship-container .content .internship .img-con {
+    height: 10rem;
+    width: 10rem;
+  }
+  .dashboard .internship-container .view-modal, .dashboard-active .internship-container .view-modal {
+    padding: 2rem;
+    width: 95%;
+    height: 95%;
+  }
+  .dashboard .internship-container .view-modal .input, .dashboard-active .internship-container .view-modal .input {
+    grid-template-columns: 9.5rem auto;
+  }
+  .dashboard .internship-container .no-internship h2, .dashboard-active .internship-container .no-internship h2 {
+    font-size: 2rem;
+  }
+  .dashboard .internship-container .no-internship img, .dashboard-active .internship-container .no-internship img {
+    height: 28rem;
+    width: 28rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .dashboard .internship-container, .dashboard-active .internship-container {
+    grid-template-rows: repeat(2, minmax(5rem, auto)) minmax(40rem, 68vh);
+  }
+  .dashboard .internship-container header, .dashboard-active .internship-container header {
+    padding: 1rem 2rem;
+  }
+  .dashboard .internship-container .btn-container button, .dashboard-active .internship-container .btn-container button {
+    height: 3.5rem;
+  }
+  .dashboard .internship-container .content .internship, .dashboard-active .internship-container .content .internship {
+    grid-template-columns: 1fr;
+    background-color: #0d7377;
+  }
+  .dashboard .internship-container .content .internship .img-con, .dashboard-active .internship-container .content .internship .img-con {
+    display: none;
+  }
+  .dashboard .internship-container .content .internship .controls, .dashboard-active .internship-container .content .internship .controls {
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .dashboard .internship-container .content .internship .controls h4, .dashboard-active .internship-container .content .internship .controls h4 {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+  .dashboard .internship-container .content .internship .controls .internship-btn, .dashboard-active .internship-container .content .internship .controls .internship-btn {
+    justify-content: center;
+  }
+  .dashboard .internship-container .add-modal, .dashboard-active .internship-container .add-modal, .dashboard .internship-container .edit-modal, .dashboard-active .internship-container .edit-modal {
+    width: 100%;
+    min-height: 100%;
+  }
+  .dashboard .internship-container .add-modal form, .dashboard-active .internship-container .add-modal form, .dashboard .internship-container .edit-modal form, .dashboard-active .internship-container .edit-modal form {
+    grid-template-rows: 15rem repeat(6, auto) 15rem auto;
+    padding: 1rem;
+  }
+  .dashboard .internship-container .add-modal form .input-contain h3, .dashboard-active .internship-container .add-modal form .input-contain h3, .dashboard .internship-container .edit-modal form .input-contain h3, .dashboard-active .internship-container .edit-modal form .input-contain h3 {
+    font-size: 1.6rem;
+  }
+  .dashboard .internship-container .add-modal form .input-contain input, .dashboard-active .internship-container .add-modal form .input-contain input, .dashboard .internship-container .edit-modal form .input-contain input, .dashboard-active .internship-container .edit-modal form .input-contain input {
+    height: 3.5rem;
+  }
+  .dashboard .internship-container .add-modal form .btn-holder button, .dashboard-active .internship-container .add-modal form .btn-holder button, .dashboard .internship-container .edit-modal form .btn-holder button, .dashboard-active .internship-container .edit-modal form .btn-holder button {
+    height: 3.5rem;
+  }
+  .dashboard .internship-container .view-modal, .dashboard-active .internship-container .view-modal {
+    width: 100%;
+    height: 100%;
+  }
+  .dashboard .internship-container .view-modal .close-btn button, .dashboard-active .internship-container .view-modal .close-btn button {
+    height: 3.5rem;
+  }
 }
 .dashboard .coordinator-dashboard, .dashboard-active .coordinator-dashboard {
   display: grid;
@@ -3421,7 +3663,7 @@ button {
 }
 .dashboard .admin-document-page, .dashboard-active .admin-document-page {
   display: grid;
-  grid-template-rows: repeat(2, minmax(7rem, 8vh)) minmax(55rem, 77vh);
+  grid-template-rows: repeat(2, minmax(7rem, auto)) minmax(55rem, 77vh);
   gap: 1rem;
   overflow: hidden;
 }

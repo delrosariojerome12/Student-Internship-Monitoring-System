@@ -1,22 +1,27 @@
+/** @format */
+
 @import "../../utils";
 @import "../../variables";
 
 .internship-container {
   display: grid;
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: repeat(2, minmax(7rem, auto)) minmax(30rem, 75.5vh);
   gap: 1rem;
 
   header {
     color: #fff;
     padding: 2rem;
-    background-color: $primary-bg-color-landing;
+    background-color: #282b30;
     border-radius: 1rem;
+    display: flex;
+    align-items: center;
   }
   .btn-container {
-    background-color: $primary-bg-color-landing;
+    background-color: #282b30;
     display: flex;
     align-items: center;
     padding: 1rem 2rem;
+    border-radius: 1rem;
     button {
       height: 5rem;
       width: 12rem;
@@ -41,23 +46,24 @@
       padding-top: 0.2rem;
     }
     &:hover {
-      background-color: $primary-bg-color;
-      color: #fff;
+      background-color: $primary-feature-bg;
       border-radius: 1rem;
+      color: #fff;
     }
   }
   .content {
     border-radius: 1rem;
-    background-color: $primary-bg-color-landing;
+    background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
     padding: 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 42rem);
+    grid-template-columns: repeat(auto-fill, 42.5rem);
     grid-auto-rows: 17rem;
     gap: 1rem;
     overflow: hidden;
+    overflow-y: auto;
     position: relative;
     .internship {
-      background-color: #fff;
+      background-color: #d9d9d9;
       border-radius: 1rem;
       padding: 1rem;
       display: grid;
@@ -77,23 +83,25 @@
       .controls {
         display: grid;
         gap: 1rem;
-        background-color: #d9d9d9;
-        padding: 1rem;
-
-        p {
+        background-color: #fff;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        h4 {
           white-space: nowrap; /* Prevents text from wrapping */
           overflow: hidden; /* Hides any overflowed text */
           text-overflow: ellipsis;
         }
-
         .internship-btn {
           display: flex;
           align-items: center;
           gap: 1rem;
           button {
-            background-color: #fff;
+            border-radius: 1rem;
+            background-color: #d9d9d9;
             &:hover {
-              background-color: $primary-bg-color;
+              background-color: $primary-compliment-landing;
+              border-radius: 0;
+              color: #fff;
             }
           }
         }
@@ -121,12 +129,18 @@
   .no-internship {
     display: flex;
     align-items: center;
-    justify-content: center;
+    // justify-content: center;
+    text-align: center;
     flex-direction: column;
-    background-color: $primary-bg-color-landing;
+    background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
     border-radius: 1rem;
     color: #fff;
     gap: 1rem;
+    padding: 2rem;
+    img {
+      height: 45rem;
+      width: 45rem;
+    }
   }
 
   .overlay {
@@ -153,20 +167,21 @@
   }
 
   .add-modal {
-    width: 100rem;
-    min-height: 85%;
+    width: 75rem;
+    min-height: 75rem;
     display: flex;
     background-color: #d9d9d9;
-    overflow-y: auto;
 
     form {
       height: 100%;
       width: 100%;
       display: grid;
       grid-template-columns: 22rem 1fr 1fr 22rem;
-      grid-template-rows: repeat(6, 11rem);
+      grid-template-rows: repeat(6, 9.5rem) auto;
       gap: 1rem;
       padding: 2rem;
+      overflow: hidden;
+      overflow-y: auto;
 
       .input-contain {
         display: flex;
@@ -216,6 +231,7 @@
         .error-message {
           font-size: 1.4rem;
           color: red;
+          text-align: center;
         }
 
         .placeholder-container {
@@ -230,12 +246,13 @@
         input {
           // margin: auto;
           width: 100%;
-          height: 5rem;
+          height: 4rem;
           // height: 100%;
           border: solid 3px transparent;
           outline: solid 1px #8b8b8b;
           border-radius: 0.5rem;
           padding: 1.1rem 3.5rem 1.1rem 2rem;
+          // padding: 1rem 1rem 1rem 3rem;
           letter-spacing: 2px;
           transition: all 0.3s ease-in-out;
           background-color: #fff;
@@ -313,65 +330,14 @@
             text-align: center;
           }
           img {
-            width: 100%;
-            height: 80%;
+            width: 90%;
+            height: 90%;
             margin: auto;
             object-fit: contain;
             cursor: pointer;
           }
         }
       }
-
-      // & > :nth-child(1) {
-      //   height: 100%;
-      //   width: 100%;
-      //   grid-row: 1/3;
-      //   grid-column: 1/2;
-      // }
-
-      // & > :nth-child(2) {
-      //   height: 100%;
-      //   width: 100%;
-      //   grid-column: 2/5;
-      //   grid-row: 1/2;
-      // }
-      // & > :nth-child(3) {
-      //   height: 100%;
-      //   width: 100%;
-      //   grid-column: 2/5;
-      //   grid-row: 2/3;
-      // }
-      // & > :nth-child(4) {
-      //   height: 100%;
-      //   width: 100%;
-      //   grid-row: 3/4;
-      //   grid-column: 1/3;
-      // }
-      // & > :nth-child(5) {
-      //   height: 100%;
-      //   width: 100%;
-      //   grid-row: 3/4;
-      //   grid-column: 3/5;
-      // }
-      // & > :nth-child(6) {
-      //   height: 100%;
-      //   width: 100%;
-      //   grid-row: 4/5;
-      //   grid-column: 3/5;
-      // }
-      // & > :nth-child(7) {
-      //   height: 100%;
-      //   width: 100%;
-      //   grid-row: 4/5;
-      //   grid-column: 1/3;
-      // }
-
-      // & > :nth-child(8) {
-      //   height: 100%;
-      //   width: 100%;
-      //   grid-row: 5/7;
-      //   grid-column: 1/5;
-      // }
 
       & > :nth-child(1) {
         grid-column: 2/5;
@@ -412,7 +378,7 @@
       }
 
       .btn-holder {
-        grid-column: 2/4;
+        grid-column: 1/5;
         @include flexCenter;
         background-color: none;
         gap: 1rem;
@@ -446,11 +412,12 @@
     }
   }
   .view-modal {
-    min-height: 85%;
+    height: 92%;
     width: 70rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 15rem repeat(6, minmax(6rem, auto)) 15rem;
+    // grid-template-rows: 18rem repeat(6, minmax(6rem, auto)) 15rem auto;
+    grid-template-rows: 18rem repeat(6, auto) 15rem repeat(2, auto);
     gap: 1rem;
     overflow-y: auto;
     padding: 3rem;
@@ -462,12 +429,14 @@
       gap: 1rem;
       p {
         font-size: 1.4rem;
-        word-break: break-all;
       }
       h4 {
         font-size: 1.6rem;
+        word-break: keep-all;
       }
-
+      & > * {
+        word-break: break-all;
+      }
       & > *:nth-child(2) {
         border: solid 1px #00000050;
         height: 100%;
@@ -516,21 +485,288 @@
       }
     }
     .img-con {
+      @include flexCenter;
+      border: solid 1px #00000050;
+      border-radius: 1rem;
       img {
-        border: solid 1px #00000050;
         // height: 10rem;
         // width: 10rem;
-        height: 100%;
+        height: 90%;
         width: 100%;
         object-fit: contain;
-        border-radius: 1rem;
       }
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    }
+
+    .close-btn {
+      grid-column: 1/4;
+      margin: auto;
+      button {
+        border-radius: 1rem;
+        height: 4.5rem;
+        color: #fff;
+        background-color: $primary-compliment-landing;
+        &:hover {
+          border-radius: 0;
+          background-color: $primary-feature-bg;
+        }
+      }
     }
   }
   .edit-modal {
     @extend .add-modal;
+  }
+}
+
+// Responsive
+
+@media screen and (max-width: 1500px) {
+  .internship-container {
+    .content {
+      justify-content: center;
+    }
+  }
+}
+
+@media screen and (max-width: 1030px) {
+  .internship-container {
+    .content {
+      grid-template-columns: 1fr;
+      grid-auto-rows: auto;
+
+      .internship {
+        grid-template-columns: 13rem 1fr;
+        .img-con {
+          height: 12rem;
+          width: 12rem;
+        }
+      }
+    }
+    .add-modal {
+      width: 85%;
+      form {
+        grid-template-rows: repeat(2, 9.5rem) auto repeat(3, 9.5rem) auto;
+      }
+    }
+
+    .view-modal {
+      width: 72rem;
+      height: 95%;
+    }
+    .no-internship {
+      h2 {
+        font-size: 2.2rem;
+      }
+      img {
+        height: 35rem;
+        width: 35rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .internship-container {
+    .add-modal {
+      width: 100%;
+      form {
+        grid-template-rows: repeat(3, 9.5rem) auto repeat(3, 9.5rem) auto;
+
+        .input-contain {
+          h3 {
+            font-size: 1.9rem;
+          }
+        }
+
+        & > :nth-child(1) {
+          grid-column: 1/3;
+          grid-row: 3/4;
+        }
+        & > :nth-child(2) {
+          grid-column: 3/5;
+          grid-row: 3/4;
+        }
+        & > :nth-child(3) {
+          grid-column: 1/3;
+          grid-row: 4/5;
+        }
+        & > :nth-child(4) {
+          grid-column: 3/5;
+          grid-row: 4/5;
+        }
+        & > :nth-child(5) {
+          grid-column: 1/3;
+          grid-row: 5/6;
+        }
+        & > :nth-child(6) {
+          grid-column: 3/5;
+          grid-row: 5/6;
+        }
+
+        & > :nth-child(7) {
+          height: 100%;
+          width: 100%;
+          grid-row: 1/3;
+          grid-column: 1/5;
+        }
+        & > :nth-child(8) {
+          height: 100%;
+          width: 100%;
+          grid-row: 6/8;
+          grid-column: 1/5;
+        }
+      }
+    }
+
+    .view-modal {
+      width: 90%;
+      height: 92%;
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .internship-container {
+    .add-modal {
+      width: 100%;
+      form {
+        grid-template-columns: repeat(4, auto);
+
+        grid-template-rows: 15rem repeat(6, 9.5rem) 15rem auto;
+
+        & > :nth-child(1) {
+          grid-column: 1/5;
+          grid-row: 2/3;
+        }
+        & > :nth-child(2) {
+          grid-column: 1/5;
+          grid-row: 3/4;
+        }
+        & > :nth-child(3) {
+          grid-column: 1/5;
+          grid-row: 4/5;
+        }
+        & > :nth-child(4) {
+          grid-column: 1/5;
+          grid-row: 5/6;
+        }
+        & > :nth-child(5) {
+          grid-column: 1/5;
+          grid-row: 6/7;
+        }
+        & > :nth-child(6) {
+          grid-column: 1/5;
+          grid-row: 7/8;
+        }
+        & > :nth-child(7) {
+          height: 100%;
+          width: 100%;
+          grid-row: 1/2;
+          grid-column: 1/5;
+        }
+        & > :nth-child(8) {
+          height: 100%;
+          width: 100%;
+          grid-row: 8/9;
+          grid-column: 1/5;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .internship-container {
+    grid-template-rows: repeat(2, minmax(7rem, auto)) minmax(30rem, 63vh);
+    .content {
+      .internship {
+        grid-template-columns: 11rem 1fr;
+        .img-con {
+          height: 10rem;
+          width: 10rem;
+        }
+      }
+    }
+    .view-modal {
+      padding: 2rem;
+      width: 95%;
+      height: 95%;
+
+      .input {
+        grid-template-columns: 9.5rem auto;
+      }
+    }
+
+    .no-internship {
+      h2 {
+        font-size: 2rem;
+      }
+      img {
+        height: 28rem;
+        width: 28rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .internship-container {
+    grid-template-rows: repeat(2, minmax(5rem, auto)) minmax(40rem, 68vh);
+    header {
+      padding: 1rem 2rem;
+    }
+    .btn-container {
+      button {
+        height: 3.5rem;
+      }
+    }
+    .content {
+      .internship {
+        grid-template-columns: 1fr;
+        background-color: $primary-compliment-landing;
+        .img-con {
+          display: none;
+        }
+        .controls {
+          justify-content: center;
+          gap: 0.5rem;
+          h4 {
+            font-size: 1.6rem;
+            text-align: center;
+          }
+          .internship-btn {
+            justify-content: center;
+          }
+        }
+      }
+    }
+    .add-modal {
+      width: 100%;
+      min-height: 100%;
+      form {
+        grid-template-rows: 15rem repeat(6, auto) 15rem auto;
+        padding: 1rem;
+        .input-contain {
+          h3 {
+            font-size: 1.6rem;
+          }
+          input {
+            height: 3.5rem;
+          }
+        }
+        .btn-holder {
+          button {
+            height: 3.5rem;
+          }
+        }
+      }
+    }
+    .view-modal {
+      width: 100%;
+      height: 100%;
+      .close-btn {
+        button {
+          height: 3.5rem;
+        }
+      }
+    }
   }
 }
