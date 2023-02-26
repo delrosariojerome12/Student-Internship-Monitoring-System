@@ -13,7 +13,6 @@ import {
   handleMessage,
 } from "../../features/coordinator/internship";
 import {handleAdd} from "../../features/coordinator/internship";
-import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
 
 import {storage} from "../../Firebase";
@@ -208,7 +207,7 @@ const Internships = React.memo(() => {
 
   const clearValue = () => {
     const newForm = form.map((item) => {
-      return item.type === "file"
+      return item.type === "image"
         ? {
             ...item,
             value: "",
