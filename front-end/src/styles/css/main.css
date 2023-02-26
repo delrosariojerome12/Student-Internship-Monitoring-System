@@ -7801,16 +7801,23 @@ button {
 
 .aboutUs-container {
   border: 1px solid white;
-  height: 800px;
-  padding: 2em;
+  height: 500px;
+  padding: 5em;
   display: grid;
-  grid-template-columns: minmax(40%, 50rem) minmax(60%, 100rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
   color: #fff;
+}
+.aboutUs-container .inner-container {
+  height: 100%;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #323232;
 }
 .aboutUs-container .contents {
   display: flex;
@@ -7820,14 +7827,23 @@ button {
 }
 .aboutUs-container .getStarted {
   background-color: #d9d9d9;
-  height: 50%;
-  border-radius: 20px;
+  height: 100%;
+  padding: 2em;
+  border-radius: 10px;
   border: 1px solid white;
   color: #323232;
   display: flex;
   display: grid;
+  grid-template-columns: minmax(60%, 70rem) minmax(40%, 60rem);
   align-items: center;
   justify-content: center;
+}
+.aboutUs-container .getStarted .getStarted-content {
+  display: flex;
+}
+.aboutUs-container .getStarted .button {
+  position: relative;
+  width: 50%;
 }
 
 @media screen and (max-width: 920px) {

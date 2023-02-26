@@ -213,35 +213,51 @@
 }
 .aboutUs-container {
   border: 1px solid #ffff;
-  height: 800px;
-  padding: 2em;
+  height: 500px;
+  padding: 5em;
   display: grid;
-  grid-template-columns: minmax(40%, 50rem) minmax(60%, 100rem);
+  // grid-template-columns: minmax(30%, 50rem) minmax(50%, 100rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
   color: #fff;
-
+  .inner-container {
+    height: 100%;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #323232;
+  }
   .contents {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // grid-template-rows: 1.5fr, 1.5fr;
+    // grid-template-columns: minmax(30%, 40rem) minmax(50%, 60rem);
   }
   .getStarted {
     background-color: #d9d9d9;
-    height: 50%;
-    border-radius: 20px;
+    height: 100%;
+    padding: 2em;
+    border-radius: 10px;
     border: 1px solid #ffff;
     color: #323232;
     display: flex;
     display: grid;
+    grid-template-columns: minmax(60%, 70rem) minmax(40%, 60rem);
 
     align-items: center;
     justify-content: center;
+    .getStarted-content {
+      display: flex;
+    }
+    .button {
+      position: relative;
+      width: 50%;
+    }
   }
 }
 
