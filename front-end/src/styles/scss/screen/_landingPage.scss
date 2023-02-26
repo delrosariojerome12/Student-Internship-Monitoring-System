@@ -211,6 +211,39 @@
     }
   }
 }
+.aboutUs-container {
+  border: 1px solid #ffff;
+  height: 800px;
+  padding: 2em;
+  display: grid;
+  grid-template-columns: minmax(40%, 50rem) minmax(60%, 100rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: #fff;
+
+  .contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // grid-template-rows: 1.5fr, 1.5fr;
+  }
+  .getStarted {
+    background-color: #d9d9d9;
+    height: 50%;
+    border-radius: 20px;
+    border: 1px solid #ffff;
+    color: #323232;
+    display: flex;
+    display: grid;
+
+    align-items: center;
+    justify-content: center;
+  }
+}
 
 @media screen and (max-width: 920px) {
   .landing-page {

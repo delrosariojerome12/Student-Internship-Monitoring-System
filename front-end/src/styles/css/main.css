@@ -7799,6 +7799,37 @@ button {
   transform: translateY(-50%);
 }
 
+.aboutUs-container {
+  border: 1px solid white;
+  height: 800px;
+  padding: 2em;
+  display: grid;
+  grid-template-columns: minmax(40%, 50rem) minmax(60%, 100rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: #fff;
+}
+.aboutUs-container .contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.aboutUs-container .getStarted {
+  background-color: #d9d9d9;
+  height: 50%;
+  border-radius: 20px;
+  border: 1px solid white;
+  color: #323232;
+  display: flex;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
 @media screen and (max-width: 920px) {
   .landing-page .contents .mockup-contents .card .text-container p:nth-of-type(2) {
     grid-column: 1/4;
