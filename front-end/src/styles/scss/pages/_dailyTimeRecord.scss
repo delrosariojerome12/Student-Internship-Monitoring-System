@@ -8,136 +8,26 @@
   // grid-template-rows: 12vh auto;
   // gap: 1rem;
 
-  .time-in-modal {
-    // display: none !important;
+  .overlay {
+    width: 100%;
+    min-height: 100%;
+    background-color: rgba(48, 47, 47, 0.753);
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: solid 1px #25b525;
-    border-radius: 2rem;
-    background-color: #fff;
-    height: 42rem;
-    width: 32rem;
-    z-index: 2;
-    padding: 1rem;
-    display: flex;
-    .modals-content {
-      display: grid;
-      grid-template-rows: 2fr 1.5fr;
-      gap: 1rem;
-      justify-items: center;
-      align-items: center;
-      .top {
-        @include flexColumn;
-        align-items: center;
-        text-align: center;
-        .icon {
-          font-size: 3.5rem;
-          color: grey;
-        }
-        p {
-          font-size: 2rem;
-          font-weight: 600;
-          color: grey;
-        }
-      }
-      .bottom {
-        button {
-          background-color: $primary-compliment-landing;
-          color: #fff;
-          border: none;
-          font-size: 1.5rem;
-          height: 4rem;
-          width: 15rem;
-          cursor: pointer;
-          transition: all 0.3s linear;
-
-          &:hover {
-            color: #000;
-            background-color: #fff;
-            border: solid 1px #000;
-            font-weight: bold;
-          }
-        }
-      }
-    }
-
-    .check-icon {
-      position: absolute;
-      top: -1rem;
-      left: 2.5rem;
-      border-radius: 0.5rem;
-      background-color: #25b525;
-      padding: 0.5rem;
-      @include flexCenter;
-
-      .icon {
-        color: #fff;
-        font-size: 2rem;
-      }
-    }
+    filter: blur(20px);
+    top: 0%;
+    left: 0%;
+    z-index: 6;
   }
-  .time-in-modals2 {
-    // display: none !important;
+  .modal {
+    background-color: #fff;
+    border-radius: 1rem;
+    height: 80rem;
+    width: 70rem;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: solid 2px #0f615d;
-    border-radius: 2rem;
-    background-color: #fff;
-    height: 42rem;
-    width: 32rem;
-    z-index: 3;
-    padding: 2rem;
-    .check-and-message {
-      @include flexCenter;
-      flex-direction: column;
-      .icon {
-        background-color: #0f615d;
-        color: #fff;
-        font-size: 6rem;
-        padding: 1rem;
-        border-radius: 100%;
-      }
-      p {
-        color: #0f615d;
-        font-weight: 600;
-      }
-    }
-    .modal-details {
-      @include flexCenter;
-      flex-direction: column;
-      gap: 1rem;
-      .icon {
-        font-size: 7rem;
-        color: grey;
-      }
-      .user-infos {
-        text-align: center;
-        color: grey;
-        font-size: 1.5rem;
-      }
-      button {
-        background-color: $primary-compliment-landing;
-        color: #fff;
-        border: none;
-        font-size: 1.5rem;
-        height: 4rem;
-        width: 100%;
-        border-radius: 1rem;
-        cursor: pointer;
-        transition: all 0.3s linear;
-
-        &:hover {
-          color: #000;
-          background-color: #fff;
-          border: solid 1px #000;
-          font-weight: bold;
-        }
-      }
-    }
+    z-index: 7;
   }
 
   .content {
@@ -240,10 +130,10 @@
       background-image: linear-gradient(#282b30 10%, #393e46 31%, #333333 80%);
       border: solid 1px #fff;
       border-radius: 2rem;
-
       max-height: 67rem;
-      overflow-y: scroll;
-      div {
+      overflow-y: auto;
+
+      .attendance {
         @include flexCenter;
         color: #d9d9d9;
         cursor: pointer;
@@ -259,6 +149,20 @@
           border-radius: 1rem;
           color: #fff;
         }
+      }
+    }
+    .no-internship {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background-color: $primary-bg-color-landing;
+      border-radius: 1rem;
+      color: #fff;
+      gap: 1rem;
+      img {
+        height: 50rem;
+        width: 50rem;
       }
     }
   }
