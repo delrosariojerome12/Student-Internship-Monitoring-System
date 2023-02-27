@@ -1,9 +1,17 @@
 const mongoose = require("mongoose");
 
+const now = new Date();
+const year = now.getFullYear();
+const month = now.getMonth() + 1;
+const date = now.getDate();
+const today = `${year}-${month < 10 ? "0" : ""}${month}-${
+  date < 10 ? "0" : ""
+}${date}`;
+
 const AttendanceSchema = new mongoose.Schema({
   date: {
-    type: Date,
-    default: Date.now,
+    type: String,
+    default: today,
     required: [true, "Please provide a valid date"],
   },
   email: {
@@ -61,10 +69,14 @@ const AttendanceSchema = new mongoose.Schema({
   narrative: {
     // type: mongoose.Schema.Types.ObjectId,
     // ref: "Narrative",
-    content: String,
-    // remarks: {
-    //   type: String,
-    // },
+    content: {
+      type: String,
+      default: "",
+    },
+    isComplete: {
+      type: Boolean,
+      default: false,
+    },
   },
 });
 
