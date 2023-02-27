@@ -55,7 +55,7 @@ const EditModal = React.memo(
                 }
                 type="button"
               >
-                Edit
+                Save
               </button>
             </div>
           </form>

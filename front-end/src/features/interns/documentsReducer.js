@@ -14,8 +14,7 @@ const initialState = {
 
 export const updateDocumentsOnLoad = createAsyncThunk(
   "/intern/loadDocuments",
-  async (email, { rejectWithValue }) => {
-    console.log("updateDocuments");
+  async (email, {rejectWithValue}) => {
     try {
       const url = `http://localhost:5000/intern/updateDocuments/${email}`;
       const {data: res} = await axios.patch(url);
@@ -66,7 +65,6 @@ export const sendDocument = createAsyncThunk(
       const {data: res} = await axios.patch(url, {
         documentDetails: completeDocumentDetails,
       });
-      console.log("sent");
 
       res.documentDetails.sort((a, b) => {
         let fa = a.document.name.toLowerCase(),
@@ -120,8 +118,8 @@ export const removeDocument = createAsyncThunk(
     const allDocuments = [...documentDetails].filter((item) => item._id !== id);
     const completeDocumentDetails = [...allDocuments, newDocument[0]];
 
-    console.log(documentDetails);
-    console.log(allDocuments);
+    // console.log(documentDetails);
+    // console.log(allDocuments);
     try {
       const url = `http://localhost:5000/intern/removeDocument/${email}`;
       const {data: res} = await axios.patch(url, {
@@ -163,7 +161,6 @@ export const internDocumentReducer = createSlice({
     },
     handleDocumentDetails: (state, {payload}) => {
       state.documentDetails = payload;
-      console.log("documentDetails");
     },
   },
   extraReducers: (builder) => {

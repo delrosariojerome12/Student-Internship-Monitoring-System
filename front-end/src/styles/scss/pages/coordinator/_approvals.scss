@@ -1,3 +1,5 @@
+/** @format */
+
 @import "../../utils";
 @import "../../variables";
 
@@ -88,8 +90,8 @@
         grid-template-columns: 10rem auto;
         // grid-auto-rows: 10rem;
         gap: 1rem;
-        border-radius: rem;
-        background-color: $primary-bg-color-landing-compliment;
+        border-radius: 1rem;
+        background-color: #d9d9d9;
         // color: #fff;
 
         & > * {
@@ -105,6 +107,7 @@
           position: absolute;
           top: 0%;
           left: 0%;
+          overflow-y: auto;
           z-index: 8;
           .intern-modal {
             display: grid;
@@ -115,15 +118,14 @@
             gap: 1rem;
             grid-template-rows: auto auto;
             height: auto;
-
+            width: 120rem;
             & > * {
               border-radius: 1rem;
-
               padding: 1rem;
             }
             .sent-details {
               display: grid;
-              grid-template-columns: 20rem 1fr 1fr 1fr;
+              grid-template-columns: 20rem 1fr 1fr 1fr 1fr;
               grid-template-rows: 20rem auto;
               background-color: #d9d9d9;
               gap: 2rem;
@@ -142,10 +144,11 @@
                   width: 17rem;
                   border-radius: 1rem;
                   border: solid 2px $primary-compliment-landing;
+                  margin: auto;
                 }
               }
               .student-details-container {
-                grid-column: 2/5;
+                grid-column: 2/6;
                 display: grid;
                 padding: 2rem;
               }
@@ -155,9 +158,63 @@
                 padding: 2rem;
               }
               .internship-details-container {
-                grid-column: 3/5;
+                grid-column: 3/6;
+                // padding: 1rem;
                 display: grid;
-                padding: 2rem;
+                grid-template-columns: 10rem auto auto auto;
+                grid-template-rows: 3rem repeat(6, auto);
+                background-color: #d9d9d9;
+                gap: 0.5rem;
+                & > * {
+                  border-radius: 1rem;
+                  background-color: #fff;
+                  padding: 0 1rem;
+                }
+                h4 {
+                  grid-column: 1/5;
+                  grid-row: 1/2;
+                }
+                img {
+                  margin: auto;
+                  grid-row: 2/4;
+                  grid-column: 1/2;
+                  // height: 10rem;
+                  height: 100%;
+                  width: 10rem;
+                  object-fit: contain;
+                }
+                p {
+                  display: flex;
+                  flex-direction: column;
+                }
+                & > *:nth-child(3) {
+                  grid-column: 2/5;
+                  grid-row: 2/3;
+                }
+                & > *:nth-child(4) {
+                  grid-column: 2/5;
+                  grid-row: 3/4;
+                }
+                & > *:nth-child(5) {
+                  grid-column: 1/3;
+                  grid-row: 4/5;
+                }
+                & > *:nth-child(6) {
+                  grid-column: 3/5;
+                  grid-row: 4/5;
+                }
+                & > *:nth-child(7) {
+                  grid-column: 1/3;
+                  grid-row: 5/6;
+                }
+                & > *:nth-child(8) {
+                  grid-column: 3/5;
+                  grid-row: 5/6;
+                }
+                & > *:nth-child(9) {
+                  grid-column: 1/5;
+                  grid-row: 6/8;
+                }
               }
             }
             .feedback-container {
@@ -175,7 +232,7 @@
                     height: 100%;
                     padding: 1rem;
                     textarea {
-                      overflow-y: scroll;
+                      // overflow-y: scroll;
                       height: 100%;
                       resize: none;
                       padding: 1rem;
@@ -202,7 +259,7 @@
           padding: 0.5rem 2rem;
           align-items: center;
           justify-content: space-between;
-          background-color: #d9d9d9;
+          // background-color: #d9d9d9;
           // font-weight: 550;
           .intern-details {
             display: flex;
@@ -275,10 +332,9 @@
               grid-template-rows: auto auto;
               padding: 1rem;
               overflow-y: auto;
-              height: 90vh;
+              // height: 90vh;
               width: 90vw;
 
-              // height: auto;
               .sent-details {
                 grid-template-columns: 1fr 1fr 1fr 1fr;
                 grid-template-rows: auto auto auto;
@@ -421,9 +477,11 @@
       }
       .approvals-intern-container {
         .approval-intern {
+          grid-template-columns: auto;
           .overlay {
             .intern-modal {
-              width: 100vh;
+              width: 100%;
+              height: 100%;
               .sent-details {
                 font-size: 1.5rem;
                 .img-container {
@@ -434,6 +492,9 @@
                 }
               }
             }
+          }
+          .intern-left {
+            display: none;
           }
         }
       }
@@ -449,8 +510,21 @@
           .overlay {
             .intern-modal {
               .feedback-container {
-                .btn-container {
-                  flex-direction: column;
+                form {
+                  .btn-container {
+                    display: grid;
+                    grid-template-rows: repeat(3, auto);
+                    gap: 0.5rem;
+                    & > :nth-child(3) {
+                      grid-row: 1/2;
+                    }
+                    & > :nth-child(2) {
+                      grid-row: 2/3;
+                    }
+                    & > :nth-child(1) {
+                      grid-row: 3/4;
+                    }
+                  }
                 }
               }
             }
