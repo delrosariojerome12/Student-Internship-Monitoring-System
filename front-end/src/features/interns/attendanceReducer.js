@@ -9,7 +9,26 @@ const initialState = {
   isTimeInOpen: false,
   isTimeOutOpen: false,
   isTodayOpen: false,
+  address: "",
+  location: "",
 };
+
+// const key = "AIzaSyCTjmfiw3OrY9VEd45-xnYkeBslrqIuR8o";
+
+// export const getLocation = createAsyncThunk(
+//   "attendace/getLocation",
+//   async ({latitude, longitude}, {rejectWithValue}) => {
+//     try {
+//       const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
+//       const response = await axios.get(url);
+//       console.log(response.data);
+//       return {address: response.data};
+//     } catch (error) {
+//       console.log(error);
+//       return rejectWithValue(error.response.data);
+//     }
+//   }
+// );
 
 export const getAllAttendance = createAsyncThunk(
   "/attendance/getAllAttendance",
