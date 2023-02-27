@@ -12,6 +12,9 @@ import featureImg2 from "../assets/img/landingPage/imageFeature2.png";
 import featureImg3 from "../assets/img/landingPage/imageFeature3.png";
 import mainMockup from "../assets/img/landingPage/MainMockup.png";
 import mockupImage from "../assets/img/landingPage/imageLowerContainer.png";
+
+// team photos
+import ivanImage from "../assets/img/landingPage/ivan.jpg";
 // Footer
 import socialIcon1 from "../assets/img/landingPage/ICON SOCIALS/FB.png";
 import socialIcon2 from "../assets/img/landingPage/ICON SOCIALS/INSTA.png";
@@ -77,6 +80,54 @@ const LandingPage = () => {
 
     return () => window.removeEventListener("resize", handleResize);
   }, [isNavbarOpen, handleResize]);
+
+  // Define an array of member objects with name, position, and image properties
+  const members = [
+    { name: "Jake A. Bristol", position: "UI/UX System Designer" },
+    {
+      name: "Ivan Cedie C. Batario",
+      position: "Backend Developer",
+      image: "ivanImage",
+    },
+    { name: "Jezreel Dannah D. Menor", position: "Documentation/Tester" },
+    { name: "Jerome D. Ramos", position: "Lead Developer" },
+    { name: "Diosa D. Tadiosa", position: "Documentation/Tester" },
+    { name: "Jerico B. Balisi", position: "Frontend Developer" },
+  ];
+
+  // Use the map() method to generate HTML code for each member
+  const memberHTML = members.map((member, index) => {
+    // Create a new div element for the member information
+    const memberDiv = document.createElement("div");
+    memberDiv.className = `member-img${index + 1}`;
+
+    // If the member has an image property, add an image element
+    if (member.image) {
+      const imgElement = document.createElement("img");
+      imgElement.src = member.image;
+      imgElement.alt = member.name;
+      memberDiv.appendChild(imgElement);
+    }
+
+    // Add the member name and position as paragraph elements
+    const nameElement = document.createElement("p");
+    nameElement.className = "member-name";
+    nameElement.textContent = member.name;
+    memberDiv.appendChild(nameElement);
+
+    const positionElement = document.createElement("p");
+    positionElement.className = "member-position";
+    positionElement.textContent = member.position;
+    memberDiv.appendChild(positionElement);
+
+    return memberDiv.outerHTML;
+  });
+
+  // Get the container element where member information will be added
+  const container = document.querySelector(".members-container");
+
+  // Add the member HTML code to the container element
+  container.innerHTML = memberHTML.join("");
 
   return (
     <IconContext.Provider value={{ className: "icons", color: "#ffff" }}>
@@ -222,32 +273,35 @@ const LandingPage = () => {
             <div className="text-container-top">
               <p>The Team</p>
             </div>
-            <div className="member-img1">
-              <p className="member-name">Jake A. Bristol</p>
-              <p className="member-position">UI/UX System Designer</p>
-            </div>
-            <div className="member-img2">
-              <p className="member-name">Ivan Cedie C. Batario</p>
-              <p className="member-position">Backend Developer</p>
-            </div>
+            <div className="members-container">
+              <div className="member-img1">
+                <p className="member-name">Jake A. Bristol</p>
+                <p className="member-position">UI/UX System Designer</p>
+              </div>
+              <div className="member-img2">
+                <img src={ivanImage} alt="" />
+                <p className="member-name">Ivan Cedie C. Batario</p>
+                <p className="member-position">Backend Developer</p>
+              </div>
 
-            <div className="member-img3">
-              <p className="member-name">Jezreel Dannah D. Menor</p>
-              <p className="member-position">Documentation/Tester</p>
-            </div>
+              <div className="member-img3">
+                <p className="member-name">Jezreel Dannah D. Menor</p>
+                <p className="member-position">Documentation/Tester</p>
+              </div>
 
-            <div className="member-img4">
-              <p className="member-name">Jerome D. Ramos</p>
-              <p className="member-position">Lead Developer</p>
-            </div>
+              <div className="member-img4">
+                <p className="member-name">Jerome D. Ramos</p>
+                <p className="member-position">Lead Developer</p>
+              </div>
 
-            <div className="member-img5">
-              <p className="member-name">Diosa D. Tadiosa</p>
-              <p className="member-position">Documentation/Tester</p>
-            </div>
-            <div className="member-img6">
-              <p className="member-name">Jerico B. Balisi</p>
-              <p className="member-position">Frontend Developer</p>
+              <div className="member-img5">
+                <p className="member-name">Diosa D. Tadiosa</p>
+                <p className="member-position">Documentation/Tester</p>
+              </div>
+              <div className="member-img6">
+                <p className="member-name">Jerico B. Balisi</p>
+                <p className="member-position">Frontend Developer</p>
+              </div>
             </div>
           </div>
         </section>

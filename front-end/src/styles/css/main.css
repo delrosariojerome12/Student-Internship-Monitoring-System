@@ -866,17 +866,20 @@ button {
 .landing-page .contents * {
   box-sizing: border-box;
 }
+.landing-page .contents img {
+  height: 100px;
+  width: 100px;
+  image-rendering: auto;
+}
 .landing-page .contents .the-team-container {
-  display: grid; /* Use grid display */
-  grid-template-columns: repeat(3, 1fr); /* 3 columns with equal width */
-  grid-template-rows: repeat(2, 1fr); /* 2 rows with equal height */
-  grid-gap: 10px; /* Add gap between grid items */
+  margin: 0 auto; /* Center horizontally */
   text-align: center; /* Center the text in each grid item */
   background-color: whitesmoke;
   align-items: center;
   justify-items: center;
+  height: 90%;
   width: 90%;
-  margin-left: 70px;
+  border-radius: 10px;
   /* Style the text container at the top */
   /* Style each member item */
   /* Style the member name */
@@ -884,11 +887,22 @@ button {
 }
 .landing-page .contents .the-team-container .text-container-top {
   grid-column: 1/-1; /* Span the container to all 3 columns */
-  margin-bottom: 90px; /* Add some margin at the bottom */
   color: #088f8f;
   background-color: white;
   width: 100%;
   font-weight: bold;
+  border-radius: 10px 10px 0 0;
+}
+.landing-page .contents .the-team-container .members-container {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns with equal width */
+  grid-template-rows: repeat(2, 1fr); /* 2 rows with equal height */
+  grid-gap: 1px; /* Add gap between grid items */
+  text-align: center; /* Center the text in each grid item */
+  align-items: center;
+  justify-items: center;
+  margin: 20px 0 20px 0;
 }
 .landing-page .contents .the-team-container .member-img1,
 .landing-page .contents .the-team-container .member-img2,
@@ -898,9 +912,9 @@ button {
 .landing-page .contents .the-team-container .member-img6 {
   border: 1px solid #ccc; /* Add border to each item */
   padding: 20px; /* Add some padding */
-  width: 50%;
+  width: 70%;
   background-color: white;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 .landing-page .contents .the-team-container .member-name {
   font-weight: bold;
