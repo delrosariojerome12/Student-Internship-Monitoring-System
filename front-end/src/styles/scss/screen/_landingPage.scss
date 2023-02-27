@@ -180,34 +180,27 @@
     -webkit-overflow-scrolling: touch;
     scroll-snap-points-x: repeat(100%);
     scroll-snap-type: mandatory;
+  }
 
-    & {
-      .content {
-        border: 1px solid #ffff;
-        width: 550px;
-        height: 80%;
-        position: absolute;
-      }
+  & {
+    .btn-prev,
+    .btn-next {
+      width: 80px;
+      height: 100%;
+      background-color: #323232;
+      border: none;
     }
-
-    & {
-      .btn-prev,
-      .btn-next {
-        width: 80px;
-        height: 100%;
-      }
-      .btn-prev {
-        position: absolute;
-        top: 50%;
-        left: 0%;
-        transform: translateY(-50%);
-      }
-      .btn-next {
-        position: absolute;
-        right: 0%;
-        top: 50%;
-        transform: translateY(-50%);
-      }
+    .btn-prev {
+      position: absolute;
+      top: 50%;
+      left: 0%;
+      transform: translateY(-50%);
+    }
+    .btn-next {
+      position: absolute;
+      right: 0%;
+      top: 50%;
+      transform: translateY(-50%);
     }
   }
 }
@@ -215,13 +208,9 @@
 // ABOUT US
 .aboutUs-container {
   position: relative;
-  // width: 80%;
   display: flex;
   align-items: center;
   padding: 1em;
-  // background-color: #d9d9d9;
-
-  border: 1px solid #ffff;
   height: 100%;
   padding: 5em;
   display: grid;
@@ -239,7 +228,7 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    border-radius: 10px;
+    border-radius: 20px;
     background-color: #323232;
   }
   .aboutUs-Text {
@@ -273,6 +262,7 @@
 }
 .getStarted-P {
   padding: 1em;
+  padding-left: 2em;
   display: flex;
   align-items: flex-start;
   justify-content: space-evenly;
@@ -281,7 +271,7 @@
   p:nth-of-type(1) {
     text-align: left;
     font-size: 32px;
-    padding: 20px 0px;
+    padding-bottom: 1em;
     font-weight: 600;
   }
   p:nth-of-type(2) {
@@ -298,6 +288,11 @@
   border-radius: 10px;
   border-style: none;
   font-size: 1.5rem;
+}
+.btn-CreateAcc:hover {
+  transition: ease-in-out 0.3s;
+  // border: 1px solid #0d7377;
+  background-color: #00adb5;
 }
 // ABOUT US END.
 

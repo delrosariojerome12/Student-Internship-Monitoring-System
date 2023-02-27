@@ -7774,24 +7774,20 @@ button {
   scroll-snap-points-x: repeat(100%);
   scroll-snap-type: mandatory;
 }
-.main-carousel .slides .content {
-  border: 1px solid white;
-  width: 550px;
-  height: 80%;
-  position: absolute;
-}
-.main-carousel .slides .btn-prev,
-.main-carousel .slides .btn-next {
+.main-carousel .btn-prev,
+.main-carousel .btn-next {
   width: 80px;
   height: 100%;
+  background-color: #323232;
+  border: none;
 }
-.main-carousel .slides .btn-prev {
+.main-carousel .btn-prev {
   position: absolute;
   top: 50%;
   left: 0%;
   transform: translateY(-50%);
 }
-.main-carousel .slides .btn-next {
+.main-carousel .btn-next {
   position: absolute;
   right: 0%;
   top: 50%;
@@ -7803,7 +7799,6 @@ button {
   display: flex;
   align-items: center;
   padding: 1em;
-  border: 1px solid white;
   height: 100%;
   padding: 5em;
   display: grid;
@@ -7821,7 +7816,7 @@ button {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: 20px;
   background-color: #323232;
 }
 .aboutUs-container .aboutUs-Text {
@@ -7852,6 +7847,7 @@ button {
 
 .getStarted-P {
   padding: 1em;
+  padding-left: 2em;
   display: flex;
   align-items: flex-start;
   justify-content: space-evenly;
@@ -7860,7 +7856,7 @@ button {
 .getStarted-P p:nth-of-type(1) {
   text-align: left;
   font-size: 32px;
-  padding: 20px 0px;
+  padding-bottom: 1em;
   font-weight: 600;
 }
 .getStarted-P p:nth-of-type(2) {
@@ -7876,6 +7872,11 @@ button {
   border-radius: 10px;
   border-style: none;
   font-size: 1.5rem;
+}
+
+.btn-CreateAcc:hover {
+  transition: ease-in-out 0.3s;
+  background-color: #00adb5;
 }
 
 @media screen and (max-width: 920px) {

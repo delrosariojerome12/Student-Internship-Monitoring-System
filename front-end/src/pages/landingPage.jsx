@@ -243,7 +243,14 @@ const LandingPage = () => {
                     and provide guidance throughout your internship.
                   </p>
                 </div>
-                <button className="btn-CreateAcc">Create Account</button>
+                <button
+                  className="btn-CreateAcc"
+                  onClick={() => {
+                    navigate("/account/signup");
+                  }}
+                >
+                  Create Account
+                </button>
                 {/* </div> */}
               </div>
             </div>
