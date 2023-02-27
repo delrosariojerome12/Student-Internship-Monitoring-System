@@ -892,6 +892,26 @@ button {
 .landing-page footer .footer-content .socials-img .social img {
   height: 3rem;
 }
+.landing-page .back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #00adb5;
+  color: #fff;
+  border: none;
+  padding: 15px;
+  border-radius: 1rem;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+}
+.landing-page .active {
+  opacity: 1;
+}
+.landing-page .back-to-top:hover {
+  background-color: #148f77;
+}
 
 .dashboard, .dashboard-active {
   display: grid;

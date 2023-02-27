@@ -24,6 +24,7 @@ import { useSelector } from "react-redux";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import { IconContext } from "react-icons";
+import { FaArrowUp } from "react-icons/fa";
 
 const links = [
   {
@@ -60,6 +61,7 @@ const handleScroll = (path) => {
 
 const LandingPage = () => {
   const [isNavbarOpen, setNavbarOpen] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false); // Add new state variable
   const navigate = useNavigate();
 
   const { user } = useSelector((state) => state.user);
@@ -72,6 +74,10 @@ const LandingPage = () => {
     setNavbarOpen(!isNavbarOpen);
   }, [isNavbarOpen]);
 
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   useEffect(() => {
     if (isNavbarOpen) {
       window.addEventListener("resize", () => {
@@ -81,6 +87,22 @@ const LandingPage = () => {
 
     return () => window.removeEventListener("resize", handleResize);
   }, [isNavbarOpen, handleResize]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <IconContext.Provider value={{ className: "icons", color: "#ffff" }}>
@@ -126,6 +148,14 @@ const LandingPage = () => {
                 })
               )}
             </ul>
+            {showBackToTop && (
+              <button
+                className={showBackToTop ? "back-to-top active" : "back-to-top"}
+                onClick={handleScrollToTop}
+              >
+                <FaArrowUp />
+              </button>
+            )}
           </div>
           <span
             className={isNavbarOpen ? "menu-icon active" : "menu-icon"}
