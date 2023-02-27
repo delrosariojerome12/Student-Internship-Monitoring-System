@@ -35,9 +35,7 @@
     padding: 1rem 2rem;
     transition: all 0.2s linear;
     font-weight: 600;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexCenter;
     gap: 1rem;
     .icon {
       font-size: 1.2rem;

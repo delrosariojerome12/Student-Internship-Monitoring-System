@@ -1,7 +1,9 @@
-import React, {useState, useEffect} from "react";
+/** @format */
 
-import {useSelector, useDispatch} from "react-redux";
-import {getAllInternship} from "../../features/coordinator/internship";
+import React, { useState, useEffect } from "react";
+
+import { useSelector, useDispatch } from "react-redux";
+import { getAllInternship } from "../../features/coordinator/internship";
 import ViewModal from "../../components/coordinator/ViewModal";
 import Internship from "../../components/coordinator/Internship";
 import Bouncing from "../../components/loading/Bouncing";
@@ -122,7 +124,7 @@ const form = [
 const Internships = React.memo(() => {
   const dispatch = useDispatch();
 
-  const {internships, isLoading, isError, isViewOpen, selectedInternship} =
+  const { internships, isLoading, isError, isViewOpen, selectedInternship } =
     useSelector((state) => state.internship);
 
   const [isSortOpen, setSortOpen] = useState(false);
@@ -164,23 +166,21 @@ const Internships = React.memo(() => {
   return (
     <section className="internship-container-intern">
       <header>
-        <h3>Looking for Internship?</h3>
+        <h2>Looking for Internship?</h2>
       </header>
       <div className="btn-contoller">
         <button
           onClick={() => {
             setSortOpen(!isSortOpen);
           }}
-          type="button"
-        >
+          type="button">
           Sort
         </button>
         <button
           onClick={() => {
             setFilterOpen(!isFilterOpen);
           }}
-          type="button"
-        >
+          type="button">
           Filter
         </button>
       </div>
@@ -199,7 +199,7 @@ const Internships = React.memo(() => {
         <>
           <div className="overlay" onClick={() => setSortOpen(false)}></div>
           <div onClick={(e) => e.stopPropagation()} className="sort modal">
-            <h4>Sort By</h4>
+            <h3>Sort by</h3>
             <form>
               <div className="name-sort">
                 <label htmlFor="name-ascending">
@@ -234,7 +234,6 @@ const Internships = React.memo(() => {
                   />
                   Least Rendered Hours
                 </label>
-
                 <label htmlFor="time-descending">
                   <input
                     type="radio"

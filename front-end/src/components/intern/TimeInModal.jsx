@@ -1,6 +1,8 @@
-import React, {useState, useEffect} from "react";
-import {useSelector, useDispatch} from "react-redux";
-import {handleTimeIn} from "../../features/interns/attendanceReducer";
+/** @format */
+
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { handleTimeIn } from "../../features/interns/attendanceReducer";
 import axios from "axios";
 
 const months = [
@@ -56,7 +58,7 @@ const TimeInModal = () => {
     }, 1000);
 
     navigator.geolocation.getCurrentPosition((position) => {
-      const {latitude, longitude} = position.coords;
+      const { latitude, longitude } = position.coords;
       getLocation(latitude, longitude);
     });
     return () => clearInterval(interval);
