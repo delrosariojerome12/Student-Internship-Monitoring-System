@@ -251,6 +251,44 @@ const LandingPage = () => {
               </button>
             </div>
           </div>
+
+          <div className="aboutUs-container">
+            <div className="aboutUs-contents">
+              <div className="aboutUs-Text">
+                <p>About Us</p>
+                <p>
+                  As former intern students, we are concerned about the upcoming
+                  interns because, through our experience, we all know the
+                  struggles they can experience. As a result, our group decided
+                  to create a system that can assist the future intern students
+                  and make it a lot easier for them, especially tracking their
+                  performance during their internship, because this is the most
+                  important part of the internship. Each one of us gathers our
+                  ideas to come up with the possible features that we can put on
+                  the system that will surely benefit the intern students.
+                </p>
+              </div>
+              <div className="getStarted">
+                {/* <div className="getStarted-content"> */}
+                <div className="getStarted-P">
+                  <p>Ready to get started?</p>
+                  <p>
+                    Discover a quick and simple approach to organize your time
+                    and provide guidance throughout your internship.
+                  </p>
+                </div>
+                <button
+                  className="btn-CreateAcc"
+                  onClick={() => {
+                    navigate("/account/signup");
+                  }}
+                >
+                  Create Account
+                </button>
+                {/* </div> */}
+              </div>
+            </div>
+          </div>
         </section>
 
         <footer>
