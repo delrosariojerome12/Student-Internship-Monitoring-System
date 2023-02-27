@@ -13,7 +13,8 @@ const initialState = {
   location: "",
 };
 
-// const key = "AIzaSyCTjmfiw3OrY9VEd45-xnYkeBslrqIuR8o";
+// const key = "UjTu7V2EcFJBTyd0zjudhuFrRNP4iWXJ";
+//  const res = await axios.get("https://geolocation-db.com/json/");
 
 // export const getLocation = createAsyncThunk(
 //   "attendace/getLocation",

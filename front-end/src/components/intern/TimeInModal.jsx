@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {handleTimeIn} from "../../features/interns/attendanceReducer";
 import axios from "axios";
+import Geocode from "react-geocode";
 
 const months = [
   "January",
@@ -18,6 +19,13 @@ const months = [
   "December",
 ];
 
+// google
+// const key = "AIzaSyCTjmfiw3OrY9VEd45-xnYkeBslrqIuR8o";
+// ip stack
+// const key = "8068a32023cc9f982fdbd53adb3ddbfd";
+
+const key = "UjTu7V2EcFJBTyd0zjudhuFrRNP4iWXJ";
+
 const TimeInModal = () => {
   const dispatch = useDispatch();
 
@@ -26,11 +34,10 @@ const TimeInModal = () => {
 
   const getLocation = async (latitude, longitude) => {
     try {
-      const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
+      const url = `https://api.tomtom.com/search/2/reverseGeocode/${latitude},${longitude}.json?key=${key}`;
       const response = await axios.get(url);
-      console.log(response.data);
-      setAddress(response.data.display_name);
-      // return {address: response.data};
+      console.log(response);
+      setAddress(response.data.addresses[0].address.freeformAddress);
     } catch (error) {
       console.log(error);
     }
@@ -41,7 +48,7 @@ const TimeInModal = () => {
       const date = new Date();
       // whole date
       const day = date.getDate();
-      const month = months[date.getMonth() + 1];
+      const month = months[date.getMonth()];
       const year = date.getFullYear();
       // hour
       const hours = date.getHours() % 12 || 12; // get hours in 12-hour format
