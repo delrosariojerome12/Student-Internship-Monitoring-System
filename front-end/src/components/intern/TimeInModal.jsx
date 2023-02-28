@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from "react";
-import {useSelector, useDispatch} from "react-redux";
-import {handleTimeIn} from "../../features/interns/attendanceReducer";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { handleTimeIn } from "../../features/interns/attendanceReducer";
 import axios from "axios";
 
 const months = [
@@ -25,6 +25,7 @@ const TimeInModal = () => {
   const [address, setAddress] = useState("");
 
   const getLocation = async (latitude, longitude) => {
+    console.log(latitude, longitude);
     try {
       const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
       const response = await axios.get(url);
@@ -56,7 +57,7 @@ const TimeInModal = () => {
     }, 1000);
 
     navigator.geolocation.getCurrentPosition((position) => {
-      const {latitude, longitude} = position.coords;
+      const { latitude, longitude } = position.coords;
       getLocation(latitude, longitude);
     });
     return () => clearInterval(interval);
