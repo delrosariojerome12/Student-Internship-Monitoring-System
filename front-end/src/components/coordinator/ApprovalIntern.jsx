@@ -1,19 +1,21 @@
-import React, {useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {updateIntern} from "../../features/interns/internReducer";
-import {FaCheck, FaTrash} from "react-icons/fa";
-import {isRejected} from "@reduxjs/toolkit";
+/** @format */
 
-const ApprovalIntern = React.memo(({intern, index}) => {
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateIntern } from "../../features/interns/internReducer";
+import { FaCheck, FaTrash } from "react-icons/fa";
+import { isRejected } from "@reduxjs/toolkit";
+
+const ApprovalIntern = React.memo(({ intern, index }) => {
   // const {selectedIntern} = useSelector((state) => state.intern);
   const dispatch = useDispatch();
 
   const {
-    user: {firstName, lastName, email, profileImage},
+    user: { firstName, lastName, email, profileImage },
     schoolDetails: {
       program,
       studentContact,
-      validID: {link},
+      validID: { link },
       requiredHours,
     },
     internshipDetails: {
@@ -22,8 +24,11 @@ const ApprovalIntern = React.memo(({intern, index}) => {
       supervisor,
       supervisorContact,
       typeOfWork,
+      logo,
+      startingDate,
+      description,
     },
-    verification: {isVerified, hasSentVerification},
+    verification: { isVerified, hasSentVerification },
     scheduleDetails: {
       scheduleType,
       scheduledDays,
@@ -31,6 +36,8 @@ const ApprovalIntern = React.memo(({intern, index}) => {
       timeOutSchedule,
     },
   } = intern;
+
+  const { internshipDetails } = intern;
 
   const [isDetailsOpen, setDetailsOpen] = useState(false);
   const [remarks, setRemarks] = useState("");
@@ -59,7 +66,7 @@ const ApprovalIntern = React.memo(({intern, index}) => {
         },
       };
       console.log("Request Rejected");
-      dispatch(updateIntern({form, index}));
+      dispatch(updateIntern({ form, index }));
     } else {
       const form = {
         email,
@@ -69,12 +76,14 @@ const ApprovalIntern = React.memo(({intern, index}) => {
           isRejected: false,
           remarks,
         },
-        internshipDetails: {...intern.internshipDetails},
+        internshipDetails: { ...intern.internshipDetails },
       };
-      dispatch(updateIntern({form, index}));
+      dispatch(updateIntern({ form, index }));
       console.log("Request Accepted");
     }
   };
+
+  console.log(intern);
 
   return (
     <section className="approval-intern">
@@ -90,59 +99,72 @@ const ApprovalIntern = React.memo(({intern, index}) => {
                 <div className="student-details">
                   <h4>Student Details</h4>
                   <p>
-                    <b>Program: </b>
-                    {program}
+                    Program:
+                    <b> {program}</b>
                   </p>
                   <p>
-                    <b>Required Hours: </b>
-                    {requiredHours}
+                    Required Hours:
+                    <b> {requiredHours}</b>
                   </p>
                   <p>
-                    <b>Email: </b>
-                    {email}
+                    Email:
+                    <b> {email}</b>
                   </p>
                   <p>
-                    <b>Contact Number: </b>
-                    {studentContact}
+                    Contact Number:
+                    <b> {studentContact}</b>
                   </p>
                 </div>
               </div>
               <div className="schedule-details-container">
                 <h4>Schedule Details</h4>
                 <p>
-                  <b>Schedule Type: </b>
-                  {scheduleType}
+                  Schedule Type:
+                  <b> {scheduleType}</b>
                 </p>
                 <p>
-                  <b>Days: </b>
-                  {scheduledDays}
+                  Days:
+                  <b> {scheduledDays}</b>
                 </p>
                 <p>
-                  <b>Time: </b>
-                  {`${timeInSchedule} - ${timeOutSchedule}`}
+                  Time:
+                  <b> {`${timeInSchedule} - ${timeOutSchedule}`}</b>
+                </p>
+                <p>
+                  Starting Date:
+                  <b> {startingDate}</b>
                 </p>
               </div>
               <div className="internship-details-container">
                 <h4>Internship Details</h4>
+                <img src={logo.link} alt={logo.name} />
                 <p>
-                  <b>Type of Work: </b>
-                  {typeOfWork}
+                  Company:
+                  <b> {companyName}</b>
                 </p>
                 <p>
-                  <b>Company: </b>
-                  {companyName}
+                  Address:
+                  <b> {companyAddress}</b>
                 </p>
                 <p>
-                  <b>Address: </b>
-                  {companyAddress}
+                  Supervisor:
+                  <b> {supervisor}</b>
                 </p>
                 <p>
-                  <b>Supervisor: </b>
-                  {supervisor}
+                  Email:
+                  <b> {internshipDetails.email}</b>
                 </p>
                 <p>
-                  <b>Contact: </b>
-                  {supervisorContact}
+                  Contact:
+                  <b> {supervisorContact}</b>
+                </p>
+                <p>
+                  Type of Work:
+                  <b> {typeOfWork}</b>
+                </p>
+                <p>
+                  Description:
+                  <b> {description}</b>
                 </p>
               </div>
             </div>
@@ -160,8 +182,7 @@ const ApprovalIntern = React.memo(({intern, index}) => {
                       onChange={(e) => handleTextAreaChange(e.target.value)}
                       name="remarks"
                       id="remarks"
-                      maxLength={60}
-                    ></textarea>
+                      maxLength={60}></textarea>
                   </label>
                 </div>
                 <div className="btn-container">
@@ -192,7 +213,9 @@ const ApprovalIntern = React.memo(({intern, index}) => {
       <div className="intern-right">
         <div className="intern-details">
           <p className="fullName">
-            {firstName} {lastName}
+            <b>
+              {firstName} {lastName}
+            </b>
           </p>
           <p className="program">{program}</p>
         </div>

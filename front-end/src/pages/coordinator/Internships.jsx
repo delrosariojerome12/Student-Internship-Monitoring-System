@@ -1,3 +1,5 @@
+/** @format */
+
 import React, {useCallback, useEffect, useState} from "react";
 import Internship from "../../components/coordinator/Internship";
 import {useSelector, useDispatch} from "react-redux";
@@ -13,7 +15,6 @@ import {
   handleMessage,
 } from "../../features/coordinator/internship";
 import {handleAdd} from "../../features/coordinator/internship";
-import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
 
 import {storage} from "../../Firebase";

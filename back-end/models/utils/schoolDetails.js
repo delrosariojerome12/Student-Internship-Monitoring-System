@@ -4,7 +4,6 @@ const schoolDetails = {
     maxlength: 50,
     minlength: 10,
   },
-
   validID: {
     type: Object,
     name: {
@@ -20,6 +19,9 @@ const schoolDetails = {
     minlength: 1,
   },
   requiredHours: {
+    type: String,
+  },
+  studentNumber: {
     type: String,
   },
 };

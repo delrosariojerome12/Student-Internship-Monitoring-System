@@ -1,6 +1,8 @@
+/** @format */
+
 import React, {useState} from "react";
 import {FaRegEdit, FaRegCheckCircle} from "react-icons/fa";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {
   handleEdit,
   handleView,
@@ -8,9 +10,6 @@ import {
   deleteInternship,
   handleMessage,
 } from "../../features/coordinator/internship";
-
-// import noImageDark from "../../assets/img/noimageDark.svg";
-import noImageDark from "../../assets/img/noimageDark.svg";
 
 const Internship = React.memo(({internship, editForm}) => {
   const {
@@ -24,6 +23,10 @@ const Internship = React.memo(({internship, editForm}) => {
     description,
     _id,
   } = internship;
+  const {
+    user: {user},
+  } = useSelector((state) => state.user);
+
   const dispatch = useDispatch();
 
   return (
@@ -32,33 +35,46 @@ const Internship = React.memo(({internship, editForm}) => {
         <img src={link} alt={companyName} />
       </div>
       <div className="controls">
-        <p>{companyName}</p>
-        <div className="internship-btn">
-          <button
-            onClick={() => {
-              dispatch(handleView({id: _id}));
-            }}
-          >
-            View
-          </button>
-          <button
-            onClick={() => {
-              dispatch(handleEdit({id: _id}));
-              editForm(internship);
-            }}
-          >
-            Edit
-          </button>
-          <button
-            onClick={() => {
-              dispatch(deleteInternship({id: _id}));
-              const timer = setTimeout(() => dispatch(handleMessage()), 3000);
-              return () => clearTimeout(timer);
-            }}
-          >
-            Delete
-          </button>
-        </div>
+        <h4>{companyName}</h4>
+
+        {user.role === "intern" ? (
+          <div className="internship-btn">
+            <button
+              onClick={() => {
+                dispatch(handleView({id: _id}));
+              }}
+            >
+              View
+            </button>
+          </div>
+        ) : (
+          <div className="internship-btn">
+            <button
+              onClick={() => {
+                dispatch(handleView({id: _id}));
+              }}
+            >
+              View
+            </button>
+            <button
+              onClick={() => {
+                dispatch(handleEdit({id: _id}));
+                editForm(internship);
+              }}
+            >
+              Edit
+            </button>
+            <button
+              onClick={() => {
+                dispatch(deleteInternship({id: _id}));
+                const timer = setTimeout(() => dispatch(handleMessage()), 3000);
+                return () => clearTimeout(timer);
+              }}
+            >
+              Delete
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -13,6 +13,7 @@ const internsRouter = require("./routers/intern");
 const userRouter = require("./routers/user");
 const documentRouter = require("./routers/document");
 const internshipRouter = require("./routers/internship");
+const attendanceRouter = require("./routers/attendance");
 
 // error handlerrequire("./routers/attendance");
 const notFound = require("./middlewares/notFound");
@@ -27,6 +28,7 @@ app.use("/intern", internsRouter);
 app.use("/user", userRouter);
 app.use("/document", documentRouter);
 app.use("/internship", internshipRouter);
+app.use("/attendance", attendanceRouter);
 
 app.use(notFound);
 app.use(errorHandler);

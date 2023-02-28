@@ -52,6 +52,7 @@ const internshipDetails = {
     maxlength: 4,
     minlenght: 1,
   },
+  startingDate: {type: String},
 };
 
 const internsAssets = {

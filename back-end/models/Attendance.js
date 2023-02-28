@@ -1,54 +1,82 @@
 const mongoose = require("mongoose");
 
-const AttendanceSchema = new mongoose.Schema({
-  //intern: { type: mongoose.Schema.Types.ObjectId, ref: "user" },
-  //img: {},
+const now = new Date();
+const year = now.getFullYear();
+const month = now.getMonth() + 1;
+const date = now.getDate();
+const today = `${year}-${month < 10 ? "0" : ""}${month}-${
+  date < 10 ? "0" : ""
+}${date}`;
 
-  dateStarted: {
+const AttendanceSchema = new mongoose.Schema({
+  date: {
     type: String,
-    required: [true, "Please enter the date started."],
-    maxlength: 8,
+    default: today,
+    required: [true, "Please provide a valid date"],
   },
-  dateEnded: {
+  email: {
     type: String,
-    required: [true, "Please enter dated ended."],
+    required: [true, "Please provide email"],
+    match: [
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+      "Please provide a valid email",
+    ],
   },
-  estimatedCompletion: {
-    type: String,
-    required: [true, "Please enter estimated completion."],
+  isPresent: {
+    type: Boolean,
+    default: false,
   },
-  dateOfDuty: {
+  location: {
     type: String,
-    required: [true, "Please enter the date."],
-    maxlength: 8,
+    required: [true, "Please provide a valid location"],
   },
-  day: {
-    type: String,
-    required: [true, "Please enter the day"],
-    maxlength: 10,
+  proof: {
+    type: Object,
+    name: {
+      type: String,
+    },
+    link: {
+      type: String,
+    },
+    required: [true, "Please provide a img"],
   },
   timeIn: {
     type: String,
-    required: [true, "Please enter timeIn."],
-    maxlength: 10,
+    required: [true, "Please provide a timein"],
   },
   timeOut: {
     type: String,
-    required: [true, "Please enter timeOut."],
+    default: "pending",
+    // required: [true, "Please provide a timout"],
   },
-  accomplishments: {
+  totalRendered: {
     type: String,
-    required: [true, "Please enter accomplishments"],
+    default: "0",
   },
-  regularHours: {
-    type: String,
+  isComplete: {
+    type: Boolean,
+    default: false,
   },
-  OTHours: {
-    type: String,
+  isLate: {
+    type: Boolean,
+    default: false,
   },
-  remarks: {
+
+  OT: {
     type: String,
-    required: [true, "Please enter accomplishments"],
+    default: "0",
+  },
+  narrative: {
+    // type: mongoose.Schema.Types.ObjectId,
+    // ref: "Narrative",
+    content: {
+      type: String,
+      default: "",
+    },
+    isComplete: {
+      type: Boolean,
+      default: false,
+    },
   },
 });
 

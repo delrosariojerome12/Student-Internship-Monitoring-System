@@ -1,59 +1,75 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { FaCheck, FaCamera, FaRegImage } from "react-icons/fa";
-import { IconContext } from "react-icons";
-import { BiSearchAlt } from "react-icons/bi";
+import React, {useState, useEffect} from "react";
+import {useSelector, useDispatch} from "react-redux";
+import {FaCheck, FaCamera, FaRegImage} from "react-icons/fa";
+import {IconContext} from "react-icons";
+import {BiSearchAlt} from "react-icons/bi";
 
-const DailyTimeRecord = () => {
+import Bouncing from "../../components/loading/Bouncing";
+import ServerError from "../serverError";
+import Attendance from "../../components/intern/Attendance";
+import TimeInModal from "../../components/intern/TimeInModal";
+import TimeOutModal from "../../components/intern/TimeOutModal";
+
+import {getAllAttendance} from "../../features/interns/attendanceReducer";
+import NoDocumentSvg from "../../assets/img/waiting.svg";
+
+import {
+  handleTimeIn,
+  handleTimeOut,
+  handleViewToday,
+} from "../../features/interns/attendanceReducer";
+
+const DailyTimeRecord = React.memo(() => {
+  const {user} = useSelector((state) => state.user);
   const {
-    user: {
-      user: { firstName, lastName, profileImage },
-      internshipDetails: { renderedHours },
-      schoolDetails: { program, requiredHours },
-    },
-  } = useSelector((state) => state.user);
+    isLoading,
+    isError,
+    selectedAttendance,
+    allAttendance,
+    isTimeInOpen,
+    isTimeOutOpen,
+    isTodayOpen,
+  } = useSelector((state) => state.attendance);
+  const dispatch = useDispatch();
+
+  const {
+    user: {firstName, lastName, profileImage, email},
+    internshipDetails: {renderedHours},
+    schoolDetails: {program, requiredHours},
+  } = user;
+
+  useEffect(() => {
+    dispatch(getAllAttendance({email}));
+  }, []);
+
+  if (isLoading || !allAttendance) {
+    return <Bouncing />;
+  }
+  if (isError) {
+    return <ServerError />;
+  }
+
+  const renderAttendance = () => {
+    if (allAttendance.length === 0) {
+      return (
+        <div className="no-internship">
+          <h3>No record yet</h3>
+          <img src={NoDocumentSvg} alt="no-internship" />
+        </div>
+      );
+    }
+    return (
+      <div className="DTR-content">
+        {allAttendance.map((item, index) => {
+          return <Attendance key={index} attendance={item} />;
+        })}
+      </div>
+    );
+  };
 
   return (
-    <IconContext.Provider value={{ className: "icon" }}>
+    <IconContext.Provider value={{className: "icon"}}>
       <section className="daily-time-record">
-        <div className="time-in-modal">
-          <span className="check-icon">
-            <FaCheck />
-          </span>
-          <div className="modals-content">
-            <div className="top">
-              <span>
-                <FaCamera />
-              </span>
-              <p>Allow camera to take your Check-in</p>
-            </div>
-            <div className="bottom">
-              <button>Check-In</button>
-            </div>
-          </div>
-        </div>
-        <div className="time-in-modals2">
-          <div className="check-and-message">
-            <span>
-              <FaCheck />
-            </span>
-            <p>Thank You!</p>
-          </div>
-          <div className="modal-details">
-            <span>
-              <FaRegImage />
-            </span>
-            <div className="user-infos">
-              <p>Checked-In Successfully</p>
-              <p>user name</p>
-              <p>time</p>
-              <p>date</p>
-              <p>localtion</p>
-              <p>ID number</p>
-            </div>
-            <button>Return to home</button>
-          </div>
-        </div>
         <div className="content">
           <div className="user">
             <div className="profile-img">
@@ -74,8 +90,18 @@ const DailyTimeRecord = () => {
           </div>
           <div className="mid">
             <div className="button-container">
-              <button className="time-in">Time In</button>
-              <button className="time-out">Time Out</button>
+              <button
+                className="time-in"
+                onClick={() => dispatch(handleTimeIn())}
+              >
+                Time In
+              </button>
+              <button
+                className="time-out"
+                onClick={() => dispatch(handleTimeOut())}
+              >
+                Time Out
+              </button>
               {/* <button className="all-records">All Records</button>
               <button className="view-as-pdf">View As PDF</button> */}
             </div>
@@ -86,17 +112,13 @@ const DailyTimeRecord = () => {
               <input type="text" placeholder="Search" />
             </div>
           </div>
-          <div className="DTR-content">
-            <div>Day 1</div>
-            <div>Day 2</div>
-            <div>Day 3</div>
-            <div>Day 4</div>
-            <div>Day 5</div>
-          </div>
+          {renderAttendance()}
         </div>
+        {isTimeInOpen && <TimeInModal />}
+        {isTimeOutOpen && <TimeOutModal />}
       </section>
     </IconContext.Provider>
   );
-};
+});
 
 export default DailyTimeRecord;

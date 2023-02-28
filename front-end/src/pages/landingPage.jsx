@@ -27,6 +27,7 @@ import {useSelector} from "react-redux";
 import {FaChevronLeft, FaChevronRight} from "react-icons/fa";
 
 import {IconContext} from "react-icons";
+import {FaArrowUp} from "react-icons/fa";
 
 const links = [
   {
@@ -35,11 +36,11 @@ const links = [
   },
   {
     link: "Testimonial",
-    path: "/testimonials",
+    path: "feature-Content-Img",
   },
   {
     link: "FAQ",
-    path: "/faqs",
+    path: "faq",
   },
   {
     link: "About Us ",
@@ -56,6 +57,10 @@ const authLinks = [
     path: "/account/login",
   },
 ];
+const handleScroll = (path) => {
+  const featureContent = document.getElementById(path);
+  featureContent.scrollIntoView({behavior: "smooth", block: "center"});
+};
 
 const teamMembers = [
   {
@@ -88,6 +93,7 @@ const teamMembers = [
 
 const LandingPage = () => {
   const [isNavbarOpen, setNavbarOpen] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false); // Add new state variable
   const navigate = useNavigate();
 
   const {user} = useSelector((state) => state.user);
@@ -99,6 +105,10 @@ const LandingPage = () => {
   const handleNavbar = useCallback(() => {
     setNavbarOpen(!isNavbarOpen);
   }, [isNavbarOpen]);
+
+  const handleScrollToTop = () => {
+    window.scrollTo({top: 0, behavior: "smooth"});
+  };
 
   useEffect(() => {
     if (isNavbarOpen) {
@@ -132,6 +142,22 @@ const LandingPage = () => {
     );
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <IconContext.Provider value={{className: "icons", color: "#ffff"}}>
       <section className="landing-page">
@@ -149,9 +175,9 @@ const LandingPage = () => {
               {links.map((item, index) => {
                 const {path, link} = item;
                 return (
-                  <Link key={index} to={path}>
+                  <a key={index} onClick={() => handleScroll(path)}>
                     {link}
-                  </Link>
+                  </a>
                 );
               })}
             </ul>
@@ -176,6 +202,14 @@ const LandingPage = () => {
                 })
               )}
             </ul>
+            {showBackToTop && (
+              <button
+                className={showBackToTop ? "back-to-top active" : "back-to-top"}
+                onClick={handleScrollToTop}
+              >
+                <FaArrowUp />
+              </button>
+            )}
           </div>
           <span
             className={isNavbarOpen ? "menu-icon active" : "menu-icon"}
@@ -209,7 +243,7 @@ const LandingPage = () => {
               <img className="landingBg" src={landingBg} alt="" />
             </div>
           </div>
-          <div className="feature-contents">
+          <div className="feature-contents" id="feature-Content-Img">
             <div className="feature-Content-Img">
               <div className="img-features">
                 <img src={featureImg1} alt="" />
@@ -223,7 +257,7 @@ const LandingPage = () => {
             </div>
           </div>
 
-          <div className="mockup-contents">
+          <div className="mockup-contents" id="faq">
             <div className="card">
               <div className="text-container">
                 <p>Do you need assistance with your internship?</p>

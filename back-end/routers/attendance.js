@@ -1,18 +1,17 @@
-const express = require("express");
-const router = express.Router();
-
 const {
   getAllAttendance,
   getAttendance,
-  createAttendance,
-  //updateAttendance,
-  deleteAttendance,
+  timeIn,
+  timeOut,
 } = require("../controllers/attendance");
 
-router.route("/getAllAttendance").get(getAllAttendance);
-router.route("/getAttendance").get(getAttendance);
-router.route("/createAttendance").post(createAttendance);
-//router.route("/updateAttendance/:id").patch(updateAttendance);
-router.route("/deleteAttendance/:id").delete(deleteAttendance);
+const express = require("express");
+const router = express.Router();
+
+router.route("/getAllAttendance/:email").get(getAllAttendance);
+router.route("/getAttendance/:id").get(getAttendance);
+
+router.route("/timeIn/:email").post(timeIn);
+router.route("/timeOut/:email").patch(timeOut);
 
 module.exports = router;
