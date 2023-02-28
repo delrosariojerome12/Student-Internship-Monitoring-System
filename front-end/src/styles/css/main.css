@@ -685,6 +685,12 @@ button {
   grid-template-rows: minmax(90vh, auto) repeat(2, 70vh);
   gap: 10rem;
   /* Set box-sizing to border-box to include padding and border in element's total width and height */
+  /*img {
+    height: 100px;
+    width: 100px;
+    image-rendering: auto;
+  }
+
   /* Style the container */
 }
 .landing-page .contents .landing-contents {
@@ -865,11 +871,6 @@ button {
 }
 .landing-page .contents * {
   box-sizing: border-box;
-}
-.landing-page .contents img {
-  height: 100px;
-  width: 100px;
-  image-rendering: auto;
 }
 .landing-page .contents .the-team-container {
   margin: 0 auto; /* Center horizontally */

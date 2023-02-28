@@ -116,7 +116,7 @@ const LandingPage = () => {
         <div className="text-container-top">
           <p>The Team</p>
         </div>
-        return (
+
         <div className="members-container">
           {teamMembers.map((member) => (
             <div
@@ -129,7 +129,6 @@ const LandingPage = () => {
             </div>
           ))}
         </div>
-        )
       </div>
     );
   };
@@ -275,41 +274,7 @@ const LandingPage = () => {
             </div>
           </div>
         </section>
-        <div className="the-team-container">
-          <div className="text-container-top">
-            <p>The Team</p>
-          </div>
-          <div className="members-container">
-            <div className="member-img1">
-              <p className="member-name">Jake A. Bristol</p>
-              <p className="member-position">UI/UX System Designer</p>
-            </div>
-            <div className="member-img2">
-              <img src={ivanImage} alt="" />
-              <p className="member-name">Ivan Cedie C. Batario</p>
-              <p className="member-position">Backend Developer</p>
-            </div>
 
-            <div className="member-img3">
-              <p className="member-name">Jezreel Dannah D. Menor</p>
-              <p className="member-position">Documentation/Tester</p>
-            </div>
-
-            <div className="member-img4">
-              <p className="member-name">Jerome D. Ramos</p>
-              <p className="member-position">Lead Developer</p>
-            </div>
-
-            <div className="member-img5">
-              <p className="member-name">Diosa D. Tadiosa</p>
-              <p className="member-position">Documentation/Tester</p>
-            </div>
-            <div className="member-img6">
-              <p className="member-name">Jerico B. Balisi</p>
-              <p className="member-position">Frontend Developer</p>
-            </div>
-          </div>
-        </div>
         <footer>
           <div className="footer-content">
             <div className="icon">
