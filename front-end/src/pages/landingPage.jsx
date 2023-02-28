@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { HiMenu } from "react-icons/hi";
+import React, {useState, useEffect} from "react";
+import {Link, useNavigate} from "react-router-dom";
+import {HiMenu} from "react-icons/hi";
 
 import logo from "../assets/img/landingPage/Logo.png";
 import landingImg from "../assets/img/landingPage/landing-image.png";
@@ -20,13 +20,13 @@ import socialIcon1 from "../assets/img/landingPage/ICON SOCIALS/FB.png";
 import socialIcon2 from "../assets/img/landingPage/ICON SOCIALS/INSTA.png";
 import socialIcon3 from "../assets/img/landingPage/ICON SOCIALS/LINKIN.png";
 import socialIcon4 from "../assets/img/landingPage/ICON SOCIALS/TWITTER.png";
-import { useCallback } from "react";
+import {useCallback} from "react";
 
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import {FaChevronLeft, FaChevronRight} from "react-icons/fa";
 
-import { IconContext } from "react-icons";
+import {IconContext} from "react-icons";
 
 const links = [
   {
@@ -57,11 +57,40 @@ const authLinks = [
   },
 ];
 
+const teamMembers = [
+  {
+    name: "Jake A. Bristol",
+    position: "UI/UX System Designer",
+    image: ivanImage,
+  },
+  {
+    name: "Ivan Cedie C. Batario",
+    position: "Backend Developer",
+    image: ivanImage,
+  },
+  {
+    name: "Jezreel Dannah D. Menor",
+    position: "Documentation/Tester",
+    image: ivanImage,
+  },
+  {name: "Jerome D. Ramos", position: "Lead Developer", image: ivanImage},
+  {
+    name: "Diosa D. Tadiosa",
+    position: "Documentation/Tester",
+    image: ivanImage,
+  },
+  {
+    name: "Jerico B. Balisi",
+    position: "Frontend Developer",
+    image: ivanImage,
+  },
+];
+
 const LandingPage = () => {
   const [isNavbarOpen, setNavbarOpen] = useState(false);
   const navigate = useNavigate();
 
-  const { user } = useSelector((state) => state.user);
+  const {user} = useSelector((state) => state.user);
 
   const handleResize = useCallback(() => {
     setNavbarOpen(false);
@@ -77,38 +106,8 @@ const LandingPage = () => {
         handleResize();
       });
     }
-
     return () => window.removeEventListener("resize", handleResize);
   }, [isNavbarOpen, handleResize]);
-
-  const teamMembers = [
-    {
-      name: "Jake A. Bristol",
-      position: "UI/UX System Designer",
-      image: ivanImage,
-    },
-    {
-      name: "Ivan Cedie C. Batario",
-      position: "Backend Developer",
-      image: ivanImage,
-    },
-    {
-      name: "Jezreel Dannah D. Menor",
-      position: "Documentation/Tester",
-      image: ivanImage,
-    },
-    { name: "Jerome D. Ramos", position: "Lead Developer", image: ivanImage },
-    {
-      name: "Diosa D. Tadiosa",
-      position: "Documentation/Tester",
-      image: ivanImage,
-    },
-    {
-      name: "Jerico B. Balisi",
-      position: "Frontend Developer",
-      image: ivanImage,
-    },
-  ];
 
   const displayTeam = () => {
     return (
@@ -134,7 +133,7 @@ const LandingPage = () => {
   };
 
   return (
-    <IconContext.Provider value={{ className: "icons", color: "#ffff" }}>
+    <IconContext.Provider value={{className: "icons", color: "#ffff"}}>
       <section className="landing-page">
         <nav>
           <div className="logo">
@@ -148,7 +147,7 @@ const LandingPage = () => {
           >
             <ul className="links">
               {links.map((item, index) => {
-                const { path, link } = item;
+                const {path, link} = item;
                 return (
                   <Link key={index} to={path}>
                     {link}
@@ -163,7 +162,7 @@ const LandingPage = () => {
                 </button>
               ) : (
                 authLinks.map((item, index) => {
-                  const { path, link } = item;
+                  const {path, link} = item;
                   return (
                     <button
                       onClick={() => {
@@ -273,6 +272,8 @@ const LandingPage = () => {
               </button>
             </div>
           </div>
+
+          {displayTeam()}
         </section>
 
         <footer>
