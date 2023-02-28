@@ -1122,11 +1122,10 @@ button {
   transition: all 0.2s linear;
   background-color: #4c4c4c;
 }
-.dashboard .left-sidebar .links-con .icon-con:hover, .dashboard-active .left-sidebar .links-con .icon-con:hover {
-  background-color: #457b9d;
-  border-radius: 1rem;
-}
 .dashboard .left-sidebar .links-con .icon-con a, .dashboard-active .left-sidebar .links-con .icon-con a {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
   transition: all 0.2s linear;
   text-decoration: none;
   display: inline-block;
@@ -1138,7 +1137,14 @@ button {
   justify-content: center;
 }
 .dashboard .left-sidebar .links-con .icon-con a .icons, .dashboard-active .left-sidebar .links-con .icon-con a .icons {
-  font-size: 2.6rem;
+  font-size: 2.5rem;
+}
+.dashboard .left-sidebar .links-con .icon-con a:focus, .dashboard-active .left-sidebar .links-con .icon-con a:focus {
+  background-color: #457b9d;
+}
+.dashboard .left-sidebar .links-con .icon-con a:hover, .dashboard-active .left-sidebar .links-con .icon-con a:hover {
+  background-color: #457b9d;
+  border-radius: 1rem;
 }
 .dashboard .left-sidebar .box, .dashboard-active .left-sidebar .box {
   display: flex;
@@ -2141,10 +2147,15 @@ button {
   display: grid;
   padding: 2rem;
 }
+.dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .student-details-container .student-details, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .student-details-container .student-details {
+  display: grid;
+  gap: 0.5rem;
+}
 .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .schedule-details-container, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .schedule-details-container {
   grid-column: 1/3;
   display: grid;
   padding: 2rem;
+  gap: 0.5rem;
 }
 .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container {
   grid-column: 3/6;
@@ -2155,13 +2166,13 @@ button {
   gap: 0.5rem;
 }
 .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > * {
-  border-radius: 1rem;
   background-color: #fff;
   padding: 0 1rem;
 }
 .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container h4, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container h4 {
   grid-column: 1/5;
   grid-row: 1/2;
+  border-radius: 1rem 1rem 0 0;
 }
 .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container img, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container img {
   margin: auto;
@@ -2203,6 +2214,7 @@ button {
 .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(9), .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(9) {
   grid-column: 1/5;
   grid-row: 6/8;
+  border-radius: 0 0 1rem 1rem;
 }
 .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container {
   display: grid;
@@ -5947,9 +5959,15 @@ button {
     grid-template-rows: repeat(2, minmax(5rem, auto)) minmax(40rem, 68vh);
   }
   .internship-container-intern header {
-    padding: 1rem 2rem;
+    padding: 1rem;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.7rem;
   }
-  .internship-container-intern .btn-container button {
+  .internship-container-intern .btn-contoller {
+    justify-content: center;
+  }
+  .internship-container-intern .btn-contoller button {
     height: 3.5rem;
   }
   .internship-container-intern .content .internship {
@@ -5978,6 +5996,7 @@ button {
     height: 3.5rem;
   }
 }
+/** @format */
 .profile-page {
   display: grid;
   height: 100%;
@@ -5997,7 +6016,7 @@ button {
 .profile-page .profile-user .profile-details {
   position: relative;
   border-radius: 0 0 1rem 1rem;
-  background-color: #4c4c4c;
+  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
 }
 .profile-page .profile-user .profile-details .profile-img {
   position: absolute;
@@ -6020,11 +6039,11 @@ button {
   grid-template-rows: 5rem auto;
 }
 .profile-page .content .button-container {
-  width: 50rem;
+  width: 60rem;
   border-radius: 1rem 1rem 0 0;
   display: grid;
-  grid-template-columns: repeat(4, auto);
-  background-color: #4c4c4c;
+  grid-template-columns: repeat(5, auto);
+  background-color: #282b30;
 }
 .profile-page .content .button-container button {
   color: #fff;
@@ -6067,7 +6086,7 @@ button {
 .profile-page .content .display {
   padding: 2rem;
   border-radius: 0 1rem 1rem 1rem;
-  background-color: #4c4c4c;
+  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
 }
 
 .daily-time-record {

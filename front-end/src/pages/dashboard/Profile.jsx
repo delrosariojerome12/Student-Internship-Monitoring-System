@@ -1,26 +1,33 @@
+/** @format */
+
 import React from "react";
-import {Route, Routes, Link, Navigate, useNavigate} from "react-router-dom";
-import Summary from "./profile/Summary";
-import Performance from "./profile/Performance";
-import TimeKeeping from "./profile/TimeKeeping";
-import ActivityLog from "./profile/ActivityLog";
+import { Route, Routes, Link, Navigate, useNavigate } from "react-router-dom";
+import InternsDetail from "./profile/InternsDetail";
+import InternshipDetail from "./profile/InternshipDetail";
+import Attendance from "./profile/Attendance";
+import Narrative from "./profile/Narrative";
+import Request from "./profile/Request ";
 
 const buttons = [
   {
-    path: "/dashboard/profile/summary",
-    btnName: "Summary",
+    path: "/dashboard/profile/internsDetail",
+    btnName: "Interns Detail",
   },
   {
-    path: "/dashboard/profile/peformance",
-    btnName: "Performance",
+    path: "/dashboard/profile/internshipDetail",
+    btnName: "Internship Detail",
   },
   {
-    path: "/dashboard/profile/timekeeping",
-    btnName: "Time Keeping",
+    path: "/dashboard/profile/attendance",
+    btnName: "Attendance",
   },
   {
-    path: "/dashboard/profile/activitylog",
-    btnName: "Activity Log",
+    path: "/dashboard/profile/narrative",
+    btnName: "Narrative",
+  },
+  {
+    path: "/dashboard/profile/request",
+    btnName: "Request",
   },
 ];
 
@@ -35,8 +42,7 @@ const Profile = () => {
             background:
               "url(https://animes.olanerd.com/wp-content/uploads/2022/10/1666371202_Bocchi-The-Rock-Os-passos-de-Hitori-para-o-auto-aperfeicoamento.jpg) no-repeat center",
             backgroundSize: "cover",
-          }}
-        ></div>
+          }}></div>
         <div className="profile-details">
           <div className="profile-img">
             <img src="https://i.imgur.com/aFPFvGv.jpg" alt="" />
@@ -46,7 +52,7 @@ const Profile = () => {
       <div className="content">
         <div className="button-container">
           {buttons.map((item, index) => {
-            const {path, btnName} = item;
+            const { path, btnName } = item;
             return (
               <button key={index} onClick={() => navigate(path)}>
                 {btnName}
@@ -56,10 +62,11 @@ const Profile = () => {
         </div>
         <div className="display">
           <Routes>
-            <Route path="/summary" element={<Summary />} />
-            <Route path="/peformance" element={<Performance />} />
-            <Route path="/timekeeping" element={<TimeKeeping />} />
-            <Route path="/activitylog" element={<ActivityLog />} />
+            <Route path="/internsdetail" element={<InternsDetail />} />
+            <Route path="/internshipdetail" element={<InternshipDetail />} />
+            <Route path="/attendance" element={<Attendance />} />
+            <Route path="/narrative" element={<Narrative />} />
+            <Route path="/request" element={<Request />} />
             <Route path="*" element={<Navigate to="/404" replace />} />
           </Routes>
         </div>

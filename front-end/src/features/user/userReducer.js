@@ -1,11 +1,13 @@
-import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
+/** @format */
+
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   // signOut
 } from "firebase/auth";
 import axios from "axios";
-import {auth} from "../../Firebase";
+import { auth } from "../../Firebase";
 
 const initialState = {
   user: null,
@@ -16,7 +18,7 @@ const initialState = {
 
 const convertForm = (form) => {
   const newData = form.map((input) => {
-    const {code, value} = input;
+    const { code, value } = input;
     return {
       code,
       value,
@@ -25,7 +27,7 @@ const convertForm = (form) => {
 
   const newObject = Object.assign(
     {},
-    ...newData.map((item) => ({[item.code]: item.value}))
+    ...newData.map((item) => ({ [item.code]: item.value }))
   );
 
   return newObject;
@@ -33,14 +35,14 @@ const convertForm = (form) => {
 
 export const handleSignup = createAsyncThunk(
   "/user/signUser",
-  async (form, {rejectWithValue}) => {
+  async (form, { rejectWithValue }) => {
     try {
-      const {email, firstName, lastName, password} = convertForm(form);
+      const { email, firstName, lastName, password } = convertForm(form);
 
       const url = "http://localhost:5000/auth/signup";
       // const user = await createUserWithEmailAndPassword(auth, email, password);
-      const {data: res} = await axios.post(url, convertForm(form));
-      return {res};
+      const { data: res } = await axios.post(url, convertForm(form));
+      return { res };
     } catch (err) {
       return rejectWithValue(err.response.data);
     }
@@ -49,13 +51,13 @@ export const handleSignup = createAsyncThunk(
 
 export const handleLogin = createAsyncThunk(
   "/user/logUser",
-  async (form, {rejectWithValue}) => {
+  async (form, { rejectWithValue }) => {
     try {
-      const {email, firstName, lastName, password} = convertForm(form);
+      const { email, firstName, lastName, password } = convertForm(form);
       // const user = signInWithEmailAndPassword(auth, email, password);
       const url = "http://localhost:5000/auth/login";
-      const {data: res} = await axios.post(url, convertForm(form));
-      return {res};
+      const { data: res } = await axios.post(url, convertForm(form));
+      return { res };
     } catch (err) {
       return rejectWithValue(err.response.data);
     }
@@ -64,11 +66,11 @@ export const handleLogin = createAsyncThunk(
 
 export const getUserOnLoad = createAsyncThunk(
   "/user/getUserOnLoad",
-  async (email, {rejectWithValue}) => {
+  async (email, { rejectWithValue }) => {
     try {
       const url = `http://localhost:5000/user/getUser/${email}`;
-      const {data: res} = await axios.get(url);
-      return {res: res.user};
+      const { data: res } = await axios.get(url);
+      return { res: res.user };
     } catch (error) {
       console.log(error);
       return rejectWithValue(error.response.data);
@@ -78,13 +80,13 @@ export const getUserOnLoad = createAsyncThunk(
 
 export const requestVerification = createAsyncThunk(
   "/user/requestVerify",
-  async (form, {rejectWithValue}) => {
+  async (form, { rejectWithValue }) => {
     // const
     try {
       const url = `http://localhost:5000/intern/requestVerify`;
-      const {data: res} = await axios.patch(url, form);
+      const { data: res } = await axios.patch(url, form);
       console.log(res);
-      return {res: res.user};
+      return { res: res.user };
     } catch (error) {
       console.log(error);
       return rejectWithValue(error.response.data);
@@ -111,7 +113,7 @@ export const userReducer = createSlice({
         state.isLoading = true;
       })
       .addCase(handleLogin.fulfilled, (state, action) => {
-        const {res} = action.payload;
+        const { res } = action.payload;
         state.isLoading = false;
         state.isError = false;
         state.user = res.user;
@@ -129,7 +131,7 @@ export const userReducer = createSlice({
         state.isLoading = true;
       })
       .addCase(handleSignup.fulfilled, (state, action) => {
-        const {res} = action.payload;
+        const { res } = action.payload;
         state.isLoading = false;
         state.isError = false;
         state.user = res.user;
@@ -146,7 +148,7 @@ export const userReducer = createSlice({
         state.isLoading = true;
       })
       .addCase(getUserOnLoad.fulfilled, (state, action) => {
-        const {res} = action.payload;
+        const { res } = action.payload;
 
         console.log(res);
         state.isLoading = false;
@@ -163,7 +165,7 @@ export const userReducer = createSlice({
         state.isLoading = true;
       })
       .addCase(requestVerification.fulfilled, (state, action) => {
-        const {res} = action.payload;
+        const { res } = action.payload;
         state.isLoading = false;
         state.user = res;
       })
@@ -175,6 +177,6 @@ export const userReducer = createSlice({
   },
 });
 
-export const {setUser, handleLogout} = userReducer.actions;
+export const { setUser, handleLogout } = userReducer.actions;
 
 export default userReducer.reducer;

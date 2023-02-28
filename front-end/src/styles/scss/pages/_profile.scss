@@ -1,3 +1,5 @@
+/** @format */
+
 @import "../variables";
 @import "../utils";
 
@@ -25,10 +27,12 @@
     .profile-details {
       position: relative;
       border-radius: 0 0 1rem 1rem;
-      background-color: lighten(
-        $color: $primary-bg-color-landing-compliment,
-        $amount: 10
-      );
+      // background-color: lighten(
+      //   $color: $primary-bg-color-landing-compliment,
+      //   $amount: 10
+      // );
+      background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+
       .profile-img {
         position: absolute;
         left: 2rem;
@@ -49,15 +53,17 @@
   .content {
     display: grid;
     grid-template-rows: 5rem auto;
+
     .button-container {
-      width: 50rem;
+      width: 60rem;
       border-radius: 1rem 1rem 0 0;
       display: grid;
-      grid-template-columns: repeat(4, auto);
-      background-color: lighten(
-        $color: $primary-bg-color-landing-compliment,
-        $amount: 10
-      );
+      grid-template-columns: repeat(5, auto);
+      background-color: #282b30;
+      // background-color: lighten(
+      //   $color: $primary-bg-color-landing-compliment,
+      //   $amount: 10
+      // );
       button {
         color: #fff;
         outline: none;
@@ -105,10 +111,11 @@
     .display {
       padding: 2rem;
       border-radius: 0 1rem 1rem 1rem;
-      background-color: lighten(
-        $color: $primary-bg-color-landing-compliment,
-        $amount: 10
-      );
+      background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+      // background-color: lighten(
+      //   $color: $primary-bg-color-landing-compliment,
+      //   $amount: 10
+      // );
     }
   }
 }

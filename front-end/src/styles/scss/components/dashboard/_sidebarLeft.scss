@@ -78,12 +78,15 @@
 
         $amount: 10
       );
-      &:hover {
-        background-color: $primary-bg-color;
-        border-radius: 1rem;
-      }
+      // &:hover {
+      //   background-color: $primary-bg-color;
+      //   border-radius: 1rem;
+      // }
 
       a {
+        height: 5rem;
+        width: 5rem;
+        border-radius: 50%;
         transition: all 0.2s linear;
         text-decoration: none;
         display: inline-block;
@@ -93,7 +96,15 @@
         @include flexCenter;
 
         .icons {
-          font-size: 2.6rem;
+          font-size: 2.5rem;
+        }
+        &:focus {
+          background-color: $primary-bg-color;
+        }
+
+        &:hover {
+          background-color: $primary-bg-color;
+          border-radius: 1rem;
         }
       }
     }

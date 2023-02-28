@@ -395,9 +395,13 @@
   .internship-container-intern {
     grid-template-rows: repeat(2, minmax(5rem, auto)) minmax(40rem, 68vh);
     header {
-      padding: 1rem 2rem;
+      padding: 1rem;
+      justify-content: center;
+      text-align: center;
+      font-size: 1.7rem;
     }
-    .btn-container {
+    .btn-contoller {
+      justify-content: center;
       button {
         height: 3.5rem;
       }
