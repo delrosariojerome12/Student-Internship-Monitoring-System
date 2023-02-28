@@ -685,13 +685,8 @@ button {
   grid-template-rows: minmax(90vh, auto) repeat(2, 70vh);
   gap: 10rem;
   /* Set box-sizing to border-box to include padding and border in element's total width and height */
-  /*img {
-    height: 100px;
-    width: 100px;
-    image-rendering: auto;
-  }
-
-  /* Style the container */
+  /* Default styles for all screen sizes */
+  /* Media query for screens smaller than 768px */
 }
 .landing-page .contents .landing-contents {
   display: grid;
@@ -871,61 +866,111 @@ button {
 }
 .landing-page .contents * {
   box-sizing: border-box;
+  justify-items: center;
+}
+.landing-page .contents img {
+  height: 80px;
+  width: 80px;
+  image-rendering: auto;
+  border-radius: 50%;
 }
 .landing-page .contents .the-team-container {
-  margin: 0 auto; /* Center horizontally */
-  text-align: center; /* Center the text in each grid item */
+  margin: 0 auto;
+  text-align: center;
   background-color: whitesmoke;
   align-items: center;
   justify-items: center;
-  height: 90%;
+  height: 95%;
   width: 90%;
   border-radius: 10px;
-  /* Style the text container at the top */
-  /* Style each member item */
-  /* Style the member name */
-  /* Style the member position */
 }
-.landing-page .contents .the-team-container .text-container-top {
-  grid-column: 1/-1; /* Span the container to all 3 columns */
+.landing-page .contents .text-container-top {
+  grid-column: 1/-1;
   color: #088f8f;
   background-color: white;
   width: 100%;
   font-weight: bold;
   border-radius: 10px 10px 0 0;
 }
-.landing-page .contents .the-team-container .members-container {
+.landing-page .contents .members-container {
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns with equal width */
-  grid-template-rows: repeat(2, 1fr); /* 2 rows with equal height */
-  grid-gap: 1px; /* Add gap between grid items */
-  text-align: center; /* Center the text in each grid item */
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 1px;
+  text-align: center;
   align-items: center;
   justify-items: center;
   margin: 20px 0 20px 0;
 }
-.landing-page .contents .the-team-container .member-img1,
-.landing-page .contents .the-team-container .member-img2,
-.landing-page .contents .the-team-container .member-img3,
-.landing-page .contents .the-team-container .member-img4,
-.landing-page .contents .the-team-container .member-img5,
-.landing-page .contents .the-team-container .member-img6 {
-  border: 1px solid #ccc; /* Add border to each item */
-  padding: 20px; /* Add some padding */
-  width: 70%;
+.landing-page .contents .member-img1,
+.landing-page .contents .member-img2,
+.landing-page .contents .member-img3,
+.landing-page .contents .member-img4,
+.landing-page .contents .member-img5,
+.landing-page .contents .member-img6 {
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 50%;
+  height: 85%;
   background-color: white;
   margin-bottom: 30px;
 }
-.landing-page .contents .the-team-container .member-name {
+.landing-page .contents .member-img1:hover,
+.landing-page .contents .member-img2:hover,
+.landing-page .contents .member-img3:hover,
+.landing-page .contents .member-img4:hover,
+.landing-page .contents .member-img5:hover,
+.landing-page .contents .member-img6:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
+  background-color: #088f8f;
+}
+.landing-page .contents .member-name {
   font-weight: bold;
   font-size: 0.7em;
   margin-bottom: 5px;
 }
-.landing-page .contents .the-team-container .member-position {
+.landing-page .contents .member-position {
   font-style: italic;
   font-size: 0.6em;
   margin-top: 5px;
+}
+@media (max-width: 768px) {
+  .landing-page .contents img {
+    height: 60px;
+    width: 60px;
+  }
+  .landing-page .contents .the-team-container {
+    margin: 0 auto;
+    text-align: center;
+    background-color: whitesmoke;
+    align-items: center;
+    justify-items: center;
+    height: 95%;
+    width: 90%;
+    border-radius: 10px;
+  }
+  .landing-page .contents .members-container {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .landing-page .contents .member-img1,
+  .landing-page .contents .member-img2,
+  .landing-page .contents .member-img3,
+  .landing-page .contents .member-img4,
+  .landing-page .contents .member-img5,
+  .landing-page .contents .member-img6 {
+    width: 90%;
+    height: 75%;
+  }
+  .landing-page .contents .member-name {
+    font-size: 0.6em;
+  }
+  .landing-page .contents .member-position {
+    font-size: 0.5em;
+  }
 }
 .landing-page footer {
   background-color: #323232;

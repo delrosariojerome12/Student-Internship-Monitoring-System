@@ -283,76 +283,128 @@
     }
 
     /* Set box-sizing to border-box to include padding and border in element's total width and height */
+    /* Default styles for all screen sizes */
     * {
       box-sizing: border-box;
+      justify-items: center;
     }
 
-    /*img {
-      height: 100px;
-      width: 100px;
+    img {
+      height: 80px;
+      width: 80px;
       image-rendering: auto;
+      border-radius: 50%;
     }
 
-    /* Style the container */
     .the-team-container {
-      margin: 0 auto; /* Center horizontally */
-      text-align: center; /* Center the text in each grid item */
+      margin: 0 auto;
+      text-align: center;
       background-color: whitesmoke;
       align-items: center;
       justify-items: center;
-      height: 90%;
+      height: 95%;
       width: 90%;
       border-radius: 10px;
+    }
 
-      /* Style the text container at the top */
-      .text-container-top {
-        grid-column: 1 / -1; /* Span the container to all 3 columns */
-        color: #088f8f;
-        background-color: white;
-        width: 100%;
-        font-weight: bold;
-        border-radius: 10px 10px 0 0;
-        //border-top-left-radius: 10px; /* Add border radius to top left corner */
-        // border-top-right-radius: 10px; /* Add border radius to top right corner */
+    .text-container-top {
+      grid-column: 1 / -1;
+      color: #088f8f;
+      background-color: white;
+      width: 100%;
+      font-weight: bold;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .members-container {
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      grid-gap: 1px;
+      text-align: center;
+      align-items: center;
+      justify-items: center;
+      margin: 20px 0 20px 0;
+    }
+
+    .member-img1,
+    .member-img2,
+    .member-img3,
+    .member-img4,
+    .member-img5,
+    .member-img6 {
+      border: 1px solid #ccc;
+      padding: 20px;
+      width: 50%;
+      height: 85%;
+      background-color: white;
+      margin-bottom: 30px;
+    }
+
+    .member-img1:hover,
+    .member-img2:hover,
+    .member-img3:hover,
+    .member-img4:hover,
+    .member-img5:hover,
+    .member-img6:hover {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      transform: scale(1.1);
+      transition: all 0.3s ease-in-out;
+      background-color: #088f8f;
+    }
+
+    .member-name {
+      font-weight: bold;
+      font-size: 0.7em;
+      margin-bottom: 5px;
+    }
+
+    .member-position {
+      font-style: italic;
+      font-size: 0.6em;
+      margin-top: 5px;
+    }
+
+    /* Media query for screens smaller than 768px */
+    @media (max-width: 768px) {
+      img {
+        height: 60px;
+        width: 60px;
+      }
+
+      .the-team-container {
+        margin: 0 auto;
+        text-align: center;
+        background-color: whitesmoke;
+        align-items: center;
+        justify-items: center;
+        height: 95%;
+        width: 90%;
+        border-radius: 10px;
       }
 
       .members-container {
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); /* 3 columns with equal width */
-        grid-template-rows: repeat(2, 1fr); /* 2 rows with equal height */
-        grid-gap: 1px; /* Add gap between grid items */
-        text-align: center; /* Center the text in each grid item */
-        align-items: center;
-        justify-items: center;
-        margin: 20px 0 20px 0;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
       }
-      /* Style each member item */
+
       .member-img1,
       .member-img2,
       .member-img3,
       .member-img4,
       .member-img5,
       .member-img6 {
-        border: 1px solid #ccc; /* Add border to each item */
-        padding: 20px; /* Add some padding */
-        width: 70%;
-        background-color: white;
-        margin-bottom: 30px;
+        width: 90%;
+        height: 75%;
       }
 
-      /* Style the member name */
       .member-name {
-        font-weight: bold;
-        font-size: 0.7em;
-        margin-bottom: 5px;
+        font-size: 0.6em;
       }
 
-      /* Style the member position */
       .member-position {
-        font-style: italic;
-        font-size: 0.6em;
-        margin-top: 5px;
+        font-size: 0.5em;
       }
     }
   }
