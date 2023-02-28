@@ -1,6 +1,9 @@
 import React, {useState, useEffect, useRef} from "react";
 import {useSelector, useDispatch} from "react-redux";
-import {handleTimeIn} from "../../features/interns/attendanceReducer";
+import {
+  handleTimeIn,
+  timeInAttendance,
+} from "../../features/interns/attendanceReducer";
 import axios from "axios";
 import CameraSVG from "../../assets/img/camera.svg";
 import Webcam from "react-webcam";
@@ -22,11 +25,22 @@ const months = [
 
 const key = "UjTu7V2EcFJBTyd0zjudhuFrRNP4iWXJ";
 
-const TimeInModal = () => {
+let form = {
+  isPresent: true,
+  location: null,
+  proof: {
+    name: "hatdog na nakareverse",
+    link: "linkingpark",
+  },
+  timeIn: "",
+};
+
+const TimeInModal = React.memo(({email}) => {
   const dispatch = useDispatch();
 
   const [time, setTime] = useState("");
   const [address, setAddress] = useState("");
+  const [capturedPhoto, setCapturePhoto] = useState(null);
   const cameraRef = useRef(null);
 
   const getLocation = async (latitude, longitude) => {
@@ -62,12 +76,13 @@ const TimeInModal = () => {
       const year = date.getFullYear();
       // hour
       const hours = date.getHours() % 12 || 12; // get hours in 12-hour format
-      const minutes = date.getMinutes();
+      const minutes =
+        10 > date.getMinutes() ? `0${date.getMinutes()}` : date.getMinutes();
       const seconds = date.getSeconds();
       const amOrPm = date.getHours() >= 12 ? "PM" : "AM"; // set AM or PM
 
       const fullHour = `${hours}:${minutes}:${seconds} ${amOrPm}`;
-      const fullDate = `${month}, ${day} ${year}`;
+      const fullDate = `${month} ${day}, ${year}`;
 
       setTime(`${fullDate} ${fullHour}`);
     }, 1000);
@@ -90,6 +105,12 @@ const TimeInModal = () => {
     );
   }
 
+  const cameraConstraints = {
+    width: 1280,
+    height: 720,
+    facingMode: "user",
+  };
+
   return (
     <>
       <div className="overlay" onClick={() => dispatch(handleTimeIn())}></div>
@@ -100,13 +121,43 @@ const TimeInModal = () => {
         </div>
         <div className="camera">
           <img src={CameraSVG} alt="camera" />
-          <Webcam ref={cameraRef} />
+          <Webcam
+            ref={cameraRef}
+            mirrored={true}
+            videoConstraints={cameraConstraints}
+            screenshotFormat="image/jpeg"
+          />
           <button onClick={handleCaptureImage}>Take Photo</button>
         </div>
-        <button type="button">Time in</button>
+        <button
+          type="button"
+          onClick={() =>
+            dispatch(
+              timeInAttendance({
+                email,
+                form: {
+                  isPresent: true,
+                  location: address,
+                  proof: {
+                    name: "hatdog na nakareverse",
+                    link: "linkingpark",
+                  },
+                  timeIn: time,
+                },
+              })
+            )
+          }
+          // style={
+          //   capturedPhoto
+          //     ? {opacity: "1"}
+          //     : {opacity: ".7", pointerEvents: "none"}
+          // }
+        >
+          Time in
+        </button>
       </div>
     </>
   );
-};
+});
 
 export default TimeInModal;

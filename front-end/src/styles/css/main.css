@@ -5912,6 +5912,34 @@ button {
   width: 100%;
   display: grid;
 }
+.daily-time-record button {
+  height: 5rem;
+  width: 12rem;
+  background-color: #457b9d;
+  color: #fff;
+  border: 1px solid transparent;
+  outline: none;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  transition: all 0.2s linear;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.daily-time-record button .icon {
+  font-size: 1.2rem;
+}
+.daily-time-record button p {
+  padding-top: 0.2rem;
+}
+.daily-time-record button:hover {
+  border-radius: 1rem;
+  border: solid 1px #457b9d;
+  background-color: #fff;
+  color: #457b9d;
+}
 .daily-time-record .overlay {
   width: 100%;
   min-height: 100%;
@@ -5930,7 +5958,10 @@ button {
   gap: 1rem;
 }
 .daily-time-record .time-in > * {
-  border: solid 1px #000;
+  border: solid 1px #3a2d2d;
+}
+.daily-time-record .time-in button {
+  margin: 0 auto;
 }
 .daily-time-record .modal {
   background-color: #fff;

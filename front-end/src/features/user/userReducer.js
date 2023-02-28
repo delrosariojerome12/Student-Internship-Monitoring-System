@@ -36,12 +36,12 @@ export const handleSignup = createAsyncThunk(
   async (form, {rejectWithValue}) => {
     try {
       const {email, firstName, lastName, password} = convertForm(form);
-
       const url = "http://localhost:5000/auth/signup";
       // const user = await createUserWithEmailAndPassword(auth, email, password);
       const {data: res} = await axios.post(url, convertForm(form));
       return {res};
     } catch (err) {
+      console.log(err);
       return rejectWithValue(err.response.data);
     }
   }
@@ -57,6 +57,7 @@ export const handleLogin = createAsyncThunk(
       const {data: res} = await axios.post(url, convertForm(form));
       return {res};
     } catch (err) {
+      console.log(err);
       return rejectWithValue(err.response.data);
     }
   }

@@ -32,6 +32,8 @@ const DailyTimeRecord = React.memo(() => {
   } = useSelector((state) => state.attendance);
   const dispatch = useDispatch();
 
+  console.log(allAttendance);
+
   const {
     user: {firstName, lastName, profileImage, email},
     internshipDetails: {renderedHours},
@@ -114,8 +116,8 @@ const DailyTimeRecord = React.memo(() => {
           </div>
           {renderAttendance()}
         </div>
-        {isTimeInOpen && <TimeInModal />}
-        {isTimeOutOpen && <TimeOutModal />}
+        {isTimeInOpen && <TimeInModal email={email} />}
+        {isTimeOutOpen && <TimeOutModal email={email} />}
       </section>
     </IconContext.Provider>
   );
