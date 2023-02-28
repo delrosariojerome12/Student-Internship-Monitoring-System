@@ -5923,11 +5923,14 @@ button {
   z-index: 6;
 }
 .daily-time-record .time-in {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-rows: auto 1fr 5rem;
   padding: 2rem;
   text-align: center;
+  gap: 1rem;
+}
+.daily-time-record .time-in > * {
+  border: solid 1px #000;
 }
 .daily-time-record .modal {
   background-color: #fff;

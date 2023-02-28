@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {handleTimeIn} from "../../features/interns/attendanceReducer";
 import axios from "axios";
-import Geocode from "react-geocode";
+import CameraSVG from "../../assets/img/camera.svg";
+import Webcam from "react-webcam";
 
 const months = [
   "January",
@@ -19,11 +20,6 @@ const months = [
   "December",
 ];
 
-// google
-// const key = "AIzaSyCTjmfiw3OrY9VEd45-xnYkeBslrqIuR8o";
-// ip stack
-// const key = "8068a32023cc9f982fdbd53adb3ddbfd";
-
 const key = "UjTu7V2EcFJBTyd0zjudhuFrRNP4iWXJ";
 
 const TimeInModal = () => {
@@ -31,16 +27,30 @@ const TimeInModal = () => {
 
   const [time, setTime] = useState("");
   const [address, setAddress] = useState("");
+  const cameraRef = useRef(null);
 
   const getLocation = async (latitude, longitude) => {
     try {
       const url = `https://api.tomtom.com/search/2/reverseGeocode/${latitude},${longitude}.json?key=${key}`;
       const response = await axios.get(url);
-      console.log(response);
-      setAddress(response.data.addresses[0].address.freeformAddress);
+      const {
+        freeformAddress,
+        country,
+        boundingBox: {northEast, southWest},
+        countrySecondarySubdivision,
+      } = response.data.addresses[0].address;
+      // console.log(response.data.addresses[0].address);
+
+      const completeAddress = `${freeformAddress} ${countrySecondarySubdivision} ${country} `;
+      const coordinates = `NE: ${northEast} SW: ${southWest}`;
+      setAddress(`${completeAddress} ${coordinates}`);
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleCaptureImage = () => {
+    console.log(cameraRef.current.getScreenshot());
   };
 
   useEffect(() => {
@@ -84,8 +94,16 @@ const TimeInModal = () => {
     <>
       <div className="overlay" onClick={() => dispatch(handleTimeIn())}></div>
       <div className="time-in modal">
-        <h2>{time}</h2>
-        <h3>{address}</h3>
+        <div className="address">
+          <h2>{time}</h2>
+          <h3>{address}</h3>
+        </div>
+        <div className="camera">
+          <img src={CameraSVG} alt="camera" />
+          <Webcam ref={cameraRef} />
+          <button onClick={handleCaptureImage}>Take Photo</button>
+        </div>
+        <button type="button">Time in</button>
       </div>
     </>
   );
