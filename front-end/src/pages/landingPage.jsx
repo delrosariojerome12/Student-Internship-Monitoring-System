@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from "react";
-import {Link, useNavigate} from "react-router-dom";
-import {HiMenu} from "react-icons/hi";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { HiMenu } from "react-icons/hi";
 
 import logo from "../assets/img/landingPage/Logo.png";
 import landingImg from "../assets/img/landingPage/landing-image.png";
@@ -14,20 +14,25 @@ import mainMockup from "../assets/img/landingPage/MainMockup.png";
 import mockupImage from "../assets/img/landingPage/imageLowerContainer.png";
 
 // team photos
-import ivanImage from "../assets/img/landingPage/ivan.jpg";
+import ivanImage from "../assets/img/landingPage/idPhotos/ivan.svg";
+import jeromeImage from "../assets/img/landingPage/idPhotos/jerome.svg";
+import jericoImage from "../assets/img/landingPage/idPhotos/jerico.svg";
+import jakeImage from "../assets/img/landingPage/idPhotos/jake.svg";
+import jRealImage from "../assets/img/landingPage/idPhotos/jReal.svg";
+import diosaImage from "../assets/img/landingPage/idPhotos/diosa.svg";
 // Footer
 import socialIcon1 from "../assets/img/landingPage/ICON SOCIALS/FB.png";
 import socialIcon2 from "../assets/img/landingPage/ICON SOCIALS/INSTA.png";
 import socialIcon3 from "../assets/img/landingPage/ICON SOCIALS/LINKIN.png";
 import socialIcon4 from "../assets/img/landingPage/ICON SOCIALS/TWITTER.png";
-import {useCallback} from "react";
+import { useCallback } from "react";
 
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 
-import {FaChevronLeft, FaChevronRight} from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-import {IconContext} from "react-icons";
-import {FaArrowUp} from "react-icons/fa";
+import { IconContext } from "react-icons";
+import { FaArrowUp } from "react-icons/fa";
 
 const links = [
   {
@@ -59,35 +64,39 @@ const authLinks = [
 ];
 const handleScroll = (path) => {
   const featureContent = document.getElementById(path);
-  featureContent.scrollIntoView({behavior: "smooth", block: "center"});
+  featureContent.scrollIntoView({ behavior: "smooth", block: "center" });
 };
 
 const teamMembers = [
-  {
-    name: "Jake A. Bristol",
-    position: "UI/UX System Designer",
-    image: ivanImage,
-  },
   {
     name: "Ivan Cedie C. Batario",
     position: "Backend Developer",
     image: ivanImage,
   },
   {
-    name: "Jezreel Dannah D. Menor",
-    position: "Documentation/Tester",
-    image: ivanImage,
-  },
-  {name: "Jerome D. Ramos", position: "Lead Developer", image: ivanImage},
-  {
-    name: "Diosa D. Tadiosa",
-    position: "Documentation/Tester",
-    image: ivanImage,
+    name: "Jerome D. Ramos",
+    position: "Lead Developer",
+    image: jeromeImage,
   },
   {
     name: "Jerico B. Balisi",
     position: "Frontend Developer",
-    image: ivanImage,
+    image: jericoImage,
+  },
+  {
+    name: "Diosa D. Tadiosa",
+    position: "Documentation/Tester",
+    image: diosaImage,
+  },
+  {
+    name: "Jake A. Bristol",
+    position: "UI/UX System Designer",
+    image: jakeImage,
+  },
+  {
+    name: "Jezreel Dannah D. Menor",
+    position: "Documentation/Tester",
+    image: jRealImage,
   },
 ];
 
@@ -96,7 +105,7 @@ const LandingPage = () => {
   const [showBackToTop, setShowBackToTop] = useState(false); // Add new state variable
   const navigate = useNavigate();
 
-  const {user} = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
 
   const handleResize = useCallback(() => {
     setNavbarOpen(false);
@@ -107,7 +116,7 @@ const LandingPage = () => {
   }, [isNavbarOpen]);
 
   const handleScrollToTop = () => {
-    window.scrollTo({top: 0, behavior: "smooth"});
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -159,7 +168,7 @@ const LandingPage = () => {
   }, []);
 
   return (
-    <IconContext.Provider value={{className: "icons", color: "#ffff"}}>
+    <IconContext.Provider value={{ className: "icons", color: "#ffff" }}>
       <section className="landing-page">
         <nav>
           <div className="logo">
@@ -173,7 +182,7 @@ const LandingPage = () => {
           >
             <ul className="links">
               {links.map((item, index) => {
-                const {path, link} = item;
+                const { path, link } = item;
                 return (
                   <a key={index} onClick={() => handleScroll(path)}>
                     {link}
@@ -188,7 +197,7 @@ const LandingPage = () => {
                 </button>
               ) : (
                 authLinks.map((item, index) => {
-                  const {path, link} = item;
+                  const { path, link } = item;
                   return (
                     <button
                       onClick={() => {
