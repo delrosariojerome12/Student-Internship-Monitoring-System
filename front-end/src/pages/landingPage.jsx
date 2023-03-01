@@ -317,6 +317,29 @@ const LandingPage = () => {
           </div>
 
           {displayTeam()}
+          <div className="">
+            <h3>About Us</h3>
+            <div className="body-container">
+              <p>
+                As former intern students, we are concerned about the incoming
+                interns because, through our experience, we all know about their
+                experience. As a result, our group decided to create a system
+                that can assist the future intern students and make it a lot
+                easier for them, especially tracking their performance during
+                their internship, because this is the most important part of the
+                internship. Each one of us gathers our ideas to come up with the
+                possible features that we can put on the system that will surely
+                benefit the intern students.
+              </p>
+            </div>
+            <div className="sub-content">
+              <h4>Ready to get started?</h4>
+              <p>
+                Discover a quick and simple approach to organize your time and
+                provide guidance throughout your internship.
+              </p>
+            </div>
+          </div>
         </section>
 
         <footer>
