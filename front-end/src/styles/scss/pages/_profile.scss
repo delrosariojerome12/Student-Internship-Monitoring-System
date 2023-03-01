@@ -16,7 +16,7 @@
   // }
   .profile-user {
     display: grid;
-    grid-template-rows: 2fr 2.5fr;
+    grid-template-rows: 2fr 0 2.5fr;
     // & > * {
     //   border: solid 1px #fff;
     // }
@@ -26,19 +26,12 @@
     }
     .profile-details {
       position: relative;
-      border-radius: 0 0 1rem 1rem;
-      // background-color: lighten(
-      //   $color: $primary-bg-color-landing-compliment,
-      //   $amount: 10
-      // );
-      background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
-
       .profile-img {
         position: absolute;
         left: 2rem;
         top: -5rem;
         border-radius: 50%;
-        border: solid 3px $primary-bg-color;
+        border: solid 3px $primary-compliment-landing;
         width: 12rem;
         height: 12rem;
         img {
@@ -46,6 +39,43 @@
           width: 100%;
           border-radius: 50%;
           object-fit: cover;
+        }
+      }
+    }
+    .intern-info {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+      .intern-details {
+        @include flexColumn;
+        padding: 2rem 1rem 1rem 15rem;
+        border-radius: 0 0 1rem 1rem;
+        h3 {
+          color: #fff;
+        }
+        p {
+          color: #bdbdbd;
+        }
+      }
+      .btn-edit {
+        justify-content: flex-end;
+        padding: 2rem;
+        button {
+          @include flexCenter;
+          height: 4rem;
+          color: #fff;
+          padding: 2rem 4rem;
+          border: none;
+          outline: none;
+          border-radius: 1rem;
+          font-weight: 600;
+          transition: all 0.3s linear;
+          background-color: $primary-compliment-landing;
+          cursor: pointer;
+          &:hover {
+            border-radius: 0;
+            background-color: $primary-feature-bg;
+          }
         }
       }
     }

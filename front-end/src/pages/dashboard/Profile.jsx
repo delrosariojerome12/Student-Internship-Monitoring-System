@@ -7,6 +7,7 @@ import InternshipDetail from "./profile/InternshipDetail";
 import Attendance from "./profile/Attendance";
 import Narrative from "./profile/Narrative";
 import Request from "./profile/Request ";
+import { useSelector } from "react-redux";
 
 const buttons = [
   {
@@ -33,6 +34,15 @@ const buttons = [
 
 const Profile = () => {
   const navigate = useNavigate();
+
+  const {
+    user: {
+      user: { firstName, lastName, profileImage },
+      schoolDetails,
+      internshipDetails,
+    },
+  } = useSelector((state) => state.user);
+
   return (
     <section className="profile-page">
       <div className="profile-user">
@@ -45,7 +55,19 @@ const Profile = () => {
           }}></div>
         <div className="profile-details">
           <div className="profile-img">
-            <img src="https://i.imgur.com/aFPFvGv.jpg" alt="" />
+            <img src={profileImage} alt="" />
+          </div>
+        </div>
+        <div className="intern-info">
+          <div className="intern-details">
+            <h3>
+              {firstName} {lastName}
+            </h3>
+            <p className="program">{schoolDetails?.program}</p>
+            <p className="program">{internshipDetails?.companyName}</p>
+          </div>
+          <div className="btn-edit">
+            <button>Edit Profile</button>
           </div>
         </div>
       </div>

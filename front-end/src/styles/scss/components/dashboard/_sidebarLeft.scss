@@ -91,7 +91,7 @@
         text-decoration: none;
         display: inline-block;
         padding: 0.5rem 1.5rem;
-        color: $primary-font-color;
+        color: #fff;
         cursor: pointer;
         @include flexCenter;
 
@@ -99,11 +99,11 @@
           font-size: 2.5rem;
         }
         &:focus {
-          background-color: $primary-bg-color;
+          background-color: $primary-compliment-landing;
         }
 
         &:hover {
-          background-color: $primary-bg-color;
+          background-color: $primary-compliment-landing;
           border-radius: 1rem;
         }
       }
