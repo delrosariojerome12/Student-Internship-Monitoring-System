@@ -64,9 +64,10 @@ export const attendanceReducer = createSlice({
     handleTimeOut: (state, action) => {
       state.isTimeOutOpen = !state.isTimeOutOpen;
     },
-    handleViewToday: (state, {payload: {id}}) => {
+    handleViewToday: (state, {payload}) => {
       state.isTodayOpen = !state.isTodayOpen;
-      if (id) {
+      if (payload) {
+        const {id} = payload;
         state.selectedAttendance = current(state.allAttendance).filter(
           (attendance) => attendance._id === id
         )[0];
@@ -81,7 +82,6 @@ export const attendanceReducer = createSlice({
       })
       .addCase(getAllAttendance.fulfilled, (state, {payload}) => {
         state.isLoading = false;
-        console.log(payload.res.data);
         state.allAttendance = payload.res.data;
       })
       .addCase(getAllAttendance.rejected, (state, action) => {

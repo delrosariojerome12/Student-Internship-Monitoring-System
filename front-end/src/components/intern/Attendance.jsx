@@ -6,6 +6,7 @@ const Attendance = React.memo(({attendance}) => {
   // const {isTodayOpen} = useSelector((state) => state.attendance);
   const dispatch = useDispatch();
   const {_id, date} = attendance;
+
   return (
     <div
       className="attendance"

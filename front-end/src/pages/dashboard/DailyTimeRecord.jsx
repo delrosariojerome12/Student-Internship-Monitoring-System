@@ -9,6 +9,7 @@ import ServerError from "../serverError";
 import Attendance from "../../components/intern/Attendance";
 import TimeInModal from "../../components/intern/TimeInModal";
 import TimeOutModal from "../../components/intern/TimeOutModal";
+import AttendanceModal from "../../components/intern/AttendanceModal";
 
 import {getAllAttendance} from "../../features/interns/attendanceReducer";
 import NoDocumentSvg from "../../assets/img/waiting.svg";
@@ -31,8 +32,6 @@ const DailyTimeRecord = React.memo(() => {
     isTodayOpen,
   } = useSelector((state) => state.attendance);
   const dispatch = useDispatch();
-
-  console.log(allAttendance);
 
   const {
     user: {firstName, lastName, profileImage, email},
@@ -118,6 +117,7 @@ const DailyTimeRecord = React.memo(() => {
         </div>
         {isTimeInOpen && <TimeInModal email={email} />}
         {isTimeOutOpen && <TimeOutModal email={email} />}
+        {isTodayOpen && <AttendanceModal />}
       </section>
     </IconContext.Provider>
   );
