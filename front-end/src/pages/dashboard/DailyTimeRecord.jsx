@@ -9,6 +9,7 @@ import ServerError from "../serverError";
 import Attendance from "../../components/intern/Attendance";
 import TimeInModal from "../../components/intern/TimeInModal";
 import TimeOutModal from "../../components/intern/TimeOutModal";
+import AttendanceModal from "../../components/intern/AttendanceModal";
 
 import {getAllAttendance} from "../../features/interns/attendanceReducer";
 import NoDocumentSvg from "../../assets/img/waiting.svg";
@@ -114,8 +115,9 @@ const DailyTimeRecord = React.memo(() => {
           </div>
           {renderAttendance()}
         </div>
-        {isTimeInOpen && <TimeInModal />}
-        {isTimeOutOpen && <TimeOutModal />}
+        {isTimeInOpen && <TimeInModal email={email} />}
+        {isTimeOutOpen && <TimeOutModal email={email} />}
+        {isTodayOpen && <AttendanceModal />}
       </section>
     </IconContext.Provider>
   );

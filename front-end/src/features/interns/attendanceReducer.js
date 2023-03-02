@@ -13,23 +13,6 @@ const initialState = {
   location: "",
 };
 
-// const key = "AIzaSyCTjmfiw3OrY9VEd45-xnYkeBslrqIuR8o";
-
-// export const getLocation = createAsyncThunk(
-//   "attendace/getLocation",
-//   async ({latitude, longitude}, {rejectWithValue}) => {
-//     try {
-//       const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
-//       const response = await axios.get(url);
-//       console.log(response.data);
-//       return {address: response.data};
-//     } catch (error) {
-//       console.log(error);
-//       return rejectWithValue(error.response.data);
-//     }
-//   }
-// );
-
 export const getAllAttendance = createAsyncThunk(
   "/attendance/getAllAttendance",
   async ({email}, {rejectWithValue}) => {
@@ -49,11 +32,20 @@ export const getAllAttendance = createAsyncThunk(
 
 export const timeInAttendance = createAsyncThunk(
   "/attendance/timeIn",
-  async () => {
+  async ({email, form}, {rejectWithValue}) => {
+    // console.log(form);
     try {
-    } catch (error) {}
+      const url = `http://localhost:5000/attendance/timeIn/${email}`;
+      const {data: res} = await axios.post(url, form);
+      console.log(res);
+      return {res};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
   }
 );
+
 export const timeOutAttendance = createAsyncThunk(
   "/attendance/timeOut",
   async () => {
@@ -72,7 +64,15 @@ export const attendanceReducer = createSlice({
     handleTimeOut: (state, action) => {
       state.isTimeOutOpen = !state.isTimeOutOpen;
     },
-    handleViewToday: (state, action) => {},
+    handleViewToday: (state, {payload}) => {
+      state.isTodayOpen = !state.isTodayOpen;
+      if (payload) {
+        const {id} = payload;
+        state.selectedAttendance = current(state.allAttendance).filter(
+          (attendance) => attendance._id === id
+        )[0];
+      }
+    },
   },
   extraReducers: (builder) => {
     //   get all  attendances
@@ -91,13 +91,14 @@ export const attendanceReducer = createSlice({
     //   time in
     builder
       .addCase(timeInAttendance.pending, (state, action) => {
-        state.isLoading = true;
+        // state.isLoading = true;
       })
-      .addCase(timeInAttendance.fulfilled, (state, action) => {
+      .addCase(timeInAttendance.fulfilled, (state, {payload}) => {
         state.isLoading = false;
+        state.allAttendance = [...state.allAttendance, payload.res.data];
+        state.isTimeInOpen = false;
       })
       .addCase(timeInAttendance.rejected, (state, action) => {
-        state.isLoading = false;
         state.isError = true;
       });
     //   timeout

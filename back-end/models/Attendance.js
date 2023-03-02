@@ -4,9 +4,10 @@ const now = new Date();
 const year = now.getFullYear();
 const month = now.getMonth() + 1;
 const date = now.getDate();
-const today = `${year}-${month < 10 ? "0" : ""}${month}-${
+
+const today = `${month < 10 ? "0" : ""}${month}-${
   date < 10 ? "0" : ""
-}${date}`;
+}${date}-${year}`;
 
 const AttendanceSchema = new mongoose.Schema({
   date: {
@@ -61,7 +62,9 @@ const AttendanceSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-
+  missingTimeOut: {
+    type: Boolean,
+  },
   OT: {
     type: String,
     default: "0",
