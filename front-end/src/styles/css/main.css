@@ -1204,7 +1204,7 @@ button {
   display: none !important;
   position: absolute;
   left: 12rem;
-  bottom: 0%;
+  bottom: 1%;
   height: auto;
   width: 28rem;
   z-index: 2;
@@ -1215,6 +1215,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  border: solid 1px #a7a7a7;
 }
 .dashboard .left-sidebar .profile-tab .user, .dashboard-active .left-sidebar .profile-tab .user {
   border-radius: 1rem;
@@ -1556,6 +1557,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  border: solid 1px #a7a7a7;
 }
 .dashboard .sidebar-right .top .profile-tab .user, .dashboard-active .sidebar-right .top .profile-tab .user {
   border-radius: 1rem;
@@ -6394,6 +6396,7 @@ button {
     width: 9rem;
   }
 }
+/** @format */
 .documents-page {
   display: grid;
   grid-template-rows: 25rem auto;
@@ -6998,12 +7001,6 @@ button {
     grid-auto-rows: 7rem;
     grid-template-columns: 1fr;
     gap: 0.8rem;
-  }
-  .documents-page .display .document-intern {
-    border-radius: 0;
-  }
-  .documents-page .display .document-intern:hover {
-    border-radius: 1rem;
   }
   .documents-page .display .status {
     top: 2%;

@@ -1,3 +1,5 @@
+/** @format */
+
 @import "../variables";
 @import "../utils";
 
@@ -608,12 +610,6 @@
       grid-auto-rows: 7rem;
       grid-template-columns: 1fr;
       gap: 0.8rem;
-      .document-intern {
-        border-radius: 0;
-        &:hover {
-          border-radius: 1rem;
-        }
-      }
       .status {
         top: 2%;
         height: 5rem;
