@@ -973,6 +973,50 @@ button {
     font-size: 0.5em;
   }
 }
+.landing-page .contents .about-us-container {
+  margin: 0 auto;
+  background-color: #323232;
+  height: 110%;
+  width: 90%;
+}
+.landing-page .contents .about-us-title {
+  font-size: 1.5em;
+  color: white;
+  margin: 25px 0 0 30px;
+}
+.landing-page .contents .about-us-content {
+  font-size: 1em;
+  color: #ffffff;
+  opacity: 0.7;
+  margin: 50px 0 0 30px;
+}
+.landing-page .contents .sub-content-container {
+  background-color: #d9d9d9;
+  border-radius: 10px;
+  width: 90%;
+  margin: 50px auto;
+}
+.landing-page .contents .sub-content-title {
+  padding: 20px;
+  font-weight: bold;
+}
+.landing-page .contents .sub-content-body {
+  padding: 20px;
+  font-size: 0.8em;
+}
+.landing-page .contents .sub-content-body .create-account {
+  margin-left: 100px;
+  border: 1px black;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  background-color: #0d7377;
+  cursor: pointer;
+}
+.landing-page .contents .sub-content-body .create-account:hover {
+  background-color: #148f77;
+  transition: all 0.3s ease-in-out;
+}
 .landing-page footer {
   background-color: #323232;
 }
