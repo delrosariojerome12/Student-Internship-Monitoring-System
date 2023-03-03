@@ -1,5 +1,7 @@
-import React, {useState, useEffect, useRef} from "react";
-import {useSelector, useDispatch} from "react-redux";
+/** @format */
+
+import React, { useState, useEffect, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   handleTimeIn,
   timeInAttendance,
@@ -35,7 +37,7 @@ let form = {
   timeIn: "",
 };
 
-const TimeInModal = React.memo(({email}) => {
+const TimeInModal = React.memo(({ email }) => {
   const dispatch = useDispatch();
 
   const [time, setTime] = useState("");
@@ -50,7 +52,7 @@ const TimeInModal = React.memo(({email}) => {
       const {
         freeformAddress,
         country,
-        boundingBox: {northEast, southWest},
+        boundingBox: { northEast, southWest },
         countrySecondarySubdivision,
       } = response.data.addresses[0].address;
       // console.log(response.data.addresses[0].address);
@@ -88,7 +90,7 @@ const TimeInModal = React.memo(({email}) => {
     }, 1000);
 
     navigator.geolocation.getCurrentPosition((position) => {
-      const {latitude, longitude} = position.coords;
+      const { latitude, longitude } = position.coords;
       getLocation(latitude, longitude);
     });
     return () => clearInterval(interval);

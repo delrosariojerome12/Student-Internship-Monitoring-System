@@ -9,7 +9,7 @@
   border-radius: 1rem;
   border: solid 1px #fff;
   display: grid;
-  grid-template-rows: 18rem 5rem minmax(30rem, 64vh);
+  grid-template-rows: minmax(17rem, auto) auto minmax(30rem, 64vh);
   gap: 1rem;
   background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
   padding: 1rem;
@@ -54,9 +54,9 @@
     gap: 1rem;
     border: solid 1px #fff;
 
-    // & > * {
-    //   border: solid 1px #fff;
-    // }
+    & > * {
+      padding: 0.5rem;
+    }
     .left-side {
       display: flex;
       align-items: center;
@@ -241,7 +241,8 @@
 
 @media screen and (max-width: 1030px) {
   .intern-container {
-    grid-template-rows: 29rem 5rem minmax(30rem, 55vh);
+    grid-template-rows: minmax(29rem, auto) auto minmax(29rem, 48vh);
+
     .preview-container {
       .selected-intern {
         grid-template-columns: 15rem auto;
@@ -286,7 +287,7 @@
 
 @media screen and (max-width: 600px) {
   .intern-container {
-    grid-template-rows: 28rem 8rem minmax(25rem, 40vh);
+    grid-template-rows: minmax(28rem, auto) auto minmax(25rem, 40vh);
     .preview-container {
       .selected-intern {
         grid-template-columns: auto;
