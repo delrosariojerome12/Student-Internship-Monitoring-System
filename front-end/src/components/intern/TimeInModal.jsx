@@ -84,7 +84,7 @@ const TimeInModal = React.memo(({email}) => {
       const fullHour = `${hours}:${minutes}:${seconds} ${amOrPm}`;
       const fullDate = `${month} ${day}, ${year}`;
 
-      setTime(`${fullDate} ${fullHour}`);
+      setTime(fullHour);
     }, 1000);
 
     navigator.geolocation.getCurrentPosition((position) => {

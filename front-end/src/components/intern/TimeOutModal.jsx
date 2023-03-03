@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {handleTimeOut} from "../../features/interns/attendanceReducer";
 const TimeOutModal = () => {
