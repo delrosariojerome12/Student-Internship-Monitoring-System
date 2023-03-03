@@ -210,7 +210,7 @@ const Internships = React.memo(() => {
                     value="name-ascending"
                     onChange={(e) => setSortValue(e.target.value)}
                   />
-                  Name A-Z
+                  <b>Name A-Z</b>
                 </label>
                 <label htmlFor="name-descending">
                   <input
@@ -220,7 +220,7 @@ const Internships = React.memo(() => {
                     value="name-descending"
                     onChange={(e) => setSortValue(e.target.value)}
                   />
-                  Name Z-A
+                  <b>Name Z-A</b>
                 </label>
               </div>
               <div className="time-sort">
@@ -232,7 +232,7 @@ const Internships = React.memo(() => {
                     value="time-ascending"
                     onChange={(e) => setSortValue(e.target.value)}
                   />
-                  Least Rendered Hours
+                  <b>Least Rendered Hours</b>
                 </label>
                 <label htmlFor="time-descending">
                   <input
@@ -242,7 +242,7 @@ const Internships = React.memo(() => {
                     value="time-descending"
                     onChange={(e) => setSortValue(e.target.value)}
                   />
-                  Most Rendered Hours
+                  <b>Most Rendered Hours</b>
                 </label>
               </div>
             </form>

@@ -4062,6 +4062,7 @@ button {
   height: 5rem;
   background-color: #d9d9d9;
   border: none;
+  border-radius: 1rem;
   outline: none;
   cursor: pointer;
   padding: 1rem 2rem;
@@ -4070,7 +4071,7 @@ button {
 }
 .dashboard .admin-document-page .btn-routes button:hover, .dashboard-active .admin-document-page .btn-routes button:hover {
   background-color: #00adb5;
-  border-radius: 1rem;
+  border-radius: 0;
   color: #fff;
 }
 .dashboard .admin-document-page .document-container, .dashboard-active .admin-document-page .document-container {
@@ -4088,6 +4089,7 @@ button {
 .dashboard .admin-document-page .document-container .document-control button, .dashboard-active .admin-document-page .document-container .document-control button {
   background-color: #d9d9d9;
   border: none;
+  border-radius: 1rem;
   outline: none;
   cursor: pointer;
   padding: 1rem 2rem;
@@ -4108,7 +4110,7 @@ button {
 .dashboard .admin-document-page .document-container .document-control button:hover, .dashboard-active .admin-document-page .document-container .document-control button:hover {
   background-color: #00adb5;
   color: #fff;
-  border-radius: 1rem;
+  border-radius: 0;
 }
 .dashboard .admin-document-page .document-container .documents, .dashboard-active .admin-document-page .document-container .documents {
   display: grid;
@@ -4266,13 +4268,17 @@ button {
   cursor: pointer;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document .left, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document .left {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
   cursor: pointer;
 }
+.dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document .left p, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document .left p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document .left .filename, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document .left .filename {
-  font-size: 1.2rem;
-  word-break: break-all;
+  font-size: 1.4rem;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document .btn-container, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document .btn-container {
   display: flex;
@@ -4356,7 +4362,7 @@ button {
 }
 @media screen and (max-width: 950px) {
   .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container {
-    grid-auto-rows: 14rem;
+    grid-auto-rows: 12rem;
   }
   .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document {
     grid-template-rows: auto auto;
@@ -4436,14 +4442,8 @@ button {
     justify-content: center;
   }
   .dashboard .admin-document-page .document-container .documents, .dashboard-active .admin-document-page .document-container .documents {
-    grid-auto-rows: 7rem;
-    grid-template-columns: 30rem;
-  }
-  .dashboard .admin-document-page .document-container .documents .document, .dashboard-active .admin-document-page .document-container .documents .document {
-    border-radius: 0;
-  }
-  .dashboard .admin-document-page .document-container .documents .document:hover, .dashboard-active .admin-document-page .document-container .documents .document:hover {
-    border-radius: 1rem;
+    grid-auto-rows: 8rem;
+    grid-template-columns: 1fr;
   }
   .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
     height: 30rem;
@@ -4464,7 +4464,7 @@ button {
 }
 @media screen and (max-width: 600px) {
   .dashboard .admin-document-page, .dashboard-active .admin-document-page {
-    grid-template-rows: repeat(2, minmax(6rem, 8vh)) minmax(35rem, 65vh);
+    grid-template-rows: repeat(2, minmax(6rem, auto)) minmax(35rem, 65vh);
   }
   .dashboard .admin-document-page .sample-view-container, .dashboard-active .admin-document-page .sample-view-container,
   .dashboard .admin-document-page .document-approval-container .view-document-container,
@@ -4474,6 +4474,9 @@ button {
   }
   .dashboard .admin-document-page header, .dashboard-active .admin-document-page header {
     justify-content: center;
+  }
+  .dashboard .admin-document-page .document-container .documents, .dashboard-active .admin-document-page .document-container .documents {
+    grid-auto-rows: 7rem;
   }
 }
 @media screen and (max-width: 500px) {
@@ -4520,8 +4523,8 @@ button {
     grid-auto-rows: 6rem;
   }
   .dashboard .admin-document-page .document-container .documents .document, .dashboard-active .admin-document-page .document-container .documents .document {
+    padding: 1rem 1rem 1rem 2.5rem;
     justify-content: flex-start;
-    padding-right: 1rem;
   }
   .dashboard .admin-document-page .document-approval-container .document-intern, .dashboard-active .admin-document-page .document-approval-container .document-intern {
     min-height: 8rem !important;
@@ -4530,7 +4533,7 @@ button {
     font-size: 1.6rem;
   }
   .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container {
-    grid-auto-rows: 12rem;
+    grid-auto-rows: 11rem;
   }
   .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document img, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document img {
     height: 3.5rem;
@@ -4545,6 +4548,13 @@ button {
   .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document .btn-container button, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document .btn-container button {
     height: 3rem;
     padding: 0 1rem;
+  }
+  .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .no-document, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .no-document {
+    font-size: 1.5rem;
+  }
+  .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .no-document img, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .no-document img {
+    height: 3.5rem;
+    width: 3.5rem;
   }
 }
 @media screen and (max-width: 400px) {
@@ -5708,26 +5718,6 @@ button {
   background-color: #0d7377;
   border-radius: 0;
   color: #fff;
-}
-.internship-container-intern .content .message-con {
-  position: absolute;
-  bottom: 0%;
-  left: 100%;
-  min-width: 35rem;
-  height: 6rem;
-  background-color: #00adb5;
-  z-index: 2;
-  border-radius: 1rem;
-  color: #fff;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease-in-out;
-}
-.internship-container-intern .content .active {
-  transform: translate(-100%);
-  transition: all 0.2s ease-in-out;
 }
 .internship-container-intern .overlay {
   width: 100%;
