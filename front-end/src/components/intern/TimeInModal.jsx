@@ -1,7 +1,5 @@
-/** @format */
-
-import React, { useState, useEffect, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, {useState, useEffect, useRef} from "react";
+import {useSelector, useDispatch} from "react-redux";
 import {
   handleTimeIn,
   timeInAttendance,
@@ -10,6 +8,10 @@ import axios from "axios";
 import CameraSVG from "../../assets/img/camera.svg";
 import Webcam from "react-webcam";
 
+import {storage} from "../../Firebase";
+import {ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage";
+import {v4} from "uuid";
+import {Buffer} from "buffer";
 const months = [
   "January",
   "February",
@@ -27,22 +29,12 @@ const months = [
 
 const key = "UjTu7V2EcFJBTyd0zjudhuFrRNP4iWXJ";
 
-let form = {
-  isPresent: true,
-  location: null,
-  proof: {
-    name: "hatdog na nakareverse",
-    link: "linkingpark",
-  },
-  timeIn: "",
-};
-
-const TimeInModal = React.memo(({ email }) => {
+const TimeInModal = React.memo(({email}) => {
   const dispatch = useDispatch();
 
   const [time, setTime] = useState("");
   const [address, setAddress] = useState("");
-  const [capturedPhoto, setCapturePhoto] = useState(null);
+  const [capturedPhoto, setCapturedPhoto] = useState(null);
   const cameraRef = useRef(null);
 
   const getLocation = async (latitude, longitude) => {
@@ -52,7 +44,7 @@ const TimeInModal = React.memo(({ email }) => {
       const {
         freeformAddress,
         country,
-        boundingBox: { northEast, southWest },
+        boundingBox: {northEast, southWest},
         countrySecondarySubdivision,
       } = response.data.addresses[0].address;
       // console.log(response.data.addresses[0].address);
@@ -65,8 +57,29 @@ const TimeInModal = React.memo(({ email }) => {
     }
   };
 
+  const convertImage = (base64) => {
+    const image = new Image();
+    image.src = base64;
+    return image;
+  };
+
   const handleCaptureImage = () => {
-    console.log(cameraRef.current.getScreenshot());
+    const imageUrl = convertImage(cameraRef.current.getScreenshot());
+
+    console.log(imageUrl);
+
+    const imageName = `images/attendance/timeIn/${v4()}`;
+    const imageRef = ref(storage, imageName);
+
+    uploadBytes(imageRef, cameraRef.current.getScreenshot())
+      .then((res) => {
+        getDownloadURL(res.ref)
+          .then((url) => {
+            setCapturedPhoto(url);
+          })
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
@@ -84,13 +97,13 @@ const TimeInModal = React.memo(({ email }) => {
       const amOrPm = date.getHours() >= 12 ? "PM" : "AM"; // set AM or PM
 
       const fullHour = `${hours}:${minutes}:${seconds} ${amOrPm}`;
-      const fullDate = `${month} ${day}, ${year}`;
+      // const fullDate = `${month} ${day}, ${year}`;
 
       setTime(fullHour);
     }, 1000);
 
     navigator.geolocation.getCurrentPosition((position) => {
-      const { latitude, longitude } = position.coords;
+      const {latitude, longitude} = position.coords;
       getLocation(latitude, longitude);
     });
     return () => clearInterval(interval);
@@ -108,8 +121,8 @@ const TimeInModal = React.memo(({ email }) => {
   }
 
   const cameraConstraints = {
-    width: 1280,
-    height: 720,
+    width: 400,
+    height: 400,
     facingMode: "user",
   };
 
@@ -122,7 +135,7 @@ const TimeInModal = React.memo(({ email }) => {
           <h3>{address}</h3>
         </div>
         <div className="camera">
-          <img src={CameraSVG} alt="camera" />
+          <img src={capturedPhoto ? capturedPhoto : CameraSVG} alt="camera" />
           <Webcam
             ref={cameraRef}
             mirrored={true}
@@ -141,19 +154,18 @@ const TimeInModal = React.memo(({ email }) => {
                   isPresent: true,
                   location: address,
                   proof: {
-                    name: "hatdog na nakareverse",
-                    link: "linkingpark",
+                    timeInLink: capturedPhoto,
                   },
                   timeIn: time,
                 },
               })
             )
           }
-          // style={
-          //   capturedPhoto
-          //     ? {opacity: "1"}
-          //     : {opacity: ".7", pointerEvents: "none"}
-          // }
+          style={
+            capturedPhoto
+              ? {opacity: "1"}
+              : {opacity: ".7", pointerEvents: "none"}
+          }
         >
           Time in
         </button>

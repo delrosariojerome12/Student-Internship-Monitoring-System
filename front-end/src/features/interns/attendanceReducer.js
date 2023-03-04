@@ -11,14 +11,19 @@ const initialState = {
   isTodayOpen: false,
   address: "",
   location: "",
+  isTimeInDisable: true,
+  isTimeOutDisable: true,
+  alreadyTimeIn: false,
+  alreadyTimeOut: false,
 };
 
 export const getAllAttendance = createAsyncThunk(
   "/attendance/getAllAttendance",
-  async ({email}, {rejectWithValue}) => {
+  async ({email, scheduleDetails}, {rejectWithValue}) => {
     try {
       const url = `http://localhost:5000/attendance/getAllAttendance/${email}`;
-      const {data: res} = await axios.get(url);
+      const {data: res} = await axios.get(url, {params: scheduleDetails});
+      console.log(res);
       return {res};
     } catch (error) {
       console.log(error);
@@ -73,6 +78,12 @@ export const attendanceReducer = createSlice({
         )[0];
       }
     },
+    handleDisableTimeIn: (state, {payload}) => {
+      state.isTimeInDisable = payload;
+    },
+    handleDisableTimeOut: (state, {payload}) => {
+      state.isTimeOutDisable = payload;
+    },
   },
   extraReducers: (builder) => {
     //   get all  attendances
@@ -81,8 +92,13 @@ export const attendanceReducer = createSlice({
         state.isLoading = true;
       })
       .addCase(getAllAttendance.fulfilled, (state, {payload}) => {
+        const {
+          doesExists: {timeInExists, timeOutExists},
+        } = payload.res;
         state.isLoading = false;
         state.allAttendance = payload.res.data;
+        state.isTimeInDisable = timeInExists;
+        state.isTimeOutDisable = timeOutExists;
       })
       .addCase(getAllAttendance.rejected, (state, action) => {
         state.isLoading = false;
@@ -97,6 +113,8 @@ export const attendanceReducer = createSlice({
         state.isLoading = false;
         state.allAttendance = [...state.allAttendance, payload.res.data];
         state.isTimeInOpen = false;
+        state.isTimeInDisable = true;
+        state.alreadyTimeIn = true;
       })
       .addCase(timeInAttendance.rejected, (state, action) => {
         state.isError = true;
@@ -108,6 +126,8 @@ export const attendanceReducer = createSlice({
       })
       .addCase(timeOutAttendance.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.isTimeOutDisable = true;
+        state.alreadyTimeOut = true;
       })
       .addCase(timeOutAttendance.rejected, (state, action) => {
         state.isLoading = false;
@@ -116,7 +136,12 @@ export const attendanceReducer = createSlice({
   },
 });
 
-export const {handleTimeIn, handleTimeOut, handleViewToday} =
-  attendanceReducer.actions;
+export const {
+  handleTimeIn,
+  handleTimeOut,
+  handleViewToday,
+  handleDisableTimeIn,
+  handleDisableTimeOut,
+} = attendanceReducer.actions;
 
 export default attendanceReducer.reducer;

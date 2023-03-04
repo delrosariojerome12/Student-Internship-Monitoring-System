@@ -33,11 +33,12 @@ const AttendanceSchema = new mongoose.Schema({
   },
   proof: {
     type: Object,
-    name: {
+    timeInLink: {
       type: String,
     },
-    link: {
+    timeOutLink: {
       type: String,
+      default: "",
     },
     required: [true, "Please provide a img"],
   },

@@ -5616,7 +5616,6 @@ button {
     width: 20rem;
   }
 }
-/** @format */
 .internship-container-intern {
   display: grid;
   grid-template-rows: repeat(2, minmax(7rem, auto)) minmax(30rem, 75.5vh);
@@ -6193,7 +6192,7 @@ button {
 .daily-time-record .modal {
   background-color: #fff;
   border-radius: 1rem;
-  height: 80rem;
+  height: 70rem;
   width: 70rem;
   position: absolute;
   top: 50%;
@@ -6203,24 +6202,33 @@ button {
 }
 .daily-time-record .content {
   display: grid;
-  grid-template-rows: 22rem 5rem auto;
-  gap: 1rem;
+  grid-template-rows: 12rem 7rem auto;
   padding: 1rem;
+  gap: 1rem;
 }
 .daily-time-record .content .user {
   display: grid;
-  grid-template-columns: 20rem auto;
-  grid-template-rows: auto auto auto auto;
+  gap: 1.5rem;
+  grid-template-columns: 10rem auto;
+  grid-template-rows: auto;
   padding: 1rem;
-  -moz-column-gap: 1rem;
-       column-gap: 1rem;
-  border: solid 1px #fff;
   border-radius: 2rem;
   align-items: center;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #333333 80%);
+  background-color: #212121;
 }
-.daily-time-record .content .user p,
-.daily-time-record .content .user h4 {
+.daily-time-record .content .user .text {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  height: 100%;
+  gap: 1rem;
+  align-items: center;
+}
+.daily-time-record .content .user .text > *:nth-child(4) {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+.daily-time-record .content .user .text p,
+.daily-time-record .content .user .text h4 {
   color: #f1faee;
 }
 .daily-time-record .content .user .profile-img {
@@ -6230,11 +6238,10 @@ button {
   height: 100%;
   width: 100%;
   grid-column: 1/2;
-  grid-row: 1/5;
 }
 .daily-time-record .content .user .profile-img img {
-  height: 15rem;
-  width: 15rem;
+  height: 10rem;
+  width: 10rem;
   background-color: #fff;
   border: solid 1px #fff;
   border-radius: 1rem;
@@ -6242,11 +6249,13 @@ button {
 .daily-time-record .content .mid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  background-color: #212121;
+  padding: 1rem;
+  border-radius: 1rem;
 }
 .daily-time-record .content .mid .button-container {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
   gap: 1rem;
   padding-left: 3rem;
 }
@@ -6306,8 +6315,7 @@ button {
   grid-auto-rows: 6rem;
   gap: 1rem;
   padding: 2rem;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #333333 80%);
-  border: solid 1px #fff;
+  background-color: #212121;
   border-radius: 2rem;
   max-height: 67rem;
   overflow-y: auto;
