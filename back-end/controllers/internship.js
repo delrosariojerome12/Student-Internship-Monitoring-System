@@ -73,7 +73,7 @@ const updateInternship = async (req, res) => {
 
   const isDuplicate = await Internship.findOne({companyName});
 
-  if (!isDuplicate._id.equals(id)) {
+  if (isDuplicate && !isDuplicate._id.equals(id)) {
     throw new Duplicate("Internship already exists");
   }
 
