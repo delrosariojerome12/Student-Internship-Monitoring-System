@@ -12,6 +12,6 @@ router.route("/getAllAttendance/:email").get(getAllAttendance);
 router.route("/getAttendance/:id").get(getAttendance);
 
 router.route("/timeIn/:email").post(timeIn);
-router.route("/timeOut/:email").patch(timeOut);
+router.route("/timeOut/:email/:id").patch(timeOut);
 
 module.exports = router;

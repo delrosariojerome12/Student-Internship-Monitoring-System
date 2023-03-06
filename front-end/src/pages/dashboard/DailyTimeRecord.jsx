@@ -38,6 +38,7 @@ const DailyTimeRecord = React.memo(() => {
     alreadyTimeIn,
     alreadyTimeOut,
     canStart,
+    todayAttendanceID,
   } = useSelector((state) => state.attendance);
   const dispatch = useDispatch();
 
@@ -79,6 +80,7 @@ const DailyTimeRecord = React.memo(() => {
   if (isLoading || !allAttendance) {
     return <Bouncing />;
   }
+
   if (isError) {
     return <ServerError />;
   }
@@ -132,22 +134,22 @@ const DailyTimeRecord = React.memo(() => {
               <button
                 className="time-in"
                 onClick={() => dispatch(handleTimeIn())}
-                style={
-                  isTimeInDisable
-                    ? {pointerEvents: "none", opacity: ".5"}
-                    : {opacity: "1"}
-                }
+                // style={
+                //   isTimeInDisable
+                //     ? {pointerEvents: "none", opacity: ".5"}
+                //     : {opacity: "1"}
+                // }
               >
                 Time In
               </button>
               <button
                 className="time-out"
                 onClick={() => dispatch(handleTimeOut())}
-                style={
-                  isTimeOutDisable
-                    ? {pointerEvents: "none", opacity: ".5"}
-                    : {opacity: "1"}
-                }
+                // style={
+                //   isTimeOutDisable
+                //     ? {pointerEvents: "none", opacity: ".5"}
+                //     : {opacity: "1"}
+                // }
               >
                 Time Out
               </button>

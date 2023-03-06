@@ -73,9 +73,12 @@ const getAllAttendance = async (req, res) => {
       };
     }
   }
-  res
-    .status(StatusCodes.OK)
-    .json({success: true, data: attendance, doesExists});
+  res.status(StatusCodes.OK).json({
+    success: true,
+    data: attendance,
+    doesExists,
+    todayAttendance: todayExists,
+  });
 };
 
 const getAttendance = async (req, res) => {
@@ -104,13 +107,23 @@ const timeIn = async (req, res) => {
 };
 
 const timeOut = async (req, res) => {
-  const {email} = req.params;
+  const {email, id} = req.params;
 
   if (!email) {
     throw new NotFound("Email not found");
   }
-  const attendance = await Attendance.findByIdAndUpdate({email, ...req.body});
 
+  // const attendance = await Attendance.findOneAndUpdate({_id: id, ...req.body});
+  const attendance = await Attendance.findOneAndUpdate({_id: id}, req.body, {
+    new: true,
+    runValidators: true,
+  });
+
+  // const attendance = await Attendance.findById({_id: id});
+
+  if (!attendance) {
+    throw new NotFound("Attendance not found. Server error");
+  }
   // add patch for updating time rendered for intern
 
   res.status(StatusCodes.OK).json({success: true, data: attendance});

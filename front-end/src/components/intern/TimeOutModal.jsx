@@ -46,6 +46,12 @@ const convertImage = (str) => {
 const key = "UjTu7V2EcFJBTyd0zjudhuFrRNP4iWXJ";
 
 const TimeOutModal = React.memo(({email}) => {
+  const {todayAttendanceID, selectedAttendance} = useSelector(
+    (state) => state.attendance
+  );
+  const {
+    proof: {timeInLink, timeOutLink},
+  } = selectedAttendance;
   const dispatch = useDispatch();
 
   const [time, setTime] = useState("");
@@ -167,10 +173,13 @@ const TimeOutModal = React.memo(({email}) => {
                   isPresent: true,
                   location: address,
                   proof: {
-                    timeInLink: capturedPhoto,
+                    timeOutLink: capturedPhoto,
+                    timeInLink,
                   },
-                  timeIn: time,
+                  timeOut: time,
+                  isComplete: true,
                 },
+                id: todayAttendanceID,
               })
             )
           }
@@ -180,7 +189,7 @@ const TimeOutModal = React.memo(({email}) => {
               : {opacity: ".7", pointerEvents: "none"}
           }
         >
-          Time in
+          Time Out
         </button>
       </div>
     </>

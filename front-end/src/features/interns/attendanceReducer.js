@@ -16,6 +16,7 @@ const initialState = {
   alreadyTimeIn: false,
   alreadyTimeOut: false,
   canStart: false,
+  todayAttendanceID: null,
 };
 
 export const getAllAttendance = createAsyncThunk(
@@ -24,7 +25,7 @@ export const getAllAttendance = createAsyncThunk(
     try {
       const url = `http://localhost:5000/attendance/getAllAttendance/${email}`;
       const {data: res} = await axios.get(url, {params: scheduleDetails});
-      // console.log(res);
+      console.log(res);
       return {res};
     } catch (error) {
       console.log(error);
@@ -53,10 +54,11 @@ export const timeInAttendance = createAsyncThunk(
 
 export const timeOutAttendance = createAsyncThunk(
   "/attendance/timeOut",
-  async ({email, form}, {rejectWithValue}) => {
+  async ({email, form, id}, {rejectWithValue}) => {
+    console.log(id);
     try {
-      const url = `http://localhost:5000/attendance/timeOut/${email}`;
-      const {data: res} = await axios.post(url, form);
+      const url = `http://localhost:5000/attendance/timeOut/${email}/${id}`;
+      const {data: res} = await axios.patch(url, form);
       console.log(res);
       return {res};
     } catch (error) {
@@ -117,11 +119,15 @@ export const attendanceReducer = createSlice({
       .addCase(getAllAttendance.fulfilled, (state, {payload}) => {
         const {
           doesExists: {timeInExists, timeOutExists},
+          todayAttendance,
         } = payload.res;
         state.isLoading = false;
         state.allAttendance = payload.res.data;
         state.isTimeInDisable = timeInExists;
         state.isTimeOutDisable = timeOutExists;
+        if (todayAttendance) {
+          state.todayAttendanceID = todayAttendance._id;
+        }
       })
       .addCase(getAllAttendance.rejected, (state, action) => {
         state.isLoading = false;
@@ -149,7 +155,7 @@ export const attendanceReducer = createSlice({
       })
       .addCase(timeOutAttendance.fulfilled, (state, {payload}) => {
         state.isLoading = false;
-        state.allAttendance = [...state.allAttendance, payload.res.data];
+        state.allAttendance = [...state.allAttendance];
         state.isTimeOutOpen = false;
         state.isTimeOutDisable = true;
         state.alreadyTimeOut = true;

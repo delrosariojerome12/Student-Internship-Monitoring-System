@@ -11,13 +11,14 @@ const AttendanceModal = React.memo(() => {
     isComplete,
     isLate,
     location,
-    proof,
     timeIn,
     timeOut,
     totalRendered,
     OT,
     proof: {timeInLink, timeOutLink},
   } = selectedAttendance;
+
+  console.log(selectedAttendance);
 
   return (
     <>
