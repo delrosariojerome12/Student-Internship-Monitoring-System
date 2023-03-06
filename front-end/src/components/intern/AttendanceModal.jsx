@@ -19,8 +19,6 @@ const AttendanceModal = React.memo(() => {
     proof: {timeInLink, timeOutLink},
   } = selectedAttendance;
 
-  console.log(selectedAttendance);
-  console.log(user);
   return (
     <>
       <div
@@ -35,8 +33,8 @@ const AttendanceModal = React.memo(() => {
           <p>OT: {OT}</p>
           <p>Location: {location}</p>
           <div className="img-con">
-            <img src={timeInLink} alt={"proof"} />
-            <img src={timeOutLink} alt={"proof"} />
+            {timeInLink && <img src={timeInLink} alt={"proof"} />}
+            {timeOutLink && <img src={timeOutLink} alt={"proof"} />}
           </div>
         </div>
         <div className="lower"></div>

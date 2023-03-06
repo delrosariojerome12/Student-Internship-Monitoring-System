@@ -20,6 +20,7 @@ import {
   handleViewToday,
   handleDisableTimeIn,
   handleDisableTimeOut,
+  handleCheckDate,
 } from "../../features/interns/attendanceReducer";
 
 const DailyTimeRecord = React.memo(() => {
@@ -36,12 +37,13 @@ const DailyTimeRecord = React.memo(() => {
     isTimeOutDisable,
     alreadyTimeIn,
     alreadyTimeOut,
+    canStart,
   } = useSelector((state) => state.attendance);
   const dispatch = useDispatch();
 
   const {
     user: {firstName, lastName, profileImage, email},
-    internshipDetails: {renderedHours},
+    internshipDetails: {renderedHours, startingDate},
     schoolDetails: {program, requiredHours},
     scheduleDetails,
   } = user;
@@ -70,6 +72,7 @@ const DailyTimeRecord = React.memo(() => {
       // }
     }, 1000);
     dispatch(getAllAttendance({email, scheduleDetails}));
+    dispatch(handleCheckDate(startingDate));
     return () => clearInterval(timer);
   }, []);
 
@@ -78,6 +81,9 @@ const DailyTimeRecord = React.memo(() => {
   }
   if (isError) {
     return <ServerError />;
+  }
+  if (!canStart) {
+    return <h1>Cant start</h1>;
   }
 
   const renderAttendance = () => {

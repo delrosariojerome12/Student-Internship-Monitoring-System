@@ -7,11 +7,10 @@ import {
 import axios from "axios";
 import CameraSVG from "../../assets/img/camera.svg";
 import Webcam from "react-webcam";
-
 import {storage} from "../../Firebase";
 import {ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage";
 import {v4} from "uuid";
-import {Buffer} from "buffer";
+
 const months = [
   "January",
   "February",
@@ -29,6 +28,24 @@ const months = [
 
 const key = "UjTu7V2EcFJBTyd0zjudhuFrRNP4iWXJ";
 
+const convertImage = (str) => {
+  var pos = str.indexOf(";base64,");
+  var type = str.substring(5, pos);
+  var b64 = str.substr(pos + 8);
+
+  var imageContent = window.atob(b64);
+
+  var buffer = new ArrayBuffer(imageContent.length);
+  var view = new Uint8Array(buffer);
+
+  for (var n = 0; n < imageContent.length; n++) {
+    view[n] = imageContent.charCodeAt(n);
+  }
+  var blob = new Blob([buffer], {type: type});
+
+  return blob;
+};
+
 const TimeInModal = React.memo(({email}) => {
   const dispatch = useDispatch();
 
@@ -37,7 +54,13 @@ const TimeInModal = React.memo(({email}) => {
   const [capturedPhoto, setCapturedPhoto] = useState(null);
   const cameraRef = useRef(null);
 
+  const cameraConstraints = {
+    width: 400,
+    height: 400,
+    facingMode: "user",
+  };
   const getLocation = async (latitude, longitude) => {
+    // console.log(latitude, longitude);
     try {
       const url = `https://api.tomtom.com/search/2/reverseGeocode/${latitude},${longitude}.json?key=${key}`;
       const response = await axios.get(url);
@@ -57,21 +80,13 @@ const TimeInModal = React.memo(({email}) => {
     }
   };
 
-  const convertImage = (base64) => {
-    const image = new Image();
-    image.src = base64;
-    return image;
-  };
-
   const handleCaptureImage = () => {
     const imageUrl = convertImage(cameraRef.current.getScreenshot());
-
-    console.log(imageUrl);
 
     const imageName = `images/attendance/timeIn/${v4()}`;
     const imageRef = ref(storage, imageName);
 
-    uploadBytes(imageRef, cameraRef.current.getScreenshot())
+    uploadBytes(imageRef, imageUrl)
       .then((res) => {
         getDownloadURL(res.ref)
           .then((url) => {
@@ -90,7 +105,7 @@ const TimeInModal = React.memo(({email}) => {
       const month = months[date.getMonth()];
       const year = date.getFullYear();
       // hour
-      const hours = date.getHours() % 12 || 12; // get hours in 12-hour format
+      const hours = date.getHours() % 12 || 12;
       const minutes =
         10 > date.getMinutes() ? `0${date.getMinutes()}` : date.getMinutes();
       const seconds = date.getSeconds();
@@ -120,12 +135,6 @@ const TimeInModal = React.memo(({email}) => {
     );
   }
 
-  const cameraConstraints = {
-    width: 400,
-    height: 400,
-    facingMode: "user",
-  };
-
   return (
     <>
       <div className="overlay" onClick={() => dispatch(handleTimeIn())}></div>
@@ -135,14 +144,19 @@ const TimeInModal = React.memo(({email}) => {
           <h3>{address}</h3>
         </div>
         <div className="camera">
-          <img src={capturedPhoto ? capturedPhoto : CameraSVG} alt="camera" />
-          <Webcam
-            ref={cameraRef}
-            mirrored={true}
-            videoConstraints={cameraConstraints}
-            screenshotFormat="image/jpeg"
-          />
-          <button onClick={handleCaptureImage}>Take Photo</button>
+          {capturedPhoto ? (
+            <img src={capturedPhoto} alt="camera" />
+          ) : (
+            <>
+              <Webcam
+                ref={cameraRef}
+                mirrored={true}
+                videoConstraints={cameraConstraints}
+                screenshotFormat="image/jpeg"
+              />
+              <button onClick={handleCaptureImage}>Take Photo</button>
+            </>
+          )}
         </div>
         <button
           type="button"

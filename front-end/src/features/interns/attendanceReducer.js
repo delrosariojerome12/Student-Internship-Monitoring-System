@@ -15,6 +15,7 @@ const initialState = {
   isTimeOutDisable: true,
   alreadyTimeIn: false,
   alreadyTimeOut: false,
+  canStart: false,
 };
 
 export const getAllAttendance = createAsyncThunk(
@@ -23,7 +24,7 @@ export const getAllAttendance = createAsyncThunk(
     try {
       const url = `http://localhost:5000/attendance/getAllAttendance/${email}`;
       const {data: res} = await axios.get(url, {params: scheduleDetails});
-      console.log(res);
+      // console.log(res);
       return {res};
     } catch (error) {
       console.log(error);
@@ -38,7 +39,6 @@ export const getAllAttendance = createAsyncThunk(
 export const timeInAttendance = createAsyncThunk(
   "/attendance/timeIn",
   async ({email, form}, {rejectWithValue}) => {
-    // console.log(form);
     try {
       const url = `http://localhost:5000/attendance/timeIn/${email}`;
       const {data: res} = await axios.post(url, form);
@@ -53,9 +53,16 @@ export const timeInAttendance = createAsyncThunk(
 
 export const timeOutAttendance = createAsyncThunk(
   "/attendance/timeOut",
-  async () => {
+  async ({email, form}, {rejectWithValue}) => {
     try {
-    } catch (error) {}
+      const url = `http://localhost:5000/attendance/timeOut/${email}`;
+      const {data: res} = await axios.post(url, form);
+      console.log(res);
+      return {res};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
   }
 );
 
@@ -83,6 +90,22 @@ export const attendanceReducer = createSlice({
     },
     handleDisableTimeOut: (state, {payload}) => {
       state.isTimeOutDisable = payload;
+    },
+    handleCheckDate: (state, {payload}) => {
+      const date = new Date();
+      const day =
+        date.getDate() + 1 < 10 ? `0${date.getDate()}` : date.getDate();
+      const month =
+        date.getMonth() + 1 < 10
+          ? `0${date.getMonth() + 1}`
+          : date.getMonth() + 1;
+      const year = date.getFullYear();
+
+      const today = `${year}-${month}-${day}`;
+
+      if (payload === today) {
+        state.canStart = true;
+      }
     },
   },
   extraReducers: (builder) => {
@@ -122,10 +145,12 @@ export const attendanceReducer = createSlice({
     //   timeout
     builder
       .addCase(timeOutAttendance.pending, (state, action) => {
-        state.isLoading = true;
+        // state.isLoading = true;
       })
-      .addCase(timeOutAttendance.fulfilled, (state, action) => {
+      .addCase(timeOutAttendance.fulfilled, (state, {payload}) => {
         state.isLoading = false;
+        state.allAttendance = [...state.allAttendance, payload.res.data];
+        state.isTimeOutOpen = false;
         state.isTimeOutDisable = true;
         state.alreadyTimeOut = true;
       })
@@ -142,6 +167,7 @@ export const {
   handleViewToday,
   handleDisableTimeIn,
   handleDisableTimeOut,
+  handleCheckDate,
 } = attendanceReducer.actions;
 
 export default attendanceReducer.reducer;
