@@ -684,9 +684,6 @@ button {
   display: grid;
   grid-template-rows: minmax(90vh, auto) repeat(2, 70vh);
   gap: 10rem;
-  /* Set box-sizing to border-box to include padding and border in element's total width and height */
-  /* Default styles for all screen sizes */
-  /* Media query for screens smaller than 768px */
 }
 .landing-page .contents .landing-contents {
   display: grid;
@@ -864,158 +861,6 @@ button {
   -o-object-fit: cover;
      object-fit: cover;
 }
-.landing-page .contents * {
-  box-sizing: border-box;
-  justify-items: center;
-}
-.landing-page .contents img {
-  height: 80px;
-  width: 80px;
-  image-rendering: auto;
-  border-radius: 50%;
-}
-.landing-page .contents .the-team-container {
-  margin: 0 auto;
-  text-align: center;
-  background-color: whitesmoke;
-  align-items: center;
-  justify-items: center;
-  height: 95%;
-  width: 90%;
-  border-radius: 10px;
-}
-.landing-page .contents .text-container-top {
-  grid-column: 1/-1;
-  color: #088f8f;
-  background-color: white;
-  width: 100%;
-  font-weight: bold;
-  border-radius: 10px 10px 0 0;
-}
-.landing-page .contents .members-container {
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-gap: 1px;
-  text-align: center;
-  align-items: center;
-  justify-items: center;
-  margin: 20px 0 20px 0;
-}
-.landing-page .contents .member-img1,
-.landing-page .contents .member-img2,
-.landing-page .contents .member-img3,
-.landing-page .contents .member-img4,
-.landing-page .contents .member-img5,
-.landing-page .contents .member-img6 {
-  border: 1px solid #ccc;
-  padding: 20px;
-  width: 50%;
-  height: 85%;
-  background-color: white;
-  margin-bottom: 30px;
-}
-.landing-page .contents .member-img1:hover,
-.landing-page .contents .member-img2:hover,
-.landing-page .contents .member-img3:hover,
-.landing-page .contents .member-img4:hover,
-.landing-page .contents .member-img5:hover,
-.landing-page .contents .member-img6:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  transform: scale(1.1);
-  transition: all 0.3s ease-in-out;
-  background-color: #088f8f;
-  color: #fff;
-}
-.landing-page .contents .member-name {
-  font-weight: bold;
-  font-size: 0.7em;
-  margin-bottom: 5px;
-}
-.landing-page .contents .member-position {
-  font-style: italic;
-  font-size: 0.6em;
-  margin-top: 5px;
-}
-@media (max-width: 768px) {
-  .landing-page .contents img {
-    height: 60px;
-    width: 60px;
-  }
-  .landing-page .contents .the-team-container {
-    margin: 0 auto;
-    text-align: center;
-    background-color: whitesmoke;
-    align-items: center;
-    justify-items: center;
-    height: 95%;
-    width: 90%;
-    border-radius: 10px;
-  }
-  .landing-page .contents .members-container {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-  }
-  .landing-page .contents .member-img1,
-  .landing-page .contents .member-img2,
-  .landing-page .contents .member-img3,
-  .landing-page .contents .member-img4,
-  .landing-page .contents .member-img5,
-  .landing-page .contents .member-img6 {
-    width: 90%;
-    height: 75%;
-  }
-  .landing-page .contents .member-name {
-    font-size: 0.6em;
-  }
-  .landing-page .contents .member-position {
-    font-size: 0.5em;
-  }
-}
-.landing-page .contents .about-us-container {
-  margin: 0 auto;
-  background-color: #323232;
-  height: 110%;
-  width: 90%;
-}
-.landing-page .contents .about-us-title {
-  font-size: 1.5em;
-  color: white;
-  margin: 25px 0 0 30px;
-}
-.landing-page .contents .about-us-content {
-  font-size: 1em;
-  color: #ffffff;
-  opacity: 0.7;
-  margin: 50px 0 0 30px;
-}
-.landing-page .contents .sub-content-container {
-  background-color: #d9d9d9;
-  border-radius: 10px;
-  width: 90%;
-  margin: 50px auto;
-}
-.landing-page .contents .sub-content-title {
-  padding: 20px;
-  font-weight: bold;
-}
-.landing-page .contents .sub-content-body {
-  padding: 20px;
-  font-size: 0.8em;
-}
-.landing-page .contents .sub-content-body .create-account {
-  margin-left: 100px;
-  border-radius: 5px;
-  padding: 10px;
-  color: white;
-  background-color: #0d7377;
-  cursor: pointer;
-}
-.landing-page .contents .sub-content-body .create-account:hover {
-  background-color: #148f77;
-  transition: all 0.3s ease-in-out;
-}
 .landing-page footer {
   background-color: #323232;
 }
@@ -1078,7 +923,7 @@ button {
   transition: all 0.2s ease-in-out;
   /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
@@ -1361,7 +1206,7 @@ button {
   left: 12rem;
   bottom: 1%;
   height: auto;
-  min-width: 28rem;
+  width: 28rem;
   z-index: 2;
   background-color: #323232;
   border-radius: 2rem;
@@ -1703,7 +1548,7 @@ button {
   top: 1rem;
   left: -30rem;
   height: auto;
-  max-width: 28rem;
+  width: 28rem;
   z-index: 2;
   background-color: #323232;
   border-radius: 2rem;
@@ -5772,7 +5617,6 @@ button {
   }
 }
 .internship-container-intern {
-  border: solid 1px #fff;
   display: grid;
   grid-template-rows: repeat(2, minmax(7rem, auto)) minmax(30rem, 75.5vh);
   gap: 1rem;

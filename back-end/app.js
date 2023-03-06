@@ -15,7 +15,7 @@ const documentRouter = require("./routers/document");
 const internshipRouter = require("./routers/internship");
 const attendanceRouter = require("./routers/attendance");
 
-// error handlerrequire("./routers/attendance");
+// error handler
 const notFound = require("./middlewares/notFound");
 const errorHandler = require("./middlewares/errorHandler");
 

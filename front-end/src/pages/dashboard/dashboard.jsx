@@ -51,7 +51,7 @@ const Dashboard = () => {
         <Suspense fallback={<Bouncing />}>
           <Routes>
             <Route path="/*" element={<PendingContainer />} />
-            {/* <Route path="/settings" element={<Settings />} /> */}
+            <Route path="/internships" element={<Internships />} />
             <Route path="*" element={<Navigate to="/404" replace />} />
           </Routes>
         </Suspense>
@@ -71,9 +71,6 @@ const Dashboard = () => {
           <Route path="/daily-time-record" element={<DailyTimeRecord />} />
           <Route path="/documents" element={<Documents />} />
           <Route path="/reports/*" element={<Reports />} />
-          {/* <Route path="/settings" element={<Settings />} /> */}
-          <Route path="/internships" element={<Internships />} />
-
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Routes>
       </Suspense>
