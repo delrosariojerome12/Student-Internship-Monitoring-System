@@ -1122,23 +1122,29 @@ button {
   transition: all 0.2s linear;
   background-color: #4c4c4c;
 }
-.dashboard .left-sidebar .links-con .icon-con:hover, .dashboard-active .left-sidebar .links-con .icon-con:hover {
-  background-color: #457b9d;
-  border-radius: 1rem;
-}
 .dashboard .left-sidebar .links-con .icon-con a, .dashboard-active .left-sidebar .links-con .icon-con a {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
   transition: all 0.2s linear;
   text-decoration: none;
   display: inline-block;
   padding: 0.5rem 1.5rem;
-  color: #f1faee;
+  color: #fff;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .dashboard .left-sidebar .links-con .icon-con a .icons, .dashboard-active .left-sidebar .links-con .icon-con a .icons {
-  font-size: 2.6rem;
+  font-size: 2.5rem;
+}
+.dashboard .left-sidebar .links-con .icon-con a:focus, .dashboard-active .left-sidebar .links-con .icon-con a:focus {
+  background-color: #0d7377;
+}
+.dashboard .left-sidebar .links-con .icon-con a:hover, .dashboard-active .left-sidebar .links-con .icon-con a:hover {
+  background-color: #0d7377;
+  border-radius: 1rem;
 }
 .dashboard .left-sidebar .box, .dashboard-active .left-sidebar .box {
   display: flex;
@@ -1198,7 +1204,7 @@ button {
   display: none !important;
   position: absolute;
   left: 12rem;
-  bottom: 0%;
+  bottom: 1%;
   height: auto;
   width: 28rem;
   z-index: 2;
@@ -1209,6 +1215,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  border: solid 1px #a7a7a7;
 }
 .dashboard .left-sidebar .profile-tab .user, .dashboard-active .left-sidebar .profile-tab .user {
   border-radius: 1rem;
@@ -1550,6 +1557,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  border: solid 1px #a7a7a7;
 }
 .dashboard .sidebar-right .top .profile-tab .user, .dashboard-active .sidebar-right .top .profile-tab .user {
   border-radius: 1rem;
@@ -1676,7 +1684,7 @@ button {
   border-radius: 1rem;
   border: solid 1px #fff;
   display: grid;
-  grid-template-rows: 18rem 5rem minmax(30rem, 64vh);
+  grid-template-rows: minmax(17rem, auto) auto minmax(30rem, 64vh);
   gap: 1rem;
   background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
   padding: 1rem;
@@ -1723,6 +1731,9 @@ button {
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   border: solid 1px #fff;
+}
+.dashboard .intern-container .navigation > *, .dashboard-active .intern-container .navigation > * {
+  padding: 0.5rem;
 }
 .dashboard .intern-container .navigation .left-side, .dashboard-active .intern-container .navigation .left-side {
   display: flex;
@@ -1902,7 +1913,7 @@ button {
 }
 @media screen and (max-width: 1030px) {
   .dashboard .intern-container, .dashboard-active .intern-container {
-    grid-template-rows: 29rem 5rem minmax(30rem, 55vh);
+    grid-template-rows: minmax(29rem, auto) auto minmax(29rem, 48vh);
   }
   .dashboard .intern-container .preview-container .selected-intern, .dashboard-active .intern-container .preview-container .selected-intern {
     grid-template-columns: 15rem auto;
@@ -1936,7 +1947,7 @@ button {
 }
 @media screen and (max-width: 600px) {
   .dashboard .intern-container, .dashboard-active .intern-container {
-    grid-template-rows: 28rem 8rem minmax(25rem, 40vh);
+    grid-template-rows: minmax(28rem, auto) auto minmax(25rem, 40vh);
   }
   .dashboard .intern-container .preview-container .selected-intern, .dashboard-active .intern-container .preview-container .selected-intern {
     grid-template-columns: auto;
@@ -2141,10 +2152,15 @@ button {
   display: grid;
   padding: 2rem;
 }
+.dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .student-details-container .student-details, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .student-details-container .student-details {
+  display: grid;
+  gap: 0.5rem;
+}
 .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .schedule-details-container, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .schedule-details-container {
   grid-column: 1/3;
   display: grid;
   padding: 2rem;
+  gap: 0.5rem;
 }
 .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container {
   grid-column: 3/6;
@@ -2155,13 +2171,13 @@ button {
   gap: 0.5rem;
 }
 .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > * {
-  border-radius: 1rem;
   background-color: #fff;
   padding: 0 1rem;
 }
 .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container h4, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container h4 {
   grid-column: 1/5;
   grid-row: 1/2;
+  border-radius: 1rem 1rem 0 0;
 }
 .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container img, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container img {
   margin: auto;
@@ -2203,6 +2219,7 @@ button {
 .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(9), .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(9) {
   grid-column: 1/5;
   grid-row: 6/8;
+  border-radius: 0 0 1rem 1rem;
 }
 .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container {
   display: grid;
@@ -2448,8 +2465,8 @@ button {
   transition: all 0.2s linear;
   font-weight: 600;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
 }
 .dashboard .internship-container button .icon, .dashboard-active .internship-container button .icon {
@@ -2909,7 +2926,7 @@ button {
 @media screen and (max-width: 1030px) {
   .dashboard .internship-container .content, .dashboard-active .internship-container .content {
     grid-template-columns: 1fr;
-    grid-auto-rows: auto;
+    grid-auto-rows: 14rem;
   }
   .dashboard .internship-container .content .internship, .dashboard-active .internship-container .content .internship {
     grid-template-columns: 13rem 1fr;
@@ -3069,6 +3086,10 @@ button {
   .dashboard .internship-container .btn-container button, .dashboard-active .internship-container .btn-container button {
     height: 3.5rem;
   }
+  .dashboard .internship-container .content, .dashboard-active .internship-container .content {
+    padding: 6rem 2rem 2rem 2rem;
+    grid-template-rows: repeat(auto-fill, 12rem);
+  }
   .dashboard .internship-container .content .internship, .dashboard-active .internship-container .content .internship {
     grid-template-columns: 1fr;
     background-color: #0d7377;
@@ -3086,6 +3107,12 @@ button {
   }
   .dashboard .internship-container .content .internship .controls .internship-btn, .dashboard-active .internship-container .content .internship .controls .internship-btn {
     justify-content: center;
+  }
+  .dashboard .internship-container .content .message-con, .dashboard-active .internship-container .content .message-con {
+    font-size: 1.5rem;
+    min-width: 28rem;
+    top: 0;
+    height: 4.5rem;
   }
   .dashboard .internship-container .add-modal, .dashboard-active .internship-container .add-modal, .dashboard .internship-container .edit-modal, .dashboard-active .internship-container .edit-modal {
     width: 100%;
@@ -4040,6 +4067,7 @@ button {
   height: 5rem;
   background-color: #d9d9d9;
   border: none;
+  border-radius: 1rem;
   outline: none;
   cursor: pointer;
   padding: 1rem 2rem;
@@ -4048,7 +4076,7 @@ button {
 }
 .dashboard .admin-document-page .btn-routes button:hover, .dashboard-active .admin-document-page .btn-routes button:hover {
   background-color: #00adb5;
-  border-radius: 1rem;
+  border-radius: 0;
   color: #fff;
 }
 .dashboard .admin-document-page .document-container, .dashboard-active .admin-document-page .document-container {
@@ -4066,6 +4094,7 @@ button {
 .dashboard .admin-document-page .document-container .document-control button, .dashboard-active .admin-document-page .document-container .document-control button {
   background-color: #d9d9d9;
   border: none;
+  border-radius: 1rem;
   outline: none;
   cursor: pointer;
   padding: 1rem 2rem;
@@ -4086,7 +4115,7 @@ button {
 .dashboard .admin-document-page .document-container .document-control button:hover, .dashboard-active .admin-document-page .document-container .document-control button:hover {
   background-color: #00adb5;
   color: #fff;
-  border-radius: 1rem;
+  border-radius: 0;
 }
 .dashboard .admin-document-page .document-container .documents, .dashboard-active .admin-document-page .document-container .documents {
   display: grid;
@@ -4244,13 +4273,17 @@ button {
   cursor: pointer;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document .left, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document .left {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
   cursor: pointer;
 }
+.dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document .left p, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document .left p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document .left .filename, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document .left .filename {
-  font-size: 1.2rem;
-  word-break: break-all;
+  font-size: 1.4rem;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document .btn-container, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document .btn-container {
   display: flex;
@@ -4334,7 +4367,7 @@ button {
 }
 @media screen and (max-width: 950px) {
   .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container {
-    grid-auto-rows: 14rem;
+    grid-auto-rows: 12rem;
   }
   .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document {
     grid-template-rows: auto auto;
@@ -4414,14 +4447,8 @@ button {
     justify-content: center;
   }
   .dashboard .admin-document-page .document-container .documents, .dashboard-active .admin-document-page .document-container .documents {
-    grid-auto-rows: 7rem;
-    grid-template-columns: 30rem;
-  }
-  .dashboard .admin-document-page .document-container .documents .document, .dashboard-active .admin-document-page .document-container .documents .document {
-    border-radius: 0;
-  }
-  .dashboard .admin-document-page .document-container .documents .document:hover, .dashboard-active .admin-document-page .document-container .documents .document:hover {
-    border-radius: 1rem;
+    grid-auto-rows: 8rem;
+    grid-template-columns: 1fr;
   }
   .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
     height: 30rem;
@@ -4442,7 +4469,7 @@ button {
 }
 @media screen and (max-width: 600px) {
   .dashboard .admin-document-page, .dashboard-active .admin-document-page {
-    grid-template-rows: repeat(2, minmax(6rem, 8vh)) minmax(35rem, 65vh);
+    grid-template-rows: repeat(2, minmax(6rem, auto)) minmax(35rem, 65vh);
   }
   .dashboard .admin-document-page .sample-view-container, .dashboard-active .admin-document-page .sample-view-container,
   .dashboard .admin-document-page .document-approval-container .view-document-container,
@@ -4452,6 +4479,9 @@ button {
   }
   .dashboard .admin-document-page header, .dashboard-active .admin-document-page header {
     justify-content: center;
+  }
+  .dashboard .admin-document-page .document-container .documents, .dashboard-active .admin-document-page .document-container .documents {
+    grid-auto-rows: 7rem;
   }
 }
 @media screen and (max-width: 500px) {
@@ -4498,8 +4528,8 @@ button {
     grid-auto-rows: 6rem;
   }
   .dashboard .admin-document-page .document-container .documents .document, .dashboard-active .admin-document-page .document-container .documents .document {
+    padding: 1rem 1rem 1rem 2.5rem;
     justify-content: flex-start;
-    padding-right: 1rem;
   }
   .dashboard .admin-document-page .document-approval-container .document-intern, .dashboard-active .admin-document-page .document-approval-container .document-intern {
     min-height: 8rem !important;
@@ -4508,7 +4538,7 @@ button {
     font-size: 1.6rem;
   }
   .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container {
-    grid-auto-rows: 12rem;
+    grid-auto-rows: 11rem;
   }
   .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document img, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document img {
     height: 3.5rem;
@@ -4523,6 +4553,13 @@ button {
   .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document .btn-container button, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document .btn-container button {
     height: 3rem;
     padding: 0 1rem;
+  }
+  .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .no-document, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .no-document {
+    font-size: 1.5rem;
+  }
+  .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .no-document img, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .no-document img {
+    height: 3.5rem;
+    width: 3.5rem;
   }
 }
 @media screen and (max-width: 400px) {
@@ -5581,27 +5618,31 @@ button {
 }
 .internship-container-intern {
   display: grid;
-  grid-template-rows: 12rem 7rem 1fr;
+  grid-template-rows: repeat(2, minmax(7rem, auto)) minmax(30rem, 75.5vh);
   gap: 1rem;
-}
-.internship-container-intern > * {
-  background-color: #212121;
-  border-radius: 1rem;
-  padding: 1rem;
 }
 .internship-container-intern header {
   color: #fff;
+  padding: 2rem;
+  background-color: #282b30;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
 }
 .internship-container-intern .btn-contoller {
-  background-color: #212121;
+  background-color: #282b30;
   display: flex;
   align-items: center;
   padding: 1rem;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
   gap: 1rem;
 }
-.internship-container-intern button {
+.internship-container-intern .btn-contoller button {
   height: 5rem;
   width: 12rem;
+}
+.internship-container-intern button {
   background-color: #fff;
   border: none;
   outline: none;
@@ -5610,8 +5651,8 @@ button {
   transition: all 0.2s linear;
   font-weight: 600;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
 }
 .internship-container-intern button .icon {
@@ -5621,23 +5662,24 @@ button {
   padding-top: 0.2rem;
 }
 .internship-container-intern button:hover {
-  background-color: #457b9d;
-  color: #fff;
+  background-color: #00adb5;
   border-radius: 1rem;
+  color: #fff;
 }
 .internship-container-intern .content {
   border-radius: 1rem;
-  background-color: #212121;
+  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
   padding: 2rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 42rem);
+  grid-template-columns: repeat(auto-fill, 42.5rem);
   grid-auto-rows: 17rem;
   gap: 1rem;
   overflow: hidden;
+  overflow-y: auto;
   position: relative;
 }
 .internship-container-intern .content .internship {
-  background-color: #fff;
+  background-color: #d9d9d9;
   border-radius: 1rem;
   padding: 1rem;
   display: grid;
@@ -5658,12 +5700,11 @@ button {
 .internship-container-intern .content .internship .controls {
   display: grid;
   gap: 1rem;
-  background-color: #d9d9d9;
-  padding: 1rem;
-  color: #000;
-  font-weight: 600;
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
 }
-.internship-container-intern .content .internship .controls p {
+.internship-container-intern .content .internship .controls h4 {
   white-space: nowrap; /* Prevents text from wrapping */
   overflow: hidden; /* Hides any overflowed text */
   text-overflow: ellipsis;
@@ -5674,32 +5715,13 @@ button {
   gap: 1rem;
 }
 .internship-container-intern .content .internship .controls .internship-btn button {
-  border: none;
-  outline: none;
-  background-color: #fff;
+  border-radius: 1rem;
+  background-color: #d9d9d9;
 }
 .internship-container-intern .content .internship .controls .internship-btn button:hover {
-  background-color: #457b9d;
-}
-.internship-container-intern .content .message-con {
-  position: absolute;
-  bottom: 0%;
-  left: 100%;
-  min-width: 35rem;
-  height: 6rem;
-  background-color: #00adb5;
-  z-index: 2;
-  border-radius: 1rem;
+  background-color: #0d7377;
+  border-radius: 0;
   color: #fff;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease-in-out;
-}
-.internship-container-intern .content .active {
-  transform: translate(-100%);
-  transition: all 0.2s ease-in-out;
 }
 .internship-container-intern .overlay {
   width: 100%;
@@ -5714,12 +5736,17 @@ button {
 .internship-container-intern .no-internship {
   display: flex;
   align-items: center;
-  justify-content: center;
+  text-align: center;
   flex-direction: column;
-  background-color: #212121;
+  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
   border-radius: 1rem;
   color: #fff;
   gap: 1rem;
+  padding: 2rem;
+}
+.internship-container-intern .no-internship img {
+  height: 45rem;
+  width: 45rem;
 }
 .internship-container-intern .modal {
   background-color: #fff;
@@ -5733,28 +5760,68 @@ button {
   z-index: 7;
   padding: 1rem;
 }
+.internship-container-intern .sort {
+  display: grid;
+  gap: 1rem;
+  grid-template-rows: auto 1fr;
+  width: 30rem;
+  height: 30rem;
+  padding: 1rem;
+  background-color: #d9d9d9;
+  border: solid 1px #00adb5;
+  gap: 1rem;
+}
+.internship-container-intern .sort > * {
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.internship-container-intern .sort h3 {
+  text-align: center;
+}
+.internship-container-intern .sort form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.internship-container-intern .sort form > * {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.internship-container-intern .sort form .name-sort > * {
+  display: flex;
+  gap: 1rem;
+}
+.internship-container-intern .sort form .time-sort > * {
+  display: flex;
+  gap: 1rem;
+}
 .internship-container-intern .view-modal {
-  min-height: 85%;
+  height: 92%;
   width: 70rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 15rem repeat(6, minmax(6rem, auto)) 15rem;
+  grid-template-rows: 18rem repeat(6, auto) 15rem repeat(2, auto);
   gap: 1rem;
   overflow-y: auto;
   padding: 3rem;
 }
 .internship-container-intern .view-modal .input {
   display: grid;
-  grid-template-columns: 18rem 1fr;
+  grid-template-columns: 18rem auto;
   align-items: center;
   gap: 1rem;
 }
 .internship-container-intern .view-modal .input p {
   font-size: 1.4rem;
-  word-break: break-all;
 }
 .internship-container-intern .view-modal .input h4 {
   font-size: 1.6rem;
+  word-break: keep-all;
+}
+.internship-container-intern .view-modal .input > * {
+  word-break: break-all;
 }
 .internship-container-intern .view-modal .input > *:nth-child(2) {
   border: solid 1px rgba(0, 0, 0, 0.3137254902);
@@ -5805,16 +5872,135 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  border: solid 1px rgba(0, 0, 0, 0.3137254902);
+  border-radius: 1rem;
 }
 .internship-container-intern .view-modal .img-con img {
-  border: solid 1px rgba(0, 0, 0, 0.3137254902);
-  height: 100%;
+  height: 90%;
   width: 100%;
   -o-object-fit: contain;
      object-fit: contain;
+}
+.internship-container-intern .view-modal .close-btn {
+  grid-column: 1/4;
+  margin: auto;
+}
+.internship-container-intern .view-modal .close-btn button {
   border-radius: 1rem;
+  height: 4.5rem;
+  color: #fff;
+  background-color: #0d7377;
+}
+.internship-container-intern .view-modal .close-btn button:hover {
+  border-radius: 0;
+  background-color: #00adb5;
 }
 
+@media screen and (max-width: 1500px) {
+  .internship-container-intern .content {
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 1030px) {
+  .internship-container-intern .content {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+  .internship-container-intern .content .internship {
+    grid-template-columns: 13rem 1fr;
+  }
+  .internship-container-intern .content .internship .img-con {
+    height: 12rem;
+    width: 12rem;
+  }
+  .internship-container-intern .view-modal {
+    width: 72rem;
+    height: 95%;
+  }
+  .internship-container-intern .no-internship h2 {
+    font-size: 2.2rem;
+  }
+  .internship-container-intern .no-internship img {
+    height: 35rem;
+    width: 35rem;
+  }
+}
+@media screen and (max-width: 750px) {
+  .internship-container-intern .view-modal {
+    width: 90%;
+    height: 92%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .internship-container-intern {
+    grid-template-rows: repeat(2, minmax(7rem, auto)) minmax(30rem, 63vh);
+  }
+  .internship-container-intern .content .internship {
+    grid-template-columns: 11rem 1fr;
+  }
+  .internship-container-intern .content .internship .img-con {
+    height: 10rem;
+    width: 10rem;
+  }
+  .internship-container-intern .view-modal {
+    padding: 2rem;
+    width: 95%;
+    height: 95%;
+  }
+  .internship-container-intern .view-modal .input {
+    grid-template-columns: 9.5rem auto;
+  }
+  .internship-container-intern .no-internship h2 {
+    font-size: 2rem;
+  }
+  .internship-container-intern .no-internship img {
+    height: 28rem;
+    width: 28rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .internship-container-intern {
+    grid-template-rows: repeat(2, minmax(5rem, auto)) minmax(40rem, 68vh);
+  }
+  .internship-container-intern header {
+    padding: 1rem;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.7rem;
+  }
+  .internship-container-intern .btn-contoller {
+    justify-content: center;
+  }
+  .internship-container-intern .btn-contoller button {
+    height: 3.5rem;
+  }
+  .internship-container-intern .content .internship {
+    grid-template-columns: 1fr;
+    background-color: #0d7377;
+  }
+  .internship-container-intern .content .internship .img-con {
+    display: none;
+  }
+  .internship-container-intern .content .internship .controls {
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .internship-container-intern .content .internship .controls h4 {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+  .internship-container-intern .content .internship .controls .internship-btn {
+    justify-content: center;
+  }
+  .internship-container-intern .view-modal {
+    width: 100%;
+    height: 100%;
+  }
+  .internship-container-intern .view-modal .close-btn button {
+    height: 3.5rem;
+  }
+}
+/** @format */
 .profile-page {
   display: grid;
   height: 100%;
@@ -5825,7 +6011,7 @@ button {
 }
 .profile-page .profile-user {
   display: grid;
-  grid-template-rows: 2fr 2.5fr;
+  grid-template-rows: 2fr 0 2.5fr;
 }
 .profile-page .profile-user .profile-bg {
   background-size: cover;
@@ -5833,15 +6019,13 @@ button {
 }
 .profile-page .profile-user .profile-details {
   position: relative;
-  border-radius: 0 0 1rem 1rem;
-  background-color: #4c4c4c;
 }
 .profile-page .profile-user .profile-details .profile-img {
   position: absolute;
   left: 2rem;
   top: -5rem;
   border-radius: 50%;
-  border: solid 3px #457b9d;
+  border: solid 3px #0d7377;
   width: 12rem;
   height: 12rem;
 }
@@ -5852,16 +6036,58 @@ button {
   -o-object-fit: cover;
      object-fit: cover;
 }
+.profile-page .profile-user .intern-info {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  border-radius: 0 0 1rem 1rem;
+  padding: 1rem;
+}
+.profile-page .profile-user .intern-info .intern-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 1rem 1rem 15rem;
+}
+.profile-page .profile-user .intern-info .intern-details h3 {
+  color: #fff;
+}
+.profile-page .profile-user .intern-info .intern-details p {
+  color: #bdbdbd;
+}
+.profile-page .profile-user .intern-info .btn-edit {
+  justify-content: flex-end;
+  padding: 2rem;
+}
+.profile-page .profile-user .intern-info .btn-edit button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  color: #fff;
+  padding: 2rem 4rem;
+  border: none;
+  outline: none;
+  border-radius: 1rem;
+  font-weight: 600;
+  transition: all 0.3s linear;
+  background-color: #0d7377;
+  cursor: pointer;
+}
+.profile-page .profile-user .intern-info .btn-edit button:hover {
+  border-radius: 0;
+  background-color: #00adb5;
+}
 .profile-page .content {
   display: grid;
   grid-template-rows: 5rem auto;
 }
 .profile-page .content .button-container {
-  width: 50rem;
+  width: 60rem;
   border-radius: 1rem 1rem 0 0;
   display: grid;
-  grid-template-columns: repeat(4, auto);
-  background-color: #4c4c4c;
+  grid-template-columns: repeat(5, auto);
+  background-color: #282b30;
 }
 .profile-page .content .button-container button {
   color: #fff;
@@ -5904,13 +6130,41 @@ button {
 .profile-page .content .display {
   padding: 2rem;
   border-radius: 0 1rem 1rem 1rem;
-  background-color: #4c4c4c;
+  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
 }
 
 .daily-time-record {
   height: 100%;
   width: 100%;
   display: grid;
+}
+.daily-time-record button {
+  height: 5rem;
+  width: 12rem;
+  background-color: #457b9d;
+  color: #fff;
+  border: 1px solid transparent;
+  outline: none;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  transition: all 0.2s linear;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.daily-time-record button .icon {
+  font-size: 1.2rem;
+}
+.daily-time-record button p {
+  padding-top: 0.2rem;
+}
+.daily-time-record button:hover {
+  border-radius: 1rem;
+  border: solid 1px #457b9d;
+  background-color: #fff;
+  color: #457b9d;
 }
 .daily-time-record .overlay {
   width: 100%;
@@ -5923,16 +6177,22 @@ button {
   z-index: 6;
 }
 .daily-time-record .time-in {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-rows: auto 1fr 5rem;
   padding: 2rem;
   text-align: center;
+  gap: 1rem;
+}
+.daily-time-record .time-in > * {
+  border: solid 1px #3a2d2d;
+}
+.daily-time-record .time-in button {
+  margin: 0 auto;
 }
 .daily-time-record .modal {
   background-color: #fff;
   border-radius: 1rem;
-  height: 80rem;
+  height: 70rem;
   width: 70rem;
   position: absolute;
   top: 50%;
@@ -5942,24 +6202,33 @@ button {
 }
 .daily-time-record .content {
   display: grid;
-  grid-template-rows: 22rem 5rem auto;
-  gap: 1rem;
+  grid-template-rows: 12rem 7rem auto;
   padding: 1rem;
+  gap: 1rem;
 }
 .daily-time-record .content .user {
   display: grid;
-  grid-template-columns: 20rem auto;
-  grid-template-rows: auto auto auto auto;
+  gap: 1.5rem;
+  grid-template-columns: 10rem auto;
+  grid-template-rows: auto;
   padding: 1rem;
-  -moz-column-gap: 1rem;
-       column-gap: 1rem;
-  border: solid 1px #fff;
   border-radius: 2rem;
   align-items: center;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #333333 80%);
+  background-color: #212121;
 }
-.daily-time-record .content .user p,
-.daily-time-record .content .user h4 {
+.daily-time-record .content .user .text {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  height: 100%;
+  gap: 1rem;
+  align-items: center;
+}
+.daily-time-record .content .user .text > *:nth-child(4) {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+.daily-time-record .content .user .text p,
+.daily-time-record .content .user .text h4 {
   color: #f1faee;
 }
 .daily-time-record .content .user .profile-img {
@@ -5969,11 +6238,10 @@ button {
   height: 100%;
   width: 100%;
   grid-column: 1/2;
-  grid-row: 1/5;
 }
 .daily-time-record .content .user .profile-img img {
-  height: 15rem;
-  width: 15rem;
+  height: 10rem;
+  width: 10rem;
   background-color: #fff;
   border: solid 1px #fff;
   border-radius: 1rem;
@@ -5981,11 +6249,13 @@ button {
 .daily-time-record .content .mid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  background-color: #212121;
+  padding: 1rem;
+  border-radius: 1rem;
 }
 .daily-time-record .content .mid .button-container {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
   gap: 1rem;
   padding-left: 3rem;
 }
@@ -6045,8 +6315,7 @@ button {
   grid-auto-rows: 6rem;
   gap: 1rem;
   padding: 2rem;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #333333 80%);
-  border: solid 1px #fff;
+  background-color: #212121;
   border-radius: 2rem;
   max-height: 67rem;
   overflow-y: auto;
@@ -6135,6 +6404,7 @@ button {
     width: 9rem;
   }
 }
+/** @format */
 .documents-page {
   display: grid;
   grid-template-rows: 25rem auto;
@@ -6739,12 +7009,6 @@ button {
     grid-auto-rows: 7rem;
     grid-template-columns: 1fr;
     gap: 0.8rem;
-  }
-  .documents-page .display .document-intern {
-    border-radius: 0;
-  }
-  .documents-page .display .document-intern:hover {
-    border-radius: 1rem;
   }
   .documents-page .display .status {
     top: 2%;

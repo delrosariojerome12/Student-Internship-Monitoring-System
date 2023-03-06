@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 
 const getAllAttendance = async (req, res) => {
   const {email} = req.params;
+  const {scheduleType, timeInSchedule, timeOutSchedule} = req.query;
 
   const userExists = await Intern.findOne({email});
 
@@ -13,9 +14,68 @@ const getAllAttendance = async (req, res) => {
     throw new NotFound("User not found");
   }
 
-  const attendance = await Attendance.find({email});
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const date = now.getDate();
+  const day = now.getDay();
+  const hours = now.getHours() % 12 || 12;
 
-  res.status(StatusCodes.OK).json({success: true, data: attendance});
+  const todayDate = `${month < 10 ? "0" : ""}${month}-${
+    date < 10 ? "0" : ""
+  }${date}-${year}`;
+
+  const attendance = await Attendance.find({email});
+  const todayExists = await Attendance.findOne({date: todayDate});
+
+  let doesExists = {};
+
+  if (scheduleType === "Regular") {
+    if (day > 0 && day < 6) {
+      if (todayExists) {
+        // timed in
+        doesExists = {
+          status: "already timed-in",
+          timeInExists: true,
+          timeOutExists: false,
+        };
+      } else {
+        doesExists = {
+          // not yet
+          status: "not timed-in",
+          timeInExists: false,
+          timeOutExists: true,
+        };
+      }
+    } else {
+      // disable time
+      doesExists = {
+        // not yet
+        status: "no schedule today",
+        timeInExists: true,
+        timeOutExists: true,
+      };
+    }
+  } else {
+    if (todayExists) {
+      // timed in
+      doesExists = {
+        status: "already timed-in",
+        timeInExists: true,
+        timeOutExists: false,
+      };
+    } else {
+      doesExists = {
+        // not yet
+        status: "not timed-in in",
+        timeInExists: false,
+        timeOutExists: true,
+      };
+    }
+  }
+  res
+    .status(StatusCodes.OK)
+    .json({success: true, data: attendance, doesExists});
 };
 
 const getAttendance = async (req, res) => {

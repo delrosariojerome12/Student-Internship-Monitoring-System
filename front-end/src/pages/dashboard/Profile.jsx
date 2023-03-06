@@ -1,31 +1,48 @@
+/** @format */
+
 import React from "react";
-import {Route, Routes, Link, Navigate, useNavigate} from "react-router-dom";
-import Summary from "./profile/Summary";
-import Performance from "./profile/Performance";
-import TimeKeeping from "./profile/TimeKeeping";
-import ActivityLog from "./profile/ActivityLog";
+import { Route, Routes, Link, Navigate, useNavigate } from "react-router-dom";
+import InternsDetail from "./profile/InternsDetail";
+import InternshipDetail from "./profile/InternshipDetail";
+import Attendance from "./profile/Attendance";
+import Narrative from "./profile/Narrative";
+import Request from "./profile/Request ";
+import { useSelector } from "react-redux";
 
 const buttons = [
   {
-    path: "/dashboard/profile/summary",
-    btnName: "Summary",
+    path: "/dashboard/profile/internsDetail",
+    btnName: "Interns Detail",
   },
   {
-    path: "/dashboard/profile/peformance",
-    btnName: "Performance",
+    path: "/dashboard/profile/internshipDetail",
+    btnName: "Internship Detail",
   },
   {
-    path: "/dashboard/profile/timekeeping",
-    btnName: "Time Keeping",
+    path: "/dashboard/profile/attendance",
+    btnName: "Attendance",
   },
   {
-    path: "/dashboard/profile/activitylog",
-    btnName: "Activity Log",
+    path: "/dashboard/profile/narrative",
+    btnName: "Narrative",
+  },
+  {
+    path: "/dashboard/profile/request",
+    btnName: "Request",
   },
 ];
 
 const Profile = () => {
   const navigate = useNavigate();
+
+  const {
+    user: {
+      user: { firstName, lastName, profileImage },
+      schoolDetails,
+      internshipDetails,
+    },
+  } = useSelector((state) => state.user);
+
   return (
     <section className="profile-page">
       <div className="profile-user">
@@ -35,18 +52,29 @@ const Profile = () => {
             background:
               "url(https://animes.olanerd.com/wp-content/uploads/2022/10/1666371202_Bocchi-The-Rock-Os-passos-de-Hitori-para-o-auto-aperfeicoamento.jpg) no-repeat center",
             backgroundSize: "cover",
-          }}
-        ></div>
+          }}></div>
         <div className="profile-details">
           <div className="profile-img">
-            <img src="https://i.imgur.com/aFPFvGv.jpg" alt="" />
+            <img src={profileImage} alt="" />
+          </div>
+        </div>
+        <div className="intern-info">
+          <div className="intern-details">
+            <h3>
+              {firstName} {lastName}
+            </h3>
+            <p className="program">{schoolDetails?.program}</p>
+            <p className="program">{internshipDetails?.companyName}</p>
+          </div>
+          <div className="btn-edit">
+            <button>Edit Profile</button>
           </div>
         </div>
       </div>
       <div className="content">
         <div className="button-container">
           {buttons.map((item, index) => {
-            const {path, btnName} = item;
+            const { path, btnName } = item;
             return (
               <button key={index} onClick={() => navigate(path)}>
                 {btnName}
@@ -56,10 +84,11 @@ const Profile = () => {
         </div>
         <div className="display">
           <Routes>
-            <Route path="/summary" element={<Summary />} />
-            <Route path="/peformance" element={<Performance />} />
-            <Route path="/timekeeping" element={<TimeKeeping />} />
-            <Route path="/activitylog" element={<ActivityLog />} />
+            <Route path="/internsdetail" element={<InternsDetail />} />
+            <Route path="/internshipdetail" element={<InternshipDetail />} />
+            <Route path="/attendance" element={<Attendance />} />
+            <Route path="/narrative" element={<Narrative />} />
+            <Route path="/request" element={<Request />} />
             <Route path="*" element={<Navigate to="/404" replace />} />
           </Routes>
         </div>
