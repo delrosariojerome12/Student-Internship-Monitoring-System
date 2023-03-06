@@ -38,6 +38,7 @@ const TimeInModal = React.memo(({email}) => {
   const cameraRef = useRef(null);
 
   const getLocation = async (latitude, longitude) => {
+    console.log(latitude, longitude);
     try {
       const url = `https://api.tomtom.com/search/2/reverseGeocode/${latitude},${longitude}.json?key=${key}`;
       const response = await axios.get(url);

@@ -60,7 +60,7 @@ const links = [
       {
         path: "/dashboard/internships",
         link: "Internships",
-        IconType: MdOutlineWork,
+        IconType: FaRegBuilding,
       },
     ],
   },
@@ -189,9 +189,7 @@ const SidebarLeft = () => {
         });
     }
     return links[0].sidebar
-      .filter(
-        (item) => item.link === "Dashboard" || item.link === "Internships"
-      )
+      .filter((item) => item.link === "Dashboard")
       .map((item, index) => {
         const { path, link, IconType } = item;
         return (

@@ -41,7 +41,6 @@ const EditModal = React.memo(
                       id: selectedInternship[0]._id,
                     })
                   );
-                  clearValue();
                   const timer = setTimeout(
                     () => dispatch(handleMessage()),
                     3000

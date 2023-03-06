@@ -21,6 +21,7 @@ import "@react-pdf-viewer/core/lib/styles/index.css";
 import {Route, Routes, Link, Navigate, useNavigate} from "react-router-dom";
 import Bouncing from "../../components/loading/Bouncing";
 import ServerError from "../../pages/serverError";
+//import {FaTrash} from "react-icons/fa";
 
 const DocumentApproval = lazy(() => import("./DocumentApproval"));
 

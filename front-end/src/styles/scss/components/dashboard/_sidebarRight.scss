@@ -1,5 +1,3 @@
-/** @format */
-
 @import "../../variables";
 @import "../../utils";
 
@@ -91,7 +89,7 @@
       top: 1rem;
       left: -30rem;
       height: auto;
-      width: 28rem;
+      max-width: 28rem;
       z-index: 2;
       background-color: $primary-bg-color-landing-compliment;
       border-radius: 2rem;

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { HiMenu } from "react-icons/hi";
+import React, {useState, useEffect} from "react";
+import {Link, useNavigate} from "react-router-dom";
+import {HiMenu} from "react-icons/hi";
 
 import logo from "../assets/img/landingPage/Logo.png";
 import landingImg from "../assets/img/landingPage/landing-image.png";
@@ -12,19 +12,27 @@ import featureImg2 from "../assets/img/landingPage/imageFeature2.png";
 import featureImg3 from "../assets/img/landingPage/imageFeature3.png";
 import mainMockup from "../assets/img/landingPage/MainMockup.png";
 import mockupImage from "../assets/img/landingPage/imageLowerContainer.png";
+
+// team photos
+import ivanImage from "../assets/img/landingPage/idPhotos/ivan.svg";
+import jeromeImage from "../assets/img/landingPage/idPhotos/jerome.svg";
+import jericoImage from "../assets/img/landingPage/idPhotos/jerico.svg";
+import jakeImage from "../assets/img/landingPage/idPhotos/jake.svg";
+import jRealImage from "../assets/img/landingPage/idPhotos/jReal.svg";
+import diosaImage from "../assets/img/landingPage/idPhotos/diosa.svg";
 // Footer
 import socialIcon1 from "../assets/img/landingPage/ICON SOCIALS/FB.png";
 import socialIcon2 from "../assets/img/landingPage/ICON SOCIALS/INSTA.png";
 import socialIcon3 from "../assets/img/landingPage/ICON SOCIALS/LINKIN.png";
 import socialIcon4 from "../assets/img/landingPage/ICON SOCIALS/TWITTER.png";
-import { useCallback } from "react";
+import {useCallback} from "react";
 
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import {FaChevronLeft, FaChevronRight} from "react-icons/fa";
 
-import { IconContext } from "react-icons";
-import { FaArrowUp } from "react-icons/fa";
+import {IconContext} from "react-icons";
+import {FaArrowUp} from "react-icons/fa";
 
 const links = [
   {
@@ -54,17 +62,51 @@ const authLinks = [
     path: "/account/login",
   },
 ];
+
 const handleScroll = (path) => {
   const featureContent = document.getElementById(path);
-  featureContent.scrollIntoView({ behavior: "smooth", block: "center" });
+  featureContent.scrollIntoView({behavior: "smooth", block: "center"});
 };
+
+const teamMembers = [
+  {
+    name: "Ivan Cedie C. Batario",
+    position: "Backend Developer",
+    image: ivanImage,
+  },
+  {
+    name: "Jerome D. Ramos",
+    position: "Lead Developer",
+    image: jeromeImage,
+  },
+  {
+    name: "Jerico B. Balisi",
+    position: "Frontend Developer",
+    image: jericoImage,
+  },
+  {
+    name: "Diosa D. Tadiosa",
+    position: "Documentation/Tester",
+    image: diosaImage,
+  },
+  {
+    name: "Jake A. Bristol",
+    position: "UI/UX System Designer",
+    image: jakeImage,
+  },
+  {
+    name: "Jezreel Dannah D. Menor",
+    position: "Documentation/Tester",
+    image: jRealImage,
+  },
+];
 
 const LandingPage = () => {
   const [isNavbarOpen, setNavbarOpen] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false); // Add new state variable
   const navigate = useNavigate();
 
-  const { user } = useSelector((state) => state.user);
+  const {user} = useSelector((state) => state.user);
 
   const handleResize = useCallback(() => {
     setNavbarOpen(false);
@@ -75,7 +117,7 @@ const LandingPage = () => {
   }, [isNavbarOpen]);
 
   const handleScrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({top: 0, behavior: "smooth"});
   };
 
   useEffect(() => {
@@ -84,9 +126,31 @@ const LandingPage = () => {
         handleResize();
       });
     }
-
     return () => window.removeEventListener("resize", handleResize);
   }, [isNavbarOpen, handleResize]);
+
+  const displayTeam = () => {
+    return (
+      <div className="the-team-container">
+        <div className="text-container-top">
+          <p>The Team</p>
+        </div>
+
+        <div className="members-container">
+          {teamMembers.map((member) => (
+            <div
+              key={member.name}
+              className={`member-img${member.image ? "2" : "1"}`}
+            >
+              {member.image && <img src={member.image} alt="" />}
+              <p className="member-name">{member.name}</p>
+              <p className="member-position">{member.position}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -105,7 +169,7 @@ const LandingPage = () => {
   }, []);
 
   return (
-    <IconContext.Provider value={{ className: "icons", color: "#ffff" }}>
+    <IconContext.Provider value={{className: "icons", color: "#ffff"}}>
       <section className="landing-page">
         <nav>
           <div className="logo">
@@ -119,7 +183,7 @@ const LandingPage = () => {
           >
             <ul className="links">
               {links.map((item, index) => {
-                const { path, link } = item;
+                const {path, link} = item;
                 return (
                   <a key={index} onClick={() => handleScroll(path)}>
                     {link}
@@ -134,7 +198,7 @@ const LandingPage = () => {
                 </button>
               ) : (
                 authLinks.map((item, index) => {
-                  const { path, link } = item;
+                  const {path, link} = item;
                   return (
                     <button
                       onClick={() => {
@@ -164,6 +228,7 @@ const LandingPage = () => {
             <HiMenu />
           </span>
         </nav>
+
         <section className="contents">
           <div className="landing-contents">
             <div className="text">
@@ -252,6 +317,7 @@ const LandingPage = () => {
             </div>
           </div>
 
+          {displayTeam()}
           <div className="aboutUs-container">
             <div className="aboutUs-contents">
               <div className="aboutUs-Text">

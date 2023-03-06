@@ -2,6 +2,7 @@
 @import "../utils";
 
 .internship-container-intern {
+  border: solid 1px #fff;
   display: grid;
   grid-template-rows: repeat(2, minmax(7rem, auto)) minmax(30rem, 75.5vh);
   gap: 1rem;
