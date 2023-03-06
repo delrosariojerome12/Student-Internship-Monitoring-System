@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { HiMenu } from "react-icons/hi";
+import React, {useState, useEffect} from "react";
+import {Link, useNavigate} from "react-router-dom";
+import {HiMenu} from "react-icons/hi";
 
 import logo from "../assets/img/landingPage/Logo.png";
 import landingImg from "../assets/img/landingPage/landing-image.png";
@@ -25,14 +25,14 @@ import socialIcon1 from "../assets/img/landingPage/ICON SOCIALS/FB.png";
 import socialIcon2 from "../assets/img/landingPage/ICON SOCIALS/INSTA.png";
 import socialIcon3 from "../assets/img/landingPage/ICON SOCIALS/LINKIN.png";
 import socialIcon4 from "../assets/img/landingPage/ICON SOCIALS/TWITTER.png";
-import { useCallback } from "react";
+import {useCallback} from "react";
 
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import {FaChevronLeft, FaChevronRight} from "react-icons/fa";
 
-import { IconContext } from "react-icons";
-import { FaArrowUp } from "react-icons/fa";
+import {IconContext} from "react-icons";
+import {FaArrowUp} from "react-icons/fa";
 
 const links = [
   {
@@ -62,9 +62,10 @@ const authLinks = [
     path: "/account/login",
   },
 ];
+
 const handleScroll = (path) => {
   const featureContent = document.getElementById(path);
-  featureContent.scrollIntoView({ behavior: "smooth", block: "center" });
+  featureContent.scrollIntoView({behavior: "smooth", block: "center"});
 };
 
 const teamMembers = [
@@ -105,7 +106,7 @@ const LandingPage = () => {
   const [showBackToTop, setShowBackToTop] = useState(false); // Add new state variable
   const navigate = useNavigate();
 
-  const { user } = useSelector((state) => state.user);
+  const {user} = useSelector((state) => state.user);
 
   const handleResize = useCallback(() => {
     setNavbarOpen(false);
@@ -116,7 +117,7 @@ const LandingPage = () => {
   }, [isNavbarOpen]);
 
   const handleScrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({top: 0, behavior: "smooth"});
   };
 
   useEffect(() => {
@@ -168,7 +169,7 @@ const LandingPage = () => {
   }, []);
 
   return (
-    <IconContext.Provider value={{ className: "icons", color: "#ffff" }}>
+    <IconContext.Provider value={{className: "icons", color: "#ffff"}}>
       <section className="landing-page">
         <nav>
           <div className="logo">
@@ -182,7 +183,7 @@ const LandingPage = () => {
           >
             <ul className="links">
               {links.map((item, index) => {
-                const { path, link } = item;
+                const {path, link} = item;
                 return (
                   <a key={index} onClick={() => handleScroll(path)}>
                     {link}
@@ -197,7 +198,7 @@ const LandingPage = () => {
                 </button>
               ) : (
                 authLinks.map((item, index) => {
-                  const { path, link } = item;
+                  const {path, link} = item;
                   return (
                     <button
                       onClick={() => {
@@ -317,25 +318,40 @@ const LandingPage = () => {
           </div>
 
           {displayTeam()}
-          <div className="about-us-container">
-            <div className="about-us-title">About Us</div>
-            <div className="about-us-content">
-              As former intern students, we are concerned about the incoming
-              interns because, through our experience, we all know about their
-              experience. As a result, our group decided to create a system that
-              can assist the future intern students and make it a lot easier for
-              them, especially tracking their performance during their
-              internship, because this is the most important part of the
-              internship. Each one of us gathers our ideas to come up with the
-              possible features that we can put on the system that will surely
-              benefit the intern students.
-            </div>
-            <div className="sub-content-container">
-              <div className="sub-content-title">Ready to get started?</div>
-              <div className="sub-content-body">
-                Discover a quick and simple approach to organize your time and
-                provide guidance throughout your internship.
-                <button className="create-account">Create Account</button>
+          <div className="aboutUs-container">
+            <div className="aboutUs-contents">
+              <div className="aboutUs-Text">
+                <p>About Us</p>
+                <p>
+                  As former intern students, we are concerned about the upcoming
+                  interns because, through our experience, we all know the
+                  struggles they can experience. As a result, our group decided
+                  to create a system that can assist the future intern students
+                  and make it a lot easier for them, especially tracking their
+                  performance during their internship, because this is the most
+                  important part of the internship. Each one of us gathers our
+                  ideas to come up with the possible features that we can put on
+                  the system that will surely benefit the intern students.
+                </p>
+              </div>
+              <div className="getStarted">
+                {/* <div className="getStarted-content"> */}
+                <div className="getStarted-P">
+                  <p>Ready to get started?</p>
+                  <p>
+                    Discover a quick and simple approach to organize your time
+                    and provide guidance throughout your internship.
+                  </p>
+                </div>
+                <button
+                  className="btn-CreateAcc"
+                  onClick={() => {
+                    navigate("/account/signup");
+                  }}
+                >
+                  Create Account
+                </button>
+                {/* </div> */}
               </div>
             </div>
           </div>
