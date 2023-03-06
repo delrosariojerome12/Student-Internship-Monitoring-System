@@ -9,6 +9,7 @@ import ServerError from "../serverError";
 import Attendance from "../../components/intern/Attendance";
 import TimeInModal from "../../components/intern/TimeInModal";
 import TimeOutModal from "../../components/intern/TimeOutModal";
+import AttendanceModal from "../../components/intern/AttendanceModal";
 
 import {getAllAttendance} from "../../features/interns/attendanceReducer";
 import NoDocumentSvg from "../../assets/img/waiting.svg";
@@ -17,6 +18,8 @@ import {
   handleTimeIn,
   handleTimeOut,
   handleViewToday,
+  handleDisableTimeIn,
+  handleDisableTimeOut,
 } from "../../features/interns/attendanceReducer";
 
 const DailyTimeRecord = React.memo(() => {
@@ -29,6 +32,10 @@ const DailyTimeRecord = React.memo(() => {
     isTimeInOpen,
     isTimeOutOpen,
     isTodayOpen,
+    isTimeInDisable,
+    isTimeOutDisable,
+    alreadyTimeIn,
+    alreadyTimeOut,
   } = useSelector((state) => state.attendance);
   const dispatch = useDispatch();
 
@@ -36,10 +43,34 @@ const DailyTimeRecord = React.memo(() => {
     user: {firstName, lastName, profileImage, email},
     internshipDetails: {renderedHours},
     schoolDetails: {program, requiredHours},
+    scheduleDetails,
   } = user;
 
   useEffect(() => {
-    dispatch(getAllAttendance({email}));
+    const timer = setInterval(() => {
+      const now = new Date();
+      const hours = now.getHours() % 12 || 12;
+      const minutes = now.getMinutes();
+      const amOrPm = now.getHours() >= 12 ? "PM" : "AM";
+
+      // if (hours >= 8 && hours <= 10 && amOrPm === "AM") {
+      //   dispatch(handleDisableTimeIn(false));
+      // } else if (hours >= 1 && amOrPm === "PM") {
+      //   dispatch(handleDisableTimeIn(false));
+      // }
+
+      // if (hours >= 8 && hours <= 10 && amOrPm === "AM") {
+      //   dispatch(handleDisableTimeIn(false));
+      // } else if (hours === 1 && minutes < 29 && amOrPm === "PM") {
+      //   dispatch(handleDisableTimeIn(false));
+      // } else if (alreadyTimeIn) {
+      //   if (hours >= 5 && hours <= 7 && amOrPm === "PM") {
+      //     dispatch(handleDisableTimeOut(false));
+      //   }
+      // }
+    }, 1000);
+    dispatch(getAllAttendance({email, scheduleDetails}));
+    return () => clearInterval(timer);
   }, []);
 
   if (isLoading || !allAttendance) {
@@ -75,35 +106,45 @@ const DailyTimeRecord = React.memo(() => {
             <div className="profile-img">
               <img src={profileImage} alt="profile-image" />
             </div>
-            <h4 className="full-name">
-              {firstName} {lastName}
-            </h4>
-            <p className="rendered-hours">
-              <b>Rendered Hours: </b> {renderedHours}
-            </p>
-            <p className="required-hours">
-              <b>Required Hours: </b> {requiredHours}
-            </p>
-            <p className="program">
-              <b>Program:</b> {program}
-            </p>
+            <div className="text">
+              <h4 className="full-name">
+                {firstName} {lastName}
+              </h4>
+              <p className="rendered-hours">
+                <b>Rendered Hours: </b> {renderedHours}
+              </p>
+              <p className="required-hours">
+                <b>Required Hours: </b> {requiredHours}
+              </p>
+              <p className="program">
+                <b>Program:</b> {program}
+              </p>
+            </div>
           </div>
           <div className="mid">
             <div className="button-container">
               <button
                 className="time-in"
                 onClick={() => dispatch(handleTimeIn())}
+                style={
+                  isTimeInDisable
+                    ? {pointerEvents: "none", opacity: ".5"}
+                    : {opacity: "1"}
+                }
               >
                 Time In
               </button>
               <button
                 className="time-out"
                 onClick={() => dispatch(handleTimeOut())}
+                style={
+                  isTimeOutDisable
+                    ? {pointerEvents: "none", opacity: ".5"}
+                    : {opacity: "1"}
+                }
               >
                 Time Out
               </button>
-              {/* <button className="all-records">All Records</button>
-              <button className="view-as-pdf">View As PDF</button> */}
             </div>
             <div className="search-box">
               <span>
@@ -114,8 +155,9 @@ const DailyTimeRecord = React.memo(() => {
           </div>
           {renderAttendance()}
         </div>
-        {isTimeInOpen && <TimeInModal />}
-        {isTimeOutOpen && <TimeOutModal />}
+        {isTimeInOpen && <TimeInModal email={email} />}
+        {isTimeOutOpen && <TimeOutModal email={email} />}
+        {isTodayOpen && <AttendanceModal />}
       </section>
     </IconContext.Provider>
   );

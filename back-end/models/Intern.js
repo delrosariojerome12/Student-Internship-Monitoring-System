@@ -20,6 +20,10 @@ const InternSchema = new mongoose.Schema({
     ],
     unique: true,
   },
+  isComplete: {
+    type: Boolean,
+    default: false,
+  },
   verification,
   internshipDetails,
   internsAssets,
