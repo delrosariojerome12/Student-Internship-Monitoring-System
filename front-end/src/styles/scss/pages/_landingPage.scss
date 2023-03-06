@@ -429,6 +429,7 @@
       margin: 50px 0 0 30px;
     }
     .sub-content-container {
+      //display: grid;
       background-color: #d9d9d9;
       border-radius: 10px;
       width: 90%;
@@ -444,7 +445,6 @@
 
       .create-account {
         margin-left: 100px;
-        border: 1px black;
         border-radius: 5px;
         padding: 10px;
         color: white;
