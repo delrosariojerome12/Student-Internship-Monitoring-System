@@ -17,6 +17,7 @@ const initialState = {
   alreadyTimeOut: false,
   canStart: false,
   todayAttendanceID: null,
+  allAttendanceToday: null,
 };
 
 export const getAllAttendance = createAsyncThunk(
@@ -27,6 +28,7 @@ export const getAllAttendance = createAsyncThunk(
       const {data: res} = await axios.get(url, {
         params: {scheduleDetails},
       });
+      console.log(res);
       return {res};
     } catch (error) {
       console.log(error);
@@ -37,7 +39,6 @@ export const getAllAttendance = createAsyncThunk(
     }
   }
 );
-
 export const checkStartingDate = createAsyncThunk(
   "/attendance/checkStartingDate",
   async ({email}, {rejectWithValue, getState}) => {
@@ -89,10 +90,30 @@ export const timeOutAttendance = createAsyncThunk(
   }
 );
 
+// not working for some fking unknown reasons
+export const todayAttendance = createAsyncThunk(
+  "/attendance/todayAttendance",
+  async ({email, form}, {rejectWithValue}) => {
+    console.log("today attendance");
+    // try {
+    //   const url = `http://localhost:5000/attendance/getAllAttendanceToday}`;
+    //   const {data: res} = await axios.get(url, form);
+    //   console.log(res);
+    //   return {res};
+    // } catch (error) {
+    //   console.log(error);
+    //   return rejectWithValue(error.response.data);
+    // }
+  }
+);
+
 export const attendanceReducer = createSlice({
   name: "attendance",
   initialState,
   reducers: {
+    handleTest: (state, action) => {
+      console.log("Test");
+    },
     handleTimeIn: (state, action) => {
       state.isTimeInOpen = !state.isTimeInOpen;
     },
@@ -154,6 +175,18 @@ export const attendanceReducer = createSlice({
         state.isLoading = false;
         state.isError = true;
       });
+    //   get all  attendances today
+    // builder
+    //   .addCase(getAllAttendanceToday.pending, (state, action) => {
+    //     state.isLoading = true;
+    //   })
+    //   .addCase(getAllAttendanceToday.fulfilled, (state, {payload}) => {
+    //     console.log(payload);
+    //   })
+    //   .addCase(getAllAttendanceToday.rejected, (state, action) => {
+    //     state.isLoading = false;
+    //     state.isError = true;
+    //   });
     //   time in
     builder
       .addCase(timeInAttendance.pending, (state, action) => {
@@ -191,11 +224,6 @@ export const attendanceReducer = createSlice({
         state.isLoading = true;
       })
       .addCase(checkStartingDate.fulfilled, (state, {payload}) => {
-        // const {
-        //   res: {
-        //     data: {status},
-        //   },
-        // } = payload;
         state.isLoading = false;
         state.canStart = true;
       })
@@ -213,6 +241,7 @@ export const {
   handleDisableTimeIn,
   handleDisableTimeOut,
   handleCheckDate,
+  handleTest,
 } = attendanceReducer.actions;
 
 export default attendanceReducer.reducer;

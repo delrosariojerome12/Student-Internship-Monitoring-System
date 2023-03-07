@@ -76,8 +76,6 @@ const TimeOutModal = React.memo(({email}) => {
         countrySecondarySubdivision,
       } = response.data.addresses[0].address;
 
-      console.log(response);
-
       const completeAddress = `${freeformAddress} ${countrySecondarySubdivision} ${country} `;
       const coordinates = `NE: ${northEast} SW: ${southWest}`;
       setAddress(`${completeAddress} ${coordinates}`);
@@ -124,6 +122,7 @@ const TimeOutModal = React.memo(({email}) => {
 
     navigator.geolocation.getCurrentPosition((position) => {
       const {latitude, longitude} = position.coords;
+
       getLocation(latitude, longitude);
     });
     return () => clearInterval(interval);

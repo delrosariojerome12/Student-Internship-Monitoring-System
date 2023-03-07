@@ -60,7 +60,7 @@ const TimeInModal = React.memo(({email}) => {
     facingMode: "user",
   };
   const getLocation = async (latitude, longitude) => {
-    // console.log(latitude, longitude);
+    console.log(latitude, longitude);
     try {
       const url = `https://api.tomtom.com/search/2/reverseGeocode/${latitude},${longitude}.json?key=${key}`;
       const response = await axios.get(url);
@@ -117,10 +117,26 @@ const TimeInModal = React.memo(({email}) => {
       setTime(fullHour);
     }, 1000);
 
-    navigator.geolocation.getCurrentPosition((position) => {
-      const {latitude, longitude} = position.coords;
-      getLocation(latitude, longitude);
-    });
+    // navigator.geolocation.getCurrentPosition((position) => {
+    //   const {latitude, longitude} = position.coords;
+    //   getLocation(latitude, longitude);
+    // });
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 10000,
+      maximumAge: 60000,
+    };
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const {latitude, longitude} = position.coords;
+        getLocation(latitude, longitude);
+      },
+      (error) => {
+        console.error(`Geolocation error: ${error.message}`);
+      },
+      options
+    );
     return () => clearInterval(interval);
   }, []);
 

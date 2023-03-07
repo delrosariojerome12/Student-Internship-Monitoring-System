@@ -84,6 +84,7 @@ const DailyTimeRecord = React.memo(() => {
     const today = `${year}-${month}-${day}`;
 
     dispatch(getAllAttendance({email, scheduleDetails}));
+
     today === startingDate && dispatch(checkStartingDate({email}));
     return () => clearInterval(timer);
   }, []);
