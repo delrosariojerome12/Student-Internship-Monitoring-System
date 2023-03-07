@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 
 const getAllAttendance = async (req, res) => {
   const {email} = req.params;
-  const {scheduleType, timeInSchedule, timeOutSchedule} = req.query;
+  const {scheduleType} = req.query;
 
   const userExists = await Intern.findOne({email});
 
@@ -15,15 +15,15 @@ const getAllAttendance = async (req, res) => {
   }
 
   const now = new Date();
-  const year = now.getFullYear();
-  const month = now.getMonth() + 1;
-  const date = now.getDate();
-  const day = now.getDay();
-  const hours = now.getHours() % 12 || 12;
 
-  const todayDate = `${month < 10 ? "0" : ""}${month}-${
-    date < 10 ? "0" : ""
-  }${date}-${year}`;
+  const year = now.getFullYear();
+  const month =
+    now.getMonth() + 1 < 10 ? `0${now.getMonth() + 1}` : now.getMonth() + 1;
+  const date = now.getDate() + 1 < 10 ? `0${now.getDate()}` : now.getDate();
+
+  const day = now.getDay();
+
+  const todayDate = `${month}-${date}-${year}`;
 
   const attendance = await Attendance.find({email});
   const todayExists = await Attendance.findOne({date: todayDate});
@@ -73,6 +73,7 @@ const getAllAttendance = async (req, res) => {
       };
     }
   }
+
   res.status(StatusCodes.OK).json({
     success: true,
     data: attendance,
@@ -129,9 +130,20 @@ const timeOut = async (req, res) => {
   res.status(StatusCodes.OK).json({success: true, data: attendance});
 };
 
+const checkStartingDate = async (req, res) => {
+  const {email} = req.params;
+
+  const intern = await Intern.findOneAndUpdate({email}, req.body, {
+    new: true,
+    runValidators: true,
+  });
+  res.status(StatusCodes.OK).json({success: true, data: intern});
+};
+
 module.exports = {
   getAllAttendance,
   getAttendance,
   timeIn,
   timeOut,
+  checkStartingDate,
 };

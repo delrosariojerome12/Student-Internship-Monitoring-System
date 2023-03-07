@@ -3,6 +3,7 @@ const {
   getAttendance,
   timeIn,
   timeOut,
+  checkStartingDate,
 } = require("../controllers/attendance");
 
 const express = require("express");
@@ -13,5 +14,7 @@ router.route("/getAttendance/:id").get(getAttendance);
 
 router.route("/timeIn/:email").post(timeIn);
 router.route("/timeOut/:email/:id").patch(timeOut);
+
+router.route("/checkStartingDate/:email").patch(checkStartingDate);
 
 module.exports = router;
