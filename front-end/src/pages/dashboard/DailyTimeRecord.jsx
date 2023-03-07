@@ -20,7 +20,7 @@ import {
   handleViewToday,
   handleDisableTimeIn,
   handleDisableTimeOut,
-  handleCheckDate,
+  checkStartingDate,
 } from "../../features/interns/attendanceReducer";
 
 const DailyTimeRecord = React.memo(() => {
@@ -72,8 +72,18 @@ const DailyTimeRecord = React.memo(() => {
       //   }
       // }
     }, 1000);
+
+    const date = new Date();
+    const day = date.getDate() + 1 < 10 ? `0${date.getDate()}` : date.getDate();
+    const month =
+      date.getMonth() + 1 < 10
+        ? `0${date.getMonth() + 1}`
+        : date.getMonth() + 1;
+    const year = date.getFullYear();
+    const today = `${year}-${month}-${day}`;
+
     dispatch(getAllAttendance({email, scheduleDetails}));
-    dispatch(handleCheckDate(startingDate));
+    today === startingDate && dispatch(checkStartingDate({email}));
     return () => clearInterval(timer);
   }, []);
 
@@ -84,6 +94,7 @@ const DailyTimeRecord = React.memo(() => {
   if (isError) {
     return <ServerError />;
   }
+
   if (!canStart) {
     return <h1>Cant start</h1>;
   }

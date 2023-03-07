@@ -18,8 +18,6 @@ const AttendanceModal = React.memo(() => {
     proof: {timeInLink, timeOutLink},
   } = selectedAttendance;
 
-  console.log(selectedAttendance);
-
   return (
     <>
       <div

@@ -24,7 +24,30 @@ export const getAllAttendance = createAsyncThunk(
   async ({email, scheduleDetails}, {rejectWithValue}) => {
     try {
       const url = `http://localhost:5000/attendance/getAllAttendance/${email}`;
-      const {data: res} = await axios.get(url, {params: scheduleDetails});
+      const {data: res} = await axios.get(url, {
+        params: {scheduleDetails},
+      });
+      console.log(res);
+      return {res};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue({
+        error: error.response.data,
+        status: error.response.status,
+      });
+    }
+  }
+);
+
+export const checkStartingDate = createAsyncThunk(
+  "/attendance/checkStartingDate",
+  async ({email}, {rejectWithValue, getState}) => {
+    const {
+      user: {user},
+    } = getState();
+    try {
+      const url = `http://localhost:5000/attendance/checkStartingDate/${email}`;
+      const {data: res} = await axios.patch(url, {...user, status: "Starting"});
       console.log(res);
       return {res};
     } catch (error) {
@@ -161,6 +184,24 @@ export const attendanceReducer = createSlice({
         state.alreadyTimeOut = true;
       })
       .addCase(timeOutAttendance.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+      });
+    // check starting date
+    builder
+      .addCase(checkStartingDate.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(checkStartingDate.fulfilled, (state, {payload}) => {
+        // const {
+        //   res: {
+        //     data: {status},
+        //   },
+        // } = payload;
+        state.isLoading = false;
+        state.canStart = true;
+      })
+      .addCase(checkStartingDate.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
       });
