@@ -1,3 +1,5 @@
+/** @format */
+
 @import "../variables";
 @import "../utils";
 
@@ -6,9 +8,10 @@
   height: 100%;
   width: 100%;
   border: solid 1px #fff;
-  border-radius: 0.5rem;
-  padding: 2rem;
+  border-radius: 1rem;
+  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
   .sort-modals {
+    display: none !important;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -77,6 +80,7 @@
     }
   }
   .status-modals {
+    display: none !important;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -136,6 +140,7 @@
     }
   }
   .filter-modals {
+    display: none !important;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -195,6 +200,7 @@
     }
   }
   .week-modals {
+    display: none !important;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -244,6 +250,7 @@
     }
   }
   .month-modals {
+    display: none !important;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -293,6 +300,7 @@
     }
   }
   .year-modals {
+    display: none !important;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -342,81 +350,66 @@
     }
   }
 
-  & > .content {
+  .content {
     display: grid;
     grid-template-rows: 5rem auto;
+    gap: 1rem;
 
-    .button-content {
-      display: flex;
-      justify-content: space-between;
+    .button-container {
+      @include flexCenter;
+      gap: 1rem;
+      background-color: #3d4049;
       border-radius: 1rem 1rem 0 0;
-      .button-container {
-        width: 45rem;
-        border-radius: 1.5rem 1.5rem 0 0;
-        display: grid;
-        grid-template-columns: repeat(3, auto);
-        background-color: lighten(
-          $color: $primary-bg-color-landing-compliment,
-          $amount: 10
-        );
-        border: solid 1px #fff;
-
-        button {
-          color: #fff;
-          outline: none;
-          border: none;
-          padding: 1rem;
-          background-color: transparent;
-          transition: all 0.3s linear;
-          position: relative;
-          font-weight: 600;
-          letter-spacing: 1px;
-
-          &:hover::before {
-            width: 80%;
-          }
-          &:focus {
-            background-color: lighten(
-              $color: $primary-bg-color-landing-compliment,
-              $amount: 30
-            );
-            &::before {
-              width: 80%;
-            }
-          }
-          &::before {
-            content: "";
-            position: absolute;
-            left: 50%;
-            top: 75%;
-            transform: translate(-50%, -75%);
-            transition: all 0.2s linear;
-            width: 0%;
-            height: 2px;
-            z-index: 2;
-            background-color: #fff;
-          }
-
-          &:nth-of-type(1) {
-            border-radius: 1.5rem 0 0 0;
-          }
-          &:nth-last-of-type(1) {
-            border-radius: 0 1.5rem 0 0;
-          }
+      button {
+        height: 4rem;
+        @include flexCenter;
+        flex-direction: row;
+        border: none;
+        padding: 1rem 2rem;
+        outline: none;
+        font-weight: 500;
+        color: #fff;
+        background-color: #3d4049;
+        transition: all 0.3s linear;
+        cursor: pointer;
+        span {
+          font-size: 1.8rem;
+          padding: 0.5rem 0.5rem 0;
+        }
+        p {
+          font-size: 1.5rem;
+        }
+        &:hover {
+          background-color: $primary-feature-bg;
+          border-radius: 1rem;
         }
       }
     }
 
-    .display {
-      border: solid 1px #fff;
-      color: #fff;
-      // padding: 2rem;
-      border-radius: 0 0 1.5rem 1.5rem;
-      background-color: lighten(
-        $color: $primary-bg-color-landing-compliment,
-        $amount: 10
-      );
+    .report-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 35rem);
+      grid-auto-rows: 12rem;
+      gap: 1rem;
+      padding: 2rem;
+      .narrative-content {
+        display: grid;
+        grid-template-columns: 0.5fr 1fr;
+        grid-template-rows: 10rem 2rem;
+        gap: 1rem;
+        background-color: #fff;
+        border-radius: 1rem;
+        padding: 1rem;
+        .weeks,
+        .weeks-count {
+          padding: 1rem;
+          border-radius: 1rem;
+          background-color: #d9d9d9;
+          text-align: center;
+        }
+        // .dropdown {
+        // }
+      }
     }
   }
-  @import "../pages/reports/narative";
 }
