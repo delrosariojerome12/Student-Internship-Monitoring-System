@@ -9,6 +9,7 @@
   padding: 1rem 9rem 1rem 13rem;
   background-color: #393e46;
   transition: all 0.2s ease-in-out;
+
   .main {
     height: 100%;
     width: 100%;
@@ -123,6 +124,57 @@
         // padding: 1rem;
         background-color: $light-bg-color;
         border-radius: 0 0 2rem 0;
+      }
+    }
+  }
+
+  .cant-start {
+    background-color: #212121;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      height: 5rem;
+      width: 12rem;
+      background-color: $primary-compliment-landing;
+      color: #fff;
+      border: 2px solid transparent;
+      outline: none;
+      cursor: pointer;
+      padding: 1rem 2rem;
+      transition: all 0.2s linear;
+      font-weight: 600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      .icon {
+        font-size: 1.2rem;
+      }
+      p {
+        padding-top: 0.2rem;
+      }
+      &:hover {
+        // background-color: $primary-bg-color;
+        border-radius: 1rem;
+        border: solid 2px $primary-compliment-landing;
+        background-color: #fff;
+        color: $primary-compliment-landing;
+      }
+    }
+    .cant-start-modal {
+      @include flexColumn;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      background-color: #fff;
+      border-radius: 1rem;
+      width: 50rem;
+      height: 52rem;
+      img {
+        height: 30rem;
+        width: 30rem;
       }
     }
   }

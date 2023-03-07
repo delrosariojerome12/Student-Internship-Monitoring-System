@@ -76,6 +76,8 @@ const TimeOutModal = React.memo(({email}) => {
         countrySecondarySubdivision,
       } = response.data.addresses[0].address;
 
+      console.log(response);
+
       const completeAddress = `${freeformAddress} ${countrySecondarySubdivision} ${country} `;
       const coordinates = `NE: ${northEast} SW: ${southWest}`;
       setAddress(`${completeAddress} ${coordinates}`);
