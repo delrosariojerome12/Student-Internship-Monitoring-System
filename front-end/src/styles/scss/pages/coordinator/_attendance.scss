@@ -1,0 +1,10 @@
+@import "../../utils";
+@import "../../variables";
+
+.monitor-attendance {
+  display: grid;
+  padding: 2rem;
+  gap: 1rem;
+  border-radius: 1rem;
+  background-color: #212121;
+}

@@ -1,8 +1,11 @@
 import React, {useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {getAllAttendanceToday} from "../../features/coordinator/monitorAttendance";
+import Bouncing from "../../components/loading/Bouncing";
+import ServerError from "../serverError";
+import Attendance from "../../components/coordinator/Attendance";
 
-const Attendance = () => {
+const MonitorAttendance = () => {
   const {isLoading, isError, attendanceToday} = useSelector(
     (state) => state.monitorAttendance
   );
@@ -13,14 +16,13 @@ const Attendance = () => {
   }, []);
 
   if (isLoading || !attendanceToday) {
-    return <h1>Loading...</h1>;
+    return <Bouncing />;
   }
   if (isError) {
-    return <h1>Error</h1>;
+    return <ServerError />;
   }
-  console.log(attendanceToday);
 
   return <div className="monitor-attendance">Attendance</div>;
 };
 
-export default Attendance;
+export default MonitorAttendance;
