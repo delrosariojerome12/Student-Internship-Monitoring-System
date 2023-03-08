@@ -127,6 +127,9 @@
       h4 {
         color: $primary-font-color;
       }
+      & > *:nth-child(5) {
+        display: none;
+      }
     }
 
     .profile-img {
@@ -232,16 +235,18 @@
   .no-internship {
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
     background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
     border-radius: 1rem;
     color: #fff;
     gap: 1rem;
     padding: 2rem;
+    b {
+      color: $primary-compliment-landing;
+    }
     img {
-      height: 10rem;
-      width: 10rem;
+      height: 35rem;
+      width: 35rem;
     }
   }
 }
@@ -274,6 +279,13 @@
     .DTR-content {
       justify-content: center;
     }
+
+    .no-internship {
+      img {
+        height: 30rem;
+        width: 30rem;
+      }
+    }
   }
 }
 
@@ -291,6 +303,19 @@
         }
       }
     }
+    .mid {
+      .button-container {
+        button {
+          height: 3.5rem;
+        }
+      }
+    }
+    .no-internship {
+      img {
+        height: 25rem;
+        width: 25rem;
+      }
+    }
   }
 }
 
@@ -298,8 +323,30 @@
   .daily-time-record {
     .user {
       grid-template-columns: auto;
+      grid-template-rows: auto auto;
+      gap: 0.5rem;
+      padding: 2rem 1rem;
+
       .profile-img {
-        display: none;
+        img {
+          height: 9rem;
+          width: 9rem;
+        }
+      }
+      .text {
+        font-size: 1.6rem;
+        gap: 0.5rem;
+        & > * {
+          text-align: center;
+        }
+        & > *:nth-child(4) {
+          display: none;
+        }
+        & > *:nth-child(5) {
+          display: flex;
+          grid-column: 1/3;
+          grid-row: 2/3;
+        }
       }
     }
     .mid {
@@ -308,26 +355,35 @@
       .button-container {
         justify-content: center;
         padding: 0;
+        button {
+          height: 3rem;
+        }
       }
     }
   }
 }
 
-// @media screen and (max-width: 400px) {
-//   .daily-time-record {
-//     .user {
-//       grid-template-columns: 10rem auto;
-//       gap: 0.5rem;
-//       p,
-//       h4 {
-//         font-size: 1.6rem;
-//       }
-//       .profile-img {
-//         img {
-//           height: 9rem;
-//           width: 9rem;
-//         }
-//       }
-//     }
-//   }
-// }
+@media screen and (max-width: 400px) {
+  .daily-time-record {
+    // .user {
+    //   grid-template-columns: 10rem auto;
+    //   gap: 0.5rem;
+    //   p,
+    //   h4 {
+    //     font-size: 1.6rem;
+    //   }
+    //   .profile-img {
+    //     img {
+    //       height: 9rem;
+    //       width: 9rem;
+    //     }
+    //   }
+    // }
+    .no-internship {
+      img {
+        height: 20rem;
+        width: 20rem;
+      }
+    }
+  }
+}

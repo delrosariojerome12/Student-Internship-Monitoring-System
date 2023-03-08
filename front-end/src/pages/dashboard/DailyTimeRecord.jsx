@@ -106,7 +106,9 @@ const DailyTimeRecord = React.memo(() => {
     if (allAttendance.length === 0) {
       return (
         <div className="no-internship">
-          <h3>No record yet</h3>
+          <h3>
+            No <b>Record</b> Yet
+          </h3>
           <img src={NoDocumentSvg} alt="no-internship" />
         </div>
       );
@@ -137,8 +139,11 @@ const DailyTimeRecord = React.memo(() => {
             <p className="required-hours">
               Required Hours: <b> {requiredHours}</b>
             </p>
-            <p className="program">
+            <p>
               Program: <b> {program}</b>
+            </p>
+            <p>
+              <b>{program}</b>
             </p>
           </div>
         </div>
