@@ -11,6 +11,7 @@ import Bouncing from "../../components/loading/Bouncing";
 
 const Dashboard = lazy(() => import("./Dashboard"));
 const Approvals = lazy(() => import("./Approvals"));
+const Attendance = lazy(() => import("./Attendance"));
 const Interns = lazy(() => import("./Interns"));
 const Documents = lazy(() => import("./Documents"));
 const Internships = lazy(() => import("./Internships"));
@@ -33,9 +34,11 @@ const Coordinator = React.memo(({isSidebarOpen}) => {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/interns" element={<Interns />} />
+          <Route path="/attendance" element={<Attendance />} />
           <Route path="/approvals" element={<Approvals />} />
           <Route path="/documents" element={<Documents />} />
           <Route path="/internships" element={<Internships />} />
+
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Routes>
       </Suspense>

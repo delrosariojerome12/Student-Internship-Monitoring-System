@@ -51,6 +51,7 @@
     left: 0%;
     z-index: 6;
   }
+
   .time-in {
     display: grid;
     grid-template-rows: auto 1fr 5rem;
@@ -105,30 +106,36 @@
 
   .user {
     display: grid;
-    gap: 1.5rem;
-    grid-template-columns: 13rem auto;
-    grid-template-rows: auto;
-    padding: 1rem 2rem;
-    border-radius: 2rem;
-    align-items: center;
-    background-color: #282b30;
+    grid-template-rows: 12rem 7rem 2fr;
+    padding: 1rem;
+    gap: 1rem;
 
     .text {
       display: grid;
       grid-template-columns: repeat(2, auto);
       height: 100%;
       gap: 1rem;
-      align-items: center;
-      & > *:nth-child(4) {
-        grid-column: 2/3;
-        grid-row: 1/2;
-      }
-      p,
-      h4 {
-        color: $primary-font-color;
-      }
-      & > *:nth-child(5) {
-        display: none;
+      padding: 2rem;
+      background-color: #212121;
+      border-radius: 2rem;
+      overflow-y: auto;
+
+      .attendance {
+        @include flexCenter;
+        color: #d9d9d9;
+        cursor: pointer;
+        background-color: $primary-compliment-landing;
+        border-radius: 0;
+        transition: all 0.2s linear;
+        position: relative;
+        font-size: 1.6rem;
+        font-weight: 6000;
+
+        &:hover {
+          background-color: $primary-feature-bg;
+          border-radius: 1rem;
+          color: #fff;
+        }
       }
     }
 

@@ -6338,31 +6338,37 @@ button {
 }
 .daily-time-record .user {
   display: grid;
-  gap: 1.5rem;
-  grid-template-columns: 13rem auto;
-  grid-template-rows: auto;
-  padding: 1rem 2rem;
-  border-radius: 2rem;
-  align-items: center;
-  background-color: #282b30;
+  grid-template-rows: 12rem 7rem 2fr;
+  padding: 1rem;
+  gap: 1rem;
 }
 .daily-time-record .user .text {
   display: grid;
   grid-template-columns: repeat(2, auto);
   height: 100%;
   gap: 1rem;
+  padding: 2rem;
+  background-color: #212121;
+  border-radius: 2rem;
+  overflow-y: auto;
+}
+.daily-time-record .user .text .attendance {
+  display: flex;
   align-items: center;
+  justify-content: center;
+  color: #d9d9d9;
+  cursor: pointer;
+  background-color: #0d7377;
+  border-radius: 0;
+  transition: all 0.2s linear;
+  position: relative;
+  font-size: 1.6rem;
+  font-weight: 6000;
 }
-.daily-time-record .user .text > *:nth-child(4) {
-  grid-column: 2/3;
-  grid-row: 1/2;
-}
-.daily-time-record .user .text p,
-.daily-time-record .user .text h4 {
-  color: #f1faee;
-}
-.daily-time-record .user .text > *:nth-child(5) {
-  display: none;
+.daily-time-record .user .text .attendance:hover {
+  background-color: #00adb5;
+  border-radius: 1rem;
+  color: #fff;
 }
 .daily-time-record .user .profile-img {
   display: flex;

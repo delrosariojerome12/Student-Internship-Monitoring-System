@@ -82,6 +82,26 @@ const getAllAttendance = async (req, res) => {
   });
 };
 
+const getAllAttendanceToday = async (req, res) => {
+  const {email} = req.params;
+
+  const now = new Date();
+
+  const year = now.getFullYear();
+  const month =
+    now.getMonth() + 1 < 10 ? `0${now.getMonth() + 1}` : now.getMonth() + 1;
+  const date = now.getDate() + 1 < 10 ? `0${now.getDate()}` : now.getDate();
+
+  const todayDate = `${month}-${date}-${year}`;
+
+  const allAttendanceToday = await Attendance.find({date: todayDate});
+
+  res.status(StatusCodes.OK).json({
+    success: true,
+    data: allAttendanceToday,
+  });
+};
+
 const getAttendance = async (req, res) => {
   const {id} = req.params;
 
@@ -142,6 +162,7 @@ const checkStartingDate = async (req, res) => {
 
 module.exports = {
   getAllAttendance,
+  getAllAttendanceToday,
   getAttendance,
   timeIn,
   timeOut,

@@ -1,10 +1,10 @@
 /** @format */
 
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { FaCheck, FaCamera, FaRegImage } from "react-icons/fa";
-import { IconContext } from "react-icons";
-import { BiSearchAlt } from "react-icons/bi";
+import React, {useState, useEffect} from "react";
+import {useSelector, useDispatch} from "react-redux";
+import {FaCheck, FaCamera, FaRegImage} from "react-icons/fa";
+import {IconContext} from "react-icons";
+import {BiSearchAlt} from "react-icons/bi";
 
 import Bouncing from "../../components/loading/Bouncing";
 import ServerError from "../serverError";
@@ -14,7 +14,7 @@ import TimeOutModal from "../../components/intern/TimeOutModal";
 import AttendanceModal from "../../components/intern/AttendanceModal";
 import CantStart from "./CantStart";
 
-import { getAllAttendance } from "../../features/interns/attendanceReducer";
+import {getAllAttendance} from "../../features/interns/attendanceReducer";
 import NoDocumentSvg from "../../assets/img/waiting.svg";
 
 import {
@@ -27,7 +27,7 @@ import {
 } from "../../features/interns/attendanceReducer";
 
 const DailyTimeRecord = React.memo(() => {
-  const { user } = useSelector((state) => state.user);
+  const {user} = useSelector((state) => state.user);
   const {
     isLoading,
     isError,
@@ -46,10 +46,11 @@ const DailyTimeRecord = React.memo(() => {
   const dispatch = useDispatch();
 
   const {
-    user: { firstName, lastName, profileImage, email },
-    internshipDetails: { renderedHours, startingDate },
-    schoolDetails: { program, requiredHours },
+    user: {firstName, lastName, profileImage, email},
+    internshipDetails: {renderedHours, startingDate},
+    schoolDetails: {program, requiredHours},
     scheduleDetails,
+    status,
   } = user;
 
   useEffect(() => {
@@ -85,8 +86,9 @@ const DailyTimeRecord = React.memo(() => {
     const year = date.getFullYear();
     const today = `${year}-${month}-${day}`;
 
-    dispatch(getAllAttendance({ email, scheduleDetails }));
-    today === startingDate && dispatch(checkStartingDate({ email }));
+    dispatch(getAllAttendance({email, scheduleDetails}));
+
+    today === startingDate && dispatch(checkStartingDate({email}));
     return () => clearInterval(timer);
   }, []);
 
@@ -98,7 +100,7 @@ const DailyTimeRecord = React.memo(() => {
     return <ServerError />;
   }
 
-  if (!canStart) {
+  if (status === "Not Started") {
     return <CantStart startingDate={startingDate} />;
   }
 
@@ -123,7 +125,7 @@ const DailyTimeRecord = React.memo(() => {
   };
 
   return (
-    <IconContext.Provider value={{ className: "icon" }}>
+    <IconContext.Provider value={{className: "icon"}}>
       <section className="daily-time-record">
         <div className="user">
           <div className="profile-img">
