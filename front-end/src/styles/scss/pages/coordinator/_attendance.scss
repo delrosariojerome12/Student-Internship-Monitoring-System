@@ -12,4 +12,46 @@
   & > * {
     border: solid 1px #fff;
   }
+
+  .content {
+    display: grid;
+    // grid-template-columns: repeat(auto-fill, 50rem);
+    grid-auto-rows: 14rem;
+    gap: 1rem;
+    padding: 1rem;
+    overflow-y: auto;
+
+    .day-attendance {
+      background-color: #fff;
+      border-radius: 1rem;
+      display: grid;
+      grid-template-columns: 10rem auto;
+      gap: 1rem;
+      padding: 1rem;
+      color: #000;
+
+      & > * {
+        border: solid 1px #000;
+      }
+
+      .left {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+          height: 10rem;
+          width: 10rem;
+          object-fit: contain;
+        }
+      }
+      .right {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        & > * {
+          border: solid 1px #000;
+        }
+      }
+    }
+  }
 }

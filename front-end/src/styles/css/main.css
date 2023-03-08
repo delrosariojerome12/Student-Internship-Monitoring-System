@@ -3783,6 +3783,44 @@ button {
 .dashboard .monitor-attendance > *, .dashboard-active .monitor-attendance > * {
   border: solid 1px #fff;
 }
+.dashboard .monitor-attendance .content, .dashboard-active .monitor-attendance .content {
+  display: grid;
+  grid-auto-rows: 14rem;
+  gap: 1rem;
+  padding: 1rem;
+  overflow-y: auto;
+}
+.dashboard .monitor-attendance .content .day-attendance, .dashboard-active .monitor-attendance .content .day-attendance {
+  background-color: #fff;
+  border-radius: 1rem;
+  display: grid;
+  grid-template-columns: 10rem auto;
+  gap: 1rem;
+  padding: 1rem;
+  color: #000;
+}
+.dashboard .monitor-attendance .content .day-attendance > *, .dashboard-active .monitor-attendance .content .day-attendance > * {
+  border: solid 1px #000;
+}
+.dashboard .monitor-attendance .content .day-attendance .left, .dashboard-active .monitor-attendance .content .day-attendance .left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dashboard .monitor-attendance .content .day-attendance .left img, .dashboard-active .monitor-attendance .content .day-attendance .left img {
+  height: 10rem;
+  width: 10rem;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.dashboard .monitor-attendance .content .day-attendance .right, .dashboard-active .monitor-attendance .content .day-attendance .right {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.dashboard .monitor-attendance .content .day-attendance .right > *, .dashboard-active .monitor-attendance .content .day-attendance .right > * {
+  border: solid 1px #000;
+}
 .dashboard .admin-document-page, .dashboard-active .admin-document-page {
   display: grid;
   grid-template-rows: repeat(2, minmax(7rem, auto)) minmax(55rem, 77vh);
