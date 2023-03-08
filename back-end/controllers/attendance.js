@@ -124,7 +124,17 @@ const timeIn = async (req, res) => {
   if (!email) {
     throw new NotFound("Email not found");
   }
-  const attendance = await Attendance.create({email, ...req.body});
+
+  const intern = await Intern.findOne({email});
+
+  const attendance = await Attendance.create({
+    intern: intern._id,
+    email,
+    ...req.body,
+  }).populate({
+    path: "intern",
+    model: "Intern",
+  });
   Attendance.createIndexes();
 
   res.status(StatusCodes.OK).json({success: true, data: attendance});
