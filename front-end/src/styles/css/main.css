@@ -6562,6 +6562,9 @@ button {
     grid-column: 1/3;
     grid-row: 2/3;
   }
+  .daily-time-record .user .text > *:nth-child(5) p {
+    text-align: center;
+  }
   .daily-time-record .mid {
     display: flex;
     flex-direction: column;
