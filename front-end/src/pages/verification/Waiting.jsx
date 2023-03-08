@@ -16,16 +16,7 @@ const Waiting = React.memo((user) => {
         validID: { link },
         requiredHours,
       },
-      internshipDetails: {
-        companyAddress,
-        companyName,
-        supervisor,
-        supervisorContact,
-        typeOfWork,
-        logo,
-        startingDate,
-        description,
-      },
+      internshipDetails,
       scheduleDetails: {
         scheduleType,
         scheduledDays,
@@ -35,6 +26,17 @@ const Waiting = React.memo((user) => {
       verification: { isRejected, remarks, hasSentVerification },
     },
   } = user;
+
+  const {
+    companyAddress,
+    companyName,
+    supervisor,
+    supervisorContact,
+    typeOfWork,
+    logo,
+    startingDate,
+    description,
+  } = internshipDetails;
 
   const navigate = useNavigate();
 
@@ -136,7 +138,7 @@ const Waiting = React.memo((user) => {
             </p>
             <p>
               Email:
-              {/* Internship Details Email */}
+              <b> {internshipDetails.email}</b>
             </p>
             <p>
               Contact:
