@@ -1,39 +1,26 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
-import {getAllAttendance} from "../../features/interns/attendanceReducer";
-import axios from "axios";
+import {getAllAttendanceToday} from "../../features/coordinator/monitorAttendance";
 
 const Attendance = () => {
-  // const {allAttendanceToday} = useSelector
-  const [todayAttendance, setTodayAttendance] = useState(null);
-
-  const fetchData = async () => {
-    try {
-      const url = `http://localhost:5000/attendance/getAllAttendanceToday`;
-      const {data: res} = await axios.get(url);
-      setTodayAttendance(res.data);
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+  const {isLoading, isError, attendanceToday} = useSelector(
+    (state) => state.monitorAttendance
+  );
   const dispatch = useDispatch();
+
   useEffect(() => {
-    fetchData();
+    dispatch(getAllAttendanceToday({}));
   }, []);
 
-  if (!todayAttendance) {
-    return <div>Loading...</div>;
+  if (isLoading || !attendanceToday) {
+    return <h1>Loading...</h1>;
   }
+  if (isError) {
+    return <h1>Error</h1>;
+  }
+  console.log(attendanceToday);
 
-  return (
-    <div>
-      {todayAttendance.map((item, index) => {
-        return <p key={index}>{item.email}</p>;
-      })}
-    </div>
-  );
+  return <div className="monitor-attendance">Attendance</div>;
 };
 
 export default Attendance;

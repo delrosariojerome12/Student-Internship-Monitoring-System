@@ -38,7 +38,6 @@ const AttendanceModal = React.memo(() => {
         </div>
         <div className="lower"></div>
       </div>
-      ;
     </>
   );
 });

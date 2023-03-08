@@ -99,7 +99,6 @@ const DailyTimeRecord = React.memo(() => {
   }
 
   if (status === "Not Started") {
-    console.log(status);
     return <CantStart startingDate={startingDate} />;
   }
 
