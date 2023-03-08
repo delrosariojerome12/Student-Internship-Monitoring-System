@@ -3,6 +3,7 @@ const {StatusCodes} = require("http-status-codes");
 const Attendance = require("../models/Attendance");
 const Intern = require("../models/Intern");
 const mongoose = require("mongoose");
+const User = require("../models/User");
 
 const getAllAttendance = async (req, res) => {
   const {email} = req.params;
@@ -94,10 +95,15 @@ const getAllAttendanceToday = async (req, res) => {
 
   const todayDate = `${month}-${date}-${year}`;
 
-  const allAttendanceToday = await Attendance.find({date: todayDate}).populate({
-    path: "user",
-    model: "User",
-  });
+  const allAttendanceToday = await Attendance.find({date: todayDate})
+    .populate({
+      path: "user",
+      model: "User",
+    })
+    .populate({
+      path: "intern",
+      model: "Intern",
+    });
 
   res.status(StatusCodes.OK).json({
     success: true,
@@ -125,19 +131,23 @@ const timeIn = async (req, res) => {
     throw new NotFound("Email not found");
   }
 
+  const user = await User.findOne({email});
   const intern = await Intern.findOne({email});
 
   const attendance = await Attendance.create({
+    user: user._id,
     intern: intern._id,
     email,
     ...req.body,
-  }).populate({
-    path: "intern",
-    model: "Intern",
   });
+
   Attendance.createIndexes();
 
-  res.status(StatusCodes.OK).json({success: true, data: attendance});
+  const populatedAttendance = await Attendance.findById(attendance._id)
+    .populate("user")
+    .populate("intern");
+
+  res.status(StatusCodes.OK).json({success: true, data: populatedAttendance});
 };
 
 const timeOut = async (req, res) => {
