@@ -48,6 +48,7 @@ const DailyTimeRecord = React.memo(() => {
     internshipDetails: {renderedHours, startingDate},
     schoolDetails: {program, requiredHours},
     scheduleDetails,
+    status,
   } = user;
 
   useEffect(() => {
@@ -97,7 +98,8 @@ const DailyTimeRecord = React.memo(() => {
     return <ServerError />;
   }
 
-  if (!canStart) {
+  if (status === "Not Started") {
+    console.log(status);
     return <CantStart startingDate={startingDate} />;
   }
 

@@ -6271,7 +6271,7 @@ button {
 }
 .daily-time-record .content {
   display: grid;
-  grid-template-rows: 12rem 7rem auto;
+  grid-template-rows: 12rem 7rem 2fr;
   padding: 1rem;
   gap: 1rem;
 }
@@ -6386,7 +6386,6 @@ button {
   padding: 2rem;
   background-color: #212121;
   border-radius: 2rem;
-  max-height: 67rem;
   overflow-y: auto;
 }
 .daily-time-record .content .DTR-content .attendance {
