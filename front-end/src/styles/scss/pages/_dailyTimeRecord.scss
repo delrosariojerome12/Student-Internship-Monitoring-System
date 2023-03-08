@@ -1,3 +1,5 @@
+/** @format */
+
 @import "../variables";
 @import "../utils";
 
@@ -5,6 +7,9 @@
   height: 100%;
   width: 100%;
   display: grid;
+  grid-template-rows: minmax(15rem, auto) auto minmax(50rem, 62vh);
+  padding: 1rem;
+  gap: 1rem;
 
   button {
     height: 5rem;
@@ -99,113 +104,16 @@
     z-index: 7;
   }
 
-  .content {
+  .user {
     display: grid;
     grid-template-rows: 12rem 7rem 2fr;
     padding: 1rem;
     gap: 1rem;
 
-    .user {
+    .text {
       display: grid;
-      gap: 1.5rem;
-      grid-template-columns: 10rem auto;
-      grid-template-rows: auto;
-      padding: 1rem;
-      border-radius: 2rem;
-      align-items: center;
-      // background-image: linear-gradient(#282b30 10%, #393e46 31%, #333333 80%);
-      background-color: #212121;
-      .text {
-        display: grid;
-        grid-template-columns: repeat(2, auto);
-        height: 100%;
-        gap: 1rem;
-        align-items: center;
-        & > *:nth-child(4) {
-          grid-column: 2/3;
-          grid-row: 1/2;
-        }
-        p,
-        h4 {
-          color: $primary-font-color;
-        }
-      }
-
-      .profile-img {
-        @include flexCenter;
-        height: 100%;
-        width: 100%;
-        grid-column: 1/2;
-        img {
-          height: 10rem;
-          width: 10rem;
-          background-color: #fff;
-          border: solid 1px #fff;
-          border-radius: 1rem;
-        }
-      }
-    }
-    .mid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      background-color: #212121;
-      padding: 1rem;
-      border-radius: 1rem;
-      .button-container {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding-left: 3rem;
-        button {
-          @include flexCenter;
-          padding: 1.6rem 3rem;
-          height: 4rem;
-          border-radius: 1rem;
-          border: solid 1px transparent;
-          color: $primary-font-color;
-          background-color: $primary-compliment-landing;
-          transition: all 0.3s ease-in-out;
-          font-weight: 600;
-          cursor: pointer;
-          &:hover {
-            border-radius: 0;
-            background-color: $primary-font-color;
-            color: $primary-compliment-landing;
-            border: solid 1px $primary-compliment-landing;
-          }
-          &.time-out:hover {
-            background-color: $red-primary-color;
-            color: #fff;
-            border-radius: 0;
-          }
-        }
-      }
-      .search-box {
-        @include flexCenter;
-        background-color: $light-bg-color;
-        width: 80%;
-        border-radius: 2rem;
-        align-items: center;
-        padding: 0 1.5rem;
-        margin: auto;
-        span {
-          @include flexCenter;
-          font-size: 2rem;
-          cursor: pointer;
-        }
-        input {
-          width: 100%;
-          background: transparent;
-          padding: 1rem;
-          outline: none;
-          border: 0;
-        }
-      }
-    }
-    .DTR-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, 24rem);
-      grid-auto-rows: 6rem;
+      grid-template-columns: repeat(2, auto);
+      height: 100%;
       gap: 1rem;
       padding: 2rem;
       background-color: #212121;
@@ -230,20 +138,122 @@
         }
       }
     }
-    .no-internship {
+
+    .profile-img {
+      @include flexCenter;
+      height: 100%;
+      width: 100%;
+      grid-column: 1/2;
+      img {
+        height: 13rem;
+        width: 13rem;
+        background-color: #fff;
+        border: solid 1px #fff;
+        border-radius: 1rem;
+      }
+    }
+  }
+  .mid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #282b30;
+    padding: 1rem;
+    border-radius: 1rem;
+    .button-container {
       display: flex;
       align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      background-color: $primary-bg-color-landing;
-      border-radius: 1rem;
-      color: #fff;
       gap: 1rem;
-      padding: 2rem;
-      img {
-        height: 40rem;
-        width: 40rem;
+      padding-left: 3rem;
+      button {
+        @include flexCenter;
+        padding: 1.6rem 3rem;
+        height: 4rem;
+        border-radius: 1rem;
+        border: solid 1px transparent;
+        color: $primary-font-color;
+        background-color: $primary-compliment-landing;
+        transition: all 0.3s ease-in-out;
+        font-weight: 600;
+        cursor: pointer;
+        &:hover {
+          border-radius: 0;
+          background-color: $primary-font-color;
+          color: $primary-compliment-landing;
+          border: solid 1px $primary-compliment-landing;
+        }
+        &.time-out:hover {
+          background-color: $red-primary-color;
+          color: #fff;
+          border-radius: 0;
+        }
       }
+    }
+    .search-box {
+      @include flexCenter;
+      background-color: $light-bg-color;
+      width: 80%;
+      border-radius: 2rem;
+      align-items: center;
+      padding: 0 1.5rem;
+      margin: auto;
+      span {
+        @include flexCenter;
+        font-size: 2rem;
+        cursor: pointer;
+      }
+      input {
+        width: 100%;
+        background: transparent;
+        padding: 1rem;
+        outline: none;
+        border: 0;
+      }
+    }
+  }
+  .DTR-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 24rem);
+    grid-auto-rows: 6rem;
+    gap: 1rem;
+    padding: 2rem;
+    background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+    border-radius: 2rem;
+    max-height: 67rem;
+    overflow-y: auto;
+
+    .attendance {
+      @include flexCenter;
+      color: #d9d9d9;
+      cursor: pointer;
+      background-color: $primary-compliment-landing;
+      border-radius: 0;
+      transition: all 0.2s linear;
+      position: relative;
+      font-size: 1.6rem;
+      font-weight: 6000;
+
+      &:hover {
+        background-color: $primary-feature-bg;
+        border-radius: 1rem;
+        color: #fff;
+      }
+    }
+  }
+  .no-internship {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+    border-radius: 1rem;
+    color: #fff;
+    gap: 1rem;
+    padding: 2rem;
+    b {
+      color: $primary-compliment-landing;
+    }
+    img {
+      height: 35rem;
+      width: 35rem;
     }
   }
 }
@@ -252,9 +262,35 @@
 
 @media screen and (max-width: 1030px) {
   .daily-time-record {
-    .content {
-      .DTR-content {
-        justify-content: center;
+    .user {
+      .text {
+        grid-template-rows: repeat(3, auto);
+        & > *:nth-child(1) {
+          grid-column: 1/3;
+          grid-row: 1/2;
+        }
+        & > *:nth-child(4) {
+          grid-column: 1/3;
+          grid-row: 2/3;
+        }
+        & > *:nth-child(2) {
+          grid-column: 1/2;
+          grid-row: 3/4;
+        }
+        & > *:nth-child(3) {
+          grid-column: 2/3;
+          grid-row: 3/4;
+        }
+      }
+    }
+    .DTR-content {
+      justify-content: center;
+    }
+
+    .no-internship {
+      img {
+        height: 30rem;
+        width: 30rem;
       }
     }
   }
@@ -262,23 +298,29 @@
 
 @media screen and (max-width: 750px) {
   .daily-time-record {
-    .content {
-      .user {
-        grid-template-columns: 16rem auto;
-        grid-template-rows: auto auto auto 0.7fr;
-        // row-gap: 1rem;
-        .program {
-          grid-column: 1/3;
-          text-align: center;
+    .user {
+      grid-template-columns: 10rem auto;
+      .text {
+        font-size: 1.7rem;
+      }
+      .profile-img {
+        img {
+          height: 10rem;
+          width: 10rem;
         }
-        .profile-img {
-          grid-column: 1/2;
-          grid-row: 1/4;
-          img {
-            height: 13rem;
-            width: 13rem;
-          }
+      }
+    }
+    .mid {
+      .button-container {
+        button {
+          height: 3.5rem;
         }
+      }
+    }
+    .no-internship {
+      img {
+        height: 25rem;
+        width: 25rem;
       }
     }
   }
@@ -286,20 +328,45 @@
 
 @media screen and (max-width: 500px) {
   .daily-time-record {
-    .content {
-      .user {
-        grid-template-columns: 12rem auto;
+    .user {
+      grid-template-columns: auto;
+      grid-template-rows: auto auto;
+      gap: 0.5rem;
+      padding: 2rem 1rem;
 
-        gap: 0.5rem;
-        p,
-        h4 {
-          font-size: 1.7rem;
+      .profile-img {
+        img {
+          height: 9rem;
+          width: 9rem;
         }
-        .profile-img {
-          img {
-            height: 10rem;
-            width: 10rem;
+      }
+      .text {
+        font-size: 1.6rem;
+        gap: 0.5rem;
+        & > * {
+          text-align: center;
+        }
+        & > *:nth-child(4) {
+          display: none;
+        }
+        & > *:nth-child(5) {
+          display: flex;
+          grid-column: 1/3;
+          grid-row: 2/3;
+          p {
+            text-align: center;
           }
+        }
+      }
+    }
+    .mid {
+      @include flexColumn;
+
+      .button-container {
+        justify-content: center;
+        padding: 0;
+        button {
+          height: 3rem;
         }
       }
     }
@@ -308,20 +375,24 @@
 
 @media screen and (max-width: 400px) {
   .daily-time-record {
-    .content {
-      .user {
-        grid-template-columns: 10rem auto;
-        gap: 0.5rem;
-        p,
-        h4 {
-          font-size: 1.6rem;
-        }
-        .profile-img {
-          img {
-            height: 9rem;
-            width: 9rem;
-          }
-        }
+    // .user {
+    //   grid-template-columns: 10rem auto;
+    //   gap: 0.5rem;
+    //   p,
+    //   h4 {
+    //     font-size: 1.6rem;
+    //   }
+    //   .profile-img {
+    //     img {
+    //       height: 9rem;
+    //       width: 9rem;
+    //     }
+    //   }
+    // }
+    .no-internship {
+      img {
+        height: 20rem;
+        width: 20rem;
       }
     }
   }

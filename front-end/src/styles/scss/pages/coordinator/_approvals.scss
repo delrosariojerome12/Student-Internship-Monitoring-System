@@ -26,9 +26,11 @@
     }
     .img-waiting {
       @include flexCenter;
+      height: 100%;
+      width: 100%;
       img {
-        height: 57rem;
-        width: 57rem;
+        height: 45rem;
+        width: 45rem;
       }
     }
   }
@@ -74,14 +76,14 @@
       grid-auto-rows: 12rem;
       gap: 1rem;
 
-      .approvals {
-        .img-waiting {
-          img {
-            height: 35rem;
-            width: 35rem;
-          }
-        }
-      }
+      // .approvals {
+      //   .img-waiting {
+      //     img {
+      //       height: 35rem;
+      //       width: 35rem;
+      //     }
+      //   }
+      // }
 
       .approval-intern {
         // border: solid 1px #fff;
@@ -126,7 +128,7 @@
             .sent-details {
               display: grid;
               grid-template-columns: 20rem 1fr 1fr 1fr 1fr;
-              grid-template-rows: 20rem auto;
+              grid-template-rows: auto auto;
               background-color: #d9d9d9;
               gap: 2rem;
               padding: 2rem;
@@ -167,13 +169,14 @@
                 // padding: 1rem;
                 display: grid;
                 grid-template-columns: 10rem auto auto auto;
-                grid-template-rows: 3rem repeat(6, auto);
+                grid-template-rows: repeat(7, auto);
                 background-color: #d9d9d9;
                 gap: 0.5rem;
                 & > * {
                   // border-radius: 1rem;
                   background-color: #fff;
-                  padding: 0 1rem;
+                  padding: 0.5rem 1rem;
+                  align-items: center;
                 }
                 h4 {
                   grid-column: 1/5;
@@ -191,8 +194,7 @@
                   object-fit: contain;
                 }
                 p {
-                  display: flex;
-                  flex-direction: column;
+                  word-break: break-all;
                 }
                 & > *:nth-child(3) {
                   grid-column: 2/5;
@@ -327,8 +329,8 @@
       }
       .img-waiting {
         img {
-          height: 52rem;
-          width: 52rem;
+          height: 40rem;
+          width: 40rem;
         }
       }
     }
@@ -344,8 +346,8 @@
               width: 90vw;
 
               .sent-details {
-                grid-template-columns: 1fr 1fr 1fr 1fr;
-                grid-template-rows: auto auto auto;
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(3, 1fr);
 
                 .img-container {
                   background-color: transparent;
@@ -399,8 +401,8 @@
       }
       .img-waiting {
         img {
-          height: 40rem;
-          width: 40rem;
+          height: 35rem;
+          width: 35rem;
         }
       }
     }
@@ -431,10 +433,10 @@
                     width: 14rem;
                   }
                 }
-                p {
-                  word-wrap: break-word;
-                  word-break: break-all;
-                }
+                // p {
+                //   word-wrap: break-word;
+                //   word-break: break-all;
+                // }
               }
               .feedback-container {
                 form {

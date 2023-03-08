@@ -1,3 +1,5 @@
+/** @format */
+
 import React, {useState, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {FaCheck, FaCamera, FaRegImage} from "react-icons/fa";
@@ -106,7 +108,9 @@ const DailyTimeRecord = React.memo(() => {
     if (allAttendance.length === 0) {
       return (
         <div className="no-internship">
-          <h3>No record yet</h3>
+          <h3>
+            No <b>Record</b> Yet
+          </h3>
           <img src={NoDocumentSvg} alt="no-internship" />
         </div>
       );
@@ -123,60 +127,61 @@ const DailyTimeRecord = React.memo(() => {
   return (
     <IconContext.Provider value={{className: "icon"}}>
       <section className="daily-time-record">
-        <div className="content">
-          <div className="user">
-            <div className="profile-img">
-              <img src={profileImage} alt="profile-image" />
-            </div>
-            <div className="text">
-              <h4 className="full-name">
-                {firstName} {lastName}
-              </h4>
-              <p className="rendered-hours">
-                <b>Rendered Hours: </b> {renderedHours}
-              </p>
-              <p className="required-hours">
-                <b>Required Hours: </b> {requiredHours}
-              </p>
-              <p className="program">
-                <b>Program:</b> {program}
-              </p>
-            </div>
+        <div className="user">
+          <div className="profile-img">
+            <img src={profileImage} alt="profile-image" />
           </div>
-          <div className="mid">
-            <div className="button-container">
-              <button
-                className="time-in"
-                onClick={() => dispatch(handleTimeIn())}
-                // style={
-                //   isTimeInDisable
-                //     ? {pointerEvents: "none", opacity: ".5"}
-                //     : {opacity: "1"}
-                // }
-              >
-                Time In
-              </button>
-              <button
-                className="time-out"
-                onClick={() => dispatch(handleTimeOut())}
-                // style={
-                //   isTimeOutDisable
-                //     ? {pointerEvents: "none", opacity: ".5"}
-                //     : {opacity: "1"}
-                // }
-              >
-                Time Out
-              </button>
-            </div>
-            <div className="search-box">
-              <span>
-                <BiSearchAlt />
-              </span>
-              <input type="text" placeholder="Search" />
-            </div>
+          <div className="text">
+            <h4 className="full-name">
+              {firstName} {lastName}
+            </h4>
+            <p className="rendered-hours">
+              Rendered Hours: <b> {renderedHours}</b>
+            </p>
+            <p className="required-hours">
+              Required Hours: <b> {requiredHours}</b>
+            </p>
+            <p>
+              Program: <b> {program}</b>
+            </p>
+            <p>
+              <b>{program}</b>
+            </p>
           </div>
-          {renderAttendance()}
         </div>
+        <div className="mid">
+          <div className="button-container">
+            <button
+              className="time-in"
+              onClick={() => dispatch(handleTimeIn())}
+              // style={
+              //   isTimeInDisable
+              //     ? {pointerEvents: "none", opacity: ".5"}
+              //     : {opacity: "1"}
+              // }
+            >
+              Time In
+            </button>
+            <button
+              className="time-out"
+              onClick={() => dispatch(handleTimeOut())}
+              // style={
+              //   isTimeOutDisable
+              //     ? {pointerEvents: "none", opacity: ".5"}
+              //     : {opacity: "1"}
+              // }
+            >
+              Time Out
+            </button>
+          </div>
+          <div className="search-box">
+            <span>
+              <BiSearchAlt />
+            </span>
+            <input type="text" placeholder="Search" />
+          </div>
+        </div>
+        {renderAttendance()}
         {isTimeInOpen && <TimeInModal email={email} />}
         {isTimeOutOpen && <TimeOutModal email={email} />}
         {isTodayOpen && <AttendanceModal />}
