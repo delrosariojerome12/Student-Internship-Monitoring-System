@@ -1,39 +1,42 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
-import {getAllAttendance} from "../../features/interns/attendanceReducer";
-import axios from "axios";
+import {getAllAttendanceToday} from "../../features/coordinator/monitorAttendance";
+import Bouncing from "../../components/loading/Bouncing";
+import ServerError from "../serverError";
+import Attendance from "../../components/coordinator/Attendance";
 
-const Attendance = () => {
-  // const {allAttendanceToday} = useSelector
-  const [todayAttendance, setTodayAttendance] = useState(null);
-
-  const fetchData = async () => {
-    try {
-      const url = `http://localhost:5000/attendance/getAllAttendanceToday`;
-      const {data: res} = await axios.get(url);
-      setTodayAttendance(res.data);
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+const MonitorAttendance = () => {
+  const {isLoading, isError, attendanceToday} = useSelector(
+    (state) => state.monitorAttendance
+  );
   const dispatch = useDispatch();
+
   useEffect(() => {
-    fetchData();
+    dispatch(getAllAttendanceToday({}));
   }, []);
 
-  if (!todayAttendance) {
-    return <div>Loading...</div>;
+  if (isLoading || !attendanceToday) {
+    return <Bouncing />;
+  }
+  if (isError) {
+    return <ServerError />;
   }
 
+  const renderAttendance = () => {
+    return attendanceToday.map((item, index) => {
+      return <Attendance key={index} attendance={item} />;
+    });
+  };
+
   return (
-    <div>
-      {todayAttendance.map((item, index) => {
-        return <p key={index}>{item.email}</p>;
-      })}
+    <div className="monitor-attendance">
+      <div className="top">
+        <h2>Attendance</h2>
+      </div>
+      <div className="btn-container"></div>
+      <div className="content">{renderAttendance()}</div>
     </div>
   );
 };
 
-export default Attendance;
+export default MonitorAttendance;

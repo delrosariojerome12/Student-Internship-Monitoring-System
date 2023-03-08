@@ -1,3 +1,5 @@
+/** @format */
+
 import React, {useState, useEffect, useRef} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {
@@ -52,7 +54,12 @@ const TimeInModal = React.memo(({email}) => {
   const [time, setTime] = useState("");
   const [address, setAddress] = useState("");
   const [capturedPhoto, setCapturedPhoto] = useState(null);
+  const [hasCamera, setHasCamera] = useState(true);
   const cameraRef = useRef(null);
+
+  const handleUserMediaError = () => {
+    setHasCamera(false);
+  };
 
   const cameraConstraints = {
     width: 400,
@@ -151,6 +158,17 @@ const TimeInModal = React.memo(({email}) => {
     );
   }
 
+  if (!hasCamera) {
+    return (
+      <>
+        <div className="overlay" onClick={() => dispatch(handleTimeIn())}></div>
+        <div className="no-camera modal">
+          <h3>No Camera</h3>
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
       <div className="overlay" onClick={() => dispatch(handleTimeIn())}></div>
@@ -169,6 +187,7 @@ const TimeInModal = React.memo(({email}) => {
                 mirrored={true}
                 videoConstraints={cameraConstraints}
                 screenshotFormat="image/jpeg"
+                onUserMediaError={handleUserMediaError}
               />
               <button onClick={handleCaptureImage}>Take Photo</button>
             </>

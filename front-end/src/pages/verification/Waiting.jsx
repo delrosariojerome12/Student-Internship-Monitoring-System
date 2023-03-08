@@ -9,7 +9,7 @@ import RejectErrorSvg from "../../assets/ERROR IMAGE/RejectError.svg";
 const Waiting = React.memo((user) => {
   const {
     user: {
-      email,
+      user: { firstName, lastName, email },
       schoolDetails: {
         program,
         studentContact,
@@ -22,6 +22,9 @@ const Waiting = React.memo((user) => {
         supervisor,
         supervisorContact,
         typeOfWork,
+        logo,
+        startingDate,
+        description,
       },
       scheduleDetails: {
         scheduleType,
@@ -72,23 +75,30 @@ const Waiting = React.memo((user) => {
           </div>
 
           <div className="student-details-container">
-            <h4>Student Details</h4>
-            <p>
-              Program:
-              <b> {program}</b>
-            </p>
-            <p>
-              Required Hours:
-              <b> {requiredHours}</b>
-            </p>
-            <p>
-              Email:
-              <b> {email}</b>
-            </p>
-            <p>
-              Contact Number:
-              <b> {studentContact}</b>
-            </p>
+            <div className="student-details">
+              <h4>Student Details</h4>
+              <p>
+                <b>
+                  {firstName} {lastName}
+                </b>
+              </p>
+              <p>
+                Program:
+                <b> {program}</b>
+              </p>
+              <p>
+                Required Hours:
+                <b> {requiredHours}</b>
+              </p>
+              <p>
+                Email:
+                <b> {email}</b>
+              </p>
+              <p>
+                Contact Number:
+                <b> {studentContact}</b>
+              </p>
+            </div>
           </div>
           <div className="schedule-details-container">
             <h4>Schedule Details</h4>
@@ -104,28 +114,41 @@ const Waiting = React.memo((user) => {
               Time:
               <b> {`${timeInSchedule} - ${timeOutSchedule}`}</b>
             </p>
+            <p>
+              Starting Date:
+              <b> {startingDate}</b>
+            </p>
           </div>
           <div className="internship-details-container">
             <h4>Internship Details</h4>
-            <p>
-              Type of Work:
-              <b> {typeOfWork} </b>
-            </p>
+            <img src={logo.link} alt={logo.name} />
             <p>
               Company:
               <b> {companyName}</b>
             </p>
             <p>
               Address:
-              <b> {companyAddress} </b>
+              <b> {companyAddress}</b>
             </p>
             <p>
               Supervisor:
               <b> {supervisor}</b>
             </p>
             <p>
+              Email:
+              {/* Internship Details Email */}
+            </p>
+            <p>
               Contact:
               <b> {supervisorContact}</b>
+            </p>
+            <p>
+              Type of Work:
+              <b> {typeOfWork}</b>
+            </p>
+            <p>
+              Description:
+              <b> {description}</b>
             </p>
           </div>
         </div>
