@@ -3777,6 +3777,11 @@ button {
   gap: 1rem;
   border-radius: 1rem;
   background-color: #212121;
+  grid-template-rows: 12rem 7rem auto;
+  color: #fff;
+}
+.dashboard .monitor-attendance > *, .dashboard-active .monitor-attendance > * {
+  border: solid 1px #fff;
 }
 .dashboard .admin-document-page, .dashboard-active .admin-document-page {
   display: grid;

@@ -22,7 +22,21 @@ const MonitorAttendance = () => {
     return <ServerError />;
   }
 
-  return <div className="monitor-attendance">Attendance</div>;
+  const renderAttendance = () => {
+    return attendanceToday.map((item, index) => {
+      return <Attendance key={index} attendance={item} />;
+    });
+  };
+
+  return (
+    <div className="monitor-attendance">
+      <div className="top">
+        <h2>Attendance</h2>
+      </div>
+      <div className="btn-container"></div>
+      <div className="content">{renderAttendance()}</div>
+    </div>
+  );
 };
 
 export default MonitorAttendance;

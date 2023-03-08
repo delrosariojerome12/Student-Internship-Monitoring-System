@@ -10,6 +10,7 @@ const today = `${month < 10 ? "0" : ""}${month}-${
 }${date}-${year}`;
 
 const AttendanceSchema = new mongoose.Schema({
+  user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
   date: {
     type: String,
     default: today,

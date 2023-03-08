@@ -94,7 +94,10 @@ const getAllAttendanceToday = async (req, res) => {
 
   const todayDate = `${month}-${date}-${year}`;
 
-  const allAttendanceToday = await Attendance.find({date: todayDate});
+  const allAttendanceToday = await Attendance.find({date: todayDate}).populate({
+    path: "user",
+    model: "User",
+  });
 
   res.status(StatusCodes.OK).json({
     success: true,
