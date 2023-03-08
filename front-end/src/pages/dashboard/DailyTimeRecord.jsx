@@ -10,6 +10,7 @@ import Attendance from "../../components/intern/Attendance";
 import TimeInModal from "../../components/intern/TimeInModal";
 import TimeOutModal from "../../components/intern/TimeOutModal";
 import AttendanceModal from "../../components/intern/AttendanceModal";
+import CantStart from "./CantStart";
 
 import {getAllAttendance} from "../../features/interns/attendanceReducer";
 import NoDocumentSvg from "../../assets/img/waiting.svg";
@@ -47,6 +48,7 @@ const DailyTimeRecord = React.memo(() => {
     internshipDetails: {renderedHours, startingDate},
     schoolDetails: {program, requiredHours},
     scheduleDetails,
+    status,
   } = user;
 
   useEffect(() => {
@@ -83,6 +85,7 @@ const DailyTimeRecord = React.memo(() => {
     const today = `${year}-${month}-${day}`;
 
     dispatch(getAllAttendance({email, scheduleDetails}));
+
     today === startingDate && dispatch(checkStartingDate({email}));
     return () => clearInterval(timer);
   }, []);
@@ -95,8 +98,9 @@ const DailyTimeRecord = React.memo(() => {
     return <ServerError />;
   }
 
-  if (!canStart) {
-    return <h1>Cant start</h1>;
+  if (status === "Not Started") {
+    console.log(status);
+    return <CantStart startingDate={startingDate} />;
   }
 
   const renderAttendance = () => {

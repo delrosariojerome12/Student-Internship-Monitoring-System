@@ -9,7 +9,6 @@
   button {
     height: 5rem;
     width: 12rem;
-    // background-color: #fff;
     background-color: $primary-bg-color;
     color: #fff;
     border: 1px solid transparent;
@@ -101,7 +100,7 @@
 
   .content {
     display: grid;
-    grid-template-rows: 12rem 7rem auto;
+    grid-template-rows: 12rem 7rem 2fr;
     padding: 1rem;
     gap: 1rem;
 
@@ -208,10 +207,8 @@
       grid-auto-rows: 6rem;
       gap: 1rem;
       padding: 2rem;
-      // background-image: linear-gradient(#282b30 10%, #393e46 31%, #333333 80%);
       background-color: #212121;
       border-radius: 2rem;
-      max-height: 67rem;
       overflow-y: auto;
 
       .attendance {
