@@ -1,10 +1,8 @@
-/** @format */
-
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { RiDashboardLine } from "react-icons/ri";
-import { HiPencilAlt } from "react-icons/hi";
-import { HiDocument, HiTrendingUp, HiMenu } from "react-icons/hi";
+import React, {useState, useEffect} from "react";
+import {Link, useNavigate} from "react-router-dom";
+import {RiDashboardLine} from "react-icons/ri";
+import {HiPencilAlt} from "react-icons/hi";
+import {HiDocument, HiTrendingUp, HiMenu} from "react-icons/hi";
 import {
   FaUserAlt,
   FaChevronLeft,
@@ -12,16 +10,17 @@ import {
   FaChevronDown,
   FaUsers,
   FaUserCheck,
+  FaCalendarMinus,
 } from "react-icons/fa";
-import { MdOutlineWork, MdLogout } from "react-icons/md";
-import { FaRegBuilding } from "react-icons/fa";
-import { IconContext } from "react-icons";
+import {MdOutlineWork, MdLogout} from "react-icons/md";
+import {FaRegBuilding} from "react-icons/fa";
+import {IconContext} from "react-icons";
 import logo from "../../assets/img/logo.svg";
-import { useSelector, useDispatch } from "react-redux";
-import { handleSidebar } from "../../features/dashboard/dashboard";
+import {useSelector, useDispatch} from "react-redux";
+import {handleSidebar} from "../../features/dashboard/dashboard";
 import CrossSvg from "../../assets/img/cross.svg";
 import ProfileTab from "../sidebarRight/ProfileTab";
-import { handleLogout } from "../../features/user/userReducer";
+import {handleLogout} from "../../features/user/userReducer";
 
 import {
   handleProfile,
@@ -53,7 +52,7 @@ const links = [
         IconType: HiDocument,
       },
       {
-        path: "/dashboard/reports/narrative",
+        path: "/dashboard/reports/reports",
         link: "Reports",
         IconType: HiPencilAlt,
       },
@@ -93,6 +92,11 @@ const links = [
         IconType: FaUsers,
       },
       {
+        path: "/dashboard/attendance",
+        link: "Attendance",
+        IconType: FaCalendarMinus,
+      },
+      {
         path: "/dashboard/approvals",
         link: "Approvals",
         IconType: FaUserCheck,
@@ -108,12 +112,12 @@ const links = [
 ];
 
 const SidebarLeft = () => {
-  const { isSidebarOpen } = useSelector((state) => state.dashboard);
-  const { isProfileOpen } = useSelector((state) => state.sidebarRight);
-  const { user } = useSelector((state) => state.user);
+  const {isSidebarOpen} = useSelector((state) => state.dashboard);
+  const {isProfileOpen} = useSelector((state) => state.sidebarRight);
+  const {user} = useSelector((state) => state.user);
 
   const {
-    user: { email, firstName, lastName, profileImage, role },
+    user: {email, firstName, lastName, profileImage, role},
   } = user;
 
   const dispatch = useDispatch();
@@ -124,7 +128,7 @@ const SidebarLeft = () => {
   const renderLinks = () => {
     if (user.user.role === "admin") {
       return links[1].sidebar.map((item, index) => {
-        const { path, link, IconType } = item;
+        const {path, link, IconType} = item;
         return (
           <span
             className="icon-con"
@@ -132,7 +136,8 @@ const SidebarLeft = () => {
             onClick={() => {
               setDropDownOpen(false);
               isSidebarOpen && dispatch(handleSidebar());
-            }}>
+            }}
+          >
             <Link to={path}>
               <IconType />
               {/* {isSidebarOpen && link} */}
@@ -145,7 +150,7 @@ const SidebarLeft = () => {
 
     if (user.user.role === "coordinator") {
       return links[2].sidebar.map((item, index) => {
-        const { path, link, IconType } = item;
+        const {path, link, IconType} = item;
         return (
           <span
             className="icon-con"
@@ -154,7 +159,8 @@ const SidebarLeft = () => {
               setDropDownOpen(false);
               // dispatch(handleSidebar());
               isSidebarOpen && dispatch(handleSidebar());
-            }}>
+            }}
+          >
             <Link to={path}>
               <IconType />
               {/* {isSidebarOpen && link} */}
@@ -170,7 +176,7 @@ const SidebarLeft = () => {
       return links[0].sidebar
         .filter((item) => item.link !== "Internships")
         .map((item, index) => {
-          const { path, link, IconType } = item;
+          const {path, link, IconType} = item;
           return (
             <span
               className="icon-con"
@@ -178,7 +184,8 @@ const SidebarLeft = () => {
               onClick={() => {
                 setDropDownOpen(false);
                 isSidebarOpen && dispatch(handleSidebar());
-              }}>
+              }}
+            >
               <Link to={path}>
                 <IconType />
                 {/* {isSidebarOpen && link} */}
@@ -193,7 +200,7 @@ const SidebarLeft = () => {
         (item) => item.link === "Dashboard" || item.link === "Internships"
       )
       .map((item, index) => {
-        const { path, link, IconType } = item;
+        const {path, link, IconType} = item;
         return (
           <span
             className="icon-con"
@@ -201,7 +208,8 @@ const SidebarLeft = () => {
             onClick={() => {
               setDropDownOpen(false);
               isSidebarOpen && dispatch(handleSidebar());
-            }}>
+            }}
+          >
             <Link to={path}>
               <IconType />
               {isSidebarOpen ? link : isDropDownOpen ? link : null}
@@ -222,8 +230,9 @@ const SidebarLeft = () => {
     <aside
       className={
         isSidebarOpen ? "left-sidebar active-sidebar" : "left-sidebar "
-      }>
-      <IconContext.Provider value={{ className: "icons" }}>
+      }
+    >
+      <IconContext.Provider value={{className: "icons"}}>
         <div className="img-con">
           <img src={logo} alt="Logo.png " />
           <span
@@ -232,7 +241,8 @@ const SidebarLeft = () => {
               isProfileOpen && dispatch(closeProfile());
             }}
             onBlur={() => dispatch(handleSidebar())}
-            className="collapse-icon">
+            className="collapse-icon"
+          >
             {!isSidebarOpen ? <FaChevronRight /> : <FaChevronLeft />}
           </span>
         </div>
@@ -250,7 +260,8 @@ const SidebarLeft = () => {
                   dispatch(handleLogout());
                   navigate("/account/login");
                 }}
-                className="logout">
+                className="logout"
+              >
                 <span>
                   <MdLogout />
                 </span>

@@ -98,7 +98,11 @@ const ApprovalIntern = React.memo(({ intern, index }) => {
               <div className="student-details-container">
                 <div className="student-details">
                   <h4>Student Details</h4>
-
+                  <p>
+                    <b>
+                      {firstName} {lastName}
+                    </b>
+                  </p>
                   <p>
                     Program:
                     <b> {program}</b>

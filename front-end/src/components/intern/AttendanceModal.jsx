@@ -17,7 +17,7 @@ const AttendanceModal = React.memo(() => {
     OT,
     proof: {timeInLink, timeOutLink},
   } = selectedAttendance;
-
+  console.log(selectedAttendance);
   return (
     <>
       <div
@@ -38,7 +38,6 @@ const AttendanceModal = React.memo(() => {
         </div>
         <div className="lower"></div>
       </div>
-      ;
     </>
   );
 });

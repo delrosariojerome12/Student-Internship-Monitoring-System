@@ -3,7 +3,10 @@ const {StatusCodes} = require("http-status-codes");
 const Attendance = require("../models/Attendance");
 const Intern = require("../models/Intern");
 const mongoose = require("mongoose");
+const User = require("../models/User");
+const Internship = require("../models/Internship");
 
+// student
 const getAllAttendance = async (req, res) => {
   const {email} = req.params;
   const {scheduleType} = req.query;
@@ -82,6 +85,109 @@ const getAllAttendance = async (req, res) => {
   });
 };
 
+// coordinator
+const getAllAttendanceToday = async (req, res) => {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const date = now.getDate();
+
+  const todayDate = `${month < 10 ? "0" : ""}${month}-${
+    date < 10 ? "0" : ""
+  }${date}-${year}`;
+
+  const allAttendanceToday = await Attendance.find({date: todayDate})
+    .populate({
+      path: "user",
+      model: "User",
+    })
+    .populate({
+      path: "intern",
+      model: "Intern",
+    });
+
+  res.status(StatusCodes.OK).json({
+    success: true,
+    data: allAttendanceToday,
+  });
+};
+
+const checkAbsents = async (req, res) => {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const date = now.getDate();
+
+  const todayDate = `${month < 10 ? "0" : ""}${month}-${
+    date < 10 ? "0" : ""
+  }${date}-${year}`;
+
+  const allInterns = await Intern.find({});
+  const internEmails = allInterns.map((item) => item.email);
+
+  for (let email of internEmails) {
+    const attendance = await Attendance.findOne({
+      email: email,
+      date: todayDate,
+    });
+    if (!attendance) {
+      // Create attendance for absent interns
+
+      const user = await User.findOne({email});
+      const intern = await Intern.findOne({email});
+
+      const newAttendance = new Attendance({
+        email: email,
+        date: todayDate,
+        isPresent: false,
+        timeIn: "absent",
+        user: user._id,
+        intern: intern._id,
+        proof: null,
+      });
+      await newAttendance.save();
+    }
+  }
+  const allAttendance = await Attendance.find();
+
+  res.status(StatusCodes.OK).json({
+    success: true,
+    allAttendance,
+  });
+};
+
+const getAllAttendanceByDate = async (req, res) => {
+  const {date, renderedHours} = req.query;
+
+  const filter = {};
+
+  if (date) {
+    const dateArr = date.split("-");
+    const newDate = `${dateArr[1]}-${dateArr[2]}-${dateArr[0]}`;
+    filter.date = newDate;
+  }
+
+  if (renderedHours) {
+    filter.totalRendered = renderedHours;
+  }
+
+  const allAttendanceByDate = await Attendance.find({...filter})
+    .populate({
+      path: "user",
+      model: "User",
+    })
+    .populate({
+      path: "intern",
+      model: "Intern",
+    });
+
+  res.status(StatusCodes.OK).json({
+    success: true,
+    data: allAttendanceByDate,
+    searched: [date, renderedHours],
+  });
+};
+
 const getAttendance = async (req, res) => {
   const {id} = req.params;
 
@@ -101,10 +207,24 @@ const timeIn = async (req, res) => {
   if (!email) {
     throw new NotFound("Email not found");
   }
-  const attendance = await Attendance.create({email, ...req.body});
+
+  const user = await User.findOne({email});
+  const intern = await Intern.findOne({email});
+
+  const attendance = await Attendance.create({
+    user: user._id,
+    intern: intern._id,
+    email,
+    ...req.body,
+  });
+
   Attendance.createIndexes();
 
-  res.status(StatusCodes.OK).json({success: true, data: attendance});
+  const populatedAttendance = await Attendance.findById(attendance._id)
+    .populate("user")
+    .populate("intern");
+
+  res.status(StatusCodes.OK).json({success: true, data: populatedAttendance});
 };
 
 const timeOut = async (req, res) => {
@@ -142,8 +262,11 @@ const checkStartingDate = async (req, res) => {
 
 module.exports = {
   getAllAttendance,
+  getAllAttendanceToday,
+  getAllAttendanceByDate,
   getAttendance,
   timeIn,
   timeOut,
   checkStartingDate,
+  checkAbsents,
 };

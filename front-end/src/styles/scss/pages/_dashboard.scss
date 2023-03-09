@@ -1,3 +1,5 @@
+/** @format */
+
 @import "../variables";
 @import "../utils";
 
@@ -9,6 +11,7 @@
   padding: 1rem 9rem 1rem 13rem;
   background-color: #393e46;
   transition: all 0.2s ease-in-out;
+
   .main {
     height: 100%;
     width: 100%;
@@ -126,6 +129,55 @@
       }
     }
   }
+
+  .cant-start {
+    background-color: #212121;
+    @include flexCenter;
+
+    button {
+      height: 5rem;
+      width: 12rem;
+      background-color: $primary-compliment-landing;
+      color: #fff;
+      border: 2px solid transparent;
+      outline: none;
+      cursor: pointer;
+      padding: 1rem 2rem;
+      transition: all 0.2s linear;
+      font-weight: 600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      .icon {
+        font-size: 1.2rem;
+      }
+      p {
+        padding-top: 0.2rem;
+      }
+      &:hover {
+        // background-color: $primary-bg-color;
+        border-radius: 1rem;
+        border: solid 2px $primary-compliment-landing;
+        background-color: #fff;
+        color: $primary-compliment-landing;
+      }
+    }
+    .cant-start-modal {
+      @include flexColumn;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      background-color: #fff;
+      border-radius: 1rem;
+      width: 50rem;
+      height: 52rem;
+      img {
+        height: 30rem;
+        width: 30rem;
+      }
+    }
+  }
   @import "../components/dashboard/sidebarLeft";
   @import "../components/dashboard/sidebarRight";
 
@@ -133,6 +185,8 @@
   @import "../pages/coordinator/approvals";
   @import "../pages/coordinator/internship";
   @import "../pages/coordinator/dashboard";
+  @import "../pages/coordinator/attendance";
+
   @import "../pages/admin/document";
 }
 
@@ -146,9 +200,26 @@
 //   }
 // }
 
+@media screen and (max-width: 700px) {
+  .dashboard {
+    .cant-start {
+      text-align: center;
+      font-size: 1.7rem;
+      .cant-start-modal {
+        width: 95%;
+        height: auto;
+        padding: 3rem 2rem;
+        img {
+          height: 25rem;
+          width: 25rem;
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 600px) {
   .dashboard {
-    // padding: 1rem !important;
     padding: 10rem 1rem 1rem 1rem !important;
   }
 }
@@ -166,6 +237,23 @@
         }
         .map {
           border-radius: 0 0 2rem 2rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .dashboard {
+    .cant-start {
+      font-size: 1.6rem;
+      button {
+        height: 4rem;
+      }
+      .cant-start-modal {
+        img {
+          height: 22rem;
+          width: 22rem;
         }
       }
     }

@@ -542,7 +542,7 @@
             background-color: $primary-compliment-landing;
             position: relative;
             display: grid;
-            grid-auto-rows: 8rem;
+            grid-auto-rows: repeat(auto-fill, auto);
             gap: 1rem;
             border-radius: 0 0 1rem 1rem;
             // overflow-y: auto;
@@ -694,18 +694,18 @@
         .text {
           .bottom {
             .dropdown-container {
-              grid-auto-rows: 12rem;
               .document {
                 grid-template-rows: auto auto;
                 grid-template-columns: 0.25fr 1fr;
                 gap: 0.5rem;
+                height: auto;
                 img {
                   grid-row: 1/3;
                   grid-column: 1/2;
                 }
-                .left {
-                  justify-content: center;
-                }
+                // .left {
+                //   justify-content: center;
+                // }
               }
             }
           }
@@ -898,6 +898,7 @@
           .bottom {
             .dropdown-container {
               grid-auto-rows: 11rem;
+              gap: 0.5rem;
               .document {
                 img {
                   height: 3.5rem;
