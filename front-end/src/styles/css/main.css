@@ -6288,25 +6288,29 @@ button {
   left: 0%;
   z-index: 6;
 }
-.daily-time-record .time-in {
+.daily-time-record .time-in,
+.daily-time-record .time-out {
   display: grid;
   grid-template-rows: auto 1fr 5rem;
   padding: 2rem;
   text-align: center;
-  background-color: #d9d9d9 !important;
   gap: 1rem;
 }
-.daily-time-record .time-in > * {
+.daily-time-record .time-in > *,
+.daily-time-record .time-out > * {
   border: solid 1px #3a2d2d;
 }
-.daily-time-record .time-in .address {
+.daily-time-record .time-in .address,
+.daily-time-record .time-out .address {
   padding: 1rem;
   background-color: #fff;
 }
-.daily-time-record .time-in .address h3 {
+.daily-time-record .time-in .address h3,
+.daily-time-record .time-out .address h3 {
   color: #333333;
 }
-.daily-time-record .time-in .camera {
+.daily-time-record .time-in .camera,
+.daily-time-record .time-out .camera {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6315,30 +6319,78 @@ button {
   background-color: #fff;
   padding: 1rem;
 }
-.daily-time-record .time-in .camera img {
+.daily-time-record .time-in .camera img,
+.daily-time-record .time-out .camera img {
   height: 40rem;
   width: 40rem;
 }
-.daily-time-record .time-in .camera video {
+.daily-time-record .time-in .camera video,
+.daily-time-record .time-out .camera video {
   height: 40rem;
   width: 40rem;
 }
-.daily-time-record .time-in button {
+.daily-time-record .time-in button,
+.daily-time-record .time-out button {
   margin: 0 auto;
 }
 .daily-time-record .attendance-view {
   display: grid;
-  padding: 1rem;
+  grid-template-rows: repeat(2, auto);
+  padding: 2rem;
+  gap: 1rem;
 }
-.daily-time-record .attendance-view img {
+.daily-time-record .attendance-view .upper {
+  display: grid;
+  gap: 1rem;
+  grid-template-rows: auto 1fr;
+}
+.daily-time-record .attendance-view .upper > * {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.daily-time-record .attendance-view .upper .attendance-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: 0.5rem;
+}
+.daily-time-record .attendance-view .upper .attendance-info > * {
+  padding: 0.5rem 1rem;
+}
+.daily-time-record .attendance-view .upper .attendance-info :nth-child(1) {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+.daily-time-record .attendance-view .upper .attendance-info > *:nth-child(5) {
+  grid-column: 1/3;
+}
+.daily-time-record .attendance-view .upper .img-con {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+.daily-time-record .attendance-view .upper .img-con > * {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+  gap: 0.5rem;
+}
+.daily-time-record .attendance-view .upper .img-con img {
   width: 32rem;
   height: 32rem;
 }
+.daily-time-record .attendance-view .lower {
+  margin: auto;
+}
 .daily-time-record .modal {
   overflow-y: auto;
-  background-color: #fff;
+  background-color: #d9d9d9;
   border-radius: 1rem;
-  height: 75rem;
+  height: 76rem;
   width: 70rem;
   position: absolute;
   top: 50%;
@@ -6364,7 +6416,7 @@ button {
   gap: 1.5rem;
   grid-template-columns: 13rem auto;
   grid-template-rows: auto;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem 1rem 2rem;
   border-radius: 2rem;
   align-items: center;
   background-color: #282b30;
@@ -6536,6 +6588,9 @@ button {
 }
 
 @media screen and (max-width: 1030px) {
+  .daily-time-record {
+    grid-template-rows: minmax(15rem, auto) auto minmax(30rem, 60vh);
+  }
   .daily-time-record .user .text {
     padding: 1.5rem;
     grid-template-rows: repeat(3, auto);
@@ -6569,16 +6624,31 @@ button {
     height: 68rem;
     width: 58rem;
   }
-  .daily-time-record .time-in .address h2 {
+  .daily-time-record .time-in .address h2,
+  .daily-time-record .time-out .address h2 {
     font-size: 1.9rem;
   }
-  .daily-time-record .time-in .address h3 {
+  .daily-time-record .time-in .address h3,
+  .daily-time-record .time-out .address h3 {
     font-size: 1.8rem;
   }
   .daily-time-record .time-in .camera img,
-  .daily-time-record .time-in .camera video {
+  .daily-time-record .time-in .camera video,
+  .daily-time-record .time-out .camera img,
+  .daily-time-record .time-out .camera video {
     height: 35rem;
     width: 35rem;
+  }
+  .daily-time-record .attendance-view .upper .attendance-info p {
+    font-size: 1.7rem;
+    padding: 0 1rem;
+  }
+  .daily-time-record .attendance-view .upper .img-con {
+    font-size: 1.7rem;
+  }
+  .daily-time-record .attendance-view .upper .img-con img {
+    height: 30rem;
+    width: 30rem;
   }
   .daily-time-record .user {
     grid-template-columns: 10rem auto;
@@ -6603,53 +6673,82 @@ button {
   }
 }
 @media screen and (max-width: 600px) {
+  .daily-time-record {
+    grid-template-rows: minmax(15rem, auto) auto minmax(30rem, 50vh);
+  }
   .daily-time-record .modal {
     height: 63rem;
     width: 99%;
   }
-  .daily-time-record .time-in {
-    height: auto;
-  }
   .daily-time-record .time-in .camera img,
-  .daily-time-record .time-in .camera video {
+  .daily-time-record .time-in .camera video,
+  .daily-time-record .time-out .camera img,
+  .daily-time-record .time-out .camera video {
     height: 30rem;
     width: 30rem;
   }
+  .daily-time-record .attendance-view .upper .img-con img {
+    height: 28rem;
+    width: 28rem;
+  }
 }
 @media screen and (max-width: 500px) {
+  .daily-time-record {
+    grid-template-rows: minmax(15rem, auto) auto minmax(20rem, 36vh);
+    gap: 0.5rem;
+  }
+  .daily-time-record button {
+    height: 4rem;
+  }
   .daily-time-record .modal {
     height: 57rem;
   }
-  .daily-time-record .time-in .address h2 {
+  .daily-time-record .time-in .address h2,
+  .daily-time-record .time-out .address h2 {
     font-size: 1.8rem;
   }
-  .daily-time-record .time-in .address h3 {
+  .daily-time-record .time-in .address h3,
+  .daily-time-record .time-out .address h3 {
     font-size: 1.7rem;
   }
   .daily-time-record .time-in .camera img,
-  .daily-time-record .time-in .camera video {
+  .daily-time-record .time-in .camera video,
+  .daily-time-record .time-out .camera img,
+  .daily-time-record .time-out .camera video {
     height: 25rem;
     width: 25rem;
   }
-  .daily-time-record .time-in button {
-    height: 4rem;
+  .daily-time-record .attendance-view .upper .attendance-info p {
+    font-size: 1.6rem;
+  }
+  .daily-time-record .attendance-view .upper .img-con {
+    font-size: 1.6rem;
+  }
+  .daily-time-record .attendance-view .upper .img-con img {
+    height: 23rem;
+    width: 23rem;
   }
   .daily-time-record .user {
     grid-template-columns: auto;
     grid-template-rows: auto auto;
     gap: 0.5rem;
-    padding: 2rem 1rem;
+    padding: 1rem;
   }
   .daily-time-record .user .profile-img img {
     height: 9rem;
     width: 9rem;
   }
   .daily-time-record .user .text {
-    font-size: 1.6rem;
     gap: 0.5rem;
+  }
+  .daily-time-record .user .text h4 {
+    font-size: 1.8rem;
   }
   .daily-time-record .user .text > * {
     text-align: center;
+  }
+  .daily-time-record .user .text p {
+    font-size: 1.6rem;
   }
   .daily-time-record .user .text > *:nth-child(4) {
     display: none;
@@ -6664,6 +6763,7 @@ button {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    gap: 0.5rem;
   }
   .daily-time-record .mid .button-container {
     justify-content: center;
@@ -6676,6 +6776,7 @@ button {
 @media screen and (max-width: 400px) {
   .daily-time-record .user {
     padding: 1rem;
+    grid-template-rows: auto;
   }
   .daily-time-record .user .profile-img {
     display: none;
@@ -6683,6 +6784,31 @@ button {
   .daily-time-record .no-internship img {
     height: 20rem;
     width: 20rem;
+  }
+  .daily-time-record .time-in .address h2,
+  .daily-time-record .time-out .address h2 {
+    font-size: 1.7rem;
+  }
+  .daily-time-record .time-in .address h3,
+  .daily-time-record .time-out .address h3 {
+    font-size: 1.6rem;
+  }
+  .daily-time-record .time-in .camera img,
+  .daily-time-record .time-in .camera video,
+  .daily-time-record .time-out .camera img,
+  .daily-time-record .time-out .camera video {
+    height: 20rem;
+    width: 20rem;
+  }
+  .daily-time-record .attendance-view .upper .attendance-info p {
+    font-size: 1.5rem;
+  }
+  .daily-time-record .attendance-view .upper .img-con {
+    font-size: 1.5rem;
+  }
+  .daily-time-record .attendance-view .upper .img-con img {
+    height: 18rem;
+    width: 18rem;
   }
 }
 /** @format */
