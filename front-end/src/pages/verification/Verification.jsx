@@ -1,21 +1,26 @@
-import React, {useEffect, useState, useCallback} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import React, { useEffect, useState, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
-import {requestVerification} from "../../features/user/userReducer";
+import { requestVerification } from "../../features/user/userReducer";
 import AreYouSureModal from "../../components/verification/AreYouSureModal";
 
-import {storage} from "../../Firebase";
-import {ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage";
-import {v4} from "uuid";
+import { storage } from "../../Firebase";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  deleteObject,
+} from "firebase/storage";
+import { v4 } from "uuid";
 
-import {FaCheck} from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
 const Verification = React.memo(() => {
   const dispatch = useDispatch();
-  const {user} = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
 
   const {
-    user: {firstName},
+    user: { firstName },
     schoolDetails,
   } = user;
 
@@ -104,7 +109,7 @@ const Verification = React.memo(() => {
           code: "startingDate",
           value: "",
           isError: false,
-          errorMessage: "",
+          errorMessage: "Please Select a Weekday",
           isDisabled: false,
         },
         {
@@ -281,7 +286,7 @@ const Verification = React.memo(() => {
     // });
 
     const newData = form.map((input) => {
-      const {code, value, name} = input;
+      const { code, value, name } = input;
       if (name) {
         return {
           code,
@@ -299,8 +304,8 @@ const Verification = React.memo(() => {
       {},
       ...newData.map((item) =>
         !item.name
-          ? {[item.code]: item.value}
-          : {[item.code]: {link: item.value, name: item.name}}
+          ? { [item.code]: item.value }
+          : { [item.code]: { link: item.value, name: item.name } }
       )
     );
 
@@ -484,12 +489,12 @@ const Verification = React.memo(() => {
         case "logo":
           if (schoolDetails) {
             const {
-              validID: {name},
+              validID: { name },
             } = schoolDetails;
             deleteDuplicateFirebase(name);
           }
           if (value) {
-            const {name, type} = value;
+            const { name, type } = value;
             if (!type.includes("image")) {
               newForm[mainIndex].forms[index].isError = true;
               newForm[mainIndex].forms[index].errorMessage =
@@ -570,11 +575,24 @@ const Verification = React.memo(() => {
           setForm(newForm);
           checkCompletion(mainIndex);
           return;
-          // case "stating-date":
-          //   newForm[mainIndex].forms[index].value = value;
-          //   setForm(newForm);
-          //   checkCompletion(mainIndex);
+
+        case "starting-date":
+          const selectedDate = new Date(value);
+          const dayOfWeek = selectedDate.getDay();
+
+          // Check if the selected date is a weekend
+          if (dayOfWeek === 0 || dayOfWeek === 6) {
+            newForm[mainIndex].forms[index].isError = true;
+            newForm[mainIndex].forms[index].value = "";
+          } else {
+            newForm[mainIndex].forms[index].isError = false;
+            newForm[mainIndex].forms[index].value = value;
+          }
+
+          setForm(newForm);
+          checkCompletion(mainIndex);
           return;
+
         default:
           newForm[mainIndex].forms[index].value = value;
           setForm(newForm);
@@ -663,6 +681,7 @@ const Verification = React.memo(() => {
             date < 10 ? "0" : ""
           }${date}`;
           const maxDate = "2023-12-31";
+
           return (
             <div className="input-contain" key={index}>
               <input
@@ -689,8 +708,10 @@ const Verification = React.memo(() => {
                   <div className="text">{forInput}</div>
                 </label>
               </div>
+              {isError && <p className="error-message">{errorMessage}</p>}
             </div>
           );
+
         case "email":
         case "text":
           return (
@@ -742,7 +763,7 @@ const Verification = React.memo(() => {
                 {!isError && !value && <p>Select File</p>}
                 {isError && (
                   <p
-                    style={{color: "red", fontSize: "18px"}}
+                    style={{ color: "red", fontSize: "18px" }}
                     className="error-message"
                   >
                     {errorMessage}{" "}
@@ -753,7 +774,7 @@ const Verification = React.memo(() => {
             </div>
           );
         case "select":
-          const {options, placeholder} = item;
+          const { options, placeholder } = item;
           const list = options.map((opt) => opt);
           return (
             <Select
@@ -776,7 +797,7 @@ const Verification = React.memo(() => {
             />
           );
         case "list":
-          const {optionItems} = item;
+          const { optionItems } = item;
           return (
             <CreatableSelect
               tabIndex={-1}
@@ -798,7 +819,7 @@ const Verification = React.memo(() => {
             />
           );
         case "time":
-          const {optionTime} = item;
+          const { optionTime } = item;
           return (
             <Select
               tabIndex={-1}
@@ -821,7 +842,7 @@ const Verification = React.memo(() => {
             />
           );
         case "scheduleType":
-          const {scheduleType} = item;
+          const { scheduleType } = item;
           return (
             <Select
               tabIndex={-1}
@@ -881,7 +902,7 @@ const Verification = React.memo(() => {
 
   const renderSteps = () => {
     return steps.map((item, index) => {
-      const {step, isCompleted} = item;
+      const { step, isCompleted } = item;
       return (
         <div
           className={
