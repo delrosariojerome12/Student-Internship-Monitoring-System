@@ -46,11 +46,15 @@ const links = [
   },
   {
     link: "FAQ",
-    path: "faq",
+    path: "faqs",
   },
   {
     link: "About Us ",
     path: "/about-us",
+  },
+  {
+    link: "The Team ",
+    path: "/the team",
   },
 ];
 const authLinks = [
@@ -102,7 +106,7 @@ const teamMembers = [
 
 const displayTeam = () => {
   return (
-    <div className="the-team-container">
+    <div className="the-team-container" id="/the team">
       <div className="text-container-top">
         <p>The Team</p>
       </div>
@@ -229,7 +233,7 @@ const LandingPage = () => {
           </span>
         </nav>
         <section className="contents">
-          <div className="landing-contents">
+          <div className="landing-contents" id="/how-it-works">
             <div className="text">
               <h3>Student Internship Monitoring System</h3>
               <p>A web application</p>
@@ -266,7 +270,7 @@ const LandingPage = () => {
             </div>
           </div>
 
-          <div className="mockup-contents" id="faq">
+          <div className="mockup-contents">
             <div className="card">
               <div className="text-container">
                 <p>Do you need assistance with your internship?</p>
@@ -288,7 +292,7 @@ const LandingPage = () => {
             </div>
           </div>
 
-          <div className="main-carousel">
+          <div className="main-carousel" id="faqs">
             <div className="text-container-left">
               <p> SIMS</p>
               <p>Frequently Ask Questions</p>
@@ -316,7 +320,7 @@ const LandingPage = () => {
             </div>
           </div>
           {displayTeam()}
-          <div className="aboutUs-container">
+          <div className="aboutUs-container" id="/about-us">
             <div className="aboutUs-contents">
               <div className="aboutUs-Text">
                 <p>About Us</p>
