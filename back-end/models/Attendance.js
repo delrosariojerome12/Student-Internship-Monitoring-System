@@ -10,6 +10,8 @@ const today = `${month < 10 ? "0" : ""}${month}-${
 }${date}-${year}`;
 
 const AttendanceSchema = new mongoose.Schema({
+  intern: {type: mongoose.Schema.Types.ObjectId, ref: "Intern"},
+  user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
   date: {
     type: String,
     default: today,
@@ -29,7 +31,7 @@ const AttendanceSchema = new mongoose.Schema({
   },
   location: {
     type: String,
-    required: [true, "Please provide a valid location"],
+    // required: [true, "Please provide a valid location"],
   },
   proof: {
     type: Object,
@@ -40,11 +42,11 @@ const AttendanceSchema = new mongoose.Schema({
       type: String,
       default: "",
     },
-    required: [true, "Please provide a img"],
+    // required: [true, "Please provide a img"],
   },
   timeIn: {
     type: String,
-    required: [true, "Please provide a timein"],
+    // required: [true, "Please provide a timein"],
   },
   timeOut: {
     type: String,

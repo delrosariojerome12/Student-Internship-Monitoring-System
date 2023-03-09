@@ -1,3 +1,5 @@
+/** @format */
+
 @import "../variables";
 @import "../utils";
 
@@ -5,17 +7,20 @@
   height: 100%;
   width: 100%;
   display: grid;
+  grid-template-rows: minmax(15rem, auto) auto minmax(50rem, 62vh);
+  padding: 1rem;
+  gap: 1rem;
 
   button {
     height: 5rem;
     width: 12rem;
-    background-color: $primary-bg-color;
+    background-color: $primary-compliment-landing;
     color: #fff;
     border: 1px solid transparent;
     outline: none;
     cursor: pointer;
     padding: 1rem 2rem;
-    transition: all 0.2s linear;
+    transition: all 0.3s linear;
     font-weight: 600;
     display: flex;
     justify-content: center;
@@ -28,11 +33,10 @@
       padding-top: 0.2rem;
     }
     &:hover {
-      // background-color: $primary-bg-color;
       border-radius: 1rem;
-      border: solid 1px $primary-bg-color;
+      border: solid 1px $primary-compliment-landing;
       background-color: #fff;
-      color: $primary-bg-color;
+      color: $primary-compliment-landing;
     }
   }
 
@@ -46,19 +50,30 @@
     left: 0%;
     z-index: 6;
   }
-  .time-in {
+
+  .time-in,
+  .time-out {
     display: grid;
     grid-template-rows: auto 1fr 5rem;
     padding: 2rem;
     text-align: center;
     gap: 1rem;
-
+    & > * {
+      border: solid 1px #3a2d2d;
+    }
+    .address {
+      padding: 1rem;
+      background-color: #fff;
+      h3 {
+        color: #333333;
+      }
+    }
     .camera {
-      display: flex;
+      @include flexCenter;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
       gap: 1rem;
+      background-color: #fff;
+      padding: 1rem;
 
       img {
         height: 40rem;
@@ -70,26 +85,65 @@
       }
     }
 
-    & > * {
-      border: solid 1px #3a2d2d;
-    }
     button {
       margin: 0 auto;
     }
   }
   .attendance-view {
     display: grid;
-    padding: 1rem;
-    img {
-      width: 32rem;
-      height: 32rem;
+    grid-template-rows: repeat(2, auto);
+    padding: 2rem;
+    gap: 1rem;
+    .upper {
+      display: grid;
+      gap: 1rem;
+      grid-template-rows: auto 1fr;
+      & > * {
+        background-color: #fff;
+        padding: 1rem;
+        border-radius: 1rem;
+      }
+      .attendance-info {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, auto);
+        gap: 0.5rem;
+        & > * {
+          padding: 0.5rem 1rem;
+        }
+        :nth-child(1) {
+          grid-column: 1/2;
+          grid-row: 2/3;
+        }
+
+        & > *:nth-child(5) {
+          grid-column: 1/3;
+        }
+      }
+      .img-con {
+        @include flexCenter;
+        flex-direction: column;
+        gap: 1rem;
+        & > * {
+          @include flexColumn;
+          text-align: center;
+          gap: 0.5rem;
+        }
+        img {
+          width: 32rem;
+          height: 32rem;
+        }
+      }
+    }
+    .lower {
+      margin: auto;
     }
   }
   .modal {
     overflow-y: auto;
-    background-color: #fff;
+    background-color: #d9d9d9;
     border-radius: 1rem;
-    height: 70rem;
+    height: 76rem;
     width: 70rem;
     position: absolute;
     top: 50%;
@@ -98,120 +152,50 @@
     z-index: 7;
   }
 
-  .content {
-    display: grid;
-    grid-template-rows: 12rem 7rem auto;
-    padding: 1rem;
+  .no-camera {
+    @include flexCenter;
+    flex-direction: column;
     gap: 1rem;
-
-    .user {
-      display: grid;
-      gap: 1.5rem;
-      grid-template-columns: 10rem auto;
-      grid-template-rows: auto;
-      padding: 1rem;
-      border-radius: 2rem;
-      align-items: center;
-      // background-image: linear-gradient(#282b30 10%, #393e46 31%, #333333 80%);
-      background-color: #212121;
-      .text {
-        display: grid;
-        grid-template-columns: repeat(2, auto);
-        height: 100%;
-        gap: 1rem;
-        align-items: center;
-        & > *:nth-child(4) {
-          grid-column: 2/3;
-          grid-row: 1/2;
-        }
-        p,
-        h4 {
-          color: $primary-font-color;
-        }
-      }
-
-      .profile-img {
-        @include flexCenter;
-        height: 100%;
-        width: 100%;
-        grid-column: 1/2;
-        img {
-          height: 10rem;
-          width: 10rem;
-          background-color: #fff;
-          border: solid 1px #fff;
-          border-radius: 1rem;
-        }
-      }
+    b {
+      color: $red-primary-color;
     }
-    .mid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      background-color: #212121;
-      padding: 1rem;
-      border-radius: 1rem;
-      .button-container {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding-left: 3rem;
-        button {
-          @include flexCenter;
-          padding: 1.6rem 3rem;
-          height: 4rem;
-          border-radius: 1rem;
-          border: solid 1px transparent;
-          color: $primary-font-color;
-          background-color: $primary-compliment-landing;
-          transition: all 0.3s ease-in-out;
-          font-weight: 600;
-          cursor: pointer;
-          &:hover {
-            border-radius: 0;
-            background-color: $primary-font-color;
-            color: $primary-compliment-landing;
-            border: solid 1px $primary-compliment-landing;
-          }
-          &.time-out:hover {
-            background-color: $red-primary-color;
-            color: #fff;
-            border-radius: 0;
-          }
-        }
-      }
-      .search-box {
-        @include flexCenter;
-        background-color: $light-bg-color;
-        width: 80%;
-        border-radius: 2rem;
-        align-items: center;
-        padding: 0 1.5rem;
-        margin: auto;
-        span {
-          @include flexCenter;
-          font-size: 2rem;
-          cursor: pointer;
-        }
-        input {
-          width: 100%;
-          background: transparent;
-          padding: 1rem;
-          outline: none;
-          border: 0;
-        }
-      }
+    img {
+      padding: 0 0 0 3rem;
     }
-    .DTR-content {
+  }
+
+  .user {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 13rem auto;
+    grid-template-rows: auto;
+    padding: 1rem 1rem 1rem 2rem;
+    border-radius: 2rem;
+    align-items: center;
+    background-color: #282b30;
+
+    .text {
       display: grid;
-      grid-template-columns: repeat(auto-fill, 24rem);
-      grid-auto-rows: 6rem;
+      grid-template-columns: repeat(2, auto);
+      height: 100%;
       gap: 1rem;
-      padding: 2rem;
-      // background-image: linear-gradient(#282b30 10%, #393e46 31%, #333333 80%);
-      background-color: #212121;
+      align-items: center;
+      background-color: #40454d;
       border-radius: 2rem;
-      max-height: 67rem;
+      padding: 2rem;
       overflow-y: auto;
+
+      & > *:nth-child(4) {
+        grid-column: 2/3;
+        grid-row: 1/2;
+      }
+      p,
+      h4 {
+        color: $primary-font-color;
+      }
+      & > *:nth-child(5) {
+        display: none;
+      }
 
       .attendance {
         @include flexCenter;
@@ -231,20 +215,123 @@
         }
       }
     }
-    .no-internship {
+
+    .profile-img {
+      @include flexCenter;
+      height: 100%;
+      width: 100%;
+      grid-column: 1/2;
+      img {
+        height: 13rem;
+        width: 13rem;
+        background-color: #fff;
+        border: solid 1px #fff;
+        border-radius: 1rem;
+      }
+    }
+  }
+  .mid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #282b30;
+    padding: 1rem;
+    border-radius: 1rem;
+    .button-container {
       display: flex;
       align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      background-color: $primary-bg-color-landing;
-      border-radius: 1rem;
-      color: #fff;
       gap: 1rem;
-      padding: 2rem;
-      img {
-        height: 40rem;
-        width: 40rem;
+      padding-left: 3rem;
+      button {
+        @include flexCenter;
+        padding: 1.6rem 3rem;
+        height: 4rem;
+        border-radius: 1rem;
+        border: solid 1px transparent;
+        color: $primary-font-color;
+        background-color: $primary-compliment-landing;
+        transition: all 0.3s ease-in-out;
+        font-weight: 600;
+        cursor: pointer;
+        &:hover {
+          border-radius: 0;
+          background-color: $primary-font-color;
+          color: $primary-compliment-landing;
+          border: solid 1px $primary-compliment-landing;
+        }
+        &.time-out:hover {
+          background-color: $red-primary-color;
+          color: #fff;
+          border-radius: 0;
+          border: solid 1px $red-primary-color;
+        }
       }
+    }
+    .search-box {
+      @include flexCenter;
+      background-color: $light-bg-color;
+      width: 80%;
+      border-radius: 2rem;
+      align-items: center;
+      padding: 0 1.5rem;
+      margin: auto;
+      span {
+        @include flexCenter;
+        font-size: 2rem;
+        cursor: pointer;
+      }
+      input {
+        width: 100%;
+        background: transparent;
+        padding: 1rem;
+        outline: none;
+        border: 0;
+      }
+    }
+  }
+  .DTR-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 24rem);
+    grid-auto-rows: 6rem;
+    gap: 1rem;
+    padding: 2rem;
+    background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+    border-radius: 2rem;
+    max-height: 67rem;
+    overflow-y: auto;
+
+    .attendance {
+      @include flexCenter;
+      color: #d9d9d9;
+      cursor: pointer;
+      background-color: $primary-compliment-landing;
+      border-radius: 0;
+      transition: all 0.2s linear;
+      position: relative;
+      font-size: 1.6rem;
+      font-weight: 600;
+
+      &:hover {
+        background-color: $primary-feature-bg;
+        border-radius: 1rem;
+        color: #fff;
+      }
+    }
+  }
+  .no-internship {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+    border-radius: 1rem;
+    color: #fff;
+    gap: 1rem;
+    padding: 2rem;
+    b {
+      color: $primary-compliment-landing;
+    }
+    img {
+      height: 35rem;
+      width: 35rem;
     }
   }
 }
@@ -253,9 +340,38 @@
 
 @media screen and (max-width: 1030px) {
   .daily-time-record {
-    .content {
-      .DTR-content {
-        justify-content: center;
+    grid-template-rows: minmax(15rem, auto) auto minmax(30rem, 60vh);
+
+    .user {
+      .text {
+        padding: 1.5rem;
+        grid-template-rows: repeat(3, auto);
+        & > *:nth-child(1) {
+          grid-column: 1/3;
+          grid-row: 1/2;
+        }
+        & > *:nth-child(4) {
+          grid-column: 1/3;
+          grid-row: 2/3;
+        }
+        & > *:nth-child(2) {
+          grid-column: 1/2;
+          grid-row: 3/4;
+        }
+        & > *:nth-child(3) {
+          grid-column: 2/3;
+          grid-row: 3/4;
+        }
+      }
+    }
+    .DTR-content {
+      justify-content: center;
+    }
+
+    .no-internship {
+      img {
+        height: 30rem;
+        width: 30rem;
       }
     }
   }
@@ -263,21 +379,101 @@
 
 @media screen and (max-width: 750px) {
   .daily-time-record {
-    .content {
-      .user {
-        grid-template-columns: 16rem auto;
-        grid-template-rows: auto auto auto 0.7fr;
-        // row-gap: 1rem;
-        .program {
-          grid-column: 1/3;
-          text-align: center;
+    .modal {
+      height: 68rem;
+      width: 58rem;
+    }
+    .time-in,
+    .time-out {
+      .address {
+        h2 {
+          font-size: 1.9rem;
         }
-        .profile-img {
-          grid-column: 1/2;
-          grid-row: 1/4;
+        h3 {
+          font-size: 1.8rem;
+        }
+      }
+      .camera {
+        img,
+        video {
+          height: 35rem;
+          width: 35rem;
+        }
+      }
+    }
+    .attendance-view {
+      .upper {
+        .attendance-info {
+          p {
+            font-size: 1.7rem;
+            padding: 0 1rem;
+          }
+        }
+        .img-con {
+          font-size: 1.7rem;
           img {
-            height: 13rem;
-            width: 13rem;
+            height: 30rem;
+            width: 30rem;
+          }
+        }
+      }
+    }
+    .user {
+      grid-template-columns: 10rem auto;
+      .text {
+        padding: 1rem;
+        font-size: 1.7rem;
+      }
+      .profile-img {
+        img {
+          height: 10rem;
+          width: 10rem;
+        }
+      }
+    }
+    .mid {
+      .button-container {
+        button {
+          height: 3.5rem;
+        }
+      }
+    }
+    .DTR-content {
+      grid-template-columns: 1fr;
+    }
+    .no-internship {
+      img {
+        height: 25rem;
+        width: 25rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .daily-time-record {
+    grid-template-rows: minmax(15rem, auto) auto minmax(30rem, 50vh);
+    .modal {
+      height: 63rem;
+      width: 99%;
+    }
+    .time-in,
+    .time-out {
+      .camera {
+        img,
+        video {
+          height: 30rem;
+          width: 30rem;
+        }
+      }
+    }
+
+    .attendance-view {
+      .upper {
+        .img-con {
+          img {
+            height: 28rem;
+            width: 28rem;
           }
         }
       }
@@ -287,20 +483,90 @@
 
 @media screen and (max-width: 500px) {
   .daily-time-record {
-    .content {
-      .user {
-        grid-template-columns: 12rem auto;
-
-        gap: 0.5rem;
-        p,
-        h4 {
+    grid-template-rows: minmax(15rem, auto) auto minmax(20rem, 36vh);
+    gap: 0.5rem;
+    button {
+      height: 4rem;
+    }
+    .modal {
+      height: 57rem;
+    }
+    .time-in,
+    .time-out {
+      .address {
+        h2 {
+          font-size: 1.8rem;
+        }
+        h3 {
           font-size: 1.7rem;
         }
-        .profile-img {
-          img {
-            height: 10rem;
-            width: 10rem;
+      }
+      .camera {
+        img,
+        video {
+          height: 25rem;
+          width: 25rem;
+        }
+      }
+    }
+    .attendance-view {
+      .upper {
+        .attendance-info {
+          p {
+            font-size: 1.6rem;
           }
+        }
+        .img-con {
+          font-size: 1.6rem;
+          img {
+            height: 23rem;
+            width: 23rem;
+          }
+        }
+      }
+    }
+    .user {
+      grid-template-columns: auto;
+      grid-template-rows: auto auto;
+      gap: 0.5rem;
+      padding: 1rem;
+
+      .profile-img {
+        img {
+          height: 9rem;
+          width: 9rem;
+        }
+      }
+      .text {
+        gap: 0.5rem;
+        h4 {
+          font-size: 1.8rem;
+        }
+        & > * {
+          text-align: center;
+        }
+        p {
+          font-size: 1.6rem;
+        }
+        & > *:nth-child(4) {
+          display: none;
+        }
+        & > *:nth-child(5) {
+          display: flex;
+          justify-content: center;
+          grid-column: 1/3;
+          grid-row: 2/3;
+        }
+      }
+    }
+    .mid {
+      @include flexColumn;
+      gap: 0.5rem;
+      .button-container {
+        justify-content: center;
+        padding: 0;
+        button {
+          height: 3rem;
         }
       }
     }
@@ -309,18 +575,49 @@
 
 @media screen and (max-width: 400px) {
   .daily-time-record {
-    .content {
-      .user {
-        grid-template-columns: 10rem auto;
-        gap: 0.5rem;
-        p,
-        h4 {
+    .user {
+      padding: 1rem;
+      grid-template-rows: auto;
+      .profile-img {
+        display: none;
+      }
+    }
+    .no-internship {
+      img {
+        height: 20rem;
+        width: 20rem;
+      }
+    }
+    .time-in,
+    .time-out {
+      .address {
+        h2 {
+          font-size: 1.7rem;
+        }
+        h3 {
           font-size: 1.6rem;
         }
-        .profile-img {
+      }
+      .camera {
+        img,
+        video {
+          height: 20rem;
+          width: 20rem;
+        }
+      }
+    }
+    .attendance-view {
+      .upper {
+        .attendance-info {
+          p {
+            font-size: 1.5rem;
+          }
+        }
+        .img-con {
+          font-size: 1.5rem;
           img {
-            height: 9rem;
-            width: 9rem;
+            height: 18rem;
+            width: 18rem;
           }
         }
       }

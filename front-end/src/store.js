@@ -9,6 +9,7 @@ import document from "./features/admin/document";
 import documentApproval from "./features/admin/documentApproval";
 import internship from "./features/coordinator/internship";
 import attendanceReducer from "./features/interns/attendanceReducer";
+import monitorAttendance from "./features/coordinator/monitorAttendance";
 
 export const store = configureStore({
   reducer: {
@@ -22,5 +23,6 @@ export const store = configureStore({
     documentApproval: documentApproval,
     internship: internship,
     attendance: attendanceReducer,
+    monitorAttendance: monitorAttendance,
   },
 });

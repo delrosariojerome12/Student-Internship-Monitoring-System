@@ -1,0 +1,166 @@
+@import "../../utils";
+@import "../../variables";
+
+.monitor-attendance {
+  display: grid;
+  padding: 2rem;
+  gap: 1rem;
+  border-radius: 1rem;
+  // grid-template-rows: 7rem 10rem auto;
+  grid-template-rows: 10vh 10vh 72vh;
+  color: #fff;
+  & > * {
+    background-color: #212121;
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+  button {
+    background-color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 1.5rem 3rem;
+    transition: all 0.2s linear;
+    font-weight: 600;
+    @include flexCenter;
+    gap: 1rem;
+    font-size: 1.4rem;
+
+    .icon {
+      font-size: 1.2rem;
+    }
+    p {
+      padding-top: 0.2rem;
+    }
+    &:hover {
+      background-color: $primary-compliment-landing;
+      border-radius: 1rem;
+      color: #fff;
+    }
+  }
+  .mid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    & > * {
+      border: solid 1px #fff;
+    }
+    .btn-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .date-container {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .display {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    .content {
+      display: grid;
+      grid-auto-rows: 14rem;
+      gap: 1rem;
+      padding: 1rem;
+      overflow-y: auto;
+
+      .day-attendance {
+        background-color: #fff;
+        border-radius: 1rem;
+        display: grid;
+        grid-template-columns: 10rem auto;
+        gap: 1rem;
+        padding: 1rem;
+        color: #000;
+
+        & > * {
+          background-color: #fff;
+        }
+
+        .left {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 1rem;
+          img {
+            height: 10rem;
+            width: 10rem;
+            object-fit: contain;
+          }
+        }
+        .right {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
+          border-radius: 1rem;
+
+          & > * {
+            padding: 0.5rem;
+          }
+        }
+      }
+
+      .absent {
+        background-color: darken($color: $red-primary-color, $amount: 10);
+      }
+    }
+  }
+
+  .overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(48, 47, 47, 0.753);
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    z-index: 8;
+  }
+  .modal {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 1rem;
+    color: #000;
+    z-index: 9;
+    padding: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50rem;
+    height: 40rem;
+    background-color: #fff;
+    border: solid 1px #000;
+    border-radius: 1rem;
+
+    & > * {
+      border: solid 1px #000;
+    }
+    .btn-controllers {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      button {
+        background-color: $primary-compliment-landing;
+        border: solid 2px transparent;
+        color: #fff;
+        &:hover {
+          color: $primary-compliment-landing;
+          background-color: #fff;
+          border: solid 2px $primary-compliment-landing;
+        }
+        &:nth-child(2) {
+          background-color: $red-primary-color;
+          &:hover {
+            color: $red-primary-color;
+            background-color: #fff;
+            border: solid 2px $red-primary-color;
+          }
+        }
+      }
+    }
+  }
+}

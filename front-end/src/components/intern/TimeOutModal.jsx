@@ -1,15 +1,23 @@
-import React, {useState, useEffect, useRef} from "react";
-import {useSelector, useDispatch} from "react-redux";
+/** @format */
+
+import React, { useState, useEffect, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   handleTimeOut,
   timeOutAttendance,
 } from "../../features/interns/attendanceReducer";
 import axios from "axios";
 import CameraSVG from "../../assets/img/camera.svg";
+import NocameraSVG from "../../assets/img/nocamera.svg";
 import Webcam from "react-webcam";
-import {storage} from "../../Firebase";
-import {ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage";
-import {v4} from "uuid";
+import { storage } from "../../Firebase";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  deleteObject,
+} from "firebase/storage";
+import { v4 } from "uuid";
 
 const months = [
   "January",
@@ -38,26 +46,32 @@ const convertImage = (str) => {
   for (var n = 0; n < imageContent.length; n++) {
     view[n] = imageContent.charCodeAt(n);
   }
-  var blob = new Blob([buffer], {type: type});
+  var blob = new Blob([buffer], { type: type });
 
   return blob;
 };
 
 const key = "UjTu7V2EcFJBTyd0zjudhuFrRNP4iWXJ";
 
-const TimeOutModal = React.memo(({email}) => {
-  const {todayAttendanceID, selectedAttendance} = useSelector(
+const TimeOutModal = React.memo(({ email }) => {
+  const { todayAttendanceID, selectedAttendance } = useSelector(
     (state) => state.attendance
   );
   const {
-    proof: {timeInLink, timeOutLink},
+    proof: { timeInLink, timeOutLink },
   } = selectedAttendance;
   const dispatch = useDispatch();
 
   const [time, setTime] = useState("");
   const [address, setAddress] = useState("");
   const [capturedPhoto, setCapturedPhoto] = useState(null);
+  const [hasCamera, setHasCamera] = useState(true);
+
   const cameraRef = useRef(null);
+
+  const handleUserMediaError = () => {
+    setHasCamera(false);
+  };
 
   const cameraConstraints = {
     width: 400,
@@ -72,7 +86,7 @@ const TimeOutModal = React.memo(({email}) => {
       const {
         freeformAddress,
         country,
-        boundingBox: {northEast, southWest},
+        boundingBox: { northEast, southWest },
         countrySecondarySubdivision,
       } = response.data.addresses[0].address;
 
@@ -121,7 +135,8 @@ const TimeOutModal = React.memo(({email}) => {
     }, 1000);
 
     navigator.geolocation.getCurrentPosition((position) => {
-      const {latitude, longitude} = position.coords;
+      const { latitude, longitude } = position.coords;
+
       getLocation(latitude, longitude);
     });
     return () => clearInterval(interval);
@@ -132,14 +147,30 @@ const TimeOutModal = React.memo(({email}) => {
       <>
         <div
           className="overlay"
-          onClick={() => dispatch(handleTimeOut())}
-        ></div>
+          onClick={() => dispatch(handleTimeOut())}></div>
         <div className="time-out modal">
           <h3>Fetching Time and Location...</h3>
         </div>
       </>
     );
   }
+
+  // if (!hasCamera) {
+  //   return (
+  //     <>
+  //       <div
+  //         className="overlay"
+  //         onClick={() => dispatch(handleTimeOut())}></div>
+  //       <div className="no-camera modal">
+  //         <img src={NocameraSVG} alt="No-Camera" />
+  //         <h3>
+  //           No <b>Camera</b> Detected
+  //         </h3>
+  //       </div>
+  //     </>
+  //   );
+  // }
+
   return (
     <>
       <div className="overlay" onClick={() => dispatch(handleTimeOut())}></div>
@@ -158,6 +189,7 @@ const TimeOutModal = React.memo(({email}) => {
                 mirrored={true}
                 videoConstraints={cameraConstraints}
                 screenshotFormat="image/jpeg"
+                onUserMediaError={handleUserMediaError}
               />
               <button onClick={handleCaptureImage}>Take Photo</button>
             </>
@@ -185,10 +217,9 @@ const TimeOutModal = React.memo(({email}) => {
           }
           style={
             capturedPhoto
-              ? {opacity: "1"}
-              : {opacity: ".7", pointerEvents: "none"}
-          }
-        >
+              ? { opacity: "1" }
+              : { opacity: ".7", pointerEvents: "none" }
+          }>
           Time Out
         </button>
       </div>

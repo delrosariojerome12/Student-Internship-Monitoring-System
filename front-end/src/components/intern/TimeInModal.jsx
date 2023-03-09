@@ -1,3 +1,5 @@
+/** @format */
+
 import React, {useState, useEffect, useRef} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {
@@ -6,6 +8,8 @@ import {
 } from "../../features/interns/attendanceReducer";
 import axios from "axios";
 import CameraSVG from "../../assets/img/camera.svg";
+import NocameraSVG from "../../assets/img/nocamera.svg";
+
 import Webcam from "react-webcam";
 import {storage} from "../../Firebase";
 import {ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage";
@@ -52,7 +56,12 @@ const TimeInModal = React.memo(({email}) => {
   const [time, setTime] = useState("");
   const [address, setAddress] = useState("");
   const [capturedPhoto, setCapturedPhoto] = useState(null);
+  const [hasCamera, setHasCamera] = useState(true);
   const cameraRef = useRef(null);
+
+  const handleUserMediaError = () => {
+    setHasCamera(false);
+  };
 
   const cameraConstraints = {
     width: 400,
@@ -60,7 +69,7 @@ const TimeInModal = React.memo(({email}) => {
     facingMode: "user",
   };
   const getLocation = async (latitude, longitude) => {
-    // console.log(latitude, longitude);
+    console.log(latitude, longitude);
     try {
       const url = `https://api.tomtom.com/search/2/reverseGeocode/${latitude},${longitude}.json?key=${key}`;
       const response = await axios.get(url);
@@ -109,18 +118,29 @@ const TimeInModal = React.memo(({email}) => {
       const minutes =
         10 > date.getMinutes() ? `0${date.getMinutes()}` : date.getMinutes();
       const seconds = date.getSeconds();
-      const amOrPm = date.getHours() >= 12 ? "PM" : "AM"; // set AM or PM
+      const amOrPm = date.getHours() >= 12 ? "PM" : "AM";
 
       const fullHour = `${hours}:${minutes}:${seconds} ${amOrPm}`;
-      // const fullDate = `${month} ${day}, ${year}`;
 
       setTime(fullHour);
     }, 1000);
 
-    navigator.geolocation.getCurrentPosition((position) => {
-      const {latitude, longitude} = position.coords;
-      getLocation(latitude, longitude);
-    });
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 10000,
+      maximumAge: 60000,
+    };
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const {latitude, longitude} = position.coords;
+        getLocation(latitude, longitude);
+      },
+      (error) => {
+        console.error(`Geolocation error: ${error.message}`);
+      },
+      options
+    );
     return () => clearInterval(interval);
   }, []);
 
@@ -134,6 +154,20 @@ const TimeInModal = React.memo(({email}) => {
       </>
     );
   }
+
+  // if (!hasCamera) {
+  //   return (
+  //     <>
+  //       <div className="overlay" onClick={() => dispatch(handleTimeIn())}></div>
+  //       <div className="no-camera modal">
+  //         <img src={NocameraSVG} alt="No-Camera" />
+  //         <h3>
+  //           No <b>Camera</b> Detected
+  //         </h3>
+  //       </div>
+  //     </>
+  //   );
+  // }
 
   return (
     <>
@@ -153,6 +187,7 @@ const TimeInModal = React.memo(({email}) => {
                 mirrored={true}
                 videoConstraints={cameraConstraints}
                 screenshotFormat="image/jpeg"
+                onUserMediaError={handleUserMediaError}
               />
               <button onClick={handleCaptureImage}>Take Photo</button>
             </>
