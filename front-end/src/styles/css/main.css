@@ -3822,6 +3822,10 @@ button {
   align-items: center;
   gap: 1rem;
 }
+.dashboard .monitor-attendance .mid .date-container, .dashboard-active .monitor-attendance .mid .date-container {
+  display: flex;
+  align-items: center;
+}
 .dashboard .monitor-attendance .display, .dashboard-active .monitor-attendance .display {
   display: flex;
   flex-direction: column;
@@ -3880,6 +3884,9 @@ button {
   z-index: 8;
 }
 .dashboard .monitor-attendance .modal, .dashboard-active .monitor-attendance .modal {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 1rem;
   color: #000;
   z-index: 9;
   padding: 2rem;
@@ -3892,6 +3899,33 @@ button {
   background-color: #fff;
   border: solid 1px #000;
   border-radius: 1rem;
+}
+.dashboard .monitor-attendance .modal > *, .dashboard-active .monitor-attendance .modal > * {
+  border: solid 1px #000;
+}
+.dashboard .monitor-attendance .modal .btn-controllers, .dashboard-active .monitor-attendance .modal .btn-controllers {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.dashboard .monitor-attendance .modal .btn-controllers button, .dashboard-active .monitor-attendance .modal .btn-controllers button {
+  background-color: #0d7377;
+  border: solid 2px transparent;
+  color: #fff;
+}
+.dashboard .monitor-attendance .modal .btn-controllers button:hover, .dashboard-active .monitor-attendance .modal .btn-controllers button:hover {
+  color: #0d7377;
+  background-color: #fff;
+  border: solid 2px #0d7377;
+}
+.dashboard .monitor-attendance .modal .btn-controllers button:nth-child(2), .dashboard-active .monitor-attendance .modal .btn-controllers button:nth-child(2) {
+  background-color: #e63946;
+}
+.dashboard .monitor-attendance .modal .btn-controllers button:nth-child(2):hover, .dashboard-active .monitor-attendance .modal .btn-controllers button:nth-child(2):hover {
+  color: #e63946;
+  background-color: #fff;
+  border: solid 2px #e63946;
 }
 .dashboard .admin-document-page, .dashboard-active .admin-document-page {
   display: grid;

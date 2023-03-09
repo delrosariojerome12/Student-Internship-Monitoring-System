@@ -121,31 +121,36 @@ const MonitorAttendance = () => {
           ></div>
           <div onClick={(e) => e.stopPropagation()} className="filter modal">
             <p>Filter</p>
-            <label htmlFor="date">
-              Date
-              <input
-                value={filterDate}
-                type="date"
-                id="date"
-                onChange={(e) => {
-                  setFilterDate(e.target.value);
-                }}
-              />
-            </label>
 
-            <button
-              onClick={() =>
-                dispatch(
-                  getAllAttendanceByDate({
-                    date: filterDate,
-                  })
-                )
-              }
-            >
-              Filter
-            </button>
+            <div className="inputs-container">
+              <label htmlFor="date">
+                Date
+                <input
+                  value={filterDate}
+                  type="date"
+                  id="date"
+                  onChange={(e) => {
+                    setFilterDate(e.target.value);
+                  }}
+                />
+              </label>
+            </div>
 
-            <button onClick={() => dispatch(handleFilter())}>Close</button>
+            <div className="btn-controllers">
+              <button
+                onClick={() =>
+                  dispatch(
+                    getAllAttendanceByDate({
+                      date: filterDate,
+                    })
+                  )
+                }
+              >
+                Filter
+              </button>
+
+              <button onClick={() => dispatch(handleFilter())}>Close</button>
+            </div>
           </div>
         </>
       )}
