@@ -51,9 +51,10 @@ export const getAllAttendanceByDate = createAsyncThunk(
 export const checkAbsents = createAsyncThunk(
   "/monitor/checkAbsents",
   async ({x}, {rejectWithValue}) => {
+    console.log("Test");
     try {
-      const url = `http://localhost:5000/attendance/getAllAttendanceToday`;
-      const {data: res} = await axios.get(url);
+      const url = `http://localhost:5000/attendance/checkAbsents`;
+      const {data: res} = await axios.post(url);
       console.log(res);
       return {res};
     } catch (error) {
@@ -101,6 +102,20 @@ export const monitorAttendance = createSlice({
         state.filteredValues = payload.res.searched.filter((item) => item);
       })
       .addCase(getAllAttendanceByDate.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+      });
+    // check abesent
+    builder
+      .addCase(checkAbsents.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(checkAbsents.fulfilled, (state, {payload}) => {
+        state.isLoading = false;
+        console.log(payload.res.data);
+        state.attendanceToday = payload.res.data;
+      })
+      .addCase(checkAbsents.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
       });

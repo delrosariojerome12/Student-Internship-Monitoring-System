@@ -132,15 +132,14 @@ const checkAbsents = async (req, res) => {
     });
     if (!attendance) {
       // Create attendance for absent interns
-
       const user = await User.findOne({email});
       const intern = await Intern.findOne({email});
-
       const newAttendance = new Attendance({
         email: email,
         date: todayDate,
         isPresent: false,
-        timeIn: "absent",
+        timeIn: null,
+        timeOut: null,
         user: user._id,
         intern: intern._id,
         proof: null,
@@ -148,11 +147,19 @@ const checkAbsents = async (req, res) => {
       await newAttendance.save();
     }
   }
-  const allAttendance = await Attendance.find();
+  const allAttendance = await Attendance.find()
+    .populate({
+      path: "user",
+      model: "User",
+    })
+    .populate({
+      path: "intern",
+      model: "Intern",
+    });
 
   res.status(StatusCodes.OK).json({
     success: true,
-    allAttendance,
+    data: allAttendance,
   });
 };
 
