@@ -3776,12 +3776,156 @@ button {
   padding: 2rem;
   gap: 1rem;
   border-radius: 1rem;
-  background-color: #212121;
-  grid-template-rows: 12rem 7rem auto;
+  grid-template-rows: 10vh 10vh 72vh;
   color: #fff;
 }
 .dashboard .monitor-attendance > *, .dashboard-active .monitor-attendance > * {
+  background-color: #212121;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.dashboard .monitor-attendance button, .dashboard-active .monitor-attendance button {
+  background-color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 1.5rem 3rem;
+  transition: all 0.2s linear;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.4rem;
+}
+.dashboard .monitor-attendance button .icon, .dashboard-active .monitor-attendance button .icon {
+  font-size: 1.2rem;
+}
+.dashboard .monitor-attendance button p, .dashboard-active .monitor-attendance button p {
+  padding-top: 0.2rem;
+}
+.dashboard .monitor-attendance button:hover, .dashboard-active .monitor-attendance button:hover {
+  background-color: #0d7377;
+  border-radius: 1rem;
+  color: #fff;
+}
+.dashboard .monitor-attendance .mid, .dashboard-active .monitor-attendance .mid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.dashboard .monitor-attendance .mid > *, .dashboard-active .monitor-attendance .mid > * {
   border: solid 1px #fff;
+}
+.dashboard .monitor-attendance .mid .btn-container, .dashboard-active .monitor-attendance .mid .btn-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.dashboard .monitor-attendance .mid .date-container, .dashboard-active .monitor-attendance .mid .date-container {
+  display: flex;
+  align-items: center;
+}
+.dashboard .monitor-attendance .display, .dashboard-active .monitor-attendance .display {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.dashboard .monitor-attendance .display .content, .dashboard-active .monitor-attendance .display .content {
+  display: grid;
+  grid-auto-rows: 14rem;
+  gap: 1rem;
+  padding: 1rem;
+  overflow-y: auto;
+}
+.dashboard .monitor-attendance .display .content .day-attendance, .dashboard-active .monitor-attendance .display .content .day-attendance {
+  background-color: #fff;
+  border-radius: 1rem;
+  display: grid;
+  grid-template-columns: 10rem auto;
+  gap: 1rem;
+  padding: 1rem;
+  color: #000;
+}
+.dashboard .monitor-attendance .display .content .day-attendance > *, .dashboard-active .monitor-attendance .display .content .day-attendance > * {
+  background-color: #fff;
+}
+.dashboard .monitor-attendance .display .content .day-attendance .left, .dashboard-active .monitor-attendance .display .content .day-attendance .left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+}
+.dashboard .monitor-attendance .display .content .day-attendance .left img, .dashboard-active .monitor-attendance .display .content .day-attendance .left img {
+  height: 10rem;
+  width: 10rem;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.dashboard .monitor-attendance .display .content .day-attendance .right, .dashboard-active .monitor-attendance .display .content .day-attendance .right {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  border-radius: 1rem;
+}
+.dashboard .monitor-attendance .display .content .day-attendance .right > *, .dashboard-active .monitor-attendance .display .content .day-attendance .right > * {
+  padding: 0.5rem;
+}
+.dashboard .monitor-attendance .display .content .absent, .dashboard-active .monitor-attendance .display .content .absent {
+  background-color: #d21a28;
+}
+.dashboard .monitor-attendance .overlay, .dashboard-active .monitor-attendance .overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(48, 47, 47, 0.753);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: 8;
+}
+.dashboard .monitor-attendance .modal, .dashboard-active .monitor-attendance .modal {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 1rem;
+  color: #000;
+  z-index: 9;
+  padding: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50rem;
+  height: 40rem;
+  background-color: #fff;
+  border: solid 1px #000;
+  border-radius: 1rem;
+}
+.dashboard .monitor-attendance .modal > *, .dashboard-active .monitor-attendance .modal > * {
+  border: solid 1px #000;
+}
+.dashboard .monitor-attendance .modal .btn-controllers, .dashboard-active .monitor-attendance .modal .btn-controllers {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.dashboard .monitor-attendance .modal .btn-controllers button, .dashboard-active .monitor-attendance .modal .btn-controllers button {
+  background-color: #0d7377;
+  border: solid 2px transparent;
+  color: #fff;
+}
+.dashboard .monitor-attendance .modal .btn-controllers button:hover, .dashboard-active .monitor-attendance .modal .btn-controllers button:hover {
+  color: #0d7377;
+  background-color: #fff;
+  border: solid 2px #0d7377;
+}
+.dashboard .monitor-attendance .modal .btn-controllers button:nth-child(2), .dashboard-active .monitor-attendance .modal .btn-controllers button:nth-child(2) {
+  background-color: #e63946;
+}
+.dashboard .monitor-attendance .modal .btn-controllers button:nth-child(2):hover, .dashboard-active .monitor-attendance .modal .btn-controllers button:nth-child(2):hover {
+  color: #e63946;
+  background-color: #fff;
+  border: solid 2px #e63946;
 }
 .dashboard .admin-document-page, .dashboard-active .admin-document-page {
   display: grid;
@@ -6267,13 +6411,13 @@ button {
 .daily-time-record button {
   height: 5rem;
   width: 12rem;
-  background-color: #457b9d;
+  background-color: #0d7377;
   color: #fff;
   border: 1px solid transparent;
   outline: none;
   cursor: pointer;
   padding: 1rem 2rem;
-  transition: all 0.2s linear;
+  transition: all 0.3s linear;
   font-weight: 600;
   display: flex;
   justify-content: center;
@@ -6288,9 +6432,9 @@ button {
 }
 .daily-time-record button:hover {
   border-radius: 1rem;
-  border: solid 1px #457b9d;
+  border: solid 1px #0d7377;
   background-color: #fff;
-  color: #457b9d;
+  color: #0d7377;
 }
 .daily-time-record .overlay {
   width: 100%;
@@ -6302,47 +6446,109 @@ button {
   left: 0%;
   z-index: 6;
 }
-.daily-time-record .time-in {
+.daily-time-record .time-in,
+.daily-time-record .time-out {
   display: grid;
   grid-template-rows: auto 1fr 5rem;
   padding: 2rem;
   text-align: center;
   gap: 1rem;
 }
-.daily-time-record .time-in .camera {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-.daily-time-record .time-in .camera img {
-  height: 40rem;
-  width: 40rem;
-}
-.daily-time-record .time-in .camera video {
-  height: 40rem;
-  width: 40rem;
-}
-.daily-time-record .time-in > * {
+.daily-time-record .time-in > *,
+.daily-time-record .time-out > * {
   border: solid 1px #3a2d2d;
 }
-.daily-time-record .time-in button {
+.daily-time-record .time-in .address,
+.daily-time-record .time-out .address {
+  padding: 1rem;
+  background-color: #fff;
+}
+.daily-time-record .time-in .address h3,
+.daily-time-record .time-out .address h3 {
+  color: #333333;
+}
+.daily-time-record .time-in .camera,
+.daily-time-record .time-out .camera {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #fff;
+  padding: 1rem;
+}
+.daily-time-record .time-in .camera img,
+.daily-time-record .time-out .camera img {
+  height: 40rem;
+  width: 40rem;
+}
+.daily-time-record .time-in .camera video,
+.daily-time-record .time-out .camera video {
+  height: 40rem;
+  width: 40rem;
+}
+.daily-time-record .time-in button,
+.daily-time-record .time-out button {
   margin: 0 auto;
 }
 .daily-time-record .attendance-view {
   display: grid;
-  padding: 1rem;
+  grid-template-rows: repeat(2, auto);
+  padding: 2rem;
+  gap: 1rem;
 }
-.daily-time-record .attendance-view img {
+.daily-time-record .attendance-view .upper {
+  display: grid;
+  gap: 1rem;
+  grid-template-rows: auto 1fr;
+}
+.daily-time-record .attendance-view .upper > * {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.daily-time-record .attendance-view .upper .attendance-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: 0.5rem;
+}
+.daily-time-record .attendance-view .upper .attendance-info > * {
+  padding: 0.5rem 1rem;
+}
+.daily-time-record .attendance-view .upper .attendance-info :nth-child(1) {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+.daily-time-record .attendance-view .upper .attendance-info > *:nth-child(5) {
+  grid-column: 1/3;
+}
+.daily-time-record .attendance-view .upper .img-con {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+.daily-time-record .attendance-view .upper .img-con > * {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+  gap: 0.5rem;
+}
+.daily-time-record .attendance-view .upper .img-con img {
   width: 32rem;
   height: 32rem;
 }
+.daily-time-record .attendance-view .lower {
+  margin: auto;
+}
 .daily-time-record .modal {
   overflow-y: auto;
-  background-color: #fff;
+  background-color: #d9d9d9;
   border-radius: 1rem;
-  height: 70rem;
+  height: 76rem;
   width: 70rem;
   position: absolute;
   top: 50%;
@@ -6350,21 +6556,50 @@ button {
   transform: translate(-50%, -50%);
   z-index: 7;
 }
+.daily-time-record .no-camera {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+.daily-time-record .no-camera b {
+  color: #e63946;
+}
+.daily-time-record .no-camera img {
+  padding: 0 0 0 3rem;
+}
 .daily-time-record .user {
   display: grid;
-  grid-template-rows: 12rem 7rem 2fr;
-  padding: 1rem;
-  gap: 1rem;
+  gap: 1.5rem;
+  grid-template-columns: 13rem auto;
+  grid-template-rows: auto;
+  padding: 1rem 1rem 1rem 2rem;
+  border-radius: 2rem;
+  align-items: center;
+  background-color: #282b30;
 }
 .daily-time-record .user .text {
   display: grid;
   grid-template-columns: repeat(2, auto);
   height: 100%;
   gap: 1rem;
-  padding: 2rem;
-  background-color: #212121;
+  align-items: center;
+  background-color: #40454d;
   border-radius: 2rem;
+  padding: 2rem;
   overflow-y: auto;
+}
+.daily-time-record .user .text > *:nth-child(4) {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+.daily-time-record .user .text p,
+.daily-time-record .user .text h4 {
+  color: #f1faee;
+}
+.daily-time-record .user .text > *:nth-child(5) {
+  display: none;
 }
 .daily-time-record .user .text .attendance {
   display: flex;
@@ -6436,6 +6671,7 @@ button {
   background-color: #e63946;
   color: #fff;
   border-radius: 0;
+  border: solid 1px #e63946;
 }
 .daily-time-record .mid .search-box {
   display: flex;
@@ -6484,7 +6720,7 @@ button {
   transition: all 0.2s linear;
   position: relative;
   font-size: 1.6rem;
-  font-weight: 6000;
+  font-weight: 600;
 }
 .daily-time-record .DTR-content .attendance:hover {
   background-color: #00adb5;
@@ -6510,7 +6746,11 @@ button {
 }
 
 @media screen and (max-width: 1030px) {
+  .daily-time-record {
+    grid-template-rows: minmax(15rem, auto) auto minmax(30rem, 60vh);
+  }
   .daily-time-record .user .text {
+    padding: 1.5rem;
     grid-template-rows: repeat(3, auto);
   }
   .daily-time-record .user .text > *:nth-child(1) {
@@ -6538,10 +6778,41 @@ button {
   }
 }
 @media screen and (max-width: 750px) {
+  .daily-time-record .modal {
+    height: 68rem;
+    width: 58rem;
+  }
+  .daily-time-record .time-in .address h2,
+  .daily-time-record .time-out .address h2 {
+    font-size: 1.9rem;
+  }
+  .daily-time-record .time-in .address h3,
+  .daily-time-record .time-out .address h3 {
+    font-size: 1.8rem;
+  }
+  .daily-time-record .time-in .camera img,
+  .daily-time-record .time-in .camera video,
+  .daily-time-record .time-out .camera img,
+  .daily-time-record .time-out .camera video {
+    height: 35rem;
+    width: 35rem;
+  }
+  .daily-time-record .attendance-view .upper .attendance-info p {
+    font-size: 1.7rem;
+    padding: 0 1rem;
+  }
+  .daily-time-record .attendance-view .upper .img-con {
+    font-size: 1.7rem;
+  }
+  .daily-time-record .attendance-view .upper .img-con img {
+    height: 30rem;
+    width: 30rem;
+  }
   .daily-time-record .user {
     grid-template-columns: 10rem auto;
   }
   .daily-time-record .user .text {
+    padding: 1rem;
     font-size: 1.7rem;
   }
   .daily-time-record .user .profile-img img {
@@ -6551,44 +6822,106 @@ button {
   .daily-time-record .mid .button-container button {
     height: 3.5rem;
   }
+  .daily-time-record .DTR-content {
+    grid-template-columns: 1fr;
+  }
   .daily-time-record .no-internship img {
     height: 25rem;
     width: 25rem;
   }
 }
+@media screen and (max-width: 600px) {
+  .daily-time-record {
+    grid-template-rows: minmax(15rem, auto) auto minmax(30rem, 50vh);
+  }
+  .daily-time-record .modal {
+    height: 63rem;
+    width: 99%;
+  }
+  .daily-time-record .time-in .camera img,
+  .daily-time-record .time-in .camera video,
+  .daily-time-record .time-out .camera img,
+  .daily-time-record .time-out .camera video {
+    height: 30rem;
+    width: 30rem;
+  }
+  .daily-time-record .attendance-view .upper .img-con img {
+    height: 28rem;
+    width: 28rem;
+  }
+}
 @media screen and (max-width: 500px) {
+  .daily-time-record {
+    grid-template-rows: minmax(15rem, auto) auto minmax(20rem, 36vh);
+    gap: 0.5rem;
+  }
+  .daily-time-record button {
+    height: 4rem;
+  }
+  .daily-time-record .modal {
+    height: 57rem;
+  }
+  .daily-time-record .time-in .address h2,
+  .daily-time-record .time-out .address h2 {
+    font-size: 1.8rem;
+  }
+  .daily-time-record .time-in .address h3,
+  .daily-time-record .time-out .address h3 {
+    font-size: 1.7rem;
+  }
+  .daily-time-record .time-in .camera img,
+  .daily-time-record .time-in .camera video,
+  .daily-time-record .time-out .camera img,
+  .daily-time-record .time-out .camera video {
+    height: 25rem;
+    width: 25rem;
+  }
+  .daily-time-record .attendance-view .upper .attendance-info p {
+    font-size: 1.6rem;
+  }
+  .daily-time-record .attendance-view .upper .img-con {
+    font-size: 1.6rem;
+  }
+  .daily-time-record .attendance-view .upper .img-con img {
+    height: 23rem;
+    width: 23rem;
+  }
   .daily-time-record .user {
     grid-template-columns: auto;
     grid-template-rows: auto auto;
     gap: 0.5rem;
-    padding: 2rem 1rem;
+    padding: 1rem;
   }
   .daily-time-record .user .profile-img img {
     height: 9rem;
     width: 9rem;
   }
   .daily-time-record .user .text {
-    font-size: 1.6rem;
     gap: 0.5rem;
+  }
+  .daily-time-record .user .text h4 {
+    font-size: 1.8rem;
   }
   .daily-time-record .user .text > * {
     text-align: center;
+  }
+  .daily-time-record .user .text p {
+    font-size: 1.6rem;
   }
   .daily-time-record .user .text > *:nth-child(4) {
     display: none;
   }
   .daily-time-record .user .text > *:nth-child(5) {
     display: flex;
+    justify-content: center;
     grid-column: 1/3;
     grid-row: 2/3;
-  }
-  .daily-time-record .user .text > *:nth-child(5) p {
-    text-align: center;
   }
   .daily-time-record .mid {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    gap: 0.5rem;
   }
   .daily-time-record .mid .button-container {
     justify-content: center;
@@ -6599,9 +6932,41 @@ button {
   }
 }
 @media screen and (max-width: 400px) {
+  .daily-time-record .user {
+    padding: 1rem;
+    grid-template-rows: auto;
+  }
+  .daily-time-record .user .profile-img {
+    display: none;
+  }
   .daily-time-record .no-internship img {
     height: 20rem;
     width: 20rem;
+  }
+  .daily-time-record .time-in .address h2,
+  .daily-time-record .time-out .address h2 {
+    font-size: 1.7rem;
+  }
+  .daily-time-record .time-in .address h3,
+  .daily-time-record .time-out .address h3 {
+    font-size: 1.6rem;
+  }
+  .daily-time-record .time-in .camera img,
+  .daily-time-record .time-in .camera video,
+  .daily-time-record .time-out .camera img,
+  .daily-time-record .time-out .camera video {
+    height: 20rem;
+    width: 20rem;
+  }
+  .daily-time-record .attendance-view .upper .attendance-info p {
+    font-size: 1.5rem;
+  }
+  .daily-time-record .attendance-view .upper .img-con {
+    font-size: 1.5rem;
+  }
+  .daily-time-record .attendance-view .upper .img-con img {
+    height: 18rem;
+    width: 18rem;
   }
 }
 /** @format */
