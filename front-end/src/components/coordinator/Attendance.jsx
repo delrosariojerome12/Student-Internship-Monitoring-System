@@ -1,7 +1,6 @@
 import React from "react";
 
 const Attendance = React.memo(({attendance}) => {
-  console.log(attendance);
   const {
     user: {firstName, lastName, profileImage},
     intern: {

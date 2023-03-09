@@ -124,10 +124,6 @@ const TimeInModal = React.memo(({email}) => {
       setTime(fullHour);
     }, 1000);
 
-    // navigator.geolocation.getCurrentPosition((position) => {
-    //   const {latitude, longitude} = position.coords;
-    //   getLocation(latitude, longitude);
-    // });
     const options = {
       enableHighAccuracy: true,
       timeout: 10000,

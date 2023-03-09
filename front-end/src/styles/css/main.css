@@ -3776,21 +3776,65 @@ button {
   padding: 2rem;
   gap: 1rem;
   border-radius: 1rem;
-  background-color: #212121;
-  grid-template-rows: 12rem 7rem auto;
+  grid-template-rows: 7rem 10rem auto;
   color: #fff;
 }
 .dashboard .monitor-attendance > *, .dashboard-active .monitor-attendance > * {
+  background-color: #212121;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.dashboard .monitor-attendance button, .dashboard-active .monitor-attendance button {
+  background-color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 1.5rem 3rem;
+  transition: all 0.2s linear;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.4rem;
+}
+.dashboard .monitor-attendance button .icon, .dashboard-active .monitor-attendance button .icon {
+  font-size: 1.2rem;
+}
+.dashboard .monitor-attendance button p, .dashboard-active .monitor-attendance button p {
+  padding-top: 0.2rem;
+}
+.dashboard .monitor-attendance button:hover, .dashboard-active .monitor-attendance button:hover {
+  background-color: #0d7377;
+  border-radius: 1rem;
+  color: #fff;
+}
+.dashboard .monitor-attendance .mid, .dashboard-active .monitor-attendance .mid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.dashboard .monitor-attendance .mid > *, .dashboard-active .monitor-attendance .mid > * {
   border: solid 1px #fff;
 }
-.dashboard .monitor-attendance .content, .dashboard-active .monitor-attendance .content {
+.dashboard .monitor-attendance .mid .btn-container, .dashboard-active .monitor-attendance .mid .btn-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.dashboard .monitor-attendance .display, .dashboard-active .monitor-attendance .display {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.dashboard .monitor-attendance .display .content, .dashboard-active .monitor-attendance .display .content {
   display: grid;
   grid-auto-rows: 14rem;
   gap: 1rem;
   padding: 1rem;
   overflow-y: auto;
 }
-.dashboard .monitor-attendance .content .day-attendance, .dashboard-active .monitor-attendance .content .day-attendance {
+.dashboard .monitor-attendance .display .content .day-attendance, .dashboard-active .monitor-attendance .display .content .day-attendance {
   background-color: #fff;
   border-radius: 1rem;
   display: grid;
@@ -3799,27 +3843,50 @@ button {
   padding: 1rem;
   color: #000;
 }
-.dashboard .monitor-attendance .content .day-attendance > *, .dashboard-active .monitor-attendance .content .day-attendance > * {
+.dashboard .monitor-attendance .display .content .day-attendance > *, .dashboard-active .monitor-attendance .display .content .day-attendance > * {
   border: solid 1px #000;
 }
-.dashboard .monitor-attendance .content .day-attendance .left, .dashboard-active .monitor-attendance .content .day-attendance .left {
+.dashboard .monitor-attendance .display .content .day-attendance .left, .dashboard-active .monitor-attendance .display .content .day-attendance .left {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.dashboard .monitor-attendance .content .day-attendance .left img, .dashboard-active .monitor-attendance .content .day-attendance .left img {
+.dashboard .monitor-attendance .display .content .day-attendance .left img, .dashboard-active .monitor-attendance .display .content .day-attendance .left img {
   height: 10rem;
   width: 10rem;
   -o-object-fit: contain;
      object-fit: contain;
 }
-.dashboard .monitor-attendance .content .day-attendance .right, .dashboard-active .monitor-attendance .content .day-attendance .right {
+.dashboard .monitor-attendance .display .content .day-attendance .right, .dashboard-active .monitor-attendance .display .content .day-attendance .right {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
-.dashboard .monitor-attendance .content .day-attendance .right > *, .dashboard-active .monitor-attendance .content .day-attendance .right > * {
+.dashboard .monitor-attendance .display .content .day-attendance .right > *, .dashboard-active .monitor-attendance .display .content .day-attendance .right > * {
   border: solid 1px #000;
+}
+.dashboard .monitor-attendance .overlay, .dashboard-active .monitor-attendance .overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(48, 47, 47, 0.753);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: 8;
+}
+.dashboard .monitor-attendance .modal, .dashboard-active .monitor-attendance .modal {
+  color: #000;
+  z-index: 9;
+  padding: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50rem;
+  height: 40rem;
+  background-color: #fff;
+  border: solid 1px #000;
+  border-radius: 1rem;
 }
 .dashboard .admin-document-page, .dashboard-active .admin-document-page {
   display: grid;

@@ -4,7 +4,9 @@ const Attendance = require("../models/Attendance");
 const Intern = require("../models/Intern");
 const mongoose = require("mongoose");
 const User = require("../models/User");
+const Internship = require("../models/Internship");
 
+// student
 const getAllAttendance = async (req, res) => {
   const {email} = req.params;
   const {scheduleType} = req.query;
@@ -83,17 +85,16 @@ const getAllAttendance = async (req, res) => {
   });
 };
 
+// coordinator
 const getAllAttendanceToday = async (req, res) => {
-  const {email} = req.params;
-
   const now = new Date();
-
   const year = now.getFullYear();
-  const month =
-    now.getMonth() + 1 < 10 ? `0${now.getMonth() + 1}` : now.getMonth() + 1;
-  const date = now.getDate() + 1 < 10 ? `0${now.getDate()}` : now.getDate();
+  const month = now.getMonth() + 1;
+  const date = now.getDate();
 
-  const todayDate = `${month}-${date}-${year}`;
+  const todayDate = `${month < 10 ? "0" : ""}${month}-${
+    date < 10 ? "0" : ""
+  }${date}-${year}`;
 
   const allAttendanceToday = await Attendance.find({date: todayDate})
     .populate({
@@ -108,6 +109,38 @@ const getAllAttendanceToday = async (req, res) => {
   res.status(StatusCodes.OK).json({
     success: true,
     data: allAttendanceToday,
+  });
+};
+
+const getAllAttendanceByDate = async (req, res) => {
+  const {date, renderedHours} = req.query;
+
+  const filter = {};
+
+  if (date) {
+    const dateArr = date.split("-");
+    const newDate = `${dateArr[1]}-${dateArr[2]}-${dateArr[0]}`;
+    filter.date = newDate;
+  }
+
+  if (renderedHours) {
+    filter.totalRendered = renderedHours;
+  }
+
+  const allAttendanceByDate = await Attendance.find({...filter})
+    .populate({
+      path: "user",
+      model: "User",
+    })
+    .populate({
+      path: "intern",
+      model: "Intern",
+    });
+
+  res.status(StatusCodes.OK).json({
+    success: true,
+    data: allAttendanceByDate,
+    searched: [date, renderedHours],
   });
 };
 
@@ -186,6 +219,7 @@ const checkStartingDate = async (req, res) => {
 module.exports = {
   getAllAttendance,
   getAllAttendanceToday,
+  getAllAttendanceByDate,
   getAttendance,
   timeIn,
   timeOut,
