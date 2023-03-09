@@ -123,7 +123,7 @@ const TimeInModal = React.memo(({ email }) => {
       const minutes =
         10 > date.getMinutes() ? `0${date.getMinutes()}` : date.getMinutes();
       const seconds = date.getSeconds();
-      const amOrPm = date.getHours() >= 12 ? "PM" : "AM"; // set AM or PM
+      const amOrPm = date.getHours() >= 12 ? "PM" : "AM";
 
       const fullHour = `${hours}:${minutes}:${seconds} ${amOrPm}`;
       // const fullDate = `${month} ${day}, ${year}`;
@@ -131,10 +131,6 @@ const TimeInModal = React.memo(({ email }) => {
       setTime(fullHour);
     }, 1000);
 
-    // navigator.geolocation.getCurrentPosition((position) => {
-    //   const {latitude, longitude} = position.coords;
-    //   getLocation(latitude, longitude);
-    // });
     const options = {
       enableHighAccuracy: true,
       timeout: 10000,
