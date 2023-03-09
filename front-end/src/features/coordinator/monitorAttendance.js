@@ -40,6 +40,20 @@ export const getAllAttendanceByDate = createAsyncThunk(
         "http://localhost:5000/attendance/getAllAttendanceByDate",
         {params}
       );
+      return {res};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const checkAbsents = createAsyncThunk(
+  "/monitor/checkAbsents",
+  async ({x}, {rejectWithValue}) => {
+    try {
+      const url = `http://localhost:5000/attendance/getAllAttendanceToday`;
+      const {data: res} = await axios.get(url);
       console.log(res);
       return {res};
     } catch (error) {

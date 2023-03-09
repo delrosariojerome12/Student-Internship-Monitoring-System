@@ -24,7 +24,7 @@ const Attendance = React.memo(({attendance}) => {
 
   if (!isPresent) {
     return (
-      <div className="day-attendance absent">
+      <div className="day-attendance">
         <div className="left">
           <img src={profileImage} alt="profile" />
         </div>
@@ -36,7 +36,6 @@ const Attendance = React.memo(({attendance}) => {
           </div>
           <div className="second">
             <p>{companyName}</p>
-            {/* <p>{finalLocation}</p> */}
           </div>
         </div>
       </div>

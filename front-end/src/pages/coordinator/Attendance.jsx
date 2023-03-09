@@ -46,6 +46,7 @@ const MonitorAttendance = () => {
   } = useSelector((state) => state.monitorAttendance);
   const dispatch = useDispatch();
 
+  const [time, setTime] = useState("");
   const [filterDate, setFilterDate] = useState("");
   const [filterIntern, setFilterIntern] = useState({
     internshipDetails: {
@@ -54,7 +55,17 @@ const MonitorAttendance = () => {
   });
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      const date = new Date();
+      // hour
+      const hours = date.getHours() % 12 || 12;
+      const amOrPm = date.getHours() >= 12 ? "PM" : "AM";
+      setTime(`${hours} ${amOrPm}`);
+      console.log(time);
+    }, 1000);
+
     dispatch(getAllAttendanceToday({}));
+    return () => clearInterval(interval);
   }, []);
 
   if (isLoading || !attendanceToday) {
