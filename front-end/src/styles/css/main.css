@@ -568,6 +568,8 @@ button {
   height: 100%;
   width: 100%;
   border-radius: 50%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .signin .card-container form button {
   cursor: pointer;
