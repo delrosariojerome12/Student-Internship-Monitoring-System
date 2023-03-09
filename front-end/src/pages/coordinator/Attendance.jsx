@@ -19,6 +19,21 @@ const today = `${month < 10 ? "0" : ""}${month}-${
   date < 10 ? "0" : ""
 }${date}-${year}`;
 
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
 const MonitorAttendance = () => {
   const {
     isLoading,
@@ -64,7 +79,11 @@ const MonitorAttendance = () => {
 
   const formatDate = (date) => {
     const dateArr = date.split("-");
-    return `${dateArr[1]}-${dateArr[2]}-${dateArr[0]}`;
+
+    const currentMonth = parseInt(dateArr[0].slice(-1)) - 1;
+
+    const currentFormat = ` ${months[currentMonth]} ${dateArr[1]}, ${dateArr[2]}`;
+    return currentFormat;
   };
 
   return (
@@ -76,6 +95,9 @@ const MonitorAttendance = () => {
         <div className="btn-container">
           <button onClick={() => dispatch(handleFilter())}>Filter</button>
           <button onClick={() => dispatch(handleSort())}>Sort</button>
+        </div>
+        <div className="date-container">
+          <h3>{formatDate(today)}</h3>
         </div>
       </div>
       <div className="display">

@@ -6,7 +6,8 @@
   padding: 2rem;
   gap: 1rem;
   border-radius: 1rem;
-  grid-template-rows: 7rem 10rem auto;
+  // grid-template-rows: 7rem 10rem auto;
+  grid-template-rows: 10vh 10vh 72vh;
   color: #fff;
   & > * {
     background-color: #212121;
@@ -72,13 +73,14 @@
         color: #000;
 
         & > * {
-          border: solid 1px #000;
+          background-color: #fff;
         }
 
         .left {
           display: flex;
           align-items: center;
           justify-content: center;
+          border-radius: 1rem;
           img {
             height: 10rem;
             width: 10rem;
@@ -89,10 +91,16 @@
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           gap: 1rem;
+          border-radius: 1rem;
+
           & > * {
-            border: solid 1px #000;
+            padding: 0.5rem;
           }
         }
+      }
+
+      .absent {
+        background-color: darken($color: $red-primary-color, $amount: 10);
       }
     }
   }

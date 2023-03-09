@@ -112,6 +112,50 @@ const getAllAttendanceToday = async (req, res) => {
   });
 };
 
+const checkAbsents = async (req, res) => {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const date = now.getDate();
+
+  const todayDate = `${month < 10 ? "0" : ""}${month}-${
+    date < 10 ? "0" : ""
+  }${date}-${year}`;
+
+  const allInterns = await Intern.find({});
+  const internEmails = allInterns.map((item) => item.email);
+
+  for (let email of internEmails) {
+    const attendance = await Attendance.findOne({
+      email: email,
+      date: todayDate,
+    });
+    if (!attendance) {
+      // Create attendance for absent interns
+
+      const user = await User.findOne({email});
+      const intern = await Intern.findOne({email});
+
+      const newAttendance = new Attendance({
+        email: email,
+        date: todayDate,
+        isPresent: false,
+        timeIn: "absent",
+        user: user._id,
+        intern: intern._id,
+        proof: null,
+      });
+      await newAttendance.save();
+    }
+  }
+  const allAttendance = await Attendance.find();
+
+  res.status(StatusCodes.OK).json({
+    success: true,
+    allAttendance,
+  });
+};
+
 const getAllAttendanceByDate = async (req, res) => {
   const {date, renderedHours} = req.query;
 
@@ -224,4 +268,5 @@ module.exports = {
   timeIn,
   timeOut,
   checkStartingDate,
+  checkAbsents,
 };

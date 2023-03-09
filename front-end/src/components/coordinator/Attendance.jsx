@@ -11,6 +11,7 @@ const Attendance = React.memo(({attendance}) => {
         supervisorContact,
         typeOfWork,
         logo,
+        renderedHours,
       },
     },
     timeIn,
@@ -20,6 +21,27 @@ const Attendance = React.memo(({attendance}) => {
     isPresent,
     location,
   } = attendance;
+
+  if (!isPresent) {
+    return (
+      <div className="day-attendance absent">
+        <div className="left">
+          <img src={profileImage} alt="profile" />
+        </div>
+        <div className="right">
+          <div className="first">
+            <h4>{`${firstName} ${lastName}`}</h4>
+            <h4>Status: Absent</h4>
+            <h4>Total Rendered Hours: {renderedHours}hrs</h4>
+          </div>
+          <div className="second">
+            <p>{companyName}</p>
+            {/* <p>{finalLocation}</p> */}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const updatedLocation = location.indexOf("NE:");
   const finalLocation = location.substring(0, updatedLocation).trim();
