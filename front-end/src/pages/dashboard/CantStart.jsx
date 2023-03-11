@@ -27,7 +27,7 @@ const CantStart = React.memo(({startingDate}) => {
     <div className="cant-start">
       <div className="cant-start-modal">
         <h3>Oh no, your schedule hasn’t started yet.</h3>
-        <h3>Your internship will start on {`${month} ${date},${year}`}</h3>
+        <h3>Your internship will start on {`${month} ${date} ${year}`}</h3>
         <img src={CantStartImg} alt="not-starting" />
         <button onClick={() => navigate("/dashboard")}>Dashboard</button>
       </div>
