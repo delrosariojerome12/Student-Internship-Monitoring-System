@@ -96,6 +96,24 @@ const DailyTimeRecord = React.memo(() => {
     );
   };
 
+  const checkTimeLogic = (btn) => {
+    switch (btn) {
+      case "time-in":
+        if (!alreadyTimeIn && isTimeInDisable) {
+          console.log("1");
+          return true;
+        }
+        return;
+      case "time-out":
+        if (!alreadyTimeOut && !isTimeOutDisable) {
+          return true;
+        }
+        return;
+      default:
+        break;
+    }
+  };
+
   return (
     <IconContext.Provider value={{className: "icon"}}>
       <section className="daily-time-record">

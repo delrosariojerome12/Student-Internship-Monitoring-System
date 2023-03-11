@@ -114,12 +114,9 @@ export const attendanceReducer = createSlice({
       }
     },
     handleDisableTimeIn: (state, {payload}) => {
-      console.log("disableTimeIn");
       state.isTimeInDisable = payload;
     },
     handleDisableTimeOut: (state, {payload}) => {
-      console.log("disableTimeOut");
-
       state.isTimeOutDisable = payload;
     },
     handleCheckDate: (state, {payload}) => {
@@ -147,13 +144,59 @@ export const attendanceReducer = createSlice({
       })
       .addCase(getAllAttendance.fulfilled, (state, {payload}) => {
         const {
-          doesExists: {timeInExists, timeOutExists},
+          doesExists: {status},
           todayAttendance,
         } = payload.res;
         state.isLoading = false;
         state.allAttendance = payload.res.data;
-        state.isTimeInDisable = timeInExists;
-        state.isTimeOutDisable = timeOutExists;
+
+        console.log(payload.res.doesExists);
+
+        switch (status) {
+          case "no-time-in":
+            state.isTimeInDisable = false;
+            state.isTimeOutDisable = true;
+            break;
+          case "already-time-in":
+            state.isTimeInDisable = true;
+            state.isTimeOutDisable = true;
+            break;
+          case "no-time-in-lunch":
+            state.isTimeInDisable = true;
+            state.isTimeOutDisable = true;
+            break;
+          case "already-timed-in-lunch":
+            state.isTimeInDisable = true;
+            state.isTimeOutDisable = false;
+            break;
+          case "complete":
+            state.isTimeInDisable = true;
+            state.isTimeOutDisable = true;
+            break;
+          case "no-time-in-afternoon":
+            state.isTimeInDisable = true;
+            state.isTimeOutDisable = true;
+            break;
+          case "time-out-standard":
+            state.isTimeInDisable = true;
+            state.isTimeOutDisable = false;
+            break;
+          case "time-out-overtime":
+            state.isTimeInDisable = true;
+            state.isTimeOutDisable = false;
+            break;
+          case "absent":
+            state.isTimeInDisable = true;
+            state.isTimeOutDisable = true;
+            break;
+          case "no-schedule":
+            state.isTimeInDisable = true;
+            state.isTimeOutDisable = true;
+            break;
+          default:
+            break;
+        }
+
         if (todayAttendance) {
           state.todayAttendanceID = todayAttendance._id;
         }
@@ -172,8 +215,6 @@ export const attendanceReducer = createSlice({
         state.isLoading = false;
         state.allAttendance = [...state.allAttendance, payload.res.data];
         state.isTimeInOpen = false;
-        state.isTimeInDisable = true;
-        state.alreadyTimeIn = true;
       })
       .addCase(timeInAttendance.rejected, (state, action) => {
         state.isError = true;
@@ -187,8 +228,6 @@ export const attendanceReducer = createSlice({
         state.isLoading = false;
         state.allAttendance = [...state.allAttendance];
         state.isTimeOutOpen = false;
-        state.isTimeOutDisable = true;
-        state.alreadyTimeOut = true;
       })
       .addCase(timeOutAttendance.rejected, (state, action) => {
         state.isLoading = false;
