@@ -4384,7 +4384,7 @@ button {
   text-align: center;
 }
 .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
-  height: 35rem;
+  height: 40rem;
 }
 .dashboard .admin-document-page .document-approval-container, .dashboard-active .admin-document-page .document-approval-container {
   padding: 2rem;
@@ -4569,8 +4569,14 @@ button {
   .dashboard .admin-document-page .document-container .documents, .dashboard-active .admin-document-page .document-container .documents {
     justify-content: center;
   }
+  .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
+    height: 35rem;
+  }
 }
 @media screen and (max-width: 950px) {
+  .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
+    height: 30rem;
+  }
   .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document {
     grid-template-rows: auto auto;
     grid-template-columns: 0.25fr 1fr;
@@ -4651,7 +4657,7 @@ button {
     grid-template-columns: 1fr;
   }
   .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
-    height: 30rem;
+    height: 25rem;
   }
 }
 @media screen and (max-width: 650px) {
@@ -4669,7 +4675,7 @@ button {
 }
 @media screen and (max-width: 600px) {
   .dashboard .admin-document-page, .dashboard-active .admin-document-page {
-    grid-template-rows: repeat(2, minmax(6rem, auto)) minmax(35rem, 65vh);
+    grid-template-rows: repeat(2, minmax(6rem, auto)) minmax(35rem, 60vh);
   }
   .dashboard .admin-document-page .sample-view-container, .dashboard-active .admin-document-page .sample-view-container,
   .dashboard .admin-document-page .document-approval-container .view-document-container,
@@ -4685,9 +4691,6 @@ button {
   }
 }
 @media screen and (max-width: 500px) {
-  .dashboard .admin-document-page, .dashboard-active .admin-document-page {
-    grid-template-rows: repeat(2, minmax(6rem, 7vh)) minmax(35rem, 68vh);
-  }
   .dashboard .admin-document-page .document-modal .content, .dashboard-active .admin-document-page .document-modal .content {
     grid-template-rows: 10rem repeat(2, auto);
   }
@@ -4731,6 +4734,12 @@ button {
     padding: 1rem 1rem 1rem 2.5rem;
     justify-content: flex-start;
   }
+  .dashboard .admin-document-page .document-container .no-document, .dashboard-active .admin-document-page .document-container .no-document {
+    padding: 1rem;
+  }
+  .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
+    height: 20rem;
+  }
   .dashboard .admin-document-page .document-approval-container .document-intern, .dashboard-active .admin-document-page .document-approval-container .document-intern {
     min-height: 8rem !important;
   }
@@ -4766,9 +4775,6 @@ button {
 @media screen and (max-width: 400px) {
   .dashboard .admin-document-page .document-container .documents, .dashboard-active .admin-document-page .document-container .documents {
     grid-template-columns: 1fr;
-  }
-  .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
-    height: 25rem;
   }
 }
 
