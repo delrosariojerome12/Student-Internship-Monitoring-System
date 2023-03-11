@@ -42,6 +42,7 @@ export const getAllAttendance = createAsyncThunk(
 export const checkStartingDate = createAsyncThunk(
   "/attendance/checkStartingDate",
   async ({email}, {rejectWithValue, getState}) => {
+    console.log("updated user");
     const {
       user: {user},
     } = getState();
@@ -113,9 +114,12 @@ export const attendanceReducer = createSlice({
       }
     },
     handleDisableTimeIn: (state, {payload}) => {
+      console.log("disableTimeIn");
       state.isTimeInDisable = payload;
     },
     handleDisableTimeOut: (state, {payload}) => {
+      console.log("disableTimeOut");
+
       state.isTimeOutDisable = payload;
     },
     handleCheckDate: (state, {payload}) => {
