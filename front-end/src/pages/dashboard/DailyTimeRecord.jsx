@@ -59,36 +59,8 @@ const DailyTimeRecord = React.memo(() => {
       const hours = now.getHours() % 12 || 12;
       const minutes = now.getMinutes();
       const amOrPm = now.getHours() >= 12 ? "PM" : "AM";
-
-      // if (hours >= 8 && hours <= 10 && amOrPm === "AM") {
-      //   dispatch(handleDisableTimeIn(false));
-      // } else if (hours >= 1 && amOrPm === "PM") {
-      //   dispatch(handleDisableTimeIn(false));
-      // }
-
-      // if (hours >= 8 && hours <= 10 && amOrPm === "AM") {
-      //   dispatch(handleDisableTimeIn(false));
-      // } else if (hours === 1 && minutes < 29 && amOrPm === "PM") {
-      //   dispatch(handleDisableTimeIn(false));
-      // } else if (alreadyTimeIn) {
-      //   if (hours >= 5 && hours <= 7 && amOrPm === "PM") {
-      //     dispatch(handleDisableTimeOut(false));
-      //   }
-      // }
     }, 1000);
-
-    const date = new Date();
-    const day = date.getDate() + 1 < 10 ? `0${date.getDate()}` : date.getDate();
-    const month =
-      date.getMonth() + 1 < 10
-        ? `0${date.getMonth() + 1}`
-        : date.getMonth() + 1;
-    const year = date.getFullYear();
-    const today = `${year}-${month}-${day}`;
-
     dispatch(getAllAttendance({email, scheduleDetails}));
-
-    today === startingDate && dispatch(checkStartingDate({email}));
     return () => clearInterval(timer);
   }, []);
 
@@ -124,6 +96,24 @@ const DailyTimeRecord = React.memo(() => {
     );
   };
 
+  const checkTimeLogic = (btn) => {
+    switch (btn) {
+      case "time-in":
+        if (!alreadyTimeIn && isTimeInDisable) {
+          console.log("1");
+          return true;
+        }
+        return;
+      case "time-out":
+        if (!alreadyTimeOut && !isTimeOutDisable) {
+          return true;
+        }
+        return;
+      default:
+        break;
+    }
+  };
+
   return (
     <IconContext.Provider value={{className: "icon"}}>
       <section className="daily-time-record">
@@ -154,22 +144,22 @@ const DailyTimeRecord = React.memo(() => {
             <button
               className="time-in"
               onClick={() => dispatch(handleTimeIn())}
-              // style={
-              //   isTimeInDisable
-              //     ? {pointerEvents: "none", opacity: ".5"}
-              //     : {opacity: "1"}
-              // }
+              style={
+                isTimeInDisable
+                  ? {pointerEvents: "none", opacity: ".5"}
+                  : {opacity: "1"}
+              }
             >
               Time In
             </button>
             <button
               className="time-out"
               onClick={() => dispatch(handleTimeOut())}
-              // style={
-              //   isTimeOutDisable
-              //     ? {pointerEvents: "none", opacity: ".5"}
-              //     : {opacity: "1"}
-              // }
+              style={
+                isTimeOutDisable
+                  ? {pointerEvents: "none", opacity: ".5"}
+                  : {opacity: "1"}
+              }
             >
               Time Out
             </button>

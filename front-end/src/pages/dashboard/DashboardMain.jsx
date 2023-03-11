@@ -1,25 +1,35 @@
-import React from "react";
+import React, {useEffect} from "react";
 import searchIcon from "../../assets/img/search.svg";
-import { useSelector, useDispatch } from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 
-import { BiSearchAlt } from "react-icons/bi";
+import {BiSearchAlt} from "react-icons/bi";
+import {checkStartingDate} from "../../features/interns/attendanceReducer";
 
 const DashboardMain = () => {
   const {
     user: {
-      user: {
-      firstName,
-      },
-      internshipDetails: {
-        renderedHours,
-        requiredHours,
-        companyName,
-        companyAddress,
-        supervisor,
-        supervisorContact,
-      },
+      user: {firstName},
+      email,
+      internshipDetails: {renderedHours, startingDate},
+      status,
     },
   } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const date = new Date();
+    const day = date.getDate() + 1 < 10 ? `0${date.getDate()}` : date.getDate();
+    const month =
+      date.getMonth() + 1 < 10
+        ? `0${date.getMonth() + 1}`
+        : date.getMonth() + 1;
+    const year = date.getFullYear();
+    const today = `${year}-${month}-${day}`;
+
+    if (today === startingDate && status !== "Starting") {
+      dispatch(checkStartingDate({email}));
+    }
+  }, []);
 
   return (
     <section className="main">

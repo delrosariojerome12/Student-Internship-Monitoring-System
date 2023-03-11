@@ -1,13 +1,11 @@
-/** @format */
-
 import React from "react";
-import { Route, Routes, Link, Navigate, useNavigate } from "react-router-dom";
+import {Route, Routes, Link, Navigate, useNavigate} from "react-router-dom";
 import InternsDetail from "./profile/InternsDetail";
 import InternshipDetail from "./profile/InternshipDetail";
 import Attendance from "./profile/Attendance";
 import Narrative from "./profile/Narrative";
 import Request from "./profile/Request ";
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 
 const buttons = [
   {
@@ -37,7 +35,7 @@ const Profile = () => {
 
   const {
     user: {
-      user: { firstName, lastName, profileImage },
+      user: {firstName, lastName, profileImage},
       schoolDetails,
       internshipDetails,
     },
@@ -50,9 +48,10 @@ const Profile = () => {
           className="profile-bg"
           style={{
             background:
-              "url(https://animes.olanerd.com/wp-content/uploads/2022/10/1666371202_Bocchi-The-Rock-Os-passos-de-Hitori-para-o-auto-aperfeicoamento.jpg) no-repeat center",
+              "url(https://cdn.discordapp.com/attachments/1073177186758041610/1083331391414087690/289776510_551525149810290_8984060531240545908_n.jpg) no-repeat center",
             backgroundSize: "cover",
-          }}></div>
+          }}
+        ></div>
         <div className="profile-details">
           <div className="profile-img">
             <img src={profileImage} alt="" />
@@ -74,7 +73,7 @@ const Profile = () => {
       <div className="content">
         <div className="button-container">
           {buttons.map((item, index) => {
-            const { path, btnName } = item;
+            const {path, btnName} = item;
             return (
               <button key={index} onClick={() => navigate(path)}>
                 {btnName}

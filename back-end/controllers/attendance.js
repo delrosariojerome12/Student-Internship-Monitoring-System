@@ -29,51 +29,107 @@ const getAllAttendance = async (req, res) => {
   const todayDate = `${month}-${date}-${year}`;
 
   const attendance = await Attendance.find({email});
-  const todayExists = await Attendance.findOne({date: todayDate});
+  const todayExists = await Attendance.findOne({
+    date: todayDate,
+    email,
+  });
 
   let doesExists = {};
+  // console.log(todayExists.isPresent);
+
+  const hours = now.getHours() % 12 || 12;
+  const minutes = now.getMinutes();
+  const amOrPm = now.getHours() >= 12 ? "PM" : "AM";
+
+  // const hours = now.getHours();
+  // const minutes = now.getMinutes();
+  // const amOrPm = now.toLocaleTimeString("en-US", {hour12: true}).slice(-2);
 
   if (scheduleType === "Regular") {
     if (day > 0 && day < 6) {
-      if (todayExists) {
-        // timed in
-        doesExists = {
-          status: "already timed-in",
-          timeInExists: true,
-          timeOutExists: false,
-        };
-      } else {
-        doesExists = {
-          // not yet
-          status: "not timed-in",
-          timeInExists: false,
-          timeOutExists: true,
-        };
-      }
     } else {
       // disable time
       doesExists = {
         // not yet
-        status: "no schedule today",
-        timeInExists: true,
-        timeOutExists: true,
+        status: "no-schedule",
       };
     }
   } else {
-    if (todayExists) {
-      // timed in
-      doesExists = {
-        status: "already timed-in",
-        timeInExists: true,
-        timeOutExists: false,
-      };
-    } else {
-      doesExists = {
-        // not yet
-        status: "not timed-in in",
-        timeInExists: false,
-        timeOutExists: true,
-      };
+    // irregular
+    if (
+      (hours >= 8 && hours < 10 && amOrPm === "AM") ||
+      (hours === 10 && minutes <= 20 && amOrPm === "AM")
+    ) {
+      // time in morning
+      if (!todayExists) {
+        doesExists = {
+          status: "no-time-in",
+        };
+      } else if (todayExists) {
+        doesExists = {
+          status: "already-timed-in",
+        };
+      }
+    } else if (hours === 12 && minutes <= 59 && amOrPm === "PM") {
+      // adjust
+      // lunch
+      if (!todayExists) {
+        doesExists = {
+          status: "no-time-in-lunch",
+        };
+      } else if (todayExists) {
+        doesExists = {
+          status: "already-timed-in-lunch",
+        };
+        if (todayExists.timeIn !== null && todayExists.timeOut !== null) {
+          doesExists = {
+            status: "complete",
+          };
+        }
+      }
+    } else if (hours === 1 && minutes <= 30 && amOrPm === "PM") {
+      // time in afternoon
+      if (!todayExists) {
+        doesExists = {
+          status: "no-time-in",
+        };
+      } else if (todayExists) {
+        doesExists = {
+          status: "already-timed-in",
+        };
+      }
+    } else if (hours >= 2 && amOrPm === "PM") {
+      // absent
+      // disable time in and time out
+      if (!todayExists) {
+        doesExists = {
+          status: "absent",
+        };
+      } else {
+        if (hours >= 4 && hours <= 5 && amOrPm === "PM") {
+          // time out
+          if (!todayExists) {
+            doesExists = {
+              status: "no-time-in-afternoon",
+            };
+          } else if (todayExists) {
+            doesExists = {
+              status: "time-out-standard",
+            };
+          } else if (hours <= 6 && amOrPm === "PM") {
+            // ot
+            if (!todayExists) {
+              doesExists = {
+                status: "no-time-in-afternoon",
+              };
+            } else if (todayExists) {
+              doesExists = {
+                status: "time-out-overtime",
+              };
+            }
+          }
+        }
+      }
     }
   }
 
@@ -122,7 +178,7 @@ const checkAbsents = async (req, res) => {
     date < 10 ? "0" : ""
   }${date}-${year}`;
 
-  const allInterns = await Intern.find({});
+  const allInterns = await Intern.find({status: "Starting"});
   const internEmails = allInterns.map((item) => item.email);
 
   for (let email of internEmails) {
