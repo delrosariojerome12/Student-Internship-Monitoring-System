@@ -127,8 +127,6 @@ const TimeInModal = React.memo(({email}) => {
 
     const options = {
       enableHighAccuracy: true,
-      timeout: 10000,
-      maximumAge: 60000,
     };
 
     navigator.geolocation.getCurrentPosition(
