@@ -568,6 +568,8 @@ button {
   height: 100%;
   width: 100%;
   border-radius: 50%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .signin .card-container form button {
   cursor: pointer;
@@ -1348,7 +1350,7 @@ button {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
@@ -2157,7 +2159,7 @@ button {
   display: grid;
   grid-template-rows: minmax(17rem, auto) auto minmax(30rem, 64vh);
   gap: 1rem;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
   padding: 1rem;
 }
 .dashboard .intern-container .preview-container, .dashboard-active .intern-container .preview-container {
@@ -2947,7 +2949,7 @@ button {
 }
 .dashboard .internship-container .content, .dashboard-active .internship-container .content {
   border-radius: 1rem;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
   padding: 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, 42.5rem);
@@ -3027,7 +3029,7 @@ button {
   align-items: center;
   text-align: center;
   flex-direction: column;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
   border-radius: 1rem;
   color: #fff;
   gap: 1rem;
@@ -3663,7 +3665,7 @@ button {
   grid-auto-rows: 12rem;
   border: solid 1px #fff;
   border-radius: 2rem 2rem 0 0;
-  background-image: linear-gradient(#212121 30%, #222222 31%, #484848 100%);
+  background-color: #282b30;
 }
 .dashboard .coordinator-dashboard .dashboard-intern .container-title, .dashboard-active .coordinator-dashboard .dashboard-intern .container-title {
   color: #fff;
@@ -3726,7 +3728,7 @@ button {
 }
 .dashboard .coordinator-dashboard .dashboard-content > *, .dashboard-active .coordinator-dashboard .dashboard-content > * {
   border: solid 1px #fff;
-  background-image: linear-gradient(#212121 30%, #222222 31%, #484848 100%);
+  background-color: #282b30;
 }
 .dashboard .coordinator-dashboard .dashboard-content .approvals-title, .dashboard-active .coordinator-dashboard .dashboard-content .approvals-title,
 .dashboard .coordinator-dashboard .dashboard-content .internships-title,
@@ -4744,7 +4746,7 @@ button {
   grid-auto-rows: 12rem;
   gap: 1rem;
   padding: 2rem;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
   border-radius: 1rem;
   overflow-y: auto;
 }
@@ -4787,7 +4789,7 @@ button {
   border-radius: 0;
 }
 .dashboard .admin-document-page .document-container .no-document, .dashboard-active .admin-document-page .document-container .no-document {
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
   border-radius: 1rem;
   color: #fff;
   padding: 2rem;
@@ -4800,11 +4802,11 @@ button {
   text-align: center;
 }
 .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
-  height: 35rem;
+  height: 40rem;
 }
 .dashboard .admin-document-page .document-approval-container, .dashboard-active .admin-document-page .document-approval-container {
   padding: 2rem;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
   border-radius: 1rem;
   gap: 1rem;
   overflow-y: auto;
@@ -4985,8 +4987,14 @@ button {
   .dashboard .admin-document-page .document-container .documents, .dashboard-active .admin-document-page .document-container .documents {
     justify-content: center;
   }
+  .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
+    height: 35rem;
+  }
 }
 @media screen and (max-width: 950px) {
+  .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
+    height: 30rem;
+  }
   .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document {
     grid-template-rows: auto auto;
     grid-template-columns: 0.25fr 1fr;
@@ -5067,7 +5075,7 @@ button {
     grid-template-columns: 1fr;
   }
   .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
-    height: 30rem;
+    height: 25rem;
   }
 }
 @media screen and (max-width: 650px) {
@@ -5085,7 +5093,7 @@ button {
 }
 @media screen and (max-width: 600px) {
   .dashboard .admin-document-page, .dashboard-active .admin-document-page {
-    grid-template-rows: repeat(2, minmax(6rem, auto)) minmax(35rem, 65vh);
+    grid-template-rows: repeat(2, minmax(6rem, auto)) minmax(35rem, 60vh);
   }
   .dashboard .admin-document-page .sample-view-container, .dashboard-active .admin-document-page .sample-view-container,
   .dashboard .admin-document-page .document-approval-container .view-document-container,
@@ -5101,9 +5109,6 @@ button {
   }
 }
 @media screen and (max-width: 500px) {
-  .dashboard .admin-document-page, .dashboard-active .admin-document-page {
-    grid-template-rows: repeat(2, minmax(6rem, 7vh)) minmax(35rem, 68vh);
-  }
   .dashboard .admin-document-page .document-modal .content, .dashboard-active .admin-document-page .document-modal .content {
     grid-template-rows: 10rem repeat(2, auto);
   }
@@ -5147,6 +5152,12 @@ button {
     padding: 1rem 1rem 1rem 2.5rem;
     justify-content: flex-start;
   }
+  .dashboard .admin-document-page .document-container .no-document, .dashboard-active .admin-document-page .document-container .no-document {
+    padding: 1rem;
+  }
+  .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
+    height: 20rem;
+  }
   .dashboard .admin-document-page .document-approval-container .document-intern, .dashboard-active .admin-document-page .document-approval-container .document-intern {
     min-height: 8rem !important;
   }
@@ -5182,9 +5193,6 @@ button {
 @media screen and (max-width: 400px) {
   .dashboard .admin-document-page .document-container .documents, .dashboard-active .admin-document-page .document-container .documents {
     grid-template-columns: 1fr;
-  }
-  .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
-    height: 25rem;
   }
 }
 
@@ -6353,7 +6361,7 @@ button {
 }
 .internship-container-intern .content {
   border-radius: 1rem;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
   padding: 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, 42.5rem);
@@ -6423,7 +6431,7 @@ button {
   align-items: center;
   text-align: center;
   flex-direction: column;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
   border-radius: 1rem;
   color: #fff;
   gap: 1rem;
@@ -6685,6 +6693,7 @@ button {
     height: 3.5rem;
   }
 }
+/** @format */
 .profile-page {
   display: grid;
   height: 100%;
@@ -6723,7 +6732,7 @@ button {
 .profile-page .profile-user .intern-info {
   display: grid;
   grid-template-columns: 1fr auto;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
   border-radius: 0 0 1rem 1rem;
   padding: 1rem;
 }
@@ -6733,11 +6742,9 @@ button {
   gap: 1rem;
   padding: 1rem 1rem 1rem 15rem;
 }
-.profile-page .profile-user .intern-info .intern-details h3 {
-  color: #fff;
-}
+.profile-page .profile-user .intern-info .intern-details h3,
 .profile-page .profile-user .intern-info .intern-details p {
-  color: #bdbdbd;
+  color: #fff;
 }
 .profile-page .profile-user .intern-info .btn-edit {
   justify-content: flex-end;
@@ -6814,7 +6821,7 @@ button {
 .profile-page .content .display {
   padding: 2rem;
   border-radius: 0 1rem 1rem 1rem;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
 }
 
 /** @format */
@@ -7122,7 +7129,7 @@ button {
   grid-auto-rows: 6rem;
   gap: 1rem;
   padding: 2rem;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
   border-radius: 2rem;
   max-height: 67rem;
   overflow-y: auto;
@@ -7149,7 +7156,7 @@ button {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
   border-radius: 1rem;
   color: #fff;
   gap: 1rem;
@@ -7410,7 +7417,7 @@ button {
 }
 .documents-page .top {
   border-radius: 1.5rem;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #333333 80%);
+  background-color: #282b30;
   display: grid;
   grid-template-columns: 1fr 2fr;
   padding: 1rem;
@@ -7737,7 +7744,7 @@ button {
   padding: 2rem;
   color: #fff;
   border-radius: 1.5rem;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #333333 80%);
+  background-color: #282b30;
   overflow: hidden;
   position: relative;
 }
@@ -8038,7 +8045,7 @@ button {
   width: 100%;
   border: solid 1px #fff;
   border-radius: 1rem;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
 }
 .reports .sort-modals {
   display: none !important;
