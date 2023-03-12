@@ -3931,7 +3931,7 @@ button {
 }
 .dashboard .admin-document-page, .dashboard-active .admin-document-page {
   display: grid;
-  grid-template-rows: repeat(2, minmax(7rem, auto)) minmax(55rem, 77vh);
+  grid-template-rows: auto minmax(45rem, 78vh);
   gap: 1rem;
   overflow: hidden;
 }
@@ -4251,16 +4251,22 @@ button {
   color: #fff;
 }
 .dashboard .admin-document-page > header, .dashboard-active .admin-document-page > header {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 1rem;
+}
+.dashboard .admin-document-page > header .title-page, .dashboard-active .admin-document-page > header .title-page {
   background-color: #282b30;
   display: flex;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 2rem;
   border-radius: 1rem;
 }
-.dashboard .admin-document-page > header h2, .dashboard-active .admin-document-page > header h2 {
+.dashboard .admin-document-page > header .title-page h2, .dashboard-active .admin-document-page > header .title-page h2 {
   color: #fff;
 }
-.dashboard .admin-document-page .btn-routes, .dashboard-active .admin-document-page .btn-routes {
+.dashboard .admin-document-page > header .btn-routes, .dashboard-active .admin-document-page > header .btn-routes {
   background-color: #282b30;
   border-radius: 1rem;
   padding: 1rem 1rem 1rem 2rem;
@@ -4268,7 +4274,7 @@ button {
   align-items: center;
   gap: 1rem;
 }
-.dashboard .admin-document-page .btn-routes button, .dashboard-active .admin-document-page .btn-routes button {
+.dashboard .admin-document-page > header .btn-routes button, .dashboard-active .admin-document-page > header .btn-routes button {
   height: 5rem;
   background-color: #d9d9d9;
   border: none;
@@ -4279,7 +4285,7 @@ button {
   transition: all 0.2s linear;
   font-weight: 600;
 }
-.dashboard .admin-document-page .btn-routes button:hover, .dashboard-active .admin-document-page .btn-routes button:hover {
+.dashboard .admin-document-page > header .btn-routes button:hover, .dashboard-active .admin-document-page > header .btn-routes button:hover {
   background-color: #00adb5;
   border-radius: 0;
   color: #fff;
@@ -4441,9 +4447,8 @@ button {
   background-color: #0d7377;
   position: relative;
   display: grid;
-  grid-auto-rows: repeat(auto-fill, auto);
+  grid-auto-rows: auto;
   gap: 1rem;
-  border-radius: 0 0 1rem 1rem;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .drop-btn, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .drop-btn {
   cursor: pointer;
@@ -4453,7 +4458,7 @@ button {
   position: absolute;
   background-color: #0d7377;
   width: 100%;
-  bottom: 0px;
+  bottom: -1.2rem;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 1rem !important;
@@ -4644,7 +4649,7 @@ button {
   .dashboard .admin-document-page .delete-document-modal .btn-container button, .dashboard-active .admin-document-page .delete-document-modal .btn-container button {
     height: 3.5rem;
   }
-  .dashboard .admin-document-page .btn-routes, .dashboard-active .admin-document-page .btn-routes {
+  .dashboard .admin-document-page header .btn-routes, .dashboard-active .admin-document-page header .btn-routes {
     justify-content: center;
     padding: 1rem;
   }
@@ -4675,7 +4680,7 @@ button {
 }
 @media screen and (max-width: 600px) {
   .dashboard .admin-document-page, .dashboard-active .admin-document-page {
-    grid-template-rows: repeat(2, minmax(6rem, auto)) minmax(35rem, 60vh);
+    grid-template-rows: auto minmax(35rem, 60vh);
   }
   .dashboard .admin-document-page .sample-view-container, .dashboard-active .admin-document-page .sample-view-container,
   .dashboard .admin-document-page .document-approval-container .view-document-container,
@@ -4683,7 +4688,7 @@ button {
     width: 100%;
     height: 80vh;
   }
-  .dashboard .admin-document-page header, .dashboard-active .admin-document-page header {
+  .dashboard .admin-document-page header .title-page, .dashboard-active .admin-document-page header .title-page {
     justify-content: center;
   }
   .dashboard .admin-document-page .document-container .documents, .dashboard-active .admin-document-page .document-container .documents {
@@ -4709,7 +4714,7 @@ button {
     font-size: 1.5rem;
     word-break: break-all;
   }
-  .dashboard .admin-document-page .btn-routes button, .dashboard-active .admin-document-page .btn-routes button {
+  .dashboard .admin-document-page header .btn-routes button, .dashboard-active .admin-document-page header .btn-routes button {
     height: 4rem;
     display: flex;
     align-items: center;
@@ -4741,13 +4746,13 @@ button {
     height: 20rem;
   }
   .dashboard .admin-document-page .document-approval-container .document-intern, .dashboard-active .admin-document-page .document-approval-container .document-intern {
-    min-height: 8rem !important;
+    min-height: 8rem;
+    margin-bottom: 1rem;
   }
   .dashboard .admin-document-page .document-approval-container .document-intern .text .top > *, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .top > * {
     font-size: 1.6rem;
   }
   .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container {
-    grid-auto-rows: 11rem;
     gap: 0.5rem;
   }
   .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document img, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document img {
