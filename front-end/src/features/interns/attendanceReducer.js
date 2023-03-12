@@ -16,7 +16,7 @@ const initialState = {
   alreadyTimeIn: false,
   alreadyTimeOut: false,
   canStart: false,
-  todayAttendanceID: null,
+  todayAttendance: null,
   allAttendanceToday: null,
 };
 
@@ -105,12 +105,12 @@ export const attendanceReducer = createSlice({
     },
     handleViewToday: (state, {payload}) => {
       state.isTodayOpen = !state.isTodayOpen;
-      // if (payload) {
-      //   const {id} = payload;
-      //   state.selectedAttendance = current(state.allAttendance).filter(
-      //     (attendance) => attendance._id === id
-      //   )[0];
-      // }
+      if (payload) {
+        const {id} = payload;
+        state.selectedAttendance = current(state.allAttendance).filter(
+          (attendance) => attendance._id === id
+        )[0];
+      }
     },
     handleDisableTimeIn: (state, {payload}) => {
       state.isTimeInDisable = payload;
@@ -148,8 +148,6 @@ export const attendanceReducer = createSlice({
         } = payload.res;
         state.isLoading = false;
         state.allAttendance = payload.res.data;
-
-        console.log(payload.res.doesExists);
 
         switch (status) {
           case "no-time-in":
@@ -197,7 +195,7 @@ export const attendanceReducer = createSlice({
         }
 
         if (todayAttendance) {
-          state.todayAttendanceID = todayAttendance._id;
+          state.todayAttendance = todayAttendance;
         }
       })
       .addCase(getAllAttendance.rejected, (state, action) => {

@@ -11,7 +11,7 @@ const Attendance = React.memo(({attendance}) => {
     <div
       className="attendance"
       onClick={() => {
-        dispatch(handleViewToday());
+        dispatch(handleViewToday({id: _id}));
       }}
     >
       {date}

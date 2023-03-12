@@ -1,5 +1,3 @@
-/** @format */
-
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {handleViewToday} from "../../features/interns/attendanceReducer";

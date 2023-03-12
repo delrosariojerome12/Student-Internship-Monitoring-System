@@ -41,7 +41,7 @@ const DailyTimeRecord = React.memo(() => {
     alreadyTimeIn,
     alreadyTimeOut,
     canStart,
-    todayAttendanceID,
+    todayAttendance,
   } = useSelector((state) => state.attendance);
   const dispatch = useDispatch();
 

@@ -37,7 +37,6 @@ const getAllAttendance = async (req, res) => {
   });
 
   let doesExists = {};
-  // console.log(todayExists.isPresent);
 
   const hours = now.getHours() % 12 || 12;
   const minutes = now.getMinutes();
