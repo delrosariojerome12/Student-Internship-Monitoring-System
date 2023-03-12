@@ -105,12 +105,12 @@ export const attendanceReducer = createSlice({
     },
     handleViewToday: (state, {payload}) => {
       state.isTodayOpen = !state.isTodayOpen;
-      if (payload) {
-        const {id} = payload;
-        state.selectedAttendance = current(state.allAttendance).filter(
-          (attendance) => attendance._id === id
-        )[0];
-      }
+      // if (payload) {
+      //   const {id} = payload;
+      //   state.selectedAttendance = current(state.allAttendance).filter(
+      //     (attendance) => attendance._id === id
+      //   )[0];
+      // }
     },
     handleDisableTimeIn: (state, {payload}) => {
       state.isTimeInDisable = payload;
