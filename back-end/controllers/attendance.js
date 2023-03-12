@@ -276,6 +276,7 @@ const checkAbsents = async (req, res) => {
       await newAttendance.save();
     }
   }
+
   const allAttendance = await Attendance.find()
     .populate({
       path: "user",
