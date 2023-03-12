@@ -424,9 +424,7 @@ const timeOut = async (req, res) => {
     throw new NotFound("Email not found");
   }
 
-  // const attendance = await Attendance.findOneAndUpdate({_id: id, ...req.body});
-
-  const attendance = await Attendance.find({date: todayDate, email})
+  const attendance = await Attendance.find({email, date: todayDate})
     .populate({
       path: "user",
       model: "User",
@@ -436,9 +434,14 @@ const timeOut = async (req, res) => {
       model: "Intern",
     });
 
-  // add patch for updating time rendered for intern
+  const attendanceId = attendance._id;
 
-  res.status(StatusCodes.OK).json({success: true, data: attendance});
+  const todayAttendance = await Attendance.findOneAndUpdate({
+    _id: attendanceId,
+    ...req.body,
+  });
+
+  res.status(StatusCodes.OK).json({success: true, data: todayAttendance});
 };
 
 const checkStartingDate = async (req, res) => {
