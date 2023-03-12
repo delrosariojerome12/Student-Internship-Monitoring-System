@@ -4440,7 +4440,7 @@ button {
   transition: all 0.2s linear;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container {
-  padding: 1rem;
+  padding: 1rem 1rem 2rem 1rem;
   transition: all 0.2s linear;
   width: 100%;
   height: 100%;
@@ -4449,6 +4449,7 @@ button {
   display: grid;
   grid-auto-rows: auto;
   gap: 1rem;
+  border-radius: 0 0 1rem 1rem;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .drop-btn, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .drop-btn {
   cursor: pointer;
@@ -4458,7 +4459,7 @@ button {
   position: absolute;
   background-color: #0d7377;
   width: 100%;
-  bottom: -1.2rem;
+  bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 1rem !important;
@@ -4747,7 +4748,6 @@ button {
   }
   .dashboard .admin-document-page .document-approval-container .document-intern, .dashboard-active .admin-document-page .document-approval-container .document-intern {
     min-height: 8rem;
-    margin-bottom: 1rem;
   }
   .dashboard .admin-document-page .document-approval-container .document-intern .text .top > *, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .top > * {
     font-size: 1.6rem;
