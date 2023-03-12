@@ -199,7 +199,7 @@ const TimeOutModal = React.memo(({email}) => {
                 email,
                 form: {
                   isPresent: true,
-                  location: address,
+                  locationTimeOut: address,
                   proof: {
                     timeOutLink: capturedPhoto,
                     timeInLink,

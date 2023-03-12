@@ -201,7 +201,7 @@ const TimeInModal = React.memo(({email}) => {
                 email,
                 form: {
                   isPresent: true,
-                  location: address,
+                  locationTimeIn: address,
                   proof: {
                     timeInLink: capturedPhoto,
                   },

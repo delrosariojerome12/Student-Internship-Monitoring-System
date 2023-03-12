@@ -11,7 +11,8 @@ const AttendanceModal = React.memo(() => {
     date,
     isComplete,
     isLate,
-    location,
+    locationTimeIn,
+    locationTimeOut,
     timeIn,
     timeOut,
     totalRendered,
@@ -59,7 +60,7 @@ const AttendanceModal = React.memo(() => {
             </p>
             <p>
               <b> Location: </b>
-              {location}
+              {locationTimeIn}
             </p>
           </div>
           <div className="img-con">

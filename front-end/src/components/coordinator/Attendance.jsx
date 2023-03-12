@@ -20,7 +20,8 @@ const Attendance = React.memo(({attendance}) => {
     totalRendered,
     isLate,
     isPresent,
-    location,
+    locationTimeIn,
+    locationTimeOut,
   } = attendance;
 
   if (!isPresent) {
@@ -43,8 +44,8 @@ const Attendance = React.memo(({attendance}) => {
     );
   }
 
-  const updatedLocation = location.indexOf("NE:");
-  const finalLocation = location.substring(0, updatedLocation).trim();
+  // const updatedLocation = location.indexOf("NE:");
+  // const finalLocation = location.substring(0, updatedLocation).trim();
 
   return (
     <div className="day-attendance">
@@ -57,11 +58,11 @@ const Attendance = React.memo(({attendance}) => {
           <p>Time in: {timeIn}</p>
           <p>Time out: {timeOut}</p>
           <p>Total Rendered: {totalRendered}hrs</p>
-          <h3>{scheduleType}</h3>
+          {/* <h3>{scheduleType}</h3> */}
         </div>
         <div className="second">
           <p>{companyName}</p>
-          <p>{finalLocation}</p>
+          {/* <p>{finalLocation}</p> */}
         </div>
       </div>
     </div>
