@@ -149,6 +149,8 @@ export const attendanceReducer = createSlice({
         state.isLoading = false;
         state.allAttendance = payload.res.data;
 
+        console.log(status);
+
         switch (status) {
           case "no-time-in":
             state.isTimeInDisable = false;

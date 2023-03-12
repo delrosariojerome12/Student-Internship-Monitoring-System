@@ -49,12 +49,13 @@ const convertImage = (str) => {
 const key = "UjTu7V2EcFJBTyd0zjudhuFrRNP4iWXJ";
 
 const TimeOutModal = React.memo(({email}) => {
-  const {todayAttendanceID, selectedAttendance} = useSelector(
+  const {todayAttendance, selectedAttendance} = useSelector(
     (state) => state.attendance
   );
+
   const {
     proof: {timeInLink, timeOutLink},
-  } = selectedAttendance;
+  } = todayAttendance;
   const dispatch = useDispatch();
 
   const [time, setTime] = useState("");
