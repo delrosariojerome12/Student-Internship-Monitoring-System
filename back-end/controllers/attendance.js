@@ -9,7 +9,9 @@ const Internship = require("../models/Internship");
 // student
 const getAllAttendance = async (req, res) => {
   const {email} = req.params;
-  const {scheduleType} = req.query;
+  const {
+    scheduleDetails: {scheduleType},
+  } = req.query;
 
   const userExists = await Intern.findOne({email});
 
@@ -41,12 +43,83 @@ const getAllAttendance = async (req, res) => {
   const minutes = now.getMinutes();
   const amOrPm = now.getHours() >= 12 ? "PM" : "AM";
 
-  // const hours = now.getHours();
-  // const minutes = now.getMinutes();
-  // const amOrPm = now.toLocaleTimeString("en-US", {hour12: true}).slice(-2);
-
   if (scheduleType === "Regular") {
     if (day > 0 && day < 6) {
+      if (
+        (hours >= 8 && hours < 10 && amOrPm === "AM") ||
+        (hours === 10 && minutes <= 20 && amOrPm === "AM")
+      ) {
+        // time in morning
+        if (!todayExists) {
+          doesExists = {
+            status: "no-time-in",
+          };
+        } else if (todayExists) {
+          doesExists = {
+            status: "already-timed-in",
+          };
+        }
+      } else if (hours === 12 && minutes <= 59 && amOrPm === "PM") {
+        // adjust
+        // lunch
+        if (!todayExists) {
+          doesExists = {
+            status: "no-time-in-lunch",
+          };
+        } else if (todayExists) {
+          doesExists = {
+            status: "already-timed-in-lunch",
+          };
+          if (todayExists.timeIn !== null && todayExists.timeOut !== null) {
+            doesExists = {
+              status: "complete",
+            };
+          }
+        }
+      } else if (hours === 1 && minutes <= 30 && amOrPm === "PM") {
+        // time in afternoon
+        if (!todayExists) {
+          doesExists = {
+            status: "no-time-in",
+          };
+        } else if (todayExists) {
+          doesExists = {
+            status: "already-timed-in",
+          };
+        }
+      } else if (hours >= 2 && amOrPm === "PM") {
+        // absent
+        // disable time in and time out
+        if (!todayExists) {
+          doesExists = {
+            status: "absent",
+          };
+        } else {
+          if (hours >= 4 && hours <= 5 && amOrPm === "PM") {
+            // time out
+            if (!todayExists) {
+              doesExists = {
+                status: "no-time-in-afternoon",
+              };
+            } else if (todayExists) {
+              doesExists = {
+                status: "time-out-standard",
+              };
+            } else if (hours <= 6 && amOrPm === "PM") {
+              // ot
+              if (!todayExists) {
+                doesExists = {
+                  status: "no-time-in-afternoon",
+                };
+              } else if (todayExists) {
+                doesExists = {
+                  status: "time-out-overtime",
+                };
+              }
+            }
+          }
+        }
+      }
     } else {
       // disable time
       doesExists = {
