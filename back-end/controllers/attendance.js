@@ -411,21 +411,31 @@ const timeIn = async (req, res) => {
 const timeOut = async (req, res) => {
   const {email, id} = req.params;
 
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const date = now.getDate();
+
+  const todayDate = `${month < 10 ? "0" : ""}${month}-${
+    date < 10 ? "0" : ""
+  }${date}-${year}`;
+
   if (!email) {
     throw new NotFound("Email not found");
   }
 
   // const attendance = await Attendance.findOneAndUpdate({_id: id, ...req.body});
-  const attendance = await Attendance.findOneAndUpdate({_id: id}, req.body, {
-    new: true,
-    runValidators: true,
-  });
 
-  // const attendance = await Attendance.findById({_id: id});
+  const attendance = await Attendance.find({date: todayDate, email})
+    .populate({
+      path: "user",
+      model: "User",
+    })
+    .populate({
+      path: "intern",
+      model: "Intern",
+    });
 
-  if (!attendance) {
-    throw new NotFound("Attendance not found. Server error");
-  }
   // add patch for updating time rendered for intern
 
   res.status(StatusCodes.OK).json({success: true, data: attendance});
