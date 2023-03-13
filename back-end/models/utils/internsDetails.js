@@ -49,7 +49,7 @@ const internshipDetails = {
   renderedHours: {
     type: String,
     default: "0",
-    maxlength: 4,
+    maxlength: 5,
     minlenght: 1,
   },
   startingDate: {type: String},
