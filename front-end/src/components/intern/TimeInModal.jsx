@@ -1,5 +1,3 @@
-/** @format */
-
 import React, {useState, useEffect, useRef} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {
@@ -201,7 +199,7 @@ const TimeInModal = React.memo(({email}) => {
                 email,
                 form: {
                   isPresent: true,
-                  location: address,
+                  locationTimeIn: address,
                   proof: {
                     timeInLink: capturedPhoto,
                   },

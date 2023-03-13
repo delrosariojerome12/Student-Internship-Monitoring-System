@@ -1,5 +1,3 @@
-/** @format */
-
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {handleViewToday} from "../../features/interns/attendanceReducer";
@@ -13,7 +11,8 @@ const AttendanceModal = React.memo(() => {
     date,
     isComplete,
     isLate,
-    location,
+    locationTimeIn,
+    locationTimeOut,
     timeIn,
     timeOut,
     totalRendered,
@@ -54,14 +53,19 @@ const AttendanceModal = React.memo(() => {
             </p>
             <p>
               <b> Time out: </b>
-              {timeOut}
+              {!timeOut ? "Pending" : timeOut}
             </p>
             <p>
               <b> OT: </b> {OT}
             </p>
+            <p>Rendered Hours: {totalRendered}hrs</p>
             <p>
-              <b> Location: </b>
-              {location}
+              <b> Time In Location: </b>
+              {locationTimeIn}
+            </p>
+            <p>
+              <b> Time Out Location: </b>
+              {locationTimeOut ? locationTimeOut : "Pending"}
             </p>
           </div>
           <div className="img-con">

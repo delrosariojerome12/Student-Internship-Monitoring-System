@@ -1,7 +1,7 @@
 /** @format */
 
-import React, { useState, useEffect, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, {useState, useEffect, useRef} from "react";
+import {useSelector, useDispatch} from "react-redux";
 import {
   handleTimeOut,
   timeOutAttendance,
@@ -10,14 +10,9 @@ import axios from "axios";
 import CameraSVG from "../../assets/img/camera.svg";
 import NocameraSVG from "../../assets/img/nocamera.svg";
 import Webcam from "react-webcam";
-import { storage } from "../../Firebase";
-import {
-  ref,
-  uploadBytes,
-  getDownloadURL,
-  deleteObject,
-} from "firebase/storage";
-import { v4 } from "uuid";
+import {storage} from "../../Firebase";
+import {ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage";
+import {v4} from "uuid";
 
 const months = [
   "January",
@@ -46,20 +41,21 @@ const convertImage = (str) => {
   for (var n = 0; n < imageContent.length; n++) {
     view[n] = imageContent.charCodeAt(n);
   }
-  var blob = new Blob([buffer], { type: type });
+  var blob = new Blob([buffer], {type: type});
 
   return blob;
 };
 
 const key = "UjTu7V2EcFJBTyd0zjudhuFrRNP4iWXJ";
 
-const TimeOutModal = React.memo(({ email }) => {
-  const { todayAttendanceID, selectedAttendance } = useSelector(
+const TimeOutModal = React.memo(({email}) => {
+  const {todayAttendance, selectedAttendance} = useSelector(
     (state) => state.attendance
   );
+
   const {
-    proof: { timeInLink, timeOutLink },
-  } = selectedAttendance;
+    proof: {timeInLink, timeOutLink},
+  } = todayAttendance;
   const dispatch = useDispatch();
 
   const [time, setTime] = useState("");
@@ -86,7 +82,7 @@ const TimeOutModal = React.memo(({ email }) => {
       const {
         freeformAddress,
         country,
-        boundingBox: { northEast, southWest },
+        boundingBox: {northEast, southWest},
         countrySecondarySubdivision,
       } = response.data.addresses[0].address;
 
@@ -135,7 +131,7 @@ const TimeOutModal = React.memo(({ email }) => {
     }, 1000);
 
     navigator.geolocation.getCurrentPosition((position) => {
-      const { latitude, longitude } = position.coords;
+      const {latitude, longitude} = position.coords;
 
       getLocation(latitude, longitude);
     });
@@ -147,7 +143,8 @@ const TimeOutModal = React.memo(({ email }) => {
       <>
         <div
           className="overlay"
-          onClick={() => dispatch(handleTimeOut())}></div>
+          onClick={() => dispatch(handleTimeOut())}
+        ></div>
         <div className="time-out modal">
           <h3>Fetching Time and Location...</h3>
         </div>
@@ -203,7 +200,7 @@ const TimeOutModal = React.memo(({ email }) => {
                 email,
                 form: {
                   isPresent: true,
-                  location: address,
+                  locationTimeOut: address,
                   proof: {
                     timeOutLink: capturedPhoto,
                     timeInLink,
@@ -211,15 +208,15 @@ const TimeOutModal = React.memo(({ email }) => {
                   timeOut: time,
                   isComplete: true,
                 },
-                id: todayAttendanceID,
               })
             )
           }
           style={
             capturedPhoto
-              ? { opacity: "1" }
-              : { opacity: ".7", pointerEvents: "none" }
-          }>
+              ? {opacity: "1"}
+              : {opacity: ".7", pointerEvents: "none"}
+          }
+        >
           Time Out
         </button>
       </div>
