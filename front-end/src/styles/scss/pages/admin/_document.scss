@@ -689,6 +689,7 @@
 
 @media screen and (max-width: 1030px) {
   .admin-document-page {
+    grid-template-rows: auto minmax(40rem, 73vh);
     .document-container {
       .documents {
         justify-content: center;
@@ -737,6 +738,7 @@
 }
 @media screen and (max-width: 750px) {
   .admin-document-page {
+    grid-template-rows: auto minmax(40rem, 70vh);
     .sample-view-container,
     .document-approval-container .view-document-container {
       width: 60rem;
@@ -834,8 +836,7 @@
 }
 @media screen and (max-width: 600px) {
   .admin-document-page {
-    grid-template-rows: auto minmax(35rem, 60vh);
-
+    grid-template-rows: auto minmax(35rem, 65vh);
     .sample-view-container,
     .document-approval-container .view-document-container {
       width: 100%;
@@ -844,6 +845,7 @@
     header {
       .title-page {
         justify-content: center;
+        padding: 1rem;
       }
     }
     .document-container {
@@ -855,6 +857,7 @@
 }
 @media screen and (max-width: 500px) {
   .admin-document-page {
+    grid-template-rows: auto minmax(35rem, 60vh);
     .document-modal {
       .content {
         grid-template-rows: 10rem repeat(2, auto);
@@ -880,6 +883,9 @@
       }
     }
     header {
+      .title-page {
+        padding: 0;
+      }
       .btn-routes {
         button {
           height: 4rem;
@@ -924,8 +930,6 @@
           }
           .bottom {
             .dropdown-container {
-              // grid-auto-rows: repeat(auto-fill, 11rem);
-              gap: 0.5rem;
               .document {
                 img {
                   height: 3.5rem;
