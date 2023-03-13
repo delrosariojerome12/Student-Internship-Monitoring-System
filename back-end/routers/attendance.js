@@ -21,7 +21,7 @@ router.route("/getAllAttendanceByDate").get(getAllAttendanceByDate);
 router.route("/getAttendance/:id").get(getAttendance);
 
 router.route("/timeIn/:email").post(timeIn);
-router.route("/timeOut/:email/:id").patch(timeOut);
+router.route("/timeOut/:email").patch(timeOut);
 
 router.route("/checkStartingDate/:email").patch(checkStartingDate);
 

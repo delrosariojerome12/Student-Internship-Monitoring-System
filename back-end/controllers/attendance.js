@@ -6,10 +6,25 @@ const mongoose = require("mongoose");
 const User = require("../models/User");
 const Internship = require("../models/Internship");
 
+function countRenderedHours(timeIn, timeOut) {
+  const millisecondsInHour = 1000 * 60 * 60;
+  const millisecondsInQuarterHour = millisecondsInHour / 4;
+
+  const dateIn = new Date(`2000-01-01T${timeIn}:00`);
+  const dateOut = new Date(`2000-01-01T${timeOut}:00`);
+  const difference = dateOut - dateIn;
+
+  let hours = difference / millisecondsInHour;
+  hours = Math.round(hours * 4) / 4; // Round to nearest quarter hour
+  return hours;
+}
+
 // student
 const getAllAttendance = async (req, res) => {
   const {email} = req.params;
-  const {scheduleType} = req.query;
+  const {
+    scheduleDetails: {scheduleType},
+  } = req.query;
 
   const userExists = await Intern.findOne({email});
 
@@ -35,18 +50,90 @@ const getAllAttendance = async (req, res) => {
   });
 
   let doesExists = {};
-  // console.log(todayExists.isPresent);
 
   const hours = now.getHours() % 12 || 12;
   const minutes = now.getMinutes();
   const amOrPm = now.getHours() >= 12 ? "PM" : "AM";
 
-  // const hours = now.getHours();
-  // const minutes = now.getMinutes();
-  // const amOrPm = now.toLocaleTimeString("en-US", {hour12: true}).slice(-2);
+  console.log(`${hours}:${minutes}`);
 
   if (scheduleType === "Regular") {
     if (day > 0 && day < 6) {
+      if (
+        (hours >= 8 && hours <= 10 && amOrPm === "AM") ||
+        (hours === 10 && minutes <= 20 && amOrPm === "AM")
+      ) {
+        // time in morning
+        if (!todayExists) {
+          doesExists = {
+            status: "no-time-in",
+          };
+        } else if (todayExists) {
+          doesExists = {
+            status: "already-timed-in",
+          };
+        }
+      } else if (hours === 12 && minutes <= 59 && amOrPm === "PM") {
+        // adjust
+        // lunch
+        if (!todayExists) {
+          doesExists = {
+            status: "no-time-in-lunch",
+          };
+        } else if (todayExists) {
+          doesExists = {
+            status: "already-timed-in-lunch",
+          };
+          if (todayExists.timeIn !== null && todayExists.timeOut !== null) {
+            doesExists = {
+              status: "complete",
+            };
+          }
+        }
+      } else if (hours === 1 && minutes <= 30 && amOrPm === "PM") {
+        // time in afternoon
+        if (!todayExists) {
+          doesExists = {
+            status: "no-time-in",
+          };
+        } else if (todayExists) {
+          doesExists = {
+            status: "already-timed-in",
+          };
+        }
+      } else if (hours >= 2 && amOrPm === "PM") {
+        // absent
+        // disable time in and time out
+        if (!todayExists) {
+          doesExists = {
+            status: "absent",
+          };
+        } else {
+          if (hours >= 4 && hours <= 5 && amOrPm === "PM") {
+            // time out
+            if (!todayExists) {
+              doesExists = {
+                status: "no-time-in-afternoon",
+              };
+            } else if (todayExists) {
+              doesExists = {
+                status: "time-out-standard",
+              };
+            } else if (hours <= 6 && amOrPm === "PM") {
+              // ot
+              if (!todayExists) {
+                doesExists = {
+                  status: "no-time-in-afternoon",
+                };
+              } else if (todayExists) {
+                doesExists = {
+                  status: "time-out-overtime",
+                };
+              }
+            }
+          }
+        }
+      }
     } else {
       // disable time
       doesExists = {
@@ -56,14 +143,18 @@ const getAllAttendance = async (req, res) => {
     }
   } else {
     // irregular
-    if (
-      (hours >= 8 && hours < 10 && amOrPm === "AM") ||
-      (hours === 10 && minutes <= 20 && amOrPm === "AM")
-    ) {
+    if (hours >= 8 && hours <= 10 && amOrPm === "AM") {
+      // check if greater than 10:30
+      if (minutes > 30 && hours === 10) {
+        doesExists = {
+          status: "too-late",
+        };
+      }
       // time in morning
-      if (!todayExists) {
+      else if (!todayExists) {
         doesExists = {
           status: "no-time-in",
+          time: "morning",
         };
       } else if (todayExists) {
         doesExists = {
@@ -82,6 +173,7 @@ const getAllAttendance = async (req, res) => {
           status: "already-timed-in-lunch",
         };
         if (todayExists.timeIn !== null && todayExists.timeOut !== null) {
+          console.log(todayExists.timeOut);
           doesExists = {
             status: "complete",
           };
@@ -92,6 +184,7 @@ const getAllAttendance = async (req, res) => {
       if (!todayExists) {
         doesExists = {
           status: "no-time-in",
+          time: "afternoon time in",
         };
       } else if (todayExists) {
         doesExists = {
@@ -116,6 +209,12 @@ const getAllAttendance = async (req, res) => {
             doesExists = {
               status: "time-out-standard",
             };
+            if (todayExists.timeIn !== null && todayExists.timeOut !== null) {
+              console.log(todayExists.timeOut);
+              doesExists = {
+                status: "complete",
+              };
+            }
           } else if (hours <= 6 && amOrPm === "PM") {
             // ot
             if (!todayExists) {
@@ -174,36 +273,81 @@ const checkAbsents = async (req, res) => {
   const month = now.getMonth() + 1;
   const date = now.getDate();
 
+  const day = now.getDay();
+
   const todayDate = `${month < 10 ? "0" : ""}${month}-${
     date < 10 ? "0" : ""
   }${date}-${year}`;
 
-  const allInterns = await Intern.find({status: "Starting"});
-  const internEmails = allInterns.map((item) => item.email);
-
-  for (let email of internEmails) {
-    const attendance = await Attendance.findOne({
-      email: email,
-      date: todayDate,
+  if (day > 0 && day < 6) {
+    const allInterns = await Intern.find({
+      "scheduleDetails.scheduleType": "Regular",
+      status: "Starting",
     });
-    if (!attendance) {
-      // Create attendance for absent interns
-      const user = await User.findOne({email});
-      const intern = await Intern.findOne({email});
-      const newAttendance = new Attendance({
+    const todayDate = `${month < 10 ? "0" : ""}${month}-${
+      date < 10 ? "0" : ""
+    }${date}-${year}`;
+
+    const internEmails = allInterns.map((item) => item.email);
+
+    for (let email of internEmails) {
+      const attendance = await Attendance.findOne({
         email: email,
         date: todayDate,
-        isPresent: false,
-        timeIn: null,
-        timeOut: null,
-        user: user._id,
-        intern: intern._id,
-        proof: null,
       });
-      await newAttendance.save();
+      if (!attendance) {
+        // Create attendance for absent interns
+        const user = await User.findOne({email});
+        const intern = await Intern.findOne({email});
+        const newAttendance = new Attendance({
+          email: email,
+          date: todayDate,
+          isPresent: false,
+          timeIn: null,
+          timeOut: null,
+          user: user._id,
+          intern: intern._id,
+          proof: null,
+        });
+        await newAttendance.save();
+      }
+    }
+  } else {
+    const todayDate = `${month < 10 ? "0" : ""}${month}-${
+      date < 10 ? "0" : ""
+    }${date}-${year}`;
+
+    const allInterns = await Intern.find({
+      "scheduleDetails.scheduleType": "Irregular",
+      status: "Starting",
+    });
+    const internEmails = allInterns.map((item) => item.email);
+
+    for (let email of internEmails) {
+      const attendance = await Attendance.findOne({
+        email: email,
+        date: todayDate,
+      });
+      if (!attendance) {
+        // Create attendance for absent interns
+        const user = await User.findOne({email});
+        const intern = await Intern.findOne({email});
+        const newAttendance = new Attendance({
+          email: email,
+          date: todayDate,
+          isPresent: false,
+          timeIn: null,
+          timeOut: null,
+          user: user._id,
+          intern: intern._id,
+          proof: null,
+        });
+        await newAttendance.save();
+      }
     }
   }
-  const allAttendance = await Attendance.find()
+
+  const allAttendanceToday = await Attendance.find({date: todayDate})
     .populate({
       path: "user",
       model: "User",
@@ -215,7 +359,7 @@ const checkAbsents = async (req, res) => {
 
   res.status(StatusCodes.OK).json({
     success: true,
-    data: allAttendance,
+    data: allAttendanceToday,
   });
 };
 
@@ -293,24 +437,44 @@ const timeIn = async (req, res) => {
 const timeOut = async (req, res) => {
   const {email, id} = req.params;
 
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const date = now.getDate();
+
+  const hours = now.getHours() % 12 || 12;
+
+  const todayDate = `${month < 10 ? "0" : ""}${month}-${
+    date < 10 ? "0" : ""
+  }${date}-${year}`;
+
   if (!email) {
     throw new NotFound("Email not found");
   }
 
-  // const attendance = await Attendance.findOneAndUpdate({_id: id, ...req.body});
-  const attendance = await Attendance.findOneAndUpdate({_id: id}, req.body, {
-    new: true,
-    runValidators: true,
+  const attendance = await Attendance.find({email, date: todayDate})
+    .populate({
+      path: "user",
+      model: "User",
+    })
+    .populate({
+      path: "intern",
+      model: "Intern",
+    });
+
+  // const attendanceId = attendance._id;
+
+  const startingTime = attendance.timeIn;
+  const totalRendered = countRenderedHours(startingTime, hours);
+
+  const todayAttendance = await Attendance.findOneAndUpdate({
+    // _id: attendanceId,
+    ...req.body,
   });
 
-  // const attendance = await Attendance.findById({_id: id});
-
-  if (!attendance) {
-    throw new NotFound("Attendance not found. Server error");
-  }
-  // add patch for updating time rendered for intern
-
-  res.status(StatusCodes.OK).json({success: true, data: attendance});
+  res
+    .status(StatusCodes.OK)
+    .json({success: true, data: todayAttendance, totalRendered});
 };
 
 const checkStartingDate = async (req, res) => {
