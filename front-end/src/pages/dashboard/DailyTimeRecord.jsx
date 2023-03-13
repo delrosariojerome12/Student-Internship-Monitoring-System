@@ -1,5 +1,3 @@
-/** @format */
-
 import React, {useState, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {FaCheck, FaCamera, FaRegImage} from "react-icons/fa";
@@ -130,12 +128,6 @@ const DailyTimeRecord = React.memo(() => {
             </p>
             <p className="required-hours">
               Required Hours: <b> {requiredHours}</b>
-            </p>
-            <p>
-              Program: <b> {program}</b>
-            </p>
-            <p>
-              <b>{program}</b>
             </p>
           </div>
         </div>

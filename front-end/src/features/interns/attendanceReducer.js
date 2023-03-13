@@ -149,7 +149,7 @@ export const attendanceReducer = createSlice({
         state.isLoading = false;
         state.allAttendance = payload.res.data;
 
-        console.log(status);
+        console.log(payload.res.doesExists);
 
         switch (status) {
           case "no-time-in":
@@ -192,6 +192,10 @@ export const attendanceReducer = createSlice({
             state.isTimeInDisable = true;
             state.isTimeOutDisable = true;
             break;
+          case "too-late":
+            state.isTimeInDisable = true;
+            state.isTimeOutDisable = true;
+            break;
           default:
             break;
         }
@@ -214,6 +218,7 @@ export const attendanceReducer = createSlice({
         state.isLoading = false;
         state.allAttendance = [...state.allAttendance, payload.res.data];
         state.isTimeInOpen = false;
+        state.isTimeInDisable = true;
       })
       .addCase(timeInAttendance.rejected, (state, action) => {
         state.isError = true;
@@ -227,6 +232,7 @@ export const attendanceReducer = createSlice({
         state.isLoading = false;
         state.allAttendance = [...state.allAttendance];
         state.isTimeOutOpen = false;
+        state.isTimeOutDisable = true;
       })
       .addCase(timeOutAttendance.rejected, (state, action) => {
         state.isLoading = false;

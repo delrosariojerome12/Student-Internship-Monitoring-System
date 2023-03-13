@@ -52,7 +52,7 @@ const AttendanceSchema = new mongoose.Schema({
   },
   timeOut: {
     type: String,
-    default: "pending",
+    default: null,
     // required: [true, "Please provide a timout"],
   },
   totalRendered: {

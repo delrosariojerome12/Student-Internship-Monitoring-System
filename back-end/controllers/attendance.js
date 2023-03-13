@@ -6,6 +6,19 @@ const mongoose = require("mongoose");
 const User = require("../models/User");
 const Internship = require("../models/Internship");
 
+function countRenderedHours(timeIn, timeOut) {
+  const millisecondsInHour = 1000 * 60 * 60;
+  const millisecondsInQuarterHour = millisecondsInHour / 4;
+
+  const dateIn = new Date(`2000-01-01T${timeIn}:00`);
+  const dateOut = new Date(`2000-01-01T${timeOut}:00`);
+  const difference = dateOut - dateIn;
+
+  let hours = difference / millisecondsInHour;
+  hours = Math.round(hours * 4) / 4; // Round to nearest quarter hour
+  return hours;
+}
+
 // student
 const getAllAttendance = async (req, res) => {
   const {email} = req.params;
@@ -42,10 +55,12 @@ const getAllAttendance = async (req, res) => {
   const minutes = now.getMinutes();
   const amOrPm = now.getHours() >= 12 ? "PM" : "AM";
 
+  console.log(`${hours}:${minutes}`);
+
   if (scheduleType === "Regular") {
     if (day > 0 && day < 6) {
       if (
-        (hours >= 8 && hours < 10 && amOrPm === "AM") ||
+        (hours >= 8 && hours <= 10 && amOrPm === "AM") ||
         (hours === 10 && minutes <= 20 && amOrPm === "AM")
       ) {
         // time in morning
@@ -128,14 +143,18 @@ const getAllAttendance = async (req, res) => {
     }
   } else {
     // irregular
-    if (
-      (hours >= 8 && hours < 10 && amOrPm === "AM") ||
-      (hours === 10 && minutes <= 20 && amOrPm === "AM")
-    ) {
+    if (hours >= 8 && hours <= 10 && amOrPm === "AM") {
+      // check if greater than 10:30
+      if (minutes > 30 && hours === 10) {
+        doesExists = {
+          status: "too-late",
+        };
+      }
       // time in morning
-      if (!todayExists) {
+      else if (!todayExists) {
         doesExists = {
           status: "no-time-in",
+          time: "morning",
         };
       } else if (todayExists) {
         doesExists = {
@@ -154,6 +173,7 @@ const getAllAttendance = async (req, res) => {
           status: "already-timed-in-lunch",
         };
         if (todayExists.timeIn !== null && todayExists.timeOut !== null) {
+          console.log(todayExists.timeOut);
           doesExists = {
             status: "complete",
           };
@@ -164,6 +184,7 @@ const getAllAttendance = async (req, res) => {
       if (!todayExists) {
         doesExists = {
           status: "no-time-in",
+          time: "afternoon time in",
         };
       } else if (todayExists) {
         doesExists = {
@@ -188,6 +209,12 @@ const getAllAttendance = async (req, res) => {
             doesExists = {
               status: "time-out-standard",
             };
+            if (todayExists.timeIn !== null && todayExists.timeOut !== null) {
+              console.log(todayExists.timeOut);
+              doesExists = {
+                status: "complete",
+              };
+            }
           } else if (hours <= 6 && amOrPm === "PM") {
             // ot
             if (!todayExists) {
@@ -415,6 +442,8 @@ const timeOut = async (req, res) => {
   const month = now.getMonth() + 1;
   const date = now.getDate();
 
+  const hours = now.getHours() % 12 || 12;
+
   const todayDate = `${month < 10 ? "0" : ""}${month}-${
     date < 10 ? "0" : ""
   }${date}-${year}`;
@@ -433,14 +462,19 @@ const timeOut = async (req, res) => {
       model: "Intern",
     });
 
-  const attendanceId = attendance._id;
+  // const attendanceId = attendance._id;
+
+  const startingTime = attendance.timeIn;
+  const totalRendered = countRenderedHours(startingTime, hours);
 
   const todayAttendance = await Attendance.findOneAndUpdate({
-    _id: attendanceId,
+    // _id: attendanceId,
     ...req.body,
   });
 
-  res.status(StatusCodes.OK).json({success: true, data: todayAttendance});
+  res
+    .status(StatusCodes.OK)
+    .json({success: true, data: todayAttendance, totalRendered});
 };
 
 const checkStartingDate = async (req, res) => {

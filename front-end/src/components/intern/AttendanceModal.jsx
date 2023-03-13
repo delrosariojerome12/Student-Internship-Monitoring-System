@@ -53,14 +53,19 @@ const AttendanceModal = React.memo(() => {
             </p>
             <p>
               <b> Time out: </b>
-              {timeOut}
+              {!timeOut ? "Pending" : timeOut}
             </p>
             <p>
               <b> OT: </b> {OT}
             </p>
+            <p>Rendered Hours: {totalRendered}hrs</p>
             <p>
-              <b> Location: </b>
+              <b> Time In Location: </b>
               {locationTimeIn}
+            </p>
+            <p>
+              <b> Time Out Location: </b>
+              {locationTimeOut ? locationTimeOut : "Pending"}
             </p>
           </div>
           <div className="img-con">
