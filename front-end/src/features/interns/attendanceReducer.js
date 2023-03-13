@@ -79,7 +79,7 @@ export const timeOutAttendance = createAsyncThunk(
   "/attendance/timeOut",
   async ({email, form}, {rejectWithValue}) => {
     try {
-      const url = `http://localhost:5000/attendance/timeOut/${email}}`;
+      const url = `http://localhost:5000/attendance/timeOut/${email}`;
       const {data: res} = await axios.patch(url, form);
       console.log(res);
       return {res};
