@@ -13,6 +13,7 @@ const Attendance = React.memo(({attendance}) => {
         logo,
         renderedHours,
       },
+      scheduleDetails: {scheduleType},
     },
     timeIn,
     timeOut,
@@ -32,7 +33,7 @@ const Attendance = React.memo(({attendance}) => {
           <div className="first">
             <h4>{`${firstName} ${lastName}`}</h4>
             <h4>Status: Absent</h4>
-            <h4>Total Rendered Hours: {renderedHours}hrs</h4>
+            <h3>{scheduleType}</h3>
           </div>
           <div className="second">
             <p>{companyName}</p>
@@ -56,6 +57,7 @@ const Attendance = React.memo(({attendance}) => {
           <p>Time in: {timeIn}</p>
           <p>Time out: {timeOut}</p>
           <p>Total Rendered: {totalRendered}hrs</p>
+          <h3>{scheduleType}</h3>
         </div>
         <div className="second">
           <p>{companyName}</p>

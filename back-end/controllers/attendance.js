@@ -247,37 +247,81 @@ const checkAbsents = async (req, res) => {
   const month = now.getMonth() + 1;
   const date = now.getDate();
 
+  const day = now.getDay();
+
   const todayDate = `${month < 10 ? "0" : ""}${month}-${
     date < 10 ? "0" : ""
   }${date}-${year}`;
 
-  const allInterns = await Intern.find({status: "Starting"});
-  const internEmails = allInterns.map((item) => item.email);
-
-  for (let email of internEmails) {
-    const attendance = await Attendance.findOne({
-      email: email,
-      date: todayDate,
+  if (day > 0 && day < 6) {
+    const allInterns = await Intern.find({
+      "scheduleDetails.scheduleType": "Regular",
+      status: "Starting",
     });
-    if (!attendance) {
-      // Create attendance for absent interns
-      const user = await User.findOne({email});
-      const intern = await Intern.findOne({email});
-      const newAttendance = new Attendance({
+    const todayDate = `${month < 10 ? "0" : ""}${month}-${
+      date < 10 ? "0" : ""
+    }${date}-${year}`;
+
+    const internEmails = allInterns.map((item) => item.email);
+
+    for (let email of internEmails) {
+      const attendance = await Attendance.findOne({
         email: email,
         date: todayDate,
-        isPresent: false,
-        timeIn: null,
-        timeOut: null,
-        user: user._id,
-        intern: intern._id,
-        proof: null,
       });
-      await newAttendance.save();
+      if (!attendance) {
+        // Create attendance for absent interns
+        const user = await User.findOne({email});
+        const intern = await Intern.findOne({email});
+        const newAttendance = new Attendance({
+          email: email,
+          date: todayDate,
+          isPresent: false,
+          timeIn: null,
+          timeOut: null,
+          user: user._id,
+          intern: intern._id,
+          proof: null,
+        });
+        await newAttendance.save();
+      }
+    }
+  } else {
+    const todayDate = `${month < 10 ? "0" : ""}${month}-${
+      date < 10 ? "0" : ""
+    }${date}-${year}`;
+
+    const allInterns = await Intern.find({
+      "scheduleDetails.scheduleType": "Irregular",
+      status: "Starting",
+    });
+    const internEmails = allInterns.map((item) => item.email);
+
+    for (let email of internEmails) {
+      const attendance = await Attendance.findOne({
+        email: email,
+        date: todayDate,
+      });
+      if (!attendance) {
+        // Create attendance for absent interns
+        const user = await User.findOne({email});
+        const intern = await Intern.findOne({email});
+        const newAttendance = new Attendance({
+          email: email,
+          date: todayDate,
+          isPresent: false,
+          timeIn: null,
+          timeOut: null,
+          user: user._id,
+          intern: intern._id,
+          proof: null,
+        });
+        await newAttendance.save();
+      }
     }
   }
 
-  const allAttendance = await Attendance.find()
+  const allAttendanceToday = await Attendance.find({date: todayDate})
     .populate({
       path: "user",
       model: "User",
@@ -289,7 +333,7 @@ const checkAbsents = async (req, res) => {
 
   res.status(StatusCodes.OK).json({
     success: true,
-    data: allAttendance,
+    data: allAttendanceToday,
   });
 };
 
