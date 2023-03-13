@@ -16,7 +16,7 @@ const initialState = {
   alreadyTimeIn: false,
   alreadyTimeOut: false,
   canStart: false,
-  todayAttendanceID: null,
+  todayAttendance: null,
   allAttendanceToday: null,
 };
 
@@ -77,10 +77,9 @@ export const timeInAttendance = createAsyncThunk(
 
 export const timeOutAttendance = createAsyncThunk(
   "/attendance/timeOut",
-  async ({email, form, id}, {rejectWithValue}) => {
-    console.log(id);
+  async ({email, form}, {rejectWithValue}) => {
     try {
-      const url = `http://localhost:5000/attendance/timeOut/${email}/${id}`;
+      const url = `http://localhost:5000/attendance/timeOut/${email}`;
       const {data: res} = await axios.patch(url, form);
       console.log(res);
       return {res};
@@ -193,12 +192,16 @@ export const attendanceReducer = createSlice({
             state.isTimeInDisable = true;
             state.isTimeOutDisable = true;
             break;
+          case "too-late":
+            state.isTimeInDisable = true;
+            state.isTimeOutDisable = true;
+            break;
           default:
             break;
         }
 
         if (todayAttendance) {
-          state.todayAttendanceID = todayAttendance._id;
+          state.todayAttendance = todayAttendance;
         }
       })
       .addCase(getAllAttendance.rejected, (state, action) => {
@@ -215,6 +218,7 @@ export const attendanceReducer = createSlice({
         state.isLoading = false;
         state.allAttendance = [...state.allAttendance, payload.res.data];
         state.isTimeInOpen = false;
+        state.isTimeInDisable = true;
       })
       .addCase(timeInAttendance.rejected, (state, action) => {
         state.isError = true;
@@ -228,6 +232,7 @@ export const attendanceReducer = createSlice({
         state.isLoading = false;
         state.allAttendance = [...state.allAttendance];
         state.isTimeOutOpen = false;
+        state.isTimeOutDisable = true;
       })
       .addCase(timeOutAttendance.rejected, (state, action) => {
         state.isLoading = false;

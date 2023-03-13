@@ -29,9 +29,11 @@ const AttendanceSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  location: {
+  locationTimeIn: {
     type: String,
-    // required: [true, "Please provide a valid location"],
+  },
+  locationTimeOut: {
+    type: String,
   },
   proof: {
     type: Object,
@@ -50,7 +52,7 @@ const AttendanceSchema = new mongoose.Schema({
   },
   timeOut: {
     type: String,
-    default: "pending",
+    default: null,
     // required: [true, "Please provide a timout"],
   },
   totalRendered: {
