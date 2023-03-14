@@ -344,8 +344,6 @@ const checkAbsents = async (req, res) => {
         await newAttendance.save();
       }
     }
-<<<<<<< Updated upstream
-=======
   } else {
     const todayDate = `${month < 10 ? "0" : ""}${month}-${
       date < 10 ? "0" : ""
@@ -379,7 +377,6 @@ const checkAbsents = async (req, res) => {
         await newAttendance.save();
       }
     }
->>>>>>> Stashed changes
   }
 
   const allAttendanceToday = await Attendance.find({ date: todayDate })
