@@ -6275,7 +6275,6 @@ button {
     height: 3.5rem;
   }
 }
-/** @format */
 .profile-page {
   display: grid;
   height: 100%;
@@ -6400,10 +6399,52 @@ button {
 .profile-page .content .button-container button:nth-last-of-type(1) {
   border-radius: 0 1rem 0 0;
 }
+.profile-page .content .button-container .active {
+  background-color: #7f7f7f;
+}
+.profile-page .content .button-container .active::before {
+  width: 80%;
+}
 .profile-page .content .display {
   padding: 2rem;
   border-radius: 0 1rem 1rem 1rem;
   background-color: #282b30;
+  display: grid;
+}
+.profile-page .content .display .intern-details-container {
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  display: grid;
+  gap: 1rem;
+}
+.profile-page .content .display .internship-details-container {
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 15rem 1fr;
+  gap: 1rem;
+}
+.profile-page .content .display .internship-details-container .img-con {
+  border: solid 1px #000;
+  height: 15rem;
+  width: 15rem;
+}
+.profile-page .content .display .internship-details-container .img-con img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.profile-page .content .display .internship-details-container .text {
+  display: grid;
+  gap: 1rem;
+}
+.profile-page .content .display .internship-details-container .text h4 {
+  background-color: #efefef;
+  border-radius: 1rem;
+  padding: 1rem;
 }
 
 .daily-time-record {

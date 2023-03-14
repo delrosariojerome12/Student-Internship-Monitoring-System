@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {Route, Routes, Link, Navigate, useNavigate} from "react-router-dom";
 import InternsDetail from "./profile/InternsDetail";
 import InternshipDetail from "./profile/InternshipDetail";
@@ -11,27 +11,33 @@ const buttons = [
   {
     path: "/dashboard/profile/internsDetail",
     btnName: "Interns Detail",
+    code: "internsDetail",
   },
   {
     path: "/dashboard/profile/internshipDetail",
     btnName: "Internship Detail",
+    code: "internshipDetail",
   },
   {
     path: "/dashboard/profile/attendance",
     btnName: "Attendance",
+    code: "attendance",
   },
   {
     path: "/dashboard/profile/narrative",
     btnName: "Narrative",
+    code: "narrative",
   },
   {
     path: "/dashboard/profile/request",
     btnName: "Request",
+    code: "request",
   },
 ];
 
 const Profile = () => {
   const navigate = useNavigate();
+  const [selected, setSelected] = useState("Interns Detail");
 
   const {
     user: {
@@ -40,6 +46,12 @@ const Profile = () => {
       internshipDetails,
     },
   } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    const path = window.location.pathname.split("/");
+
+    setSelected(path[3]);
+  }, []);
 
   return (
     <section className="profile-page">
@@ -73,9 +85,17 @@ const Profile = () => {
       <div className="content">
         <div className="button-container">
           {buttons.map((item, index) => {
-            const {path, btnName} = item;
+            const {path, btnName, code} = item;
+
             return (
-              <button key={index} onClick={() => navigate(path)}>
+              <button
+                className={selected === code ? "active" : null}
+                key={index}
+                onClick={() => {
+                  navigate(path);
+                  setSelected(code);
+                }}
+              >
                 {btnName}
               </button>
             );
