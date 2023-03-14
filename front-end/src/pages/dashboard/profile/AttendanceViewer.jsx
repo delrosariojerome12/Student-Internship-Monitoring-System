@@ -92,7 +92,7 @@ const AttendanceViewer = React.memo(() => {
             <h4>Total Rendered: {totalRendered}hrs</h4>
             <div className="right">
               <h4>Time in: {timeIn}</h4>
-              <h4>Time out: {timeOut} </h4>
+              <h4>Time out: {timeOut ? timeOut : "Pending"} </h4>
             </div>
           </div>
         );
