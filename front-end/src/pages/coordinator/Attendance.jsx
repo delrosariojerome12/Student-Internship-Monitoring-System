@@ -5,6 +5,7 @@ import {
   getAllAttendanceByDate,
   handleFilter,
   handleSort,
+  checkAbsents,
 } from "../../features/coordinator/monitorAttendance";
 import Bouncing from "../../components/loading/Bouncing";
 import ServerError from "../serverError";
@@ -55,17 +56,12 @@ const MonitorAttendance = () => {
   });
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const date = new Date();
-      // hour
-      const hours = date.getHours() % 12 || 12;
-      const amOrPm = date.getHours() >= 12 ? "PM" : "AM";
-      setTime(`${hours} ${amOrPm}`);
-      console.log(time);
-    }, 1000);
-
+    const now = new Date();
+    const hours = now.getHours();
+    if (hours >= 14) {
+      dispatch(checkAbsents({}));
+    }
     dispatch(getAllAttendanceToday({}));
-    return () => clearInterval(interval);
   }, []);
 
   if (isLoading || !attendanceToday) {
@@ -109,6 +105,7 @@ const MonitorAttendance = () => {
         </div>
         <div className="date-container">
           <h3>{formatDate(today)}</h3>
+          <h3>{time} </h3>
         </div>
       </div>
       <div className="display">
@@ -124,31 +121,36 @@ const MonitorAttendance = () => {
           ></div>
           <div onClick={(e) => e.stopPropagation()} className="filter modal">
             <p>Filter</p>
-            <label htmlFor="date">
-              Date
-              <input
-                value={filterDate}
-                type="date"
-                id="date"
-                onChange={(e) => {
-                  setFilterDate(e.target.value);
-                }}
-              />
-            </label>
 
-            <button
-              onClick={() =>
-                dispatch(
-                  getAllAttendanceByDate({
-                    date: filterDate,
-                  })
-                )
-              }
-            >
-              Filter
-            </button>
+            <div className="inputs-container">
+              <label htmlFor="date">
+                Date
+                <input
+                  value={filterDate}
+                  type="date"
+                  id="date"
+                  onChange={(e) => {
+                    setFilterDate(e.target.value);
+                  }}
+                />
+              </label>
+            </div>
 
-            <button onClick={() => dispatch(handleFilter())}>Close</button>
+            <div className="btn-controllers">
+              <button
+                onClick={() =>
+                  dispatch(
+                    getAllAttendanceByDate({
+                      date: filterDate,
+                    })
+                  )
+                }
+              >
+                Filter
+              </button>
+
+              <button onClick={() => dispatch(handleFilter())}>Close</button>
+            </div>
           </div>
         </>
       )}

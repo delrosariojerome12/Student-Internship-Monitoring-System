@@ -50,6 +50,10 @@
       align-items: center;
       gap: 1rem;
     }
+    .date-container {
+      display: flex;
+      align-items: center;
+    }
   }
 
   .display {
@@ -115,6 +119,9 @@
     z-index: 8;
   }
   .modal {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 1rem;
     color: #000;
     z-index: 9;
     padding: 2rem;
@@ -127,5 +134,33 @@
     background-color: #fff;
     border: solid 1px #000;
     border-radius: 1rem;
+
+    & > * {
+      border: solid 1px #000;
+    }
+    .btn-controllers {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      button {
+        background-color: $primary-compliment-landing;
+        border: solid 2px transparent;
+        color: #fff;
+        &:hover {
+          color: $primary-compliment-landing;
+          background-color: #fff;
+          border: solid 2px $primary-compliment-landing;
+        }
+        &:nth-child(2) {
+          background-color: $red-primary-color;
+          &:hover {
+            color: $red-primary-color;
+            background-color: #fff;
+            border: solid 2px $red-primary-color;
+          }
+        }
+      }
+    }
   }
 }

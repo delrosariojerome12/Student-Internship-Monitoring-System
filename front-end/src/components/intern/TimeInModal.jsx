@@ -1,5 +1,3 @@
-/** @format */
-
 import React, {useState, useEffect, useRef} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {
@@ -8,6 +6,8 @@ import {
 } from "../../features/interns/attendanceReducer";
 import axios from "axios";
 import CameraSVG from "../../assets/img/camera.svg";
+import NocameraSVG from "../../assets/img/nocamera.svg";
+
 import Webcam from "react-webcam";
 import {storage} from "../../Firebase";
 import {ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage";
@@ -112,14 +112,17 @@ const TimeInModal = React.memo(({email}) => {
       const month = months[date.getMonth()];
       const year = date.getFullYear();
       // hour
-      const hours = date.getHours() % 12 || 12;
+      const hours =
+        date.getHours() % 12 || 12 < 10
+          ? `0${date.getHours() % 12 || 12}`
+          : date.getHours() % 12 || 12;
       const minutes =
         10 > date.getMinutes() ? `0${date.getMinutes()}` : date.getMinutes();
-      const seconds = date.getSeconds();
+      const seconds =
+        date.getSeconds() < 10 ? `0${date.getSeconds()}` : date.getSeconds();
       const amOrPm = date.getHours() >= 12 ? "PM" : "AM";
 
       const fullHour = `${hours}:${minutes}:${seconds} ${amOrPm}`;
-      // const fullDate = `${month} ${day}, ${year}`;
 
       setTime(fullHour);
     }, 1000);
@@ -154,16 +157,19 @@ const TimeInModal = React.memo(({email}) => {
     );
   }
 
-  if (!hasCamera) {
-    return (
-      <>
-        <div className="overlay" onClick={() => dispatch(handleTimeIn())}></div>
-        <div className="no-camera modal">
-          <h3>No Camera</h3>
-        </div>
-      </>
-    );
-  }
+  // if (!hasCamera) {
+  //   return (
+  //     <>
+  //       <div className="overlay" onClick={() => dispatch(handleTimeIn())}></div>
+  //       <div className="no-camera modal">
+  //         <img src={NocameraSVG} alt="No-Camera" />
+  //         <h3>
+  //           No <b>Camera</b> Detected
+  //         </h3>
+  //       </div>
+  //     </>
+  //   );
+  // }
 
   return (
     <>
@@ -197,7 +203,7 @@ const TimeInModal = React.memo(({email}) => {
                 email,
                 form: {
                   isPresent: true,
-                  location: address,
+                  locationTimeIn: address,
                   proof: {
                     timeInLink: capturedPhoto,
                   },

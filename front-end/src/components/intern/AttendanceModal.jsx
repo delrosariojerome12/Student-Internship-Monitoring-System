@@ -1,6 +1,7 @@
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {handleViewToday} from "../../features/interns/attendanceReducer";
+
 const AttendanceModal = React.memo(() => {
   const {selectedAttendance} = useSelector((state) => state.attendance);
   const {user} = useSelector((state) => state.user);
@@ -10,14 +11,30 @@ const AttendanceModal = React.memo(() => {
     date,
     isComplete,
     isLate,
-    location,
+    locationTimeIn,
+    locationTimeOut,
     timeIn,
     timeOut,
     totalRendered,
     OT,
-    proof: {timeInLink, timeOutLink},
+    isPresent,
+    proof,
   } = selectedAttendance;
-  console.log(selectedAttendance);
+
+  if (!isPresent) {
+    return (
+      <>
+        <div
+          className="overlay"
+          onClick={() => dispatch(handleViewToday())}
+        ></div>
+
+        <div className="attendance-absent modal">
+          <h1>Absent</h1>
+        </div>
+      </>
+    );
+  }
   return (
     <>
       <div
@@ -26,17 +43,47 @@ const AttendanceModal = React.memo(() => {
       ></div>
       <div className="attendance-view modal">
         <div className="upper">
-          <p>Date: {date}</p>
-          <p>Time in: {timeIn}</p>
-          <p>Time in: {timeOut}</p>
-          <p>OT: {OT}</p>
-          <p>Location: {location}</p>
+          <div className="attendance-info">
+            <p>
+              <b> Date: </b>
+              {date}
+            </p>
+            <p>
+              <b>Time in: </b> {timeIn}
+            </p>
+            <p>
+              <b> Time out: </b>
+              {!timeOut ? "Pending" : timeOut}
+            </p>
+            <p>
+              <b> OT: </b> {OT}
+            </p>
+            <p>Rendered Hours: {totalRendered}hrs</p>
+            <p>
+              <b> Time In Location: </b>
+              {locationTimeIn}
+            </p>
+            <p>
+              <b> Time Out Location: </b>
+              {locationTimeOut ? locationTimeOut : "Pending"}
+            </p>
+          </div>
           <div className="img-con">
-            {timeInLink && <img src={timeInLink} alt={"proof"} />}
-            {timeOutLink && <img src={timeOutLink} alt={"proof"} />}
+            <h3>
+              Time In
+              {proof.timeInLink && <img src={proof.timeInLink} alt={"proof"} />}
+            </h3>
+            <h3>
+              Time Out
+              {proof.timeOutLink && (
+                <img src={proof.timeOutLink} alt={"proof"} />
+              )}
+            </h3>
           </div>
         </div>
-        <div className="lower"></div>
+        <div className="lower">
+          <button onClick={() => dispatch(handleViewToday())}>Close</button>
+        </div>
       </div>
     </>
   );

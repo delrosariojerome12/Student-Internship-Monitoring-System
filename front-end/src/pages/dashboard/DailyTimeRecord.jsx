@@ -1,5 +1,3 @@
-/** @format */
-
 import React, {useState, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {FaCheck, FaCamera, FaRegImage} from "react-icons/fa";
@@ -41,7 +39,7 @@ const DailyTimeRecord = React.memo(() => {
     alreadyTimeIn,
     alreadyTimeOut,
     canStart,
-    todayAttendanceID,
+    todayAttendance,
   } = useSelector((state) => state.attendance);
   const dispatch = useDispatch();
 
@@ -59,36 +57,8 @@ const DailyTimeRecord = React.memo(() => {
       const hours = now.getHours() % 12 || 12;
       const minutes = now.getMinutes();
       const amOrPm = now.getHours() >= 12 ? "PM" : "AM";
-
-      // if (hours >= 8 && hours <= 10 && amOrPm === "AM") {
-      //   dispatch(handleDisableTimeIn(false));
-      // } else if (hours >= 1 && amOrPm === "PM") {
-      //   dispatch(handleDisableTimeIn(false));
-      // }
-
-      // if (hours >= 8 && hours <= 10 && amOrPm === "AM") {
-      //   dispatch(handleDisableTimeIn(false));
-      // } else if (hours === 1 && minutes < 29 && amOrPm === "PM") {
-      //   dispatch(handleDisableTimeIn(false));
-      // } else if (alreadyTimeIn) {
-      //   if (hours >= 5 && hours <= 7 && amOrPm === "PM") {
-      //     dispatch(handleDisableTimeOut(false));
-      //   }
-      // }
     }, 1000);
-
-    const date = new Date();
-    const day = date.getDate() + 1 < 10 ? `0${date.getDate()}` : date.getDate();
-    const month =
-      date.getMonth() + 1 < 10
-        ? `0${date.getMonth() + 1}`
-        : date.getMonth() + 1;
-    const year = date.getFullYear();
-    const today = `${year}-${month}-${day}`;
-
     dispatch(getAllAttendance({email, scheduleDetails}));
-
-    today === startingDate && dispatch(checkStartingDate({email}));
     return () => clearInterval(timer);
   }, []);
 
@@ -141,12 +111,6 @@ const DailyTimeRecord = React.memo(() => {
             <p className="required-hours">
               Required Hours: <b> {requiredHours}</b>
             </p>
-            <p>
-              Program: <b> {program}</b>
-            </p>
-            <p>
-              <b>{program}</b>
-            </p>
           </div>
         </div>
         <div className="mid">
@@ -154,22 +118,22 @@ const DailyTimeRecord = React.memo(() => {
             <button
               className="time-in"
               onClick={() => dispatch(handleTimeIn())}
-              // style={
-              //   isTimeInDisable
-              //     ? {pointerEvents: "none", opacity: ".5"}
-              //     : {opacity: "1"}
-              // }
+              style={
+                isTimeInDisable
+                  ? {pointerEvents: "none", opacity: ".5"}
+                  : {opacity: "1"}
+              }
             >
               Time In
             </button>
             <button
               className="time-out"
               onClick={() => dispatch(handleTimeOut())}
-              // style={
-              //   isTimeOutDisable
-              //     ? {pointerEvents: "none", opacity: ".5"}
-              //     : {opacity: "1"}
-              // }
+              style={
+                isTimeOutDisable
+                  ? {pointerEvents: "none", opacity: ".5"}
+                  : {opacity: "1"}
+              }
             >
               Time Out
             </button>

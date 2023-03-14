@@ -37,18 +37,19 @@
     .intern-info {
       display: grid;
       grid-template-columns: 1fr auto;
-      background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+      background-color: #282b30;
       border-radius: 0 0 1rem 1rem;
       padding: 1rem;
       .intern-details {
         @include flexColumn;
         padding: 1rem 1rem 1rem 15rem;
-        h3 {
+        h3,
+        p {
           color: #fff;
         }
-        p {
-          color: #bdbdbd;
-        }
+        // p {
+        //   color: #bdbdbd;
+        // }
       }
       .btn-edit {
         justify-content: flex-end;
@@ -130,15 +131,85 @@
           border-radius: 0 1rem 0 0;
         }
       }
+      .active {
+        background-color: lighten(
+          $color: $primary-bg-color-landing-compliment,
+          $amount: 30
+        );
+        &::before {
+          width: 80%;
+        }
+      }
     }
     .display {
       padding: 2rem;
       border-radius: 0 1rem 1rem 1rem;
-      background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
-      // background-color: lighten(
-      //   $color: $primary-bg-color-landing-compliment,
-      //   $amount: 10
-      // );
+      background-color: #282b30;
+      display: grid;
+      .intern-details-container {
+        background-color: #fff;
+        border-radius: 1rem;
+        padding: 2rem;
+        display: grid;
+        gap: 1rem;
+      }
+      .internship-details-container {
+        background-color: #fff;
+        border-radius: 1rem;
+        padding: 2rem;
+        display: grid;
+        grid-template-columns: 15rem 1fr;
+        gap: 1rem;
+        .img-con {
+          border: solid 1px #000;
+          border-radius: 1rem;
+          height: 15rem;
+          width: 15rem;
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+          }
+        }
+        .text {
+          display: grid;
+          gap: 1rem;
+          h4 {
+            background-color: #efefef;
+            border-radius: 1rem;
+            padding: 1rem;
+          }
+        }
+      }
+
+      .attendance-container {
+        .no-record {
+          display: flex;
+          height: 100%;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 1rem;
+          color: #fff;
+          img {
+            height: 30rem;
+            width: 30rem;
+          }
+        }
+        .attendance-view {
+          background-color: $primary-compliment-landing;
+          border-radius: 1rem;
+          padding: 1.5rem;
+          color: #fff;
+          display: flex;
+          justify-content: space-between;
+          gap: 1rem;
+          & > * {
+            display: flex;
+            gap: 1rem;
+          }
+        }
+      }
     }
   }
 }

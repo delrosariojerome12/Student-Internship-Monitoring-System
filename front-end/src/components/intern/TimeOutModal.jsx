@@ -1,3 +1,5 @@
+/** @format */
+
 import React, {useState, useEffect, useRef} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {
@@ -6,6 +8,7 @@ import {
 } from "../../features/interns/attendanceReducer";
 import axios from "axios";
 import CameraSVG from "../../assets/img/camera.svg";
+import NocameraSVG from "../../assets/img/nocamera.svg";
 import Webcam from "react-webcam";
 import {storage} from "../../Firebase";
 import {ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage";
@@ -46,12 +49,13 @@ const convertImage = (str) => {
 const key = "UjTu7V2EcFJBTyd0zjudhuFrRNP4iWXJ";
 
 const TimeOutModal = React.memo(({email}) => {
-  const {todayAttendanceID, selectedAttendance} = useSelector(
+  const {todayAttendance, selectedAttendance} = useSelector(
     (state) => state.attendance
   );
+
   const {
     proof: {timeInLink, timeOutLink},
-  } = selectedAttendance;
+  } = todayAttendance;
   const dispatch = useDispatch();
 
   const [time, setTime] = useState("");
@@ -114,10 +118,14 @@ const TimeOutModal = React.memo(({email}) => {
       const month = months[date.getMonth()];
       const year = date.getFullYear();
       // hour
-      const hours = date.getHours() % 12 || 12;
+      const hours =
+        date.getHours() % 12 || 12 < 10
+          ? `0${date.getHours() % 12 || 12}`
+          : date.getHours() % 12 || 12;
       const minutes =
         10 > date.getMinutes() ? `0${date.getMinutes()}` : date.getMinutes();
-      const seconds = date.getSeconds();
+      const seconds =
+        date.getSeconds() < 10 ? `0${date.getSeconds()}` : date.getSeconds();
       const amOrPm = date.getHours() >= 12 ? "PM" : "AM"; // set AM or PM
 
       const fullHour = `${hours}:${minutes}:${seconds} ${amOrPm}`;
@@ -148,19 +156,21 @@ const TimeOutModal = React.memo(({email}) => {
     );
   }
 
-  if (!hasCamera) {
-    return (
-      <>
-        <div
-          className="overlay"
-          onClick={() => dispatch(handleTimeOut())}
-        ></div>
-        <div className="no-camera modal">
-          <h3>No Camera</h3>
-        </div>
-      </>
-    );
-  }
+  // if (!hasCamera) {
+  //   return (
+  //     <>
+  //       <div
+  //         className="overlay"
+  //         onClick={() => dispatch(handleTimeOut())}></div>
+  //       <div className="no-camera modal">
+  //         <img src={NocameraSVG} alt="No-Camera" />
+  //         <h3>
+  //           No <b>Camera</b> Detected
+  //         </h3>
+  //       </div>
+  //     </>
+  //   );
+  // }
 
   return (
     <>
@@ -194,7 +204,7 @@ const TimeOutModal = React.memo(({email}) => {
                 email,
                 form: {
                   isPresent: true,
-                  location: address,
+                  locationTimeOut: address,
                   proof: {
                     timeOutLink: capturedPhoto,
                     timeInLink,
@@ -202,7 +212,6 @@ const TimeOutModal = React.memo(({email}) => {
                   timeOut: time,
                   isComplete: true,
                 },
-                id: todayAttendanceID,
               })
             )
           }

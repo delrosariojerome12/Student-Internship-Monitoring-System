@@ -568,6 +568,8 @@ button {
   height: 100%;
   width: 100%;
   border-radius: 50%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .signin .card-container form button {
   cursor: pointer;
@@ -930,7 +932,7 @@ button {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
@@ -1739,7 +1741,7 @@ button {
   display: grid;
   grid-template-rows: minmax(17rem, auto) auto minmax(30rem, 64vh);
   gap: 1rem;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
   padding: 1rem;
 }
 .dashboard .intern-container .preview-container, .dashboard-active .intern-container .preview-container {
@@ -2529,7 +2531,7 @@ button {
 }
 .dashboard .internship-container .content, .dashboard-active .internship-container .content {
   border-radius: 1rem;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
   padding: 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, 42.5rem);
@@ -2609,7 +2611,7 @@ button {
   align-items: center;
   text-align: center;
   flex-direction: column;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
   border-radius: 1rem;
   color: #fff;
   gap: 1rem;
@@ -3245,7 +3247,7 @@ button {
   grid-auto-rows: 12rem;
   border: solid 1px #fff;
   border-radius: 2rem 2rem 0 0;
-  background-image: linear-gradient(#212121 30%, #222222 31%, #484848 100%);
+  background-color: #282b30;
 }
 .dashboard .coordinator-dashboard .dashboard-intern .container-title, .dashboard-active .coordinator-dashboard .dashboard-intern .container-title {
   color: #fff;
@@ -3308,7 +3310,7 @@ button {
 }
 .dashboard .coordinator-dashboard .dashboard-content > *, .dashboard-active .coordinator-dashboard .dashboard-content > * {
   border: solid 1px #fff;
-  background-image: linear-gradient(#212121 30%, #222222 31%, #484848 100%);
+  background-color: #282b30;
 }
 .dashboard .coordinator-dashboard .dashboard-content .approvals-title, .dashboard-active .coordinator-dashboard .dashboard-content .approvals-title,
 .dashboard .coordinator-dashboard .dashboard-content .internships-title,
@@ -3822,6 +3824,10 @@ button {
   align-items: center;
   gap: 1rem;
 }
+.dashboard .monitor-attendance .mid .date-container, .dashboard-active .monitor-attendance .mid .date-container {
+  display: flex;
+  align-items: center;
+}
 .dashboard .monitor-attendance .display, .dashboard-active .monitor-attendance .display {
   display: flex;
   flex-direction: column;
@@ -3880,6 +3886,9 @@ button {
   z-index: 8;
 }
 .dashboard .monitor-attendance .modal, .dashboard-active .monitor-attendance .modal {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 1rem;
   color: #000;
   z-index: 9;
   padding: 2rem;
@@ -3892,6 +3901,33 @@ button {
   background-color: #fff;
   border: solid 1px #000;
   border-radius: 1rem;
+}
+.dashboard .monitor-attendance .modal > *, .dashboard-active .monitor-attendance .modal > * {
+  border: solid 1px #000;
+}
+.dashboard .monitor-attendance .modal .btn-controllers, .dashboard-active .monitor-attendance .modal .btn-controllers {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.dashboard .monitor-attendance .modal .btn-controllers button, .dashboard-active .monitor-attendance .modal .btn-controllers button {
+  background-color: #0d7377;
+  border: solid 2px transparent;
+  color: #fff;
+}
+.dashboard .monitor-attendance .modal .btn-controllers button:hover, .dashboard-active .monitor-attendance .modal .btn-controllers button:hover {
+  color: #0d7377;
+  background-color: #fff;
+  border: solid 2px #0d7377;
+}
+.dashboard .monitor-attendance .modal .btn-controllers button:nth-child(2), .dashboard-active .monitor-attendance .modal .btn-controllers button:nth-child(2) {
+  background-color: #e63946;
+}
+.dashboard .monitor-attendance .modal .btn-controllers button:nth-child(2):hover, .dashboard-active .monitor-attendance .modal .btn-controllers button:nth-child(2):hover {
+  color: #e63946;
+  background-color: #fff;
+  border: solid 2px #e63946;
 }
 .dashboard .admin-document-page, .dashboard-active .admin-document-page {
   display: grid;
@@ -4292,7 +4328,7 @@ button {
   grid-auto-rows: 12rem;
   gap: 1rem;
   padding: 2rem;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
   border-radius: 1rem;
   overflow-y: auto;
 }
@@ -4335,7 +4371,7 @@ button {
   border-radius: 0;
 }
 .dashboard .admin-document-page .document-container .no-document, .dashboard-active .admin-document-page .document-container .no-document {
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
   border-radius: 1rem;
   color: #fff;
   padding: 2rem;
@@ -4348,11 +4384,11 @@ button {
   text-align: center;
 }
 .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
-  height: 35rem;
+  height: 40rem;
 }
 .dashboard .admin-document-page .document-approval-container, .dashboard-active .admin-document-page .document-approval-container {
   padding: 2rem;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
   border-radius: 1rem;
   gap: 1rem;
   overflow-y: auto;
@@ -4533,8 +4569,14 @@ button {
   .dashboard .admin-document-page .document-container .documents, .dashboard-active .admin-document-page .document-container .documents {
     justify-content: center;
   }
+  .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
+    height: 35rem;
+  }
 }
 @media screen and (max-width: 950px) {
+  .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
+    height: 30rem;
+  }
   .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document {
     grid-template-rows: auto auto;
     grid-template-columns: 0.25fr 1fr;
@@ -4615,7 +4657,7 @@ button {
     grid-template-columns: 1fr;
   }
   .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
-    height: 30rem;
+    height: 25rem;
   }
 }
 @media screen and (max-width: 650px) {
@@ -4633,7 +4675,7 @@ button {
 }
 @media screen and (max-width: 600px) {
   .dashboard .admin-document-page, .dashboard-active .admin-document-page {
-    grid-template-rows: repeat(2, minmax(6rem, auto)) minmax(35rem, 65vh);
+    grid-template-rows: repeat(2, minmax(6rem, auto)) minmax(35rem, 60vh);
   }
   .dashboard .admin-document-page .sample-view-container, .dashboard-active .admin-document-page .sample-view-container,
   .dashboard .admin-document-page .document-approval-container .view-document-container,
@@ -4649,9 +4691,6 @@ button {
   }
 }
 @media screen and (max-width: 500px) {
-  .dashboard .admin-document-page, .dashboard-active .admin-document-page {
-    grid-template-rows: repeat(2, minmax(6rem, 7vh)) minmax(35rem, 68vh);
-  }
   .dashboard .admin-document-page .document-modal .content, .dashboard-active .admin-document-page .document-modal .content {
     grid-template-rows: 10rem repeat(2, auto);
   }
@@ -4695,6 +4734,12 @@ button {
     padding: 1rem 1rem 1rem 2.5rem;
     justify-content: flex-start;
   }
+  .dashboard .admin-document-page .document-container .no-document, .dashboard-active .admin-document-page .document-container .no-document {
+    padding: 1rem;
+  }
+  .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
+    height: 20rem;
+  }
   .dashboard .admin-document-page .document-approval-container .document-intern, .dashboard-active .admin-document-page .document-approval-container .document-intern {
     min-height: 8rem !important;
   }
@@ -4730,9 +4775,6 @@ button {
 @media screen and (max-width: 400px) {
   .dashboard .admin-document-page .document-container .documents, .dashboard-active .admin-document-page .document-container .documents {
     grid-template-columns: 1fr;
-  }
-  .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
-    height: 25rem;
   }
 }
 
@@ -5901,7 +5943,7 @@ button {
 }
 .internship-container-intern .content {
   border-radius: 1rem;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
   padding: 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, 42.5rem);
@@ -5971,7 +6013,7 @@ button {
   align-items: center;
   text-align: center;
   flex-direction: column;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
   border-radius: 1rem;
   color: #fff;
   gap: 1rem;
@@ -6271,7 +6313,7 @@ button {
 .profile-page .profile-user .intern-info {
   display: grid;
   grid-template-columns: 1fr auto;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
   border-radius: 0 0 1rem 1rem;
   padding: 1rem;
 }
@@ -6281,11 +6323,9 @@ button {
   gap: 1rem;
   padding: 1rem 1rem 1rem 15rem;
 }
-.profile-page .profile-user .intern-info .intern-details h3 {
-  color: #fff;
-}
+.profile-page .profile-user .intern-info .intern-details h3,
 .profile-page .profile-user .intern-info .intern-details p {
-  color: #bdbdbd;
+  color: #fff;
 }
 .profile-page .profile-user .intern-info .btn-edit {
   justify-content: flex-end;
@@ -6359,31 +6399,99 @@ button {
 .profile-page .content .button-container button:nth-last-of-type(1) {
   border-radius: 0 1rem 0 0;
 }
+.profile-page .content .button-container .active {
+  background-color: #7f7f7f;
+}
+.profile-page .content .button-container .active::before {
+  width: 80%;
+}
 .profile-page .content .display {
   padding: 2rem;
   border-radius: 0 1rem 1rem 1rem;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
+  display: grid;
+}
+.profile-page .content .display .intern-details-container {
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  display: grid;
+  gap: 1rem;
+}
+.profile-page .content .display .internship-details-container {
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 15rem 1fr;
+  gap: 1rem;
+}
+.profile-page .content .display .internship-details-container .img-con {
+  border: solid 1px #000;
+  border-radius: 1rem;
+  height: 15rem;
+  width: 15rem;
+}
+.profile-page .content .display .internship-details-container .img-con img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.profile-page .content .display .internship-details-container .text {
+  display: grid;
+  gap: 1rem;
+}
+.profile-page .content .display .internship-details-container .text h4 {
+  background-color: #efefef;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.profile-page .content .display .attendance-container .no-record {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: #fff;
+}
+.profile-page .content .display .attendance-container .no-record img {
+  height: 30rem;
+  width: 30rem;
+}
+.profile-page .content .display .attendance-container .attendance-view {
+  background-color: #0d7377;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.profile-page .content .display .attendance-container .attendance-view > * {
+  display: flex;
+  gap: 1rem;
 }
 
-/** @format */
 .daily-time-record {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: minmax(15rem, auto) auto minmax(50rem, 62vh);
+  grid-template-rows: 12rem 7rem minmax(30vh, 65vh);
   padding: 1rem;
   gap: 1rem;
 }
 .daily-time-record button {
   height: 5rem;
   width: 12rem;
-  background-color: #457b9d;
+  background-color: #0d7377;
   color: #fff;
   border: 1px solid transparent;
   outline: none;
   cursor: pointer;
   padding: 1rem 2rem;
-  transition: all 0.2s linear;
+  transition: all 0.3s linear;
   font-weight: 600;
   display: flex;
   justify-content: center;
@@ -6398,9 +6506,9 @@ button {
 }
 .daily-time-record button:hover {
   border-radius: 1rem;
-  border: solid 1px #457b9d;
+  border: solid 1px #0d7377;
   background-color: #fff;
-  color: #457b9d;
+  color: #0d7377;
 }
 .daily-time-record .overlay {
   width: 100%;
@@ -6412,69 +6520,163 @@ button {
   left: 0%;
   z-index: 6;
 }
-.daily-time-record .time-in {
+.daily-time-record .time-in,
+.daily-time-record .time-out {
   display: grid;
   grid-template-rows: auto 1fr 5rem;
   padding: 2rem;
   text-align: center;
   gap: 1rem;
 }
-.daily-time-record .time-in .camera {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-.daily-time-record .time-in .camera img {
-  height: 40rem;
-  width: 40rem;
-}
-.daily-time-record .time-in .camera video {
-  height: 40rem;
-  width: 40rem;
-}
-.daily-time-record .time-in > * {
+.daily-time-record .time-in > *,
+.daily-time-record .time-out > * {
   border: solid 1px #3a2d2d;
 }
-.daily-time-record .time-in button {
+.daily-time-record .time-in .address,
+.daily-time-record .time-out .address {
+  padding: 1rem;
+  background-color: #fff;
+}
+.daily-time-record .time-in .address h3,
+.daily-time-record .time-out .address h3 {
+  color: #333333;
+}
+.daily-time-record .time-in .camera,
+.daily-time-record .time-out .camera {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #fff;
+  padding: 1rem;
+}
+.daily-time-record .time-in .camera img,
+.daily-time-record .time-out .camera img {
+  height: 40rem;
+  width: 40rem;
+}
+.daily-time-record .time-in .camera video,
+.daily-time-record .time-out .camera video {
+  height: 40rem;
+  width: 40rem;
+}
+.daily-time-record .time-in button,
+.daily-time-record .time-out button {
   margin: 0 auto;
 }
 .daily-time-record .attendance-view {
   display: grid;
-  padding: 1rem;
+  grid-template-rows: repeat(2, auto);
+  padding: 2rem;
+  gap: 1rem;
 }
-.daily-time-record .attendance-view img {
-  width: 32rem;
-  height: 32rem;
+.daily-time-record .attendance-view .upper {
+  display: grid;
+  gap: 1rem;
+  grid-template-rows: auto 1fr;
+}
+.daily-time-record .attendance-view .upper > * {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.daily-time-record .attendance-view .upper .attendance-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: 0.5rem;
+}
+.daily-time-record .attendance-view .upper .attendance-info > * {
+  padding: 0.5rem 1rem;
+}
+.daily-time-record .attendance-view .upper .attendance-info :nth-child(1) {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+.daily-time-record .attendance-view .upper .attendance-info > *:nth-child(7) {
+  grid-column: 1/3;
+}
+.daily-time-record .attendance-view .upper .attendance-info > *:nth-child(6) {
+  grid-column: 1/3;
+}
+.daily-time-record .attendance-view .upper .img-con {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.daily-time-record .attendance-view .upper .img-con > * {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+  gap: 0.5rem;
+}
+.daily-time-record .attendance-view .upper .img-con img {
+  width: 30rem;
+  height: 30rem;
+}
+.daily-time-record .attendance-view .lower {
+  margin: auto;
 }
 .daily-time-record .modal {
   overflow-y: auto;
-  background-color: #fff;
+  background-color: #d9d9d9;
   border-radius: 1rem;
-  height: 70rem;
-  width: 70rem;
+  height: 75rem;
+  width: 72rem;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 7;
 }
+.daily-time-record .no-camera {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+.daily-time-record .no-camera b {
+  color: #e63946;
+}
+.daily-time-record .no-camera img {
+  padding: 0 0 0 3rem;
+}
 .daily-time-record .user {
   display: grid;
-  grid-template-rows: 12rem 7rem 2fr;
-  padding: 1rem;
   gap: 1rem;
+  grid-template-columns: 10rem auto;
+  grid-template-rows: auto;
+  padding: 1rem;
+  border-radius: 2rem;
+  align-items: center;
+  background-color: #282b30;
 }
 .daily-time-record .user .text {
   display: grid;
   grid-template-columns: repeat(2, auto);
   height: 100%;
   gap: 1rem;
-  padding: 2rem;
-  background-color: #212121;
+  align-items: center;
+  background-color: #40454d;
   border-radius: 2rem;
+  padding: 1rem;
   overflow-y: auto;
+  font-size: 1.5rem;
+}
+.daily-time-record .user .text > *:nth-child(4) {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+.daily-time-record .user .text p,
+.daily-time-record .user .text h4 {
+  color: #f1faee;
+}
+.daily-time-record .user .text > *:nth-child(5) {
+  display: none;
 }
 .daily-time-record .user .text .attendance {
   display: flex;
@@ -6503,8 +6705,8 @@ button {
   grid-column: 1/2;
 }
 .daily-time-record .user .profile-img img {
-  height: 13rem;
-  width: 13rem;
+  height: 10rem;
+  width: 10rem;
   background-color: #fff;
   border: solid 1px #fff;
   border-radius: 1rem;
@@ -6546,6 +6748,7 @@ button {
   background-color: #e63946;
   color: #fff;
   border-radius: 0;
+  border: solid 1px #e63946;
 }
 .daily-time-record .mid .search-box {
   display: flex;
@@ -6578,9 +6781,8 @@ button {
   grid-auto-rows: 6rem;
   gap: 1rem;
   padding: 2rem;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
   border-radius: 2rem;
-  max-height: 67rem;
   overflow-y: auto;
 }
 .daily-time-record .DTR-content .attendance {
@@ -6594,7 +6796,7 @@ button {
   transition: all 0.2s linear;
   position: relative;
   font-size: 1.6rem;
-  font-weight: 6000;
+  font-weight: 600;
 }
 .daily-time-record .DTR-content .attendance:hover {
   background-color: #00adb5;
@@ -6605,7 +6807,7 @@ button {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
   border-radius: 1rem;
   color: #fff;
   gap: 1rem;
@@ -6619,99 +6821,67 @@ button {
   width: 35rem;
 }
 
-@media screen and (max-width: 1030px) {
-  .daily-time-record .user .text {
-    grid-template-rows: repeat(3, auto);
-  }
-  .daily-time-record .user .text > *:nth-child(1) {
-    grid-column: 1/3;
-    grid-row: 1/2;
-  }
-  .daily-time-record .user .text > *:nth-child(4) {
-    grid-column: 1/3;
-    grid-row: 2/3;
-  }
-  .daily-time-record .user .text > *:nth-child(2) {
-    grid-column: 1/2;
-    grid-row: 3/4;
-  }
-  .daily-time-record .user .text > *:nth-child(3) {
-    grid-column: 2/3;
-    grid-row: 3/4;
-  }
-  .daily-time-record .DTR-content {
-    justify-content: center;
-  }
-  .daily-time-record .no-internship img {
-    height: 30rem;
-    width: 30rem;
+@media screen and (max-height: 1000px) {
+  .daily-time-record {
+    grid-template-rows: 12rem 7rem 73vh;
   }
 }
-@media screen and (max-width: 750px) {
-  .daily-time-record .user {
-    grid-template-columns: 10rem auto;
+@media screen and (max-height: 850px) {
+  .daily-time-record {
+    grid-template-rows: 12rem 7rem 70vh;
   }
-  .daily-time-record .user .text {
-    font-size: 1.7rem;
+  .daily-time-record .modal {
+    height: 65rem;
   }
-  .daily-time-record .user .profile-img img {
-    height: 10rem;
-    width: 10rem;
+}
+@media screen and (max-height: 760px) {
+  .daily-time-record {
+    grid-template-rows: 12rem 7rem 67vh;
   }
-  .daily-time-record .mid .button-container button {
-    height: 3.5rem;
+}
+@media screen and (max-height: 700px) {
+  .daily-time-record {
+    grid-template-rows: 12rem 7rem 63vh;
   }
-  .daily-time-record .no-internship img {
-    height: 25rem;
-    width: 25rem;
+  .daily-time-record .modal {
+    height: 50rem;
+  }
+}
+@media screen and (max-height: 500px) {
+  .daily-time-record {
+    grid-template-rows: 12rem 7rem 63vh;
+  }
+  .daily-time-record .modal {
+    height: 35rem;
+  }
+}
+@media screen and (max-width: 780px) {
+  .daily-time-record .modal {
+    height: 70rem;
+    width: 60rem;
+  }
+  .daily-time-record .attendance-view .upper .img-con {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 700px) {
+  .daily-time-record .modal {
+    width: 50rem;
+  }
+  .daily-time-record .attendance-view .upper .attendance-info {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 600px) {
+  .daily-time-record {
+    grid-template-rows: 12rem 7rem 65vh;
   }
 }
 @media screen and (max-width: 500px) {
-  .daily-time-record .user {
-    grid-template-columns: auto;
-    grid-template-rows: auto auto;
-    gap: 0.5rem;
-    padding: 2rem 1rem;
-  }
-  .daily-time-record .user .profile-img img {
-    height: 9rem;
-    width: 9rem;
-  }
-  .daily-time-record .user .text {
-    font-size: 1.6rem;
-    gap: 0.5rem;
-  }
-  .daily-time-record .user .text > * {
-    text-align: center;
-  }
-  .daily-time-record .user .text > *:nth-child(4) {
-    display: none;
-  }
-  .daily-time-record .user .text > *:nth-child(5) {
-    display: flex;
-    grid-column: 1/3;
-    grid-row: 2/3;
-  }
-  .daily-time-record .user .text > *:nth-child(5) p {
-    text-align: center;
-  }
-  .daily-time-record .mid {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .daily-time-record .mid .button-container {
-    justify-content: center;
-    padding: 0;
-  }
-  .daily-time-record .mid .button-container button {
-    height: 3rem;
-  }
-}
-@media screen and (max-width: 400px) {
-  .daily-time-record .no-internship img {
-    height: 20rem;
-    width: 20rem;
+  .daily-time-record .modal {
+    width: 100%;
+    height: 100%;
   }
 }
 /** @format */
@@ -6737,7 +6907,7 @@ button {
 }
 .documents-page .top {
   border-radius: 1.5rem;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #333333 80%);
+  background-color: #282b30;
   display: grid;
   grid-template-columns: 1fr 2fr;
   padding: 1rem;
@@ -7064,7 +7234,7 @@ button {
   padding: 2rem;
   color: #fff;
   border-radius: 1.5rem;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #333333 80%);
+  background-color: #282b30;
   overflow: hidden;
   position: relative;
 }
@@ -7365,7 +7535,7 @@ button {
   width: 100%;
   border: solid 1px #fff;
   border-radius: 1rem;
-  background-image: linear-gradient(#282b30 10%, #393e46 31%, #212429 70%);
+  background-color: #282b30;
 }
 .reports .sort-modals {
   display: none !important;

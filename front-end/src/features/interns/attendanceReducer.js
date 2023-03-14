@@ -16,7 +16,7 @@ const initialState = {
   alreadyTimeIn: false,
   alreadyTimeOut: false,
   canStart: false,
-  todayAttendanceID: null,
+  todayAttendance: null,
   allAttendanceToday: null,
 };
 
@@ -42,6 +42,7 @@ export const getAllAttendance = createAsyncThunk(
 export const checkStartingDate = createAsyncThunk(
   "/attendance/checkStartingDate",
   async ({email}, {rejectWithValue, getState}) => {
+    console.log("updated user");
     const {
       user: {user},
     } = getState();
@@ -76,10 +77,9 @@ export const timeInAttendance = createAsyncThunk(
 
 export const timeOutAttendance = createAsyncThunk(
   "/attendance/timeOut",
-  async ({email, form, id}, {rejectWithValue}) => {
-    console.log(id);
+  async ({email, form}, {rejectWithValue}) => {
     try {
-      const url = `http://localhost:5000/attendance/timeOut/${email}/${id}`;
+      const url = `http://localhost:5000/attendance/timeOut/${email}`;
       const {data: res} = await axios.patch(url, form);
       console.log(res);
       return {res};
@@ -143,15 +143,65 @@ export const attendanceReducer = createSlice({
       })
       .addCase(getAllAttendance.fulfilled, (state, {payload}) => {
         const {
-          doesExists: {timeInExists, timeOutExists},
+          doesExists: {status},
           todayAttendance,
         } = payload.res;
         state.isLoading = false;
         state.allAttendance = payload.res.data;
-        state.isTimeInDisable = timeInExists;
-        state.isTimeOutDisable = timeOutExists;
+
+        console.log(payload.res.doesExists);
+
+        switch (status) {
+          case "no-time-in":
+            state.isTimeInDisable = false;
+            state.isTimeOutDisable = true;
+            break;
+          case "already-time-in":
+            state.isTimeInDisable = true;
+            state.isTimeOutDisable = true;
+            break;
+          case "no-time-in-lunch":
+            state.isTimeInDisable = true;
+            state.isTimeOutDisable = true;
+            break;
+          case "already-timed-in-lunch":
+            state.isTimeInDisable = true;
+            state.isTimeOutDisable = false;
+            break;
+          case "complete":
+            state.isTimeInDisable = true;
+            state.isTimeOutDisable = true;
+            break;
+          case "no-time-in-afternoon":
+            state.isTimeInDisable = true;
+            state.isTimeOutDisable = true;
+            break;
+          case "time-out-standard":
+            state.isTimeInDisable = true;
+            state.isTimeOutDisable = false;
+            break;
+          case "time-out-overtime":
+            state.isTimeInDisable = true;
+            state.isTimeOutDisable = false;
+            break;
+          case "absent":
+            state.isTimeInDisable = true;
+            state.isTimeOutDisable = true;
+            break;
+          case "no-schedule":
+            state.isTimeInDisable = true;
+            state.isTimeOutDisable = true;
+            break;
+          case "too-late":
+            state.isTimeInDisable = true;
+            state.isTimeOutDisable = true;
+            break;
+          default:
+            break;
+        }
+
         if (todayAttendance) {
-          state.todayAttendanceID = todayAttendance._id;
+          state.todayAttendance = todayAttendance;
         }
       })
       .addCase(getAllAttendance.rejected, (state, action) => {
@@ -169,7 +219,6 @@ export const attendanceReducer = createSlice({
         state.allAttendance = [...state.allAttendance, payload.res.data];
         state.isTimeInOpen = false;
         state.isTimeInDisable = true;
-        state.alreadyTimeIn = true;
       })
       .addCase(timeInAttendance.rejected, (state, action) => {
         state.isError = true;
@@ -184,7 +233,6 @@ export const attendanceReducer = createSlice({
         state.allAttendance = [...state.allAttendance];
         state.isTimeOutOpen = false;
         state.isTimeOutDisable = true;
-        state.alreadyTimeOut = true;
       })
       .addCase(timeOutAttendance.rejected, (state, action) => {
         state.isLoading = false;
