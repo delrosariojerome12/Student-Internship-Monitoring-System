@@ -1,5 +1,5 @@
-const {BadRequest, NotFound, Duplicate} = require("../errors");
-const {StatusCodes} = require("http-status-codes");
+const { BadRequest, NotFound, Duplicate } = require("../errors");
+const { StatusCodes } = require("http-status-codes");
 const Attendance = require("../models/Attendance");
 const Intern = require("../models/Intern");
 const mongoose = require("mongoose");
@@ -41,12 +41,12 @@ function countRenderedHours(timeIn, timeOut) {
 
 // student
 const getAllAttendance = async (req, res) => {
-  const {email} = req.params;
+  const { email } = req.params;
   const {
-    scheduleDetails: {scheduleType},
+    scheduleDetails: { scheduleType },
   } = req.query;
 
-  const userExists = await Intern.findOne({email});
+  const userExists = await Intern.findOne({ email });
 
   if (!userExists) {
     throw new NotFound("User not found");
@@ -64,8 +64,9 @@ const getAllAttendance = async (req, res) => {
   const day = now.getDay();
 
   const todayDate = `${month}-${date}-${year}`;
+  console.log(todayDate);
 
-  const attendance = await Attendance.find({email});
+  const attendance = await Attendance.find({ email });
   const todayExists = await Attendance.findOne({
     date: todayDate,
     email,
@@ -283,7 +284,7 @@ const getAllAttendanceToday = async (req, res) => {
     date < 10 ? "0" : ""
   }${date}-${year}`;
 
-  const allAttendanceToday = await Attendance.find({date: todayDate})
+  const allAttendanceToday = await Attendance.find({ date: todayDate })
     .populate({
       path: "user",
       model: "User",
@@ -328,8 +329,8 @@ const checkAbsents = async (req, res) => {
       });
       if (!attendance) {
         // Create attendance for absent interns
-        const user = await User.findOne({email});
-        const intern = await Intern.findOne({email});
+        const user = await User.findOne({ email });
+        const intern = await Intern.findOne({ email });
         const newAttendance = new Attendance({
           email: email,
           date: todayDate,
@@ -343,9 +344,45 @@ const checkAbsents = async (req, res) => {
         await newAttendance.save();
       }
     }
+<<<<<<< Updated upstream
+=======
+  } else {
+    const todayDate = `${month < 10 ? "0" : ""}${month}-${
+      date < 10 ? "0" : ""
+    }${date}-${year}`;
+
+    const allInterns = await Intern.find({
+      "scheduleDetails.scheduleType": "Irregular",
+      status: "Starting",
+    });
+    const internEmails = allInterns.map((item) => item.email);
+
+    for (let email of internEmails) {
+      const attendance = await Attendance.findOne({
+        email: email,
+        date: todayDate,
+      });
+      if (!attendance) {
+        // Create attendance for absent interns
+        const user = await User.findOne({ email });
+        const intern = await Intern.findOne({ email });
+        const newAttendance = new Attendance({
+          email: email,
+          date: todayDate,
+          isPresent: false,
+          timeIn: null,
+          timeOut: null,
+          user: user._id,
+          intern: intern._id,
+          proof: null,
+        });
+        await newAttendance.save();
+      }
+    }
+>>>>>>> Stashed changes
   }
 
-  const allAttendanceToday = await Attendance.find({date: todayDate})
+  const allAttendanceToday = await Attendance.find({ date: todayDate })
     .populate({
       path: "user",
       model: "User",
@@ -362,7 +399,7 @@ const checkAbsents = async (req, res) => {
 };
 
 const getAllAttendanceByDate = async (req, res) => {
-  const {date, renderedHours} = req.query;
+  const { date, renderedHours } = req.query;
 
   const filter = {};
 
@@ -376,7 +413,7 @@ const getAllAttendanceByDate = async (req, res) => {
     filter.totalRendered = renderedHours;
   }
 
-  const allAttendanceByDate = await Attendance.find({...filter})
+  const allAttendanceByDate = await Attendance.find({ ...filter })
     .populate({
       path: "user",
       model: "User",
@@ -394,7 +431,7 @@ const getAllAttendanceByDate = async (req, res) => {
 };
 
 const getAttendance = async (req, res) => {
-  const {id} = req.params;
+  const { id } = req.params;
 
   const attendance = await Attendance.findOne({
     _id: mongoose.Types.ObjectId(id),
@@ -403,18 +440,18 @@ const getAttendance = async (req, res) => {
   if (!attendance) {
     throw new NotFound("Attendance not found");
   }
-  res.status(StatusCodes.OK).json({success: true, data: attendance});
+  res.status(StatusCodes.OK).json({ success: true, data: attendance });
 };
 
 const timeIn = async (req, res) => {
-  const {email} = req.params;
+  const { email } = req.params;
 
   if (!email) {
     throw new NotFound("Email not found");
   }
 
-  const user = await User.findOne({email});
-  const intern = await Intern.findOne({email});
+  const user = await User.findOne({ email });
+  const intern = await Intern.findOne({ email });
 
   const attendance = await Attendance.create({
     user: user._id,
@@ -429,11 +466,11 @@ const timeIn = async (req, res) => {
     .populate("user")
     .populate("intern");
 
-  res.status(StatusCodes.OK).json({success: true, data: populatedAttendance});
+  res.status(StatusCodes.OK).json({ success: true, data: populatedAttendance });
 };
 
 const timeOut = async (req, res) => {
-  const {email, id} = req.params;
+  const { email, id } = req.params;
 
   const now = new Date();
   const year = now.getFullYear();
@@ -460,9 +497,9 @@ const timeOut = async (req, res) => {
     throw new NotFound("Email not found");
   }
 
-  const intern = await Intern.findOne({email});
+  const intern = await Intern.findOne({ email });
 
-  const attendance = await Attendance.findOne({email, date: todayDate})
+  const attendance = await Attendance.findOne({ email, date: todayDate })
     .populate({
       path: "user",
       model: "User",
@@ -489,15 +526,15 @@ const timeOut = async (req, res) => {
       email,
       date: todayDate,
     },
-    {...req.body, totalRendered: totalRendered.toString()},
+    { ...req.body, totalRendered: totalRendered.toString() },
     {
       new: true,
       runValidators: true,
     }
   );
   const updatedIntern = await Intern.findOneAndUpdate(
-    {email},
-    {"internshipDetails.renderedHours": currentTotalHours.toString()},
+    { email },
+    { "internshipDetails.renderedHours": currentTotalHours.toString() },
     {
       new: true,
       runValidators: true,
@@ -506,17 +543,17 @@ const timeOut = async (req, res) => {
 
   res
     .status(StatusCodes.OK)
-    .json({success: true, updatedIntern, todayAttendance});
+    .json({ success: true, updatedIntern, todayAttendance });
 };
 
 const checkStartingDate = async (req, res) => {
-  const {email} = req.params;
+  const { email } = req.params;
 
-  const intern = await Intern.findOneAndUpdate({email}, req.body, {
+  const intern = await Intern.findOneAndUpdate({ email }, req.body, {
     new: true,
     runValidators: true,
   });
-  res.status(StatusCodes.OK).json({success: true, data: intern});
+  res.status(StatusCodes.OK).json({ success: true, data: intern });
 };
 
 module.exports = {
