@@ -162,6 +162,7 @@
         gap: 1rem;
         .img-con {
           border: solid 1px #000;
+          border-radius: 1rem;
           height: 15rem;
           width: 15rem;
           img {
@@ -177,6 +178,35 @@
             background-color: #efefef;
             border-radius: 1rem;
             padding: 1rem;
+          }
+        }
+      }
+
+      .attendance-container {
+        .no-record {
+          display: flex;
+          height: 100%;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 1rem;
+          color: #fff;
+          img {
+            height: 30rem;
+            width: 30rem;
+          }
+        }
+        .attendance-view {
+          background-color: $primary-compliment-landing;
+          border-radius: 1rem;
+          padding: 1.5rem;
+          color: #fff;
+          display: flex;
+          justify-content: space-between;
+          gap: 1rem;
+          & > * {
+            display: flex;
+            gap: 1rem;
           }
         }
       }

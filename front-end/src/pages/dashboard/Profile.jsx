@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import {Route, Routes, Link, Navigate, useNavigate} from "react-router-dom";
 import InternsDetail from "./profile/InternsDetail";
 import InternshipDetail from "./profile/InternshipDetail";
-import Attendance from "./profile/Attendance";
+import AttendanceViewer from "./profile/AttendanceViewer";
 import Narrative from "./profile/Narrative";
 import Request from "./profile/Request ";
 import {useSelector} from "react-redux";
@@ -105,7 +105,7 @@ const Profile = () => {
           <Routes>
             <Route path="/internsdetail" element={<InternsDetail />} />
             <Route path="/internshipdetail" element={<InternshipDetail />} />
-            <Route path="/attendance" element={<Attendance />} />
+            <Route path="/attendance" element={<AttendanceViewer />} />
             <Route path="/narrative" element={<Narrative />} />
             <Route path="/request" element={<Request />} />
             <Route path="*" element={<Navigate to="/404" replace />} />
