@@ -144,7 +144,7 @@
     overflow-y: auto;
     background-color: #d9d9d9;
     border-radius: 1rem;
-    height: 70rem;
+    height: 80rem;
     width: 72rem;
     position: absolute;
     top: 50%;
@@ -341,6 +341,33 @@
 
 //responsive
 
+// height
+
+@media screen and (max-height: 1000px) {
+  .daily-time-record {
+    grid-template-rows: 12rem 7rem 73vh;
+  }
+}
+@media screen and (max-height: 850px) {
+  .daily-time-record {
+    grid-template-rows: 12rem 7rem 70vh;
+  }
+}
+@media screen and (max-height: 760px) {
+  .daily-time-record {
+    grid-template-rows: 12rem 7rem 67vh;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  .daily-time-record {
+    grid-template-rows: 12rem 7rem 63vh;
+    .modal {
+      height: 50rem;
+    }
+  }
+}
+
 // width
 @media screen and (max-width: 780px) {
   .daily-time-record {
@@ -373,6 +400,11 @@
     }
   }
 }
+@media screen and (max-width: 600px) {
+  .daily-time-record {
+    grid-template-rows: 12rem 7rem 65vh;
+  }
+}
 
 @media screen and (max-width: 500px) {
   .daily-time-record {
@@ -383,32 +415,14 @@
   }
 }
 
-// height
-
-@media screen and (max-height: 1000px) {
-  .daily-time-record {
-    grid-template-rows: 12rem 7rem 73vh;
-  }
-}
-@media screen and (max-height: 850px) {
-  .daily-time-record {
-    grid-template-rows: 12rem 7rem 70vh;
-  }
-}
-@media screen and (max-height: 760px) {
-  .daily-time-record {
-    grid-template-rows: 12rem 7rem 67vh;
-  }
-}
-
-@media screen and (max-height: 700px) {
-  .daily-time-record {
-    grid-template-rows: 12rem 7rem 63vh;
-    .modal {
-      height: 50rem;
-    }
-  }
-}
+// @media screen and (max-height: 600px) {
+//   .daily-time-record {
+//     grid-template-rows: 12rem 7rem 50vh;
+//     .modal {
+//       height: 50rem;
+//     }
+//   }
+// }
 
 // @media screen and (max-width: 1030px) {
 //   .daily-time-record {

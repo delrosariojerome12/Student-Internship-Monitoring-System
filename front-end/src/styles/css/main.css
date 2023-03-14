@@ -6556,7 +6556,7 @@ button {
   overflow-y: auto;
   background-color: #d9d9d9;
   border-radius: 1rem;
-  height: 70rem;
+  height: 80rem;
   width: 72rem;
   position: absolute;
   top: 50%;
@@ -6753,30 +6753,6 @@ button {
   width: 35rem;
 }
 
-@media screen and (max-width: 780px) {
-  .daily-time-record .modal {
-    height: 70rem;
-    width: 60rem;
-  }
-  .daily-time-record .attendance-view .upper .img-con {
-    flex-direction: column;
-  }
-}
-@media screen and (max-width: 700px) {
-  .daily-time-record .modal {
-    width: 50rem;
-  }
-  .daily-time-record .attendance-view .upper .attendance-info {
-    display: flex;
-    flex-direction: column;
-  }
-}
-@media screen and (max-width: 500px) {
-  .daily-time-record .modal {
-    width: 100%;
-    height: 100%;
-  }
-}
 @media screen and (max-height: 1000px) {
   .daily-time-record {
     grid-template-rows: 12rem 7rem 73vh;
@@ -6798,6 +6774,35 @@ button {
   }
   .daily-time-record .modal {
     height: 50rem;
+  }
+}
+@media screen and (max-width: 780px) {
+  .daily-time-record .modal {
+    height: 70rem;
+    width: 60rem;
+  }
+  .daily-time-record .attendance-view .upper .img-con {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 700px) {
+  .daily-time-record .modal {
+    width: 50rem;
+  }
+  .daily-time-record .attendance-view .upper .attendance-info {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 600px) {
+  .daily-time-record {
+    grid-template-rows: 12rem 7rem 65vh;
+  }
+}
+@media screen and (max-width: 500px) {
+  .daily-time-record .modal {
+    width: 100%;
+    height: 100%;
   }
 }
 /** @format */
