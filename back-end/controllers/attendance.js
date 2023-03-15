@@ -1,5 +1,5 @@
-const { BadRequest, NotFound, Duplicate } = require("../errors");
-const { StatusCodes } = require("http-status-codes");
+const {BadRequest, NotFound, Duplicate} = require("../errors");
+const {StatusCodes} = require("http-status-codes");
 const Attendance = require("../models/Attendance");
 const Intern = require("../models/Intern");
 const mongoose = require("mongoose");
@@ -36,17 +36,24 @@ function countRenderedHours(timeIn, timeOut) {
 
   let hours = difference / millisecondsInHour;
   hours = Math.round(hours * 4) / 4; // Round to nearest quarter hour
+
+  if (hours >= 8) {
+    console.log("Test");
+    hours--;
+  }
+  console.log(typeof hours);
+  console.log(hours);
   return hours;
 }
 
 // student
 const getAllAttendance = async (req, res) => {
-  const { email } = req.params;
+  const {email} = req.params;
   const {
-    scheduleDetails: { scheduleType },
+    scheduleDetails: {scheduleType},
   } = req.query;
 
-  const userExists = await Intern.findOne({ email });
+  const userExists = await Intern.findOne({email});
 
   if (!userExists) {
     throw new NotFound("User not found");
@@ -66,7 +73,7 @@ const getAllAttendance = async (req, res) => {
   const todayDate = `${month}-${date}-${year}`;
   console.log(todayDate);
 
-  const attendance = await Attendance.find({ email });
+  const attendance = await Attendance.find({email});
   const todayExists = await Attendance.findOne({
     date: todayDate,
     email,
@@ -78,7 +85,111 @@ const getAllAttendance = async (req, res) => {
   const minutes = now.getMinutes();
   const amOrPm = now.getHours() >= 12 ? "PM" : "AM";
 
+  console.log(`${hours}:${minutes} ${amOrPm}`);
+
   if (scheduleType === "Regular") {
+    if (day > 0 && day < 6) {
+      if (hours >= 7 && hours <= 10 && amOrPm === "AM") {
+        // check if greater than 10:30
+        if (minutes > 30 && hours === 10) {
+          doesExists = {
+            status: "too-late",
+          };
+        }
+        // time in morning
+        else if (!todayExists) {
+          doesExists = {
+            status: "no-time-in",
+            time: "morning",
+          };
+        } else if (todayExists) {
+          doesExists = {
+            status: "already-timed-in",
+          };
+        }
+      } else if (hours >= 12 && minutes <= 59 && amOrPm === "PM") {
+        // adjust
+        // lunch
+        if (!todayExists) {
+          doesExists = {
+            status: "no-time-in-lunch",
+          };
+        } else if (todayExists) {
+          doesExists = {
+            status: "already-timed-in-lunch",
+          };
+          if (todayExists.timeIn !== null && todayExists.timeOut !== null) {
+            console.log(todayExists.timeOut);
+            doesExists = {
+              status: "complete",
+            };
+          }
+        }
+      } else if (hours === 1 && minutes <= 30 && amOrPm === "PM") {
+        // time in afternoon
+        if (!todayExists) {
+          doesExists = {
+            status: "no-time-in",
+            time: "afternoon time in",
+          };
+        } else if (todayExists) {
+          doesExists = {
+            status: "already-timed-in",
+          };
+        }
+      } else if (hours >= 2 && amOrPm === "PM") {
+        // absent
+        // disable time in and time out
+        if (!todayExists) {
+          doesExists = {
+            status: "absent",
+          };
+        } else {
+          if (hours >= 4 && hours <= 5 && amOrPm === "PM") {
+            // time out
+            if (!todayExists) {
+              doesExists = {
+                status: "no-time-in-afternoon",
+              };
+            } else if (todayExists) {
+              doesExists = {
+                status: "time-out-standard",
+              };
+              if (todayExists.timeIn == null && todayExists.timeOut == null) {
+                doesExists = {
+                  status: "absent",
+                };
+              }
+              if (todayExists.timeIn !== null && todayExists.timeOut !== null) {
+                console.log(todayExists.timeOut);
+                doesExists = {
+                  status: "complete",
+                };
+              }
+            } else if (hours <= 6 && amOrPm === "PM") {
+              // ot
+              if (!todayExists) {
+                doesExists = {
+                  status: "no-time-in-afternoon",
+                };
+              } else if (todayExists) {
+                doesExists = {
+                  status: "time-out-overtime",
+                };
+              }
+            }
+          }
+        }
+      }
+    } else {
+      // disable time
+      doesExists = {
+        // not yet
+        status: "no-schedule",
+      };
+    }
+  } else {
+    // irregular
     if (day > 0 && day < 6) {
       if (hours >= 7 && hours <= 10 && amOrPm === "AM") {
         // check if greater than 10:30
@@ -167,101 +278,6 @@ const getAllAttendance = async (req, res) => {
           }
         }
       }
-    } else {
-      // disable time
-      doesExists = {
-        // not yet
-        status: "no-schedule",
-      };
-    }
-  } else {
-    // irregular
-    if (hours >= 7 && hours <= 10 && amOrPm === "AM") {
-      // check if greater than 10:30
-      if (minutes > 30 && hours === 10) {
-        doesExists = {
-          status: "too-late",
-        };
-      }
-      // time in morning
-      else if (!todayExists) {
-        doesExists = {
-          status: "no-time-in",
-          time: "morning",
-        };
-      } else if (todayExists) {
-        doesExists = {
-          status: "already-timed-in",
-        };
-      }
-    } else if (hours >= 12 && minutes <= 59 && amOrPm === "PM") {
-      // adjust
-      // lunch
-      if (!todayExists) {
-        doesExists = {
-          status: "no-time-in-lunch",
-        };
-      } else if (todayExists) {
-        doesExists = {
-          status: "already-timed-in-lunch",
-        };
-        if (todayExists.timeIn !== null && todayExists.timeOut !== null) {
-          console.log(todayExists.timeOut);
-          doesExists = {
-            status: "complete",
-          };
-        }
-      }
-    } else if (hours === 1 && minutes <= 30 && amOrPm === "PM") {
-      // time in afternoon
-      if (!todayExists) {
-        doesExists = {
-          status: "no-time-in",
-          time: "afternoon time in",
-        };
-      } else if (todayExists) {
-        doesExists = {
-          status: "already-timed-in",
-        };
-      }
-    } else if (hours >= 2 && amOrPm === "PM") {
-      // absent
-      // disable time in and time out
-      if (!todayExists) {
-        doesExists = {
-          status: "absent",
-        };
-      } else {
-        if (hours >= 4 && hours <= 5 && amOrPm === "PM") {
-          // time out
-          if (!todayExists) {
-            doesExists = {
-              status: "no-time-in-afternoon",
-            };
-          } else if (todayExists) {
-            doesExists = {
-              status: "time-out-standard",
-            };
-            if (todayExists.timeIn !== null && todayExists.timeOut !== null) {
-              console.log(todayExists.timeOut);
-              doesExists = {
-                status: "complete",
-              };
-            }
-          } else if (hours <= 6 && amOrPm === "PM") {
-            // ot
-            if (!todayExists) {
-              doesExists = {
-                status: "no-time-in-afternoon",
-              };
-            } else if (todayExists) {
-              doesExists = {
-                status: "time-out-overtime",
-              };
-            }
-          }
-        }
-      }
     }
   }
 
@@ -284,7 +300,7 @@ const getAllAttendanceToday = async (req, res) => {
     date < 10 ? "0" : ""
   }${date}-${year}`;
 
-  const allAttendanceToday = await Attendance.find({ date: todayDate })
+  const allAttendanceToday = await Attendance.find({date: todayDate})
     .populate({
       path: "user",
       model: "User",
@@ -329,8 +345,8 @@ const checkAbsents = async (req, res) => {
       });
       if (!attendance) {
         // Create attendance for absent interns
-        const user = await User.findOne({ email });
-        const intern = await Intern.findOne({ email });
+        const user = await User.findOne({email});
+        const intern = await Intern.findOne({email});
         const newAttendance = new Attendance({
           email: email,
           date: todayDate,
@@ -362,8 +378,8 @@ const checkAbsents = async (req, res) => {
       });
       if (!attendance) {
         // Create attendance for absent interns
-        const user = await User.findOne({ email });
-        const intern = await Intern.findOne({ email });
+        const user = await User.findOne({email});
+        const intern = await Intern.findOne({email});
         const newAttendance = new Attendance({
           email: email,
           date: todayDate,
@@ -379,7 +395,7 @@ const checkAbsents = async (req, res) => {
     }
   }
 
-  const allAttendanceToday = await Attendance.find({ date: todayDate })
+  const allAttendanceToday = await Attendance.find({date: todayDate})
     .populate({
       path: "user",
       model: "User",
@@ -396,7 +412,7 @@ const checkAbsents = async (req, res) => {
 };
 
 const getAllAttendanceByDate = async (req, res) => {
-  const { date, renderedHours } = req.query;
+  const {date, renderedHours} = req.query;
 
   const filter = {};
 
@@ -410,7 +426,7 @@ const getAllAttendanceByDate = async (req, res) => {
     filter.totalRendered = renderedHours;
   }
 
-  const allAttendanceByDate = await Attendance.find({ ...filter })
+  const allAttendanceByDate = await Attendance.find({...filter})
     .populate({
       path: "user",
       model: "User",
@@ -428,7 +444,7 @@ const getAllAttendanceByDate = async (req, res) => {
 };
 
 const getAttendance = async (req, res) => {
-  const { id } = req.params;
+  const {id} = req.params;
 
   const attendance = await Attendance.findOne({
     _id: mongoose.Types.ObjectId(id),
@@ -437,18 +453,18 @@ const getAttendance = async (req, res) => {
   if (!attendance) {
     throw new NotFound("Attendance not found");
   }
-  res.status(StatusCodes.OK).json({ success: true, data: attendance });
+  res.status(StatusCodes.OK).json({success: true, data: attendance});
 };
 
 const timeIn = async (req, res) => {
-  const { email } = req.params;
+  const {email} = req.params;
 
   if (!email) {
     throw new NotFound("Email not found");
   }
 
-  const user = await User.findOne({ email });
-  const intern = await Intern.findOne({ email });
+  const user = await User.findOne({email});
+  const intern = await Intern.findOne({email});
 
   const attendance = await Attendance.create({
     user: user._id,
@@ -463,11 +479,11 @@ const timeIn = async (req, res) => {
     .populate("user")
     .populate("intern");
 
-  res.status(StatusCodes.OK).json({ success: true, data: populatedAttendance });
+  res.status(StatusCodes.OK).json({success: true, data: populatedAttendance});
 };
 
 const timeOut = async (req, res) => {
-  const { email, id } = req.params;
+  const {email, id} = req.params;
 
   const now = new Date();
   const year = now.getFullYear();
@@ -494,9 +510,9 @@ const timeOut = async (req, res) => {
     throw new NotFound("Email not found");
   }
 
-  const intern = await Intern.findOne({ email });
+  const intern = await Intern.findOne({email});
 
-  const attendance = await Attendance.findOne({ email, date: todayDate })
+  const attendance = await Attendance.findOne({email, date: todayDate})
     .populate({
       path: "user",
       model: "User",
@@ -513,44 +529,44 @@ const timeOut = async (req, res) => {
   const currentTotalHours =
     parseFloat(intern.internshipDetails.renderedHours) + totalRendered;
 
-  // console.log(intern.internshipDetails.renderedHours);
-  // console.log(totalRendered);
-  // console.log(typeof currentTotalHours, currentTotalHours);
-
   const todayAttendance = await Attendance.findOneAndUpdate(
     {
       _id: attendance._id,
       email,
       date: todayDate,
     },
-    { ...req.body, totalRendered: totalRendered.toString() },
+    {...req.body, totalRendered: totalRendered.toString()},
     {
       new: true,
       runValidators: true,
     }
   );
   const updatedIntern = await Intern.findOneAndUpdate(
-    { email },
-    { "internshipDetails.renderedHours": currentTotalHours.toString() },
+    {email},
+    {"internshipDetails.renderedHours": currentTotalHours.toString()},
     {
       new: true,
       runValidators: true,
     }
-  );
+  ).populate({
+    path: "user",
+    model: "User",
+  });
+  const updatedAttendance = await Attendance.find({email});
 
   res
     .status(StatusCodes.OK)
-    .json({ success: true, updatedIntern, todayAttendance });
+    .json({success: true, updatedIntern, todayAttendance, updatedAttendance});
 };
 
 const checkStartingDate = async (req, res) => {
-  const { email } = req.params;
+  const {email} = req.params;
 
-  const intern = await Intern.findOneAndUpdate({ email }, req.body, {
+  const intern = await Intern.findOneAndUpdate({email}, req.body, {
     new: true,
     runValidators: true,
   });
-  res.status(StatusCodes.OK).json({ success: true, data: intern });
+  res.status(StatusCodes.OK).json({success: true, data: intern});
 };
 
 module.exports = {

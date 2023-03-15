@@ -1,7 +1,10 @@
+/** @format */
+
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {handleViewToday} from "../../features/interns/attendanceReducer";
-
+import absent from "../../assets/img/absent.svg";
+import {FaRegFrownOpen} from "react-icons/fa";
 const AttendanceModal = React.memo(() => {
   const {selectedAttendance} = useSelector((state) => state.attendance);
   const {user} = useSelector((state) => state.user);
@@ -30,7 +33,21 @@ const AttendanceModal = React.memo(() => {
         ></div>
 
         <div className="attendance-absent modal">
-          <h1>Absent</h1>
+          <div className="absent-top">
+            <img src={absent} alt="" />
+            {/* <span>
+              <FaRegFrownOpen />
+            </span> */}
+            <h1>Unable to attend</h1>
+          </div>
+          <div className="btn-close">
+            <button
+              className="close"
+              onClick={() => dispatch(handleViewToday())}
+            >
+              Close
+            </button>
+          </div>
         </div>
       </>
     );
@@ -58,7 +75,9 @@ const AttendanceModal = React.memo(() => {
             <p>
               <b> OT: </b> {OT}
             </p>
-            <p>Rendered Hours: {totalRendered}hrs</p>
+            <p>
+              <b>Rendered Hours: </b> {totalRendered}hrs
+            </p>
             <p>
               <b> Time In Location: </b>
               {locationTimeIn}
@@ -73,12 +92,13 @@ const AttendanceModal = React.memo(() => {
               Time In
               {proof.timeInLink && <img src={proof.timeInLink} alt={"proof"} />}
             </h3>
-            <h3>
-              Time Out
-              {proof.timeOutLink && (
+
+            {proof.timeOutLink && (
+              <h3>
+                Time Out
                 <img src={proof.timeOutLink} alt={"proof"} />
-              )}
-            </h3>
+              </h3>
+            )}
           </div>
         </div>
         <div className="lower">

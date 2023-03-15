@@ -89,9 +89,9 @@
     .tab {
       position: absolute;
       top: 1rem;
-      left: -30rem;
+      left: -32rem;
       height: auto;
-      width: 28rem;
+      width: 30rem;
       z-index: 2;
       background-color: $primary-bg-color-landing-compliment;
       border-radius: 2rem;
@@ -118,8 +118,6 @@
         gap: 1rem;
         padding: 1rem;
         cursor: pointer;
-        // display: grid;
-        // grid-template-columns: 7rem auto;
         &:hover {
           background-color: lighten(
             $color: $primary-bg-color-landing-compliment,
@@ -135,7 +133,7 @@
         }
         .text {
           p {
-            word-break: break-all;
+            word-break: keep-all;
           }
         }
       }
