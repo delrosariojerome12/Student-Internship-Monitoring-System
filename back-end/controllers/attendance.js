@@ -36,6 +36,13 @@ function countRenderedHours(timeIn, timeOut) {
 
   let hours = difference / millisecondsInHour;
   hours = Math.round(hours * 4) / 4; // Round to nearest quarter hour
+
+  if (hours >= 8) {
+    console.log("Test");
+    hours--;
+  }
+  console.log(typeof hours);
+  console.log(hours);
   return hours;
 }
 
@@ -76,6 +83,8 @@ const getAllAttendance = async (req, res) => {
   const hours = now.getHours() % 12 || 12;
   const minutes = now.getMinutes();
   const amOrPm = now.getHours() >= 12 ? "PM" : "AM";
+
+  console.log(`${hours}:${minutes} ${amOrPm}`);
 
   if (scheduleType === "Regular") {
     if (day > 0 && day < 6) {
@@ -145,6 +154,11 @@ const getAllAttendance = async (req, res) => {
               doesExists = {
                 status: "time-out-standard",
               };
+              if (todayExists.timeIn == null && todayExists.timeOut == null) {
+                doesExists = {
+                  status: "absent",
+                };
+              }
               if (todayExists.timeIn !== null && todayExists.timeOut !== null) {
                 console.log(todayExists.timeOut);
                 doesExists = {
@@ -479,10 +493,6 @@ const timeOut = async (req, res) => {
   const currentTotalHours =
     parseFloat(intern.internshipDetails.renderedHours) + totalRendered;
 
-  // console.log(intern.internshipDetails.renderedHours);
-  // console.log(totalRendered);
-  // console.log(typeof currentTotalHours, currentTotalHours);
-
   const todayAttendance = await Attendance.findOneAndUpdate(
     {
       _id: attendance._id,
@@ -502,11 +512,15 @@ const timeOut = async (req, res) => {
       new: true,
       runValidators: true,
     }
-  );
+  ).populate({
+    path: "user",
+    model: "User",
+  });
+  const updatedAttendance = await Attendance.find({email});
 
   res
     .status(StatusCodes.OK)
-    .json({success: true, updatedIntern, todayAttendance});
+    .json({success: true, updatedIntern, todayAttendance, updatedAttendance});
 };
 
 const checkStartingDate = async (req, res) => {

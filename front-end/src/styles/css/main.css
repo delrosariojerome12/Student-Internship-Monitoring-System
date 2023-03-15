@@ -6294,7 +6294,7 @@ button {
   display: grid;
   height: 100%;
   width: 100%;
-  grid-template-rows: 30rem auto;
+  grid-template-rows: 30vh 63vh;
   gap: 1rem;
   padding: 1rem;
 }
@@ -6425,6 +6425,7 @@ button {
   border-radius: 0 1rem 1rem 1rem;
   background-color: #282b30;
   display: grid;
+  overflow-y: auto;
 }
 .profile-page .content .display .intern-details-container {
   background-color: #fff;
@@ -6462,6 +6463,11 @@ button {
   border-radius: 1rem;
   padding: 1rem;
 }
+.profile-page .content .display .attendance-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 .profile-page .content .display .attendance-container .no-record {
   display: flex;
   height: 100%;
@@ -6487,6 +6493,20 @@ button {
 .profile-page .content .display .attendance-container .attendance-view > * {
   display: flex;
   gap: 1rem;
+}
+.profile-page .content .display .request-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.profile-page .content .display .request-container .document-record {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  background-color: #0d7377;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  color: #fff;
 }
 
 /** @format */

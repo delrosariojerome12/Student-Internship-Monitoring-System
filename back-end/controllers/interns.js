@@ -58,8 +58,11 @@ const updateIntern = async (req, res) => {
   if (!user) {
     throw new NotFound(`Email not found`);
   }
+  console.log(internshipDetails);
 
   if (internshipDetails) {
+    console.log("yes");
+
     delete internshipDetails.renderedHours;
 
     const doesExist = await Internship.findOne({
