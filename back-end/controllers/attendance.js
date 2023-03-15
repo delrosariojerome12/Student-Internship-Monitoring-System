@@ -189,88 +189,90 @@ const getAllAttendance = async (req, res) => {
     }
   } else {
     // irregular
-    if (hours >= 7 && hours <= 10 && amOrPm === "AM") {
-      // check if greater than 10:30
-      if (minutes > 30 && hours === 10) {
-        doesExists = {
-          status: "too-late",
-        };
-      }
-      // time in morning
-      else if (!todayExists) {
-        doesExists = {
-          status: "no-time-in",
-          time: "morning",
-        };
-      } else if (todayExists) {
-        doesExists = {
-          status: "already-timed-in",
-        };
-      }
-    } else if (hours >= 12 && minutes <= 59 && amOrPm === "PM") {
-      // adjust
-      // lunch
-      if (!todayExists) {
-        doesExists = {
-          status: "no-time-in-lunch",
-        };
-      } else if (todayExists) {
-        doesExists = {
-          status: "already-timed-in-lunch",
-        };
-        if (todayExists.timeIn !== null && todayExists.timeOut !== null) {
-          console.log(todayExists.timeOut);
+    if (day > 0 && day < 6) {
+      if (hours >= 7 && hours <= 10 && amOrPm === "AM") {
+        // check if greater than 10:30
+        if (minutes > 30 && hours === 10) {
           doesExists = {
-            status: "complete",
+            status: "too-late",
           };
         }
-      }
-    } else if (hours === 1 && minutes <= 30 && amOrPm === "PM") {
-      // time in afternoon
-      if (!todayExists) {
-        doesExists = {
-          status: "no-time-in",
-          time: "afternoon time in",
-        };
-      } else if (todayExists) {
-        doesExists = {
-          status: "already-timed-in",
-        };
-      }
-    } else if (hours >= 2 && amOrPm === "PM") {
-      // absent
-      // disable time in and time out
-      if (!todayExists) {
-        doesExists = {
-          status: "absent",
-        };
-      } else {
-        if (hours >= 4 && hours <= 5 && amOrPm === "PM") {
-          // time out
-          if (!todayExists) {
+        // time in morning
+        else if (!todayExists) {
+          doesExists = {
+            status: "no-time-in",
+            time: "morning",
+          };
+        } else if (todayExists) {
+          doesExists = {
+            status: "already-timed-in",
+          };
+        }
+      } else if (hours >= 12 && minutes <= 59 && amOrPm === "PM") {
+        // adjust
+        // lunch
+        if (!todayExists) {
+          doesExists = {
+            status: "no-time-in-lunch",
+          };
+        } else if (todayExists) {
+          doesExists = {
+            status: "already-timed-in-lunch",
+          };
+          if (todayExists.timeIn !== null && todayExists.timeOut !== null) {
+            console.log(todayExists.timeOut);
             doesExists = {
-              status: "no-time-in-afternoon",
+              status: "complete",
             };
-          } else if (todayExists) {
-            doesExists = {
-              status: "time-out-standard",
-            };
-            if (todayExists.timeIn !== null && todayExists.timeOut !== null) {
-              console.log(todayExists.timeOut);
-              doesExists = {
-                status: "complete",
-              };
-            }
-          } else if (hours <= 6 && amOrPm === "PM") {
-            // ot
+          }
+        }
+      } else if (hours === 1 && minutes <= 30 && amOrPm === "PM") {
+        // time in afternoon
+        if (!todayExists) {
+          doesExists = {
+            status: "no-time-in",
+            time: "afternoon time in",
+          };
+        } else if (todayExists) {
+          doesExists = {
+            status: "already-timed-in",
+          };
+        }
+      } else if (hours >= 2 && amOrPm === "PM") {
+        // absent
+        // disable time in and time out
+        if (!todayExists) {
+          doesExists = {
+            status: "absent",
+          };
+        } else {
+          if (hours >= 4 && hours <= 5 && amOrPm === "PM") {
+            // time out
             if (!todayExists) {
               doesExists = {
                 status: "no-time-in-afternoon",
               };
             } else if (todayExists) {
               doesExists = {
-                status: "time-out-overtime",
+                status: "time-out-standard",
               };
+              if (todayExists.timeIn !== null && todayExists.timeOut !== null) {
+                console.log(todayExists.timeOut);
+                doesExists = {
+                  status: "complete",
+                };
+              }
+            } else if (hours <= 6 && amOrPm === "PM") {
+              // ot
+              if (!todayExists) {
+                doesExists = {
+                  status: "no-time-in-afternoon",
+                };
+              } else if (todayExists) {
+                doesExists = {
+                  status: "time-out-overtime",
+                };
+              }
             }
           }
         }
