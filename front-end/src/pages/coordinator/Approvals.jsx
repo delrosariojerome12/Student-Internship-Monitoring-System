@@ -48,6 +48,8 @@ const Approvals = React.memo(() => {
     return <ServerError />;
   }
 
+  console.log(approvalInterns);
+
   return (
     <section className="approvals">
       <header>
