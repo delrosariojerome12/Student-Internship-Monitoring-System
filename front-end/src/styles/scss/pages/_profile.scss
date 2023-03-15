@@ -5,7 +5,7 @@
   display: grid;
   height: 100%;
   width: 100%;
-  grid-template-rows: 30rem auto;
+  grid-template-rows: 30vh 63vh;
   gap: 1rem;
   padding: 1rem;
 
@@ -146,6 +146,8 @@
       border-radius: 0 1rem 1rem 1rem;
       background-color: #282b30;
       display: grid;
+      overflow-y: auto;
+
       .intern-details-container {
         background-color: #fff;
         border-radius: 1rem;
@@ -181,8 +183,10 @@
           }
         }
       }
-
       .attendance-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
         .no-record {
           display: flex;
           height: 100%;
@@ -208,6 +212,21 @@
             display: flex;
             gap: 1rem;
           }
+        }
+      }
+      .request-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        .document-record {
+          display: flex;
+          justify-content: space-between;
+
+          gap: 1rem;
+          background-color: $primary-compliment-landing;
+          padding: 1.5rem;
+          border-radius: 1rem;
+          color: #fff;
         }
       }
     }
