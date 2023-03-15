@@ -3,7 +3,8 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { handleViewToday } from "../../features/interns/attendanceReducer";
-
+import absent from "../../assets/img/absent.svg";
+import { FaRegFrownOpen } from "react-icons/fa";
 const AttendanceModal = React.memo(() => {
   const { selectedAttendance } = useSelector((state) => state.attendance);
   const { user } = useSelector((state) => state.user);
@@ -31,7 +32,20 @@ const AttendanceModal = React.memo(() => {
           onClick={() => dispatch(handleViewToday())}></div>
 
         <div className="attendance-absent modal">
-          <h1>Absent</h1>
+          <div className="absent-top">
+            <img src={absent} alt="" />
+            {/* <span>
+              <FaRegFrownOpen />
+            </span> */}
+            <h1>Unable to attend</h1>
+          </div>
+          <div className="btn-close">
+            <button
+              className="close"
+              onClick={() => dispatch(handleViewToday())}>
+              Close
+            </button>
+          </div>
         </div>
       </>
     );

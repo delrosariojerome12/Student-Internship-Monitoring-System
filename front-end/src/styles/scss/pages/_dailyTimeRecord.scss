@@ -8,7 +8,7 @@
   width: 100%;
   display: grid;
   // grid-template-rows: 12rem 7rem minmax(30vh, 65vh);
-  grid-template-rows: minmax(12rem, auto) minmax(7rem, auto) minmax(30vh, 65vh);
+  grid-template-rows: minmax(16rem, auto) auto minmax(40rem, 63vh);
   padding: 1rem;
   gap: 1rem;
 
@@ -172,13 +172,31 @@
       display: none;
     }
   }
-
+  .attendance-absent {
+    @include flexCenter;
+    .absent-top {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      // span {
+      //   font-size: 10rem;
+      // }
+      h1 {
+        color: $red-primary-color;
+        margin-top: -4rem;
+        padding: 0 0 0 1rem;
+      }
+    }
+    .btn-close {
+      display: none;
+    }
+  }
   .user {
     display: grid;
-    gap: 1rem;
-    grid-template-columns: 10rem auto;
+    gap: 1.5rem;
+    grid-template-columns: 12rem auto;
     grid-template-rows: auto;
-    padding: 1rem;
+    padding: 1rem 1rem 1rem 2rem;
     border-radius: 2rem;
     align-items: center;
     background-color: #282b30;
@@ -187,12 +205,12 @@
       display: grid;
       grid-template-columns: repeat(2, auto);
       height: 100%;
-      gap: 1rem;
+      // gap: 1rem;
       align-items: center;
       background-color: #40454d;
       border-radius: 2rem;
       // padding: 2rem;
-      padding: 1rem 2rem;
+      padding: 1rem 1rem 1rem 2rem;
       overflow-y: auto;
       font-size: 1.5rem;
 
@@ -203,6 +221,7 @@
       p,
       h4 {
         color: $primary-font-color;
+        font-size: 1.8rem;
       }
 
       .attendance {
@@ -230,8 +249,8 @@
       width: 100%;
       grid-column: 1/2;
       img {
-        height: 10rem;
-        width: 10rem;
+        height: 12rem;
+        width: 12rem;
         background-color: #fff;
         border: solid 1px #fff;
         border-radius: 1rem;
@@ -444,34 +463,7 @@
 
 @media screen and (max-width: 1030px) {
   .daily-time-record {
-    grid-template-rows: minmax(15rem, auto) auto minmax(30rem, 60vh);
-
-    // .user {
-    //   .text {
-    //     padding: 1.5rem;
-    //     grid-template-rows: repeat(3, auto);
-    //     & > *:nth-child(1) {
-    //       grid-column: 1/3;
-    //       grid-row: 1/2;
-    //     }
-    //     & > *:nth-child(4) {
-    //       grid-column: 1/3;
-    //       grid-row: 2/3;
-    //     }
-    //     & > *:nth-child(2) {
-    //       grid-column: 1/2;
-    //       grid-row: 3/4;
-    //     }
-    //     & > *:nth-child(3) {
-    //       grid-column: 2/3;
-    //       grid-row: 3/4;
-    //     }
-    //   }
-    // }
-    .DTR-content {
-      justify-content: center;
-    }
-
+    grid-template-rows: minmax(16rem, auto) auto minmax(30rem, 61vh);
     .no-internship {
       img {
         height: 30rem;
@@ -483,8 +475,8 @@
 
 @media screen and (max-width: 750px) {
   .daily-time-record {
+    grid-template-rows: minmax(16rem, auto) auto minmax(30rem, 58vh);
     .modal {
-      // height: 68rem;
       width: 58rem;
     }
     .time-in,
@@ -528,10 +520,15 @@
     .user {
       grid-template-columns: 10rem auto;
       .text {
-        grid-template-columns: auto;
-        gap: 0.5rem;
+        // grid-template-columns: auto;
         padding: 1rem;
-        font-size: 1.7rem;
+        p,
+        h4 {
+          font-size: 1.7rem;
+        }
+        & > *:nth-child(5) {
+          grid-column: 1/3;
+        }
       }
       .profile-img {
         img {
@@ -549,6 +546,7 @@
     }
     .DTR-content {
       grid-template-columns: 1fr;
+      grid-auto-rows: minmax(4rem, 6vh);
     }
     .no-internship {
       img {
@@ -558,10 +556,18 @@
     }
   }
 }
-
+@media screen and (max-width: 700px) {
+  .daily-time-record {
+    .user {
+      .text {
+        grid-template-columns: auto;
+      }
+    }
+  }
+}
 @media screen and (max-width: 600px) {
   .daily-time-record {
-    grid-template-rows: minmax(15rem, auto) auto minmax(30rem, 50vh);
+    grid-template-rows: minmax(14rem, auto) auto minmax(30rem, 45vh);
     .modal {
       // height: 63rem;
       width: 99%;
@@ -576,7 +582,6 @@
         }
       }
     }
-
     .attendance-view {
       .upper {
         .img-con {
@@ -587,12 +592,21 @@
         }
       }
     }
+    .user {
+      .text {
+        gap: 0.5rem;
+        p,
+        h4 {
+          font-size: 1.7rem;
+        }
+      }
+    }
   }
 }
 
 @media screen and (max-width: 500px) {
   .daily-time-record {
-    grid-template-rows: minmax(15rem, auto) auto minmax(20rem, 36vh);
+    // grid-template-rows: minmax(15rem, auto) auto minmax(20rem, 36vh);
     gap: 0.5rem;
     .modal {
       height: 100%;
@@ -689,6 +703,22 @@
       }
       .bottom {
         display: flex;
+      }
+    }
+    .attendance-absent {
+      flex-direction: column;
+      gap: 2rem;
+      .btn-close {
+        display: flex;
+        button {
+          color: #000;
+          border: solid 1px #000;
+          background-color: #fff;
+          &:hover {
+            background-color: #d9d9d9;
+            border: solid 1px #d9d9d9;
+          }
+        }
       }
     }
   }
