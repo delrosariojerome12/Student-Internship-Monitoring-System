@@ -1,5 +1,7 @@
-import React, {useEffect, useState} from "react";
-import {useSelector, useDispatch} from "react-redux";
+/** @format */
+
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   getAllAttendanceToday,
   getAllAttendanceByDate,
@@ -95,19 +97,21 @@ const MonitorAttendance = () => {
 
   return (
     <div className="monitor-attendance">
-      <div className="top">
-        <h2>Attendance</h2>
-      </div>
-      <div className="mid">
-        <div className="btn-container">
-          <button onClick={() => dispatch(handleFilter())}>Filter</button>
-          <button onClick={() => dispatch(handleSort())}>Sort</button>
+      <header>
+        <div className="top">
+          <h2>Attendance</h2>
         </div>
-        <div className="date-container">
-          <h3>{formatDate(today)}</h3>
-          <h3>{time} </h3>
+        <div className="mid">
+          <div className="btn-container">
+            <button onClick={() => dispatch(handleFilter())}>Filter</button>
+            <button onClick={() => dispatch(handleSort())}>Sort</button>
+          </div>
+          <div className="date-container">
+            <h3>{formatDate(today)}</h3>
+            <h3>{time} </h3>
+          </div>
         </div>
-      </div>
+      </header>
       <div className="display">
         {isFiltering && <h1>Results for: {filteredValues.join(", ")} </h1>}
         <div className="content">{renderAttendance()}</div>
@@ -117,8 +121,7 @@ const MonitorAttendance = () => {
         <>
           <div
             className="overlay"
-            onClick={() => dispatch(handleFilter())}
-          ></div>
+            onClick={() => dispatch(handleFilter())}></div>
           <div onClick={(e) => e.stopPropagation()} className="filter modal">
             <p>Filter</p>
 
@@ -144,8 +147,7 @@ const MonitorAttendance = () => {
                       date: filterDate,
                     })
                   )
-                }
-              >
+                }>
                 Filter
               </button>
 

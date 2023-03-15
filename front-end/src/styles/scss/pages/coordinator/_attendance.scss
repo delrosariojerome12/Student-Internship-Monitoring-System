@@ -1,19 +1,16 @@
+/** @format */
+
 @import "../../utils";
 @import "../../variables";
 
 .monitor-attendance {
   display: grid;
-  padding: 2rem;
   gap: 1rem;
   border-radius: 1rem;
-  // grid-template-rows: 7rem 10rem auto;
-  grid-template-rows: 10vh 10vh 72vh;
+  // grid-template-rows: 10vh 10vh 72vh;
+  grid-template-rows: auto minmax(45rem, 78vh);
   color: #fff;
-  & > * {
-    background-color: #212121;
-    border-radius: 1rem;
-    padding: 1rem;
-  }
+
   button {
     background-color: #fff;
     border: none;
@@ -38,21 +35,34 @@
       color: #fff;
     }
   }
-  .mid {
+  header {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
     gap: 1rem;
     & > * {
-      border: solid 1px #fff;
-    }
-    .btn-container {
       display: flex;
-      align-items: center;
-      gap: 1rem;
+      background-color: #282b30;
+      border-radius: 1rem;
+      padding: 1rem 2rem;
     }
-    .date-container {
-      display: flex;
+    .top {
       align-items: center;
+    }
+    .mid {
+      justify-content: space-between;
+      // & > * {
+      //   border: solid 1px #fff;
+      // }
+      .btn-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .date-container {
+        display: flex;
+        align-items: center;
+      }
     }
   }
 
@@ -60,6 +70,9 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    background-color: #282b30;
+    padding: 1rem;
+    border-radius: 1rem;
     .content {
       display: grid;
       grid-auto-rows: 14rem;
@@ -68,7 +81,7 @@
       overflow-y: auto;
 
       .day-attendance {
-        background-color: #fff;
+        background-color: #d9d9d9;
         border-radius: 1rem;
         display: grid;
         grid-template-columns: 10rem auto;
@@ -76,9 +89,9 @@
         padding: 1rem;
         color: #000;
 
-        & > * {
-          background-color: #fff;
-        }
+        // & > * {
+        //   background-color: #fff;
+        // }
 
         .left {
           display: flex;
@@ -96,6 +109,7 @@
           grid-template-columns: repeat(2, 1fr);
           gap: 1rem;
           border-radius: 1rem;
+          background-color: #fff;
 
           & > * {
             padding: 0.5rem;

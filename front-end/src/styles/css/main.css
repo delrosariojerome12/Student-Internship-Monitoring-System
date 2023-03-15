@@ -936,7 +936,7 @@ button {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
@@ -2967,16 +2967,13 @@ button {
   border-radius: 0;
   background-color: #00adb5;
 }
-@media screen and (max-width: 1500px) {
-  .dashboard .internship-container .content, .dashboard-active .internship-container .content {
-    justify-content: center;
-  }
-}
-@media screen and (max-width: 1030px) {
+@media screen and (max-width: 1150px) {
   .dashboard .internship-container .content, .dashboard-active .internship-container .content {
     grid-template-columns: 1fr;
     grid-auto-rows: 14rem;
   }
+}
+@media screen and (max-width: 1030px) {
   .dashboard .internship-container .content .internship, .dashboard-active .internship-container .content .internship {
     grid-template-columns: 13rem 1fr;
   }
@@ -3775,16 +3772,10 @@ button {
 }
 .dashboard .monitor-attendance, .dashboard-active .monitor-attendance {
   display: grid;
-  padding: 2rem;
   gap: 1rem;
   border-radius: 1rem;
-  grid-template-rows: 10vh 10vh 72vh;
+  grid-template-rows: auto minmax(45rem, 78vh);
   color: #fff;
-}
-.dashboard .monitor-attendance > *, .dashboard-active .monitor-attendance > * {
-  background-color: #212121;
-  border-radius: 1rem;
-  padding: 1rem;
 }
 .dashboard .monitor-attendance button, .dashboard-active .monitor-attendance button {
   background-color: #fff;
@@ -3811,20 +3802,30 @@ button {
   border-radius: 1rem;
   color: #fff;
 }
-.dashboard .monitor-attendance .mid, .dashboard-active .monitor-attendance .mid {
+.dashboard .monitor-attendance header, .dashboard-active .monitor-attendance header {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
   gap: 1rem;
 }
-.dashboard .monitor-attendance .mid > *, .dashboard-active .monitor-attendance .mid > * {
-  border: solid 1px #fff;
+.dashboard .monitor-attendance header > *, .dashboard-active .monitor-attendance header > * {
+  display: flex;
+  background-color: #282b30;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
 }
-.dashboard .monitor-attendance .mid .btn-container, .dashboard-active .monitor-attendance .mid .btn-container {
+.dashboard .monitor-attendance header .top, .dashboard-active .monitor-attendance header .top {
+  align-items: center;
+}
+.dashboard .monitor-attendance header .mid, .dashboard-active .monitor-attendance header .mid {
+  justify-content: space-between;
+}
+.dashboard .monitor-attendance header .mid .btn-container, .dashboard-active .monitor-attendance header .mid .btn-container {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
-.dashboard .monitor-attendance .mid .date-container, .dashboard-active .monitor-attendance .mid .date-container {
+.dashboard .monitor-attendance header .mid .date-container, .dashboard-active .monitor-attendance header .mid .date-container {
   display: flex;
   align-items: center;
 }
@@ -3832,6 +3833,9 @@ button {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  background-color: #282b30;
+  padding: 1rem;
+  border-radius: 1rem;
 }
 .dashboard .monitor-attendance .display .content, .dashboard-active .monitor-attendance .display .content {
   display: grid;
@@ -3841,16 +3845,13 @@ button {
   overflow-y: auto;
 }
 .dashboard .monitor-attendance .display .content .day-attendance, .dashboard-active .monitor-attendance .display .content .day-attendance {
-  background-color: #fff;
+  background-color: #d9d9d9;
   border-radius: 1rem;
   display: grid;
   grid-template-columns: 10rem auto;
   gap: 1rem;
   padding: 1rem;
   color: #000;
-}
-.dashboard .monitor-attendance .display .content .day-attendance > *, .dashboard-active .monitor-attendance .display .content .day-attendance > * {
-  background-color: #fff;
 }
 .dashboard .monitor-attendance .display .content .day-attendance .left, .dashboard-active .monitor-attendance .display .content .day-attendance .left {
   display: flex;
@@ -3869,6 +3870,7 @@ button {
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   border-radius: 1rem;
+  background-color: #fff;
 }
 .dashboard .monitor-attendance .display .content .day-attendance .right > *, .dashboard-active .monitor-attendance .display .content .day-attendance .right > * {
   padding: 0.5rem;
@@ -6514,7 +6516,7 @@ button {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: minmax(16rem, auto) auto minmax(40rem, 63vh);
+  grid-template-rows: auto minmax(40rem, 63vh);
   padding: 1rem;
   gap: 1rem;
 }
@@ -6705,7 +6707,13 @@ button {
 .daily-time-record .attendance-absent .btn-close {
   display: none;
 }
-.daily-time-record .user {
+.daily-time-record header {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+  gap: 1rem;
+}
+.daily-time-record header .user {
   display: grid;
   gap: 1.5rem;
   grid-template-columns: 12rem auto;
@@ -6715,10 +6723,11 @@ button {
   align-items: center;
   background-color: #282b30;
 }
-.daily-time-record .user .text {
+.daily-time-record header .user .text {
   display: grid;
   grid-template-columns: repeat(2, auto);
   height: 100%;
+  gap: 1rem;
   align-items: center;
   background-color: #40454d;
   border-radius: 2rem;
@@ -6726,16 +6735,16 @@ button {
   overflow-y: auto;
   font-size: 1.5rem;
 }
-.daily-time-record .user .text > *:nth-child(4) {
+.daily-time-record header .user .text > *:nth-child(4) {
   grid-column: 1/2;
   grid-row: 2/3;
 }
-.daily-time-record .user .text p,
-.daily-time-record .user .text h4 {
+.daily-time-record header .user .text p,
+.daily-time-record header .user .text h4 {
   color: #f1faee;
   font-size: 1.8rem;
 }
-.daily-time-record .user .text .attendance {
+.daily-time-record header .user .text .attendance {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6748,12 +6757,12 @@ button {
   font-size: 1.6rem;
   font-weight: 6000;
 }
-.daily-time-record .user .text .attendance:hover {
+.daily-time-record header .user .text .attendance:hover {
   background-color: #00adb5;
   border-radius: 1rem;
   color: #fff;
 }
-.daily-time-record .user .profile-img {
+.daily-time-record header .user .profile-img {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6761,27 +6770,27 @@ button {
   width: 100%;
   grid-column: 1/2;
 }
-.daily-time-record .user .profile-img img {
+.daily-time-record header .user .profile-img img {
   height: 12rem;
   width: 12rem;
   background-color: #fff;
   border: solid 1px #fff;
   border-radius: 1rem;
 }
-.daily-time-record .mid {
+.daily-time-record header .mid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   background-color: #282b30;
   padding: 1rem;
   border-radius: 1rem;
 }
-.daily-time-record .mid .button-container {
+.daily-time-record header .mid .button-container {
   display: flex;
   align-items: center;
   gap: 1rem;
   padding-left: 3rem;
 }
-.daily-time-record .mid .button-container button {
+.daily-time-record header .mid .button-container button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6795,19 +6804,19 @@ button {
   font-weight: 600;
   cursor: pointer;
 }
-.daily-time-record .mid .button-container button:hover {
+.daily-time-record header .mid .button-container button:hover {
   border-radius: 0;
   background-color: #f1faee;
   color: #0d7377;
   border: solid 1px #0d7377;
 }
-.daily-time-record .mid .button-container button.time-out:hover {
+.daily-time-record header .mid .button-container button.time-out:hover {
   background-color: #e63946;
   color: #fff;
   border-radius: 0;
   border: solid 1px #e63946;
 }
-.daily-time-record .mid .search-box {
+.daily-time-record header .mid .search-box {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6818,14 +6827,14 @@ button {
   padding: 0 1.5rem;
   margin: auto;
 }
-.daily-time-record .mid .search-box span {
+.daily-time-record header .mid .search-box span {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
   cursor: pointer;
 }
-.daily-time-record .mid .search-box input {
+.daily-time-record header .mid .search-box input {
   width: 100%;
   background: transparent;
   padding: 1rem;
@@ -6880,7 +6889,7 @@ button {
 
 @media screen and (max-width: 1030px) {
   .daily-time-record {
-    grid-template-rows: minmax(16rem, auto) auto minmax(30rem, 61vh);
+    grid-template-rows: auto minmax(30rem, 61vh);
   }
   .daily-time-record .no-internship img {
     height: 30rem;
@@ -6888,9 +6897,6 @@ button {
   }
 }
 @media screen and (max-width: 750px) {
-  .daily-time-record {
-    grid-template-rows: minmax(16rem, auto) auto minmax(30rem, 58vh);
-  }
   .daily-time-record .modal {
     width: 58rem;
   }
@@ -6925,24 +6931,24 @@ button {
     height: 30rem;
     width: 30rem;
   }
-  .daily-time-record .user {
+  .daily-time-record header .user {
     grid-template-columns: 10rem auto;
   }
-  .daily-time-record .user .text {
+  .daily-time-record header .user .text {
     padding: 1rem;
   }
-  .daily-time-record .user .text p,
-  .daily-time-record .user .text h4 {
+  .daily-time-record header .user .text p,
+  .daily-time-record header .user .text h4 {
     font-size: 1.7rem;
   }
-  .daily-time-record .user .text > *:nth-child(5) {
+  .daily-time-record header .user .text :last-child(5) {
     grid-column: 1/3;
   }
-  .daily-time-record .user .profile-img img {
+  .daily-time-record header .user .profile-img img {
     height: 10rem;
     width: 10rem;
   }
-  .daily-time-record .mid .button-container button {
+  .daily-time-record header .mid .button-container button {
     height: 3.5rem;
   }
   .daily-time-record .DTR-content {
@@ -6955,13 +6961,16 @@ button {
   }
 }
 @media screen and (max-width: 700px) {
-  .daily-time-record .user .text {
+  .daily-time-record {
+    grid-template-rows: auto minmax(30rem, 50vh);
+  }
+  .daily-time-record header .user .text {
     grid-template-columns: auto;
   }
 }
 @media screen and (max-width: 600px) {
   .daily-time-record {
-    grid-template-rows: minmax(14rem, auto) auto minmax(30rem, 45vh);
+    grid-template-rows: auto minmax(20rem, 45vh);
   }
   .daily-time-record .modal {
     width: 99%;
@@ -6977,17 +6986,17 @@ button {
     height: 28rem;
     width: 28rem;
   }
-  .daily-time-record .user .text {
-    gap: 0.5rem;
+  .daily-time-record header .user .text {
+    gap: 0;
   }
-  .daily-time-record .user .text p,
-  .daily-time-record .user .text h4 {
-    font-size: 1.7rem;
+  .daily-time-record header .user .text p,
+  .daily-time-record header .user .text h4 {
+    font-size: 1.6rem;
   }
 }
 @media screen and (max-width: 500px) {
   .daily-time-record {
-    gap: 0.5rem;
+    grid-template-rows: auto minmax(20rem, 40vh);
   }
   .daily-time-record .modal {
     height: 100%;
@@ -7021,30 +7030,26 @@ button {
     height: 23rem;
     width: 23rem;
   }
-  .daily-time-record .user .profile-img img {
+  .daily-time-record header .user .profile-img img {
     height: 9rem;
     width: 9rem;
   }
-  .daily-time-record .user .text {
-    gap: 0.5rem;
-  }
-  .daily-time-record .user .text h4 {
+  .daily-time-record header .user .text h4 {
     font-size: 1.8rem;
   }
-  .daily-time-record .user .text p {
+  .daily-time-record header .user .text p {
     font-size: 1.6rem;
   }
-  .daily-time-record .mid {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  .daily-time-record header .mid {
+    grid-template-columns: 1fr;
     gap: 0.5rem;
+    padding: 0.5rem;
   }
-  .daily-time-record .mid .button-container {
+  .daily-time-record header .mid .button-container {
     justify-content: center;
     padding: 0;
   }
-  .daily-time-record .mid .button-container button {
+  .daily-time-record header .mid .button-container button {
     height: 3rem;
   }
   .daily-time-record .no-camera {
@@ -7076,17 +7081,19 @@ button {
     border: solid 1px #000;
     background-color: #fff;
   }
-  .daily-time-record .attendance-absent .btn-close button:hover {
-    background-color: #d9d9d9;
-    border: solid 1px #d9d9d9;
-  }
 }
 @media screen and (max-width: 400px) {
-  .daily-time-record .user {
+  .daily-time-record {
+    grid-template-rows: auto minmax(20rem, 39vh);
+  }
+  .daily-time-record header {
+    grid-template-rows: 1fr 0.5fr;
+  }
+  .daily-time-record header .user {
     padding: 1rem;
     grid-template-columns: auto;
   }
-  .daily-time-record .user .profile-img {
+  .daily-time-record header .user .profile-img {
     display: none;
   }
   .daily-time-record .no-internship img {

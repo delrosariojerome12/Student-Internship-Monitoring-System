@@ -517,10 +517,11 @@
 
 // Responsive
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1150px) {
   .internship-container {
     .content {
-      justify-content: center;
+      grid-template-columns: 1fr;
+      grid-auto-rows: 14rem;
     }
   }
 }
@@ -528,9 +529,6 @@
 @media screen and (max-width: 1030px) {
   .internship-container {
     .content {
-      grid-template-columns: 1fr;
-      grid-auto-rows: 14rem;
-
       .internship {
         grid-template-columns: 13rem 1fr;
         .img-con {
