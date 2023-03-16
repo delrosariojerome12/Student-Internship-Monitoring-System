@@ -3904,9 +3904,6 @@ button {
   border: solid 1px #000;
   border-radius: 1rem;
 }
-.dashboard .monitor-attendance .modal > *, .dashboard-active .monitor-attendance .modal > * {
-  border: solid 1px #000;
-}
 .dashboard .monitor-attendance .modal .btn-controllers, .dashboard-active .monitor-attendance .modal .btn-controllers {
   display: flex;
   gap: 1rem;
@@ -3917,6 +3914,7 @@ button {
   background-color: #0d7377;
   border: solid 2px transparent;
   color: #fff;
+  height: 4rem;
 }
 .dashboard .monitor-attendance .modal .btn-controllers button:hover, .dashboard-active .monitor-attendance .modal .btn-controllers button:hover {
   color: #0d7377;
@@ -3930,6 +3928,105 @@ button {
   color: #e63946;
   background-color: #fff;
   border: solid 2px #e63946;
+}
+.dashboard .monitor-attendance .sort, .dashboard-active .monitor-attendance .sort {
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+.dashboard .monitor-attendance .sort .sort-div, .dashboard-active .monitor-attendance .sort .sort-div {
+  padding: 1rem;
+  border: solid 1px #000;
+}
+.dashboard .monitor-attendance .sort .close-btn, .dashboard-active .monitor-attendance .sort .close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dashboard .monitor-attendance .sort .close-btn button, .dashboard-active .monitor-attendance .sort .close-btn button {
+  background-color: #0d7377;
+  color: #fff;
+  height: 4rem;
+  border: none;
+}
+.dashboard .monitor-attendance .sort .close-btn button:hover, .dashboard-active .monitor-attendance .sort .close-btn button:hover {
+  color: #0d7377;
+  background-color: #fff;
+  border: solid 1px #0d7377;
+}
+.dashboard .monitor-attendance .filter .inputs-container, .dashboard-active .monitor-attendance .filter .inputs-container {
+  padding: 1rem;
+  border: solid 1px #000;
+}
+@media screen and (max-width: 1030px) {
+  .dashboard .monitor-attendance, .dashboard-active .monitor-attendance {
+    grid-template-rows: auto minmax(40rem, 74vh);
+  }
+}
+@media screen and (max-width: 750px) {
+  .dashboard .monitor-attendance, .dashboard-active .monitor-attendance {
+    grid-template-rows: auto minmax(40rem, 72vh);
+  }
+  .dashboard .monitor-attendance .display .content, .dashboard-active .monitor-attendance .display .content {
+    grid-auto-rows: auto;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance .right, .dashboard-active .monitor-attendance .display .content .day-attendance .right {
+    grid-template-columns: auto;
+    grid-template-rows: repeat(2, auto);
+    gap: 0;
+    padding: 0.5rem;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance .right > *, .dashboard-active .monitor-attendance .display .content .day-attendance .right > * {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  .dashboard .monitor-attendance, .dashboard-active .monitor-attendance {
+    grid-template-rows: auto minmax(35rem, 62vh);
+  }
+  .dashboard .monitor-attendance .modal, .dashboard-active .monitor-attendance .modal {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .dashboard .monitor-attendance, .dashboard-active .monitor-attendance {
+    grid-template-rows: auto minmax(35rem, 60vh);
+  }
+  .dashboard .monitor-attendance button, .dashboard-active .monitor-attendance button {
+    height: 3.5rem;
+  }
+  .dashboard .monitor-attendance header .top, .dashboard-active .monitor-attendance header .top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  .dashboard .monitor-attendance header .mid, .dashboard-active .monitor-attendance header .mid {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+  .dashboard .monitor-attendance header .mid:nth-child(1), .dashboard-active .monitor-attendance header .mid:nth-child(1) {
+    grid-row: 1/2;
+  }
+  .dashboard .monitor-attendance header .mid > *, .dashboard-active .monitor-attendance header .mid > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance, .dashboard-active .monitor-attendance .display .content .day-attendance {
+    grid-template-columns: 1fr;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance .left, .dashboard-active .monitor-attendance .display .content .day-attendance .left {
+    display: none;
+  }
+}
+@media screen and (max-width: 400px) {
+  .dashboard .monitor-attendance, .dashboard-active .monitor-attendance {
+    grid-template-rows: auto minmax(35rem, 59vh);
+  }
 }
 .dashboard .admin-document-page, .dashboard-active .admin-document-page {
   display: grid;

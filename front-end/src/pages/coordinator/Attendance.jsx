@@ -160,8 +160,12 @@ const MonitorAttendance = () => {
         <>
           <div className="overlay" onClick={() => dispatch(handleSort())}></div>
           <div onClick={(e) => e.stopPropagation()} className="sort modal">
-            <p>Sort</p>
-            <button onClick={() => dispatch(handleSort())}>Close</button>
+            <div className="sort-div">
+              <p>Sort</p>
+            </div>
+            <div className="close-btn">
+              <button onClick={() => dispatch(handleSort())}>Close</button>
+            </div>
           </div>
         </>
       )}

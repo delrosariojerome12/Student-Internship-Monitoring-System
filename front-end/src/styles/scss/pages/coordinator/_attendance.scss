@@ -149,9 +149,9 @@
     border: solid 1px #000;
     border-radius: 1rem;
 
-    & > * {
-      border: solid 1px #000;
-    }
+    // & > * {
+    //   border: solid 1px #000;
+    // }
     .btn-controllers {
       display: flex;
       gap: 1rem;
@@ -161,6 +161,7 @@
         background-color: $primary-compliment-landing;
         border: solid 2px transparent;
         color: #fff;
+        height: 4rem;
         &:hover {
           color: $primary-compliment-landing;
           background-color: #fff;
@@ -176,5 +177,117 @@
         }
       }
     }
+  }
+  .sort {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    .sort-div {
+      padding: 1rem;
+      border: solid 1px #000;
+    }
+    .close-btn {
+      @include flexCenter;
+      button {
+        background-color: $primary-compliment-landing;
+        color: #fff;
+        height: 4rem;
+        border: none;
+        &:hover {
+          color: $primary-compliment-landing;
+          background-color: #fff;
+          border: solid 1px $primary-compliment-landing;
+        }
+      }
+    }
+  }
+  .filter {
+    .inputs-container {
+      padding: 1rem;
+      border: solid 1px #000;
+    }
+  }
+}
+
+// Responsive
+
+@media screen and (max-width: 1030px) {
+  .monitor-attendance {
+    grid-template-rows: auto minmax(40rem, 74vh);
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .monitor-attendance {
+    grid-template-rows: auto minmax(40rem, 72vh);
+    .display {
+      .content {
+        grid-auto-rows: auto;
+        .day-attendance {
+          .right {
+            grid-template-columns: auto;
+            grid-template-rows: repeat(2, auto);
+            gap: 0;
+            padding: 0.5rem;
+            & > * {
+              padding: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .monitor-attendance {
+    grid-template-rows: auto minmax(35rem, 62vh);
+    .modal {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .monitor-attendance {
+    grid-template-rows: auto minmax(35rem, 60vh);
+    button {
+      height: 3.5rem;
+    }
+    header {
+      .top {
+        @include flexCenter;
+        padding: 1rem;
+      }
+      .mid {
+        display: grid;
+        grid-template-rows: repeat(2, auto);
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        &:nth-child(1) {
+          grid-row: 1/2;
+        }
+        & > * {
+          @include flexCenter;
+          text-align: center;
+        }
+      }
+    }
+    .display {
+      .content {
+        .day-attendance {
+          grid-template-columns: 1fr;
+          .left {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .monitor-attendance {
+    grid-template-rows: auto minmax(35rem, 59vh);
   }
 }
