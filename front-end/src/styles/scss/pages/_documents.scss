@@ -5,7 +5,8 @@
 
 .documents-page {
   display: grid;
-  grid-template-rows: 25rem auto;
+  grid-template-rows: minmax(22rem, auto) minmax(40rem, 65vh);
+
   gap: 2rem;
   // border: solid 1px #fff;
   border-radius: 1.5rem;
@@ -20,14 +21,9 @@
     z-index: 6;
   }
   .top {
-    // border: solid 1px #fff;
     border-radius: 1.5rem;
     background-color: #282b30;
 
-    // background-color: lighten(
-    //   $color: $primary-bg-color-landing-compliment,
-    //   $amount: 10
-    // );
     display: grid;
     grid-template-columns: 1fr 2fr;
     padding: 1rem;
@@ -135,6 +131,7 @@
               gap: 1rem;
               border-bottom: solid 1px #000;
               border-top: solid 1px #000;
+              overflow: hidden;
 
               .left {
                 display: flex;
@@ -143,7 +140,8 @@
                 cursor: pointer;
 
                 p {
-                  word-break: break-all;
+                  white-space: nowrap;
+                  text-overflow: ellipsis;
                   padding: 0.5rem 0.5rem 0.5rem 1rem;
                   &:hover {
                     text-decoration: underline;
@@ -367,6 +365,7 @@
     // );
     overflow: hidden;
     position: relative;
+    overflow-y: auto;
     .document-intern {
       display: flex;
       align-items: center;
@@ -435,6 +434,7 @@
 
 @media screen and (max-width: 1030px) {
   .documents-page {
+    grid-template-rows: minmax(22rem, auto) minmax(40rem, 62vh);
     .top {
       grid-template-columns: 1fr 1.7fr;
       .drop-file {
@@ -454,7 +454,6 @@
       }
     }
     .display {
-      justify-content: center;
       padding: 7rem 2rem 2rem 2rem;
       .status {
         top: 1%;
@@ -468,25 +467,25 @@
 
 @media screen and (max-width: 850px) {
   .documents-page {
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto minmax(40rem, 57vh);
     gap: 1rem;
 
     .top {
       grid-template-columns: auto;
-      grid-template-rows: 1fr 0.4fr;
+      grid-template-rows: auto 1fr;
       gap: 0.5rem;
 
       .selected-document-indicator {
         grid-row: 2/3;
-        width: 80%;
-        margin: auto;
+        // width: 80%;
+        // margin: auto;
         gap: 0.5rem;
-        padding: 0;
+        padding: 0 2rem;
         h4 {
           text-align: center;
         }
         .sub-con {
-          height: 4rem;
+          padding: 1rem;
         }
       }
       .drop-file {
@@ -562,51 +561,8 @@
     }
   }
 }
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 700px) {
   .documents-page {
-    .top {
-      .selected-document-indicator {
-        h4 {
-          font-size: 1.5rem;
-        }
-        .sub-con {
-          height: 3rem;
-          font-size: 1.5rem;
-        }
-      }
-      .drop-file {
-        form {
-          label {
-            .document-preview {
-              .details {
-                .left {
-                  img {
-                    width: 4rem;
-                    padding-left: 1rem;
-                  }
-                  p {
-                    font-size: 1.2rem;
-                  }
-                }
-                button {
-                  font-size: 1rem;
-                }
-              }
-            }
-          }
-        }
-        .drop-file-container {
-          .add-icon {
-            span {
-              font-size: 2rem;
-            }
-          }
-        }
-      }
-    }
-    .sample-view-container {
-      width: 55rem;
-    }
     .display {
       grid-auto-rows: 7rem;
       grid-template-columns: 1fr;
@@ -619,8 +575,53 @@
     }
   }
 }
+@media screen and (max-width: 650px) {
+  .documents-page {
+    .top {
+      .selected-document-indicator {
+        .sub-con {
+          font-size: 1.6rem;
+          padding: 0.5rem;
+        }
+      }
+      // .drop-file {
+      //   form {
+      //     label {
+      //       .document-preview {
+      //         .details {
+      //           .left {
+      //             img {
+      //               width: 4rem;
+      //               padding-left: 1rem;
+      //             }
+      //             p {
+      //               font-size: 1.2rem;
+      //             }
+      //           }
+      //           button {
+      //             font-size: 1rem;
+      //           }
+      //         }
+      //       }
+      //     }
+      //   }
+      //   .drop-file-container {
+      //     .add-icon {
+      //       span {
+      //         font-size: 2rem;
+      //       }
+      //     }
+      //   }
+      // }
+    }
+    .sample-view-container {
+      width: 55rem;
+    }
+  }
+}
 @media screen and (max-width: 600px) {
   .documents-page {
+    grid-template-rows: auto minmax(20rem, 45vh);
     .sample-view-container {
       width: 100%;
       height: 80vh;
@@ -629,6 +630,11 @@
 }
 @media screen and (max-width: 500px) {
   .documents-page {
+    grid-template-rows: auto minmax(20rem, 44vh);
+    // .top {
+    //   .selected-document-indicator {
+    //   }
+    // }
     .display {
       grid-auto-rows: 6rem;
     }
