@@ -1,18 +1,20 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, {useEffect, useState} from "react";
+import {useSelector, useDispatch} from "react-redux";
 import {
   getAllAttendanceToday,
   getAllAttendanceByDate,
   handleFilter,
   handleSort,
   checkAbsents,
+  handleSelectIntern,
+  handleCloseModal,
 } from "../../features/coordinator/monitorAttendance";
 import Bouncing from "../../components/loading/Bouncing";
 import ServerError from "../serverError";
 import Attendance from "../../components/coordinator/Attendance";
-
+import ViewMoreDetailsModal from "../../components/coordinator/ViewMoreDetailsModal";
 const now = new Date();
 const year = now.getFullYear();
 const month = now.getMonth() + 1;
@@ -46,6 +48,8 @@ const MonitorAttendance = () => {
     isSortOpen,
     isFiltering,
     filteredValues,
+    selectedIntern,
+    isViewMoreDetailsOpen,
   } = useSelector((state) => state.monitorAttendance);
   const dispatch = useDispatch();
 
@@ -121,7 +125,8 @@ const MonitorAttendance = () => {
         <>
           <div
             className="overlay"
-            onClick={() => dispatch(handleFilter())}></div>
+            onClick={() => dispatch(handleFilter())}
+          ></div>
           <div onClick={(e) => e.stopPropagation()} className="filter modal">
             <p>Filter</p>
 
@@ -147,7 +152,8 @@ const MonitorAttendance = () => {
                       date: filterDate,
                     })
                   )
-                }>
+                }
+              >
                 Filter
               </button>
 
@@ -169,6 +175,7 @@ const MonitorAttendance = () => {
           </div>
         </>
       )}
+      {isViewMoreDetailsOpen && <ViewMoreDetailsModal />}
     </div>
   );
 };

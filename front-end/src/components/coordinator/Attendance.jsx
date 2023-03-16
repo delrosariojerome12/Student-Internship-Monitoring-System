@@ -1,10 +1,9 @@
-/** @format */
-
 import React from "react";
-
-const Attendance = React.memo(({ attendance }) => {
+import {useDispatch} from "react-redux";
+import {handleSelectIntern} from "../../features/coordinator/monitorAttendance";
+const Attendance = React.memo(({attendance}) => {
   const {
-    user: { firstName, lastName, profileImage },
+    user: {firstName, lastName, profileImage},
     intern: {
       internshipDetails: {
         companyAddress,
@@ -15,7 +14,7 @@ const Attendance = React.memo(({ attendance }) => {
         logo,
         renderedHours,
       },
-      scheduleDetails: { scheduleType },
+      scheduleDetails: {scheduleType},
     },
     timeIn,
     timeOut,
@@ -25,6 +24,8 @@ const Attendance = React.memo(({ attendance }) => {
     locationTimeIn,
     locationTimeOut,
   } = attendance;
+
+  const dispatch = useDispatch();
 
   if (!isPresent) {
     return (
@@ -73,7 +74,9 @@ const Attendance = React.memo(({ attendance }) => {
         </div>
         <div className="second">
           <h4>{companyName}</h4>
-          {/* <p>{finalLocation}</p> */}
+          <button onClick={() => dispatch(handleSelectIntern(attendance))}>
+            View More Details
+          </button>
         </div>
       </div>
     </div>
