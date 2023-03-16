@@ -1,3 +1,5 @@
+/** @format */
+
 @import "../variables";
 @import "../utils";
 
@@ -52,7 +54,7 @@
   }
   .content {
     border-radius: 1rem;
-          background-color: #282b30;
+    background-color: #282b30;
     padding: 2rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, 42.5rem);
@@ -123,7 +125,7 @@
     // justify-content: center;
     text-align: center;
     flex-direction: column;
-          background-color: #282b30;
+    background-color: #282b30;
     border-radius: 1rem;
     color: #fff;
     gap: 1rem;
@@ -289,10 +291,11 @@
 
 // Responsive
 
-@media screen and (max-width: 1500px) {
-  .internship-container-intern {
+@media screen and (max-width: 1150px) {
+  .internship-container {
     .content {
-      justify-content: center;
+      grid-template-columns: 1fr;
+      grid-auto-rows: 14rem;
     }
   }
 }
@@ -300,9 +303,6 @@
 @media screen and (max-width: 1030px) {
   .internship-container-intern {
     .content {
-      grid-template-columns: 1fr;
-      grid-auto-rows: auto;
-
       .internship {
         grid-template-columns: 13rem 1fr;
         .img-con {
