@@ -7556,14 +7556,17 @@ button {
   background-color: #fff;
   z-index: 7;
   border-radius: 1rem;
-  padding: 2rem 1rem;
+  padding: 1rem;
   width: 65rem;
-  height: 93vh;
+  height: 93%;
   overflow: auto;
 }
 .documents-page .sample-view-container img {
   height: 100%;
   width: 100%;
+}
+.documents-page .sample-view-container .btn-close {
+  display: none;
 }
 .documents-page .display {
   display: grid;
@@ -7766,7 +7769,27 @@ button {
 @media screen and (max-width: 750px) {
   .documents-page .sample-view-container {
     width: 60rem;
-    height: 90vh;
+  }
+  .documents-page .sample-view-container .btn-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .documents-page .sample-view-container .btn-close button {
+    height: 4.5rem;
+    background-color: #0d7377;
+    border: none;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    transition: all 0.3s linear;
+    font-weight: 600;
+    border-radius: 1rem;
+    color: #fff;
+  }
+  .documents-page .sample-view-container .btn-close button:hover {
+    background-color: #fff;
+    border: solid 2px #0d7377;
+    color: #0d7377;
   }
   .documents-page .required-document {
     width: 40rem;
@@ -7828,7 +7851,7 @@ button {
   }
   .documents-page .sample-view-container {
     width: 100%;
-    height: 80vh;
+    height: 100%;
   }
 }
 @media screen and (max-width: 500px) {

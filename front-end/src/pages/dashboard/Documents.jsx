@@ -397,7 +397,9 @@ const Documents = React.memo(() => {
             <div className="sample-view-container">
               {renderDocumentDetails()}
               <div className="btn-close">
-                <button>close</button>
+                <button onClick={() => dispatch(handleSampleViewed())}>
+                  Close
+                </button>
               </div>
             </div>
           </>
@@ -413,7 +415,12 @@ const Documents = React.memo(() => {
               {renderAdminResponse()}
               {renderViewDocument()}
               <div className="btn-close">
-                <button>close</button>
+                <button
+                  onClick={() => {
+                    setSentDocumentOpen(!isSentDocumentOpen);
+                  }}>
+                  Close
+                </button>
               </div>
             </div>
           </>
