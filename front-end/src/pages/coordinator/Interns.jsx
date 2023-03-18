@@ -210,7 +210,7 @@ const Interns = () => {
           <>
             <div className="overlay"></div>
             <div onClick={(e) => e.stopPropagation()} className="sort modal">
-              <h2>Sort By</h2>
+              <h3>Sort By</h3>
               <form>
                 <div className="name-sort">
                   <label htmlFor="name-ascending">
@@ -268,7 +268,11 @@ const Interns = () => {
           <>
             <div className="overlay"></div>
             <div onClick={(e) => e.stopPropagation()} className="filter modal">
-              <p>filter</p>
+              <h3>Filter</h3>
+              <form></form>
+              <div className="btn-close">
+                <button onClick={handleResetFocus}>Close</button>
+              </div>
             </div>
           </>
         )}

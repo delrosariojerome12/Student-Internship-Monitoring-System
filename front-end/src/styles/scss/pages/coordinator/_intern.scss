@@ -242,7 +242,8 @@
     border-radius: 1rem;
   }
 
-  .sort {
+  .sort,
+  .filter {
     display: grid;
     grid-template-rows: auto 1fr auto;
     background-color: #d9d9d9;
@@ -252,6 +253,34 @@
       padding: 1rem;
       border: solid 1px #000;
       background-color: #fff;
+    }
+  }
+  .btn-close {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-right: 1px solid #fff;
+    button {
+      cursor: pointer;
+      height: 4rem;
+      @include flexCenter;
+      padding: 0rem 2rem;
+      border-radius: 1rem;
+      border: solid 1px transparent;
+      background-color: $primary-compliment-landing;
+      color: $primary-font-color;
+      transition: all 0.3s ease-in-out;
+      font-weight: 600;
+      &:hover {
+        background-color: $primary-feature-bg;
+        border-radius: 0;
+        color: #fff;
+        border: solid 1px $primary-feature-bg;
+      }
+    }
+  }
+  .sort {
+    form {
       & > * {
         display: grid;
         grid-template-columns: auto;
@@ -260,30 +289,6 @@
         & > * {
           display: flex;
           gap: 1rem;
-        }
-      }
-    }
-    .btn-close {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      border-right: 1px solid #fff;
-      button {
-        cursor: pointer;
-        height: 4rem;
-        @include flexCenter;
-        padding: 0rem 2rem;
-        border-radius: 1rem;
-        border: solid 1px transparent;
-        background-color: $primary-compliment-landing;
-        color: $primary-font-color;
-        transition: all 0.3s ease-in-out;
-        font-weight: 600;
-        &:hover {
-          background-color: $primary-feature-bg;
-          border-radius: 0;
-          color: #fff;
-          border: solid 1px $primary-feature-bg;
         }
       }
     }
@@ -398,14 +403,19 @@
     .modal {
       width: 100%;
     }
-    .sort {
-      height: 35rem;
+    .sort,
+    .filter {
       gap: 0.5rem;
-      h2 {
-        font-size: 2.3rem;
+      h3 {
+        font-size: 2.1rem;
       }
       form {
         gap: 0.5rem;
+      }
+    }
+    .sort {
+      height: 35rem;
+      form {
         & > * {
           gap: 0.5rem;
           font-size: 1.8rem;
@@ -423,11 +433,11 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 375px) {
   .intern-container {
     grid-template-rows: auto minmax(25rem, 30vh);
     header {
-      grid-template-rows: minmax(15rem, 35vh) auto;
+      grid-template-rows: minmax(15rem, 32vh) auto;
     }
     .interns {
       .intern {
