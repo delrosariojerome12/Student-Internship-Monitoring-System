@@ -35,7 +35,7 @@ const buttons = [
   },
 ];
 
-const Profile = () => {
+const Profile = React.memo(() => {
   const navigate = useNavigate();
   const [selected, setSelected] = useState("Interns Detail");
 
@@ -114,6 +114,6 @@ const Profile = () => {
       </div>
     </section>
   );
-};
+});
 
 export default Profile;

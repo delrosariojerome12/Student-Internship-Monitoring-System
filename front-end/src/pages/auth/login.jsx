@@ -9,7 +9,7 @@ import {useNavigate} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
 import {handleLogin} from "../../features/user/userReducer";
 
-const Login = () => {
+const Login = React.memo(() => {
   const dispatch = useDispatch();
   const {isError, errorMessage} = useSelector((state) => state.user);
 
@@ -183,6 +183,6 @@ const Login = () => {
       <section className="bg-container"></section>
     </section>
   );
-};
+});
 
 export default Login;
