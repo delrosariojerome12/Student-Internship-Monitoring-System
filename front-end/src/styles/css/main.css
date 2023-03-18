@@ -932,7 +932,7 @@ button {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
@@ -2742,7 +2742,7 @@ button {
 }
 .dashboard .internship-container .add-modal, .dashboard-active .internship-container .add-modal, .dashboard .internship-container .edit-modal, .dashboard-active .internship-container .edit-modal {
   width: 75rem;
-  min-height: 75rem;
+  height: 80%;
   display: flex;
   background-color: #d9d9d9;
 }
@@ -6417,6 +6417,8 @@ button {
 .internship-container-intern .view-modal .close-btn {
   grid-column: 1/4;
   margin: auto;
+  display: flex;
+  gap: 1rem;
 }
 .internship-container-intern .view-modal .close-btn button {
   border-radius: 1rem;

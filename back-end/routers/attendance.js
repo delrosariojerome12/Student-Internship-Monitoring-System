@@ -1,6 +1,7 @@
 const {
   getAllAttendance,
   getAttendance,
+  getAllNarrative,
   timeIn,
   timeOut,
   checkStartingDate,
@@ -14,6 +15,8 @@ const router = express.Router();
 
 router.route("/getAllAttendance/:email").get(getAllAttendance);
 router.route("/getAllAttendanceToday").get(getAllAttendanceToday);
+router.route("/getAllNarrative/:email").get(getAllNarrative);
+
 router.route("/checkAbsents").post(checkAbsents);
 
 router.route("/getAllAttendanceByDate").get(getAllAttendanceByDate);

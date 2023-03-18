@@ -1,18 +1,47 @@
-
-import React from "react";
-import { Route, Routes, Link, Navigate, useNavigate } from "react-router-dom";
-import { FaSortAmountUp, FaRegCalendarCheck, FaFilter } from "react-icons/fa";
+import React, {useEffect} from "react";
+import {FaSortAmountUp, FaRegCalendarCheck, FaFilter} from "react-icons/fa";
+import {useSelector, useDispatch} from "react-redux";
+import {getAllNarrative} from "../../features/interns/narrativeReducer";
 import ReportContent from "../../components/intern/ReportContent";
-
+import Bouncing from "../../components/loading/Bouncing";
+import ServerError from "../serverError";
 import {
   MdOutlineArrowForwardIos,
   MdOutlineArrowBackIosNew,
 } from "react-icons/md";
 
-const Reports = () => {
+const Reports = React.memo(() => {
+  const {
+    user: {
+      user: {email},
+    },
+  } = useSelector((state) => state.user);
+  const {allNarrative, isError, isLoading} = useSelector(
+    (state) => state.narrative
+  );
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllNarrative({email}));
+  }, []);
+
+  if (isLoading || !allNarrative) {
+    return <Bouncing />;
+  }
+
+  if (isError) {
+    return <ServerError />;
+  }
+
+  const renderNarrative = () => {
+    return allNarrative.map((item, index) => {
+      return <ReportContent report={item} key={index} />;
+    });
+  };
+
   return (
     <section className="reports">
-      {/* modals */}
       <div className="sort-modals">
         <h3>Sort by</h3>
         <div className="modals-sorting">
@@ -296,10 +325,10 @@ const Reports = () => {
             <p>Filters</p>
           </button>
         </div>
-        <div className="report-content">{ReportContent()}</div>
+        <div className="report-content">{renderNarrative()}</div>
       </div>
     </section>
   );
-};
+});
 
 export default Reports;

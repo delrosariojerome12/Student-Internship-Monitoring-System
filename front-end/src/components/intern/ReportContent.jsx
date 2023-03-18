@@ -1,8 +1,7 @@
-/** @format */
+import React, {useState} from "react";
 
-import React from "react";
-
-const ReportContent = () => {
+const ReportContent = React.memo(() => {
+  const [isOpen, setOpen] = useState(false);
   return (
     <section className="narrative-content">
       <div className="weeks">
@@ -16,6 +15,6 @@ const ReportContent = () => {
       <div className="dropdown"></div>
     </section>
   );
-};
+});
 
 export default ReportContent;
