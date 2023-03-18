@@ -181,11 +181,11 @@
       // span {
       //   font-size: 10rem;
       // }
-      h1 {
-        color: $red-primary-color;
-        margin-top: -4rem;
-        padding: 0 0 0 1rem;
-      }
+      // h1 {
+      //   color: $red-primary-color;
+      //   margin-top: -4rem;
+      //   padding: 0 0 0 1rem;
+      // }
     }
     .btn-close {
       display: none;
@@ -564,7 +564,7 @@
 }
 @media screen and (max-width: 700px) {
   .daily-time-record {
-    grid-template-rows: auto minmax(30rem, 50vh);
+    grid-template-rows: auto minmax(30rem, 53vh);
     header {
       .user {
         .text {
@@ -636,13 +636,13 @@
           font-size: 1.7rem;
         }
       }
-      .camera {
-        img,
-        video {
-          height: 25rem;
-          width: 25rem;
-        }
-      }
+      // .camera {
+      //   img,
+      //   video {
+      //     height: 27rem;
+      //     width: 27rem;
+      //   }
+      // }
     }
     .attendance-view {
       .upper {
@@ -709,17 +709,21 @@
     }
     .attendance-absent {
       flex-direction: column;
-      gap: 2rem;
+      // gap: 1rem;
+      img {
+        height: 23rem;
+        width: 23rem;
+      }
       .btn-close {
-        display: flex;
+        @include flexCenter;
         button {
           color: #000;
           border: solid 1px #000;
-          background-color: #fff;
-          // &:hover {
-          //   background-color: #d9d9d9;
-          //   border: solid 1px #d9d9d9;
-          // }
+          background-color: #d9d9d9;
+          &:hover {
+            background-color: #fff;
+            // border: solid 1px #fff;
+          }
         }
       }
     }
@@ -758,8 +762,8 @@
       .camera {
         img,
         video {
-          height: 20rem;
-          width: 20rem;
+          height: 25rem;
+          width: 25rem;
         }
       }
     }
