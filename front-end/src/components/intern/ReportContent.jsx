@@ -1,9 +1,10 @@
 import React, {useState} from "react";
+import {FaChevronDown} from "react-icons/fa";
 
 const ReportContent = React.memo(() => {
   const [isOpen, setOpen] = useState(false);
   return (
-    <section className="narrative-content">
+    <div className="narrative-content">
       <div className="weeks">
         <h5>Week</h5>
         <h5>1</h5>
@@ -12,8 +13,10 @@ const ReportContent = React.memo(() => {
         <h5>Weekly Narrative Report</h5>
         <p>0/5</p>
       </div>
-      <div className="dropdown"></div>
-    </section>
+      <div className="dropdown">
+        <FaChevronDown />
+      </div>
+    </div>
   );
 });
 
