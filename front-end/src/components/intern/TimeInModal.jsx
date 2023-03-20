@@ -1,7 +1,7 @@
 /** @format */
 
-import React, { useState, useEffect, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, {useState, useEffect, useRef} from "react";
+import {useSelector, useDispatch} from "react-redux";
 import {
   handleTimeIn,
   timeInAttendance,
@@ -11,14 +11,9 @@ import CameraSVG from "../../assets/img/camera.svg";
 import NocameraSVG from "../../assets/img/nocamera.svg";
 
 import Webcam from "react-webcam";
-import { storage } from "../../Firebase";
-import {
-  ref,
-  uploadBytes,
-  getDownloadURL,
-  deleteObject,
-} from "firebase/storage";
-import { v4 } from "uuid";
+import {storage} from "../../Firebase";
+import {ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage";
+import {v4} from "uuid";
 
 const months = [
   "January",
@@ -50,12 +45,12 @@ const convertImage = (str) => {
   for (var n = 0; n < imageContent.length; n++) {
     view[n] = imageContent.charCodeAt(n);
   }
-  var blob = new Blob([buffer], { type: type });
+  var blob = new Blob([buffer], {type: type});
 
   return blob;
 };
 
-const TimeInModal = React.memo(({ email }) => {
+const TimeInModal = React.memo(({email}) => {
   const dispatch = useDispatch();
 
   const [time, setTime] = useState("");
@@ -81,13 +76,14 @@ const TimeInModal = React.memo(({ email }) => {
       const {
         freeformAddress,
         country,
-        boundingBox: { northEast, southWest },
+        boundingBox: {northEast, southWest},
         countrySecondarySubdivision,
       } = response.data.addresses[0].address;
       // console.log(response.data.addresses[0].address);
 
       const completeAddress = `${freeformAddress} ${countrySecondarySubdivision} ${country} `;
       const coordinates = `NE: ${northEast} SW: ${southWest}`;
+
       setAddress(`${completeAddress} ${coordinates}`);
     } catch (error) {
       console.log(error);
@@ -142,7 +138,7 @@ const TimeInModal = React.memo(({ email }) => {
 
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        const { latitude, longitude } = position.coords;
+        const {latitude, longitude} = position.coords;
         getLocation(latitude, longitude);
       },
       (error) => {
@@ -226,9 +222,10 @@ const TimeInModal = React.memo(({ email }) => {
           }
           style={
             capturedPhoto
-              ? { opacity: "1" }
-              : { opacity: ".7", pointerEvents: "none" }
-          }>
+              ? {opacity: "1"}
+              : {opacity: ".7", pointerEvents: "none"}
+          }
+        >
           Time in
         </button>
       </div>

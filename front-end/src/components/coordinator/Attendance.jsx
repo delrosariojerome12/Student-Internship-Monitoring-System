@@ -1,5 +1,6 @@
 import React from "react";
-
+import {useDispatch} from "react-redux";
+import {handleSelectIntern} from "../../features/coordinator/monitorAttendance";
 const Attendance = React.memo(({attendance}) => {
   const {
     user: {firstName, lastName, profileImage},
@@ -24,6 +25,8 @@ const Attendance = React.memo(({attendance}) => {
     locationTimeOut,
   } = attendance;
 
+  const dispatch = useDispatch();
+
   if (!isPresent) {
     return (
       <div className="day-attendance">
@@ -33,11 +36,13 @@ const Attendance = React.memo(({attendance}) => {
         <div className="right">
           <div className="first">
             <h4>{`${firstName} ${lastName}`}</h4>
-            <h4>Status: Absent</h4>
-            <h3>{scheduleType}</h3>
+            <p>
+              <b>Status:</b> Absent
+            </p>
+            <h4>{scheduleType}</h4>
           </div>
           <div className="second">
-            <p>{companyName}</p>
+            <h4>{companyName}</h4>
           </div>
         </div>
       </div>
@@ -55,14 +60,23 @@ const Attendance = React.memo(({attendance}) => {
       <div className="right">
         <div className="first">
           <h4>{`${firstName} ${lastName}`}</h4>
-          <p>Time in: {timeIn}</p>
-          <p>Time out: {timeOut}</p>
-          <p>Total Rendered: {totalRendered}hrs</p>
+          <p>
+            <b>Time in: </b>
+            {timeIn}
+          </p>
+          <p>
+            <b>Time out:</b> {timeOut}
+          </p>
+          <p>
+            <b>Total Rendered:</b> {totalRendered}hrs
+          </p>
           {/* <h3>{scheduleType}</h3> */}
         </div>
         <div className="second">
-          <p>{companyName}</p>
-          {/* <p>{finalLocation}</p> */}
+          <h4>{companyName}</h4>
+          <button onClick={() => dispatch(handleSelectIntern(attendance))}>
+            View More Details
+          </button>
         </div>
       </div>
     </div>

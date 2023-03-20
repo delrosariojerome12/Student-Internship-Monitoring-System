@@ -99,58 +99,60 @@ const DailyTimeRecord = React.memo(() => {
   return (
     <IconContext.Provider value={{ className: "icon" }}>
       <section className="daily-time-record">
-        <div className="user">
-          <div className="profile-img">
-            <img src={profileImage} alt="profile-image" />
+        <header>
+          <div className="user">
+            <div className="profile-img">
+              <img src={profileImage} alt="profile-image" />
+            </div>
+            <div className="text">
+              <h4 className="full-name">
+                {firstName} {lastName}
+              </h4>
+              <p className="rendered-hours">
+                Rendered Hours: <b> {renderedHours}</b>
+              </p>
+              <p className="required-hours">
+                Required Hours: <b> {requiredHours}</b>
+              </p>
+              <p>
+                Status: <b> {status}</b>
+              </p>
+              <p>
+                Schedule Type: <b> {scheduleDetails.scheduleType}</b>
+              </p>
+            </div>
           </div>
-          <div className="text">
-            <h4 className="full-name">
-              {firstName} {lastName}
-            </h4>
-            <p className="rendered-hours">
-              Rendered Hours: <b> {renderedHours}</b>
-            </p>
-            <p className="required-hours">
-              Required Hours: <b> {requiredHours}</b>
-            </p>
-            <p>
-              Status: <b> {status}</b>
-            </p>
-            <p>
-              Schedule Type: <b> {scheduleDetails.scheduleType}</b>
-            </p>
+          <div className="mid">
+            <div className="button-container">
+              <button
+                className="time-in"
+                onClick={() => dispatch(handleTimeIn())}
+                style={
+                  isTimeInDisable
+                    ? { pointerEvents: "none", opacity: ".5" }
+                    : { opacity: "1" }
+                }>
+                Time In
+              </button>
+              <button
+                className="time-out"
+                onClick={() => dispatch(handleTimeOut())}
+                style={
+                  isTimeOutDisable
+                    ? { pointerEvents: "none", opacity: ".5" }
+                    : { opacity: "1" }
+                }>
+                Time Out
+              </button>
+            </div>
+            <div className="search-box">
+              <span>
+                <BiSearchAlt />
+              </span>
+              <input type="text" placeholder="Search" />
+            </div>
           </div>
-        </div>
-        <div className="mid">
-          <div className="button-container">
-            <button
-              className="time-in"
-              onClick={() => dispatch(handleTimeIn())}
-              style={
-                isTimeInDisable
-                  ? { pointerEvents: "none", opacity: ".5" }
-                  : { opacity: "1" }
-              }>
-              Time In
-            </button>
-            <button
-              className="time-out"
-              onClick={() => dispatch(handleTimeOut())}
-              style={
-                isTimeOutDisable
-                  ? { pointerEvents: "none", opacity: ".5" }
-                  : { opacity: "1" }
-              }>
-              Time Out
-            </button>
-          </div>
-          <div className="search-box">
-            <span>
-              <BiSearchAlt />
-            </span>
-            <input type="text" placeholder="Search" />
-          </div>
-        </div>
+        </header>
         {renderAttendance()}
         {isTimeInOpen && <TimeInModal email={email} />}
         {isTimeOutOpen && <TimeOutModal email={email} />}

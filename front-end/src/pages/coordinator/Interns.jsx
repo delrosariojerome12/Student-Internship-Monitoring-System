@@ -1,16 +1,18 @@
-import React, {useState, useCallback, useEffect} from "react";
-import Intern from "../../components/coordinator/Intern";
-import {useSelector, useDispatch} from "react-redux";
-import internWaiting from "../../assets/img/waiting.svg";
-import {getAllInterns} from "../../features/interns/internReducer";
+/** @format */
 
-import {BiSearchAlt} from "react-icons/bi";
+import React, { useState, useCallback, useEffect } from "react";
+import Intern from "../../components/coordinator/Intern";
+import { useSelector, useDispatch } from "react-redux";
+import internWaiting from "../../assets/img/waiting.svg";
+import { getAllInterns } from "../../features/interns/internReducer";
+
+import { BiSearchAlt } from "react-icons/bi";
 import Bouncing from "../../components/loading/Bouncing";
 import SelectedIntern from "../../components/coordinator/dashboardCoordinator/SelectedIntern";
 import approvalImg from "../../assets/img/approvals.svg";
 
 const Interns = () => {
-  const {interns, isError, selectedIntern} = useSelector(
+  const { interns, isError, selectedIntern } = useSelector(
     (state) => state.intern
   );
   const [searchIntern, setSearchIntern] = useState("");
@@ -171,101 +173,110 @@ const Interns = () => {
 
   return (
     <section className="intern-container" onClick={handleResetFocus}>
-      <div className="preview-container">
-        {selectedIntern ? (
-          <SelectedIntern />
-        ) : (
-          <div className="selects">
-            <h1>No Selected Intern</h1>
-            <img src={approvalImg} alt="" />
+      <header>
+        <div className="preview-container">
+          {selectedIntern ? (
+            <SelectedIntern />
+          ) : (
+            <div className="selects">
+              <h1>No Selected Intern</h1>
+              <img src={approvalImg} alt="" />
+            </div>
+          )}
+        </div>
+        <nav className="navigation">
+          <div className="left-side">
+            <button onClick={handleSort} className="sort-btn">
+              Sort
+            </button>
+            <button onClick={handleFilter} className="filter-btn">
+              Filter
+            </button>
           </div>
-        )}
-      </div>
-      <nav className="navigation">
-        <div className="left-side">
-          <button onClick={handleSort} className="sort-btn">
-            Sort
-          </button>
-          <button onClick={handleFilter} className="filter-btn">
-            Filter
-          </button>
-        </div>
-        <div className="right-side">
-          <form action="" onSubmit={handleSubmitSearchIntern}>
-            <span>
-              <BiSearchAlt />
-            </span>
-            <input
-              placeholder="Search"
-              type="text"
-              onChange={(e) => handleSearchIntern(e.target.value)}
-            />
-          </form>
-        </div>
-      </nav>
-      {isSortOpen && (
-        <>
-          <div className="overlay"></div>
-          <div onClick={(e) => e.stopPropagation()} className="sort modal">
-            <h4>Sort By</h4>
-            <form>
-              <div className="name-sort">
-                <label htmlFor="name-ascending">
-                  <input
-                    type="radio"
-                    name="sort"
-                    id="name-ascending"
-                    value="name-ascending"
-                    onChange={(e) => setSortValue(e.target.value)}
-                  />
-                  Name A-Z
-                </label>
-                <label htmlFor="name-descending">
-                  <input
-                    type="radio"
-                    name="sort"
-                    id="name-descending"
-                    value="name-descending"
-                    onChange={(e) => setSortValue(e.target.value)}
-                  />
-                  Name Z-A
-                </label>
-              </div>
-              <div className="time-sort">
-                <label htmlFor="time-ascending">
-                  <input
-                    type="radio"
-                    name="sort"
-                    id="time-ascending"
-                    value="time-ascending"
-                    onChange={(e) => setSortValue(e.target.value)}
-                  />
-                  Least Rendered Hours
-                </label>
-
-                <label htmlFor="time-descending">
-                  <input
-                    type="radio"
-                    name="sort"
-                    id="time-descending"
-                    value="time-descending"
-                    onChange={(e) => setSortValue(e.target.value)}
-                  />
-                  Most Rendered Hours
-                </label>
-              </div>
+          <div className="right-side">
+            <form action="" onSubmit={handleSubmitSearchIntern}>
+              <span>
+                <BiSearchAlt />
+              </span>
+              <input
+                placeholder="Search"
+                type="text"
+                onChange={(e) => handleSearchIntern(e.target.value)}
+              />
             </form>
           </div>
-        </>
-      )}
-      {isFilterOpen && (
-        <>
-          <div className="overlay"></div>
-          <div onClick={(e) => e.stopPropagation()} className="filter modal">
-            <p>filter</p>
-          </div>
-        </>
-      )}
+        </nav>
+        {isSortOpen && (
+          <>
+            <div className="overlay"></div>
+            <div onClick={(e) => e.stopPropagation()} className="sort modal">
+              <h3>Sort By</h3>
+              <form>
+                <div className="name-sort">
+                  <label htmlFor="name-ascending">
+                    <input
+                      type="radio"
+                      name="sort"
+                      id="name-ascending"
+                      value="name-ascending"
+                      onChange={(e) => setSortValue(e.target.value)}
+                    />
+                    Name A-Z
+                  </label>
+                  <label htmlFor="name-descending">
+                    <input
+                      type="radio"
+                      name="sort"
+                      id="name-descending"
+                      value="name-descending"
+                      onChange={(e) => setSortValue(e.target.value)}
+                    />
+                    Name Z-A
+                  </label>
+                </div>
+                <div className="time-sort">
+                  <label htmlFor="time-ascending">
+                    <input
+                      type="radio"
+                      name="sort"
+                      id="time-ascending"
+                      value="time-ascending"
+                      onChange={(e) => setSortValue(e.target.value)}
+                    />
+                    Least Rendered Hours
+                  </label>
+
+                  <label htmlFor="time-descending">
+                    <input
+                      type="radio"
+                      name="sort"
+                      id="time-descending"
+                      value="time-descending"
+                      onChange={(e) => setSortValue(e.target.value)}
+                    />
+                    Most Rendered Hours
+                  </label>
+                </div>
+              </form>
+              <div className="btn-close">
+                <button onClick={handleResetFocus}>Close</button>
+              </div>
+            </div>
+          </>
+        )}
+        {isFilterOpen && (
+          <>
+            <div className="overlay"></div>
+            <div onClick={(e) => e.stopPropagation()} className="filter modal">
+              <h3>Filter</h3>
+              <form></form>
+              <div className="btn-close">
+                <button onClick={handleResetFocus}>Close</button>
+              </div>
+            </div>
+          </>
+        )}
+      </header>
       {renderInterns()}
     </section>
   );
