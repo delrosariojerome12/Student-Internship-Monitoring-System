@@ -1,19 +1,96 @@
+import React, {useEffect, useState} from "react";
+import {FaSortAmountUp, FaRegCalendarCheck, FaFilter} from "react-icons/fa";
+import {useSelector, useDispatch} from "react-redux";
+import {getAllNarrative} from "../../features/interns/narrativeReducer";
+import ReportContent from "../../components/intern/NarrativeContent";
+import Bouncing from "../../components/loading/Bouncing";
+import ServerError from "../serverError";
+import _ from "lodash";
 
-import React from "react";
-import { Route, Routes, Link, Navigate, useNavigate } from "react-router-dom";
-import { FaSortAmountUp, FaRegCalendarCheck, FaFilter } from "react-icons/fa";
-import ReportContent from "../../components/intern/ReportContent";
+import {
+  handleAddModal,
+  handleEditModal,
+  handleViewModal,
+} from "../../features/interns/narrativeReducer";
+
+import AddModal from "../../components/intern/profile/AddModal";
+import EditModal from "../../components/intern/profile/EditModal";
+import ViewModal from "../../components/intern/profile/ViewModal";
 
 import {
   MdOutlineArrowForwardIos,
   MdOutlineArrowBackIosNew,
 } from "react-icons/md";
 
-const Reports = () => {
+const Reports = React.memo(() => {
+  const {
+    user: {
+      user: {email},
+    },
+  } = useSelector((state) => state.user);
+
+  const {
+    allNarrative,
+    isError,
+    isLoading,
+    isAddModalOpen,
+    isEditModalOpen,
+    isViewModalOpen,
+    selectedDay,
+  } = useSelector((state) => state.narrative);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllNarrative({email}));
+  }, []);
+
+  if (isLoading || !allNarrative) {
+    return <Bouncing />;
+  }
+
+  if (isError) {
+    return <ServerError />;
+  }
+
+  const renderNarrative = () => {
+    const groupNarrative = _.chunk(allNarrative, 5);
+    return groupNarrative.map((item, index) => {
+      return <ReportContent report={item} key={index} week={index} />;
+    });
+  };
+
   return (
     <section className="reports">
-      {/* modals */}
-      <div className="sort-modals">
+      <div className="content">
+        <div className="button-container">
+          <button className="sort">
+            <span>
+              <FaSortAmountUp />
+            </span>
+            <p>Sort</p>
+          </button>
+          <button className="status">
+            <span>
+              <FaRegCalendarCheck />
+            </span>
+            <p>Status</p>
+          </button>
+          <button className="filters">
+            <span>
+              <FaFilter />
+            </span>
+            <p>Filters</p>
+          </button>
+        </div>
+        <div className="report-container">{renderNarrative()}</div>
+      </div>
+
+      {isAddModalOpen && <AddModal />}
+      {isEditModalOpen && <EditModal />}
+      {isViewModalOpen && <ViewModal />}
+
+      {/* <div className="sort-modals">
         <h3>Sort by</h3>
         <div className="modals-sorting">
           <div className="day">
@@ -274,32 +351,9 @@ const Reports = () => {
             </span>
           </div>
         </div>
-      </div>
-      <div className="content">
-        <div className="button-container">
-          <button className="sort">
-            <span>
-              <FaSortAmountUp />
-            </span>
-            <p>Sort</p>
-          </button>
-          <button className="status">
-            <span>
-              <FaRegCalendarCheck />
-            </span>
-            <p>Status</p>
-          </button>
-          <button className="filters">
-            <span>
-              <FaFilter />
-            </span>
-            <p>Filters</p>
-          </button>
-        </div>
-        <div className="report-content">{ReportContent()}</div>
-      </div>
+      </div> */}
     </section>
   );
-};
+});
 
 export default Reports;

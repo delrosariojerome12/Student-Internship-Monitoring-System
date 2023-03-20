@@ -1,5 +1,3 @@
-/** @format */
-
 @import "../../utils";
 @import "../../variables";
 
@@ -166,7 +164,8 @@
 
   .add-modal {
     width: 75rem;
-    min-height: 75rem;
+    // height: 75rem;
+    height: 80%;
     display: flex;
     background-color: #d9d9d9;
 
@@ -515,12 +514,22 @@
   }
 }
 
+// @media screen and (max-height: 800px) {
+//   .internship-container {
+//     .modal {
+//       width: 60rem;
+//       height: 40rem !important;
+//     }
+//   }
+// }
+
 // Responsive
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1150px) {
   .internship-container {
     .content {
-      justify-content: center;
+      grid-template-columns: 1fr;
+      grid-auto-rows: 14rem;
     }
   }
 }
@@ -528,9 +537,6 @@
 @media screen and (max-width: 1030px) {
   .internship-container {
     .content {
-      grid-template-columns: 1fr;
-      grid-auto-rows: 14rem;
-
       .internship {
         grid-template-columns: 13rem 1fr;
         .img-con {

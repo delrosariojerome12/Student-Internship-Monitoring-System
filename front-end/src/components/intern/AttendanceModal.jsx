@@ -1,5 +1,3 @@
-/** @format */
-
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {handleViewToday} from "../../features/interns/attendanceReducer";
@@ -38,7 +36,7 @@ const AttendanceModal = React.memo(() => {
             {/* <span>
               <FaRegFrownOpen />
             </span> */}
-            <h1>Unable to attend</h1>
+            {/* <h1>Unable to attend</h1> */}
           </div>
           <div className="btn-close">
             <button
