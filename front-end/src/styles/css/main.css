@@ -1445,7 +1445,7 @@ button {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
@@ -2252,12 +2252,18 @@ button {
   border-radius: 1rem;
   border: solid 1px #fff;
   display: grid;
-  grid-template-rows: minmax(17rem, auto) auto minmax(30rem, 64vh);
+  grid-template-rows: auto minmax(40rem, 62vh);
   gap: 1rem;
   background-color: #282b30;
   padding: 1rem;
 }
-.dashboard .intern-container .preview-container, .dashboard-active .intern-container .preview-container {
+.dashboard .intern-container header, .dashboard-active .intern-container header {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+  gap: 1rem;
+}
+.dashboard .intern-container header .preview-container, .dashboard-active .intern-container header .preview-container {
   background-color: #d9d9d9;
   border-radius: 1rem;
   padding: 1rem;
@@ -2265,18 +2271,18 @@ button {
   align-items: center;
   justify-content: center;
 }
-.dashboard .intern-container .preview-container .selects, .dashboard-active .intern-container .preview-container .selects {
+.dashboard .intern-container header .preview-container .selects, .dashboard-active .intern-container header .preview-container .selects {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 0.5rem;
 }
-.dashboard .intern-container .preview-container .selects img, .dashboard-active .intern-container .preview-container .selects img {
+.dashboard .intern-container header .preview-container .selects img, .dashboard-active .intern-container header .preview-container .selects img {
   height: 9rem;
   width: 9rem;
 }
-.dashboard .intern-container .preview-container .selected-intern, .dashboard-active .intern-container .preview-container .selected-intern {
+.dashboard .intern-container header .preview-container .selected-intern, .dashboard-active .intern-container header .preview-container .selected-intern {
   height: 100%;
   width: 100%;
   display: grid;
@@ -2284,33 +2290,33 @@ button {
   gap: 1rem;
   overflow-y: auto;
 }
-.dashboard .intern-container .preview-container .selected-intern > *, .dashboard-active .intern-container .preview-container .selected-intern > * {
+.dashboard .intern-container header .preview-container .selected-intern > *, .dashboard-active .intern-container header .preview-container .selected-intern > * {
   background-color: #fff;
   border-radius: 1rem;
   padding: 1rem;
 }
-.dashboard .intern-container .preview-container .selected-intern img, .dashboard-active .intern-container .preview-container .selected-intern img {
+.dashboard .intern-container header .preview-container .selected-intern img, .dashboard-active .intern-container header .preview-container .selected-intern img {
   height: 12rem;
   margin: auto;
   width: 12rem;
 }
-.dashboard .intern-container .navigation, .dashboard-active .intern-container .navigation {
+.dashboard .intern-container header .navigation, .dashboard-active .intern-container header .navigation {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   border: solid 1px #fff;
 }
-.dashboard .intern-container .navigation > *, .dashboard-active .intern-container .navigation > * {
+.dashboard .intern-container header .navigation > *, .dashboard-active .intern-container header .navigation > * {
   padding: 0.5rem;
 }
-.dashboard .intern-container .navigation .left-side, .dashboard-active .intern-container .navigation .left-side {
+.dashboard .intern-container header .navigation .left-side, .dashboard-active .intern-container header .navigation .left-side {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   gap: 1rem;
   border-right: 1px solid #fff;
 }
-.dashboard .intern-container .navigation .left-side button, .dashboard-active .intern-container .navigation .left-side button {
+.dashboard .intern-container header .navigation .left-side button, .dashboard-active .intern-container header .navigation .left-side button {
   cursor: pointer;
   height: 4rem;
   display: flex;
@@ -2326,18 +2332,18 @@ button {
   transition: all 0.3s ease-in-out;
   font-weight: 600;
 }
-.dashboard .intern-container .navigation .left-side button:hover, .dashboard-active .intern-container .navigation .left-side button:hover {
+.dashboard .intern-container header .navigation .left-side button:hover, .dashboard-active .intern-container header .navigation .left-side button:hover {
   background-color: #00adb5;
   color: #fff;
   border: solid 1px #00adb5;
 }
-.dashboard .intern-container .navigation .right-side, .dashboard-active .intern-container .navigation .right-side {
+.dashboard .intern-container header .navigation .right-side, .dashboard-active .intern-container header .navigation .right-side {
   display: flex;
   align-items: center;
   justify-content: center;
   border-left: 1px solid #fff;
 }
-.dashboard .intern-container .navigation .right-side form, .dashboard-active .intern-container .navigation .right-side form {
+.dashboard .intern-container header .navigation .right-side form, .dashboard-active .intern-container header .navigation .right-side form {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2346,14 +2352,14 @@ button {
   border-radius: 2rem;
   padding: 0 1.5rem;
 }
-.dashboard .intern-container .navigation .right-side form span, .dashboard-active .intern-container .navigation .right-side form span {
+.dashboard .intern-container header .navigation .right-side form span, .dashboard-active .intern-container header .navigation .right-side form span {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
   cursor: pointer;
 }
-.dashboard .intern-container .navigation .right-side form input, .dashboard-active .intern-container .navigation .right-side form input {
+.dashboard .intern-container header .navigation .right-side form input, .dashboard-active .intern-container header .navigation .right-side form input {
   width: 100%;
   background: transparent;
   padding: 1rem;
@@ -2473,22 +2479,76 @@ button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50rem;
+  width: 45rem;
   height: 40rem;
   background-color: #fff;
   border: solid 1px #000;
   border-radius: 1rem;
 }
+.dashboard .intern-container .sort, .dashboard-active .intern-container .sort,
+.dashboard .intern-container .filter,
+.dashboard-active .intern-container .filter {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background-color: #d9d9d9;
+  gap: 1rem;
+}
+.dashboard .intern-container .sort form, .dashboard-active .intern-container .sort form,
+.dashboard .intern-container .filter form,
+.dashboard-active .intern-container .filter form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  border: solid 1px #000;
+  background-color: #fff;
+}
+.dashboard .intern-container .btn-close, .dashboard-active .intern-container .btn-close {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-right: 1px solid #fff;
+}
+.dashboard .intern-container .btn-close button, .dashboard-active .intern-container .btn-close button {
+  cursor: pointer;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0rem 2rem;
+  border-radius: 1rem;
+  border: solid 1px transparent;
+  background-color: #0d7377;
+  color: #f1faee;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.dashboard .intern-container .btn-close button:hover, .dashboard-active .intern-container .btn-close button:hover {
+  background-color: #00adb5;
+  border-radius: 0;
+  color: #fff;
+  border: solid 1px #00adb5;
+}
+.dashboard .intern-container .sort form > *, .dashboard-active .intern-container .sort form > * {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 1rem;
+  font-size: 2rem;
+}
+.dashboard .intern-container .sort form > * > *, .dashboard-active .intern-container .sort form > * > * {
+  display: flex;
+  gap: 1rem;
+}
 @media screen and (max-width: 1030px) {
   .dashboard .intern-container, .dashboard-active .intern-container {
-    grid-template-rows: minmax(29rem, auto) auto minmax(29rem, 48vh);
+    grid-template-rows: auto minmax(35rem, 47vh);
   }
-  .dashboard .intern-container .preview-container .selected-intern, .dashboard-active .intern-container .preview-container .selected-intern {
+  .dashboard .intern-container header .preview-container .selected-intern, .dashboard-active .intern-container header .preview-container .selected-intern {
     grid-template-columns: 15rem auto;
     grid-template-rows: 1fr 1fr;
     gap: 0.5rem;
   }
-  .dashboard .intern-container .preview-container .selected-intern img, .dashboard-active .intern-container .preview-container .selected-intern img {
+  .dashboard .intern-container header .preview-container .selected-intern img, .dashboard-active .intern-container header .preview-container .selected-intern img {
     grid-column: 1/2;
     grid-row: 1/3;
     height: 15rem;
@@ -2500,27 +2560,27 @@ button {
     grid-template-columns: 1fr;
     grid-auto-rows: 14rem;
   }
-}
-@media screen and (max-width: 750px) {
-  .dashboard .intern-container .preview-container .selected-intern, .dashboard-active .intern-container .preview-container .selected-intern {
-    grid-template-columns: 12rem auto;
-  }
-  .dashboard .intern-container .preview-container .selected-intern > *, .dashboard-active .intern-container .preview-container .selected-intern > * {
+  .dashboard .intern-container header .preview-container .selected-intern > *, .dashboard-active .intern-container header .preview-container .selected-intern > * {
     font-size: 1.6rem;
   }
-  .dashboard .intern-container .preview-container .selected-intern img, .dashboard-active .intern-container .preview-container .selected-intern img {
+}
+@media screen and (max-width: 750px) {
+  .dashboard .intern-container header .preview-container .selected-intern, .dashboard-active .intern-container header .preview-container .selected-intern {
+    grid-template-columns: 12rem auto;
+  }
+  .dashboard .intern-container header .preview-container .selected-intern img, .dashboard-active .intern-container header .preview-container .selected-intern img {
     height: 12rem;
     width: 12rem;
   }
 }
 @media screen and (max-width: 600px) {
   .dashboard .intern-container, .dashboard-active .intern-container {
-    grid-template-rows: minmax(28rem, auto) auto minmax(25rem, 40vh);
+    grid-template-rows: auto minmax(25rem, 35vh);
   }
-  .dashboard .intern-container .preview-container .selected-intern, .dashboard-active .intern-container .preview-container .selected-intern {
+  .dashboard .intern-container header .preview-container .selected-intern, .dashboard-active .intern-container header .preview-container .selected-intern {
     grid-template-columns: auto;
   }
-  .dashboard .intern-container .preview-container .selected-intern img, .dashboard-active .intern-container .preview-container .selected-intern img {
+  .dashboard .intern-container header .preview-container .selected-intern img, .dashboard-active .intern-container header .preview-container .selected-intern img {
     display: none;
   }
 }
@@ -2550,8 +2610,45 @@ button {
   .dashboard .intern-container .interns-active, .dashboard-active .intern-container .interns-active {
     grid-auto-rows: 12rem;
   }
+  .dashboard .intern-container .modal, .dashboard-active .intern-container .modal {
+    width: 100%;
+  }
+  .dashboard .intern-container .sort, .dashboard-active .intern-container .sort,
+  .dashboard .intern-container .filter,
+  .dashboard-active .intern-container .filter {
+    gap: 0.5rem;
+  }
+  .dashboard .intern-container .sort h3, .dashboard-active .intern-container .sort h3,
+  .dashboard .intern-container .filter h3,
+  .dashboard-active .intern-container .filter h3 {
+    font-size: 2.1rem;
+  }
+  .dashboard .intern-container .sort form, .dashboard-active .intern-container .sort form,
+  .dashboard .intern-container .filter form,
+  .dashboard-active .intern-container .filter form {
+    gap: 0.5rem;
+  }
+  .dashboard .intern-container .sort, .dashboard-active .intern-container .sort {
+    height: 35rem;
+  }
+  .dashboard .intern-container .sort form > *, .dashboard-active .intern-container .sort form > * {
+    gap: 0.5rem;
+    font-size: 1.8rem;
+  }
+  .dashboard .intern-container .sort form > * > *, .dashboard-active .intern-container .sort form > * > * {
+    gap: 0.5rem;
+  }
+  .dashboard .intern-container .sort .btn-close button, .dashboard-active .intern-container .sort .btn-close button {
+    height: 3.5rem;
+  }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 375px) {
+  .dashboard .intern-container, .dashboard-active .intern-container {
+    grid-template-rows: auto minmax(25rem, 30vh);
+  }
+  .dashboard .intern-container header, .dashboard-active .intern-container header {
+    grid-template-rows: minmax(15rem, 32vh) auto;
+  }
   .dashboard .intern-container .interns .intern, .dashboard-active .intern-container .interns .intern {
     grid-template-columns: auto;
   }
@@ -3158,7 +3255,7 @@ button {
 }
 .dashboard .internship-container .add-modal, .dashboard-active .internship-container .add-modal, .dashboard .internship-container .edit-modal, .dashboard-active .internship-container .edit-modal {
   width: 75rem;
-  min-height: 75rem;
+  height: 80%;
   display: flex;
   background-color: #d9d9d9;
 }
@@ -3480,16 +3577,13 @@ button {
   border-radius: 0;
   background-color: #00adb5;
 }
-@media screen and (max-width: 1500px) {
-  .dashboard .internship-container .content, .dashboard-active .internship-container .content {
-    justify-content: center;
-  }
-}
-@media screen and (max-width: 1030px) {
+@media screen and (max-width: 1150px) {
   .dashboard .internship-container .content, .dashboard-active .internship-container .content {
     grid-template-columns: 1fr;
     grid-auto-rows: 14rem;
   }
+}
+@media screen and (max-width: 1030px) {
   .dashboard .internship-container .content .internship, .dashboard-active .internship-container .content .internship {
     grid-template-columns: 13rem 1fr;
   }
@@ -4288,16 +4382,10 @@ button {
 }
 .dashboard .monitor-attendance, .dashboard-active .monitor-attendance {
   display: grid;
-  padding: 2rem;
   gap: 1rem;
   border-radius: 1rem;
-  grid-template-rows: 10vh 10vh 72vh;
+  grid-template-rows: auto minmax(45rem, 78vh);
   color: #fff;
-}
-.dashboard .monitor-attendance > *, .dashboard-active .monitor-attendance > * {
-  background-color: #212121;
-  border-radius: 1rem;
-  padding: 1rem;
 }
 .dashboard .monitor-attendance button, .dashboard-active .monitor-attendance button {
   background-color: #fff;
@@ -4324,20 +4412,30 @@ button {
   border-radius: 1rem;
   color: #fff;
 }
-.dashboard .monitor-attendance .mid, .dashboard-active .monitor-attendance .mid {
+.dashboard .monitor-attendance header, .dashboard-active .monitor-attendance header {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
   gap: 1rem;
 }
-.dashboard .monitor-attendance .mid > *, .dashboard-active .monitor-attendance .mid > * {
-  border: solid 1px #fff;
+.dashboard .monitor-attendance header > *, .dashboard-active .monitor-attendance header > * {
+  display: flex;
+  background-color: #282b30;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
 }
-.dashboard .monitor-attendance .mid .btn-container, .dashboard-active .monitor-attendance .mid .btn-container {
+.dashboard .monitor-attendance header .top, .dashboard-active .monitor-attendance header .top {
+  align-items: center;
+}
+.dashboard .monitor-attendance header .mid, .dashboard-active .monitor-attendance header .mid {
+  justify-content: space-between;
+}
+.dashboard .monitor-attendance header .mid .btn-container, .dashboard-active .monitor-attendance header .mid .btn-container {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
-.dashboard .monitor-attendance .mid .date-container, .dashboard-active .monitor-attendance .mid .date-container {
+.dashboard .monitor-attendance header .mid .date-container, .dashboard-active .monitor-attendance header .mid .date-container {
   display: flex;
   align-items: center;
 }
@@ -4345,6 +4443,9 @@ button {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  background-color: #282b30;
+  padding: 1rem;
+  border-radius: 1rem;
 }
 .dashboard .monitor-attendance .display .content, .dashboard-active .monitor-attendance .display .content {
   display: grid;
@@ -4354,16 +4455,13 @@ button {
   overflow-y: auto;
 }
 .dashboard .monitor-attendance .display .content .day-attendance, .dashboard-active .monitor-attendance .display .content .day-attendance {
-  background-color: #fff;
+  background-color: #d9d9d9;
   border-radius: 1rem;
   display: grid;
   grid-template-columns: 10rem auto;
   gap: 1rem;
   padding: 1rem;
   color: #000;
-}
-.dashboard .monitor-attendance .display .content .day-attendance > *, .dashboard-active .monitor-attendance .display .content .day-attendance > * {
-  background-color: #fff;
 }
 .dashboard .monitor-attendance .display .content .day-attendance .left, .dashboard-active .monitor-attendance .display .content .day-attendance .left {
   display: flex;
@@ -4382,6 +4480,20 @@ button {
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   border-radius: 1rem;
+  background-color: #fff;
+}
+.dashboard .monitor-attendance .display .content .day-attendance .right .second, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.dashboard .monitor-attendance .display .content .day-attendance .right .second button, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second button {
+  padding: 1.5rem;
+  background-color: #d9d9d9;
+}
+.dashboard .monitor-attendance .display .content .day-attendance .right .second button:hover, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second button:hover {
+  background-color: #0d7377;
 }
 .dashboard .monitor-attendance .display .content .day-attendance .right > *, .dashboard-active .monitor-attendance .display .content .day-attendance .right > * {
   padding: 0.5rem;
@@ -4415,9 +4527,6 @@ button {
   border: solid 1px #000;
   border-radius: 1rem;
 }
-.dashboard .monitor-attendance .modal > *, .dashboard-active .monitor-attendance .modal > * {
-  border: solid 1px #000;
-}
 .dashboard .monitor-attendance .modal .btn-controllers, .dashboard-active .monitor-attendance .modal .btn-controllers {
   display: flex;
   gap: 1rem;
@@ -4428,6 +4537,7 @@ button {
   background-color: #0d7377;
   border: solid 2px transparent;
   color: #fff;
+  height: 4rem;
 }
 .dashboard .monitor-attendance .modal .btn-controllers button:hover, .dashboard-active .monitor-attendance .modal .btn-controllers button:hover {
   color: #0d7377;
@@ -4441,6 +4551,138 @@ button {
   color: #e63946;
   background-color: #fff;
   border: solid 2px #e63946;
+}
+.dashboard .monitor-attendance .sort, .dashboard-active .monitor-attendance .sort {
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+.dashboard .monitor-attendance .sort .sort-div, .dashboard-active .monitor-attendance .sort .sort-div {
+  padding: 1rem;
+  border: solid 1px #000;
+}
+.dashboard .monitor-attendance .sort .close-btn, .dashboard-active .monitor-attendance .sort .close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dashboard .monitor-attendance .sort .close-btn button, .dashboard-active .monitor-attendance .sort .close-btn button {
+  background-color: #0d7377;
+  color: #fff;
+  height: 4rem;
+  border: none;
+}
+.dashboard .monitor-attendance .sort .close-btn button:hover, .dashboard-active .monitor-attendance .sort .close-btn button:hover {
+  color: #0d7377;
+  background-color: #fff;
+  border: solid 1px #0d7377;
+}
+.dashboard .monitor-attendance .filter .inputs-container, .dashboard-active .monitor-attendance .filter .inputs-container {
+  padding: 1rem;
+  border: solid 1px #000;
+}
+.dashboard .monitor-attendance .more-details, .dashboard-active .monitor-attendance .more-details {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 1rem;
+  height: 70rem;
+  width: 80rem;
+  overflow-y: auto;
+}
+.dashboard .monitor-attendance .more-details .details, .dashboard-active .monitor-attendance .more-details .details {
+  display: flex;
+  flex-direction: column;
+}
+.dashboard .monitor-attendance .more-details .details .time-in, .dashboard-active .monitor-attendance .more-details .details .time-in,
+.dashboard .monitor-attendance .more-details .details .time-out,
+.dashboard-active .monitor-attendance .more-details .details .time-out {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.dashboard .monitor-attendance .more-details .details img, .dashboard-active .monitor-attendance .more-details .details img {
+  height: 30rem;
+  width: 30rem;
+}
+.dashboard .monitor-attendance .more-details .btn-controller, .dashboard-active .monitor-attendance .more-details .btn-controller {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dashboard .monitor-attendance .more-details .btn-controller button, .dashboard-active .monitor-attendance .more-details .btn-controller button {
+  background-color: #d9d9d9;
+}
+@media screen and (max-width: 1030px) {
+  .dashboard .monitor-attendance, .dashboard-active .monitor-attendance {
+    grid-template-rows: auto minmax(40rem, 74vh);
+  }
+}
+@media screen and (max-width: 750px) {
+  .dashboard .monitor-attendance, .dashboard-active .monitor-attendance {
+    grid-template-rows: auto minmax(40rem, 72vh);
+  }
+  .dashboard .monitor-attendance .display .content, .dashboard-active .monitor-attendance .display .content {
+    grid-auto-rows: auto;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance .right, .dashboard-active .monitor-attendance .display .content .day-attendance .right {
+    grid-template-columns: auto;
+    grid-template-rows: repeat(2, auto);
+    gap: 0;
+    padding: 0.5rem;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance .right > *, .dashboard-active .monitor-attendance .display .content .day-attendance .right > * {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  .dashboard .monitor-attendance, .dashboard-active .monitor-attendance {
+    grid-template-rows: auto minmax(35rem, 62vh);
+  }
+  .dashboard .monitor-attendance .modal, .dashboard-active .monitor-attendance .modal {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .dashboard .monitor-attendance, .dashboard-active .monitor-attendance {
+    grid-template-rows: auto minmax(35rem, 60vh);
+  }
+  .dashboard .monitor-attendance button, .dashboard-active .monitor-attendance button {
+    height: 3.5rem;
+  }
+  .dashboard .monitor-attendance header .top, .dashboard-active .monitor-attendance header .top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  .dashboard .monitor-attendance header .mid, .dashboard-active .monitor-attendance header .mid {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+  .dashboard .monitor-attendance header .mid:nth-child(1), .dashboard-active .monitor-attendance header .mid:nth-child(1) {
+    grid-row: 1/2;
+  }
+  .dashboard .monitor-attendance header .mid > *, .dashboard-active .monitor-attendance header .mid > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance, .dashboard-active .monitor-attendance .display .content .day-attendance {
+    grid-template-columns: 1fr;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance .left, .dashboard-active .monitor-attendance .display .content .day-attendance .left {
+    display: none;
+  }
+}
+@media screen and (max-width: 400px) {
+  .dashboard .monitor-attendance, .dashboard-active .monitor-attendance {
+    grid-template-rows: auto minmax(35rem, 59vh);
+  }
 }
 .dashboard .admin-document-page, .dashboard-active .admin-document-page {
   display: grid;
@@ -6419,6 +6661,7 @@ button {
     width: 20rem;
   }
 }
+/** @format */
 .internship-container-intern {
   display: grid;
   grid-template-rows: repeat(2, minmax(7rem, auto)) minmax(30rem, 75.5vh);
@@ -6687,6 +6930,8 @@ button {
 .internship-container-intern .view-modal .close-btn {
   grid-column: 1/4;
   margin: auto;
+  display: flex;
+  gap: 1rem;
 }
 .internship-container-intern .view-modal .close-btn button {
   border-radius: 1rem;
@@ -6699,16 +6944,13 @@ button {
   background-color: #00adb5;
 }
 
-@media screen and (max-width: 1500px) {
-  .internship-container-intern .content {
-    justify-content: center;
+@media screen and (max-width: 1150px) {
+  .internship-container .content {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 14rem;
   }
 }
 @media screen and (max-width: 1030px) {
-  .internship-container-intern .content {
-    grid-template-columns: 1fr;
-    grid-auto-rows: auto;
-  }
   .internship-container-intern .content .internship {
     grid-template-columns: 13rem 1fr;
   }
@@ -7027,7 +7269,7 @@ button {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: minmax(16rem, auto) auto minmax(40rem, 63vh);
+  grid-template-rows: auto minmax(40rem, 63vh);
   padding: 1rem;
   gap: 1rem;
 }
@@ -7210,15 +7452,16 @@ button {
   flex-direction: column;
   text-align: center;
 }
-.daily-time-record .attendance-absent .absent-top h1 {
-  color: #e63946;
-  margin-top: -4rem;
-  padding: 0 0 0 1rem;
-}
 .daily-time-record .attendance-absent .btn-close {
   display: none;
 }
-.daily-time-record .user {
+.daily-time-record header {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+  gap: 1rem;
+}
+.daily-time-record header .user {
   display: grid;
   gap: 1.5rem;
   grid-template-columns: 12rem auto;
@@ -7228,10 +7471,11 @@ button {
   align-items: center;
   background-color: #282b30;
 }
-.daily-time-record .user .text {
+.daily-time-record header .user .text {
   display: grid;
   grid-template-columns: repeat(2, auto);
   height: 100%;
+  gap: 1rem;
   align-items: center;
   background-color: #40454d;
   border-radius: 2rem;
@@ -7239,16 +7483,16 @@ button {
   overflow-y: auto;
   font-size: 1.5rem;
 }
-.daily-time-record .user .text > *:nth-child(4) {
+.daily-time-record header .user .text > *:nth-child(4) {
   grid-column: 1/2;
   grid-row: 2/3;
 }
-.daily-time-record .user .text p,
-.daily-time-record .user .text h4 {
+.daily-time-record header .user .text p,
+.daily-time-record header .user .text h4 {
   color: #f1faee;
   font-size: 1.8rem;
 }
-.daily-time-record .user .text .attendance {
+.daily-time-record header .user .text .attendance {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7261,12 +7505,12 @@ button {
   font-size: 1.6rem;
   font-weight: 6000;
 }
-.daily-time-record .user .text .attendance:hover {
+.daily-time-record header .user .text .attendance:hover {
   background-color: #00adb5;
   border-radius: 1rem;
   color: #fff;
 }
-.daily-time-record .user .profile-img {
+.daily-time-record header .user .profile-img {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7274,27 +7518,27 @@ button {
   width: 100%;
   grid-column: 1/2;
 }
-.daily-time-record .user .profile-img img {
+.daily-time-record header .user .profile-img img {
   height: 12rem;
   width: 12rem;
   background-color: #fff;
   border: solid 1px #fff;
   border-radius: 1rem;
 }
-.daily-time-record .mid {
+.daily-time-record header .mid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   background-color: #282b30;
   padding: 1rem;
   border-radius: 1rem;
 }
-.daily-time-record .mid .button-container {
+.daily-time-record header .mid .button-container {
   display: flex;
   align-items: center;
   gap: 1rem;
   padding-left: 3rem;
 }
-.daily-time-record .mid .button-container button {
+.daily-time-record header .mid .button-container button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7308,19 +7552,19 @@ button {
   font-weight: 600;
   cursor: pointer;
 }
-.daily-time-record .mid .button-container button:hover {
+.daily-time-record header .mid .button-container button:hover {
   border-radius: 0;
   background-color: #f1faee;
   color: #0d7377;
   border: solid 1px #0d7377;
 }
-.daily-time-record .mid .button-container button.time-out:hover {
+.daily-time-record header .mid .button-container button.time-out:hover {
   background-color: #e63946;
   color: #fff;
   border-radius: 0;
   border: solid 1px #e63946;
 }
-.daily-time-record .mid .search-box {
+.daily-time-record header .mid .search-box {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7331,14 +7575,14 @@ button {
   padding: 0 1.5rem;
   margin: auto;
 }
-.daily-time-record .mid .search-box span {
+.daily-time-record header .mid .search-box span {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
   cursor: pointer;
 }
-.daily-time-record .mid .search-box input {
+.daily-time-record header .mid .search-box input {
   width: 100%;
   background: transparent;
   padding: 1rem;
@@ -7393,7 +7637,7 @@ button {
 
 @media screen and (max-width: 1030px) {
   .daily-time-record {
-    grid-template-rows: minmax(16rem, auto) auto minmax(30rem, 61vh);
+    grid-template-rows: auto minmax(30rem, 61vh);
   }
   .daily-time-record .no-internship img {
     height: 30rem;
@@ -7401,9 +7645,6 @@ button {
   }
 }
 @media screen and (max-width: 750px) {
-  .daily-time-record {
-    grid-template-rows: minmax(16rem, auto) auto minmax(30rem, 58vh);
-  }
   .daily-time-record .modal {
     width: 58rem;
   }
@@ -7438,24 +7679,24 @@ button {
     height: 30rem;
     width: 30rem;
   }
-  .daily-time-record .user {
+  .daily-time-record header .user {
     grid-template-columns: 10rem auto;
   }
-  .daily-time-record .user .text {
+  .daily-time-record header .user .text {
     padding: 1rem;
   }
-  .daily-time-record .user .text p,
-  .daily-time-record .user .text h4 {
+  .daily-time-record header .user .text p,
+  .daily-time-record header .user .text h4 {
     font-size: 1.7rem;
   }
-  .daily-time-record .user .text > *:nth-child(5) {
+  .daily-time-record header .user .text :last-child(5) {
     grid-column: 1/3;
   }
-  .daily-time-record .user .profile-img img {
+  .daily-time-record header .user .profile-img img {
     height: 10rem;
     width: 10rem;
   }
-  .daily-time-record .mid .button-container button {
+  .daily-time-record header .mid .button-container button {
     height: 3.5rem;
   }
   .daily-time-record .DTR-content {
@@ -7468,13 +7709,16 @@ button {
   }
 }
 @media screen and (max-width: 700px) {
-  .daily-time-record .user .text {
+  .daily-time-record {
+    grid-template-rows: auto minmax(30rem, 53vh);
+  }
+  .daily-time-record header .user .text {
     grid-template-columns: auto;
   }
 }
 @media screen and (max-width: 600px) {
   .daily-time-record {
-    grid-template-rows: minmax(14rem, auto) auto minmax(30rem, 45vh);
+    grid-template-rows: auto minmax(20rem, 45vh);
   }
   .daily-time-record .modal {
     width: 99%;
@@ -7490,17 +7734,17 @@ button {
     height: 28rem;
     width: 28rem;
   }
-  .daily-time-record .user .text {
-    gap: 0.5rem;
+  .daily-time-record header .user .text {
+    gap: 0;
   }
-  .daily-time-record .user .text p,
-  .daily-time-record .user .text h4 {
-    font-size: 1.7rem;
+  .daily-time-record header .user .text p,
+  .daily-time-record header .user .text h4 {
+    font-size: 1.6rem;
   }
 }
 @media screen and (max-width: 500px) {
   .daily-time-record {
-    gap: 0.5rem;
+    grid-template-rows: auto minmax(20rem, 40vh);
   }
   .daily-time-record .modal {
     height: 100%;
@@ -7517,13 +7761,6 @@ button {
   .daily-time-record .time-out .address h3 {
     font-size: 1.7rem;
   }
-  .daily-time-record .time-in .camera img,
-  .daily-time-record .time-in .camera video,
-  .daily-time-record .time-out .camera img,
-  .daily-time-record .time-out .camera video {
-    height: 25rem;
-    width: 25rem;
-  }
   .daily-time-record .attendance-view .upper .attendance-info p {
     font-size: 1.6rem;
   }
@@ -7534,30 +7771,26 @@ button {
     height: 23rem;
     width: 23rem;
   }
-  .daily-time-record .user .profile-img img {
+  .daily-time-record header .user .profile-img img {
     height: 9rem;
     width: 9rem;
   }
-  .daily-time-record .user .text {
-    gap: 0.5rem;
-  }
-  .daily-time-record .user .text h4 {
+  .daily-time-record header .user .text h4 {
     font-size: 1.8rem;
   }
-  .daily-time-record .user .text p {
+  .daily-time-record header .user .text p {
     font-size: 1.6rem;
   }
-  .daily-time-record .mid {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  .daily-time-record header .mid {
+    grid-template-columns: 1fr;
     gap: 0.5rem;
+    padding: 0.5rem;
   }
-  .daily-time-record .mid .button-container {
+  .daily-time-record header .mid .button-container {
     justify-content: center;
     padding: 0;
   }
-  .daily-time-record .mid .button-container button {
+  .daily-time-record header .mid .button-container button {
     height: 3rem;
   }
   .daily-time-record .no-camera {
@@ -7579,27 +7812,37 @@ button {
   }
   .daily-time-record .attendance-absent {
     flex-direction: column;
-    gap: 2rem;
+  }
+  .daily-time-record .attendance-absent img {
+    height: 23rem;
+    width: 23rem;
   }
   .daily-time-record .attendance-absent .btn-close {
     display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .daily-time-record .attendance-absent .btn-close button {
     color: #000;
     border: solid 1px #000;
-    background-color: #fff;
+    background-color: #d9d9d9;
   }
   .daily-time-record .attendance-absent .btn-close button:hover {
-    background-color: #d9d9d9;
-    border: solid 1px #d9d9d9;
+    background-color: #fff;
   }
 }
 @media screen and (max-width: 400px) {
-  .daily-time-record .user {
+  .daily-time-record {
+    grid-template-rows: auto minmax(20rem, 39vh);
+  }
+  .daily-time-record header {
+    grid-template-rows: 1fr 0.5fr;
+  }
+  .daily-time-record header .user {
     padding: 1rem;
     grid-template-columns: auto;
   }
-  .daily-time-record .user .profile-img {
+  .daily-time-record header .user .profile-img {
     display: none;
   }
   .daily-time-record .no-internship img {
@@ -7618,8 +7861,8 @@ button {
   .daily-time-record .time-in .camera video,
   .daily-time-record .time-out .camera img,
   .daily-time-record .time-out .camera video {
-    height: 20rem;
-    width: 20rem;
+    height: 25rem;
+    width: 25rem;
   }
   .daily-time-record .attendance-view .upper .attendance-info p {
     font-size: 1.5rem;
@@ -7635,7 +7878,7 @@ button {
 /** @format */
 .documents-page {
   display: grid;
-  grid-template-rows: 25rem auto;
+  grid-template-rows: minmax(22rem, auto) minmax(40rem, 65vh);
   gap: 2rem;
   border-radius: 1.5rem;
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
@@ -7766,6 +8009,7 @@ button {
   gap: 1rem;
   border-bottom: solid 1px #000;
   border-top: solid 1px #000;
+  overflow: hidden;
 }
 .documents-page .top .drop-file form label .document-preview .details .left {
   display: flex;
@@ -7774,7 +8018,8 @@ button {
   cursor: pointer;
 }
 .documents-page .top .drop-file form label .document-preview .details .left p {
-  word-break: break-all;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   padding: 0.5rem 0.5rem 0.5rem 1rem;
 }
 .documents-page .top .drop-file form label .document-preview .details .left p:hover {
@@ -7965,14 +8210,17 @@ button {
   background-color: #fff;
   z-index: 7;
   border-radius: 1rem;
-  padding: 2rem 1rem;
+  padding: 1rem;
   width: 65rem;
-  height: 93vh;
+  height: 93%;
   overflow: auto;
 }
 .documents-page .sample-view-container img {
   height: 100%;
   width: 100%;
+}
+.documents-page .sample-view-container .btn-close {
+  display: none;
 }
 .documents-page .display {
   display: grid;
@@ -7985,6 +8233,7 @@ button {
   background-color: #282b30;
   overflow: hidden;
   position: relative;
+  overflow-y: auto;
 }
 .documents-page .display .document-intern {
   display: flex;
@@ -8107,6 +8356,9 @@ button {
 }
 
 @media screen and (max-width: 1030px) {
+  .documents-page {
+    grid-template-rows: minmax(22rem, auto) minmax(40rem, 62vh);
+  }
   .documents-page .top {
     grid-template-columns: 1fr 1.7fr;
   }
@@ -8114,7 +8366,6 @@ button {
     font-size: 1.5rem;
   }
   .documents-page .display {
-    justify-content: center;
     padding: 7rem 2rem 2rem 2rem;
   }
   .documents-page .display .status {
@@ -8126,26 +8377,24 @@ button {
 }
 @media screen and (max-width: 850px) {
   .documents-page {
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto minmax(40rem, 57vh);
     gap: 1rem;
   }
   .documents-page .top {
     grid-template-columns: auto;
-    grid-template-rows: 1fr 0.4fr;
+    grid-template-rows: auto 1fr;
     gap: 0.5rem;
   }
   .documents-page .top .selected-document-indicator {
     grid-row: 2/3;
-    width: 80%;
-    margin: auto;
     gap: 0.5rem;
-    padding: 0;
+    padding: 0 2rem;
   }
   .documents-page .top .selected-document-indicator h4 {
     text-align: center;
   }
   .documents-page .top .selected-document-indicator .sub-con {
-    height: 4rem;
+    padding: 1rem;
   }
   .documents-page .top .drop-file {
     grid-row: 1/2;
@@ -8174,7 +8423,27 @@ button {
 @media screen and (max-width: 750px) {
   .documents-page .sample-view-container {
     width: 60rem;
-    height: 90vh;
+  }
+  .documents-page .sample-view-container .btn-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .documents-page .sample-view-container .btn-close button {
+    height: 4.5rem;
+    background-color: #0d7377;
+    border: none;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    transition: all 0.3s linear;
+    font-weight: 600;
+    border-radius: 1rem;
+    color: #fff;
+  }
+  .documents-page .sample-view-container .btn-close button:hover {
+    background-color: #fff;
+    border: solid 2px #0d7377;
+    color: #0d7377;
   }
   .documents-page .required-document {
     width: 40rem;
@@ -8209,30 +8478,7 @@ button {
     text-align: center;
   }
 }
-@media screen and (max-width: 650px) {
-  .documents-page .top .selected-document-indicator h4 {
-    font-size: 1.5rem;
-  }
-  .documents-page .top .selected-document-indicator .sub-con {
-    height: 3rem;
-    font-size: 1.5rem;
-  }
-  .documents-page .top .drop-file form label .document-preview .details .left img {
-    width: 4rem;
-    padding-left: 1rem;
-  }
-  .documents-page .top .drop-file form label .document-preview .details .left p {
-    font-size: 1.2rem;
-  }
-  .documents-page .top .drop-file form label .document-preview .details button {
-    font-size: 1rem;
-  }
-  .documents-page .top .drop-file .drop-file-container .add-icon span {
-    font-size: 2rem;
-  }
-  .documents-page .sample-view-container {
-    width: 55rem;
-  }
+@media screen and (max-width: 700px) {
   .documents-page .display {
     grid-auto-rows: 7rem;
     grid-template-columns: 1fr;
@@ -8244,13 +8490,28 @@ button {
     width: 28rem;
   }
 }
+@media screen and (max-width: 650px) {
+  .documents-page .top .selected-document-indicator .sub-con {
+    font-size: 1.6rem;
+    padding: 0.5rem;
+  }
+  .documents-page .sample-view-container {
+    width: 55rem;
+  }
+}
 @media screen and (max-width: 600px) {
+  .documents-page {
+    grid-template-rows: auto minmax(20rem, 45vh);
+  }
   .documents-page .sample-view-container {
     width: 100%;
-    height: 80vh;
+    height: 100%;
   }
 }
 @media screen and (max-width: 500px) {
+  .documents-page {
+    grid-template-rows: auto minmax(20rem, 44vh);
+  }
   .documents-page .display {
     grid-auto-rows: 6rem;
   }
@@ -8281,9 +8542,176 @@ button {
   display: grid;
   height: 100%;
   width: 100%;
-  border: solid 1px #fff;
   border-radius: 1rem;
+}
+.reports .overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(48, 47, 47, 0.753);
+  position: absolute;
+  filter: blur(20px);
+  top: 0%;
+  left: 0%;
+  z-index: 6;
+}
+.reports .modal {
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 80%;
+  transform: translate(-50%, -50%);
+  border-radius: 1rem;
+  z-index: 7;
+}
+.reports .content {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 1rem;
+}
+.reports .content .button-container {
   background-color: #282b30;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 1rem 1rem 0 0;
+}
+.reports .content .button-container button {
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  border: none;
+  padding: 1rem 2rem;
+  outline: none;
+  font-weight: 500;
+  color: #fff;
+  background-color: #3d4049;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+.reports .content .button-container button span {
+  font-size: 1.8rem;
+  padding: 0.5rem 0.5rem 0;
+}
+.reports .content .button-container button p {
+  font-size: 1.5rem;
+}
+.reports .content .button-container button:hover {
+  background-color: #00adb5;
+  border-radius: 1rem;
+}
+.reports .content .report-container {
+  display: grid;
+  grid-auto-rows: 12rem;
+  grid-template-columns: repeat(auto-fill, 45rem);
+  gap: 1rem;
+  padding: 2rem;
+  background-color: #282b30;
+  border-radius: 1rem;
+  overflow-y: auto;
+}
+.reports .content .report-container .narrative-content {
+  background-color: #fff;
+  display: grid;
+  grid-template-rows: auto 2rem;
+  border-radius: 1rem;
+}
+.reports .content .report-container .narrative-content .sub-container {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+}
+.reports .content .report-container .narrative-content .sub-container > * {
+  background-color: #d9d9d9;
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: center;
+}
+.reports .content .report-container .narrative-content .dropdown-container {
+  background-color: #0d7377;
+  border-radius: 0 0 1rem 1rem;
+  display: grid;
+  grid-template-rows: 0rem 1fr;
+  transition: all 0.3s ease-in-out;
+  border-radius: 0 0 1rem 1rem;
+}
+.reports .content .report-container .narrative-content .dropdown-container .days-container {
+  background-color: #0d7377;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+.reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day {
+  background-color: #d9d9d9;
+  border-radius: 1rem;
+  padding: 1rem;
+  gap: 1rem;
+  display: grid;
+  grid-template-columns: 14rem 1fr 1fr;
+}
+.reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .num-days {
+  background-color: #fff;
+  border-radius: 1rem;
+  text-align: center;
+  padding: 1rem;
+  border: solid 1px #000;
+}
+.reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .status {
+  background-color: #fff;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  border: solid 1px #000;
+}
+.reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container button {
+  background-color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 1rem 1.5rem;
+  transition: all 0.2s linear;
+  font-weight: 600;
+}
+.reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container button:first-child:hover {
+  background-color: #0d7377;
+  color: #fff;
+}
+.reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container button:last-child:hover {
+  background-color: #457b9d;
+  color: #fff;
+}
+.reports .content .report-container .narrative-content .dropdown-container .dropdown-btn {
+  border-radius: 0 0 1rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #fff;
+  cursor: pointer;
+  background-color: #0d7377;
+}
+.reports .content .report-container .narrative-content .dropdown-container .icon {
+  color: #fff;
+}
+.reports .content .report-container .narrative-content .active {
+  grid-template-rows: 52rem 1fr;
+  z-index: 4;
 }
 .reports .sort-modals {
   display: none !important;
@@ -8654,68 +9082,6 @@ button {
 }
 .reports .year-modals .year-container .year-labels-container span:hover {
   background-color: rgba(255, 255, 255, 0.521);
-}
-.reports .content {
-  display: grid;
-  grid-template-rows: 5rem auto;
-  gap: 1rem;
-}
-.reports .content .button-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  background-color: #3d4049;
-  border-radius: 1rem 1rem 0 0;
-}
-.reports .content .button-container button {
-  height: 4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  border: none;
-  padding: 1rem 2rem;
-  outline: none;
-  font-weight: 500;
-  color: #fff;
-  background-color: #3d4049;
-  transition: all 0.3s linear;
-  cursor: pointer;
-}
-.reports .content .button-container button span {
-  font-size: 1.8rem;
-  padding: 0.5rem 0.5rem 0;
-}
-.reports .content .button-container button p {
-  font-size: 1.5rem;
-}
-.reports .content .button-container button:hover {
-  background-color: #00adb5;
-  border-radius: 1rem;
-}
-.reports .content .report-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 35rem);
-  grid-auto-rows: 12rem;
-  gap: 1rem;
-  padding: 2rem;
-}
-.reports .content .report-content .narrative-content {
-  display: grid;
-  grid-template-columns: 0.5fr 1fr;
-  grid-template-rows: 10rem 2rem;
-  gap: 1rem;
-  background-color: #fff;
-  border-radius: 1rem;
-  padding: 1rem;
-}
-.reports .content .report-content .narrative-content .weeks,
-.reports .content .report-content .narrative-content .weeks-count {
-  padding: 1rem;
-  border-radius: 1rem;
-  background-color: #d9d9d9;
-  text-align: center;
 }
 
 .page-not-found {
