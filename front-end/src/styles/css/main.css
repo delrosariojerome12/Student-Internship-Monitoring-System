@@ -8029,9 +8029,155 @@ button {
   display: grid;
   height: 100%;
   width: 100%;
-  border: solid 1px #fff;
   border-radius: 1rem;
+}
+.reports .content {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 1rem;
+}
+.reports .content .button-container {
   background-color: #282b30;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 1rem 1rem 0 0;
+}
+.reports .content .button-container button {
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  border: none;
+  padding: 1rem 2rem;
+  outline: none;
+  font-weight: 500;
+  color: #fff;
+  background-color: #3d4049;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+.reports .content .button-container button span {
+  font-size: 1.8rem;
+  padding: 0.5rem 0.5rem 0;
+}
+.reports .content .button-container button p {
+  font-size: 1.5rem;
+}
+.reports .content .button-container button:hover {
+  background-color: #00adb5;
+  border-radius: 1rem;
+}
+.reports .content .report-container {
+  display: grid;
+  grid-auto-rows: 12rem;
+  grid-template-columns: repeat(auto-fill, 46rem);
+  gap: 1rem;
+  padding: 2rem;
+  background-color: #282b30;
+  border-radius: 1rem;
+  overflow-y: auto;
+}
+.reports .content .report-container .narrative-content {
+  background-color: #fff;
+  display: grid;
+  grid-template-rows: auto 2rem;
+  border-radius: 1rem;
+}
+.reports .content .report-container .narrative-content .sub-container {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+}
+.reports .content .report-container .narrative-content .sub-container > * {
+  background-color: #d9d9d9;
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: center;
+}
+.reports .content .report-container .narrative-content .dropdown-container {
+  background-color: #0d7377;
+  border-radius: 0 0 1rem 1rem;
+  display: grid;
+  grid-template-rows: 0rem 1fr;
+  transition: all 0.3s ease-in-out;
+  border-radius: 0 0 1rem 1rem;
+}
+.reports .content .report-container .narrative-content .dropdown-container .days-container {
+  background-color: #0d7377;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+.reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day {
+  background-color: #d9d9d9;
+  border-radius: 1rem;
+  padding: 1rem;
+  gap: 1rem;
+  display: grid;
+  grid-template-columns: 14rem 1fr 1fr;
+}
+.reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .num-days {
+  background-color: #fff;
+  border-radius: 1rem;
+  text-align: center;
+  padding: 1rem;
+  border: solid 1px #000;
+}
+.reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .status {
+  background-color: #fff;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  border: solid 1px #000;
+}
+.reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container button {
+  background-color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  transition: all 0.2s linear;
+  font-weight: 600;
+}
+.reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container button:first-child:hover {
+  background-color: #0d7377;
+  color: #fff;
+}
+.reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container button:last-child:hover {
+  background-color: #457b9d;
+  color: #fff;
+}
+.reports .content .report-container .narrative-content .dropdown-container .dropdown-btn {
+  border-radius: 0 0 1rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #fff;
+  cursor: pointer;
+  background-color: #0d7377;
+}
+.reports .content .report-container .narrative-content .dropdown-container .icon {
+  color: #fff;
+}
+.reports .content .report-container .narrative-content .active {
+  grid-template-rows: 52rem 1fr;
+  z-index: 5;
 }
 .reports .sort-modals {
   display: none !important;
@@ -8402,68 +8548,6 @@ button {
 }
 .reports .year-modals .year-container .year-labels-container span:hover {
   background-color: rgba(255, 255, 255, 0.521);
-}
-.reports .content {
-  display: grid;
-  grid-template-rows: 5rem auto;
-  gap: 1rem;
-}
-.reports .content .button-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  background-color: #3d4049;
-  border-radius: 1rem 1rem 0 0;
-}
-.reports .content .button-container button {
-  height: 4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  border: none;
-  padding: 1rem 2rem;
-  outline: none;
-  font-weight: 500;
-  color: #fff;
-  background-color: #3d4049;
-  transition: all 0.3s linear;
-  cursor: pointer;
-}
-.reports .content .button-container button span {
-  font-size: 1.8rem;
-  padding: 0.5rem 0.5rem 0;
-}
-.reports .content .button-container button p {
-  font-size: 1.5rem;
-}
-.reports .content .button-container button:hover {
-  background-color: #00adb5;
-  border-radius: 1rem;
-}
-.reports .content .report-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 35rem);
-  grid-auto-rows: 12rem;
-  gap: 1rem;
-  padding: 2rem;
-}
-.reports .content .report-content .narrative-content {
-  display: grid;
-  grid-template-columns: 0.5fr 1fr;
-  grid-template-rows: 10rem 2rem;
-  gap: 1rem;
-  background-color: #fff;
-  border-radius: 1rem;
-  padding: 1rem;
-}
-.reports .content .report-content .narrative-content .weeks,
-.reports .content .report-content .narrative-content .weeks-count {
-  padding: 1rem;
-  border-radius: 1rem;
-  background-color: #d9d9d9;
-  text-align: center;
 }
 
 .page-not-found {

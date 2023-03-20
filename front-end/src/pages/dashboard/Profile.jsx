@@ -58,11 +58,11 @@ const Profile = React.memo(() => {
       <div className="profile-user">
         <div
           className="profile-bg"
-          style={{
-            background:
-              "url(https://cdn.discordapp.com/attachments/1073177186758041610/1083331391414087690/289776510_551525149810290_8984060531240545908_n.jpg) no-repeat center",
-            backgroundSize: "cover",
-          }}
+          // style={{
+          //   background:
+          //     "url(https://cdn.discordapp.com/attachments/1073177186758041610/1083331391414087690/289776510_551525149810290_8984060531240545908_n.jpg) no-repeat center",
+          //   backgroundSize: "cover",
+          // }}
         ></div>
         <div className="profile-details">
           <div className="profile-img">

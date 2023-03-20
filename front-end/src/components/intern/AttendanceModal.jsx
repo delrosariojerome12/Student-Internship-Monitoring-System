@@ -1,13 +1,11 @@
-/** @format */
-
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { handleViewToday } from "../../features/interns/attendanceReducer";
+import {useSelector, useDispatch} from "react-redux";
+import {handleViewToday} from "../../features/interns/attendanceReducer";
 import absent from "../../assets/img/absent.svg";
-import { FaRegFrownOpen } from "react-icons/fa";
+import {FaRegFrownOpen} from "react-icons/fa";
 const AttendanceModal = React.memo(() => {
-  const { selectedAttendance } = useSelector((state) => state.attendance);
-  const { user } = useSelector((state) => state.user);
+  const {selectedAttendance} = useSelector((state) => state.attendance);
+  const {user} = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const {
@@ -29,7 +27,8 @@ const AttendanceModal = React.memo(() => {
       <>
         <div
           className="overlay"
-          onClick={() => dispatch(handleViewToday())}></div>
+          onClick={() => dispatch(handleViewToday())}
+        ></div>
 
         <div className="attendance-absent modal">
           <div className="absent-top">
@@ -42,7 +41,8 @@ const AttendanceModal = React.memo(() => {
           <div className="btn-close">
             <button
               className="close"
-              onClick={() => dispatch(handleViewToday())}>
+              onClick={() => dispatch(handleViewToday())}
+            >
               Close
             </button>
           </div>
@@ -54,7 +54,8 @@ const AttendanceModal = React.memo(() => {
     <>
       <div
         className="overlay"
-        onClick={() => dispatch(handleViewToday())}></div>
+        onClick={() => dispatch(handleViewToday())}
+      ></div>
       <div className="attendance-view modal">
         <div className="upper">
           <div className="attendance-info">

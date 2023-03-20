@@ -1,10 +1,12 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {FaSortAmountUp, FaRegCalendarCheck, FaFilter} from "react-icons/fa";
 import {useSelector, useDispatch} from "react-redux";
 import {getAllNarrative} from "../../features/interns/narrativeReducer";
-import ReportContent from "../../components/intern/ReportContent";
+import ReportContent from "../../components/intern/NarrativeContent";
 import Bouncing from "../../components/loading/Bouncing";
 import ServerError from "../serverError";
+import _ from "lodash";
+
 import {
   MdOutlineArrowForwardIos,
   MdOutlineArrowBackIosNew,
@@ -22,6 +24,8 @@ const Reports = React.memo(() => {
 
   const dispatch = useDispatch();
 
+  const [selected, setSelected] = useState(null);
+
   useEffect(() => {
     dispatch(getAllNarrative({email}));
   }, []);
@@ -34,15 +38,52 @@ const Reports = React.memo(() => {
     return <ServerError />;
   }
 
+  const handleSelect = (value) => {
+    setSelected(value);
+  };
+
   const renderNarrative = () => {
-    return allNarrative.map((item, index) => {
-      return <ReportContent report={item} key={index} />;
+    const groupNarrative = _.chunk(allNarrative, 5);
+    return groupNarrative.map((item, index) => {
+      return (
+        <ReportContent
+          report={item}
+          key={index}
+          week={index}
+          selected={selected}
+          handleSelect={handleSelect}
+        />
+      );
     });
   };
 
   return (
     <section className="reports">
-      <div className="sort-modals">
+      <div className="content">
+        <div className="button-container">
+          <button className="sort">
+            <span>
+              <FaSortAmountUp />
+            </span>
+            <p>Sort</p>
+          </button>
+          <button className="status">
+            <span>
+              <FaRegCalendarCheck />
+            </span>
+            <p>Status</p>
+          </button>
+          <button className="filters">
+            <span>
+              <FaFilter />
+            </span>
+            <p>Filters</p>
+          </button>
+        </div>
+        <div className="report-container">{renderNarrative()}</div>
+      </div>
+
+      {/* <div className="sort-modals">
         <h3>Sort by</h3>
         <div className="modals-sorting">
           <div className="day">
@@ -303,30 +344,7 @@ const Reports = React.memo(() => {
             </span>
           </div>
         </div>
-      </div>
-      <div className="content">
-        <div className="button-container">
-          <button className="sort">
-            <span>
-              <FaSortAmountUp />
-            </span>
-            <p>Sort</p>
-          </button>
-          <button className="status">
-            <span>
-              <FaRegCalendarCheck />
-            </span>
-            <p>Status</p>
-          </button>
-          <button className="filters">
-            <span>
-              <FaFilter />
-            </span>
-            <p>Filters</p>
-          </button>
-        </div>
-        <div className="report-content">{renderNarrative()}</div>
-      </div>
+      </div> */}
     </section>
   );
 });
