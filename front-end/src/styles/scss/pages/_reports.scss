@@ -9,6 +9,28 @@
   width: 100%;
   border-radius: 1rem;
 
+  .overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(48, 47, 47, 0.753);
+    position: absolute;
+    filter: blur(20px);
+    top: 0%;
+    left: 0%;
+    z-index: 6;
+  }
+  .modal {
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 80%;
+    transform: translate(-50%, -50%);
+    border-radius: 1rem;
+    z-index: 7;
+  }
+
   .content {
     display: grid;
     grid-template-rows: auto 1fr;
@@ -51,8 +73,7 @@
     .report-container {
       display: grid;
       grid-auto-rows: 12rem;
-      grid-template-columns: repeat(auto-fill, 46rem);
-      // display: flex;
+      grid-template-columns: repeat(auto-fill, 45rem);
       gap: 1rem;
       padding: 2rem;
       background-color: #282b30;
@@ -124,7 +145,7 @@
                   border: none;
                   outline: none;
                   cursor: pointer;
-                  padding: 1rem 2rem;
+                  padding: 1rem 1.5rem;
                   transition: all 0.2s linear;
                   font-weight: 600;
                   &:first-child:hover {
@@ -153,7 +174,7 @@
         }
         .active {
           grid-template-rows: 52rem 1fr;
-          z-index: 5;
+          z-index: 4;
         }
       }
     }

@@ -8,6 +8,16 @@ import ServerError from "../serverError";
 import _ from "lodash";
 
 import {
+  handleAddModal,
+  handleEditModal,
+  handleViewModal,
+} from "../../features/interns/narrativeReducer";
+
+import AddModal from "../../components/intern/profile/AddModal";
+import EditModal from "../../components/intern/profile/EditModal";
+import ViewModal from "../../components/intern/profile/ViewModal";
+
+import {
   MdOutlineArrowForwardIos,
   MdOutlineArrowBackIosNew,
 } from "react-icons/md";
@@ -18,13 +28,18 @@ const Reports = React.memo(() => {
       user: {email},
     },
   } = useSelector((state) => state.user);
-  const {allNarrative, isError, isLoading} = useSelector(
-    (state) => state.narrative
-  );
+
+  const {
+    allNarrative,
+    isError,
+    isLoading,
+    isAddModalOpen,
+    isEditModalOpen,
+    isViewModalOpen,
+    selectedDay,
+  } = useSelector((state) => state.narrative);
 
   const dispatch = useDispatch();
-
-  const [selected, setSelected] = useState(null);
 
   useEffect(() => {
     dispatch(getAllNarrative({email}));
@@ -38,22 +53,10 @@ const Reports = React.memo(() => {
     return <ServerError />;
   }
 
-  const handleSelect = (value) => {
-    setSelected(value);
-  };
-
   const renderNarrative = () => {
     const groupNarrative = _.chunk(allNarrative, 5);
     return groupNarrative.map((item, index) => {
-      return (
-        <ReportContent
-          report={item}
-          key={index}
-          week={index}
-          selected={selected}
-          handleSelect={handleSelect}
-        />
-      );
+      return <ReportContent report={item} key={index} week={index} />;
     });
   };
 
@@ -82,6 +85,10 @@ const Reports = React.memo(() => {
         </div>
         <div className="report-container">{renderNarrative()}</div>
       </div>
+
+      {isAddModalOpen && <AddModal />}
+      {isEditModalOpen && <EditModal />}
+      {isViewModalOpen && <ViewModal />}
 
       {/* <div className="sort-modals">
         <h3>Sort by</h3>

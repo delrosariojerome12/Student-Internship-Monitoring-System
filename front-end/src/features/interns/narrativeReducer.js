@@ -5,6 +5,11 @@ const initialState = {
   isLoading: false,
   isError: false,
   allNarrative: null,
+  selected: null,
+  isAddModalOpen: false,
+  isEditModalOpen: false,
+  isViewModalOpen: false,
+  selectedDay: null,
 };
 
 export const getAllNarrative = createAsyncThunk(
@@ -29,7 +34,35 @@ export const getAllNarrative = createAsyncThunk(
 export const narrativeReducer = createSlice({
   name: "narrative",
   initialState,
-  reducers: {},
+  reducers: {
+    handleSelect: (state, action) => {
+      state.selected = action.payload;
+    },
+    handleViewModal: (state, action) => {
+      state.isViewModalOpen = !state.isViewModalOpen;
+      state.selectedDay = null;
+      if (action.payload) {
+        console.log(action.payload);
+        state.selectedDay = action.payload;
+      }
+    },
+    handleEditModal: (state, action) => {
+      state.isEditModalOpen = !state.isEditModalOpen;
+      state.selectedDay = null;
+
+      if (action.payload) {
+        console.log(action.payload);
+        state.selectedDay = action.payload;
+      }
+    },
+    handleAddModal: (state, action) => {
+      state.isAddModalOpen = !state.isAddModalOpen;
+      state.selectedDay = null;
+      if (action.payload) {
+        state.selectedDay = action.payload;
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getAllNarrative.pending, (state, action) => {
@@ -47,6 +80,7 @@ export const narrativeReducer = createSlice({
   },
 });
 
-export const {} = narrativeReducer.actions;
+export const {handleSelect, handleAddModal, handleEditModal, handleViewModal} =
+  narrativeReducer.actions;
 
 export default narrativeReducer.reducer;
