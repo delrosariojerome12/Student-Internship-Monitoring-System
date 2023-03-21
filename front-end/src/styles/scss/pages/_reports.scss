@@ -29,6 +29,49 @@
     transform: translate(-50%, -50%);
     border-radius: 1rem;
     z-index: 7;
+    padding: 2rem;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 1rem;
+    & > * {
+      border: solid 1px #000;
+    }
+    .upper {
+      display: flex;
+      gap: 1rem;
+      justify-content: space-between;
+      padding: 2rem;
+    }
+    .middle {
+      textarea {
+        font-size: 1.6rem;
+        resize: none;
+        width: 100%;
+        height: 100%;
+        padding: 2rem;
+      }
+    }
+    .btn-controller {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      gap: 2rem;
+      button {
+        background-color: #3d4049;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 1rem 1.5rem;
+        transition: all 0.2s linear;
+        font-weight: 600;
+        color: #fff;
+        &:hover {
+          background-color: $primary-compliment-landing;
+          color: #fff;
+        }
+      }
+    }
   }
 
   .content {
