@@ -1,8 +1,10 @@
-import React, {useState, useEffect} from "react";
-import {useSelector, useDispatch} from "react-redux";
-import {FaCheck, FaCamera, FaRegImage} from "react-icons/fa";
-import {IconContext} from "react-icons";
-import {BiSearchAlt} from "react-icons/bi";
+/** @format */
+
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { FaCheck, FaCamera, FaRegImage } from "react-icons/fa";
+import { IconContext } from "react-icons";
+import { BiSearchAlt } from "react-icons/bi";
 
 import Bouncing from "../../components/loading/Bouncing";
 import ServerError from "../serverError";
@@ -12,7 +14,7 @@ import TimeOutModal from "../../components/intern/TimeOutModal";
 import AttendanceModal from "../../components/intern/AttendanceModal";
 import CantStart from "./CantStart";
 
-import {getAllAttendance} from "../../features/interns/attendanceReducer";
+import { getAllAttendance } from "../../features/interns/attendanceReducer";
 import NoDocumentSvg from "../../assets/img/waiting.svg";
 
 import {
@@ -25,7 +27,7 @@ import {
 } from "../../features/interns/attendanceReducer";
 
 const DailyTimeRecord = React.memo(() => {
-  const {user} = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
   const {
     isLoading,
     isError,
@@ -38,15 +40,15 @@ const DailyTimeRecord = React.memo(() => {
     isTimeOutDisable,
     alreadyTimeIn,
     alreadyTimeOut,
-    canStart,
+    usernStart,
     todayAttendance,
   } = useSelector((state) => state.attendance);
   const dispatch = useDispatch();
 
   const {
-    user: {firstName, lastName, profileImage, email},
-    internshipDetails: {renderedHours, startingDate},
-    schoolDetails: {program, requiredHours},
+    user: { firstName, lastName, profileImage, email },
+    internshipDetails: { renderedHours, startingDate, companyName },
+    schoolDetails: { program, requiredHours },
     scheduleDetails,
     status,
   } = user;
@@ -58,7 +60,7 @@ const DailyTimeRecord = React.memo(() => {
       const minutes = now.getMinutes();
       const amOrPm = now.getHours() >= 12 ? "PM" : "AM";
     }, 1000);
-    dispatch(getAllAttendance({email, scheduleDetails}));
+    dispatch(getAllAttendance({ email, scheduleDetails }));
     return () => clearInterval(timer);
   }, []);
 
@@ -95,56 +97,62 @@ const DailyTimeRecord = React.memo(() => {
   };
 
   return (
-    <IconContext.Provider value={{className: "icon"}}>
+    <IconContext.Provider value={{ className: "icon" }}>
       <section className="daily-time-record">
-        <div className="user">
-          <div className="profile-img">
-            <img src={profileImage} alt="profile-image" />
+        <header>
+          <div className="user">
+            <div className="profile-img">
+              <img src={profileImage} alt="profile-image" />
+            </div>
+            <div className="text">
+              <h4 className="full-name">
+                {firstName} {lastName}
+              </h4>
+              <p className="rendered-hours">
+                Rendered Hours: <b> {renderedHours}</b>
+              </p>
+              <p className="required-hours">
+                Required Hours: <b> {requiredHours}</b>
+              </p>
+              <p>
+                Status: <b> {status}</b>
+              </p>
+              <p>
+                Schedule Type: <b> {scheduleDetails.scheduleType}</b>
+              </p>
+            </div>
           </div>
-          <div className="text">
-            <h4 className="full-name">
-              {firstName} {lastName}
-            </h4>
-            <p className="rendered-hours">
-              Rendered Hours: <b> {renderedHours}</b>
-            </p>
-            <p className="required-hours">
-              Required Hours: <b> {requiredHours}</b>
-            </p>
+          <div className="mid">
+            <div className="button-container">
+              <button
+                className="time-in"
+                onClick={() => dispatch(handleTimeIn())}
+                style={
+                  isTimeInDisable
+                    ? { pointerEvents: "none", opacity: ".5" }
+                    : { opacity: "1" }
+                }>
+                Time In
+              </button>
+              <button
+                className="time-out"
+                onClick={() => dispatch(handleTimeOut())}
+                style={
+                  isTimeOutDisable
+                    ? { pointerEvents: "none", opacity: ".5" }
+                    : { opacity: "1" }
+                }>
+                Time Out
+              </button>
+            </div>
+            <div className="search-box">
+              <span>
+                <BiSearchAlt />
+              </span>
+              <input type="text" placeholder="Search" />
+            </div>
           </div>
-        </div>
-        <div className="mid">
-          <div className="button-container">
-            <button
-              className="time-in"
-              onClick={() => dispatch(handleTimeIn())}
-              style={
-                isTimeInDisable
-                  ? {pointerEvents: "none", opacity: ".5"}
-                  : {opacity: "1"}
-              }
-            >
-              Time In
-            </button>
-            <button
-              className="time-out"
-              onClick={() => dispatch(handleTimeOut())}
-              style={
-                isTimeOutDisable
-                  ? {pointerEvents: "none", opacity: ".5"}
-                  : {opacity: "1"}
-              }
-            >
-              Time Out
-            </button>
-          </div>
-          <div className="search-box">
-            <span>
-              <BiSearchAlt />
-            </span>
-            <input type="text" placeholder="Search" />
-          </div>
-        </div>
+        </header>
         {renderAttendance()}
         {isTimeInOpen && <TimeInModal email={email} />}
         {isTimeOutOpen && <TimeOutModal email={email} />}

@@ -11,7 +11,7 @@ import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
 import {storage} from "../../Firebase";
 import {v4} from "uuid";
 
-const Signup = () => {
+const Signup = React.memo(() => {
   const {isError, errorMessage} = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -382,6 +382,6 @@ const Signup = () => {
       </section>
     </section>
   );
-};
+});
 
 export default Signup;

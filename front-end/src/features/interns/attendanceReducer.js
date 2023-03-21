@@ -229,10 +229,12 @@ export const attendanceReducer = createSlice({
         // state.isLoading = true;
       })
       .addCase(timeOutAttendance.fulfilled, (state, {payload}) => {
+        console.log(payload.res);
         state.isLoading = false;
-        state.allAttendance = [...state.allAttendance];
+        state.allAttendance = payload.res.updatedAttendance;
         state.isTimeOutOpen = false;
         state.isTimeOutDisable = true;
+        state.todayAttendance = payload.res.todayAttendance;
       })
       .addCase(timeOutAttendance.rejected, (state, action) => {
         state.isLoading = false;

@@ -1,3 +1,5 @@
+/** @format */
+
 import React, {useEffect, useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {
@@ -6,11 +8,13 @@ import {
   handleFilter,
   handleSort,
   checkAbsents,
+  handleSelectIntern,
+  handleCloseModal,
 } from "../../features/coordinator/monitorAttendance";
 import Bouncing from "../../components/loading/Bouncing";
 import ServerError from "../serverError";
 import Attendance from "../../components/coordinator/Attendance";
-
+import ViewMoreDetailsModal from "../../components/coordinator/ViewMoreDetailsModal";
 const now = new Date();
 const year = now.getFullYear();
 const month = now.getMonth() + 1;
@@ -44,6 +48,8 @@ const MonitorAttendance = () => {
     isSortOpen,
     isFiltering,
     filteredValues,
+    selectedIntern,
+    isViewMoreDetailsOpen,
   } = useSelector((state) => state.monitorAttendance);
   const dispatch = useDispatch();
 
@@ -95,19 +101,21 @@ const MonitorAttendance = () => {
 
   return (
     <div className="monitor-attendance">
-      <div className="top">
-        <h2>Attendance</h2>
-      </div>
-      <div className="mid">
-        <div className="btn-container">
-          <button onClick={() => dispatch(handleFilter())}>Filter</button>
-          <button onClick={() => dispatch(handleSort())}>Sort</button>
+      <header>
+        <div className="top">
+          <h2>Attendance</h2>
         </div>
-        <div className="date-container">
-          <h3>{formatDate(today)}</h3>
-          <h3>{time} </h3>
+        <div className="mid">
+          <div className="btn-container">
+            <button onClick={() => dispatch(handleFilter())}>Filter</button>
+            <button onClick={() => dispatch(handleSort())}>Sort</button>
+          </div>
+          <div className="date-container">
+            <h3>{formatDate(today)}</h3>
+            <h3>{time} </h3>
+          </div>
         </div>
-      </div>
+      </header>
       <div className="display">
         {isFiltering && <h1>Results for: {filteredValues.join(", ")} </h1>}
         <div className="content">{renderAttendance()}</div>
@@ -158,11 +166,16 @@ const MonitorAttendance = () => {
         <>
           <div className="overlay" onClick={() => dispatch(handleSort())}></div>
           <div onClick={(e) => e.stopPropagation()} className="sort modal">
-            <p>Sort</p>
-            <button onClick={() => dispatch(handleSort())}>Close</button>
+            <div className="sort-div">
+              <p>Sort</p>
+            </div>
+            <div className="close-btn">
+              <button onClick={() => dispatch(handleSort())}>Close</button>
+            </div>
           </div>
         </>
       )}
+      {isViewMoreDetailsOpen && <ViewMoreDetailsModal />}
     </div>
   );
 };

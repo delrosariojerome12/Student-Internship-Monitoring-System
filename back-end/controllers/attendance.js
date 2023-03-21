@@ -36,8 +36,29 @@ function countRenderedHours(timeIn, timeOut) {
 
   let hours = difference / millisecondsInHour;
   hours = Math.round(hours * 4) / 4; // Round to nearest quarter hour
+
+  if (hours >= 8) {
+    console.log("Test");
+    hours--;
+  }
+  console.log(typeof hours);
+  console.log(hours);
   return hours;
 }
+
+const getAllNarrative = async (req, res) => {
+  const {email} = req.params;
+
+  const userExists = await Intern.findOne({email});
+
+  if (!userExists) {
+    throw new NotFound("User not found");
+  }
+
+  const attendance = await Attendance.find({email});
+
+  res.status(StatusCodes.OK).json({success: true, data: attendance});
+};
 
 // student
 const getAllAttendance = async (req, res) => {
@@ -76,6 +97,8 @@ const getAllAttendance = async (req, res) => {
   const hours = now.getHours() % 12 || 12;
   const minutes = now.getMinutes();
   const amOrPm = now.getHours() >= 12 ? "PM" : "AM";
+
+  console.log(`${hours}:${minutes} ${amOrPm}`);
 
   if (scheduleType === "Regular") {
     if (day > 0 && day < 6) {
@@ -145,6 +168,11 @@ const getAllAttendance = async (req, res) => {
               doesExists = {
                 status: "time-out-standard",
               };
+              if (todayExists.timeIn == null && todayExists.timeOut == null) {
+                doesExists = {
+                  status: "absent",
+                };
+              }
               if (todayExists.timeIn !== null && todayExists.timeOut !== null) {
                 console.log(todayExists.timeOut);
                 doesExists = {
@@ -205,7 +233,6 @@ const getAllAttendance = async (req, res) => {
           status: "already-timed-in-lunch",
         };
         if (todayExists.timeIn !== null && todayExists.timeOut !== null) {
-          console.log(todayExists.timeOut);
           doesExists = {
             status: "complete",
           };
@@ -479,10 +506,6 @@ const timeOut = async (req, res) => {
   const currentTotalHours =
     parseFloat(intern.internshipDetails.renderedHours) + totalRendered;
 
-  // console.log(intern.internshipDetails.renderedHours);
-  // console.log(totalRendered);
-  // console.log(typeof currentTotalHours, currentTotalHours);
-
   const todayAttendance = await Attendance.findOneAndUpdate(
     {
       _id: attendance._id,
@@ -495,6 +518,7 @@ const timeOut = async (req, res) => {
       runValidators: true,
     }
   );
+
   const updatedIntern = await Intern.findOneAndUpdate(
     {email},
     {"internshipDetails.renderedHours": currentTotalHours.toString()},
@@ -502,11 +526,16 @@ const timeOut = async (req, res) => {
       new: true,
       runValidators: true,
     }
-  );
+  ).populate({
+    path: "user",
+    model: "User",
+  });
+
+  const updatedAttendance = await Attendance.find({email});
 
   res
     .status(StatusCodes.OK)
-    .json({success: true, updatedIntern, todayAttendance});
+    .json({success: true, updatedIntern, todayAttendance, updatedAttendance});
 };
 
 const checkStartingDate = async (req, res) => {
@@ -519,13 +548,33 @@ const checkStartingDate = async (req, res) => {
   res.status(StatusCodes.OK).json({success: true, data: intern});
 };
 
+const updateNarrative = async (req, res) => {
+  const {email} = req.params;
+  const {
+    params: {date},
+    data: {content},
+  } = req.body;
+
+  const attendance = await Attendance.findOneAndUpdate(
+    {email, date},
+    {"narrative.content": content, "narrative.isComplete": true},
+    {new: true}
+  );
+
+  const allAttendance = await Attendance.find({email});
+
+  res.status(StatusCodes.OK).json({success: true, attendance, allAttendance});
+};
+
 module.exports = {
   getAllAttendance,
   getAllAttendanceToday,
   getAllAttendanceByDate,
   getAttendance,
+  getAllNarrative,
   timeIn,
   timeOut,
   checkStartingDate,
   checkAbsents,
+  updateNarrative,
 };

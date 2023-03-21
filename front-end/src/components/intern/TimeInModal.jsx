@@ -1,3 +1,5 @@
+/** @format */
+
 import React, {useState, useEffect, useRef} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {
@@ -81,6 +83,7 @@ const TimeInModal = React.memo(({email}) => {
 
       const completeAddress = `${freeformAddress} ${countrySecondarySubdivision} ${country} `;
       const coordinates = `NE: ${northEast} SW: ${southWest}`;
+
       setAddress(`${completeAddress} ${coordinates}`);
     } catch (error) {
       console.log(error);
@@ -162,10 +165,15 @@ const TimeInModal = React.memo(({email}) => {
   //     <>
   //       <div className="overlay" onClick={() => dispatch(handleTimeIn())}></div>
   //       <div className="no-camera modal">
-  //         <img src={NocameraSVG} alt="No-Camera" />
-  //         <h3>
-  //           No <b>Camera</b> Detected
-  //         </h3>
+  //         <div className="top">
+  //           <img src={NocameraSVG} alt="No-Camera" />
+  //           <h3>
+  //             No <b>Camera</b> Detected
+  //           </h3>
+  //         </div>
+  //         <div className="bottom">
+  //           <button onClick={() => dispatch(handleTimeIn())}>Close</button>
+  //         </div>
   //       </div>
   //     </>
   //   );
