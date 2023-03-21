@@ -8,6 +8,7 @@ const {
   getAllAttendanceToday,
   getAllAttendanceByDate,
   checkAbsents,
+  updateNarrative,
 } = require("../controllers/attendance");
 
 const express = require("express");
@@ -27,5 +28,6 @@ router.route("/timeIn/:email").post(timeIn);
 router.route("/timeOut/:email").patch(timeOut);
 
 router.route("/checkStartingDate/:email").patch(checkStartingDate);
+router.route("/updateNarrative/:email").patch(updateNarrative);
 
 module.exports = router;

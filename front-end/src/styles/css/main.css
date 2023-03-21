@@ -8567,6 +8567,47 @@ button {
   transform: translate(-50%, -50%);
   border-radius: 1rem;
   z-index: 7;
+  padding: 2rem;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 1rem;
+}
+.reports .modal > * {
+  border: solid 1px #000;
+}
+.reports .modal .upper {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 2rem;
+}
+.reports .modal .middle textarea {
+  font-size: 1.6rem;
+  resize: none;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+}
+.reports .modal .btn-controller {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  gap: 2rem;
+}
+.reports .modal .btn-controller button {
+  background-color: #3d4049;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 1rem 1.5rem;
+  transition: all 0.2s linear;
+  font-weight: 600;
+  color: #fff;
+}
+.reports .modal .btn-controller button:hover {
+  background-color: #0d7377;
+  color: #fff;
 }
 .reports .content {
   display: grid;
