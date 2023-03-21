@@ -552,6 +552,7 @@ const timeOut = async (req, res) => {
       runValidators: true,
     }
   );
+
   const updatedIntern = await Intern.findOneAndUpdate(
     {email},
     {"internshipDetails.renderedHours": currentTotalHours.toString()},
@@ -563,6 +564,7 @@ const timeOut = async (req, res) => {
     path: "user",
     model: "User",
   });
+
   const updatedAttendance = await Attendance.find({email});
 
   res
@@ -580,6 +582,24 @@ const checkStartingDate = async (req, res) => {
   res.status(StatusCodes.OK).json({success: true, data: intern});
 };
 
+const updateNarrative = async (req, res) => {
+  const {email} = req.params;
+  const {
+    params: {date},
+    data: {content},
+  } = req.body;
+
+  const attendance = await Attendance.findOneAndUpdate(
+    {email, date},
+    {"narrative.content": content, "narrative.isComplete": true},
+    {new: true}
+  );
+
+  const allAttendance = await Attendance.find({email});
+
+  res.status(StatusCodes.OK).json({success: true, attendance, allAttendance});
+};
+
 module.exports = {
   getAllAttendance,
   getAllAttendanceToday,
@@ -590,4 +610,5 @@ module.exports = {
   timeOut,
   checkStartingDate,
   checkAbsents,
+  updateNarrative,
 };

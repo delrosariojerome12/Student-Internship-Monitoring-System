@@ -13,6 +13,7 @@ const NarrativeContent = React.memo(({report, week}) => {
 
   const renderDays = () => {
     return report.map((item, index) => {
+      console.log(item);
       return <NarrativeDay key={index} details={item} day={index} />;
     });
   };

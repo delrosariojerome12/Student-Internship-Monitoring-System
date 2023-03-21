@@ -1,6 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
-import {handleAddModal} from "../../../features/interns/narrativeReducer";
+import {
+  handleAddModal,
+  updateNarrative,
+} from "../../../features/interns/narrativeReducer";
 
 const months = [
   "January",
@@ -26,19 +29,44 @@ const formatDate = (date) => {
 
 const AddModal = React.memo(() => {
   const {selectedDay} = useSelector((state) => state.narrative);
+  const [textValue, setTextValue] = useState("");
   const dispatch = useDispatch();
 
   const {
-    day: {date},
+    day: {
+      email,
+      date,
+      narrative: {isComplete},
+    },
   } = selectedDay;
 
   return (
     <>
       <div className="overlay"></div>
       <div className="add-modal modal">
-        <h3>Add</h3>
-        <h3>{formatDate(date)}</h3>
-        <button onClick={() => dispatch(handleAddModal())}>Close</button>
+        <div className="upper">
+          <h3>Add Narrative</h3>
+          <h3>{formatDate(date)}</h3>
+          <h3>{isComplete ? "Completed" : "Missing"}</h3>
+        </div>
+        <div className="middle">
+          <textarea
+            name="textValue"
+            id="textValue"
+            value={textValue}
+            onChange={(e) => setTextValue(e.target.value)}
+          ></textarea>
+        </div>
+        <div className="btn-controller">
+          <button onClick={() => dispatch(handleAddModal())}>Close</button>
+          <button
+            onClick={() =>
+              dispatch(updateNarrative({date, content: textValue, email}))
+            }
+          >
+            Save Narrative
+          </button>
+        </div>
       </div>
     </>
   );

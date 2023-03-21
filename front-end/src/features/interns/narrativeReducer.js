@@ -31,6 +31,27 @@ export const getAllNarrative = createAsyncThunk(
   }
 );
 
+export const updateNarrative = createAsyncThunk(
+  "/narrative/update",
+  async ({date, content, email}, {rejectWithValue}) => {
+    try {
+      const url = `http://localhost:5000/attendance/updateNarrative/${email}`;
+      const {data: res} = await axios.patch(url, {
+        params: {date},
+        data: {content},
+      });
+      console.log(res);
+      return {res: res.allAttendance};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue({
+        error: error.response.data,
+        status: error.response.status,
+      });
+    }
+  }
+);
+
 export const narrativeReducer = createSlice({
   name: "narrative",
   initialState,
@@ -74,6 +95,21 @@ export const narrativeReducer = createSlice({
         state.isLoading = false;
       })
       .addCase(getAllNarrative.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+      });
+    // update narrative
+    builder
+      .addCase(updateNarrative.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(updateNarrative.fulfilled, (state, {payload}) => {
+        state.isLoading = false;
+        state.allNarrative = payload.res;
+        state.isAddModalOpen = false;
+        state.isEditModalOpen = false;
+      })
+      .addCase(updateNarrative.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
       });
