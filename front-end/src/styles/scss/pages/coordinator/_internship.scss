@@ -1,28 +1,36 @@
+/** @format */
+
 @import "../../utils";
 @import "../../variables";
 
 .internship-container {
   display: grid;
-  grid-template-rows: repeat(2, minmax(7rem, auto)) minmax(30rem, 75.5vh);
+  grid-template-rows: auto minmax(30rem, 68vh);
   gap: 1rem;
 
   header {
-    color: #fff;
-    padding: 2rem;
-    background-color: #282b30;
-    border-radius: 1rem;
-    display: flex;
-    align-items: center;
-  }
-  .btn-container {
-    background-color: #282b30;
-    display: flex;
-    align-items: center;
-    padding: 1rem 2rem;
-    border-radius: 1rem;
-    button {
-      height: 5rem;
-      width: 12rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 1rem;
+    .page-title {
+      color: #fff;
+      padding: 2rem;
+      background-color: #282b30;
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+    }
+    .btn-container {
+      background-color: #282b30;
+      display: flex;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-radius: 1rem;
+      button {
+        height: 5rem;
+        width: 12rem;
+      }
     }
   }
   button {
@@ -571,7 +579,8 @@
 @media screen and (max-width: 750px) {
   .internship-container {
     .add-modal {
-      width: 100%;
+      width: 90%;
+      height: 90%;
       form {
         grid-template-rows: repeat(3, 9.5rem) auto repeat(3, 9.5rem) auto;
 
@@ -628,7 +637,7 @@
   }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 700px) {
   .internship-container {
     .add-modal {
       width: 100%;
@@ -679,7 +688,17 @@
 }
 @media screen and (max-width: 600px) {
   .internship-container {
-    grid-template-rows: repeat(2, minmax(7rem, auto)) minmax(30rem, 63vh);
+    grid-template-rows: auto minmax(40rem, 70vh);
+    header {
+      grid-template-columns: 1fr auto;
+      gap: 0;
+      .page-title {
+        border-radius: 1rem 0 0 1rem;
+      }
+      .btn-container {
+        border-radius: 0 1rem 1rem 0;
+      }
+    }
     .content {
       .internship {
         grid-template-columns: 11rem 1fr;
@@ -713,13 +732,17 @@
 
 @media screen and (max-width: 500px) {
   .internship-container {
-    grid-template-rows: repeat(2, minmax(5rem, auto)) minmax(40rem, 68vh);
+    // grid-template-rows: auto minmax(40rem, 70vh);
     header {
-      padding: 1rem 2rem;
-    }
-    .btn-container {
-      button {
-        height: 3.5rem;
+      .page-title {
+        padding: 1rem 0.5rem 1rem 2rem;
+      }
+      .btn-container {
+        padding: 1rem 2rem 1rem 0.5rem;
+        button {
+          height: 3.5rem;
+          width: 10rem;
+        }
       }
     }
     .content {
@@ -752,7 +775,7 @@
     }
     .add-modal {
       width: 100%;
-      min-height: 100%;
+      height: 100%;
       form {
         grid-template-rows: 15rem repeat(6, auto) 15rem auto;
         padding: 1rem;
@@ -780,5 +803,11 @@
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .internship-container {
+    grid-template-rows: auto minmax(40rem, 73vh);
   }
 }
