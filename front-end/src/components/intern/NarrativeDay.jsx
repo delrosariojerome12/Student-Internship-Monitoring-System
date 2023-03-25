@@ -1,5 +1,7 @@
+/** @format */
+
 import React from "react";
-import {useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   handleAddModal,
   handleViewModal,
@@ -28,32 +30,36 @@ const formatDate = (date) => {
   }`;
 };
 
-const NarrativeDay = React.memo(({day, details}) => {
+const NarrativeDay = React.memo(({ day, details }) => {
   const dispatch = useDispatch();
   const {
-    narrative: {isComplete},
+    narrative: { isComplete },
     date,
   } = details;
 
   return (
     <div className="narrative-day">
       <div className="num-days">
-        <h4>Day {day === 0 ? 1 : day + 1}</h4>
+        <h5>Day {day === 0 ? 1 : day + 1}</h5>
         <h5>{formatDate(date)}</h5>
       </div>
-      <div className="status">{isComplete ? "Completed" : "Pending"}</div>
+      <div className="status">
+        <h5 style={{ color: isComplete ? "#00caa9" : "#414141" }}>
+          {isComplete ? "Completed" : "Pending"}
+        </h5>
+      </div>
       <div className="btn-container">
         {isComplete ? (
           <>
-            <button onClick={() => dispatch(handleViewModal({day: details}))}>
+            <button onClick={() => dispatch(handleViewModal({ day: details }))}>
               View
             </button>
-            <button onClick={() => dispatch(handleEditModal({day: details}))}>
+            <button onClick={() => dispatch(handleEditModal({ day: details }))}>
               Edit
             </button>
           </>
         ) : (
-          <button onClick={() => dispatch(handleAddModal({day: details}))}>
+          <button onClick={() => dispatch(handleAddModal({ day: details }))}>
             Add
           </button>
         )}

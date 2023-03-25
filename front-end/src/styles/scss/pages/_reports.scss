@@ -20,7 +20,7 @@
     z-index: 6;
   }
   .modal {
-    background-color: #fff;
+    background-color: #d9d9d9;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -33,17 +33,26 @@
     display: grid;
     grid-template-rows: auto 1fr auto;
     gap: 1rem;
-    & > * {
-      border: solid 1px #000;
-    }
+    // & > * {
+    //   background-color: #fff;
+    //   border: solid 1px #000;
+    // }
     .upper {
       display: flex;
+      align-items: center;
       gap: 1rem;
       justify-content: space-between;
       padding: 2rem;
+      background-color: #fff;
+      border: solid 1px #000;
+      border-radius: 1rem;
     }
     .middle {
+      background-color: #fff;
+      border: solid 1px #000;
+      border-radius: 1rem;
       textarea {
+        border-radius: 1rem;
         font-size: 1.6rem;
         resize: none;
         width: 100%;
@@ -52,22 +61,22 @@
       }
     }
     .btn-controller {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
+      @include flexCenter;
       gap: 2rem;
       button {
-        background-color: #3d4049;
+        @include flexCenter;
+        height: 4rem;
+        background-color: $primary-compliment-landing;
         border: none;
         outline: none;
         cursor: pointer;
-        padding: 1rem 1.5rem;
+        padding: 1rem 2rem;
         transition: all 0.2s linear;
         font-weight: 600;
-        color: #fff;
+        font-size: 1.5rem;
+        color: #d9d9d9;
         &:hover {
-          background-color: $primary-compliment-landing;
+          background-color: $primary-feature-bg;
           color: #fff;
         }
       }
@@ -76,7 +85,7 @@
 
   .content {
     display: grid;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto minmax(45rem, 81vh);
     gap: 1rem;
 
     .button-container {
@@ -85,10 +94,10 @@
       display: flex;
       align-items: center;
       gap: 1rem;
-      padding: 1.5rem;
-      border-radius: 1rem 1rem 0 0;
+      padding: 2rem 3rem;
+      border-radius: 1rem;
       button {
-        height: 4rem;
+        height: 4.5rem;
         @include flexCenter;
         flex-direction: row;
         border: none;
@@ -96,7 +105,7 @@
         outline: none;
         font-weight: 500;
         color: #fff;
-        background-color: #3d4049;
+        background-color: $primary-compliment-landing;
         transition: all 0.3s linear;
         cursor: pointer;
         span {
@@ -124,7 +133,7 @@
       overflow-y: auto;
 
       .narrative-content {
-        background-color: #fff;
+        background-color: #d9d9d9;
         display: grid;
         grid-template-rows: auto 2rem;
         border-radius: 1rem;
@@ -134,27 +143,31 @@
           grid-template-columns: 1fr 2fr;
           gap: 1rem;
           & > * {
-            background-color: #d9d9d9;
+            @include flexCenter;
+            flex-direction: column;
+            background-color: #fff;
             border-radius: 1rem;
             padding: 1rem;
             text-align: center;
           }
         }
         .dropdown-container {
-          background-color: $primary-compliment-landing;
+          background-color: $primary-feature-bg;
           border-radius: 0 0 1rem 1rem;
           display: grid;
           grid-template-rows: 0rem 1fr;
           transition: all 0.3s ease-in-out;
           border-radius: 0 0 1rem 1rem;
-
+          margin-top: 1rem;
           .days-container {
-            background-color: $primary-compliment-landing;
+            background-color: $primary-feature-bg;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             gap: 1rem;
             padding: 1rem;
+            border-radius: 0 0 1rem 1rem;
+            margin-top: -1rem;
 
             .narrative-day {
               background-color: #d9d9d9;
@@ -163,25 +176,26 @@
               gap: 1rem;
               display: grid;
               grid-template-columns: 14rem 1fr 1fr;
-
+              & > * {
+                @include flexCenter;
+              }
               .num-days {
+                flex-direction: column;
                 background-color: #fff;
                 border-radius: 1rem;
                 text-align: center;
                 padding: 1rem;
-                border: solid 1px #000;
+                // border: solid 1px #000;
               }
               .status {
                 background-color: #fff;
                 border-radius: 1rem;
-                @include flexCenter;
                 text-align: center;
                 padding: 1rem;
-                border: solid 1px #000;
+                // border: solid 1px #000;
               }
 
               .btn-container {
-                @include flexCenter;
                 gap: 1rem;
                 button {
                   background-color: #fff;
@@ -191,32 +205,40 @@
                   padding: 1rem 1.5rem;
                   transition: all 0.2s linear;
                   font-weight: 600;
-                  &:first-child:hover {
-                    background-color: $primary-compliment-landing;
+                  border-radius: 1rem;
+                  &:hover {
+                    border-radius: 0;
+                    background-color: $primary-feature-bg;
                     color: #fff;
                   }
-                  &:last-child:hover {
-                    background-color: $primary-bg-color;
-                    color: #fff;
-                  }
+                  // &:first-child:hover {
+                  //   background-color: $primary-compliment-landing;
+                  //   color: #fff;
+                  // }
+                  // &:last-child:hover {
+                  //   background-color: $primary-bg-color;
+                  //   color: #fff;
+                  // }
                 }
               }
             }
           }
           .dropdown-btn {
+            margin-top: -1rem;
             border-radius: 0 0 1rem 1rem;
             @include flexCenter;
+            height: 2rem;
             width: 100%;
             background-color: #fff;
             cursor: pointer;
-            background-color: $primary-compliment-landing;
+            background-color: $primary-feature-bg;
           }
           .icon {
             color: #fff;
           }
         }
         .active {
-          grid-template-rows: 52rem 1fr;
+          grid-template-rows: 48rem 1fr;
           z-index: 4;
         }
       }
@@ -557,6 +579,133 @@
           cursor: pointer;
           &:hover {
             background-color: rgba(255, 255, 255, 0.521);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive
+
+@media screen and (max-width: 650px) {
+  .reports {
+    .content {
+      .report-container {
+        grid-template-columns: 1fr;
+        .narrative-content {
+          .dropdown-container {
+            .days-container {
+              .narrative-day {
+                .btn-container {
+                  flex-direction: column;
+                  gap: 0.5rem;
+                }
+              }
+            }
+          }
+          .active {
+            grid-template-rows: 53rem 1fr;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .reports {
+    .content {
+      .report-container {
+        .narrative-content {
+          .dropdown-container {
+            .days-container {
+              display: grid;
+              grid-template-columns: repeat(2, auto);
+              grid-template-rows: repeat(3, auto);
+
+              .narrative-day {
+                grid-template-rows: repeat(3, auto);
+                grid-template-columns: auto;
+                gap: 0;
+                & > * {
+                  @include flexCenter;
+                  background-color: #fff;
+                }
+                .num-days {
+                  // gap: 1rem;
+                  padding: 0;
+                  border-radius: 1rem 1rem 0 0;
+                }
+                .status {
+                  padding: 0;
+                  border-radius: 0;
+                }
+                .btn-container {
+                  border-radius: 0 0 1rem 1rem;
+                  flex-direction: row;
+                  padding: 0.5rem 0;
+                  button {
+                    background-color: #d9d9d9;
+                  }
+                }
+              }
+            }
+          }
+          .active {
+            grid-template-rows: 43rem 1fr;
+          }
+        }
+      }
+    }
+  }
+}
+
+// @media screen and (max-width: 520px) {
+//   .reports {
+//     .content {
+//       .report-container {
+//         grid-template-columns: 1fr;
+//         .narrative-content {
+//           .dropdown-container {
+//             .days-container {
+//               .btn-container {
+//                 flex-direction: column;
+//               }
+//             }
+//           }
+//           .active {
+//             grid-template-rows: 52rem 1fr;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+@media screen and (max-width: 420px) {
+  .reports {
+    .content {
+      .button-container {
+        flex-direction: column;
+      }
+      .report-container {
+        .narrative-content {
+          .dropdown-container {
+            .days-container {
+              display: grid;
+              grid-template-columns: auto;
+              grid-template-rows: repeat(5, 11rem);
+              .narrative-day {
+                .num-days {
+                  flex-direction: row;
+                  gap: 0.5rem;
+                }
+              }
+            }
+          }
+          .active {
+            grid-template-rows: 60rem 1fr;
           }
         }
       }
