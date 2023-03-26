@@ -4497,7 +4497,7 @@ button {
   align-items: flex-start;
 }
 .dashboard .monitor-attendance .display .content .day-attendance .right > *, .dashboard-active .monitor-attendance .display .content .day-attendance .right > * {
-  padding: 0.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
 }
 .dashboard .monitor-attendance .display .content .absent, .dashboard-active .monitor-attendance .display .content .absent {
   background-color: #d21a28;
