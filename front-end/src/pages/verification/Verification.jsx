@@ -67,7 +67,7 @@ const Verification = React.memo(() => {
           forInput: "Supervisor",
           value: "",
           isError: false,
-          errorMessage: "Atleast 2 characters and  max of 50",
+
           isDisabled: false,
         },
         {
@@ -445,13 +445,29 @@ const Verification = React.memo(() => {
           checkCompletion(mainIndex);
           return;
         case "supervisor":
-          value.length >= 2 && value.length <= 50
-            ? (newForm[mainIndex].forms[index].isError = false)
-            : (newForm[mainIndex].forms[index].isError = true);
           newForm[mainIndex].forms[index].value = value;
+          const regex =
+            /^(?=.{2,50}$)(?!(\s.*){3,})(?!\s{3,})[^\d]*(\s[^\d]*){0,2}$/;
+          let isSuperValid = regex.test(value);
+          if (isSuperValid) {
+            newForm[mainIndex].forms[index].isError = false;
+          } else {
+            newForm[mainIndex].forms[index].isError = true;
+            if (/\d/.test(value)) {
+              newForm[mainIndex].forms[index].errorMessage =
+                "Supervisor name should not contain numbers";
+            } else if (value.length < 2) {
+              newForm[mainIndex].forms[index].errorMessage =
+                "Supervisor name should have at least 2 and maximum of 50 characters";
+            } else if (/\s{3,}/.test(value)) {
+              newForm[mainIndex].forms[index].errorMessage =
+                "Supervisor name should have at most 2 white spaces";
+            }
+          }
           setForm(newForm);
           checkCompletion(mainIndex);
           return;
+
         case "supervisor-contact":
         case "student-contact":
           newForm[mainIndex].forms[index].value = value;

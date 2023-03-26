@@ -12,6 +12,15 @@ import featureImg2 from "../assets/img/landingPage/imageFeature2.png";
 import featureImg3 from "../assets/img/landingPage/imageFeature3.png";
 import mainMockup from "../assets/img/landingPage/MainMockup.png";
 import mockupImage from "../assets/img/landingPage/imageLowerContainer.png";
+
+// id photos
+import ivanImage from "../assets/img/landingPage/idPhotos/ivan.svg";
+import jeromeImage from "../assets/img/landingPage/idPhotos/jerome.svg";
+import jericoImage from "../assets/img/landingPage/idPhotos/jerico.svg";
+import jakeImage from "../assets/img/landingPage/idPhotos/jake.svg";
+import jezreelImage from "../assets/img/landingPage/idPhotos/jezreel.svg";
+import diosaImage from "../assets/img/landingPage/idPhotos/diosa.svg";
+
 // Footer
 import socialIcon1 from "../assets/img/landingPage/ICON SOCIALS/FB.png";
 import socialIcon2 from "../assets/img/landingPage/ICON SOCIALS/INSTA.png";
@@ -37,11 +46,15 @@ const links = [
   },
   {
     link: "FAQ",
-    path: "faq",
+    path: "faqs",
   },
   {
     link: "About Us ",
     path: "/about-us",
+  },
+  {
+    link: "The Team ",
+    path: "/the team",
   },
 ];
 const authLinks = [
@@ -57,6 +70,61 @@ const authLinks = [
 const handleScroll = (path) => {
   const featureContent = document.getElementById(path);
   featureContent.scrollIntoView({ behavior: "smooth", block: "center" });
+};
+const teamMembers = [
+  {
+    name: "Ivan Cedie C. Batario",
+    position: "Backend Developer",
+    image: ivanImage,
+  },
+  {
+    name: "Jerome D. Ramos",
+    position: "Lead Developer",
+    image: jeromeImage,
+  },
+  {
+    name: "Jerico B. Balisi",
+    position: "Frontend Developer",
+    image: jericoImage,
+  },
+  {
+    name: "Diosa D. Tadiosa",
+    position: "Documentation/Tester",
+    image: diosaImage,
+  },
+  {
+    name: "Jake A. Bristol",
+    position: "UI/UX System Designer",
+    image: jakeImage,
+  },
+  {
+    name: "Jezreel Dannah D. Menor",
+    position: "Documentation/Tester",
+    image: jezreelImage,
+  },
+];
+
+const displayTeam = () => {
+  return (
+    <div className="the-team-container" id="/the team">
+      <div className="text-container-top">
+        <p>The Team</p>
+      </div>
+
+      <div className="members-container">
+        {teamMembers.map((member) => (
+          <div
+            key={member.name}
+            className={`member-img${member.image ? "2" : "1"}`}
+          >
+            {member.image && <img src={member.image} alt="" />}
+            <p className="member-name">{member.name}</p>
+            <p className="member-position">{member.position}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 const LandingPage = () => {
@@ -165,7 +233,7 @@ const LandingPage = () => {
           </span>
         </nav>
         <section className="contents">
-          <div className="landing-contents">
+          <div className="landing-contents" id="/how-it-works">
             <div className="text">
               <h3>Student Internship Monitoring System</h3>
               <p>A web application</p>
@@ -202,7 +270,7 @@ const LandingPage = () => {
             </div>
           </div>
 
-          <div className="mockup-contents" id="faq">
+          <div className="mockup-contents">
             <div className="card">
               <div className="text-container">
                 <p>Do you need assistance with your internship?</p>
@@ -224,7 +292,7 @@ const LandingPage = () => {
             </div>
           </div>
 
-          <div className="main-carousel">
+          <div className="main-carousel" id="faqs">
             <div className="text-container-left">
               <p> SIMS</p>
               <p>Frequently Ask Questions</p>
@@ -251,8 +319,8 @@ const LandingPage = () => {
               </button>
             </div>
           </div>
-
-          <div className="aboutUs-container">
+          {displayTeam()}
+          <div className="aboutUs-container" id="/about-us">
             <div className="aboutUs-contents">
               <div className="aboutUs-Text">
                 <p>About Us</p>
