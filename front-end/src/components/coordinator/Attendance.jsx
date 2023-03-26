@@ -1,6 +1,9 @@
 import React from "react";
 import {useDispatch} from "react-redux";
-import {handleSelectIntern} from "../../features/coordinator/monitorAttendance";
+import {
+  handleSelectIntern,
+  handleViewNarrative,
+} from "../../features/coordinator/monitorAttendance";
 const Attendance = React.memo(({attendance}) => {
   const {
     user: {firstName, lastName, profileImage},
@@ -23,6 +26,7 @@ const Attendance = React.memo(({attendance}) => {
     isPresent,
     locationTimeIn,
     locationTimeOut,
+    narrative: {isComplete},
   } = attendance;
 
   const dispatch = useDispatch();
@@ -49,9 +53,6 @@ const Attendance = React.memo(({attendance}) => {
     );
   }
 
-  // const updatedLocation = location.indexOf("NE:");
-  // const finalLocation = location.substring(0, updatedLocation).trim();
-
   return (
     <div className="day-attendance">
       <div className="left">
@@ -70,13 +71,22 @@ const Attendance = React.memo(({attendance}) => {
           <p>
             <b>Total Rendered:</b> {totalRendered}hrs
           </p>
-          {/* <h3>{scheduleType}</h3> */}
         </div>
         <div className="second">
           <h4>{companyName}</h4>
-          <button onClick={() => dispatch(handleSelectIntern(attendance))}>
-            View More Details
-          </button>
+
+          <div className="btns">
+            <button onClick={() => dispatch(handleSelectIntern(attendance))}>
+              View More Details
+            </button>
+            {isComplete ? (
+              <button onClick={() => dispatch(handleViewNarrative(attendance))}>
+                View Narrative
+              </button>
+            ) : (
+              <h4>No Narrative Yet</h4>
+            )}
+          </div>
         </div>
       </div>
     </div>

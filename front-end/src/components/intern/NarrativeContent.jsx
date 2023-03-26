@@ -12,10 +12,11 @@ const NarrativeContent = React.memo(({report, week}) => {
   const [isOpen, setOpen] = useState(false);
 
   const renderDays = () => {
-    return report.map((item, index) => {
-      console.log(item);
-      return <NarrativeDay key={index} details={item} day={index} />;
-    });
+    return report
+      .filter((item) => item.isComplete)
+      .map((item, index) => {
+        return <NarrativeDay key={index} details={item} day={index} />;
+      });
   };
 
   const getAllComplete = () => {

@@ -12,6 +12,7 @@ const initialState = {
   filteredValues: null,
   selectedIntern: null,
   isViewMoreDetailsOpen: false,
+  isNarrativeOpen: false,
 };
 
 export const getAllAttendanceToday = createAsyncThunk(
@@ -85,6 +86,12 @@ export const monitorAttendance = createSlice({
     handleCloseModal: (state, action) => {
       state.isViewMoreDetailsOpen = !state.isViewMoreDetailsOpen;
     },
+    handleViewNarrative: (state, {payload}) => {
+      if (payload) {
+        state.selectedIntern = payload;
+      }
+      state.isNarrativeOpen = !state.isNarrativeOpen;
+    },
   },
   extraReducers: (builder) => {
     // get all  attendances today
@@ -133,7 +140,12 @@ export const monitorAttendance = createSlice({
   },
 });
 
-export const {handleFilter, handleSort, handleSelectIntern, handleCloseModal} =
-  monitorAttendance.actions;
+export const {
+  handleFilter,
+  handleSort,
+  handleSelectIntern,
+  handleCloseModal,
+  handleViewNarrative,
+} = monitorAttendance.actions;
 
 export default monitorAttendance.reducer;

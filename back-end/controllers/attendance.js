@@ -555,15 +555,24 @@ const updateNarrative = async (req, res) => {
     data: {content},
   } = req.body;
 
-  const attendance = await Attendance.findOneAndUpdate(
-    {email, date},
-    {"narrative.content": content, "narrative.isComplete": true},
-    {new: true}
-  );
+  if (!content) {
+    const attendance = await Attendance.findOneAndUpdate(
+      {email, date},
+      {"narrative.content": content, "narrative.isComplete": false},
+      {new: true}
+    );
+    const allAttendance = await Attendance.find({email});
+    res.status(StatusCodes.OK).json({success: true, attendance, allAttendance});
+  } else {
+    const attendance = await Attendance.findOneAndUpdate(
+      {email, date},
+      {"narrative.content": content, "narrative.isComplete": true},
+      {new: true}
+    );
+    const allAttendance = await Attendance.find({email});
 
-  const allAttendance = await Attendance.find({email});
-
-  res.status(StatusCodes.OK).json({success: true, attendance, allAttendance});
+    res.status(StatusCodes.OK).json({success: true, attendance, allAttendance});
+  }
 };
 
 module.exports = {
