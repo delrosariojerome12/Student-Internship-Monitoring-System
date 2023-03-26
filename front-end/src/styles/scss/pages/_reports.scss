@@ -68,6 +68,7 @@
         height: 4rem;
         background-color: $primary-compliment-landing;
         border: none;
+        border-radius: 1rem;
         outline: none;
         cursor: pointer;
         padding: 1rem 2rem;
@@ -77,6 +78,7 @@
         color: #d9d9d9;
         &:hover {
           background-color: $primary-feature-bg;
+          border-radius: 0;
           color: #fff;
         }
       }
@@ -229,9 +231,13 @@
             @include flexCenter;
             height: 2rem;
             width: 100%;
-            background-color: #fff;
+            background-color: #d9d9d9;
             cursor: pointer;
             background-color: $primary-feature-bg;
+            &:hover {
+              background-color: #fff;
+              background-color: #00c0ca;
+            }
           }
           .icon {
             color: #fff;
@@ -587,7 +593,26 @@
 }
 
 // Responsive
-
+@media screen and (max-width: 750px) {
+  .reports {
+    .modal {
+      width: 90%;
+      .upper {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        padding: 1rem 2rem;
+        gap: 0;
+        & > :nth-child(3) {
+          margin: auto;
+          grid-column: 2/3;
+          // width: 60%;
+          grid-row: 1/3;
+        }
+      }
+    }
+  }
+}
 @media screen and (max-width: 650px) {
   .reports {
     .content {
@@ -615,14 +640,24 @@
 
 @media screen and (max-width: 600px) {
   .reports {
+    .modal {
+      height: 90%;
+      .upper {
+        h3 {
+          font-size: 2rem;
+        }
+      }
+    }
     .content {
+      grid-template-rows: auto minmax(45rem, 70vh);
+
       .report-container {
         .narrative-content {
           .dropdown-container {
             .days-container {
               display: grid;
-              grid-template-columns: repeat(2, auto);
-              grid-template-rows: repeat(3, auto);
+              grid-template-columns: repeat(2, 1fr);
+              grid-template-rows: repeat(3, 1fr);
 
               .narrative-day {
                 grid-template-rows: repeat(3, auto);
@@ -650,6 +685,12 @@
                   }
                 }
               }
+              & > :nth-child(5) {
+                width: 60%;
+                margin: auto;
+                grid-row: 3/4;
+                grid-column: 1/3;
+              }
             }
           }
           .active {
@@ -661,54 +702,91 @@
   }
 }
 
-// @media screen and (max-width: 520px) {
-//   .reports {
-//     .content {
-//       .report-container {
-//         grid-template-columns: 1fr;
-//         .narrative-content {
-//           .dropdown-container {
-//             .days-container {
-//               .btn-container {
-//                 flex-direction: column;
-//               }
-//             }
-//           }
-//           .active {
-//             grid-template-rows: 52rem 1fr;
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
+@media screen and (max-width: 500px) {
+  .reports {
+    .modal {
+      width: 100%;
+      height: 100%;
+      .upper {
+        gap: 0.5rem;
+        h3 {
+          font-size: 1.9rem;
+        }
+      }
+      .btn-controller {
+        button {
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
+}
 
 @media screen and (max-width: 420px) {
   .reports {
     .content {
+      grid-template-rows: auto minmax(45rem, 67vh);
       .button-container {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: repeat(2, auto);
+        padding: 1rem;
+        gap: 0.5rem;
+        button {
+          border-radius: 1rem;
+          &:hover {
+            border-radius: 0;
+          }
+        }
+        & > :nth-child(2) {
+          margin: auto;
+          width: 60%;
+          grid-row: 2/3;
+          grid-column: 1/3;
+        }
       }
       .report-container {
+        grid-auto-rows: 14rem;
         .narrative-content {
           .dropdown-container {
             .days-container {
               display: grid;
               grid-template-columns: auto;
-              grid-template-rows: repeat(5, 11rem);
+              grid-template-rows: repeat(5, 10.5rem);
               .narrative-day {
+                grid-template-rows: repeat(2, auto);
+                grid-template-columns: repeat(2, auto);
+
                 .num-days {
-                  flex-direction: row;
-                  gap: 0.5rem;
+                  // flex-direction: row;
+                  // gap: 0.5rem;
+                  border-radius: 1rem 0 0 0;
+                }
+                .status {
+                  border-radius: 0 0 0 1rem;
+                }
+                .btn-container {
+                  padding: 0.5rem;
+                  flex-direction: column;
+                  grid-column: 2/3;
+                  grid-row: 1/3;
+                  border-radius: 0 1rem 1rem 0;
                 }
               }
             }
           }
           .active {
-            grid-template-rows: 60rem 1fr;
+            grid-template-rows: 58rem 1fr;
           }
         }
       }
+    }
+  }
+}
+@media screen and (max-width: 380px) {
+  .reports {
+    .content {
+      grid-template-rows: auto minmax(35rem, 64vh);
     }
   }
 }
