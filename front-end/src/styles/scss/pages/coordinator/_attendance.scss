@@ -130,15 +130,23 @@
           border-radius: 1rem;
           background-color: #fff;
           .second {
-            @include flexColumn;
-            align-items: flex-start;
-            // button {
-            //   padding: 1.5rem;
-            //   background-color: #d9d9d9;
-            //   &:hover {
-            //     background-color: $primary-compliment-landing;
-            //   }
-            // }
+            display: flex;
+            flex-direction: column;
+            // align-items: flex-start;
+            gap: 1rem;
+
+            .btns {
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+            }
+            button {
+              padding: 1.5rem;
+              background-color: #d9d9d9;
+              &:hover {
+                background-color: $primary-compliment-landing;
+              }
+            }
           }
           & > * {
             padding: 0.5rem 0.5rem 0.5rem 1rem;
@@ -205,6 +213,29 @@
           }
         }
       }
+    }
+  }
+  .narrative-content {
+    color: #000;
+    z-index: 9;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 70rem;
+    width: 80rem;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 2rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    textarea {
+      resize: none;
+      height: 100%;
+      width: 100%;
+      padding: 1rem;
+      border-radius: 1rem;
     }
   }
   .sort {

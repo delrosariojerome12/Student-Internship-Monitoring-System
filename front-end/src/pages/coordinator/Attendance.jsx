@@ -1,5 +1,3 @@
-/** @format */
-
 import React, {useEffect, useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {
@@ -15,6 +13,8 @@ import Bouncing from "../../components/loading/Bouncing";
 import ServerError from "../serverError";
 import Attendance from "../../components/coordinator/Attendance";
 import ViewMoreDetailsModal from "../../components/coordinator/ViewMoreDetailsModal";
+import ViewNarrative from "../../components/coordinator/ViewNarrative";
+
 const now = new Date();
 const year = now.getFullYear();
 const month = now.getMonth() + 1;
@@ -39,7 +39,7 @@ const months = [
   "December",
 ];
 
-const MonitorAttendance = () => {
+const MonitorAttendance = React.memo(() => {
   const {
     isLoading,
     isError,
@@ -50,6 +50,7 @@ const MonitorAttendance = () => {
     filteredValues,
     selectedIntern,
     isViewMoreDetailsOpen,
+    isNarrativeOpen,
   } = useSelector((state) => state.monitorAttendance);
   const dispatch = useDispatch();
 
@@ -176,8 +177,9 @@ const MonitorAttendance = () => {
         </>
       )}
       {isViewMoreDetailsOpen && <ViewMoreDetailsModal />}
+      {isNarrativeOpen && <ViewNarrative />}
     </div>
   );
-};
+});
 
 export default MonitorAttendance;
