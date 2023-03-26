@@ -1,5 +1,7 @@
-import React, {useEffect, useState} from "react";
-import {useSelector, useDispatch} from "react-redux";
+/** @format */
+
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   getAllAttendanceToday,
   getAllAttendanceByDate,
@@ -14,6 +16,7 @@ import ServerError from "../serverError";
 import Attendance from "../../components/coordinator/Attendance";
 import ViewMoreDetailsModal from "../../components/coordinator/ViewMoreDetailsModal";
 import ViewNarrative from "../../components/coordinator/ViewNarrative";
+import ApprovalWaiting from "../../assets/img/waiting.svg";
 
 const now = new Date();
 const year = now.getFullYear();
@@ -81,8 +84,11 @@ const MonitorAttendance = React.memo(() => {
   const renderAttendance = () => {
     if (attendanceToday.length === 0) {
       return (
-        <div>
+        <div className="no-record">
           <h2>No Records Available.</h2>
+          <div className="img-waiting">
+            <img src={ApprovalWaiting} alt="Approvals waiting image" />
+          </div>
         </div>
       );
     }
@@ -126,8 +132,7 @@ const MonitorAttendance = React.memo(() => {
         <>
           <div
             className="overlay"
-            onClick={() => dispatch(handleFilter())}
-          ></div>
+            onClick={() => dispatch(handleFilter())}></div>
           <div onClick={(e) => e.stopPropagation()} className="filter modal">
             <p>Filter</p>
 
@@ -153,8 +158,7 @@ const MonitorAttendance = React.memo(() => {
                       date: filterDate,
                     })
                   )
-                }
-              >
+                }>
                 Filter
               </button>
 

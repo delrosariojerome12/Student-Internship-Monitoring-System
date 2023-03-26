@@ -1,6 +1,8 @@
+/** @format */
+
 import React from "react";
-import {useSelector, useDispatch} from "react-redux";
-import {handleViewNarrative} from "../../features/coordinator/monitorAttendance";
+import { useSelector, useDispatch } from "react-redux";
+import { handleViewNarrative } from "../../features/coordinator/monitorAttendance";
 
 const months = [
   "January",
@@ -25,27 +27,31 @@ const formatDate = (date) => {
 };
 
 const ViewNarrative = React.memo(() => {
-  const {selectedIntern} = useSelector((state) => state.monitorAttendance);
+  const { selectedIntern } = useSelector((state) => state.monitorAttendance);
   const dispatch = useDispatch();
 
   const {
     date,
-    narrative: {content, isComplete},
+    narrative: { content, isComplete },
   } = selectedIntern;
 
   return (
     <>
       <div className="overlay"></div>
-      <div className="narrative-content">
+      <div className="narrative-content modal">
         <div className="upper">
           <h3>Narrative</h3>
           <h4>Date: {formatDate(date)}</h4>
         </div>
-        <div className="details">
+        <div className="middle">
           <textarea disabled value={content}></textarea>
         </div>
-        <div className="btn-controller">
-          <button onClick={() => dispatch(handleViewNarrative())}>Close</button>
+        <div className="btn-controllers">
+          <button
+            className="close-btn"
+            onClick={() => dispatch(handleViewNarrative())}>
+            Close
+          </button>
         </div>
       </div>
     </>

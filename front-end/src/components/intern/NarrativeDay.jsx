@@ -44,7 +44,7 @@ const NarrativeDay = React.memo(({ day, details }) => {
         <h5>{formatDate(date)}</h5>
       </div>
       <div className="status">
-        <h5 style={{ color: isComplete ? "#00caa9" : "#414141" }}>
+        <h5 style={{ color: isComplete ? "#00adb5" : "#323232" }}>
           {isComplete ? "Completed" : "Pending"}
         </h5>
       </div>

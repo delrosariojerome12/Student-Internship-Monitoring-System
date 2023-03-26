@@ -154,7 +154,7 @@
           }
         }
         .dropdown-container {
-          background-color: $primary-feature-bg;
+          background-color: $primary-compliment-landing;
           border-radius: 0 0 1rem 1rem;
           display: grid;
           grid-template-rows: 0rem 1fr;
@@ -162,7 +162,7 @@
           border-radius: 0 0 1rem 1rem;
           margin-top: 1rem;
           .days-container {
-            background-color: $primary-feature-bg;
+            background-color: $primary-compliment-landing;
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -233,10 +233,10 @@
             width: 100%;
             background-color: #d9d9d9;
             cursor: pointer;
-            background-color: $primary-feature-bg;
+            background-color: $primary-compliment-landing;
             &:hover {
               background-color: #fff;
-              background-color: #00c0ca;
+              background-color: $primary-feature-bg;
             }
           }
           .icon {
