@@ -42,7 +42,7 @@ const ViewNarrative = React.memo(() => {
           <h4>Date: {formatDate(date)}</h4>
         </div>
         <div className="details">
-          <textarea disabled>{content}</textarea>
+          <textarea disabled value={content}></textarea>
         </div>
         <div className="btn-controller">
           <button onClick={() => dispatch(handleViewNarrative())}>Close</button>
