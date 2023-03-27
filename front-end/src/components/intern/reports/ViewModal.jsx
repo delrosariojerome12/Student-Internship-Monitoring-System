@@ -1,9 +1,6 @@
-/** @format */
-
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { handleViewModal } from "../../../features/interns/narrativeReducer";
-
+import React, {useState} from "react";
+import {useSelector, useDispatch} from "react-redux";
+import {handleViewModal} from "../../../features/interns/narrativeReducer";
 const months = [
   "January",
   "February",
@@ -27,13 +24,13 @@ const formatDate = (date) => {
 };
 
 const ViewModal = React.memo(() => {
-  const { selectedDay } = useSelector((state) => state.narrative);
+  const {selectedDay} = useSelector((state) => state.narrative);
   const dispatch = useDispatch();
 
   const {
     day: {
       date,
-      narrative: { isComplete, content },
+      narrative: {isComplete, content},
     },
   } = selectedDay;
 
@@ -41,12 +38,13 @@ const ViewModal = React.memo(() => {
     <>
       <div
         className="overlay"
-        onClick={() => dispatch(handleViewModal())}></div>
+        onClick={() => dispatch(handleViewModal())}
+      ></div>
       <div className="view-modal modal">
         <div className="upper">
           <h3>View Narrative</h3>
           <h3>{formatDate(date)}</h3>
-          <h3 style={{ color: isComplete ? "#00adb5" : "#e63946" }}>
+          <h3 style={{color: isComplete ? "#00adb5" : "#e63946"}}>
             {isComplete ? "Completed" : "Missing"}
           </h3>
         </div>
@@ -55,12 +53,14 @@ const ViewModal = React.memo(() => {
             name="textValue"
             id="textValue"
             value={content}
-            disabled></textarea>
+            disabled
+          ></textarea>
         </div>
         <div className="btn-controller">
           <button
             className="close-btn"
-            onClick={() => dispatch(handleViewModal())}>
+            onClick={() => dispatch(handleViewModal())}
+          >
             Close
           </button>
         </div>
