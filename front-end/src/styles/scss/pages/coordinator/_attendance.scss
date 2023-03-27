@@ -145,6 +145,12 @@
               // justify-content: center;
               align-items: flex-start;
               gap: 1rem;
+              h4 {
+                display: flex;
+                align-items: center;
+                text-align: center;
+                color: #e63946;
+              }
               button {
                 height: 4.5rem;
                 padding: 1.5rem;
