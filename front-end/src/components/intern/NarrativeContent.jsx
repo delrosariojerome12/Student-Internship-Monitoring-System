@@ -56,7 +56,10 @@ const NarrativeContent = React.memo(({report, week}) => {
               : "dropdown-container"
           }
         >
-          <div className="days-container">{isOpen && renderDays()}</div>
+          <div className="days-container">
+            {isOpen && renderDays()}
+            <button>Generate</button>
+          </div>
           <div
             className="dropdown-btn"
             onClick={() => {
