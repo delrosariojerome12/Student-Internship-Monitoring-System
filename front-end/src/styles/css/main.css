@@ -8889,6 +8889,20 @@ button {
   border-radius: 0 0 1rem 1rem;
   margin-top: -1rem;
 }
+.reports .content .report-container .narrative-content .dropdown-container .days-container button {
+  font-family: "Poppins", sans-serif;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  border: solid 1px transparent;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-weight: 600;
+}
+.reports .content .report-container .narrative-content .dropdown-container .days-container button:hover {
+  background-color: #457b9d;
+  color: #fff;
+}
 .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day {
   background-color: #d9d9d9;
   border-radius: 1rem;
@@ -8953,7 +8967,7 @@ button {
   color: #fff;
 }
 .reports .content .report-container .narrative-content .active {
-  grid-template-rows: 48rem 1fr;
+  grid-template-rows: 53rem 1fr;
   z-index: 4;
 }
 .reports .sort-modals {

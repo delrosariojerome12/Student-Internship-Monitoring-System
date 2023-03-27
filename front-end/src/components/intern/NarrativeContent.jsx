@@ -36,6 +36,8 @@ const NarrativeContent = React.memo(({report, week}) => {
     });
   }, []);
 
+  console.log(totalCompleted);
+
   return (
     <IconContext.Provider value={{className: "icon"}}>
       <div className="narrative-content">
@@ -58,7 +60,7 @@ const NarrativeContent = React.memo(({report, week}) => {
         >
           <div className="days-container">
             {isOpen && renderDays()}
-            <button>Generate</button>
+            {totalCompleted.length >= 5 && <button>Generate Narrative</button>}
           </div>
           <div
             className="dropdown-btn"
