@@ -2667,7 +2667,6 @@ button {
 .dashboard .approvals header, .dashboard-active .approvals header {
   display: grid;
   grid-template-columns: 1fr;
-  border: solid 1px #fff;
   background-color: #282b30;
   padding: 1rem 2rem;
   border-radius: 1rem;
@@ -2678,7 +2677,6 @@ button {
   color: #fff;
 }
 .dashboard .approvals .approval-container, .dashboard-active .approvals .approval-container {
-  border: solid 1px #fff;
   background-color: #282b30;
   padding: 2rem;
   height: 100%;
@@ -8058,8 +8056,8 @@ button {
 /** @format */
 .documents-page {
   display: grid;
-  grid-template-rows: minmax(22rem, auto) minmax(40rem, 65vh);
-  gap: 2rem;
+  grid-template-rows: 1fr minmax(35rem, 62vh);
+  gap: 1rem;
   border-radius: 1.5rem;
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
@@ -8101,6 +8099,7 @@ button {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 5rem 0;
 }
 .documents-page .top .drop-file {
   display: grid;
@@ -8536,9 +8535,6 @@ button {
 }
 
 @media screen and (max-width: 1030px) {
-  .documents-page {
-    grid-template-rows: minmax(22rem, auto) minmax(40rem, 62vh);
-  }
   .documents-page .top {
     grid-template-columns: 1fr 1.7fr;
   }
@@ -8557,7 +8553,6 @@ button {
 }
 @media screen and (max-width: 850px) {
   .documents-page {
-    grid-template-rows: auto minmax(40rem, 57vh);
     gap: 1rem;
   }
   .documents-page .top {
