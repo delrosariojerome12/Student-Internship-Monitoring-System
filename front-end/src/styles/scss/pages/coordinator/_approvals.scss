@@ -7,7 +7,7 @@
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: 7vh auto;
+  grid-template-rows: auto minmax(45rem, 85vh);
   gap: 1rem;
 
   .no-entries {
@@ -37,37 +37,44 @@
 
   header {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 1rem;
+    grid-template-columns: 1fr;
+    border: solid 1px #fff;
+    background-color: #282b30;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
     h2 {
+      display: flex;
+      align-items: center;
       color: #fff;
     }
-    .search {
-      @include flexCenter;
-      background-color: $light-bg-color;
-      width: 80%;
-      border-radius: 2rem;
-      padding: 0 1.5rem;
-      margin: auto;
-      span {
-        @include flexCenter;
-        font-size: 2rem;
-        cursor: pointer;
-      }
-      input {
-        width: 100%;
-        background: transparent;
-        padding: 1rem;
-        outline: none;
-        border: 0;
-      }
-    }
+    // .search {
+    //   @include flexCenter;
+    //   background-color: $light-bg-color;
+    //   width: 80%;
+    //   border-radius: 2rem;
+    //   padding: 0 1.5rem;
+    //   margin: auto;
+    //   span {
+    //     @include flexCenter;
+    //     font-size: 2rem;
+    //     cursor: pointer;
+    //   }
+    //   input {
+    //     width: 100%;
+    //     background: transparent;
+    //     padding: 1rem;
+    //     outline: none;
+    //     border: 0;
+    //   }
+    // }
   }
   .approval-container {
     border: solid 1px #fff;
+    background-color: #282b30;
     padding: 2rem;
     height: 100%;
     border-radius: 1rem;
+    overflow-y: auto;
 
     .approvals-intern-container {
       display: grid;
@@ -399,7 +406,6 @@
   .approvals {
     .no-entries {
       h4 {
-        color: #000;
         font-size: 2rem;
       }
       .img-waiting {
@@ -466,7 +472,11 @@
     }
   }
 }
-
+@media screen and (max-width: 600px) {
+  .approvals {
+    grid-template-rows: auto minmax(45rem, 72vh);
+  }
+}
 @media screen and (max-width: 500px) {
   .approvals {
     .no-entries {
@@ -501,6 +511,17 @@
             display: none;
           }
         }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .approvals {
+    // grid-template-rows: auto minmax(45rem, 72vh);
+    header {
+      h2 {
+        justify-content: center;
       }
     }
   }

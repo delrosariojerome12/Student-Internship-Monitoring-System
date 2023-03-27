@@ -2635,7 +2635,7 @@ button {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: 7vh auto;
+  grid-template-rows: auto minmax(45rem, 85vh);
   gap: 1rem;
 }
 .dashboard .approvals .no-entries, .dashboard-active .approvals .no-entries {
@@ -2666,41 +2666,24 @@ button {
 }
 .dashboard .approvals header, .dashboard-active .approvals header {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 1rem;
+  grid-template-columns: 1fr;
+  border: solid 1px #fff;
+  background-color: #282b30;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
 }
 .dashboard .approvals header h2, .dashboard-active .approvals header h2 {
+  display: flex;
+  align-items: center;
   color: #fff;
-}
-.dashboard .approvals header .search, .dashboard-active .approvals header .search {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f1faee;
-  width: 80%;
-  border-radius: 2rem;
-  padding: 0 1.5rem;
-  margin: auto;
-}
-.dashboard .approvals header .search span, .dashboard-active .approvals header .search span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  cursor: pointer;
-}
-.dashboard .approvals header .search input, .dashboard-active .approvals header .search input {
-  width: 100%;
-  background: transparent;
-  padding: 1rem;
-  outline: none;
-  border: 0;
 }
 .dashboard .approvals .approval-container, .dashboard-active .approvals .approval-container {
   border: solid 1px #fff;
+  background-color: #282b30;
   padding: 2rem;
   height: 100%;
   border-radius: 1rem;
+  overflow-y: auto;
 }
 .dashboard .approvals .approval-container .approvals-intern-container, .dashboard-active .approvals .approval-container .approvals-intern-container {
   display: grid;
@@ -2975,7 +2958,6 @@ button {
 }
 @media screen and (max-width: 750px) {
   .dashboard .approvals .no-entries h4, .dashboard-active .approvals .no-entries h4 {
-    color: #000;
     font-size: 2rem;
   }
   .dashboard .approvals .no-entries .img-waiting img, .dashboard-active .approvals .no-entries .img-waiting img {
@@ -3017,6 +2999,11 @@ button {
     display: none;
   }
 }
+@media screen and (max-width: 600px) {
+  .dashboard .approvals, .dashboard-active .approvals {
+    grid-template-rows: auto minmax(45rem, 72vh);
+  }
+}
 @media screen and (max-width: 500px) {
   .dashboard .approvals .no-entries h4, .dashboard-active .approvals .no-entries h4 {
     font-size: 2rem;
@@ -3037,6 +3024,11 @@ button {
   }
   .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .intern-left, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .intern-left {
     display: none;
+  }
+}
+@media screen and (max-width: 400px) {
+  .dashboard .approvals header h2, .dashboard-active .approvals header h2 {
+    justify-content: center;
   }
 }
 @media screen and (max-width: 350px) {
@@ -4505,10 +4497,13 @@ button {
   align-items: flex-start;
   gap: 1rem;
 }
-.dashboard .monitor-attendance .display .content .day-attendance .right .second button, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second button {
+.dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn button, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn button {
   height: 4.5rem;
   padding: 1.5rem;
   background-color: #d9d9d9;
+}
+.dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn button:hover, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn button:hover {
+  background-color: #0d7377;
 }
 .dashboard .monitor-attendance .display .content .day-attendance .right > *, .dashboard-active .monitor-attendance .display .content .day-attendance .right > * {
   padding: 0.5rem 0.5rem 0.5rem 1rem;

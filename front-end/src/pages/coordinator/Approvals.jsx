@@ -56,12 +56,12 @@ const Approvals = React.memo(() => {
     <section className="approvals">
       <header>
         <h2>Approvals</h2>
-        <div className="search">
+        {/* <div className="search">
           <span>
             <BiSearchAlt />
           </span>
           <input placeholder="Search" type="text" />
-        </div>
+        </div> */}
       </header>
       <div className="approval-container">
         <div className="approvals-intern-container">{renderApprovals()}</div>
