@@ -3,7 +3,10 @@ import {FaChevronDown, FaChevronUp} from "react-icons/fa";
 import NarrativeDay from "./NarrativeDay";
 import {IconContext} from "react-icons/lib";
 import {useSelector, useDispatch} from "react-redux";
-import {handleSelect} from "../../features/interns/narrativeReducer";
+import {
+  handleSelect,
+  handleGenerate,
+} from "../../features/interns/narrativeReducer";
 
 const NarrativeContent = React.memo(({report, week}) => {
   const {selected} = useSelector((state) => state.narrative);
@@ -36,8 +39,6 @@ const NarrativeContent = React.memo(({report, week}) => {
     });
   }, []);
 
-  console.log(totalCompleted);
-
   return (
     <IconContext.Provider value={{className: "icon"}}>
       <div className="narrative-content">
@@ -60,7 +61,20 @@ const NarrativeContent = React.memo(({report, week}) => {
         >
           <div className="days-container">
             {isOpen && renderDays()}
-            {totalCompleted.length >= 5 && <button>Generate Narrative</button>}
+            {totalCompleted.length >= 5 && (
+              <button
+                onClick={() => {
+                  dispatch(
+                    handleGenerate({
+                      reports: totalCompleted,
+                      week: week === 0 ? 1 : week + 1,
+                    })
+                  );
+                }}
+              >
+                Generate Narrative
+              </button>
+            )}
           </div>
           <div
             className="dropdown-btn"
