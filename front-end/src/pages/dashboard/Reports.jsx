@@ -7,16 +7,10 @@ import Bouncing from "../../components/loading/Bouncing";
 import ServerError from "../serverError";
 import _ from "lodash";
 
-import {
-  handleAddModal,
-  handleEditModal,
-  handleViewModal,
-} from "../../features/interns/narrativeReducer";
-
-import AddModal from "../../components/intern/profile/AddModal";
-import EditModal from "../../components/intern/profile/EditModal";
-import ViewModal from "../../components/intern/profile/ViewModal";
-
+import AddModal from "../../components/intern/reports/AddModal";
+import EditModal from "../../components/intern/reports/EditModal";
+import ViewModal from "../../components/intern/reports/ViewModal";
+import ReactPDF from "../../components/utils/ReactPDF";
 import {
   MdOutlineArrowForwardIos,
   MdOutlineArrowBackIosNew,
@@ -36,7 +30,7 @@ const Reports = React.memo(() => {
     isAddModalOpen,
     isEditModalOpen,
     isViewModalOpen,
-    selectedDay,
+    isGenerateOpen,
   } = useSelector((state) => state.narrative);
 
   const dispatch = useDispatch();
@@ -89,6 +83,12 @@ const Reports = React.memo(() => {
       {isAddModalOpen && <AddModal />}
       {isEditModalOpen && <EditModal />}
       {isViewModalOpen && <ViewModal />}
+      {isGenerateOpen && (
+        <>
+          <div className="overlay"></div>
+          <ReactPDF />
+        </>
+      )}
 
       {/* <div className="sort-modals">
         <h3>Sort by</h3>

@@ -1,3 +1,5 @@
+/** @format */
+
 @import "../../utils";
 @import "../../variables";
 
@@ -6,17 +8,18 @@
   gap: 1rem;
   border-radius: 1rem;
   // grid-template-rows: 10vh 10vh 72vh;
-  grid-template-rows: auto minmax(45rem, 78vh);
+  grid-template-rows: auto minmax(45rem, 73vh);
   color: #fff;
 
   button {
-    background-color: #fff;
+    background-color: #d9d9d9;
     border: none;
     outline: none;
     cursor: pointer;
     padding: 1.5rem 3rem;
     transition: all 0.2s linear;
     font-weight: 600;
+    letter-spacing: 0.1rem;
     @include flexCenter;
     gap: 1rem;
     font-size: 1.4rem;
@@ -73,11 +76,29 @@
     border-radius: 1rem;
     .content {
       display: grid;
-      grid-auto-rows: 14rem;
+      grid-auto-rows: auto;
       gap: 1rem;
       padding: 1rem;
       overflow-y: auto;
+      .no-record {
+        display: grid;
+        grid-template-rows: auto auto;
+        justify-content: center;
+        gap: 1rem;
 
+        h2 {
+          margin: auto;
+        }
+        .img-waiting {
+          @include flexCenter;
+          height: 100%;
+          width: 100%;
+          img {
+            height: 30rem;
+            width: 30rem;
+          }
+        }
+      }
       .day-attendance {
         background-color: #d9d9d9;
         border-radius: 1rem;
@@ -108,27 +129,40 @@
           gap: 1rem;
           border-radius: 1rem;
           background-color: #fff;
+          .first {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+          }
           .second {
             display: flex;
             flex-direction: column;
             // align-items: flex-start;
             gap: 1rem;
 
-            .btns {
+            .more-details-btn {
               display: flex;
-              align-items: center;
+              // justify-content: center;
+              align-items: flex-start;
               gap: 1rem;
-            }
-            button {
-              padding: 1.5rem;
-              background-color: #d9d9d9;
-              &:hover {
-                background-color: $primary-compliment-landing;
+              h4 {
+                display: flex;
+                align-items: center;
+                text-align: center;
+                color: #e63946;
+              }
+              button {
+                height: 4.5rem;
+                padding: 1.5rem;
+                background-color: #d9d9d9;
+                &:hover {
+                  background-color: $primary-compliment-landing;
+                }
               }
             }
           }
           & > * {
-            padding: 0.5rem;
+            padding: 0.5rem 0.5rem 0.5rem 1rem;
           }
         }
       }
@@ -161,7 +195,7 @@
     transform: translate(-50%, -50%);
     width: 50rem;
     height: 40rem;
-    background-color: #fff;
+    background-color: #d9d9d9;
     border: solid 1px #000;
     border-radius: 1rem;
 
@@ -195,26 +229,43 @@
     }
   }
   .narrative-content {
-    color: #000;
-    z-index: 9;
-    background-color: #fff;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     height: 70rem;
     width: 80rem;
     display: grid;
     grid-template-rows: auto 1fr auto;
-    gap: 2rem;
-    padding: 2rem;
-    border-radius: 1rem;
-    textarea {
-      resize: none;
-      height: 100%;
-      width: 100%;
-      padding: 1rem;
+    .upper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2rem;
+      background-color: #fff;
+      border: solid 1px #000;
       border-radius: 1rem;
+    }
+    .middle {
+      background-color: #fff;
+      border: solid 1px #000;
+      border-radius: 1rem;
+      textarea {
+        resize: none;
+        height: 100%;
+        width: 100%;
+        padding: 2rem;
+        font-size: 1.6rem;
+        border-radius: 1rem;
+      }
+    }
+    .btn-controllers {
+      button {
+        color: #d9d9d9;
+        border-radius: 1rem;
+        &:hover {
+          border: solid 1px $primary-feature-bg;
+          background-color: $primary-feature-bg;
+          border-radius: 0;
+          color: #fff;
+        }
+      }
     }
   }
   .sort {
@@ -249,13 +300,20 @@
     display: grid;
     grid-template-rows: 1fr auto;
     gap: 1rem;
-    height: 70rem;
+    height: 90%;
     width: 80rem;
     overflow-y: auto;
     .details {
-      display: flex;
-      flex-direction: column;
-
+      @include flexColumn;
+      // display: flex;
+      // flex-direction: column;
+      & > * {
+        background-color: #fff;
+        border-radius: 1rem;
+      }
+      .rendered-hours {
+        padding: 1rem;
+      }
       .time-in,
       .time-out {
         display: flex;
@@ -263,6 +321,8 @@
         align-items: center;
         justify-content: center;
         text-align: center;
+        gap: 0.5rem;
+        padding: 1rem 1rem 1.5rem 1rem;
       }
       img {
         height: 30rem;
@@ -270,11 +330,16 @@
       }
     }
     .btn-controller {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include flexCenter;
       button {
-        background-color: #d9d9d9;
+        color: #d9d9d9;
+        background-color: $primary-compliment-landing;
+        border-radius: 1rem;
+        &:hover {
+          background-color: $primary-feature-bg;
+          border-radius: 0;
+          color: #fff;
+        }
       }
     }
   }
@@ -282,26 +347,30 @@
 
 // Responsive
 
-@media screen and (max-width: 1030px) {
+@media screen and (max-width: 850px) {
   .monitor-attendance {
-    grid-template-rows: auto minmax(40rem, 74vh);
+    .more-details,
+    .narrative-content {
+      width: 72rem;
+    }
   }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 800px) {
   .monitor-attendance {
-    grid-template-rows: auto minmax(40rem, 72vh);
     .display {
       .content {
-        grid-auto-rows: auto;
         .day-attendance {
           .right {
-            grid-template-columns: auto;
-            grid-template-rows: repeat(2, auto);
-            gap: 0;
-            padding: 0.5rem;
-            & > * {
-              padding: 0;
+            .second {
+              gap: 0.5rem;
+              .more-details-btn {
+                flex-direction: column;
+                gap: 0.5rem;
+                button {
+                  height: 4rem;
+                }
+              }
             }
           }
         }
@@ -310,18 +379,85 @@
   }
 }
 
+@media screen and (max-width: 750px) {
+  .monitor-attendance {
+    // grid-template-rows: auto minmax(40rem, 72vh);
+    .display {
+      h1 {
+        font-size: 2.5rem;
+      }
+      .content {
+        .no-record {
+          h2 {
+            font-size: 2.3rem;
+          }
+          .img-waiting {
+            img {
+              height: 25rem;
+              width: 25rem;
+            }
+          }
+        }
+        .day-attendance {
+          .right {
+            grid-template-columns: auto;
+            grid-template-rows: repeat(2, auto);
+            gap: 0;
+            padding: 0.5rem 0.5rem 1rem 1rem;
+            & > * {
+              padding: 0;
+            }
+            .first {
+              .timeIn,
+              .timeOut {
+                display: none;
+              }
+            }
+            .second {
+              gap: 0;
+            }
+          }
+        }
+      }
+    }
+    .more-details,
+    .narrative-content {
+      width: 100%;
+      height: 100%;
+    }
+    .more-details {
+      .details {
+        img {
+          height: 25rem;
+          width: 25rem;
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 600px) {
   .monitor-attendance {
-    grid-template-rows: auto minmax(35rem, 62vh);
+    grid-template-rows: auto minmax(35rem, 60vh);
     .modal {
       width: 100%;
+    }
+    .more-details {
+      .details {
+        & > * {
+          font-size: 1.7rem;
+        }
+        img {
+          height: 20rem;
+          width: 20rem;
+        }
+      }
     }
   }
 }
 
 @media screen and (max-width: 500px) {
   .monitor-attendance {
-    grid-template-rows: auto minmax(35rem, 60vh);
     button {
       height: 3.5rem;
     }
@@ -336,8 +472,8 @@
         justify-content: center;
         gap: 0.5rem;
         padding: 0.5rem;
-        &:nth-child(1) {
-          grid-row: 1/2;
+        & > *:nth-child(1) {
+          grid-row: 2/3;
         }
         & > * {
           @include flexCenter;
@@ -348,10 +484,46 @@
     .display {
       .content {
         .day-attendance {
-          grid-template-columns: 1fr;
-          .left {
-            display: none;
+          .right {
+            & > * {
+              p {
+                font-size: 1.6rem;
+              }
+              h4 {
+                font-size: 1.7rem;
+              }
+            }
+            .second {
+              gap: 0;
+              .more-details-btn {
+                button {
+                  height: 3.5rem;
+                }
+              }
+            }
           }
+        }
+      }
+    }
+    .more-details {
+      .details {
+        & > * {
+          font-size: 1.6rem;
+        }
+        img {
+          height: 17rem;
+          width: 17rem;
+        }
+      }
+    }
+    .narrative-content {
+      .upper {
+        flex-direction: column;
+        padding: 1rem;
+      }
+      .middle {
+        textarea {
+          padding: 1rem;
         }
       }
     }
@@ -361,5 +533,66 @@
 @media screen and (max-width: 400px) {
   .monitor-attendance {
     grid-template-rows: auto minmax(35rem, 59vh);
+    .display {
+      h1 {
+        text-align: center;
+        font-size: 2rem;
+      }
+      .content {
+        .no-record {
+          h2 {
+            font-size: 1.8rem;
+          }
+          .img-waiting {
+            img {
+              height: 20rem;
+              width: 20rem;
+            }
+          }
+        }
+        .day-attendance {
+          grid-template-columns: 1fr;
+          .left {
+            display: none;
+          }
+          .right {
+            .first {
+              justify-content: center;
+              align-items: center;
+              .rendered {
+                display: none;
+              }
+            }
+            .second {
+              justify-content: center;
+              align-items: center;
+              gap: 0.5rem;
+              .more-details-btn {
+                flex-direction: row;
+                align-items: center;
+                button {
+                  font-size: 1.2rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .narrative-content {
+      .upper {
+        font-size: 1.7rem;
+      }
+      .middle {
+        textarea {
+          font-size: 1.4rem;
+        }
+      }
+      .btn-controllers {
+        button {
+          height: 3.5rem;
+        }
+      }
+    }
   }
 }

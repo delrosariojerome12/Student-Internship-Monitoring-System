@@ -98,8 +98,6 @@ const getAllAttendance = async (req, res) => {
   const minutes = now.getMinutes();
   const amOrPm = now.getHours() >= 12 ? "PM" : "AM";
 
-  console.log(`${hours}:${minutes} ${amOrPm}`);
-
   if (scheduleType === "Regular") {
     if (day > 0 && day < 6) {
       if (hours >= 7 && hours <= 10 && amOrPm === "AM") {
@@ -132,7 +130,6 @@ const getAllAttendance = async (req, res) => {
             status: "already-timed-in-lunch",
           };
           if (todayExists.timeIn !== null && todayExists.timeOut !== null) {
-            console.log(todayExists.timeOut);
             doesExists = {
               status: "complete",
             };
@@ -361,6 +358,7 @@ const checkAbsents = async (req, res) => {
           email: email,
           date: todayDate,
           isPresent: false,
+          isComplete: true,
           timeIn: null,
           timeOut: null,
           user: user._id,
@@ -544,7 +542,11 @@ const checkStartingDate = async (req, res) => {
   const intern = await Intern.findOneAndUpdate({email}, req.body, {
     new: true,
     runValidators: true,
+  }).populate({
+    path: "user",
+    model: "User",
   });
+
   res.status(StatusCodes.OK).json({success: true, data: intern});
 };
 

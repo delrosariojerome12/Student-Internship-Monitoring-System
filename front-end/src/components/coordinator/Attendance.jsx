@@ -1,12 +1,14 @@
+/** @format */
+
 import React from "react";
-import {useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   handleSelectIntern,
   handleViewNarrative,
 } from "../../features/coordinator/monitorAttendance";
-const Attendance = React.memo(({attendance}) => {
+const Attendance = React.memo(({ attendance }) => {
   const {
-    user: {firstName, lastName, profileImage},
+    user: { firstName, lastName, profileImage },
     intern: {
       internshipDetails: {
         companyAddress,
@@ -17,7 +19,7 @@ const Attendance = React.memo(({attendance}) => {
         logo,
         renderedHours,
       },
-      scheduleDetails: {scheduleType},
+      scheduleDetails: { scheduleType },
     },
     timeIn,
     timeOut,
@@ -26,7 +28,7 @@ const Attendance = React.memo(({attendance}) => {
     isPresent,
     locationTimeIn,
     locationTimeOut,
-    narrative: {isComplete},
+    narrative: { isComplete },
   } = attendance;
 
   const dispatch = useDispatch();
@@ -61,21 +63,21 @@ const Attendance = React.memo(({attendance}) => {
       <div className="right">
         <div className="first">
           <h4>{`${firstName} ${lastName}`}</h4>
-          <p>
+          <p className="timeIn">
             <b>Time in: </b>
             {timeIn}
           </p>
-          <p>
+          <p className="timeOut">
             <b>Time out:</b> {timeOut}
           </p>
-          <p>
+          <p className="rendered">
             <b>Total Rendered:</b> {totalRendered}hrs
           </p>
         </div>
         <div className="second">
           <h4>{companyName}</h4>
 
-          <div className="btns">
+          <div className="more-details-btn">
             <button onClick={() => dispatch(handleSelectIntern(attendance))}>
               View More Details
             </button>

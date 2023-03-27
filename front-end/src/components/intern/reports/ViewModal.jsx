@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {handleViewModal} from "../../../features/interns/narrativeReducer";
-
 const months = [
   "January",
   "February",
@@ -37,12 +36,17 @@ const ViewModal = React.memo(() => {
 
   return (
     <>
-      <div className="overlay"></div>
+      <div
+        className="overlay"
+        onClick={() => dispatch(handleViewModal())}
+      ></div>
       <div className="view-modal modal">
         <div className="upper">
           <h3>View Narrative</h3>
           <h3>{formatDate(date)}</h3>
-          <h3>{isComplete ? "Completed" : "Missing"}</h3>
+          <h3 style={{color: isComplete ? "#00adb5" : "#e63946"}}>
+            {isComplete ? "Completed" : "Missing"}
+          </h3>
         </div>
         <div className="middle">
           <textarea
@@ -53,7 +57,12 @@ const ViewModal = React.memo(() => {
           ></textarea>
         </div>
         <div className="btn-controller">
-          <button onClick={() => dispatch(handleViewModal())}>Close</button>
+          <button
+            className="close-btn"
+            onClick={() => dispatch(handleViewModal())}
+          >
+            Close
+          </button>
         </div>
       </div>
     </>
