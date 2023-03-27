@@ -7,15 +7,9 @@ import Bouncing from "../../components/loading/Bouncing";
 import ServerError from "../serverError";
 import _ from "lodash";
 
-import {
-  handleAddModal,
-  handleEditModal,
-  handleViewModal,
-} from "../../features/interns/narrativeReducer";
-
-import AddModal from "../../components/intern/profile/AddModal";
-import EditModal from "../../components/intern/profile/EditModal";
-import ViewModal from "../../components/intern/profile/ViewModal";
+import AddModal from "../../components/intern/reports/AddModal";
+import EditModal from "../../components/intern/reports/EditModal";
+import ViewModal from "../../components/intern/reports/ViewModal";
 
 import {
   MdOutlineArrowForwardIos,
@@ -36,7 +30,6 @@ const Reports = React.memo(() => {
     isAddModalOpen,
     isEditModalOpen,
     isViewModalOpen,
-    selectedDay,
   } = useSelector((state) => state.narrative);
 
   const dispatch = useDispatch();

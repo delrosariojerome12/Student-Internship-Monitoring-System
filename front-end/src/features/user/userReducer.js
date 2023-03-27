@@ -1,5 +1,8 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
-import {timeOutAttendance} from "../interns/attendanceReducer";
+import {
+  timeOutAttendance,
+  checkStartingDate,
+} from "../interns/attendanceReducer";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -178,10 +181,18 @@ export const userReducer = createSlice({
     builder
       .addCase(timeOutAttendance.pending, (state, action) => {})
       .addCase(timeOutAttendance.fulfilled, (state, {payload}) => {
-        console.log(payload.res.updatedIntern);
+        // console.log(payload.res.updatedIntern);
         state.user = payload.res.updatedIntern;
       })
       .addCase(timeOutAttendance.rejected, (state, action) => {});
+    // update user for starting date
+    builder
+      .addCase(checkStartingDate.pending, (state, action) => {})
+      .addCase(checkStartingDate.fulfilled, (state, {payload}) => {
+        console.log(payload.res.data);
+        state.user = payload.res.data;
+      })
+      .addCase(checkStartingDate.rejected, (state, action) => {});
   },
 });
 

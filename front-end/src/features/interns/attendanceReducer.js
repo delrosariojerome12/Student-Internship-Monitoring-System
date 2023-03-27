@@ -42,7 +42,6 @@ export const getAllAttendance = createAsyncThunk(
 export const checkStartingDate = createAsyncThunk(
   "/attendance/checkStartingDate",
   async ({email}, {rejectWithValue, getState}) => {
-    console.log("updated user");
     const {
       user: {user},
     } = getState();

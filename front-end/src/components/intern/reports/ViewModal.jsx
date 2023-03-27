@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {handleViewModal} from "../../../features/interns/narrativeReducer";
-
 const months = [
   "January",
   "February",
