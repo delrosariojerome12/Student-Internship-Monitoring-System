@@ -7447,8 +7447,7 @@ button {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: auto minmax(40rem, 63vh);
-  padding: 1rem;
+  grid-template-rows: auto minmax(35rem, 61vh);
   gap: 1rem;
 }
 .daily-time-record button {
@@ -7653,7 +7652,6 @@ button {
   display: grid;
   grid-template-columns: repeat(2, auto);
   height: 100%;
-  gap: 1rem;
   align-items: center;
   background-color: #40454d;
   border-radius: 2rem;
@@ -7814,15 +7812,15 @@ button {
 }
 
 @media screen and (max-width: 1030px) {
-  .daily-time-record {
-    grid-template-rows: auto minmax(30rem, 61vh);
-  }
   .daily-time-record .no-internship img {
     height: 30rem;
     width: 30rem;
   }
 }
 @media screen and (max-width: 750px) {
+  .daily-time-record {
+    grid-template-rows: auto minmax(35rem, 65vh);
+  }
   .daily-time-record .modal {
     width: 58rem;
   }
@@ -7888,7 +7886,7 @@ button {
 }
 @media screen and (max-width: 700px) {
   .daily-time-record {
-    grid-template-rows: auto minmax(30rem, 53vh);
+    grid-template-rows: auto minmax(30rem, 57vh);
   }
   .daily-time-record header .user .text {
     grid-template-columns: auto;
@@ -7896,7 +7894,7 @@ button {
 }
 @media screen and (max-width: 600px) {
   .daily-time-record {
-    grid-template-rows: auto minmax(20rem, 45vh);
+    grid-template-rows: auto minmax(20rem, 47vh);
   }
   .daily-time-record .modal {
     width: 99%;
@@ -8011,7 +8009,7 @@ button {
 }
 @media screen and (max-width: 400px) {
   .daily-time-record {
-    grid-template-rows: auto minmax(20rem, 39vh);
+    grid-template-rows: auto minmax(20rem, 42vh);
   }
   .daily-time-record header {
     grid-template-rows: 1fr 0.5fr;
@@ -8393,6 +8391,9 @@ button {
   width: 65rem;
   height: 93%;
   overflow: auto;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 1rem;
 }
 .documents-page .sample-view-container img {
   height: 100%;
@@ -8553,6 +8554,7 @@ button {
 }
 @media screen and (max-width: 850px) {
   .documents-page {
+    grid-template-rows: auto minmax(30rem, 52vh);
     gap: 1rem;
   }
   .documents-page .top {
@@ -8684,9 +8686,6 @@ button {
   }
 }
 @media screen and (max-width: 500px) {
-  .documents-page {
-    grid-template-rows: auto minmax(20rem, 44vh);
-  }
   .documents-page .display {
     grid-auto-rows: 6rem;
   }
@@ -8710,6 +8709,11 @@ button {
   .documents-page .required-document .content .desc-container {
     font-size: 1.5rem;
     word-break: break-all;
+  }
+}
+@media screen and (max-width: 400px) {
+  .documents-page {
+    grid-template-rows: auto minmax(20rem, 44vh);
   }
 }
 /** @format */

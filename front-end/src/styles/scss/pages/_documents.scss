@@ -343,6 +343,9 @@
     width: 65rem;
     height: 93%;
     overflow: auto;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 1rem;
     img {
       height: 100%;
       width: 100%;
@@ -469,7 +472,9 @@
 
 @media screen and (max-width: 850px) {
   .documents-page {
+    grid-template-rows: auto minmax(30rem, 52vh);
     gap: 1rem;
+
     .top {
       grid-template-columns: auto;
       grid-template-rows: auto 1fr;
@@ -648,7 +653,6 @@
 }
 @media screen and (max-width: 500px) {
   .documents-page {
-    grid-template-rows: auto minmax(20rem, 44vh);
     // .top {
     //   .selected-document-indicator {
     //   }
@@ -682,5 +686,11 @@
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .documents-page {
+    grid-template-rows: auto minmax(20rem, 44vh);
   }
 }
