@@ -1,7 +1,7 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, {useEffect, useState} from "react";
+import {useSelector, useDispatch} from "react-redux";
 import {
   getAllAttendanceToday,
   getAllAttendanceByDate,
@@ -132,10 +132,10 @@ const MonitorAttendance = React.memo(() => {
         <>
           <div
             className="overlay"
-            onClick={() => dispatch(handleFilter())}></div>
+            onClick={() => dispatch(handleFilter())}
+          ></div>
           <div onClick={(e) => e.stopPropagation()} className="filter modal">
             <p>Filter</p>
-
             <div className="inputs-container">
               <label htmlFor="date">
                 Date
@@ -149,16 +149,19 @@ const MonitorAttendance = React.memo(() => {
                 />
               </label>
             </div>
-
             <div className="btn-controllers">
               <button
+                style={
+                  !filterDate ? {pointerEvents: "none", opacity: ".7"} : null
+                }
                 onClick={() =>
                   dispatch(
                     getAllAttendanceByDate({
                       date: filterDate,
                     })
                   )
-                }>
+                }
+              >
                 Filter
               </button>
 

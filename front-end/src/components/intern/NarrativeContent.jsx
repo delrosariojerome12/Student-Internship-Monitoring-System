@@ -24,9 +24,7 @@ const NarrativeContent = React.memo(({report, week}) => {
 
   const getAllComplete = () => {
     return report.filter((item) => {
-      const {
-        narrative: {isComplete},
-      } = item;
+      const {isComplete} = item;
       return isComplete && item;
     });
   };
