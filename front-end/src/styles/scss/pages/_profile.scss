@@ -8,7 +8,7 @@
   height: 100%;
   width: 100%;
   // grid-template-rows: 30vh 63vh;
-  grid-template-rows: auto minmax(30rem, 53vh);
+  grid-template-rows: auto minmax(30rem, 58vh);
   gap: 1rem;
 
   .profile-user {
@@ -43,34 +43,28 @@
       border-radius: 0 0 1rem 1rem;
       padding: 1rem;
       .intern-details {
-        @include flexColumn;
+        display: grid;
         padding: 1rem 1rem 1rem 15rem;
         h3,
         p {
           color: #fff;
         }
-        // p {
-        //   color: #bdbdbd;
-        // }
+        .program-short {
+          display: none;
+        }
       }
       .btn-edit {
-        justify-content: flex-end;
-        padding: 2rem;
         button {
-          @include flexCenter;
-          height: 4rem;
+          background-color: #282b30;
           color: #fff;
-          padding: 2rem 3rem;
           border: none;
           outline: none;
-          border-radius: 1rem;
+          font-size: 2.5rem;
           font-weight: 600;
           transition: all 0.3s linear;
-          background-color: $primary-compliment-landing;
           cursor: pointer;
           &:hover {
-            border-radius: 0;
-            background-color: $primary-feature-bg;
+            color: $primary-feature-bg;
           }
         }
       }
@@ -86,6 +80,7 @@
       display: grid;
       grid-template-columns: repeat(5, auto);
       background-color: #282b30;
+
       // background-color: lighten(
       //   $color: $primary-bg-color-landing-compliment,
       //   $amount: 10
@@ -189,13 +184,11 @@
           padding: 1rem;
           background-color: #fff;
           border-radius: 1rem;
-
-          // gap: 1rem;
           p {
             font-size: 1.9rem;
-            // background-color: #efefef;
-            // border-radius: 1rem;
-            // padding: 1rem;
+          }
+          p:last-child {
+            word-break: break-all;
           }
         }
       }
@@ -219,7 +212,8 @@
             width: 30rem;
           }
         }
-        .attendance-view {
+        .attendance-view,
+        .attendance-absent {
           // background-color: $primary-compliment-landing;
           background-color: #d9d9d9;
           border-radius: 1rem;
@@ -228,6 +222,12 @@
           display: flex;
           justify-content: space-between;
           gap: 1rem;
+          .present {
+            color: $primary-feature-bg;
+          }
+          .Absent {
+            color: $red-primary-color;
+          }
           & > * {
             display: flex;
             gap: 1rem;
@@ -257,7 +257,129 @@
   }
 }
 
-// @media screen and (max-width: 750px) {
-//   .profile-page {
-//   }
-// }
+@media screen and (max-width: 1200px) {
+  .profile-page {
+    .content {
+      .display {
+        .attendance-container {
+          .attendance-view {
+            // flex-direction: column;
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-template-rows: auto auto;
+            gap: 0;
+            & > *:nth-child(3) {
+              grid-row: 2/3;
+              grid-column: 1/3;
+              justify-content: space-between;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 880px) {
+  .profile-page {
+    .profile-user {
+      .intern-info {
+        .intern-details {
+          .program {
+            display: none;
+          }
+          .program-short {
+            display: flex;
+          }
+        }
+      }
+    }
+    .content {
+      .display {
+        .internship-details-container {
+          grid-template-columns: auto;
+          grid-template-rows: auto 1fr;
+          .img-con {
+            margin: auto;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 750px) {
+  .profile-page {
+    .content {
+      grid-template-rows: 6rem auto;
+
+      .button-container::-webkit-scrollbar {
+        width: 0.8rem;
+        height: 0.8rem;
+      }
+      .button-container::-webkit-scrollbar-track {
+        border-radius: 0;
+      }
+      .button-container {
+        width: 70vw;
+        overflow-x: auto;
+        button {
+          &:nth-child(1) {
+            width: 12rem;
+          }
+          &:nth-child(2) {
+            width: 14.2rem;
+          }
+          &:nth-child(3) {
+            width: 10.3rem;
+          }
+          &:nth-child(4) {
+            width: 8.8rem;
+          }
+          &:nth-child(5) {
+            width: 8rem;
+          }
+        }
+      }
+      .display {
+        .intern-details-container .intern-content,
+        .internship-details-container .text {
+          p {
+            font-size: 1.8rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile-page {
+    .profile-user {
+      .profile-details {
+        .profile-img {
+          width: 11rem;
+          height: 11rem;
+        }
+      }
+      .intern-info {
+        .intern-details {
+          h3 {
+            font-size: 1.9rem;
+          }
+          p {
+            font-size: 1.8rem;
+          }
+        }
+        .btn-edit {
+          button {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+    .content {
+      .button-container {
+        width: 80vw;
+      }
+    }
+  }
+}

@@ -1,6 +1,8 @@
-import React, {useEffect} from "react";
-import {useSelector, useDispatch} from "react-redux";
-import {getAllAttendance} from "../../../features/interns/attendanceReducer";
+/** @format */
+
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllAttendance } from "../../../features/interns/attendanceReducer";
 import Bouncing from "../../../components/loading/Bouncing";
 import ServerError from "../../serverError";
 import Attendance from "../../../components/intern/Attendance";
@@ -23,7 +25,7 @@ const months = [
 ];
 
 const AttendanceViewer = React.memo(() => {
-  const {user} = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
   const {
     isLoading,
     isError,
@@ -36,15 +38,15 @@ const AttendanceViewer = React.memo(() => {
   const dispatch = useDispatch();
 
   const {
-    user: {firstName, lastName, profileImage, email},
-    internshipDetails: {renderedHours, startingDate},
-    schoolDetails: {program, requiredHours},
+    user: { firstName, lastName, profileImage, email },
+    internshipDetails: { renderedHours, startingDate },
+    schoolDetails: { program, requiredHours },
     scheduleDetails,
     status,
   } = user;
 
   useEffect(() => {
-    dispatch(getAllAttendance({email, scheduleDetails}));
+    dispatch(getAllAttendance({ email, scheduleDetails }));
   }, []);
 
   if (isLoading || !allAttendance) {
@@ -80,14 +82,14 @@ const AttendanceViewer = React.memo(() => {
       );
     }
     return allAttendance.map((item, index) => {
-      const {date, isPresent, timeIn, timeOut, totalRendered} = item;
+      const { date, isPresent, timeIn, timeOut, totalRendered } = item;
 
       if (isPresent) {
         return (
           <div className="attendance-view" key={index}>
             <div className="left">
               <h4>{formatDate(date)}</h4>
-              <h4>Present</h4>
+              <h4 className="present">Present</h4>
             </div>
             <h4>Total Rendered: {totalRendered}hrs</h4>
             <div className="right">
@@ -98,9 +100,9 @@ const AttendanceViewer = React.memo(() => {
         );
       }
       return (
-        <div className="attendance-view" key={index}>
+        <div className="attendance-absent" key={index}>
           <h4>{formatDate(date)}</h4>
-          <h4>Absent</h4>
+          <h4 className="Absent">Absent</h4>
         </div>
       );
     });
