@@ -1,3 +1,5 @@
+/** @format */
+
 @import "../variables";
 @import "../utils";
 
@@ -5,9 +7,9 @@
   display: grid;
   height: 100%;
   width: 100%;
-  grid-template-rows: 30vh 63vh;
+  // grid-template-rows: 30vh 63vh;
+  grid-template-rows: auto minmax(30rem, 53vh);
   gap: 1rem;
-  padding: 1rem;
 
   .profile-user {
     display: grid;
@@ -132,10 +134,11 @@
         }
       }
       .active {
-        background-color: lighten(
-          $color: $primary-bg-color-landing-compliment,
-          $amount: 30
-        );
+        background-color: $primary-compliment-landing;
+        // background-color: lighten(
+        //   $color: $primary-bg-color-landing-compliment,
+        //   $amount: 30
+        // );
         &::before {
           width: 80%;
         }
@@ -149,21 +152,29 @@
       overflow-y: auto;
 
       .intern-details-container {
-        background-color: #fff;
+        background-color: #d9d9d9;
+        // color: #fff;
         border-radius: 1rem;
         padding: 2rem;
         display: grid;
-        gap: 1rem;
+        .intern-content {
+          display: grid;
+          font-size: 1.9rem;
+          padding: 1rem;
+          border-radius: 1rem;
+          background-color: #fff;
+        }
       }
       .internship-details-container {
-        background-color: #fff;
+        background-color: #d9d9d9;
         border-radius: 1rem;
         padding: 2rem;
         display: grid;
         grid-template-columns: 15rem 1fr;
         gap: 1rem;
         .img-con {
-          border: solid 1px #000;
+          background-color: #fff;
+          // border: solid 1px #000;
           border-radius: 1rem;
           height: 15rem;
           width: 15rem;
@@ -175,15 +186,23 @@
         }
         .text {
           display: grid;
-          gap: 1rem;
-          h4 {
-            background-color: #efefef;
-            border-radius: 1rem;
-            padding: 1rem;
+          padding: 1rem;
+          background-color: #fff;
+          border-radius: 1rem;
+
+          // gap: 1rem;
+          p {
+            font-size: 1.9rem;
+            // background-color: #efefef;
+            // border-radius: 1rem;
+            // padding: 1rem;
           }
         }
       }
       .attendance-container {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 1rem;
         display: flex;
         flex-direction: column;
         gap: 1rem;
@@ -201,10 +220,11 @@
           }
         }
         .attendance-view {
-          background-color: $primary-compliment-landing;
+          // background-color: $primary-compliment-landing;
+          background-color: #d9d9d9;
           border-radius: 1rem;
           padding: 1.5rem;
-          color: #fff;
+          // color: #fff;
           display: flex;
           justify-content: space-between;
           gap: 1rem;
@@ -215,20 +235,29 @@
         }
       }
       .request-container {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 1rem;
         display: flex;
         flex-direction: column;
         gap: 1rem;
         .document-record {
           display: flex;
           justify-content: space-between;
+          background-color: #d9d9d9;
 
           gap: 1rem;
-          background-color: $primary-compliment-landing;
+          // background-color: $primary-compliment-landing;
           padding: 1.5rem;
           border-radius: 1rem;
-          color: #fff;
+          // color: #fff;
         }
       }
     }
   }
 }
+
+// @media screen and (max-width: 750px) {
+//   .profile-page {
+//   }
+// }
