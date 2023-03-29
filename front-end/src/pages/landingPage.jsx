@@ -13,14 +13,6 @@ import featureImg3 from "../assets/img/landingPage/imageFeature3.png";
 import mainMockup from "../assets/img/landingPage/MainMockup.png";
 import mockupImage from "../assets/img/landingPage/imageLowerContainer.png";
 
-// id photos
-import ivanImage from "../assets/img/landingPage/idPhotos/ivan.svg";
-import jeromeImage from "../assets/img/landingPage/idPhotos/jerome.svg";
-import jericoImage from "../assets/img/landingPage/idPhotos/jerico.svg";
-import jakeImage from "../assets/img/landingPage/idPhotos/jake.svg";
-import jezreelImage from "../assets/img/landingPage/idPhotos/jezreel.svg";
-import diosaImage from "../assets/img/landingPage/idPhotos/diosa.svg";
-
 // Footer
 import socialIcon1 from "../assets/img/landingPage/ICON SOCIALS/FB.png";
 import socialIcon2 from "../assets/img/landingPage/ICON SOCIALS/INSTA.png";

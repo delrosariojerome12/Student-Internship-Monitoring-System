@@ -57,7 +57,7 @@ export const handleLogin = createAsyncThunk(
     try {
       const {email, firstName, lastName, password} = convertForm(form);
       // const user = signInWithEmailAndPassword(auth, email, password);
-      const url = "http://localhost:5000/auth/login";
+      const url = "https://sims-twqb.onrender.com/auth/login";
       const {data: res} = await axios.post(url, convertForm(form));
       return {res};
     } catch (err) {
