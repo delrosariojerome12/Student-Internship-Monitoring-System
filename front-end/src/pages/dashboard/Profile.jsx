@@ -6,7 +6,7 @@ import AttendanceViewer from "./profile/AttendanceViewer";
 import Narrative from "./profile/Narrative";
 import Request from "./profile/Request ";
 import {useSelector} from "react-redux";
-import colegioLogo from "../../assets/img/colegio.svg";
+// import colegioLogo from "../../assets/img/colegio.svg";
 
 const buttons = [
   {
@@ -57,13 +57,13 @@ const Profile = React.memo(() => {
   return (
     <section className="profile-page">
       <div className="profile-user">
-        <div
+        {/* <div
           className="profile-bg"
           style={{
             background: `url(${colegioLogo}) no-repeat center`,
             backgroundSize: "cover",
           }}
-        ></div>
+        ></div> */}
         <div className="profile-details">
           <div className="profile-img">
             <img src={profileImage} alt="" />
