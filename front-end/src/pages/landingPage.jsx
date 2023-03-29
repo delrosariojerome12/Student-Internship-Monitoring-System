@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {HiMenu} from "react-icons/hi";
 
 import logo from "../assets/img/landingPage/Logo.png";
@@ -71,65 +71,10 @@ const handleScroll = (path) => {
   const featureContent = document.getElementById(path);
   featureContent.scrollIntoView({behavior: "smooth", block: "center"});
 };
-const teamMembers = [
-  {
-    name: "Ivan Cedie C. Batario",
-    position: "Backend Developer",
-    image: ivanImage,
-  },
-  {
-    name: "Jerome D. Ramos",
-    position: "Lead Developer",
-    image: jeromeImage,
-  },
-  {
-    name: "Jerico B. Balisi",
-    position: "Frontend Developer",
-    image: jericoImage,
-  },
-  {
-    name: "Diosa D. Tadiosa",
-    position: "Documentation/Tester",
-    image: diosaImage,
-  },
-  {
-    name: "Jake A. Bristol",
-    position: "UI/UX System Designer",
-    image: jakeImage,
-  },
-  {
-    name: "Jezreel Dannah D. Menor",
-    position: "Documentation/Tester",
-    image: jezreelImage,
-  },
-];
-
-const displayTeam = () => {
-  return (
-    <div className="the-team-container" id="/the team">
-      <div className="text-container-top">
-        <p>The Team</p>
-      </div>
-
-      <div className="members-container">
-        {teamMembers.map((member) => (
-          <div
-            key={member.name}
-            className={`member-img${member.image ? "2" : "1"}`}
-          >
-            {member.image && <img src={member.image} alt="" />}
-            <p className="member-name">{member.name}</p>
-            <p className="member-position">{member.position}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
 
 const LandingPage = () => {
   const [isNavbarOpen, setNavbarOpen] = useState(false);
-  const [showBackToTop, setShowBackToTop] = useState(false); // Add new state variable
+  const [showBackToTop, setShowBackToTop] = useState(false);
   const navigate = useNavigate();
 
   const {user} = useSelector((state) => state.user);
@@ -189,7 +134,7 @@ const LandingPage = () => {
               {links.map((item, index) => {
                 const {path, link} = item;
                 return (
-                  <a key={index} onClick={() => handleScroll(path)}>
+                  <a href="#/" key={index} onClick={() => handleScroll(path)}>
                     {link}
                   </a>
                 );
