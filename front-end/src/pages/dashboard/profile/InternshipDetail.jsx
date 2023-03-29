@@ -1,5 +1,7 @@
+/** @format */
+
 import React from "react";
-import {useSelector, useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 const months = [
   "January",
@@ -24,7 +26,7 @@ const InternshipDetail = React.memo(() => {
         companyName,
         description,
         email,
-        logo: {link, name},
+        logo: { link, name },
         startingDate,
         supervisor,
         supervisorContact,
@@ -44,14 +46,32 @@ const InternshipDetail = React.memo(() => {
         <img src={link} alt={name} />
       </div>
       <div className="text">
-        <h4>Type of Work: {typeOfWork}</h4>
-        <h4>Started working since: {formatDate(startingDate)}</h4>
-        <h4>Company name: {companyName}</h4>
-        <h4>Address: {companyAddress}</h4>
-        <h4>Email: {email}</h4>
-        <h4>Supervisor: {supervisor}</h4>
-        <h4>Supervisor Contact: {supervisorContact}</h4>
-        <h4>Description: {description}</h4>
+        <p>
+          <b>Type of Work: </b> {typeOfWork}
+        </p>
+        <p>
+          <b> Started working since: </b> {formatDate(startingDate)}
+        </p>
+        <p>
+          <b>Company name: </b> {companyName}
+        </p>
+        <p>
+          <b>Address: </b> {companyAddress}
+        </p>
+        <p>
+          <b>Email: </b>
+          {email}
+        </p>
+        <p>
+          <b>Supervisor: </b>
+          {supervisor}
+        </p>
+        <p>
+          <b>Supervisor Contact: </b> {supervisorContact}
+        </p>
+        <p>
+          <b>Description: </b> {description}
+        </p>
       </div>
     </div>
   );

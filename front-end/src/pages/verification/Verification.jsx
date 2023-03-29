@@ -1,26 +1,21 @@
-import React, { useEffect, useState, useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, {useEffect, useState, useCallback} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
-import { requestVerification } from "../../features/user/userReducer";
+import {requestVerification} from "../../features/user/userReducer";
 import AreYouSureModal from "../../components/verification/AreYouSureModal";
 
-import { storage } from "../../Firebase";
-import {
-  ref,
-  uploadBytes,
-  getDownloadURL,
-  deleteObject,
-} from "firebase/storage";
-import { v4 } from "uuid";
+import {storage} from "../../Firebase";
+import {ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage";
+import {v4} from "uuid";
 
-import { FaCheck } from "react-icons/fa";
+import {FaCheck} from "react-icons/fa";
 const Verification = React.memo(() => {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.user);
+  const {user} = useSelector((state) => state.user);
 
   const {
-    user: { firstName },
+    user: {firstName},
     schoolDetails,
   } = user;
 
@@ -67,7 +62,7 @@ const Verification = React.memo(() => {
           forInput: "Supervisor",
           value: "",
           isError: false,
-          errorMessage: "Atleast 2 characters and  max of 50",
+
           isDisabled: false,
         },
         {
@@ -286,7 +281,7 @@ const Verification = React.memo(() => {
     // });
 
     const newData = form.map((input) => {
-      const { code, value, name } = input;
+      const {code, value, name} = input;
       if (name) {
         return {
           code,
@@ -304,8 +299,8 @@ const Verification = React.memo(() => {
       {},
       ...newData.map((item) =>
         !item.name
-          ? { [item.code]: item.value }
-          : { [item.code]: { link: item.value, name: item.name } }
+          ? {[item.code]: item.value}
+          : {[item.code]: {link: item.value, name: item.name}}
       )
     );
 
@@ -445,13 +440,29 @@ const Verification = React.memo(() => {
           checkCompletion(mainIndex);
           return;
         case "supervisor":
-          value.length >= 2 && value.length <= 50
-            ? (newForm[mainIndex].forms[index].isError = false)
-            : (newForm[mainIndex].forms[index].isError = true);
           newForm[mainIndex].forms[index].value = value;
+          const regex =
+            /^(?=.{2,50}$)(?!(\s.*){3,})(?!\s{3,})[^\d]*(\s[^\d]*){0,2}$/;
+          let isSuperValid = regex.test(value);
+          if (isSuperValid) {
+            newForm[mainIndex].forms[index].isError = false;
+          } else {
+            newForm[mainIndex].forms[index].isError = true;
+            if (/\d/.test(value)) {
+              newForm[mainIndex].forms[index].errorMessage =
+                "Supervisor name should not contain numbers";
+            } else if (value.length < 2) {
+              newForm[mainIndex].forms[index].errorMessage =
+                "Supervisor name should have at least 2 and maximum of 50 characters";
+            } else if (/\s{3,}/.test(value)) {
+              newForm[mainIndex].forms[index].errorMessage =
+                "Supervisor name should have at most 2 white spaces";
+            }
+          }
           setForm(newForm);
           checkCompletion(mainIndex);
           return;
+
         case "supervisor-contact":
         case "student-contact":
           newForm[mainIndex].forms[index].value = value;
@@ -489,12 +500,12 @@ const Verification = React.memo(() => {
         case "logo":
           if (schoolDetails) {
             const {
-              validID: { name },
+              validID: {name},
             } = schoolDetails;
             deleteDuplicateFirebase(name);
           }
           if (value) {
-            const { name, type } = value;
+            const {name, type} = value;
             if (!type.includes("image")) {
               newForm[mainIndex].forms[index].isError = true;
               newForm[mainIndex].forms[index].errorMessage =
@@ -638,6 +649,10 @@ const Verification = React.memo(() => {
     }
   };
 
+  const handlePaste = (event) => {
+    event.preventDefault();
+  };
+
   const customStyle = {
     control: (styles) => ({
       ...styles,
@@ -711,12 +726,12 @@ const Verification = React.memo(() => {
               {isError && <p className="error-message">{errorMessage}</p>}
             </div>
           );
-
         case "email":
         case "text":
           return (
             <div className="input-contain" key={index}>
               <input
+                onPaste={handlePaste}
                 tabIndex={-1}
                 disabled={isDisabled}
                 required
@@ -763,7 +778,7 @@ const Verification = React.memo(() => {
                 {!isError && !value && <p>Select File</p>}
                 {isError && (
                   <p
-                    style={{ color: "red", fontSize: "18px" }}
+                    style={{color: "red", fontSize: "18px"}}
                     className="error-message"
                   >
                     {errorMessage}{" "}
@@ -774,7 +789,7 @@ const Verification = React.memo(() => {
             </div>
           );
         case "select":
-          const { options, placeholder } = item;
+          const {options, placeholder} = item;
           const list = options.map((opt) => opt);
           return (
             <Select
@@ -797,7 +812,7 @@ const Verification = React.memo(() => {
             />
           );
         case "list":
-          const { optionItems } = item;
+          const {optionItems} = item;
           return (
             <CreatableSelect
               tabIndex={-1}
@@ -819,7 +834,7 @@ const Verification = React.memo(() => {
             />
           );
         case "time":
-          const { optionTime } = item;
+          const {optionTime} = item;
           return (
             <Select
               tabIndex={-1}
@@ -842,7 +857,7 @@ const Verification = React.memo(() => {
             />
           );
         case "scheduleType":
-          const { scheduleType } = item;
+          const {scheduleType} = item;
           return (
             <Select
               tabIndex={-1}
@@ -868,6 +883,7 @@ const Verification = React.memo(() => {
           return (
             <div className="input-contain" key={index}>
               <textarea
+                onPaste={handlePaste}
                 tabIndex={-1}
                 disabled={isDisabled}
                 required
@@ -902,7 +918,7 @@ const Verification = React.memo(() => {
 
   const renderSteps = () => {
     return steps.map((item, index) => {
-      const { step, isCompleted } = item;
+      const {step, isCompleted} = item;
       return (
         <div
           className={

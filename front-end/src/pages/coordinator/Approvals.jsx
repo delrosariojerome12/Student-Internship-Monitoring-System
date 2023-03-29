@@ -1,13 +1,15 @@
-import React, {useEffect} from "react";
+/** @format */
+
+import React, { useEffect } from "react";
 import Approval from "../../components/coordinator/ApprovalIntern";
-import {useSelector, useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ApprovalWaiting from "../../assets/img/waiting.svg";
-import {BiSearchAlt} from "react-icons/bi";
+import { BiSearchAlt } from "react-icons/bi";
 import Bouncing from "../../components/loading/Bouncing";
 import ServerError from "../serverError";
-import {getAllInterns} from "../../features/interns/internReducer";
+import { getAllInterns } from "../../features/interns/internReducer";
 const Approvals = React.memo(() => {
-  const {approvalInterns, isLoading, isError} = useSelector(
+  const { approvalInterns, isLoading, isError } = useSelector(
     (state) => state.intern
   );
   const dispatch = useDispatch();
@@ -54,15 +56,14 @@ const Approvals = React.memo(() => {
     <section className="approvals">
       <header>
         <h2>Approvals</h2>
-        <div className="search">
+        {/* <div className="search">
           <span>
             <BiSearchAlt />
           </span>
           <input placeholder="Search" type="text" />
-        </div>
+        </div> */}
       </header>
       <div className="approval-container">
-        <h3>Bachelor of Science in Information Technology</h3>
         <div className="approvals-intern-container">{renderApprovals()}</div>
       </div>
     </section>

@@ -1,5 +1,7 @@
-import React, {useState} from "react";
-import {useSelector, useDispatch} from "react-redux";
+/** @format */
+
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   handleEditModal,
   updateNarrative,
@@ -28,12 +30,12 @@ const formatDate = (date) => {
 };
 
 const EditModal = React.memo(() => {
-  const {selectedDay} = useSelector((state) => state.narrative);
+  const { selectedDay } = useSelector((state) => state.narrative);
   const {
     day: {
       email,
       date,
-      narrative: {isComplete, content},
+      narrative: { isComplete, content },
     },
   } = selectedDay;
   const dispatch = useDispatch();
@@ -42,12 +44,16 @@ const EditModal = React.memo(() => {
 
   return (
     <>
-      <div className="overlay"></div>
+      <div
+        className="overlay"
+        onClick={() => dispatch(handleEditModal())}></div>
       <div className="edit-modal modal">
         <div className="upper">
           <h3>Edit Narrative</h3>
           <h3>{formatDate(date)}</h3>
-          <h3>{isComplete ? "Completed" : "Missing"}</h3>
+          <h3 style={{ color: isComplete ? "#00adb5" : "#e63946" }}>
+            {isComplete ? "Completed" : "Missing"}
+          </h3>
         </div>
         <div className="middle">
           <textarea
@@ -56,16 +62,19 @@ const EditModal = React.memo(() => {
             value={textValue}
             onChange={(e) => {
               setTextValue(e.target.value);
-            }}
-          ></textarea>
+            }}></textarea>
         </div>
         <div className="btn-controller">
-          <button onClick={() => dispatch(handleEditModal())}>Close</button>
           <button
+            className="close-btn"
+            onClick={() => dispatch(handleEditModal())}>
+            Close
+          </button>
+          <button
+            className="save-btn"
             onClick={() =>
-              dispatch(updateNarrative({date, content: textValue, email}))
-            }
-          >
+              dispatch(updateNarrative({ date, content: textValue, email }))
+            }>
             Save Narrative
           </button>
         </div>

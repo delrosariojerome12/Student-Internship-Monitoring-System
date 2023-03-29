@@ -590,6 +590,7 @@ button {
   border: solid 1px #457b9d;
 }
 
+/** @format */
 .landing-page {
   display: grid;
   grid-template-rows: minmax(100vh, auto) 25rem;
@@ -863,6 +864,485 @@ button {
   -o-object-fit: cover;
      object-fit: cover;
 }
+.landing-page .contents * {
+  box-sizing: border-box;
+  justify-items: center;
+}
+.landing-page .contents img {
+  height: 80px;
+  width: 80px;
+  image-rendering: auto;
+}
+.landing-page .contents .the-team-container {
+  margin: 0 auto;
+  text-align: center;
+  background-color: whitesmoke;
+  align-items: center;
+  justify-items: center;
+  height: 500px;
+  width: 90%;
+  border-radius: 10px;
+}
+.landing-page .contents .text-container-top {
+  grid-column: 1/-1;
+  color: #088f8f;
+  background-color: white;
+  width: 100%;
+  font-weight: bold;
+  border-radius: 10px 10px 0 0;
+}
+.landing-page .contents .members-container {
+  padding: 30px 0 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 1px;
+  text-align: center;
+  align-items: center;
+  justify-items: center;
+  margin: 20px 0 20px 0;
+}
+.landing-page .contents .member-img1,
+.landing-page .contents .member-img2,
+.landing-page .contents .member-img3,
+.landing-page .contents .member-img4,
+.landing-page .contents .member-img5,
+.landing-page .contents .member-img6 {
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 50%;
+  height: 85%;
+  background-color: white;
+  margin-bottom: 30px;
+  transition: 0.4s;
+  cursor: pointer;
+}
+.landing-page .contents .member-img1:hover,
+.landing-page .contents .member-img2:hover,
+.landing-page .contents .member-img3:hover,
+.landing-page .contents .member-img4:hover,
+.landing-page .contents .member-img5:hover,
+.landing-page .contents .member-img6:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
+  background-color: #088f8f;
+  color: #fff;
+}
+.landing-page .contents .member-name {
+  font-weight: bold;
+  font-size: 0.7em;
+  margin-bottom: 5px;
+}
+.landing-page .contents .member-position {
+  font-style: italic;
+  font-size: 0.6em;
+  margin-top: 5px;
+}
+@media screen and (max-width: 1100px) {
+  .landing-page .contents img {
+    height: 60px;
+    width: 60px;
+  }
+  .landing-page .contents .the-team-container {
+    margin: 50px auto;
+    text-align: center;
+    background-color: whitesmoke;
+    align-items: center;
+    justify-items: center;
+    height: 95%;
+    width: 90%;
+    border-radius: 10px;
+  }
+  .landing-page .contents .members-container {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .landing-page .contents .member-img1,
+  .landing-page .contents .member-img2,
+  .landing-page .contents .member-img3,
+  .landing-page .contents .member-img4,
+  .landing-page .contents .member-img5,
+  .landing-page .contents .member-img6 {
+    width: 90%;
+    height: 75%;
+  }
+  .landing-page .contents .member-name {
+    font-size: 0.6em;
+  }
+  .landing-page .contents .member-position {
+    font-size: 0.5em;
+  }
+}
+@media screen and (max-width: 920px) {
+  .landing-page .contents .the-team-container {
+    margin: 50px auto;
+    text-align: center;
+    background-color: whitesmoke;
+    align-items: center;
+    justify-items: center;
+    height: 95%;
+    width: 90%;
+    border-radius: 10px;
+  }
+  .landing-page .contents .members-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    margin: 10px 0 10px 0;
+  }
+  .landing-page .contents .member-img1,
+  .landing-page .contents .member-img2,
+  .landing-page .contents .member-img3,
+  .landing-page .contents .member-img4,
+  .landing-page .contents .member-img5,
+  .landing-page .contents .member-img6 {
+    width: 80%;
+    height: 80%;
+    margin-bottom: 20px;
+  }
+}
+@media screen and (max-width: 820px) {
+  .landing-page .contents .members-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+  .landing-page .contents .member-img1,
+  .landing-page .contents .member-img2,
+  .landing-page .contents .member-img3,
+  .landing-page .contents .member-img4,
+  .landing-page .contents .member-img5,
+  .landing-page .contents .member-img6 {
+    width: 90%;
+  }
+  .landing-page .contents .member-name {
+    font-size: 0.6em;
+  }
+  .landing-page .contents .member-position {
+    font-size: 0.5em;
+  }
+}
+@media screen and (max-width: 650px) {
+  .landing-page .contents .member-img1,
+  .landing-page .contents .member-img2,
+  .landing-page .contents .member-img3,
+  .landing-page .contents .member-img4,
+  .landing-page .contents .member-img5,
+  .landing-page .contents .member-img6 {
+    width: 80%;
+    height: 75%;
+    margin-bottom: 20px;
+  }
+}
+@media screen and (max-width: 170px) {
+  .landing-page .contents .the-team-container {
+    height: auto;
+    width: 100%;
+    padding: 10px;
+  }
+  .landing-page .contents .members-container {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-gap: 5px;
+  }
+  .landing-page .contents .member-img1,
+  .landing-page .contents .member-img2,
+  .landing-page .contents .member-img3,
+  .landing-page .contents .member-img4,
+  .landing-page .contents .member-img5,
+  .landing-page .contents .member-img6 {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  .landing-page .contents .member-name {
+    font-size: 0.6em;
+  }
+  .landing-page .contents .member-position {
+    font-size: 0.5em;
+  }
+}
+@media screen and (max-width: 140px) {
+  .landing-page .contents img {
+    height: 20%;
+    width: 20%;
+    image-rendering: auto;
+  }
+  .landing-page .contents .the-team-container {
+    margin: 0 auto;
+    text-align: center;
+    background-color: whitesmoke;
+    align-items: center;
+    justify-items: center;
+    height: 95%;
+    width: 100%;
+    border-radius: 10px;
+  }
+  .landing-page .contents .text-container-top {
+    grid-column: 1/-1;
+    color: #088f8f;
+    background-color: white;
+    width: 100%;
+    font-weight: bold;
+    border-radius: 10px 10px 0 0;
+  }
+  .landing-page .contents .members-container {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-gap: 1px;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    margin: 20px 0 20px 0;
+  }
+  .landing-page .contents .member-img1,
+  .landing-page .contents .member-img2,
+  .landing-page .contents .member-img3,
+  .landing-page .contents .member-img4,
+  .landing-page .contents .member-img5,
+  .landing-page .contents .member-img6 {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 95%;
+    height: 80%;
+    background-color: white;
+    margin-bottom: 10px;
+    transition: 0.4s;
+  }
+  .landing-page .contents .member-img1:hover,
+  .landing-page .contents .member-img2:hover,
+  .landing-page .contents .member-img3:hover,
+  .landing-page .contents .member-img4:hover,
+  .landing-page .contents .member-img5:hover,
+  .landing-page .contents .member-img6:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+    background-color: #088f8f;
+    color: #fff;
+  }
+  .landing-page .contents .member-name {
+    font-weight: bold;
+    font-size: 0.7em;
+    margin-bottom: 5px;
+  }
+  .landing-page .contents .member-position {
+    font-style: italic;
+    font-size: 0.6em;
+    margin-top: 5px;
+  }
+}
+@media only screen and (max-width: 160px) {
+  .landing-page .contents img {
+    height: 30px;
+    width: 30px;
+  }
+  .landing-page .contents .members-container {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+  }
+  .landing-page .contents .member-img1,
+  .landing-page .contents .member-img2,
+  .landing-page .contents .member-img3,
+  .landing-page .contents .member-img4,
+  .landing-page .contents .member-img5,
+  .landing-page .contents .member-img6 {
+    width: 95%;
+    height: 40%;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  .landing-page .contents .member-name {
+    font-size: 0.4em;
+    margin-bottom: 3px;
+  }
+  .landing-page .contents .member-position {
+    font-size: 0.3em;
+    margin-top: 3px;
+  }
+}
+@media screen and (max-width: 150px) {
+  .landing-page .contents img {
+    height: 50px;
+    width: 50px;
+  }
+  .landing-page .contents .member-img1,
+  .landing-page .contents .member-img2,
+  .landing-page .contents .member-img3,
+  .landing-page .contents .member-img4,
+  .landing-page .contents .member-img5,
+  .landing-page .contents .member-img6 {
+    width: 100%;
+    height: 100%;
+  }
+  .landing-page .contents .member-name {
+    font-size: 0.6em;
+  }
+  .landing-page .contents .member-position {
+    font-size: 0.5em;
+  }
+}
+@media screen and (max-width: 140px) {
+  .landing-page .contents img {
+    height: 40px;
+    width: 40px;
+  }
+  .landing-page .contents .member-name {
+    font-size: 0.5em;
+  }
+  .landing-page .contents .member-position {
+    font-size: 0.4em;
+  }
+}
+@media only screen and (max-width: 130px) {
+  .landing-page .contents img {
+    height: 40px;
+    width: 40px;
+  }
+  .landing-page .contents .the-team-container {
+    height: auto;
+    width: 100%;
+    border-radius: 0;
+  }
+  .landing-page .contents .text-container-top {
+    border-radius: 0;
+  }
+  .landing-page .contents .members-container {
+    display: block;
+    margin: 10px 0;
+  }
+  .landing-page .contents .member-img1,
+  .landing-page .contents .member-img2,
+  .landing-page .contents .member-img3,
+  .landing-page .contents .member-img4,
+  .landing-page .contents .member-img5,
+  .landing-page .contents .member-img6 {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  .landing-page .contents .member-name {
+    font-size: 0.6em;
+    margin-bottom: 2px;
+  }
+  .landing-page .contents .member-position {
+    font-size: 0.5em;
+    margin-top: 2px;
+  }
+}
+@media (max-width: 125px) {
+  .landing-page .contents img {
+    height: 50px;
+    width: 50px;
+  }
+  .landing-page .contents .members-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px 0;
+  }
+  .landing-page .contents .member-img1,
+  .landing-page .contents .member-img2,
+  .landing-page .contents .member-img3,
+  .landing-page .contents .member-img4,
+  .landing-page .contents .member-img5,
+  .landing-page .contents .member-img6 {
+    width: 90%;
+    height: auto;
+    margin: 10px;
+  }
+  .landing-page .contents .member-name {
+    font-size: 0.5em;
+    margin-bottom: 3px;
+  }
+  .landing-page .contents .member-position {
+    font-size: 0.4em;
+    margin-top: 3px;
+  }
+}
+@media only screen and (max-width: 60px) {
+  .landing-page .contents img {
+    height: 50px;
+    width: 50px;
+  }
+  .landing-page .contents .members-container {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    margin: 10px 0;
+  }
+  .landing-page .contents .member-img1,
+  .landing-page .contents .member-img2,
+  .landing-page .contents .member-img3,
+  .landing-page .contents .member-img4,
+  .landing-page .contents .member-img5,
+  .landing-page .contents .member-img6 {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .landing-page .contents img {
+    height: 60px;
+    width: 60px;
+  }
+  .landing-page .contents .the-team-container {
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+  }
+  .landing-page .contents .members-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    margin: 10px 0 10px 0;
+  }
+  .landing-page .contents .member-img1,
+  .landing-page .contents .member-img2,
+  .landing-page .contents .member-img3,
+  .landing-page .contents .member-img4,
+  .landing-page .contents .member-img5,
+  .landing-page .contents .member-img6 {
+    width: 80%;
+    height: 80%;
+    margin-bottom: 20px;
+  }
+  .landing-page .contents .member-name {
+    font-size: 0.6em;
+  }
+  .landing-page .contents .member-position {
+    font-size: 0.5em;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .landing-page .contents img {
+    height: 50px;
+    width: 50px;
+  }
+  .landing-page .contents .members-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    margin: 10px 0 10px 0;
+  }
+  .landing-page .contents .member-img1,
+  .landing-page .contents .member-img2,
+  .landing-page .contents .member-img3,
+  .landing-page .contents .member-img4,
+  .landing-page .contents .member-img5,
+  .landing-page .contents .member-img6 {
+    width: 80%;
+    height: 80%;
+    margin-bottom: 20px;
+  }
+  .landing-page .contents .member-name {
+    font-size: 0.6em;
+    margin-bottom: 3px;
+  }
+  .landing-page .contents .member-position {
+    font-size: 0.5em;
+    margin-top: 3px;
+  }
+}
 .landing-page footer {
   background-color: #323232;
 }
@@ -932,11 +1412,11 @@ button {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
@@ -2155,7 +2635,7 @@ button {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: 7vh auto;
+  grid-template-rows: auto minmax(45rem, 85vh);
   gap: 1rem;
 }
 .dashboard .approvals .no-entries, .dashboard-active .approvals .no-entries {
@@ -2186,44 +2666,22 @@ button {
 }
 .dashboard .approvals header, .dashboard-active .approvals header {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 1rem;
+  grid-template-columns: 1fr;
+  background-color: #282b30;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
 }
 .dashboard .approvals header h2, .dashboard-active .approvals header h2 {
+  display: flex;
+  align-items: center;
   color: #fff;
 }
-.dashboard .approvals header .search, .dashboard-active .approvals header .search {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f1faee;
-  width: 80%;
-  border-radius: 2rem;
-  padding: 0 1.5rem;
-  margin: auto;
-}
-.dashboard .approvals header .search span, .dashboard-active .approvals header .search span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  cursor: pointer;
-}
-.dashboard .approvals header .search input, .dashboard-active .approvals header .search input {
-  width: 100%;
-  background: transparent;
-  padding: 1rem;
-  outline: none;
-  border: 0;
-}
 .dashboard .approvals .approval-container, .dashboard-active .approvals .approval-container {
-  border: solid 1px #fff;
+  background-color: #282b30;
   padding: 2rem;
   height: 100%;
   border-radius: 1rem;
-}
-.dashboard .approvals .approval-container h3, .dashboard-active .approvals .approval-container h3 {
-  display: none;
+  overflow-y: auto;
 }
 .dashboard .approvals .approval-container .approvals-intern-container, .dashboard-active .approvals .approval-container .approvals-intern-container {
   display: grid;
@@ -2263,7 +2721,7 @@ button {
   padding: 2rem;
   gap: 1rem;
   grid-template-rows: auto auto;
-  height: auto;
+  height: 90%;
   width: 120rem;
 }
 .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal > *, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal > * {
@@ -2404,10 +2862,13 @@ button {
   padding-right: 0.3rem;
   font-size: 1.3rem;
 }
+.dashboard .approvals .approval-container .approvals-intern-container .approval-intern .intern-left, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .intern-left {
+  margin: auto;
+}
 .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .intern-right, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .intern-right {
   display: flex;
   gap: 2rem;
-  padding: 0.5rem 2rem;
+  padding: 1rem 2rem;
   align-items: center;
   justify-content: space-between;
 }
@@ -2481,32 +2942,32 @@ button {
     grid-column: 1/5;
     grid-row: 3/4;
   }
-}
-@media screen and (max-width: 850px) {
-  .dashboard .approvals .approval-container .approvals-intern-container .intern-right, .dashboard-active .approvals .approval-container .approvals-intern-container .intern-right {
+  .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .intern-right, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .intern-right {
     gap: 1rem !important;
   }
-  .dashboard .approvals .approval-container .approvals-intern-container .intern-right .intern-details .program, .dashboard-active .approvals .approval-container .approvals-intern-container .intern-right .intern-details .program {
+  .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .intern-right .intern-details .program, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .intern-right .intern-details .program {
     font-size: 1.6rem;
   }
+}
+@media screen and (max-width: 850px) {
   .dashboard .approvals .approval-container .approvals-intern-container .intern-right button, .dashboard-active .approvals .approval-container .approvals-intern-container .intern-right button {
     height: 2rem;
   }
 }
 @media screen and (max-width: 750px) {
   .dashboard .approvals .no-entries h4, .dashboard-active .approvals .no-entries h4 {
-    color: #000;
     font-size: 2rem;
   }
   .dashboard .approvals .no-entries .img-waiting img, .dashboard-active .approvals .no-entries .img-waiting img {
     height: 35rem;
     width: 35rem;
   }
-  .dashboard .approvals .approval-container h3, .dashboard-active .approvals .approval-container h3 {
-    display: flex;
-    color: #fff;
-    text-align: center;
-    padding: 1rem 2rem;
+  .dashboard .approvals .approval-container .approvals-intern-container, .dashboard-active .approvals .approval-container .approvals-intern-container {
+    grid-auto-rows: auto;
+  }
+  .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal {
+    width: 100%;
+    height: 100%;
   }
   .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details {
     display: flex;
@@ -2526,11 +2987,19 @@ button {
     height: 1rem;
   }
   .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .intern-right, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .intern-right {
-    justify-content: center !important;
+    gap: 0.5rem !important;
     flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .intern-right .intern-details .program, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .intern-right .intern-details .program {
     display: none;
+  }
+}
+@media screen and (max-width: 600px) {
+  .dashboard .approvals, .dashboard-active .approvals {
+    grid-template-rows: auto minmax(45rem, 72vh);
   }
 }
 @media screen and (max-width: 500px) {
@@ -2541,15 +3010,8 @@ button {
     height: 25rem;
     width: 25rem;
   }
-  .dashboard .approvals .approval-container h3, .dashboard-active .approvals .approval-container h3 {
-    font-size: 2rem;
-  }
   .dashboard .approvals .approval-container .approvals-intern-container .approval-intern, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern {
     grid-template-columns: auto;
-  }
-  .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal {
-    width: 100%;
-    height: 100%;
   }
   .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details {
     font-size: 1.5rem;
@@ -2560,6 +3022,11 @@ button {
   }
   .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .intern-left, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .intern-left {
     display: none;
+  }
+}
+@media screen and (max-width: 400px) {
+  .dashboard .approvals header h2, .dashboard-active .approvals header h2 {
+    justify-content: center;
   }
 }
 @media screen and (max-width: 350px) {
@@ -2580,10 +3047,16 @@ button {
 }
 .dashboard .internship-container, .dashboard-active .internship-container {
   display: grid;
-  grid-template-rows: repeat(2, minmax(7rem, auto)) minmax(30rem, 75.5vh);
+  grid-template-rows: auto minmax(30rem, 68vh);
   gap: 1rem;
 }
 .dashboard .internship-container header, .dashboard-active .internship-container header {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 1rem;
+}
+.dashboard .internship-container header .page-title, .dashboard-active .internship-container header .page-title {
   color: #fff;
   padding: 2rem;
   background-color: #282b30;
@@ -2591,14 +3064,14 @@ button {
   display: flex;
   align-items: center;
 }
-.dashboard .internship-container .btn-container, .dashboard-active .internship-container .btn-container {
+.dashboard .internship-container header .btn-container, .dashboard-active .internship-container header .btn-container {
   background-color: #282b30;
   display: flex;
   align-items: center;
   padding: 1rem 2rem;
   border-radius: 1rem;
 }
-.dashboard .internship-container .btn-container button, .dashboard-active .internship-container .btn-container button {
+.dashboard .internship-container header .btn-container button, .dashboard-active .internship-container header .btn-container button {
   height: 5rem;
   width: 12rem;
 }
@@ -3098,7 +3571,8 @@ button {
 }
 @media screen and (max-width: 750px) {
   .dashboard .internship-container .add-modal, .dashboard-active .internship-container .add-modal, .dashboard .internship-container .edit-modal, .dashboard-active .internship-container .edit-modal {
-    width: 100%;
+    width: 90%;
+    height: 90%;
   }
   .dashboard .internship-container .add-modal form, .dashboard-active .internship-container .add-modal form, .dashboard .internship-container .edit-modal form, .dashboard-active .internship-container .edit-modal form {
     grid-template-rows: repeat(3, 9.5rem) auto repeat(3, 9.5rem) auto;
@@ -3147,7 +3621,7 @@ button {
     height: 92%;
   }
 }
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 700px) {
   .dashboard .internship-container .add-modal, .dashboard-active .internship-container .add-modal, .dashboard .internship-container .edit-modal, .dashboard-active .internship-container .edit-modal {
     width: 100%;
   }
@@ -3194,7 +3668,17 @@ button {
 }
 @media screen and (max-width: 600px) {
   .dashboard .internship-container, .dashboard-active .internship-container {
-    grid-template-rows: repeat(2, minmax(7rem, auto)) minmax(30rem, 63vh);
+    grid-template-rows: auto minmax(40rem, 70vh);
+  }
+  .dashboard .internship-container header, .dashboard-active .internship-container header {
+    grid-template-columns: 1fr auto;
+    gap: 0;
+  }
+  .dashboard .internship-container header .page-title, .dashboard-active .internship-container header .page-title {
+    border-radius: 1rem 0 0 1rem;
+  }
+  .dashboard .internship-container header .btn-container, .dashboard-active .internship-container header .btn-container {
+    border-radius: 0 1rem 1rem 0;
   }
   .dashboard .internship-container .content .internship, .dashboard-active .internship-container .content .internship {
     grid-template-columns: 11rem 1fr;
@@ -3220,14 +3704,15 @@ button {
   }
 }
 @media screen and (max-width: 500px) {
-  .dashboard .internship-container, .dashboard-active .internship-container {
-    grid-template-rows: repeat(2, minmax(5rem, auto)) minmax(40rem, 68vh);
+  .dashboard .internship-container header .page-title, .dashboard-active .internship-container header .page-title {
+    padding: 1rem 0.5rem 1rem 2rem;
   }
-  .dashboard .internship-container header, .dashboard-active .internship-container header {
-    padding: 1rem 2rem;
+  .dashboard .internship-container header .btn-container, .dashboard-active .internship-container header .btn-container {
+    padding: 1rem 2rem 1rem 0.5rem;
   }
-  .dashboard .internship-container .btn-container button, .dashboard-active .internship-container .btn-container button {
+  .dashboard .internship-container header .btn-container button, .dashboard-active .internship-container header .btn-container button {
     height: 3.5rem;
+    width: 10rem;
   }
   .dashboard .internship-container .content, .dashboard-active .internship-container .content {
     padding: 6rem 2rem 2rem 2rem;
@@ -3259,7 +3744,7 @@ button {
   }
   .dashboard .internship-container .add-modal, .dashboard-active .internship-container .add-modal, .dashboard .internship-container .edit-modal, .dashboard-active .internship-container .edit-modal {
     width: 100%;
-    min-height: 100%;
+    height: 100%;
   }
   .dashboard .internship-container .add-modal form, .dashboard-active .internship-container .add-modal form, .dashboard .internship-container .edit-modal form, .dashboard-active .internship-container .edit-modal form {
     grid-template-rows: 15rem repeat(6, auto) 15rem auto;
@@ -3280,6 +3765,11 @@ button {
   }
   .dashboard .internship-container .view-modal .close-btn button, .dashboard-active .internship-container .view-modal .close-btn button {
     height: 3.5rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  .dashboard .internship-container, .dashboard-active .internship-container {
+    grid-template-rows: auto minmax(40rem, 73vh);
   }
 }
 .dashboard .coordinator-dashboard, .dashboard-active .coordinator-dashboard {
@@ -3871,17 +4361,18 @@ button {
   display: grid;
   gap: 1rem;
   border-radius: 1rem;
-  grid-template-rows: auto minmax(45rem, 78vh);
+  grid-template-rows: auto minmax(45rem, 73vh);
   color: #fff;
 }
 .dashboard .monitor-attendance button, .dashboard-active .monitor-attendance button {
-  background-color: #fff;
+  background-color: #d9d9d9;
   border: none;
   outline: none;
   cursor: pointer;
   padding: 1.5rem 3rem;
   transition: all 0.2s linear;
   font-weight: 600;
+  letter-spacing: 0.1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3936,10 +4427,30 @@ button {
 }
 .dashboard .monitor-attendance .display .content, .dashboard-active .monitor-attendance .display .content {
   display: grid;
-  grid-auto-rows: 14rem;
+  grid-auto-rows: auto;
   gap: 1rem;
   padding: 1rem;
   overflow-y: auto;
+}
+.dashboard .monitor-attendance .display .content .no-record, .dashboard-active .monitor-attendance .display .content .no-record {
+  display: grid;
+  grid-template-rows: auto auto;
+  justify-content: center;
+  gap: 1rem;
+}
+.dashboard .monitor-attendance .display .content .no-record h2, .dashboard-active .monitor-attendance .display .content .no-record h2 {
+  margin: auto;
+}
+.dashboard .monitor-attendance .display .content .no-record .img-waiting, .dashboard-active .monitor-attendance .display .content .no-record .img-waiting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+.dashboard .monitor-attendance .display .content .no-record .img-waiting img, .dashboard-active .monitor-attendance .display .content .no-record .img-waiting img {
+  height: 30rem;
+  width: 30rem;
 }
 .dashboard .monitor-attendance .display .content .day-attendance, .dashboard-active .monitor-attendance .display .content .day-attendance {
   background-color: #d9d9d9;
@@ -3969,21 +4480,37 @@ button {
   border-radius: 1rem;
   background-color: #fff;
 }
+.dashboard .monitor-attendance .display .content .day-attendance .right .first, .dashboard-active .monitor-attendance .display .content .day-attendance .right .first {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
 .dashboard .monitor-attendance .display .content .day-attendance .right .second, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+}
+.dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn {
+  display: flex;
   align-items: flex-start;
   gap: 1rem;
 }
-.dashboard .monitor-attendance .display .content .day-attendance .right .second button, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second button {
+.dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn h4, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn h4 {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #e63946;
+}
+.dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn button, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn button {
+  height: 4.5rem;
   padding: 1.5rem;
   background-color: #d9d9d9;
 }
-.dashboard .monitor-attendance .display .content .day-attendance .right .second button:hover, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second button:hover {
+.dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn button:hover, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn button:hover {
   background-color: #0d7377;
 }
 .dashboard .monitor-attendance .display .content .day-attendance .right > *, .dashboard-active .monitor-attendance .display .content .day-attendance .right > * {
-  padding: 0.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
 }
 .dashboard .monitor-attendance .display .content .absent, .dashboard-active .monitor-attendance .display .content .absent {
   background-color: #d21a28;
@@ -4010,7 +4537,7 @@ button {
   transform: translate(-50%, -50%);
   width: 50rem;
   height: 40rem;
-  background-color: #fff;
+  background-color: #d9d9d9;
   border: solid 1px #000;
   border-radius: 1rem;
 }
@@ -4038,6 +4565,44 @@ button {
   color: #e63946;
   background-color: #fff;
   border: solid 2px #e63946;
+}
+.dashboard .monitor-attendance .narrative-content, .dashboard-active .monitor-attendance .narrative-content {
+  height: 70rem;
+  width: 80rem;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+.dashboard .monitor-attendance .narrative-content .upper, .dashboard-active .monitor-attendance .narrative-content .upper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  background-color: #fff;
+  border: solid 1px #000;
+  border-radius: 1rem;
+}
+.dashboard .monitor-attendance .narrative-content .middle, .dashboard-active .monitor-attendance .narrative-content .middle {
+  background-color: #fff;
+  border: solid 1px #000;
+  border-radius: 1rem;
+}
+.dashboard .monitor-attendance .narrative-content .middle textarea, .dashboard-active .monitor-attendance .narrative-content .middle textarea {
+  resize: none;
+  height: 100%;
+  width: 100%;
+  padding: 2rem;
+  font-size: 1.6rem;
+  border-radius: 1rem;
+}
+.dashboard .monitor-attendance .narrative-content .btn-controllers button, .dashboard-active .monitor-attendance .narrative-content .btn-controllers button {
+  color: #d9d9d9;
+  border-radius: 1rem;
+}
+.dashboard .monitor-attendance .narrative-content .btn-controllers button:hover, .dashboard-active .monitor-attendance .narrative-content .btn-controllers button:hover {
+  border: solid 1px #00adb5;
+  background-color: #00adb5;
+  border-radius: 0;
+  color: #fff;
 }
 .dashboard .monitor-attendance .sort, .dashboard-active .monitor-attendance .sort {
   display: grid;
@@ -4071,13 +4636,21 @@ button {
   display: grid;
   grid-template-rows: 1fr auto;
   gap: 1rem;
-  height: 70rem;
+  height: 90%;
   width: 80rem;
   overflow-y: auto;
 }
 .dashboard .monitor-attendance .more-details .details, .dashboard-active .monitor-attendance .more-details .details {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+}
+.dashboard .monitor-attendance .more-details .details > *, .dashboard-active .monitor-attendance .more-details .details > * {
+  background-color: #fff;
+  border-radius: 1rem;
+}
+.dashboard .monitor-attendance .more-details .details .rendered-hours, .dashboard-active .monitor-attendance .more-details .details .rendered-hours {
+  padding: 1rem;
 }
 .dashboard .monitor-attendance .more-details .details .time-in, .dashboard-active .monitor-attendance .more-details .details .time-in,
 .dashboard .monitor-attendance .more-details .details .time-out,
@@ -4087,6 +4660,8 @@ button {
   align-items: center;
   justify-content: center;
   text-align: center;
+  gap: 0.5rem;
+  padding: 1rem 1rem 1.5rem 1rem;
 }
 .dashboard .monitor-attendance .more-details .details img, .dashboard-active .monitor-attendance .more-details .details img {
   height: 30rem;
@@ -4098,42 +4673,89 @@ button {
   justify-content: center;
 }
 .dashboard .monitor-attendance .more-details .btn-controller button, .dashboard-active .monitor-attendance .more-details .btn-controller button {
-  background-color: #d9d9d9;
+  color: #d9d9d9;
+  background-color: #0d7377;
+  border-radius: 1rem;
 }
-@media screen and (max-width: 1030px) {
-  .dashboard .monitor-attendance, .dashboard-active .monitor-attendance {
-    grid-template-rows: auto minmax(40rem, 74vh);
+.dashboard .monitor-attendance .more-details .btn-controller button:hover, .dashboard-active .monitor-attendance .more-details .btn-controller button:hover {
+  background-color: #00adb5;
+  border-radius: 0;
+  color: #fff;
+}
+@media screen and (max-width: 850px) {
+  .dashboard .monitor-attendance .more-details, .dashboard-active .monitor-attendance .more-details,
+  .dashboard .monitor-attendance .narrative-content,
+  .dashboard-active .monitor-attendance .narrative-content {
+    width: 72rem;
+  }
+}
+@media screen and (max-width: 800px) {
+  .dashboard .monitor-attendance .display .content .day-attendance .right .second, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second {
+    gap: 0.5rem;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn button, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn button {
+    height: 4rem;
   }
 }
 @media screen and (max-width: 750px) {
-  .dashboard .monitor-attendance, .dashboard-active .monitor-attendance {
-    grid-template-rows: auto minmax(40rem, 72vh);
+  .dashboard .monitor-attendance .display h1, .dashboard-active .monitor-attendance .display h1 {
+    font-size: 2.5rem;
   }
-  .dashboard .monitor-attendance .display .content, .dashboard-active .monitor-attendance .display .content {
-    grid-auto-rows: auto;
+  .dashboard .monitor-attendance .display .content .no-record h2, .dashboard-active .monitor-attendance .display .content .no-record h2 {
+    font-size: 2.3rem;
+  }
+  .dashboard .monitor-attendance .display .content .no-record .img-waiting img, .dashboard-active .monitor-attendance .display .content .no-record .img-waiting img {
+    height: 25rem;
+    width: 25rem;
   }
   .dashboard .monitor-attendance .display .content .day-attendance .right, .dashboard-active .monitor-attendance .display .content .day-attendance .right {
     grid-template-columns: auto;
     grid-template-rows: repeat(2, auto);
     gap: 0;
-    padding: 0.5rem;
+    padding: 0.5rem 0.5rem 1rem 1rem;
   }
   .dashboard .monitor-attendance .display .content .day-attendance .right > *, .dashboard-active .monitor-attendance .display .content .day-attendance .right > * {
     padding: 0;
   }
+  .dashboard .monitor-attendance .display .content .day-attendance .right .first .timeIn, .dashboard-active .monitor-attendance .display .content .day-attendance .right .first .timeIn,
+  .dashboard .monitor-attendance .display .content .day-attendance .right .first .timeOut,
+  .dashboard-active .monitor-attendance .display .content .day-attendance .right .first .timeOut {
+    display: none;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance .right .second, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second {
+    gap: 0;
+  }
+  .dashboard .monitor-attendance .more-details, .dashboard-active .monitor-attendance .more-details,
+  .dashboard .monitor-attendance .narrative-content,
+  .dashboard-active .monitor-attendance .narrative-content {
+    width: 100%;
+    height: 100%;
+  }
+  .dashboard .monitor-attendance .more-details .details img, .dashboard-active .monitor-attendance .more-details .details img {
+    height: 25rem;
+    width: 25rem;
+  }
 }
 @media screen and (max-width: 600px) {
   .dashboard .monitor-attendance, .dashboard-active .monitor-attendance {
-    grid-template-rows: auto minmax(35rem, 62vh);
+    grid-template-rows: auto minmax(35rem, 60vh);
   }
   .dashboard .monitor-attendance .modal, .dashboard-active .monitor-attendance .modal {
     width: 100%;
   }
+  .dashboard .monitor-attendance .more-details .details > *, .dashboard-active .monitor-attendance .more-details .details > * {
+    font-size: 1.7rem;
+  }
+  .dashboard .monitor-attendance .more-details .details img, .dashboard-active .monitor-attendance .more-details .details img {
+    height: 20rem;
+    width: 20rem;
+  }
 }
 @media screen and (max-width: 500px) {
-  .dashboard .monitor-attendance, .dashboard-active .monitor-attendance {
-    grid-template-rows: auto minmax(35rem, 60vh);
-  }
   .dashboard .monitor-attendance button, .dashboard-active .monitor-attendance button {
     height: 3.5rem;
   }
@@ -4150,8 +4772,8 @@ button {
     gap: 0.5rem;
     padding: 0.5rem;
   }
-  .dashboard .monitor-attendance header .mid:nth-child(1), .dashboard-active .monitor-attendance header .mid:nth-child(1) {
-    grid-row: 1/2;
+  .dashboard .monitor-attendance header .mid > *:nth-child(1), .dashboard-active .monitor-attendance header .mid > *:nth-child(1) {
+    grid-row: 2/3;
   }
   .dashboard .monitor-attendance header .mid > *, .dashboard-active .monitor-attendance header .mid > * {
     display: flex;
@@ -4159,21 +4781,86 @@ button {
     justify-content: center;
     text-align: center;
   }
-  .dashboard .monitor-attendance .display .content .day-attendance, .dashboard-active .monitor-attendance .display .content .day-attendance {
-    grid-template-columns: 1fr;
+  .dashboard .monitor-attendance .display .content .day-attendance .right > * p, .dashboard-active .monitor-attendance .display .content .day-attendance .right > * p {
+    font-size: 1.6rem;
   }
-  .dashboard .monitor-attendance .display .content .day-attendance .left, .dashboard-active .monitor-attendance .display .content .day-attendance .left {
-    display: none;
+  .dashboard .monitor-attendance .display .content .day-attendance .right > * h4, .dashboard-active .monitor-attendance .display .content .day-attendance .right > * h4 {
+    font-size: 1.7rem;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance .right .second, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second {
+    gap: 0;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn button, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn button {
+    height: 3.5rem;
+  }
+  .dashboard .monitor-attendance .more-details .details > *, .dashboard-active .monitor-attendance .more-details .details > * {
+    font-size: 1.6rem;
+  }
+  .dashboard .monitor-attendance .more-details .details img, .dashboard-active .monitor-attendance .more-details .details img {
+    height: 17rem;
+    width: 17rem;
+  }
+  .dashboard .monitor-attendance .narrative-content .upper, .dashboard-active .monitor-attendance .narrative-content .upper {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .dashboard .monitor-attendance .narrative-content .middle textarea, .dashboard-active .monitor-attendance .narrative-content .middle textarea {
+    padding: 1rem;
   }
 }
 @media screen and (max-width: 400px) {
   .dashboard .monitor-attendance, .dashboard-active .monitor-attendance {
     grid-template-rows: auto minmax(35rem, 59vh);
   }
+  .dashboard .monitor-attendance .display h1, .dashboard-active .monitor-attendance .display h1 {
+    text-align: center;
+    font-size: 2rem;
+  }
+  .dashboard .monitor-attendance .display .content .no-record h2, .dashboard-active .monitor-attendance .display .content .no-record h2 {
+    font-size: 1.8rem;
+  }
+  .dashboard .monitor-attendance .display .content .no-record .img-waiting img, .dashboard-active .monitor-attendance .display .content .no-record .img-waiting img {
+    height: 20rem;
+    width: 20rem;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance, .dashboard-active .monitor-attendance .display .content .day-attendance {
+    grid-template-columns: 1fr;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance .left, .dashboard-active .monitor-attendance .display .content .day-attendance .left {
+    display: none;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance .right .first, .dashboard-active .monitor-attendance .display .content .day-attendance .right .first {
+    justify-content: center;
+    align-items: center;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance .right .first .rendered, .dashboard-active .monitor-attendance .display .content .day-attendance .right .first .rendered {
+    display: none;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance .right .second, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second {
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn {
+    flex-direction: row;
+    align-items: center;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn button, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn button {
+    font-size: 1.2rem;
+  }
+  .dashboard .monitor-attendance .narrative-content .upper, .dashboard-active .monitor-attendance .narrative-content .upper {
+    font-size: 1.7rem;
+  }
+  .dashboard .monitor-attendance .narrative-content .middle textarea, .dashboard-active .monitor-attendance .narrative-content .middle textarea {
+    font-size: 1.4rem;
+  }
+  .dashboard .monitor-attendance .narrative-content .btn-controllers button, .dashboard-active .monitor-attendance .narrative-content .btn-controllers button {
+    height: 3.5rem;
+  }
 }
 .dashboard .admin-document-page, .dashboard-active .admin-document-page {
   display: grid;
-  grid-template-rows: auto minmax(45rem, 78vh);
+  grid-template-rows: auto minmax(45rem, 70vh);
   gap: 1rem;
   overflow: hidden;
 }
@@ -4814,9 +5501,6 @@ button {
   color: #fff;
 }
 @media screen and (max-width: 1030px) {
-  .dashboard .admin-document-page, .dashboard-active .admin-document-page {
-    grid-template-rows: auto minmax(40rem, 73vh);
-  }
   .dashboard .admin-document-page .document-container .documents, .dashboard-active .admin-document-page .document-container .documents {
     justify-content: center;
   }
@@ -4840,9 +5524,6 @@ button {
   }
 }
 @media screen and (max-width: 750px) {
-  .dashboard .admin-document-page, .dashboard-active .admin-document-page {
-    grid-template-rows: auto minmax(40rem, 70vh);
-  }
   .dashboard .admin-document-page .sample-view-container, .dashboard-active .admin-document-page .sample-view-container,
   .dashboard .admin-document-page .document-approval-container .view-document-container,
   .dashboard-active .admin-document-page .document-approval-container .view-document-container {
@@ -4929,7 +5610,7 @@ button {
 }
 @media screen and (max-width: 600px) {
   .dashboard .admin-document-page, .dashboard-active .admin-document-page {
-    grid-template-rows: auto minmax(35rem, 65vh);
+    grid-template-rows: auto minmax(35rem, 58vh);
   }
   .dashboard .admin-document-page .sample-view-container, .dashboard-active .admin-document-page .sample-view-container,
   .dashboard .admin-document-page .document-approval-container .view-document-container,
@@ -4947,7 +5628,7 @@ button {
 }
 @media screen and (max-width: 500px) {
   .dashboard .admin-document-page, .dashboard-active .admin-document-page {
-    grid-template-rows: auto minmax(35rem, 60vh);
+    grid-template-rows: auto minmax(35rem, 68vh);
   }
   .dashboard .admin-document-page .document-modal .content, .dashboard-active .admin-document-page .document-modal .content {
     grid-template-rows: 10rem repeat(2, auto);
@@ -4967,8 +5648,15 @@ button {
     font-size: 1.5rem;
     word-break: break-all;
   }
+  .dashboard .admin-document-page header, .dashboard-active .admin-document-page header {
+    gap: 0;
+  }
   .dashboard .admin-document-page header .title-page, .dashboard-active .admin-document-page header .title-page {
     padding: 0;
+    border-radius: 1rem 1rem 0 0;
+  }
+  .dashboard .admin-document-page header .btn-routes, .dashboard-active .admin-document-page header .btn-routes {
+    border-radius: 0 0 1rem 1rem;
   }
   .dashboard .admin-document-page header .btn-routes button, .dashboard-active .admin-document-page header .btn-routes button {
     height: 4rem;
@@ -5030,6 +5718,9 @@ button {
   }
 }
 @media screen and (max-width: 400px) {
+  .dashboard .admin-document-page, .dashboard-active .admin-document-page {
+    grid-template-rows: auto minmax(35rem, 67vh);
+  }
   .dashboard .admin-document-page .document-container .documents, .dashboard-active .admin-document-page .document-container .documents {
     grid-template-columns: 1fr;
   }
@@ -6532,13 +7223,13 @@ button {
     height: 3.5rem;
   }
 }
+/** @format */
 .profile-page {
   display: grid;
   height: 100%;
   width: 100%;
-  grid-template-rows: 30vh 63vh;
+  grid-template-rows: auto minmax(30rem, 53vh);
   gap: 1rem;
-  padding: 1rem;
 }
 .profile-page .profile-user {
   display: grid;
@@ -6657,7 +7348,7 @@ button {
   border-radius: 0 1rem 0 0;
 }
 .profile-page .content .button-container .active {
-  background-color: #7f7f7f;
+  background-color: #0d7377;
 }
 .profile-page .content .button-container .active::before {
   width: 80%;
@@ -6670,14 +7361,20 @@ button {
   overflow-y: auto;
 }
 .profile-page .content .display .intern-details-container {
-  background-color: #fff;
+  background-color: #d9d9d9;
   border-radius: 1rem;
   padding: 2rem;
   display: grid;
-  gap: 1rem;
+}
+.profile-page .content .display .intern-details-container .intern-content {
+  display: grid;
+  font-size: 1.9rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: #fff;
 }
 .profile-page .content .display .internship-details-container {
-  background-color: #fff;
+  background-color: #d9d9d9;
   border-radius: 1rem;
   padding: 2rem;
   display: grid;
@@ -6685,7 +7382,7 @@ button {
   gap: 1rem;
 }
 .profile-page .content .display .internship-details-container .img-con {
-  border: solid 1px #000;
+  background-color: #fff;
   border-radius: 1rem;
   height: 15rem;
   width: 15rem;
@@ -6698,14 +7395,17 @@ button {
 }
 .profile-page .content .display .internship-details-container .text {
   display: grid;
-  gap: 1rem;
-}
-.profile-page .content .display .internship-details-container .text h4 {
-  background-color: #efefef;
-  border-radius: 1rem;
   padding: 1rem;
+  background-color: #fff;
+  border-radius: 1rem;
+}
+.profile-page .content .display .internship-details-container .text p {
+  font-size: 1.9rem;
 }
 .profile-page .content .display .attendance-container {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -6724,10 +7424,9 @@ button {
   width: 30rem;
 }
 .profile-page .content .display .attendance-container .attendance-view {
-  background-color: #0d7377;
+  background-color: #d9d9d9;
   border-radius: 1rem;
   padding: 1.5rem;
-  color: #fff;
   display: flex;
   justify-content: space-between;
   gap: 1rem;
@@ -6737,6 +7436,9 @@ button {
   gap: 1rem;
 }
 .profile-page .content .display .request-container {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -6744,11 +7446,10 @@ button {
 .profile-page .content .display .request-container .document-record {
   display: flex;
   justify-content: space-between;
+  background-color: #d9d9d9;
   gap: 1rem;
-  background-color: #0d7377;
   padding: 1.5rem;
   border-radius: 1rem;
-  color: #fff;
 }
 
 /** @format */
@@ -6756,8 +7457,7 @@ button {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: auto minmax(40rem, 63vh);
-  padding: 1rem;
+  grid-template-rows: auto minmax(35rem, 61vh);
   gap: 1rem;
 }
 .daily-time-record button {
@@ -6962,7 +7662,6 @@ button {
   display: grid;
   grid-template-columns: repeat(2, auto);
   height: 100%;
-  gap: 1rem;
   align-items: center;
   background-color: #40454d;
   border-radius: 2rem;
@@ -7123,15 +7822,15 @@ button {
 }
 
 @media screen and (max-width: 1030px) {
-  .daily-time-record {
-    grid-template-rows: auto minmax(30rem, 61vh);
-  }
   .daily-time-record .no-internship img {
     height: 30rem;
     width: 30rem;
   }
 }
 @media screen and (max-width: 750px) {
+  .daily-time-record {
+    grid-template-rows: auto minmax(35rem, 65vh);
+  }
   .daily-time-record .modal {
     width: 58rem;
   }
@@ -7197,7 +7896,7 @@ button {
 }
 @media screen and (max-width: 700px) {
   .daily-time-record {
-    grid-template-rows: auto minmax(30rem, 53vh);
+    grid-template-rows: auto minmax(30rem, 57vh);
   }
   .daily-time-record header .user .text {
     grid-template-columns: auto;
@@ -7205,7 +7904,7 @@ button {
 }
 @media screen and (max-width: 600px) {
   .daily-time-record {
-    grid-template-rows: auto minmax(20rem, 45vh);
+    grid-template-rows: auto minmax(20rem, 47vh);
   }
   .daily-time-record .modal {
     width: 99%;
@@ -7320,7 +8019,7 @@ button {
 }
 @media screen and (max-width: 400px) {
   .daily-time-record {
-    grid-template-rows: auto minmax(20rem, 39vh);
+    grid-template-rows: auto minmax(20rem, 42vh);
   }
   .daily-time-record header {
     grid-template-rows: 1fr 0.5fr;
@@ -7365,8 +8064,8 @@ button {
 /** @format */
 .documents-page {
   display: grid;
-  grid-template-rows: minmax(22rem, auto) minmax(40rem, 65vh);
-  gap: 2rem;
+  grid-template-rows: 1fr minmax(35rem, 62vh);
+  gap: 1rem;
   border-radius: 1.5rem;
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
@@ -7408,6 +8107,7 @@ button {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 5rem 0;
 }
 .documents-page .top .drop-file {
   display: grid;
@@ -7701,6 +8401,9 @@ button {
   width: 65rem;
   height: 93%;
   overflow: auto;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 1rem;
 }
 .documents-page .sample-view-container img {
   height: 100%;
@@ -7843,9 +8546,6 @@ button {
 }
 
 @media screen and (max-width: 1030px) {
-  .documents-page {
-    grid-template-rows: minmax(22rem, auto) minmax(40rem, 62vh);
-  }
   .documents-page .top {
     grid-template-columns: 1fr 1.7fr;
   }
@@ -7864,7 +8564,7 @@ button {
 }
 @media screen and (max-width: 850px) {
   .documents-page {
-    grid-template-rows: auto minmax(40rem, 57vh);
+    grid-template-rows: auto minmax(30rem, 52vh);
     gap: 1rem;
   }
   .documents-page .top {
@@ -7996,9 +8696,6 @@ button {
   }
 }
 @media screen and (max-width: 500px) {
-  .documents-page {
-    grid-template-rows: auto minmax(20rem, 44vh);
-  }
   .documents-page .display {
     grid-auto-rows: 6rem;
   }
@@ -8024,6 +8721,11 @@ button {
     word-break: break-all;
   }
 }
+@media screen and (max-width: 400px) {
+  .documents-page {
+    grid-template-rows: auto minmax(20rem, 44vh);
+  }
+}
 /** @format */
 .reports {
   display: grid;
@@ -8042,7 +8744,7 @@ button {
   z-index: 6;
 }
 .reports .modal {
-  background-color: #fff;
+  background-color: #d9d9d9;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -8056,16 +8758,23 @@ button {
   grid-template-rows: auto 1fr auto;
   gap: 1rem;
 }
-.reports .modal > * {
-  border: solid 1px #000;
-}
 .reports .modal .upper {
   display: flex;
+  align-items: center;
   gap: 1rem;
   justify-content: space-between;
   padding: 2rem;
+  background-color: #fff;
+  border: solid 1px #000;
+  border-radius: 1rem;
+}
+.reports .modal .middle {
+  background-color: #fff;
+  border: solid 1px #000;
+  border-radius: 1rem;
 }
 .reports .modal .middle textarea {
+  border-radius: 1rem;
   font-size: 1.6rem;
   resize: none;
   width: 100%;
@@ -8074,40 +8783,54 @@ button {
 }
 .reports .modal .btn-controller {
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 2rem;
+  justify-content: center;
   gap: 2rem;
 }
 .reports .modal .btn-controller button {
-  background-color: #3d4049;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 1rem 1.5rem;
-  transition: all 0.2s linear;
-  font-weight: 600;
-  color: #fff;
-}
-.reports .modal .btn-controller button:hover {
-  background-color: #0d7377;
-  color: #fff;
-}
-.reports .content {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 1rem;
-}
-.reports .content .button-container {
-  background-color: #282b30;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1.5rem;
-  border-radius: 1rem 1rem 0 0;
-}
-.reports .content .button-container button {
+  justify-content: center;
   height: 4rem;
+  background-color: #0d7377;
+  border: none;
+  border-radius: 1rem;
+  outline: none;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  transition: all 0.2s linear;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #d9d9d9;
+}
+.reports .modal .btn-controller button:hover {
+  background-color: #00adb5;
+  border-radius: 0;
+  color: #fff;
+}
+.reports .pdf-container {
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  height: 90%;
+  transform: translate(-50%, -50%);
+  border-radius: 1rem;
+  z-index: 7;
+  padding: 2rem;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 1rem;
+}
+.reports .pdf-container iframe {
+  height: 100%;
+  width: 100%;
+}
+.reports .pdf-container button {
+  border-radius: 1rem;
+  margin: auto;
+  height: 4.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8117,7 +8840,46 @@ button {
   outline: none;
   font-weight: 500;
   color: #fff;
-  background-color: #3d4049;
+  background-color: #0d7377;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+.reports .pdf-container button span {
+  font-size: 1.8rem;
+  padding: 0.5rem 0.5rem 0;
+}
+.reports .pdf-container button p {
+  font-size: 1.5rem;
+}
+.reports .pdf-container button:hover {
+  background-color: #00adb5;
+  border-radius: 1rem;
+}
+.reports .content {
+  display: grid;
+  grid-template-rows: auto minmax(45rem, 81vh);
+  gap: 1rem;
+}
+.reports .content .button-container {
+  background-color: #282b30;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+}
+.reports .content .button-container button {
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  border: none;
+  padding: 1rem 2rem;
+  outline: none;
+  font-weight: 500;
+  color: #fff;
+  background-color: #0d7377;
   transition: all 0.3s linear;
   cursor: pointer;
 }
@@ -8143,7 +8905,7 @@ button {
   overflow-y: auto;
 }
 .reports .content .report-container .narrative-content {
-  background-color: #fff;
+  background-color: #d9d9d9;
   display: grid;
   grid-template-rows: auto 2rem;
   border-radius: 1rem;
@@ -8155,7 +8917,11 @@ button {
   gap: 1rem;
 }
 .reports .content .report-container .narrative-content .sub-container > * {
-  background-color: #d9d9d9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #fff;
   border-radius: 1rem;
   padding: 1rem;
   text-align: center;
@@ -8167,6 +8933,7 @@ button {
   grid-template-rows: 0rem 1fr;
   transition: all 0.3s ease-in-out;
   border-radius: 0 0 1rem 1rem;
+  margin-top: 1rem;
 }
 .reports .content .report-container .narrative-content .dropdown-container .days-container {
   background-color: #0d7377;
@@ -8175,6 +8942,22 @@ button {
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
+  border-radius: 0 0 1rem 1rem;
+  margin-top: -1rem;
+}
+.reports .content .report-container .narrative-content .dropdown-container .days-container button {
+  font-family: "Poppins", sans-serif;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  border: solid 1px transparent;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-weight: 600;
+}
+.reports .content .report-container .narrative-content .dropdown-container .days-container button:hover {
+  background-color: #457b9d;
+  color: #fff;
 }
 .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day {
   background-color: #d9d9d9;
@@ -8184,27 +8967,25 @@ button {
   display: grid;
   grid-template-columns: 14rem 1fr 1fr;
 }
+.reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .num-days {
+  flex-direction: column;
   background-color: #fff;
   border-radius: 1rem;
   text-align: center;
   padding: 1rem;
-  border: solid 1px #000;
 }
 .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .status {
   background-color: #fff;
   border-radius: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   text-align: center;
   padding: 1rem;
-  border: solid 1px #000;
 }
 .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 1rem;
 }
 .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container button {
@@ -8215,30 +8996,34 @@ button {
   padding: 1rem 1.5rem;
   transition: all 0.2s linear;
   font-weight: 600;
+  border-radius: 1rem;
 }
-.reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container button:first-child:hover {
-  background-color: #0d7377;
-  color: #fff;
-}
-.reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container button:last-child:hover {
-  background-color: #457b9d;
+.reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container button:hover {
+  border-radius: 0;
+  background-color: #00adb5;
   color: #fff;
 }
 .reports .content .report-container .narrative-content .dropdown-container .dropdown-btn {
+  margin-top: -1rem;
   border-radius: 0 0 1rem 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 2rem;
   width: 100%;
-  background-color: #fff;
+  background-color: #d9d9d9;
   cursor: pointer;
   background-color: #0d7377;
+}
+.reports .content .report-container .narrative-content .dropdown-container .dropdown-btn:hover {
+  background-color: #fff;
+  background-color: #00adb5;
 }
 .reports .content .report-container .narrative-content .dropdown-container .icon {
   color: #fff;
 }
 .reports .content .report-container .narrative-content .active {
-  grid-template-rows: 52rem 1fr;
+  grid-template-rows: 53rem 1fr;
   z-index: 4;
 }
 .reports .sort-modals {
@@ -8612,6 +9397,159 @@ button {
   background-color: rgba(255, 255, 255, 0.521);
 }
 
+@media screen and (max-width: 750px) {
+  .reports .modal {
+    width: 90%;
+  }
+  .reports .modal .upper {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    padding: 1rem 2rem;
+    gap: 0;
+  }
+  .reports .modal .upper > :nth-child(3) {
+    margin: auto;
+    grid-column: 2/3;
+    grid-row: 1/3;
+  }
+}
+@media screen and (max-width: 650px) {
+  .reports .content .report-container {
+    grid-template-columns: 1fr;
+  }
+  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .reports .content .report-container .narrative-content .active {
+    grid-template-rows: 53rem 1fr;
+  }
+}
+@media screen and (max-width: 600px) {
+  .reports .modal {
+    height: 90%;
+  }
+  .reports .modal .upper h3 {
+    font-size: 2rem;
+  }
+  .reports .content {
+    grid-template-rows: auto minmax(45rem, 70vh);
+  }
+  .reports .content .report-container .narrative-content .dropdown-container .days-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day {
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: auto;
+    gap: 0;
+  }
+  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+  }
+  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .num-days {
+    padding: 0;
+    border-radius: 1rem 1rem 0 0;
+  }
+  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .status {
+    padding: 0;
+    border-radius: 0;
+  }
+  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container {
+    border-radius: 0 0 1rem 1rem;
+    flex-direction: row;
+    padding: 0.5rem 0;
+  }
+  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container button {
+    background-color: #d9d9d9;
+  }
+  .reports .content .report-container .narrative-content .dropdown-container .days-container > :nth-child(5) {
+    width: 60%;
+    margin: auto;
+    grid-row: 3/4;
+    grid-column: 1/3;
+  }
+  .reports .content .report-container .narrative-content .active {
+    grid-template-rows: 43rem 1fr;
+  }
+}
+@media screen and (max-width: 500px) {
+  .reports .modal {
+    width: 100%;
+    height: 100%;
+  }
+  .reports .modal .upper {
+    gap: 0.5rem;
+  }
+  .reports .modal .upper h3 {
+    font-size: 1.9rem;
+  }
+  .reports .modal .btn-controller button {
+    font-size: 1.3rem;
+  }
+}
+@media screen and (max-width: 420px) {
+  .reports .content {
+    grid-template-rows: auto minmax(45rem, 67vh);
+  }
+  .reports .content .button-container {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+    padding: 1rem;
+    gap: 0.5rem;
+  }
+  .reports .content .button-container button {
+    border-radius: 1rem;
+  }
+  .reports .content .button-container button:hover {
+    border-radius: 0;
+  }
+  .reports .content .button-container > :nth-child(2) {
+    margin: auto;
+    width: 60%;
+    grid-row: 2/3;
+    grid-column: 1/3;
+  }
+  .reports .content .report-container {
+    grid-auto-rows: 14rem;
+  }
+  .reports .content .report-container .narrative-content .dropdown-container .days-container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(5, 10.5rem);
+  }
+  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day {
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(2, auto);
+  }
+  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .num-days {
+    border-radius: 1rem 0 0 0;
+  }
+  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .status {
+    border-radius: 0 0 0 1rem;
+  }
+  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container {
+    padding: 0.5rem;
+    flex-direction: column;
+    grid-column: 2/3;
+    grid-row: 1/3;
+    border-radius: 0 1rem 1rem 0;
+  }
+  .reports .content .report-container .narrative-content .active {
+    grid-template-rows: 58rem 1fr;
+  }
+}
+@media screen and (max-width: 380px) {
+  .reports .content {
+    grid-template-rows: auto minmax(35rem, 64vh);
+  }
+}
 .page-not-found {
   display: flex;
   align-items: center;

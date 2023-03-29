@@ -5,7 +5,7 @@
 
 .admin-document-page {
   display: grid;
-  grid-template-rows: auto minmax(45rem, 78vh);
+  grid-template-rows: auto minmax(45rem, 70vh);
 
   gap: 1rem;
   overflow: hidden;
@@ -689,7 +689,7 @@
 
 @media screen and (max-width: 1030px) {
   .admin-document-page {
-    grid-template-rows: auto minmax(40rem, 73vh);
+    // grid-template-rows: auto minmax(40rem, 73vh);
     .document-container {
       .documents {
         justify-content: center;
@@ -738,7 +738,7 @@
 }
 @media screen and (max-width: 750px) {
   .admin-document-page {
-    grid-template-rows: auto minmax(40rem, 70vh);
+    // grid-template-rows: auto minmax(40rem, 70vh);
     .sample-view-container,
     .document-approval-container .view-document-container {
       width: 60rem;
@@ -836,7 +836,7 @@
 }
 @media screen and (max-width: 600px) {
   .admin-document-page {
-    grid-template-rows: auto minmax(35rem, 65vh);
+    grid-template-rows: auto minmax(35rem, 58vh);
     .sample-view-container,
     .document-approval-container .view-document-container {
       width: 100%;
@@ -857,7 +857,7 @@
 }
 @media screen and (max-width: 500px) {
   .admin-document-page {
-    grid-template-rows: auto minmax(35rem, 60vh);
+    grid-template-rows: auto minmax(35rem, 68vh);
     .document-modal {
       .content {
         grid-template-rows: 10rem repeat(2, auto);
@@ -883,10 +883,13 @@
       }
     }
     header {
+      gap: 0;
       .title-page {
         padding: 0;
+        border-radius: 1rem 1rem 0 0;
       }
       .btn-routes {
+        border-radius: 0 0 1rem 1rem;
         button {
           height: 4rem;
           @include flexCenter;
@@ -966,6 +969,7 @@
 }
 @media screen and (max-width: 400px) {
   .admin-document-page {
+    grid-template-rows: auto minmax(35rem, 67vh);
     .document-container {
       .documents {
         grid-template-columns: 1fr;

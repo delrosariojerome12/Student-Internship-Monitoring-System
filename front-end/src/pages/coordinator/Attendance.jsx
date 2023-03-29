@@ -15,6 +15,9 @@ import Bouncing from "../../components/loading/Bouncing";
 import ServerError from "../serverError";
 import Attendance from "../../components/coordinator/Attendance";
 import ViewMoreDetailsModal from "../../components/coordinator/ViewMoreDetailsModal";
+import ViewNarrative from "../../components/coordinator/ViewNarrative";
+import ApprovalWaiting from "../../assets/img/waiting.svg";
+
 const now = new Date();
 const year = now.getFullYear();
 const month = now.getMonth() + 1;
@@ -39,7 +42,7 @@ const months = [
   "December",
 ];
 
-const MonitorAttendance = () => {
+const MonitorAttendance = React.memo(() => {
   const {
     isLoading,
     isError,
@@ -50,6 +53,7 @@ const MonitorAttendance = () => {
     filteredValues,
     selectedIntern,
     isViewMoreDetailsOpen,
+    isNarrativeOpen,
   } = useSelector((state) => state.monitorAttendance);
   const dispatch = useDispatch();
 
@@ -80,8 +84,11 @@ const MonitorAttendance = () => {
   const renderAttendance = () => {
     if (attendanceToday.length === 0) {
       return (
-        <div>
+        <div className="no-record">
           <h2>No Records Available.</h2>
+          <div className="img-waiting">
+            <img src={ApprovalWaiting} alt="Approvals waiting image" />
+          </div>
         </div>
       );
     }
@@ -129,7 +136,6 @@ const MonitorAttendance = () => {
           ></div>
           <div onClick={(e) => e.stopPropagation()} className="filter modal">
             <p>Filter</p>
-
             <div className="inputs-container">
               <label htmlFor="date">
                 Date
@@ -143,9 +149,11 @@ const MonitorAttendance = () => {
                 />
               </label>
             </div>
-
             <div className="btn-controllers">
               <button
+                style={
+                  !filterDate ? {pointerEvents: "none", opacity: ".7"} : null
+                }
                 onClick={() =>
                   dispatch(
                     getAllAttendanceByDate({
@@ -176,8 +184,9 @@ const MonitorAttendance = () => {
         </>
       )}
       {isViewMoreDetailsOpen && <ViewMoreDetailsModal />}
+      {isNarrativeOpen && <ViewNarrative />}
     </div>
   );
-};
+});
 
 export default MonitorAttendance;

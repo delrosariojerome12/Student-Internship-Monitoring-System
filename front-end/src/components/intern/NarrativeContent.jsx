@@ -3,7 +3,10 @@ import {FaChevronDown, FaChevronUp} from "react-icons/fa";
 import NarrativeDay from "./NarrativeDay";
 import {IconContext} from "react-icons/lib";
 import {useSelector, useDispatch} from "react-redux";
-import {handleSelect} from "../../features/interns/narrativeReducer";
+import {
+  handleSelect,
+  handleGenerate,
+} from "../../features/interns/narrativeReducer";
 
 const NarrativeContent = React.memo(({report, week}) => {
   const {selected} = useSelector((state) => state.narrative);
@@ -12,17 +15,16 @@ const NarrativeContent = React.memo(({report, week}) => {
   const [isOpen, setOpen] = useState(false);
 
   const renderDays = () => {
-    return report.map((item, index) => {
-      console.log(item);
-      return <NarrativeDay key={index} details={item} day={index} />;
-    });
+    return report
+      .filter((item) => item.isComplete)
+      .map((item, index) => {
+        return <NarrativeDay key={index} details={item} day={index} />;
+      });
   };
 
   const getAllComplete = () => {
     return report.filter((item) => {
-      const {
-        narrative: {isComplete},
-      } = item;
+      const {isComplete} = item;
       return isComplete && item;
     });
   };
@@ -55,7 +57,23 @@ const NarrativeContent = React.memo(({report, week}) => {
               : "dropdown-container"
           }
         >
-          <div className="days-container">{isOpen && renderDays()}</div>
+          <div className="days-container">
+            {isOpen && renderDays()}
+            {totalCompleted.length >= 5 && (
+              <button
+                onClick={() => {
+                  dispatch(
+                    handleGenerate({
+                      reports: totalCompleted,
+                      week: week === 0 ? 1 : week + 1,
+                    })
+                  );
+                }}
+              >
+                Generate Narrative
+              </button>
+            )}
+          </div>
           <div
             className="dropdown-btn"
             onClick={() => {
