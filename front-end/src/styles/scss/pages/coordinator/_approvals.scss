@@ -112,7 +112,6 @@
           position: absolute;
           top: 0%;
           left: 0%;
-          overflow-y: auto;
           z-index: 8;
           .intern-modal {
             display: grid;
@@ -123,7 +122,8 @@
             gap: 1rem;
             grid-template-rows: auto auto;
             height: 90%;
-            width: 120rem;
+            width: 90vw;
+            overflow-y: auto;
             & > * {
               border-radius: 1rem;
               padding: 1rem;
@@ -348,8 +348,6 @@
               grid-template-rows: auto auto;
               padding: 1rem;
               overflow-y: auto;
-              // height: 90vh;
-              width: 90vw;
 
               .sent-details {
                 grid-template-columns: repeat(4, 1fr);
