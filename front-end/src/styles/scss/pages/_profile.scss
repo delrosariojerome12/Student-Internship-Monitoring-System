@@ -8,7 +8,7 @@
   height: 100%;
   width: 100%;
   // grid-template-rows: 30vh 63vh;
-  grid-template-rows: auto minmax(30rem, 58vh);
+  grid-template-rows: auto minmax(30rem, 66vh);
   gap: 1rem;
 
   .profile-user {
@@ -80,11 +80,6 @@
       display: grid;
       grid-template-columns: repeat(5, auto);
       background-color: #282b30;
-
-      // background-color: lighten(
-      //   $color: $primary-bg-color-landing-compliment,
-      //   $amount: 10
-      // );
       button {
         color: #fff;
         outline: none;
@@ -205,11 +200,11 @@
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          gap: 1rem;
-          color: #fff;
+          // gap: 1rem;
+          // color: #fff;
           img {
-            height: 30rem;
-            width: 30rem;
+            height: 23rem;
+            width: 23rem;
           }
         }
         .attendance-view,
@@ -281,6 +276,22 @@
 }
 @media screen and (max-width: 880px) {
   .profile-page {
+    .content {
+      .display {
+        .internship-details-container {
+          grid-template-columns: auto;
+          grid-template-rows: auto 1fr;
+          .img-con {
+            margin: auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .profile-page {
     .profile-user {
       .intern-info {
         .intern-details {
@@ -289,17 +300,6 @@
           }
           .program-short {
             display: flex;
-          }
-        }
-      }
-    }
-    .content {
-      .display {
-        .internship-details-container {
-          grid-template-columns: auto;
-          grid-template-rows: auto 1fr;
-          .img-con {
-            margin: auto;
           }
         }
       }
@@ -319,25 +319,26 @@
         border-radius: 0;
       }
       .button-container {
+        grid-template-columns: 12rem 14.2rem 10.3rem 8.8rem 8rem;
         width: 70vw;
         overflow-x: auto;
-        button {
-          &:nth-child(1) {
-            width: 12rem;
-          }
-          &:nth-child(2) {
-            width: 14.2rem;
-          }
-          &:nth-child(3) {
-            width: 10.3rem;
-          }
-          &:nth-child(4) {
-            width: 8.8rem;
-          }
-          &:nth-child(5) {
-            width: 8rem;
-          }
-        }
+        // button {
+        //   &:nth-child(1) {
+        //     width: 12rem;
+        //   }
+        //   &:nth-child(2) {
+        //     width: 14.2rem;
+        //   }
+        //   &:nth-child(3) {
+        //     width: 10.3rem;
+        //   }
+        //   &:nth-child(4) {
+        //     width: 8.8rem;
+        //   }
+        //   &:nth-child(5) {
+        //     width: 8rem;
+        //   }
+        // }
       }
       .display {
         .intern-details-container .intern-content,
@@ -346,13 +347,47 @@
             font-size: 1.8rem;
           }
         }
+        .request-container {
+          font-size: 1.8rem;
+        }
+        .attendance-container {
+          .attendance-view,
+          .attendance-absent {
+            font-size: 1.8rem;
+          }
+          .attendance-view {
+            display: flex;
+            flex-direction: column;
+            & > *:nth-child(3) {
+              justify-content: flex-start;
+            }
+          }
+        }
       }
     }
   }
 }
 
+@media screen and (max-width: 700px) {
+  .profile-page {
+    .content {
+      .display {
+        .attendance-container {
+          .attendance-view {
+            & > *:nth-child(3) {
+              display: flex;
+              flex-direction: column;
+              gap: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 @media screen and (max-width: 600px) {
   .profile-page {
+    grid-template-rows: auto minmax(30rem, 60vh);
     .profile-user {
       .profile-details {
         .profile-img {
@@ -379,6 +414,160 @@
     .content {
       .button-container {
         width: 80vw;
+      }
+      .display {
+        .intern-details-container .intern-content,
+        .internship-details-container .text {
+          p {
+            font-size: 1.7rem;
+          }
+        }
+        .internship-details-container {
+          .img-con {
+            height: 13rem;
+            width: 13rem;
+          }
+        }
+        .attendance-container {
+          .attendance-view,
+          .attendance-absent {
+            font-size: 1.7rem;
+          }
+        }
+        .request-container {
+          font-size: 1.7rem;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .profile-page {
+    .profile-user {
+      .profile-details {
+        .profile-img {
+          width: 10rem;
+          height: 10rem;
+        }
+      }
+      .intern-info {
+        .intern-details {
+          padding: 0 1rem 0 12rem;
+          h3 {
+            font-size: 1.8rem;
+          }
+          p {
+            font-size: 1.7rem;
+          }
+        }
+        .btn-edit {
+          button {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+    .content {
+      grid-template-rows: 5rem auto;
+      .button-container {
+        button {
+          font-size: 1.1rem;
+          height: 4.2rem;
+        }
+      }
+      .display {
+        .intern-details-container .intern-content,
+        .internship-details-container .text {
+          p {
+            font-size: 1.6rem;
+          }
+        }
+        .intern-details-container,
+        .internship-details-container,
+        .attendance-container,
+        .request-container {
+          padding: 1rem;
+        }
+        .internship-details-container {
+          .img-con {
+            height: 12rem;
+            width: 12rem;
+          }
+        }
+        .attendance-container {
+          .attendance-view,
+          .attendance-absent {
+            font-size: 1.6rem;
+          }
+        }
+        .request-container {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .profile-page {
+    grid-template-rows: auto minmax(30rem, 55vh);
+    .profile-user {
+      .profile-details {
+        .profile-img {
+          left: 1.5rem;
+          width: 9rem;
+          height: 9rem;
+        }
+      }
+      .intern-info {
+        .intern-details {
+          padding: 0 1rem 0 10.5rem;
+          h3 {
+            font-size: 1.7rem;
+          }
+          p {
+            font-size: 1.6rem;
+          }
+        }
+        .btn-edit {
+          button {
+            font-size: 1.8rem;
+          }
+        }
+      }
+    }
+    .content {
+      .display {
+        .intern-details-container .intern-content,
+        .internship-details-container .text {
+          p {
+            font-size: 1.5rem;
+          }
+        }
+        .internship-details-container {
+          .img-con {
+            height: 10rem;
+            width: 10rem;
+          }
+        }
+        .attendance-container {
+          .no-record {
+            h3 {
+              font-size: 1.8rem;
+            }
+            img {
+              height: 20rem;
+              width: 20rem;
+            }
+          }
+          .attendance-view,
+          .attendance-absent {
+            font-size: 1.5rem;
+          }
+        }
+        .request-container {
+          font-size: 1.5rem;
+        }
       }
     }
   }

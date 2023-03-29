@@ -7228,7 +7228,7 @@ button {
   display: grid;
   height: 100%;
   width: 100%;
-  grid-template-rows: auto minmax(30rem, 58vh);
+  grid-template-rows: auto minmax(30rem, 66vh);
   gap: 1rem;
 }
 .profile-page .profile-user {
@@ -7410,12 +7410,10 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  color: #fff;
 }
 .profile-page .content .display .attendance-container .no-record img {
-  height: 30rem;
-  width: 30rem;
+  height: 23rem;
+  width: 23rem;
 }
 .profile-page .content .display .attendance-container .attendance-view,
 .profile-page .content .display .attendance-container .attendance-absent {
@@ -7470,18 +7468,20 @@ button {
   }
 }
 @media screen and (max-width: 880px) {
-  .profile-page .profile-user .intern-info .intern-details .program {
-    display: none;
-  }
-  .profile-page .profile-user .intern-info .intern-details .program-short {
-    display: flex;
-  }
   .profile-page .content .display .internship-details-container {
     grid-template-columns: auto;
     grid-template-rows: auto 1fr;
   }
   .profile-page .content .display .internship-details-container .img-con {
     margin: auto;
+  }
+}
+@media screen and (max-width: 780px) {
+  .profile-page .profile-user .intern-info .intern-details .program {
+    display: none;
+  }
+  .profile-page .profile-user .intern-info .intern-details .program-short {
+    display: flex;
   }
 }
 @media screen and (max-width: 750px) {
@@ -7496,30 +7496,40 @@ button {
     border-radius: 0;
   }
   .profile-page .content .button-container {
+    grid-template-columns: 12rem 14.2rem 10.3rem 8.8rem 8rem;
     width: 70vw;
     overflow-x: auto;
-  }
-  .profile-page .content .button-container button:nth-child(1) {
-    width: 12rem;
-  }
-  .profile-page .content .button-container button:nth-child(2) {
-    width: 14.2rem;
-  }
-  .profile-page .content .button-container button:nth-child(3) {
-    width: 10.3rem;
-  }
-  .profile-page .content .button-container button:nth-child(4) {
-    width: 8.8rem;
-  }
-  .profile-page .content .button-container button:nth-child(5) {
-    width: 8rem;
   }
   .profile-page .content .display .intern-details-container .intern-content p,
   .profile-page .content .display .internship-details-container .text p {
     font-size: 1.8rem;
   }
+  .profile-page .content .display .request-container {
+    font-size: 1.8rem;
+  }
+  .profile-page .content .display .attendance-container .attendance-view,
+  .profile-page .content .display .attendance-container .attendance-absent {
+    font-size: 1.8rem;
+  }
+  .profile-page .content .display .attendance-container .attendance-view {
+    display: flex;
+    flex-direction: column;
+  }
+  .profile-page .content .display .attendance-container .attendance-view > *:nth-child(3) {
+    justify-content: flex-start;
+  }
+}
+@media screen and (max-width: 700px) {
+  .profile-page .content .display .attendance-container .attendance-view > *:nth-child(3) {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
 }
 @media screen and (max-width: 600px) {
+  .profile-page {
+    grid-template-rows: auto minmax(30rem, 60vh);
+  }
   .profile-page .profile-user .profile-details .profile-img {
     width: 11rem;
     height: 11rem;
@@ -7535,6 +7545,111 @@ button {
   }
   .profile-page .content .button-container {
     width: 80vw;
+  }
+  .profile-page .content .display .intern-details-container .intern-content p,
+  .profile-page .content .display .internship-details-container .text p {
+    font-size: 1.7rem;
+  }
+  .profile-page .content .display .internship-details-container .img-con {
+    height: 13rem;
+    width: 13rem;
+  }
+  .profile-page .content .display .attendance-container .attendance-view,
+  .profile-page .content .display .attendance-container .attendance-absent {
+    font-size: 1.7rem;
+  }
+  .profile-page .content .display .request-container {
+    font-size: 1.7rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .profile-page .profile-user .profile-details .profile-img {
+    width: 10rem;
+    height: 10rem;
+  }
+  .profile-page .profile-user .intern-info .intern-details {
+    padding: 0 1rem 0 12rem;
+  }
+  .profile-page .profile-user .intern-info .intern-details h3 {
+    font-size: 1.8rem;
+  }
+  .profile-page .profile-user .intern-info .intern-details p {
+    font-size: 1.7rem;
+  }
+  .profile-page .profile-user .intern-info .btn-edit button {
+    font-size: 2rem;
+  }
+  .profile-page .content {
+    grid-template-rows: 5rem auto;
+  }
+  .profile-page .content .button-container button {
+    font-size: 1.1rem;
+    height: 4.2rem;
+  }
+  .profile-page .content .display .intern-details-container .intern-content p,
+  .profile-page .content .display .internship-details-container .text p {
+    font-size: 1.6rem;
+  }
+  .profile-page .content .display .intern-details-container,
+  .profile-page .content .display .internship-details-container,
+  .profile-page .content .display .attendance-container,
+  .profile-page .content .display .request-container {
+    padding: 1rem;
+  }
+  .profile-page .content .display .internship-details-container .img-con {
+    height: 12rem;
+    width: 12rem;
+  }
+  .profile-page .content .display .attendance-container .attendance-view,
+  .profile-page .content .display .attendance-container .attendance-absent {
+    font-size: 1.6rem;
+  }
+  .profile-page .content .display .request-container {
+    font-size: 1.6rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  .profile-page {
+    grid-template-rows: auto minmax(30rem, 55vh);
+  }
+  .profile-page .profile-user .profile-details .profile-img {
+    left: 1.5rem;
+    width: 9rem;
+    height: 9rem;
+  }
+  .profile-page .profile-user .intern-info .intern-details {
+    padding: 0 1rem 0 10.5rem;
+  }
+  .profile-page .profile-user .intern-info .intern-details h3 {
+    font-size: 1.7rem;
+  }
+  .profile-page .profile-user .intern-info .intern-details p {
+    font-size: 1.6rem;
+  }
+  .profile-page .profile-user .intern-info .btn-edit button {
+    font-size: 1.8rem;
+  }
+  .profile-page .content .display .intern-details-container .intern-content p,
+  .profile-page .content .display .internship-details-container .text p {
+    font-size: 1.5rem;
+  }
+  .profile-page .content .display .internship-details-container .img-con {
+    height: 10rem;
+    width: 10rem;
+  }
+  .profile-page .content .display .attendance-container .no-record h3 {
+    font-size: 1.8rem;
+  }
+  .profile-page .content .display .attendance-container .no-record img {
+    height: 20rem;
+    width: 20rem;
+  }
+  .profile-page .content .display .attendance-container .attendance-view,
+  .profile-page .content .display .attendance-container .attendance-absent {
+    font-size: 1.5rem;
+  }
+  .profile-page .content .display .request-container {
+    font-size: 1.5rem;
   }
 }
 /** @format */
@@ -9521,44 +9636,6 @@ button {
   .reports .content {
     grid-template-rows: auto minmax(45rem, 70vh);
   }
-  .reports .content .report-container .narrative-content .dropdown-container .days-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-  }
-  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day {
-    grid-template-rows: repeat(3, auto);
-    grid-template-columns: auto;
-    gap: 0;
-  }
-  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day > * {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-  }
-  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .num-days {
-    padding: 0;
-    border-radius: 1rem 1rem 0 0;
-  }
-  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .status {
-    padding: 0;
-    border-radius: 0;
-  }
-  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container {
-    border-radius: 0 0 1rem 1rem;
-    flex-direction: row;
-    padding: 0.5rem 0;
-  }
-  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container button {
-    background-color: #d9d9d9;
-  }
-  .reports .content .report-container .narrative-content .dropdown-container .days-container > :nth-child(5) {
-    width: 60%;
-    margin: auto;
-    grid-row: 3/4;
-    grid-column: 1/3;
-  }
   .reports .content .report-container .narrative-content .active {
     grid-template-rows: 43rem 1fr;
   }
@@ -9578,7 +9655,7 @@ button {
     font-size: 1.3rem;
   }
 }
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 480px) {
   .reports .content {
     grid-template-rows: auto minmax(45rem, 67vh);
   }
@@ -9605,26 +9682,20 @@ button {
     grid-auto-rows: 14rem;
   }
   .reports .content .report-container .narrative-content .dropdown-container .days-container {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: repeat(5, 10.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
   .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day {
     grid-template-rows: repeat(2, auto);
     grid-template-columns: repeat(2, auto);
   }
-  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .num-days {
-    border-radius: 1rem 0 0 0;
-  }
-  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .status {
-    border-radius: 0 0 0 1rem;
-  }
   .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container {
     padding: 0.5rem;
     flex-direction: column;
+    justify-content: space-evenly;
     grid-column: 2/3;
     grid-row: 1/3;
-    border-radius: 0 1rem 1rem 0;
   }
   .reports .content .report-container .narrative-content .active {
     grid-template-rows: 58rem 1fr;

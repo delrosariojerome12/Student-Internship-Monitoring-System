@@ -160,26 +160,26 @@ const TimeOutModal = React.memo(({ email }) => {
     );
   }
 
-  // if (!hasCamera) {
-  //   return (
-  //     <>
-  //       <div
-  //         className="overlay"
-  //         onClick={() => dispatch(handleTimeOut())}></div>
-  //       <div className="no-camera modal">
-  //         <div className="top">
-  //           <img src={NocameraSVG} alt="No-Camera" />
-  //           <h3>
-  //             No <b>Camera</b> Detected
-  //           </h3>
-  //         </div>
-  //         <div className="bottom">
-  //           <button onClick={() => dispatch(handleTimeOut())}>Close</button>
-  //         </div>
-  //       </div>
-  //     </>
-  //   );
-  // }
+  if (!hasCamera) {
+    return (
+      <>
+        <div
+          className="overlay"
+          onClick={() => dispatch(handleTimeOut())}></div>
+        <div className="no-camera modal">
+          <div className="top">
+            <img src={NocameraSVG} alt="No-Camera" />
+            <h3>
+              No <b>Camera</b> Detected
+            </h3>
+          </div>
+          <div className="bottom">
+            <button onClick={() => dispatch(handleTimeOut())}>Close</button>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>

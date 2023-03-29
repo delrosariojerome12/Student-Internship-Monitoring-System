@@ -78,7 +78,7 @@ const Profile = React.memo(() => {
             </h3>
             <p className="program">{schoolDetails?.program}</p>
             <p className="program-short">BSIT</p>
-            <p>{internshipDetails?.companyName}</p>
+            {/* <p>{internshipDetails?.companyName}</p> */}
           </div>
           <div className="btn-edit">
             <button>
