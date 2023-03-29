@@ -40,7 +40,7 @@ export const handleSignup = createAsyncThunk(
   async (form, {rejectWithValue}) => {
     try {
       const {email, firstName, lastName, password} = convertForm(form);
-      const url = "http://localhost:5000/auth/signup";
+      const url = "https://sims-twqb.onrender.com/auth/signup";
       // const user = await createUserWithEmailAndPassword(auth, email, password);
       const {data: res} = await axios.post(url, convertForm(form));
       return {res};
@@ -71,7 +71,7 @@ export const getUserOnLoad = createAsyncThunk(
   "/user/getUserOnLoad",
   async (email, {rejectWithValue}) => {
     try {
-      const url = `http://localhost:5000/user/getUser/${email}`;
+      const url = `https://sims-twqb.onrender.com/user/getUser/${email}`;
       const {data: res} = await axios.get(url);
       return {res: res.user};
     } catch (error) {
@@ -86,7 +86,7 @@ export const requestVerification = createAsyncThunk(
   async (form, {rejectWithValue}) => {
     // const
     try {
-      const url = `http://localhost:5000/intern/requestVerify`;
+      const url = `https://sims-twqb.onrender.com/intern/requestVerify`;
       const {data: res} = await axios.patch(url, form);
       console.log(res);
       return {res: res.user};

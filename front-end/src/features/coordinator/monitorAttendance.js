@@ -19,7 +19,7 @@ export const getAllAttendanceToday = createAsyncThunk(
   "/monitor/getAllAttendanceToday",
   async ({}, {rejectWithValue}) => {
     try {
-      const url = `http://localhost:5000/attendance/getAllAttendanceToday`;
+      const url = `https://sims-twqb.onrender.com/attendance/getAllAttendanceToday`;
       const {data: res} = await axios.get(url);
       console.log(res);
       return {res};
@@ -40,7 +40,7 @@ export const getAllAttendanceByDate = createAsyncThunk(
         params.renderedHours = renderedHours;
       }
       const {data: res} = await axios.get(
-        "http://localhost:5000/attendance/getAllAttendanceByDate",
+        "https://sims-twqb.onrender.com/attendance/getAllAttendanceByDate",
         {params}
       );
       return {res};
@@ -56,7 +56,7 @@ export const checkAbsents = createAsyncThunk(
   async ({x}, {rejectWithValue}) => {
     console.log("Test");
     try {
-      const url = `http://localhost:5000/attendance/checkAbsents`;
+      const url = `https://sims-twqb.onrender.com/attendance/checkAbsents`;
       const {data: res} = await axios.post(url);
       console.log(res);
       return {res};
