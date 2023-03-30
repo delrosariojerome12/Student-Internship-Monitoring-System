@@ -541,6 +541,53 @@
         margin-top: 3px;
       }
     }
+    @media screen and (max-width: 320px) {
+      img {
+        height: 40px;
+        width: 40px;
+      }
+
+      .the-team-container {
+        margin: 50px auto;
+        text-align: center;
+        background-color: whitesmoke;
+        align-items: center;
+        justify-items: center;
+        height: 95%;
+        width: 90%;
+        border-radius: 10px;
+      }
+
+      .text-container-top {
+        font-size: 0.8em;
+      }
+
+      .members-container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+      }
+
+      .member-img1,
+      .member-img2,
+      .member-img3,
+      .member-img4,
+      .member-img5,
+      .member-img6 {
+        width: 90%;
+        height: 75%;
+      }
+
+      .member-name {
+        font-size: 0.5em;
+        margin-bottom: 3px;
+      }
+
+      .member-position {
+        font-size: 0.4em;
+        margin-top: 3px;
+      }
+    }
+
     /*@media screen and (max-width: 170px) {
       .the-team-container {
         height: auto;

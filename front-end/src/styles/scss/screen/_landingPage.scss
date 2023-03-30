@@ -296,6 +296,257 @@
 }
 // ABOUT US END.
 
+@media screen and (max-width: 1100px) {
+  .aboutUs-container {
+    flex-direction: column;
+    padding: 2em;
+  }
+  .aboutUs-contents {
+    margin-bottom: 2em;
+  }
+  .aboutUs-Text {
+    width: 100%;
+  }
+  .getStarted {
+    width: 100%;
+  }
+  .getStarted-P {
+    padding-left: 0;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .aboutUs-container {
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .aboutUs-contents {
+    padding: 2em;
+    margin-bottom: 2em;
+  }
+  .aboutUs-Text {
+    width: 100%;
+  }
+  .getStarted {
+    width: 100%;
+  }
+  .getStarted-P {
+    padding-left: 0;
+    text-align: center;
+  }
+  .btn-CreateAcc {
+    font-size: 1.2rem;
+    padding: 1em 2em;
+  }
+}
+
+@media (max-width: 820px) {
+  .aboutUs-container {
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .aboutUs-contents {
+    padding: 1em;
+    margin-bottom: 2em;
+    width: 100%;
+  }
+
+  .aboutUs-Text {
+    width: 100%;
+  }
+
+  .getStarted {
+    padding: 1em;
+    width: 100%;
+    margin-bottom: 2em;
+  }
+
+  .getStarted-P {
+    padding: 1em;
+    padding-left: 0;
+    align-items: center;
+
+    p:nth-of-type(1) {
+      font-size: 28px;
+      text-align: center;
+      padding-bottom: 0.5em;
+    }
+
+    p:nth-of-type(2) {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .btn-CreateAcc {
+    padding: 1em 2em;
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (width: 820px) {
+  .aboutUs-container {
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .aboutUs-contents {
+    padding: 1em;
+    margin-bottom: 2em;
+    width: 100%;
+  }
+
+  .aboutUs-Text {
+    width: 100%;
+  }
+
+  .getStarted {
+    padding: 1em;
+    width: 100%;
+    margin-bottom: 2em;
+  }
+
+  .getStarted-P {
+    padding: 1em;
+    padding-left: 0;
+    align-items: center;
+
+    p:nth-of-type(1) {
+      font-size: 28px;
+      text-align: center;
+      padding-bottom: 0.5em;
+    }
+
+    p:nth-of-type(2) {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .btn-CreateAcc {
+    padding: 1em 2em;
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .aboutUs-container {
+    padding: 1em;
+  }
+
+  .aboutUs-contents {
+    padding: 1em;
+  }
+
+  .aboutUs-Text {
+    width: 100%;
+    padding: 1em 0;
+  }
+
+  .getStarted {
+    padding: 1em;
+    width: 100%;
+  }
+
+  .getStarted-P {
+    padding-left: 0;
+    align-items: center;
+
+    p:nth-of-type(1) {
+      text-align: center;
+      font-size: 28px;
+      padding-bottom: 0.5em;
+    }
+
+    p:nth-of-type(2) {
+      width: 100%;
+    }
+  }
+
+  .btn-CreateAcc {
+    padding: 1.2em 2em;
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .aboutUs-container {
+    padding: 1em;
+  }
+
+  .aboutUs-contents {
+    padding: 1em;
+  }
+
+  .aboutUs-Text {
+    width: 100%;
+    text-align: center;
+  }
+
+  .getStarted {
+    padding: 1em;
+    width: 100%;
+    margin-top: 2em;
+  }
+
+  .getStarted-P {
+    padding-left: 0;
+    align-items: center;
+  }
+
+  .btn-CreateAcc {
+    padding: 1em 2em;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .aboutUs-container {
+    display: block;
+    padding: 1em;
+    height: auto;
+  }
+  .aboutUs-contents {
+    padding: 1em;
+    border-radius: 0;
+  }
+  .aboutUs-Text {
+    width: 100%;
+    padding-bottom: 1em;
+    p:nth-of-type(1) {
+      font-size: 24px;
+    }
+  }
+  .getStarted {
+    padding: 1em;
+    width: 100%;
+    border-radius: 0;
+  }
+  .getStarted-P {
+    padding: 1em;
+    padding-left: 0;
+    align-items: center;
+    justify-content: center;
+    p:nth-of-type(1) {
+      font-size: 24px;
+    }
+    p:nth-of-type(2) {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  .btn-CreateAcc {
+    padding: 1em 2em;
+    font-size: 1rem;
+  }
+}
 @media screen and (max-width: 920px) {
   .landing-page {
     .contents {
