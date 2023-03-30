@@ -1953,11 +1953,14 @@ button {
     justify-content: flex-start;
   }
   .dashboard .left-sidebar .links-con .sub-container .link-container .icon-con a .icons, .dashboard-active .left-sidebar .links-con .sub-container .link-container .icon-con a .icons {
-    font-size: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
   }
   .dashboard .left-sidebar .links-con .sub-container .user, .dashboard-active .left-sidebar .links-con .sub-container .user {
     display: grid;
-    grid-template-columns: 5rem auto;
+    grid-template-columns: 7rem auto;
     gap: 1rem;
     padding: 1rem;
     color: #fff;
@@ -1966,8 +1969,8 @@ button {
   }
   .dashboard .left-sidebar .links-con .sub-container .user img, .dashboard-active .left-sidebar .links-con .sub-container .user img {
     border-radius: 50%;
-    height: 50px;
-    width: 50px;
+    height: 7rem;
+    width: 7rem;
     grid-row: 1/3;
     grid-column: 1/2;
     margin: auto;
@@ -1989,7 +1992,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   .dashboard .left-sidebar .links-con .sub-container .logout:hover, .dashboard-active .left-sidebar .links-con .sub-container .logout:hover {
     background-color: #3f3f3f;
@@ -2902,10 +2905,23 @@ button {
   transition: all 0.3s ease-in-out;
   font-weight: 600;
 }
-.dashboard .approvals .approval-container .approvals-intern-container button.decline-btn:hover, .dashboard-active .approvals .approval-container .approvals-intern-container button.decline-btn:hover {
+.dashboard .approvals .approval-container .approvals-intern-container button.decline-btn, .dashboard-active .approvals .approval-container .approvals-intern-container button.decline-btn {
   background-color: #e63946;
 }
-.dashboard .approvals .approval-container .approvals-intern-container button.back-btn:hover, .dashboard-active .approvals .approval-container .approvals-intern-container button.back-btn:hover, .dashboard .approvals .approval-container .approvals-intern-container button.approve-btn:hover, .dashboard-active .approvals .approval-container .approvals-intern-container button.approve-btn:hover, .dashboard .approvals .approval-container .approvals-intern-container button.view:hover, .dashboard-active .approvals .approval-container .approvals-intern-container button.view:hover {
+.dashboard .approvals .approval-container .approvals-intern-container button.decline-btn:hover, .dashboard-active .approvals .approval-container .approvals-intern-container button.decline-btn:hover {
+  background-color: #d9d9d9;
+  color: #e63946;
+  border: solid 1px #e63946;
+}
+.dashboard .approvals .approval-container .approvals-intern-container button.back-btn, .dashboard-active .approvals .approval-container .approvals-intern-container button.back-btn {
+  background-color: #aaaaaa;
+}
+.dashboard .approvals .approval-container .approvals-intern-container button.back-btn:hover, .dashboard-active .approvals .approval-container .approvals-intern-container button.back-btn:hover {
+  background-color: #d9d9d9;
+  color: #000;
+  border: solid 1px #000;
+}
+.dashboard .approvals .approval-container .approvals-intern-container button.approve-btn:hover, .dashboard-active .approvals .approval-container .approvals-intern-container button.approve-btn:hover, .dashboard .approvals .approval-container .approvals-intern-container button.view:hover, .dashboard-active .approvals .approval-container .approvals-intern-container button.view:hover {
   background-color: #d9d9d9;
   color: #0d7377;
   border: solid 1px #0d7377;
@@ -9029,7 +9045,7 @@ button {
 .reports .pdf-container button {
   border-radius: 1rem;
   margin: auto;
-  height: 4.5rem;
+  height: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9096,7 +9112,7 @@ button {
 .reports .content .report-container {
   display: grid;
   grid-auto-rows: 12rem;
-  grid-template-columns: repeat(auto-fill, 45rem);
+  grid-template-columns: repeat(auto-fill, 46rem);
   gap: 1rem;
   padding: 2rem;
   background-color: #282b30;
@@ -9134,6 +9150,9 @@ button {
   border-radius: 0 0 1rem 1rem;
   margin-top: 1rem;
 }
+.reports .content .report-container .narrative-content .dropdown-container .days-container::-webkit-scrollbar-thumb {
+  background-color: #00adb5;
+}
 .reports .content .report-container .narrative-content .dropdown-container .days-container {
   background-color: #0d7377;
   overflow: hidden;
@@ -9143,6 +9162,7 @@ button {
   padding: 1rem;
   border-radius: 0 0 1rem 1rem;
   margin-top: -1rem;
+  overflow-y: auto;
 }
 .reports .content .report-container .narrative-content .dropdown-container .days-container button {
   font-family: "Poppins", sans-serif;
@@ -9155,11 +9175,12 @@ button {
   font-weight: 600;
 }
 .reports .content .report-container .narrative-content .dropdown-container .days-container button:hover {
-  background-color: #457b9d;
+  background-color: #00adb5;
   color: #fff;
 }
 .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day {
   background-color: #d9d9d9;
+  width: 100%;
   border-radius: 1rem;
   padding: 1rem;
   gap: 1rem;
@@ -9188,6 +9209,9 @@ button {
   gap: 1rem;
 }
 .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #fff;
   border: none;
   outline: none;
@@ -9222,7 +9246,7 @@ button {
   color: #fff;
 }
 .reports .content .report-container .narrative-content .active {
-  grid-template-rows: 53rem 1fr;
+  grid-template-rows: 34rem 1fr;
   z-index: 4;
 }
 .reports .sort-modals {
@@ -9614,15 +9638,16 @@ button {
   }
 }
 @media screen and (max-width: 650px) {
+  .reports .pdf-container {
+    height: 100%;
+    width: 100%;
+  }
   .reports .content .report-container {
     grid-template-columns: 1fr;
   }
   .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container {
     flex-direction: column;
     gap: 0.5rem;
-  }
-  .reports .content .report-container .narrative-content .active {
-    grid-template-rows: 53rem 1fr;
   }
 }
 @media screen and (max-width: 600px) {
@@ -9635,8 +9660,20 @@ button {
   .reports .content {
     grid-template-rows: auto minmax(45rem, 70vh);
   }
+  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container {
+    flex-direction: row;
+  }
   .reports .content .report-container .narrative-content .active {
-    grid-template-rows: 43rem 1fr;
+    grid-template-rows: 25rem 1fr;
+  }
+}
+@media screen and (max-width: 520px) {
+  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container {
+    flex-direction: column;
+  }
+  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container button {
+    height: 3.5rem;
+    width: 6rem;
   }
 }
 @media screen and (max-width: 500px) {
@@ -9686,18 +9723,34 @@ button {
     gap: 1rem;
   }
   .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day {
+    gap: 0.5rem;
     grid-template-rows: repeat(2, auto);
     grid-template-columns: repeat(2, auto);
   }
   .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container {
-    padding: 0.5rem;
-    flex-direction: column;
-    justify-content: space-evenly;
-    grid-column: 2/3;
-    grid-row: 1/3;
+    flex-direction: row;
+    justify-content: center;
+    grid-column: 1/3;
+    grid-row: 2/3;
   }
-  .reports .content .report-container .narrative-content .active {
-    grid-template-rows: 58rem 1fr;
+}
+@media screen and (max-width: 400px) {
+  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day {
+    gap: 0;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .num-days {
+    padding: 0.5rem 0 0 0;
+    border-radius: 1rem 1rem 0 0;
+  }
+  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .status {
+    padding: 0 0 0.5rem 0;
+    border-radius: 0 0 1rem 1rem;
+  }
+  .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container {
+    padding: 0.5rem 0 0 0;
   }
 }
 @media screen and (max-width: 380px) {

@@ -310,10 +310,23 @@
 
         // margin: 0 auto;
         // letter-spacing: 0.2rem;
-        &.decline-btn:hover {
+        &.decline-btn {
           background-color: $red-primary-color;
+          &:hover {
+            background-color: #d9d9d9;
+            color: $red-primary-color;
+            border: solid 1px $red-primary-color;
+          }
         }
-        &.back-btn:hover,
+        &.back-btn {
+          background-color: #aaaaaa;
+          &:hover {
+            background-color: #d9d9d9;
+            color: #000;
+            border: solid 1px #000;
+          }
+        }
+
         &.approve-btn:hover,
         &.view:hover {
           background-color: #d9d9d9;
