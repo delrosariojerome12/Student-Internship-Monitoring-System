@@ -1,15 +1,14 @@
 /** @format */
 
-import React, { useState, useEffect } from "react";
-import { Route, Routes, Link, Navigate, useNavigate } from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import {Route, Routes, Link, Navigate, useNavigate} from "react-router-dom";
 import InternsDetail from "./profile/InternsDetail";
 import InternshipDetail from "./profile/InternshipDetail";
 import AttendanceViewer from "./profile/AttendanceViewer";
 import Narrative from "./profile/Narrative";
 import Request from "./profile/Request ";
-import { useSelector } from "react-redux";
-import colegioLogo from "../../assets/img/colegio.svg";
-import { FaEdit } from "react-icons/fa";
+import {useSelector} from "react-redux";
+// import colegioLogo from "../../assets/img/colegio.svg";
 
 const buttons = [
   {
@@ -45,7 +44,7 @@ const Profile = React.memo(() => {
 
   const {
     user: {
-      user: { firstName, lastName, profileImage },
+      user: {firstName, lastName, profileImage},
       schoolDetails,
       internshipDetails,
     },
@@ -60,12 +59,16 @@ const Profile = React.memo(() => {
   return (
     <section className="profile-page">
       <div className="profile-user">
-        <div
+        {/* <div
           className="profile-bg"
           style={{
             background: `url(${colegioLogo}) no-repeat center`,
             backgroundSize: "cover",
+
           }}></div>
+
+          }}
+        ></div> */}
         <div className="profile-details">
           <div className="profile-img">
             <img src={profileImage} alt="" />
@@ -90,7 +93,7 @@ const Profile = React.memo(() => {
       <div className="content">
         <div className="button-container">
           {buttons.map((item, index) => {
-            const { path, btnName, code } = item;
+            const {path, btnName, code} = item;
 
             return (
               <button
@@ -99,7 +102,8 @@ const Profile = React.memo(() => {
                 onClick={() => {
                   navigate(path);
                   setSelected(code);
-                }}>
+                }}
+              >
                 {btnName}
               </button>
             );
