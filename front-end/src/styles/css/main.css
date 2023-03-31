@@ -1175,6 +1175,7 @@ button {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-gap: 1px;
+  position: relative;
   text-align: center;
   align-items: center;
   justify-items: center;
@@ -1242,7 +1243,7 @@ button {
   .landing-page .contents .member-img4,
   .landing-page .contents .member-img5,
   .landing-page .contents .member-img6 {
-    width: 90%;
+    width: 50%;
     height: 75%;
   }
   .landing-page .contents .member-name {
@@ -1274,7 +1275,7 @@ button {
   .landing-page .contents .member-img4,
   .landing-page .contents .member-img5,
   .landing-page .contents .member-img6 {
-    width: 80%;
+    width: 50%;
     height: 80%;
     margin-bottom: 20px;
   }
@@ -1290,7 +1291,7 @@ button {
   .landing-page .contents .member-img4,
   .landing-page .contents .member-img5,
   .landing-page .contents .member-img6 {
-    width: 90%;
+    width: 50%;
   }
   .landing-page .contents .member-name {
     font-size: 0.6em;
@@ -1306,8 +1307,7 @@ button {
   .landing-page .contents .member-img4,
   .landing-page .contents .member-img5,
   .landing-page .contents .member-img6 {
-    width: 80%;
-    height: 75%;
+    height: 90%;
     margin-bottom: 20px;
   }
 }
@@ -1325,7 +1325,6 @@ button {
   .landing-page .contents .member-img4,
   .landing-page .contents .member-img5,
   .landing-page .contents .member-img6 {
-    width: 80%;
     height: auto;
     margin: 10px auto;
   }
@@ -1338,43 +1337,15 @@ button {
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(6, 1fr);
   }
-}
-@media screen and (max-width: 320px) {
-  .landing-page .contents img {
-    height: 60px;
-    width: 60px;
-  }
-  .landing-page .contents .the-team-container {
-    height: auto;
-    padding: 20px;
-  }
-  .landing-page .contents .text-container-top {
-    font-size: 0.8em;
-  }
-  .landing-page .contents .members-container {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    margin: 10px 0 10px 0;
-    padding: 10px 0 0 0;
-  }
   .landing-page .contents .member-img1,
   .landing-page .contents .member-img2,
   .landing-page .contents .member-img3,
   .landing-page .contents .member-img4,
   .landing-page .contents .member-img5,
   .landing-page .contents .member-img6 {
-    padding: 10px;
-    width: 100%;
-    height: 75%;
-    margin-bottom: 10px;
-  }
-  .landing-page .contents .member-name {
-    font-size: 0.6em;
-    margin-bottom: 3px;
-  }
-  .landing-page .contents .member-position {
-    font-size: 0.5em;
-    margin-top: 3px;
+    width: 40%;
+    height: auto;
+    margin: 10px auto;
   }
 }
 @media screen and (max-width: 320px) {
@@ -10629,6 +10600,7 @@ button {
     text-align: center;
   }
   .btn-CreateAcc {
+    bottom: 0;
     padding: 1em 2em;
     font-size: 1rem;
   }
