@@ -1921,7 +1921,7 @@ button {
   }
   .dashboard .left-sidebar .links-con .sub-container, .dashboard-active .left-sidebar .links-con .sub-container {
     display: grid;
-    grid-template-rows: minmax(11rem, 12rem) auto 4rem;
+    grid-template-rows: auto 1fr 4rem;
     gap: 1rem;
     padding: 1rem 1rem 2rem 1rem;
     width: 100%;
@@ -1966,6 +1966,10 @@ button {
     color: #fff;
     background-color: #1d3557;
     border-radius: 1rem;
+  }
+  .dashboard .left-sidebar .links-con .sub-container .user > *, .dashboard-active .left-sidebar .links-con .sub-container .user > * {
+    display: flex;
+    align-items: center;
   }
   .dashboard .left-sidebar .links-con .sub-container .user img, .dashboard-active .left-sidebar .links-con .sub-container .user img {
     border-radius: 50%;

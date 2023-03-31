@@ -383,7 +383,7 @@
       }
       .sub-container {
         display: grid;
-        grid-template-rows: minmax(11rem, 12rem) auto 4rem;
+        grid-template-rows: auto 1fr 4rem;
         gap: 1rem;
         padding: 1rem 1rem 2rem 1rem;
         width: 100%;
@@ -427,6 +427,10 @@
           color: #fff;
           background-color: $secondary-bg-color;
           border-radius: 1rem;
+          & > * {
+            display: flex;
+            align-items: center;
+          }
           img {
             border-radius: 50%;
             height: 7rem;
