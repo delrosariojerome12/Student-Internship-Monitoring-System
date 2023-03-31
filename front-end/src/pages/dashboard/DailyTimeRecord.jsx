@@ -52,14 +52,7 @@ const DailyTimeRecord = React.memo(() => {
   } = user;
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      const now = new Date();
-      const hours = now.getHours() % 12 || 12;
-      const minutes = now.getMinutes();
-      const amOrPm = now.getHours() >= 12 ? "PM" : "AM";
-    }, 1000);
     dispatch(getAllAttendance({email, scheduleDetails}));
-    return () => clearInterval(timer);
   }, []);
 
   if (isLoading || !allAttendance) {

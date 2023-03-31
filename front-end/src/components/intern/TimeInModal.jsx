@@ -52,6 +52,9 @@ const convertImage = (str) => {
 
 const TimeInModal = React.memo(({email}) => {
   const dispatch = useDispatch();
+  const {
+    timeObject: {dateTime},
+  } = useSelector((state) => state.attendance);
 
   const [time, setTime] = useState("");
   const [address, setAddress] = useState("");
@@ -69,7 +72,6 @@ const TimeInModal = React.memo(({email}) => {
     facingMode: "user",
   };
   const getLocation = async (latitude, longitude) => {
-    console.log(latitude, longitude);
     try {
       const url = `https://api.tomtom.com/search/2/reverseGeocode/${latitude},${longitude}.json?key=${key}`;
       const response = await axios.get(url);
@@ -109,11 +111,7 @@ const TimeInModal = React.memo(({email}) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const date = new Date();
-      // whole date
-      const day = date.getDate();
-      const month = months[date.getMonth()];
-      const year = date.getFullYear();
+      const date = new Date(dateTime);
       // hour
       const hours =
         date.getHours() % 12 || 12 < 10
