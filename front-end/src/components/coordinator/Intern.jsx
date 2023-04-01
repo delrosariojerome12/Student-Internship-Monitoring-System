@@ -1,5 +1,8 @@
 import React from "react";
-import {handleSelectedIntern} from "../../features/interns/internReducer";
+import {
+  handleSelectedIntern,
+  handleInternModal,
+} from "../../features/interns/internReducer";
 import {useDispatch, useSelector} from "react-redux";
 
 const Intern = React.memo(({intern}) => {
@@ -26,7 +29,10 @@ const Intern = React.memo(({intern}) => {
           ? "active-intern intern"
           : "intern"
       }
-      onClick={() => dispatch(handleSelectedIntern(intern))}
+      onClick={() => {
+        dispatch(handleSelectedIntern(intern));
+        dispatch(handleInternModal());
+      }}
     >
       <div className="img-container">
         <img src={profileImage} alt="profile-image" />

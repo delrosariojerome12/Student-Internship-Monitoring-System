@@ -8,6 +8,7 @@ const initialState = {
   isLoading: false,
   isError: false,
   isLoginError: false,
+  isInternOpen: false,
 };
 
 export const getAllInterns = createAsyncThunk(
@@ -91,6 +92,9 @@ export const internReducer = createSlice({
   name: "intern",
   initialState,
   reducers: {
+    handleInternModal: (state, action) => {
+      state.isInternOpen = !state.isInternOpen;
+    },
     handleSelectedIntern: (state, action) => {
       state.selectedIntern = action.payload;
       console.log(state.selectedIntern);
@@ -149,6 +153,7 @@ export const internReducer = createSlice({
   },
 });
 
-export const {handleSelectedIntern, handleSort} = internReducer.actions;
+export const {handleSelectedIntern, handleSort, handleInternModal} =
+  internReducer.actions;
 
 export default internReducer.reducer;

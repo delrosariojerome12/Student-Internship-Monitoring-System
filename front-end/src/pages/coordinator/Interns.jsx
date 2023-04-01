@@ -1,18 +1,21 @@
 /** @format */
 
-import React, { useState, useCallback, useEffect } from "react";
+import React, {useState, useCallback, useEffect} from "react";
 import Intern from "../../components/coordinator/Intern";
-import { useSelector, useDispatch } from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 import internWaiting from "../../assets/img/waiting.svg";
-import { getAllInterns } from "../../features/interns/internReducer";
+import {
+  getAllInterns,
+  handleInternModal,
+} from "../../features/interns/internReducer";
 
-import { BiSearchAlt } from "react-icons/bi";
+import {BiSearchAlt} from "react-icons/bi";
 import Bouncing from "../../components/loading/Bouncing";
 import SelectedIntern from "../../components/coordinator/dashboardCoordinator/SelectedIntern";
 import approvalImg from "../../assets/img/approvals.svg";
 
-const Interns = () => {
-  const { interns, isError, selectedIntern } = useSelector(
+const Interns = React.memo(() => {
+  const {interns, isError, selectedIntern, isInternOpen} = useSelector(
     (state) => state.intern
   );
   const [searchIntern, setSearchIntern] = useState("");
@@ -278,8 +281,16 @@ const Interns = () => {
         )}
       </header>
       {renderInterns()}
+      {isInternOpen && (
+        <>
+          <div className="overlay"></div>
+          <div className="modal">
+            <button onClick={() => dispatch(handleInternModal())}>Close</button>
+          </div>
+        </>
+      )}
     </section>
   );
-};
+});
 
 export default Interns;
