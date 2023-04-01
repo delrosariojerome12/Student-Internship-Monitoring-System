@@ -15,6 +15,7 @@ import {
   MdOutlineArrowForwardIos,
   MdOutlineArrowBackIosNew,
 } from "react-icons/md";
+import ApprovalWaiting from "../../assets/img/waiting.svg";
 
 const Reports = React.memo(() => {
   const {
@@ -48,10 +49,22 @@ const Reports = React.memo(() => {
   }
 
   const renderNarrative = () => {
+    if (allNarrative.length === 0) {
+      return (
+        <div className="no-content">
+          <h3>No Reports found.</h3>
+          <img src={ApprovalWaiting} alt="waiting" />
+        </div>
+      );
+    }
     const groupNarrative = _.chunk(allNarrative, 5);
-    return groupNarrative.map((item, index) => {
-      return <ReportContent report={item} key={index} week={index} />;
-    });
+    return (
+      <div className="reports-container">
+        {groupNarrative.map((item, index) => {
+          return <ReportContent report={item} key={index} week={index} />;
+        })}
+      </div>
+    );
   };
 
   return (
@@ -77,7 +90,8 @@ const Reports = React.memo(() => {
             <p>Filters</p>
           </button>
         </div>
-        <div className="report-container">{renderNarrative()}</div>
+        {/* <div className="report-container">{renderNarrative()}</div> */}
+        {renderNarrative()}
       </div>
 
       {isAddModalOpen && <AddModal />}
