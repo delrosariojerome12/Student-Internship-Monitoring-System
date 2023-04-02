@@ -1,21 +1,21 @@
 /** @format */
 
-import React, {useState, useCallback, useEffect} from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import Intern from "../../components/coordinator/Intern";
-import {useSelector, useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import internWaiting from "../../assets/img/waiting.svg";
 import {
   getAllInterns,
   handleInternModal,
 } from "../../features/interns/internReducer";
 
-import {BiSearchAlt} from "react-icons/bi";
+import { BiSearchAlt } from "react-icons/bi";
 import Bouncing from "../../components/loading/Bouncing";
 import SelectedIntern from "../../components/coordinator/dashboardCoordinator/SelectedIntern";
 import approvalImg from "../../assets/img/approvals.svg";
 
 const Interns = React.memo(() => {
-  const {interns, isError, selectedIntern, isInternOpen} = useSelector(
+  const { interns, isError, selectedIntern, isInternOpen } = useSelector(
     (state) => state.intern
   );
   const [searchIntern, setSearchIntern] = useState("");
@@ -177,16 +177,7 @@ const Interns = React.memo(() => {
   return (
     <section className="intern-container" onClick={handleResetFocus}>
       <header>
-        <div className="preview-container">
-          {selectedIntern ? (
-            <SelectedIntern />
-          ) : (
-            <div className="selects">
-              <h1>No Selected Intern</h1>
-              <img src={approvalImg} alt="" />
-            </div>
-          )}
-        </div>
+        <h2>Interns</h2>
         <nav className="navigation">
           <div className="left-side">
             <button onClick={handleSort} className="sort-btn">
@@ -283,9 +274,16 @@ const Interns = React.memo(() => {
       {renderInterns()}
       {isInternOpen && (
         <>
-          <div className="overlay"></div>
-          <div className="modal">
-            <button onClick={() => dispatch(handleInternModal())}>Close</button>
+          <div
+            onClick={() => dispatch(handleInternModal())}
+            className="overlay"></div>
+          <div className="preview-container modal">
+            <SelectedIntern />
+            <div className="btn-close">
+              <button onClick={() => dispatch(handleInternModal())}>
+                Close
+              </button>
+            </div>
           </div>
         </>
       )}

@@ -1675,10 +1675,10 @@ button {
   font-size: 2.5rem;
 }
 .dashboard .left-sidebar .links-con .icon-con a:focus, .dashboard-active .left-sidebar .links-con .icon-con a:focus {
-  background-color: #0d7377;
+  background-color: #457b9d;
 }
 .dashboard .left-sidebar .links-con .icon-con a:hover, .dashboard-active .left-sidebar .links-con .icon-con a:hover {
-  background-color: #0d7377;
+  background-color: #457b9d;
   border-radius: 1rem;
 }
 .dashboard .left-sidebar .box, .dashboard-active .left-sidebar .box {
@@ -2221,74 +2221,35 @@ button {
   }
 }
 .dashboard .intern-container, .dashboard-active .intern-container {
-  height: 100%;
-  width: 100%;
   border-radius: 1rem;
-  border: solid 1px #fff;
   display: grid;
-  grid-template-rows: auto minmax(40rem, 62vh);
+  grid-template-rows: auto minmax(45rem, 73vh);
   gap: 1rem;
-  background-color: #282b30;
-  padding: 1rem;
 }
 .dashboard .intern-container header, .dashboard-active .intern-container header {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: auto auto;
   gap: 1rem;
 }
-.dashboard .intern-container header .preview-container, .dashboard-active .intern-container header .preview-container {
-  background-color: #d9d9d9;
-  border-radius: 1rem;
-  padding: 1rem;
+.dashboard .intern-container header > *, .dashboard-active .intern-container header > * {
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-.dashboard .intern-container header .preview-container .selects, .dashboard-active .intern-container header .preview-container .selects {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-.dashboard .intern-container header .preview-container .selects img, .dashboard-active .intern-container header .preview-container .selects img {
-  height: 9rem;
-  width: 9rem;
-}
-.dashboard .intern-container header .preview-container .selected-intern, .dashboard-active .intern-container header .preview-container .selected-intern {
-  height: 100%;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 12rem repeat(2, auto);
-  gap: 1rem;
-  overflow-y: auto;
-}
-.dashboard .intern-container header .preview-container .selected-intern > *, .dashboard-active .intern-container header .preview-container .selected-intern > * {
-  background-color: #fff;
+  background-color: #282b30;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1rem 2rem;
 }
-.dashboard .intern-container header .preview-container .selected-intern img, .dashboard-active .intern-container header .preview-container .selected-intern img {
-  height: 12rem;
-  margin: auto;
-  width: 12rem;
+.dashboard .intern-container header h2, .dashboard-active .intern-container header h2 {
+  color: #fff;
 }
 .dashboard .intern-container header .navigation, .dashboard-active .intern-container header .navigation {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-between;
   gap: 1rem;
-  border: solid 1px #fff;
-}
-.dashboard .intern-container header .navigation > *, .dashboard-active .intern-container header .navigation > * {
-  padding: 0.5rem;
 }
 .dashboard .intern-container header .navigation .left-side, .dashboard-active .intern-container header .navigation .left-side {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
   gap: 1rem;
-  border-right: 1px solid #fff;
 }
 .dashboard .intern-container header .navigation .left-side button, .dashboard-active .intern-container header .navigation .left-side button {
   cursor: pointer;
@@ -2315,7 +2276,6 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-left: 1px solid #fff;
 }
 .dashboard .intern-container header .navigation .right-side form, .dashboard-active .intern-container header .navigation .right-side form {
   display: flex;
@@ -2341,11 +2301,13 @@ button {
   border: 0;
 }
 .dashboard .intern-container .interns, .dashboard-active .intern-container .interns {
+  background-color: #282b30;
   display: grid;
   gap: 1rem;
   padding: 1rem;
   overflow-y: auto;
   height: 100%;
+  border-radius: 1rem;
 }
 .dashboard .intern-container .interns .no-entries, .dashboard-active .intern-container .interns .no-entries {
   height: 100%;
@@ -2433,6 +2395,16 @@ button {
 .dashboard .intern-container .interns .active-intern .intern-details, .dashboard-active .intern-container .interns .active-intern .intern-details {
   background-color: #10898e;
 }
+.dashboard .intern-container .interns .active-intern .intern-details .btnContainer button, .dashboard-active .intern-container .interns .active-intern .intern-details .btnContainer button {
+  background-color: #f1faee;
+  color: #0d7377;
+  border: solid 1px #0d7377;
+}
+.dashboard .intern-container .interns .active-intern .intern-details .btnContainer button:hover, .dashboard-active .intern-container .interns .active-intern .intern-details .btnContainer button:hover {
+  border: solid 1px transparent;
+  color: #f1faee;
+  background-color: #0d7377;
+}
 .dashboard .intern-container .interns-active, .dashboard-active .intern-container .interns-active {
   grid-auto-rows: 16rem;
   grid-template-columns: repeat(auto-fill, 35.5rem);
@@ -2459,6 +2431,39 @@ button {
   border: solid 1px #000;
   border-radius: 1rem;
 }
+.dashboard .intern-container .preview-container, .dashboard-active .intern-container .preview-container {
+  width: 60rem;
+  height: 53rem;
+  background-color: #d9d9d9;
+  border-radius: 1rem;
+  padding: 2rem;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 1rem;
+}
+.dashboard .intern-container .preview-container .selected-intern, .dashboard-active .intern-container .preview-container .selected-intern {
+  display: grid;
+  grid-template-rows: auto repeat(2, 1fr);
+  gap: 1rem;
+}
+.dashboard .intern-container .preview-container .selected-intern .middle-con, .dashboard-active .intern-container .preview-container .selected-intern .middle-con,
+.dashboard .intern-container .preview-container .selected-intern .right-con,
+.dashboard-active .intern-container .preview-container .selected-intern .right-con {
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 1rem;
+  height: 14rem;
+  overflow-y: auto;
+}
+.dashboard .intern-container .preview-container .selected-intern img, .dashboard-active .intern-container .preview-container .selected-intern img {
+  border-radius: 1rem;
+  height: 14rem;
+  margin: auto;
+  width: 14rem;
+}
+.dashboard .intern-container .preview-container .btn-close, .dashboard-active .intern-container .preview-container .btn-close {
+  justify-content: center;
+}
 .dashboard .intern-container .sort, .dashboard-active .intern-container .sort,
 .dashboard .intern-container .filter,
 .dashboard-active .intern-container .filter {
@@ -2473,6 +2478,9 @@ button {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  border-radius: 1rem;
+  width: 100%;
+  height: 100%;
   padding: 1rem;
   border: solid 1px #000;
   background-color: #fff;
@@ -2513,62 +2521,46 @@ button {
   display: flex;
   gap: 1rem;
 }
-@media screen and (max-width: 1030px) {
-  .dashboard .intern-container, .dashboard-active .intern-container {
-    grid-template-rows: auto minmax(35rem, 47vh);
-  }
-  .dashboard .intern-container header .preview-container .selected-intern, .dashboard-active .intern-container header .preview-container .selected-intern {
-    grid-template-columns: 15rem auto;
-    grid-template-rows: 1fr 1fr;
-    gap: 0.5rem;
-  }
-  .dashboard .intern-container header .preview-container .selected-intern img, .dashboard-active .intern-container header .preview-container .selected-intern img {
-    grid-column: 1/2;
-    grid-row: 1/3;
-    height: 15rem;
-    width: 15rem;
-  }
-}
 @media screen and (max-width: 920px) {
   .dashboard .intern-container .interns-active, .dashboard-active .intern-container .interns-active {
     grid-template-columns: 1fr;
     grid-auto-rows: 14rem;
   }
-  .dashboard .intern-container header .preview-container .selected-intern > *, .dashboard-active .intern-container header .preview-container .selected-intern > * {
-    font-size: 1.6rem;
-  }
 }
-@media screen and (max-width: 750px) {
-  .dashboard .intern-container header .preview-container .selected-intern, .dashboard-active .intern-container header .preview-container .selected-intern {
-    grid-template-columns: 12rem auto;
-  }
-  .dashboard .intern-container header .preview-container .selected-intern img, .dashboard-active .intern-container header .preview-container .selected-intern img {
-    height: 12rem;
-    width: 12rem;
+@media screen and (max-width: 630px) {
+  .dashboard .intern-container .preview-container, .dashboard-active .intern-container .preview-container {
+    width: 90%;
   }
 }
 @media screen and (max-width: 600px) {
   .dashboard .intern-container, .dashboard-active .intern-container {
-    grid-template-rows: auto minmax(25rem, 35vh);
+    grid-template-rows: auto minmax(35rem, 63vh);
   }
-  .dashboard .intern-container header .preview-container .selected-intern, .dashboard-active .intern-container header .preview-container .selected-intern {
-    grid-template-columns: auto;
+  .dashboard .intern-container .preview-container, .dashboard-active .intern-container .preview-container {
+    height: 52rem;
   }
-  .dashboard .intern-container header .preview-container .selected-intern img, .dashboard-active .intern-container header .preview-container .selected-intern img {
-    display: none;
+  .dashboard .intern-container .preview-container .selected-intern .middle-con, .dashboard-active .intern-container .preview-container .selected-intern .middle-con,
+  .dashboard .intern-container .preview-container .selected-intern .right-con,
+  .dashboard-active .intern-container .preview-container .selected-intern .right-con {
+    font-size: 1.8rem;
+  }
+  .dashboard .intern-container .preview-container .selected-intern img, .dashboard-active .intern-container .preview-container .selected-intern img {
+    height: 13rem;
+    width: 13rem;
   }
 }
 @media screen and (max-width: 500px) {
-  .dashboard .intern-container .navigation, .dashboard-active .intern-container .navigation {
+  .dashboard .intern-container header .navigation, .dashboard-active .intern-container header .navigation {
     grid-template-columns: auto;
+    padding: 1rem;
     gap: 0rem;
   }
-  .dashboard .intern-container .navigation .left-side, .dashboard-active .intern-container .navigation .left-side,
-  .dashboard .intern-container .navigation .right-side,
-  .dashboard-active .intern-container .navigation .right-side {
+  .dashboard .intern-container header .navigation .left-side, .dashboard-active .intern-container header .navigation .left-side,
+  .dashboard .intern-container header .navigation .right-side,
+  .dashboard-active .intern-container header .navigation .right-side {
     border: none;
   }
-  .dashboard .intern-container .navigation .left-side button, .dashboard-active .intern-container .navigation .left-side button {
+  .dashboard .intern-container header .navigation .left-side button, .dashboard-active .intern-container header .navigation .left-side button {
     height: 3rem;
   }
   .dashboard .intern-container .interns .intern, .dashboard-active .intern-container .interns .intern {
@@ -2615,14 +2607,24 @@ button {
   .dashboard .intern-container .sort .btn-close button, .dashboard-active .intern-container .sort .btn-close button {
     height: 3.5rem;
   }
+  .dashboard .intern-container .btn-close button, .dashboard-active .intern-container .btn-close button {
+    height: 3.5rem;
+  }
+  .dashboard .intern-container .preview-container, .dashboard-active .intern-container .preview-container {
+    width: 100%;
+    height: 51rem;
+  }
+  .dashboard .intern-container .preview-container .selected-intern .middle-con, .dashboard-active .intern-container .preview-container .selected-intern .middle-con,
+  .dashboard .intern-container .preview-container .selected-intern .right-con,
+  .dashboard-active .intern-container .preview-container .selected-intern .right-con {
+    font-size: 1.7rem;
+  }
+  .dashboard .intern-container .preview-container .selected-intern img, .dashboard-active .intern-container .preview-container .selected-intern img {
+    height: 12rem;
+    width: 12rem;
+  }
 }
 @media screen and (max-width: 375px) {
-  .dashboard .intern-container, .dashboard-active .intern-container {
-    grid-template-rows: auto minmax(25rem, 30vh);
-  }
-  .dashboard .intern-container header, .dashboard-active .intern-container header {
-    grid-template-rows: minmax(15rem, 32vh) auto;
-  }
   .dashboard .intern-container .interns .intern, .dashboard-active .intern-container .interns .intern {
     grid-template-columns: auto;
   }
@@ -2636,6 +2638,18 @@ button {
     flex-direction: column;
     text-align: center;
     gap: 0.2rem;
+  }
+  .dashboard .intern-container .preview-container, .dashboard-active .intern-container .preview-container {
+    height: 49rem;
+  }
+  .dashboard .intern-container .preview-container .selected-intern .middle-con, .dashboard-active .intern-container .preview-container .selected-intern .middle-con,
+  .dashboard .intern-container .preview-container .selected-intern .right-con,
+  .dashboard-active .intern-container .preview-container .selected-intern .right-con {
+    font-size: 1.6rem;
+  }
+  .dashboard .intern-container .preview-container .selected-intern img, .dashboard-active .intern-container .preview-container .selected-intern img {
+    height: 10rem;
+    width: 10rem;
   }
 }
 .dashboard .approvals, .dashboard-active .approvals {
