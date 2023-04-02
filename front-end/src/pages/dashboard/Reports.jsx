@@ -59,7 +59,7 @@ const Reports = React.memo(() => {
     }
     const groupNarrative = _.chunk(allNarrative, 5);
     return (
-      <div className="reports-container">
+      <div className="report-container">
         {groupNarrative.map((item, index) => {
           return <ReportContent report={item} key={index} week={index} />;
         })}
@@ -90,7 +90,6 @@ const Reports = React.memo(() => {
             <p>Filters</p>
           </button>
         </div>
-        {/* <div className="report-container">{renderNarrative()}</div> */}
         {renderNarrative()}
       </div>
 

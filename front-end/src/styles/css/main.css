@@ -8451,20 +8451,6 @@ button {
   width: 100%;
   border-radius: 1rem;
 }
-.reports .no-content {
-  color: #fff;
-  padding: 2rem;
-  border-radius: 1rem;
-  background-color: #282b30;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.reports .no-content img {
-  height: 50rem;
-  width: 40rem;
-}
 .reports .overlay {
   width: 100%;
   height: 100%;
