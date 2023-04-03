@@ -1,20 +1,32 @@
 import React, {useEffect} from "react";
-import searchIcon from "../../assets/img/search.svg";
+// import searchIcon from "../../assets/img/search.svg";
 import {useSelector, useDispatch} from "react-redux";
-
+import {FaHourglass} from "react-icons/fa";
 import {BiSearchAlt} from "react-icons/bi";
 import {checkStartingDate} from "../../features/interns/attendanceReducer";
+import {useNavigate} from "react-router";
 
 const DashboardMain = React.memo(() => {
   const {
     user: {
       user: {firstName},
       email,
-      internshipDetails: {renderedHours, startingDate},
+      internshipDetails: {
+        renderedHours,
+        startingDate,
+        companyName,
+        typeOfWork,
+        supervisor,
+        supervisorContact,
+        email: supEmail,
+      },
+      schoolDetails: {requiredHours},
+      documentDetails,
       status,
     },
   } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const date = new Date();
@@ -30,6 +42,60 @@ const DashboardMain = React.memo(() => {
       dispatch(checkStartingDate({email}));
     }
   }, []);
+
+  const renderDocuments = () => {
+    if (documentDetails.length === 0) {
+      return <h3>Please Reload, it may take some time.</h3>;
+    }
+    return documentDetails.map((item, index) => {
+      const {
+        document: {name, format},
+        completion: {isApproved, hasSent, isRejected},
+      } = item;
+      return (
+        <div className="document-dashboard" key={index}>
+          <h4>{name}</h4>
+          <p>{format}</p>
+          <h4
+            style={{
+              color: isApproved
+                ? "#00adb5"
+                : hasSent
+                ? "#fff"
+                : isRejected
+                ? "#e63946"
+                : "#F18805",
+            }}
+          >
+            {isApproved
+              ? "Approved"
+              : hasSent
+              ? "Sent"
+              : isRejected
+              ? "Rejected"
+              : "Missing"}
+          </h4>
+        </div>
+      );
+    });
+  };
+
+  const DaysNeeded = (rendered, required) => {
+    const hoursDifference = required - rendered;
+
+    if (hoursDifference <= 0) {
+      return <p>You have already completed the required hours!</p>;
+    }
+
+    const daysNeeded = Math.ceil(hoursDifference / 8);
+
+    return (
+      <p>
+        You need {daysNeeded} more day(s) to complete the required hours of{" "}
+        {required} hours.
+      </p>
+    );
+  };
 
   return (
     <section className="main">
@@ -49,33 +115,34 @@ const DashboardMain = React.memo(() => {
         <div className="time-keeper">
           <h4>Time Keeper</h4>
           <div className="time-keeper-contents">
-            {/* <p>{`Rendered Hours: ${renderedHours}/${requiredHours}`}</p> */}
+            <div className="btn-controller">
+              <button onClick={() => navigate("/dashboard/daily-time-record")}>
+                Daily Time Record
+              </button>
+            </div>
+            <div className="text">
+              <h3>{`Rendered Hours: ${renderedHours}hrs/${requiredHours}hrs`}</h3>
+              {DaysNeeded(renderedHours, requiredHours)}
+            </div>
           </div>
         </div>
         <div className="documents">
           <h4>Documents</h4>
           <div className="document-contents">
-            <h3>TODO</h3>
+            {renderDocuments()}
+            <button onClick={() => navigate("/dashboard/documents")}>
+              Manage Documents
+            </button>
           </div>
         </div>
         <div className="internship-details">
           <h4>Intership Details</h4>
           <div className="internship-contents">
-            {/* <p>
-              <b> Company:</b> {companyName}
-            </p>
-            <p>
-              <b> Address: </b>
-              {companyAddress}
-            </p>
-            <p>
-              <b> Supervisor: </b>
-              {supervisor}
-            </p>
-            <p>
-              <b> Contact No.: </b>
-              {supervisorContact}
-            </p> */}
+            <h4>Internship at {companyName}</h4>
+            <h4>Type of Work: {typeOfWork}</h4>
+            <h4>Supervisor: {supervisor}</h4>
+            <h4>Contact: {supervisorContact}</h4>
+            <h4>Email: {supEmail}</h4>
           </div>
         </div>
         <div className="map">
