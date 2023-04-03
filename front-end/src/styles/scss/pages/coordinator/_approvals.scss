@@ -432,6 +432,7 @@
             .intern-modal {
               width: 100%;
               height: 100%;
+              border-radius: 0;
               .sent-details {
                 display: flex;
                 flex-direction: column;
@@ -445,10 +446,6 @@
                     width: 14rem;
                   }
                 }
-                // p {
-                //   word-wrap: break-word;
-                //   word-break: break-all;
-                // }
               }
               .feedback-container {
                 form {

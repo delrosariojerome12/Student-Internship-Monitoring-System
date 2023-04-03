@@ -508,7 +508,7 @@
       display: grid;
       // remove if you can use flex
       margin-bottom: 2rem;
-      min-height: 12rem;
+      height: 12rem;
       grid-template-columns: 12rem 1fr;
       gap: 2rem;
       .img-container {
@@ -534,6 +534,7 @@
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           grid-template-rows: 1fr 1fr;
+          gap: 0.5rem;
           .internship-at {
             grid-column: 2/3;
             grid-row: 1/3;
@@ -738,7 +739,6 @@
 }
 @media screen and (max-width: 750px) {
   .admin-document-page {
-    // grid-template-rows: auto minmax(40rem, 70vh);
     .sample-view-container,
     .document-approval-container .view-document-container {
       width: 60rem;
@@ -813,6 +813,18 @@
       .no-document {
         img {
           height: 25rem;
+        }
+      }
+    }
+    .document-approval-container {
+      .document-intern {
+        // min-height: 10rem !important;
+        // grid-template-columns: 10rem 1fr;
+        // gap: 1rem;
+
+        .img-container {
+          height: 10rem;
+          width: 10rem;
         }
       }
     }
@@ -960,6 +972,23 @@
                   width: 3.5rem;
                 }
               }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 450px) {
+  .admin-document-page {
+    .document-approval-container {
+      .document-intern {
+        .text {
+          .top {
+            @include flexCenter;
+            flex-direction: column;
+            .internship-at {
+              display: none;
             }
           }
         }

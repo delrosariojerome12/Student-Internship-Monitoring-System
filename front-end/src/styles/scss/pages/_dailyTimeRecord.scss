@@ -371,7 +371,6 @@
 
 @media screen and (max-width: 1030px) {
   .daily-time-record {
-    // grid-template-rows: auto minmax(30rem, 61vh);
     .no-internship {
       img {
         height: 30rem;
@@ -456,6 +455,12 @@
     .DTR-content {
       grid-template-columns: 1fr;
       grid-auto-rows: minmax(4rem, 6vh);
+      .attendance {
+        border-radius: 1rem;
+        &:hover {
+          border-radius: 0;
+        }
+      }
     }
     .no-internship {
       img {
@@ -524,6 +529,7 @@
     .modal {
       height: 100%;
       width: 100%;
+      border-radius: 0;
     }
     button {
       height: 4rem;
@@ -539,13 +545,6 @@
           font-size: 1.7rem;
         }
       }
-      // .camera {
-      //   img,
-      //   video {
-      //     height: 27rem;
-      //     width: 27rem;
-      //   }
-      // }
     }
     .attendance-view {
       .upper {
