@@ -44,34 +44,97 @@ const requestVerification = async (req, res) => {
   res.status(StatusCodes.OK).json({user});
 };
 
+// const updateIntern = async (req, res) => {
+//   const {email, internshipDetails} = req.body;
+
+//   const user = await Intern.findOneAndUpdate({email}, req.body, {
+//     new: true,
+//     runValidators: true,
+//   }).populate({
+//     path: "user",
+//     model: "User",
+//   });
+
+//   if (!user) {
+//     throw new NotFound(`Email not found`);
+//   }
+//   console.log(internshipDetails, "internshipDetails");
+
+//   if (internshipDetails) {
+//     console.log("yes");
+
+//     delete internshipDetails.renderedHours;
+
+//     const doesExist = await Internship.findOne({
+//       companyName: internshipDetails.companyName,
+//     });
+
+//     console.log(doesExist, "doesExist");
+
+//     if (!doesExist) {
+//       var internship = await Internship.create({...internshipDetails});
+//       Internship.createIndexes();
+//     }
+
+//     const interns = await Intern.find({}).populate({
+//       path: "user",
+//       model: "User",
+//     });
+
+//     return res
+//       .status(StatusCodes.OK)
+//       .json({user, interns, internship, doesExist});
+//   }
+
+//   const interns = await Intern.find({}).populate({
+//     path: "user",
+//     model: "User",
+//   });
+
+//   return res.status(StatusCodes.OK).json({user, interns});
+// };
+
 const updateIntern = async (req, res) => {
-  const {email, internshipDetails} = req.body;
+  try {
+    const {email, internshipDetails} = req.body;
 
-  const user = await Intern.findOneAndUpdate({email}, req.body, {
-    new: true,
-    runValidators: true,
-  }).populate({
-    path: "user",
-    model: "User",
-  });
-
-  if (!user) {
-    throw new NotFound(`Email not found`);
-  }
-  console.log(internshipDetails);
-
-  if (internshipDetails) {
-    console.log("yes");
-
-    delete internshipDetails.renderedHours;
-
-    const doesExist = await Internship.findOne({
-      companyName: internshipDetails.companyName,
+    const user = await Intern.findOne({email}).populate({
+      path: "user",
+      model: "User",
     });
 
-    if (!doesExist) {
-      var internship = await Internship.create({...internshipDetails});
-      Internship.createIndexes();
+    if (!user) {
+      throw new NotFound(`Email not found`);
+    }
+
+    console.log(internshipDetails);
+
+    if (internshipDetails) {
+      console.log(internshipDetails);
+
+      const {renderedHours, ...details} = internshipDetails;
+
+      const doesExist = await Internship.findOne({
+        companyName: details.companyName,
+      });
+
+      if (!doesExist) {
+        console.log("here");
+        var internship = await Internship.updateOne(
+          {companyName: details.companyName},
+          {$set: details},
+          {upsert: true}
+        );
+      }
+
+      const interns = await Intern.find({}).populate({
+        path: "user",
+        model: "User",
+      });
+
+      return res
+        .status(StatusCodes.OK)
+        .json({user, interns, internship, doesExist});
     }
 
     const interns = await Intern.find({}).populate({
@@ -79,17 +142,13 @@ const updateIntern = async (req, res) => {
       model: "User",
     });
 
+    return res.status(StatusCodes.OK).json({user, interns});
+  } catch (error) {
+    console.error(error);
     return res
-      .status(StatusCodes.OK)
-      .json({user, interns, internship, doesExist});
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .json({error: error.message});
   }
-
-  const interns = await Intern.find({}).populate({
-    path: "user",
-    model: "User",
-  });
-
-  return res.status(StatusCodes.OK).json({user, interns});
 };
 
 const updateDocuments = async (req, res) => {

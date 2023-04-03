@@ -4,70 +4,33 @@
 @import "../../variables";
 
 .intern-container {
-  height: 100%;
-  width: 100%;
   border-radius: 1rem;
-  border: solid 1px #fff;
   display: grid;
-  grid-template-rows: auto minmax(40rem, 62vh);
+  grid-template-rows: auto minmax(45rem, 73vh);
   gap: 1rem;
-  background-color: #282b30;
-  padding: 1rem;
 
   header {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr auto;
+    grid-template-rows: auto auto;
     gap: 1rem;
-    .preview-container {
-      background-color: #d9d9d9;
+    & > * {
+      display: flex;
+      align-items: center;
+      background-color: #282b30;
       border-radius: 1rem;
-      padding: 1rem;
-      @include flexCenter;
-      .selects {
-        @include flexCenter;
-        flex-direction: column;
-        gap: 0.5rem;
-        img {
-          height: 9rem;
-          width: 9rem;
-        }
-      }
-      .selected-intern {
-        height: 100%;
-        width: 100%;
-        display: grid;
-        grid-template-columns: 12rem repeat(2, auto);
-        gap: 1rem;
-        overflow-y: auto;
-
-        & > * {
-          background-color: #fff;
-          border-radius: 1rem;
-          padding: 1rem;
-        }
-        img {
-          height: 12rem;
-          margin: auto;
-          width: 12rem;
-        }
-      }
+      padding: 1rem 2rem;
+    }
+    h2 {
+      color: #fff;
     }
     .navigation {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      justify-content: space-between;
       gap: 1rem;
-      border: solid 1px #fff;
-
-      & > * {
-        padding: 0.5rem;
-      }
       .left-side {
         display: flex;
         align-items: center;
-        justify-content: space-evenly;
         gap: 1rem;
-        border-right: 1px solid #fff;
         button {
           cursor: pointer;
           height: 4rem;
@@ -90,7 +53,6 @@
       }
       .right-side {
         @include flexCenter;
-        border-left: 1px solid #fff;
         form {
           @include flexCenter;
           background-color: $light-bg-color;
@@ -116,11 +78,13 @@
     }
   }
   .interns {
+    background-color: #282b30;
     display: grid;
     gap: 1rem;
     padding: 1rem;
     overflow-y: auto;
     height: 100%;
+    border-radius: 1rem;
     .no-entries {
       height: 100%;
       display: grid;
@@ -211,6 +175,19 @@
           $color: $primary-compliment-landing,
           $amount: 5
         );
+
+        .btnContainer {
+          button {
+            background-color: $primary-font-color;
+            color: $primary-compliment-landing;
+            border: solid 1px $primary-compliment-landing;
+            &:hover {
+              border: solid 1px transparent;
+              color: $primary-font-color;
+              background-color: $primary-compliment-landing;
+            }
+          }
+        }
       }
     }
   }
@@ -242,6 +219,39 @@
     border-radius: 1rem;
   }
 
+  .preview-container {
+    width: 60rem;
+    height: 53rem;
+    background-color: #d9d9d9;
+    border-radius: 1rem;
+    padding: 2rem;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 1rem;
+    .selected-intern {
+      display: grid;
+      grid-template-rows: auto repeat(2, 1fr);
+      gap: 1rem;
+
+      .middle-con,
+      .right-con {
+        background-color: #fff;
+        border-radius: 1rem;
+        padding: 1rem;
+        height: 14rem;
+        overflow-y: auto;
+      }
+      img {
+        border-radius: 1rem;
+        height: 14rem;
+        margin: auto;
+        width: 14rem;
+      }
+    }
+    .btn-close {
+      justify-content: center;
+    }
+  }
   .sort,
   .filter {
     display: grid;
@@ -250,6 +260,9 @@
     gap: 1rem;
     form {
       @include flexColumn;
+      border-radius: 1rem;
+      width: 100%;
+      height: 100%;
       padding: 1rem;
       border: solid 1px #000;
       background-color: #fff;
@@ -297,73 +310,36 @@
 
 // Responsive
 
-@media screen and (max-width: 1030px) {
-  .intern-container {
-    grid-template-rows: auto minmax(35rem, 47vh);
-
-    header {
-      .preview-container {
-        .selected-intern {
-          grid-template-columns: 15rem auto;
-          grid-template-rows: 1fr 1fr;
-          gap: 0.5rem;
-          img {
-            grid-column: 1/2;
-            grid-row: 1/3;
-            height: 15rem;
-            width: 15rem;
-          }
-        }
-      }
-    }
-  }
-}
-
 @media screen and (max-width: 920px) {
   .intern-container {
     .interns-active {
       grid-template-columns: 1fr;
       grid-auto-rows: 14rem;
     }
-    header {
-      .preview-container {
-        .selected-intern {
-          & > * {
-            font-size: 1.6rem;
-          }
-        }
-      }
-    }
   }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 630px) {
   .intern-container {
-    header {
-      .preview-container {
-        .selected-intern {
-          grid-template-columns: 12rem auto;
-
-          img {
-            height: 12rem;
-            width: 12rem;
-          }
-        }
-      }
+    .preview-container {
+      width: 90%;
     }
   }
 }
 
 @media screen and (max-width: 600px) {
   .intern-container {
-    grid-template-rows: auto minmax(25rem, 35vh);
-    header {
-      .preview-container {
-        .selected-intern {
-          grid-template-columns: auto;
-          img {
-            display: none;
-          }
+    grid-template-rows: auto minmax(35rem, 63vh);
+    .preview-container {
+      height: 52rem;
+      .selected-intern {
+        .middle-con,
+        .right-con {
+          font-size: 1.8rem;
+        }
+        img {
+          height: 13rem;
+          width: 13rem;
         }
       }
     }
@@ -372,16 +348,19 @@
 
 @media screen and (max-width: 500px) {
   .intern-container {
-    .navigation {
-      grid-template-columns: auto;
-      gap: 0rem;
-      .left-side,
-      .right-side {
-        border: none;
-      }
-      .left-side {
-        button {
-          height: 3rem;
+    header {
+      .navigation {
+        grid-template-columns: auto;
+        padding: 1rem;
+        gap: 0rem;
+        .left-side,
+        .right-side {
+          border: none;
+        }
+        .left-side {
+          button {
+            height: 3rem;
+          }
         }
       }
     }
@@ -430,15 +409,31 @@
         }
       }
     }
+    .btn-close {
+      button {
+        height: 3.5rem;
+      }
+    }
+    .preview-container {
+      width: 100%;
+      height: 51rem;
+      .selected-intern {
+        .middle-con,
+        .right-con {
+          font-size: 1.7rem;
+        }
+        img {
+          height: 12rem;
+          width: 12rem;
+        }
+      }
+    }
   }
 }
 
 @media screen and (max-width: 375px) {
   .intern-container {
-    grid-template-rows: auto minmax(25rem, 30vh);
-    header {
-      grid-template-rows: minmax(15rem, 32vh) auto;
-    }
+    // grid-template-rows: auto minmax(35rem, 59vh);
     .interns {
       .intern {
         grid-template-columns: auto;
@@ -450,6 +445,19 @@
           flex-direction: column;
           text-align: center;
           gap: 0.2rem;
+        }
+      }
+    }
+    .preview-container {
+      height: 49rem;
+      .selected-intern {
+        .middle-con,
+        .right-con {
+          font-size: 1.6rem;
+        }
+        img {
+          height: 10rem;
+          width: 10rem;
         }
       }
     }

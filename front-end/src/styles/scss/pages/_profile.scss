@@ -1,3 +1,5 @@
+/** @format */
+
 @import "../variables";
 @import "../utils";
 
@@ -5,10 +7,133 @@
   display: grid;
   height: 100%;
   width: 100%;
-  grid-template-rows: 30vh 63vh;
+  // grid-template-rows: 30vh 63vh;
+  grid-template-rows: auto minmax(30rem, 66vh);
   gap: 1rem;
-  padding: 1rem;
 
+  .overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(48, 47, 47, 0.753);
+    position: absolute;
+    filter: blur(20px);
+    top: 0%;
+    left: 0%;
+    z-index: 6;
+  }
+
+  .pdf-container {
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    height: 90%;
+    transform: translate(-50%, -50%);
+    border-radius: 1rem;
+    z-index: 7;
+    padding: 2rem;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 1rem;
+
+    iframe {
+      height: 100%;
+      width: 100%;
+    }
+    button {
+      border-radius: 1rem;
+      margin: auto;
+      height: 4.5rem;
+      @include flexCenter;
+      flex-direction: row;
+      border: none;
+      padding: 1rem 2rem;
+      outline: none;
+      font-weight: 500;
+      color: #fff;
+      background-color: $primary-compliment-landing;
+      transition: all 0.3s linear;
+      cursor: pointer;
+      span {
+        font-size: 1.8rem;
+        padding: 0.5rem 0.5rem 0;
+      }
+      p {
+        font-size: 1.5rem;
+      }
+      &:hover {
+        background-color: $primary-feature-bg;
+        border-radius: 1rem;
+      }
+    }
+  }
+
+  .modal {
+    background-color: #d9d9d9;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 80%;
+    transform: translate(-50%, -50%);
+    border-radius: 1rem;
+    z-index: 7;
+    padding: 2rem;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 1rem;
+    // & > * {
+    //   background-color: #fff;
+    //   border: solid 1px #000;
+    // }
+    .upper {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      justify-content: space-between;
+      padding: 2rem;
+      background-color: #fff;
+      border: solid 1px #000;
+      border-radius: 1rem;
+    }
+    .middle {
+      background-color: #fff;
+      border: solid 1px #000;
+      border-radius: 1rem;
+      textarea {
+        border-radius: 1rem;
+        font-size: 1.6rem;
+        resize: none;
+        width: 100%;
+        height: 100%;
+        padding: 2rem;
+      }
+    }
+    .btn-controller {
+      @include flexCenter;
+      gap: 2rem;
+      button {
+        @include flexCenter;
+        height: 4rem;
+        background-color: $primary-compliment-landing;
+        border: none;
+        border-radius: 1rem;
+        outline: none;
+        cursor: pointer;
+        padding: 1rem 2rem;
+        transition: all 0.2s linear;
+        font-weight: 600;
+        font-size: 1.5rem;
+        color: #d9d9d9;
+        &:hover {
+          background-color: $primary-feature-bg;
+          border-radius: 0;
+          color: #fff;
+        }
+      }
+    }
+  }
   .profile-user {
     display: grid;
     grid-template-rows: 2fr 0 2.5fr;
@@ -41,34 +166,28 @@
       border-radius: 0 0 1rem 1rem;
       padding: 1rem;
       .intern-details {
-        @include flexColumn;
+        display: grid;
         padding: 1rem 1rem 1rem 15rem;
         h3,
         p {
           color: #fff;
         }
-        // p {
-        //   color: #bdbdbd;
-        // }
+        .program-short {
+          display: none;
+        }
       }
       .btn-edit {
-        justify-content: flex-end;
-        padding: 2rem;
         button {
-          @include flexCenter;
-          height: 4rem;
+          background-color: #282b30;
           color: #fff;
-          padding: 2rem 3rem;
           border: none;
           outline: none;
-          border-radius: 1rem;
+          font-size: 2.5rem;
           font-weight: 600;
           transition: all 0.3s linear;
-          background-color: $primary-compliment-landing;
           cursor: pointer;
           &:hover {
-            border-radius: 0;
-            background-color: $primary-feature-bg;
+            color: $primary-feature-bg;
           }
         }
       }
@@ -84,10 +203,6 @@
       display: grid;
       grid-template-columns: repeat(5, auto);
       background-color: #282b30;
-      // background-color: lighten(
-      //   $color: $primary-bg-color-landing-compliment,
-      //   $amount: 10
-      // );
       button {
         color: #fff;
         outline: none;
@@ -132,10 +247,11 @@
         }
       }
       .active {
-        background-color: lighten(
-          $color: $primary-bg-color-landing-compliment,
-          $amount: 30
-        );
+        background-color: $primary-compliment-landing;
+        // background-color: lighten(
+        //   $color: $primary-bg-color-landing-compliment,
+        //   $amount: 30
+        // );
         &::before {
           width: 80%;
         }
@@ -149,21 +265,29 @@
       overflow-y: auto;
 
       .intern-details-container {
-        background-color: #fff;
+        background-color: #d9d9d9;
+        // color: #fff;
         border-radius: 1rem;
         padding: 2rem;
         display: grid;
-        gap: 1rem;
+        .intern-content {
+          display: grid;
+          font-size: 1.9rem;
+          padding: 1rem;
+          border-radius: 1rem;
+          background-color: #fff;
+        }
       }
       .internship-details-container {
-        background-color: #fff;
+        background-color: #d9d9d9;
         border-radius: 1rem;
         padding: 2rem;
         display: grid;
         grid-template-columns: 15rem 1fr;
         gap: 1rem;
         .img-con {
-          border: solid 1px #000;
+          background-color: #fff;
+          // border: solid 1px #000;
           border-radius: 1rem;
           height: 15rem;
           width: 15rem;
@@ -175,15 +299,21 @@
         }
         .text {
           display: grid;
-          gap: 1rem;
-          h4 {
-            background-color: #efefef;
-            border-radius: 1rem;
-            padding: 1rem;
+          padding: 1rem;
+          background-color: #fff;
+          border-radius: 1rem;
+          p {
+            font-size: 1.9rem;
+          }
+          p:last-child {
+            word-break: break-all;
           }
         }
       }
       .attendance-container {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 1rem;
         display: flex;
         flex-direction: column;
         gap: 1rem;
@@ -193,21 +323,29 @@
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          gap: 1rem;
-          color: #fff;
+          // gap: 1rem;
+          // color: #fff;
           img {
-            height: 30rem;
-            width: 30rem;
+            height: 23rem;
+            width: 23rem;
           }
         }
-        .attendance-view {
-          background-color: $primary-compliment-landing;
+        .attendance-view,
+        .attendance-absent {
+          // background-color: $primary-compliment-landing;
+          background-color: #d9d9d9;
           border-radius: 1rem;
           padding: 1.5rem;
-          color: #fff;
+          // color: #fff;
           display: flex;
           justify-content: space-between;
           gap: 1rem;
+          .present {
+            color: $primary-feature-bg;
+          }
+          .Absent {
+            color: $red-primary-color;
+          }
           & > * {
             display: flex;
             gap: 1rem;
@@ -215,18 +353,608 @@
         }
       }
       .request-container {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 1rem;
         display: flex;
         flex-direction: column;
         gap: 1rem;
         .document-record {
           display: flex;
           justify-content: space-between;
+          background-color: #d9d9d9;
 
           gap: 1rem;
-          background-color: $primary-compliment-landing;
+          // background-color: $primary-compliment-landing;
           padding: 1.5rem;
           border-radius: 1rem;
-          color: #fff;
+          // color: #fff;
+        }
+      }
+      .narrative-container {
+        display: grid;
+
+        .report-container {
+          display: grid;
+          grid-auto-rows: 12rem;
+          grid-template-columns: repeat(auto-fill, 46rem);
+          gap: 1rem;
+          padding: 1rem;
+          background-color: #282b30;
+          border-radius: 1rem;
+          overflow-y: auto;
+
+          .narrative-content {
+            background-color: #d9d9d9;
+            display: grid;
+            grid-template-rows: auto 2rem;
+            border-radius: 1rem;
+            .sub-container {
+              padding: 1rem;
+              display: grid;
+              grid-template-columns: 1fr 2fr;
+              gap: 1rem;
+              & > * {
+                @include flexCenter;
+                flex-direction: column;
+                background-color: #fff;
+                border-radius: 1rem;
+                padding: 1rem;
+                text-align: center;
+              }
+            }
+            .dropdown-container {
+              background-color: $primary-compliment-landing;
+              border-radius: 0 0 1rem 1rem;
+              display: grid;
+              grid-template-rows: 0rem 1fr;
+              transition: all 0.3s ease-in-out;
+              border-radius: 0 0 1rem 1rem;
+              margin-top: 1rem;
+
+              .days-container::-webkit-scrollbar-thumb {
+                background-color: $primary-feature-bg;
+              }
+
+              .days-container {
+                background-color: $primary-compliment-landing;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+                border-radius: 0 0 1rem 1rem;
+                margin-top: -1rem;
+                overflow-y: auto;
+                button {
+                  font-family: $poppins-font-family;
+                  padding: 1rem 1.5rem;
+                  border-radius: 1rem;
+                  border: solid 1px transparent;
+                  outline: none;
+                  cursor: pointer;
+                  transition: all 0.2s ease-in-out;
+                  font-weight: 600;
+                  &:hover {
+                    background-color: $primary-feature-bg;
+                    color: #fff;
+                  }
+                }
+
+                .narrative-day {
+                  background-color: #d9d9d9;
+                  width: 100%;
+                  border-radius: 1rem;
+                  padding: 1rem;
+                  gap: 1rem;
+                  display: grid;
+                  grid-template-columns: 14rem 1fr 1fr;
+                  & > * {
+                    @include flexCenter;
+                  }
+                  .num-days {
+                    flex-direction: column;
+                    background-color: #fff;
+                    border-radius: 1rem;
+                    text-align: center;
+                    padding: 1rem;
+                    // border: solid 1px #000;
+                  }
+                  .status {
+                    background-color: #fff;
+                    border-radius: 1rem;
+                    text-align: center;
+                    padding: 1rem;
+                    // border: solid 1px #000;
+                  }
+
+                  .btn-container {
+                    gap: 1rem;
+                    button {
+                      @include flexCenter;
+                      background-color: #fff;
+                      border: none;
+                      outline: none;
+                      cursor: pointer;
+                      padding: 1rem 1.5rem;
+                      transition: all 0.2s linear;
+                      font-weight: 600;
+                      border-radius: 1rem;
+                      &:hover {
+                        border-radius: 0;
+                        background-color: $primary-feature-bg;
+                        color: #fff;
+                      }
+                      // &:first-child:hover {
+                      //   background-color: $primary-compliment-landing;
+                      //   color: #fff;
+                      // }
+                      // &:last-child:hover {
+                      //   background-color: $primary-bg-color;
+                      //   color: #fff;
+                      // }
+                    }
+                  }
+                }
+              }
+              .dropdown-btn {
+                margin-top: -1rem;
+                border-radius: 0 0 1rem 1rem;
+                @include flexCenter;
+                height: 2rem;
+                width: 100%;
+                background-color: #d9d9d9;
+                cursor: pointer;
+                background-color: $primary-compliment-landing;
+                &:hover {
+                  background-color: #fff;
+                  background-color: $primary-feature-bg;
+                }
+              }
+              .icon {
+                color: #fff;
+              }
+            }
+            .active {
+              grid-template-rows: 18rem 1fr;
+              z-index: 4;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .profile-page {
+    .content {
+      .display {
+        .attendance-container {
+          .attendance-view {
+            // flex-direction: column;
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-template-rows: auto auto;
+            gap: 0;
+            & > *:nth-child(3) {
+              grid-row: 2/3;
+              grid-column: 1/3;
+              justify-content: space-between;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 880px) {
+  .profile-page {
+    .content {
+      .display {
+        .internship-details-container {
+          grid-template-columns: auto;
+          grid-template-rows: auto 1fr;
+          .img-con {
+            margin: auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .profile-page {
+    .profile-user {
+      .intern-info {
+        .intern-details {
+          .program {
+            display: none;
+          }
+          .program-short {
+            display: flex;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 750px) {
+  .profile-page {
+    .content {
+      grid-template-rows: 6rem auto;
+
+      .button-container::-webkit-scrollbar {
+        width: 0.8rem;
+        height: 0.8rem;
+      }
+      .button-container::-webkit-scrollbar-track {
+        border-radius: 0;
+      }
+      .button-container {
+        grid-template-columns: 12rem 14.2rem 10.3rem 8.8rem 8rem;
+        width: 70vw;
+        overflow-x: auto;
+      }
+      .display {
+        .intern-details-container .intern-content,
+        .internship-details-container .text {
+          p {
+            font-size: 1.8rem;
+          }
+        }
+        .request-container {
+          font-size: 1.8rem;
+        }
+        .attendance-container {
+          .attendance-view,
+          .attendance-absent {
+            font-size: 1.8rem;
+          }
+          .attendance-view {
+            display: flex;
+            flex-direction: column;
+            & > *:nth-child(3) {
+              justify-content: flex-start;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .profile-page {
+    .content {
+      .display {
+        .attendance-container {
+          .attendance-view {
+            & > *:nth-child(3) {
+              display: flex;
+              flex-direction: column;
+              gap: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .profile-page {
+    .content {
+      .display {
+        .narrative-container {
+          .report-container {
+            grid-template-columns: 1fr;
+            .narrative-content {
+              .dropdown-container {
+                .days-container {
+                  .narrative-day {
+                    .btn-container {
+                      flex-direction: column;
+                      gap: 0.5rem;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile-page {
+    grid-template-rows: auto minmax(30rem, 60vh);
+    .profile-user {
+      .profile-details {
+        .profile-img {
+          width: 11rem;
+          height: 11rem;
+        }
+      }
+      .intern-info {
+        .intern-details {
+          h3 {
+            font-size: 1.9rem;
+          }
+          p {
+            font-size: 1.8rem;
+          }
+        }
+        .btn-edit {
+          button {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+    .content {
+      .button-container {
+        width: 80vw;
+      }
+      .display {
+        .intern-details-container .intern-content,
+        .internship-details-container .text {
+          p {
+            font-size: 1.7rem;
+          }
+        }
+        .internship-details-container {
+          .img-con {
+            height: 13rem;
+            width: 13rem;
+          }
+        }
+        .attendance-container {
+          .attendance-view,
+          .attendance-absent {
+            font-size: 1.7rem;
+          }
+        }
+        .request-container {
+          font-size: 1.7rem;
+        }
+
+        .narrative-container {
+          .report-container {
+            .narrative-content {
+              .dropdown-container {
+                .days-container {
+                  .narrative-day {
+                    .btn-container {
+                      flex-direction: row;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .profile-page {
+    .content {
+      .display {
+        .narrative-container {
+          .report-container {
+            .narrative-content {
+              .dropdown-container {
+                .days-container {
+                  .narrative-day {
+                    .btn-container {
+                      flex-direction: column;
+                      button {
+                        height: 3.5rem;
+                        width: 6rem;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .profile-page {
+    .profile-user {
+      .profile-details {
+        .profile-img {
+          width: 10rem;
+          height: 10rem;
+        }
+      }
+      .intern-info {
+        .intern-details {
+          padding: 0 1rem 0 12rem;
+          h3 {
+            font-size: 1.8rem;
+          }
+          p {
+            font-size: 1.7rem;
+          }
+        }
+        .btn-edit {
+          button {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+    .content {
+      grid-template-rows: 5rem auto;
+      .button-container {
+        button {
+          font-size: 1.1rem;
+          height: 4.2rem;
+        }
+      }
+      .display {
+        .intern-details-container .intern-content,
+        .internship-details-container .text {
+          p {
+            font-size: 1.6rem;
+          }
+        }
+        .intern-details-container,
+        .internship-details-container,
+        .attendance-container,
+        .request-container {
+          padding: 1rem;
+        }
+        .internship-details-container {
+          .img-con {
+            height: 12rem;
+            width: 12rem;
+          }
+        }
+        .attendance-container {
+          .attendance-view,
+          .attendance-absent {
+            font-size: 1.6rem;
+          }
+        }
+        .request-container {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .profile-page {
+    .content {
+      .display {
+        .narrative-container {
+          .report-container {
+            grid-auto-rows: 14rem;
+            .narrative-content {
+              .dropdown-container {
+                .days-container {
+                  @include flexColumn;
+                  .narrative-day {
+                    gap: 0.5rem;
+                    grid-template-rows: repeat(2, auto);
+                    grid-template-columns: repeat(2, auto);
+                    .btn-container {
+                      flex-direction: row;
+                      justify-content: center;
+                      grid-column: 1/3;
+                      grid-row: 2/3;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .profile-page {
+    grid-template-rows: auto minmax(30rem, 55vh);
+    .profile-user {
+      .profile-details {
+        .profile-img {
+          left: 1.5rem;
+          width: 9rem;
+          height: 9rem;
+        }
+      }
+      .intern-info {
+        .intern-details {
+          padding: 0 1rem 0 10.5rem;
+          h3 {
+            font-size: 1.7rem;
+          }
+          p {
+            font-size: 1.6rem;
+          }
+        }
+        .btn-edit {
+          button {
+            font-size: 1.8rem;
+          }
+        }
+      }
+    }
+    .content {
+      .display {
+        .intern-details-container .intern-content,
+        .internship-details-container .text {
+          p {
+            font-size: 1.5rem;
+          }
+        }
+        .internship-details-container {
+          .img-con {
+            height: 10rem;
+            width: 10rem;
+          }
+        }
+        .attendance-container {
+          .no-record {
+            h3 {
+              font-size: 1.8rem;
+            }
+            img {
+              height: 20rem;
+              width: 20rem;
+            }
+          }
+          .attendance-view,
+          .attendance-absent {
+            font-size: 1.5rem;
+          }
+        }
+        .request-container {
+          font-size: 1.5rem;
+        }
+        .narrative-container {
+          .report-container {
+            .narrative-content {
+              .dropdown-container {
+                .days-container {
+                  .narrative-day {
+                    gap: 0;
+                    padding: 0.5rem;
+                    display: flex;
+                    flex-direction: column;
+                    .num-days {
+                      padding: 0.5rem 0 0 0;
+                      border-radius: 1rem 1rem 0 0;
+                    }
+                    .status {
+                      padding: 0 0 0.5rem 0;
+                      border-radius: 0 0 1rem 1rem;
+                    }
+
+                    .btn-container {
+                      padding: 0.5rem 0 0 0;
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

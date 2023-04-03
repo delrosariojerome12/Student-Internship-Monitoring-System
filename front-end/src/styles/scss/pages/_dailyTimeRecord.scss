@@ -7,9 +7,7 @@
   height: 100%;
   width: 100%;
   display: grid;
-  // grid-template-rows: 12rem 7rem minmax(30vh, 65vh);
-  grid-template-rows: auto minmax(40rem, 63vh);
-  padding: 1rem;
+  grid-template-rows: auto minmax(35rem, 61vh);
   gap: 1rem;
 
   button {
@@ -211,7 +209,7 @@
         display: grid;
         grid-template-columns: repeat(2, auto);
         height: 100%;
-        gap: 1rem;
+        // gap: 1rem;
         align-items: center;
         background-color: #40454d;
         border-radius: 2rem;
@@ -371,105 +369,8 @@
 
 //responsive
 
-// height
-// @media screen and (max-height: 1000px) {
-//   .daily-time-record {
-//     grid-template-rows: 12rem 7rem 73vh;
-//   }
-// }
-// @media screen and (max-height: 850px) {
-//   .daily-time-record {
-//     grid-template-rows: 12rem 7rem 70vh;
-//     .modal {
-//       height: 65rem;
-//     }
-//   }
-// }
-// @media screen and (max-height: 760px) {
-//   .daily-time-record {
-//     grid-template-rows: 12rem 7rem 67vh;
-//   }
-// }
-
-// @media screen and (max-height: 700px) {
-//   .daily-time-record {
-//     grid-template-rows: 12rem 7rem 63vh;
-//     .modal {
-//       height: 50rem;
-//     }
-//   }
-// }
-
-// @media screen and (max-height: 500px) {
-//   .daily-time-record {
-//     grid-template-rows: 12rem 7rem 63vh;
-//     .modal {
-//       height: 35rem;
-//     }
-//   }
-// }
-
-// // width
-// @media screen and (max-width: 780px) {
-//   .daily-time-record {
-//     .modal {
-//       height: 70rem;
-//       width: 60rem;
-//     }
-//     .attendance-view {
-//       .upper {
-//         .img-con {
-//           flex-direction: column;
-//         }
-//       }
-//     }
-//   }
-// }
-
-// @media screen and (max-width: 700px) {
-//   .daily-time-record {
-//     .modal {
-//       width: 50rem;
-//     }
-//     .attendance-view {
-//       .upper {
-//         .attendance-info {
-//           display: flex;
-//           flex-direction: column;
-//         }
-//       }
-//     }
-//   }
-// }
-// @media screen and (max-width: 600px) {
-//   .daily-time-record {
-//     grid-template-rows: 12rem 7rem 65vh;
-//   }
-// }
-
-// @media screen and (max-width: 500px) {
-//   .daily-time-record {
-//     .modal {
-//       width: 100%;
-//       height: 100%;
-//     }
-//   }
-// }
-
-// @media screen and (max-height: 600px) {
-//   .daily-time-record {
-//     grid-template-rows: 12rem 7rem 50vh;
-//     .modal {
-//       height: 50rem;
-//     }
-//   }
-// }
-
-/////////////////////////////////////////////////////////////////
-
 @media screen and (max-width: 1030px) {
   .daily-time-record {
-    grid-template-rows: auto minmax(30rem, 61vh);
     .no-internship {
       img {
         height: 30rem;
@@ -481,6 +382,7 @@
 
 @media screen and (max-width: 750px) {
   .daily-time-record {
+    grid-template-rows: auto minmax(35rem, 65vh);
     .modal {
       width: 58rem;
     }
@@ -553,6 +455,12 @@
     .DTR-content {
       grid-template-columns: 1fr;
       grid-auto-rows: minmax(4rem, 6vh);
+      .attendance {
+        border-radius: 1rem;
+        &:hover {
+          border-radius: 0;
+        }
+      }
     }
     .no-internship {
       img {
@@ -564,7 +472,7 @@
 }
 @media screen and (max-width: 700px) {
   .daily-time-record {
-    grid-template-rows: auto minmax(30rem, 53vh);
+    grid-template-rows: auto minmax(30rem, 57vh);
     header {
       .user {
         .text {
@@ -576,7 +484,7 @@
 }
 @media screen and (max-width: 600px) {
   .daily-time-record {
-    grid-template-rows: auto minmax(20rem, 45vh);
+    grid-template-rows: auto minmax(20rem, 47vh);
     .modal {
       // height: 63rem;
       width: 99%;
@@ -621,6 +529,7 @@
     .modal {
       height: 100%;
       width: 100%;
+      border-radius: 0;
     }
     button {
       height: 4rem;
@@ -636,13 +545,6 @@
           font-size: 1.7rem;
         }
       }
-      // .camera {
-      //   img,
-      //   video {
-      //     height: 27rem;
-      //     width: 27rem;
-      //   }
-      // }
     }
     .attendance-view {
       .upper {
@@ -732,7 +634,7 @@
 
 @media screen and (max-width: 400px) {
   .daily-time-record {
-    grid-template-rows: auto minmax(20rem, 39vh);
+    grid-template-rows: auto minmax(20rem, 42vh);
     header {
       grid-template-rows: 1fr 0.5fr;
       .user {

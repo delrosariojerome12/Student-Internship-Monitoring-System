@@ -1,12 +1,19 @@
-import React, {useState, useEffect} from "react";
-import {Route, Routes, Link, Navigate, useNavigate} from "react-router-dom";
+/** @format */
+
+import React, { useState, useEffect } from "react";
+import { Route, Routes, Link, Navigate, useNavigate } from "react-router-dom";
 import InternsDetail from "./profile/InternsDetail";
 import InternshipDetail from "./profile/InternshipDetail";
 import AttendanceViewer from "./profile/AttendanceViewer";
 import Narrative from "./profile/Narrative";
 import Request from "./profile/Request ";
-import {useSelector} from "react-redux";
-import colegioLogo from "../../assets/img/colegio.svg";
+import { useSelector } from "react-redux";
+import { FaEdit } from "react-icons/fa";
+import ReactPDF from "../../components/utils/ReactPDF";
+import AddModal from "../../components/intern/reports/AddModal";
+import EditModal from "../../components/intern/reports/EditModal";
+import ViewModal from "../../components/intern/reports/ViewModal";
+import CdsgaImg from "../../assets/img/CDSGA.png";
 
 const buttons = [
   {
@@ -42,11 +49,21 @@ const Profile = React.memo(() => {
 
   const {
     user: {
-      user: {firstName, lastName, profileImage},
+      user: { firstName, lastName, profileImage },
       schoolDetails,
       internshipDetails,
     },
   } = useSelector((state) => state.user);
+
+  const {
+    allNarrative,
+    isError,
+    isLoading,
+    isAddModalOpen,
+    isEditModalOpen,
+    isViewModalOpen,
+    isGenerateOpen,
+  } = useSelector((state) => state.narrative);
 
   useEffect(() => {
     const path = window.location.pathname.split("/");
@@ -60,10 +77,9 @@ const Profile = React.memo(() => {
         <div
           className="profile-bg"
           style={{
-            background: `url(${colegioLogo}) no-repeat center`,
+            background: `url(${CdsgaImg}) no-repeat center`,
             backgroundSize: "cover",
-          }}
-        ></div>
+          }}></div>
         <div className="profile-details">
           <div className="profile-img">
             <img src={profileImage} alt="" />
@@ -75,17 +91,20 @@ const Profile = React.memo(() => {
               {firstName} {lastName}
             </h3>
             <p className="program">{schoolDetails?.program}</p>
-            <p className="program">{internshipDetails?.companyName}</p>
+            <p className="program-short">BSIT</p>
+            {/* <p>{internshipDetails?.companyName}</p> */}
           </div>
           <div className="btn-edit">
-            <button>Edit Profile</button>
+            <button>
+              <FaEdit />
+            </button>
           </div>
         </div>
       </div>
       <div className="content">
         <div className="button-container">
           {buttons.map((item, index) => {
-            const {path, btnName, code} = item;
+            const { path, btnName, code } = item;
 
             return (
               <button
@@ -94,8 +113,7 @@ const Profile = React.memo(() => {
                 onClick={() => {
                   navigate(path);
                   setSelected(code);
-                }}
-              >
+                }}>
                 {btnName}
               </button>
             );
@@ -112,6 +130,17 @@ const Profile = React.memo(() => {
           </Routes>
         </div>
       </div>
+
+      {isAddModalOpen && <AddModal />}
+      {isEditModalOpen && <EditModal />}
+      {isViewModalOpen && <ViewModal />}
+
+      {isGenerateOpen && (
+        <>
+          <div className="overlay"></div>
+          <ReactPDF />
+        </>
+      )}
     </section>
   );
 });

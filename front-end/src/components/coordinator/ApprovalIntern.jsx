@@ -104,72 +104,72 @@ const ApprovalIntern = React.memo(({ intern, index }) => {
                     </b>
                   </p>
                   <p>
-                    Program:
-                    <b> {program}</b>
+                    <b> Program: </b>
+                    {program}
                   </p>
                   <p>
-                    Required Hours:
-                    <b> {requiredHours}</b>
+                    <b> Required Hours: </b>
+                    {requiredHours}
                   </p>
                   <p>
-                    Email:
-                    <b> {email}</b>
+                    <b> Email: </b>
+                    {email}
                   </p>
                   <p>
-                    Contact Number:
-                    <b> {studentContact}</b>
+                    <b> Contact Number: </b>
+                    {studentContact}
                   </p>
                 </div>
               </div>
               <div className="schedule-details-container">
                 <h4>Schedule Details</h4>
                 <p>
-                  Schedule Type:
-                  <b> {scheduleType}</b>
+                  <b> Schedule Type: </b>
+                  {scheduleType}
                 </p>
                 <p>
-                  Days:
-                  <b> {scheduledDays}</b>
+                  <b>Days: </b>
+                  {scheduledDays}
                 </p>
                 <p>
-                  Time:
-                  <b> {`${timeInSchedule} - ${timeOutSchedule}`}</b>
+                  <b> Time: </b>
+                  {`${timeInSchedule} - ${timeOutSchedule}`}
                 </p>
                 <p>
-                  Starting Date:
-                  <b> {startingDate}</b>
+                  <b>Starting Date: </b>
+                  {startingDate}
                 </p>
               </div>
               <div className="internship-details-container">
                 <h4>Internship Details</h4>
                 <img src={logo.link} alt={logo.name} />
                 <p>
-                  Company:
-                  <b> {companyName}</b>
+                  <b> Company: </b>
+                  {companyName}
                 </p>
                 <p>
-                  Address:
-                  <b> {companyAddress}</b>
+                  <b> Address: </b>
+                  {companyAddress}
                 </p>
                 <p>
-                  Supervisor:
-                  <b> {supervisor}</b>
+                  <b> Supervisor: </b>
+                  {supervisor}
                 </p>
                 <p>
-                  Email:
-                  <b> {internshipDetails.email}</b>
+                  <b> Email: </b>
+                  {internshipDetails.email}
                 </p>
                 <p>
-                  Contact:
-                  <b> {supervisorContact}</b>
+                  <b>Contact: </b>
+                  {supervisorContact}
                 </p>
                 <p>
-                  Type of Work:
-                  <b> {typeOfWork}</b>
+                  <b>Type of Work: </b>
+                  {typeOfWork}
                 </p>
                 <p>
-                  Description:
-                  <b> {description}</b>
+                  <b> Description: </b>
+                  {description}
                 </p>
               </div>
             </div>

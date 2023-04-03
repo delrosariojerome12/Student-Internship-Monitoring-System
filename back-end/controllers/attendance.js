@@ -4,7 +4,9 @@ const Attendance = require("../models/Attendance");
 const Intern = require("../models/Intern");
 const mongoose = require("mongoose");
 const User = require("../models/User");
-const Internship = require("../models/Internship");
+
+const moment = require("moment-timezone");
+const axios = require("axios");
 
 function countRenderedHours(timeIn, timeOut) {
   const millisecondsInHour = 1000 * 60 * 60;
@@ -65,6 +67,8 @@ const getAllAttendance = async (req, res) => {
   const {email} = req.params;
   const {
     scheduleDetails: {scheduleType},
+    timeObject,
+    timeObject: {day, hours, minutes, amOrPm, todayDate},
   } = req.query;
 
   const userExists = await Intern.findOne({email});
@@ -73,18 +77,19 @@ const getAllAttendance = async (req, res) => {
     throw new NotFound("User not found");
   }
 
-  // countRenderedHours("08:20:20 AM", "14:40:20 PM");
+  // const now = new Date();
+  // const year = now.getFullYear();
+  // const month =
+  //   now.getMonth() + 1 < 10 ? `0${now.getMonth() + 1}` : now.getMonth() + 1;
+  // const date = now.getDate() + 1 < 10 ? `0${now.getDate()}` : now.getDate();
 
-  const now = new Date();
+  // const day = now.getDay();
 
-  const year = now.getFullYear();
-  const month =
-    now.getMonth() + 1 < 10 ? `0${now.getMonth() + 1}` : now.getMonth() + 1;
-  const date = now.getDate() + 1 < 10 ? `0${now.getDate()}` : now.getDate();
+  // const todayDate = `${month}-${date}-${year}`;
 
-  const day = now.getDay();
-
-  const todayDate = `${month}-${date}-${year}`;
+  // const hours = now.getHours() % 12 || 12;
+  // const minutes = now.getMinutes();
+  // const amOrPm = now.getHours() >= 12 ? "PM" : "AM";
 
   const attendance = await Attendance.find({email});
   const todayExists = await Attendance.findOne({
@@ -93,10 +98,6 @@ const getAllAttendance = async (req, res) => {
   });
 
   let doesExists = {};
-
-  const hours = now.getHours() % 12 || 12;
-  const minutes = now.getMinutes();
-  const amOrPm = now.getHours() >= 12 ? "PM" : "AM";
 
   if (scheduleType === "Regular") {
     if (day > 0 && day < 6) {

@@ -9,6 +9,19 @@
   width: 100%;
   border-radius: 1rem;
 
+  // .no-content {
+  //   color: #fff;
+  //   padding: 2rem;
+  //   border-radius: 1rem;
+  //   background-color: #282b30;
+  //   @include flexCenter;
+  //   flex-direction: column;
+  //   img {
+  //     height: 50rem;
+  //     width: 40rem;
+  //   }
+  // }
+
   .overlay {
     width: 100%;
     height: 100%;
@@ -106,7 +119,7 @@
     button {
       border-radius: 1rem;
       margin: auto;
-      height: 4.5rem;
+      height: 4rem;
       @include flexCenter;
       flex-direction: row;
       border: none;
@@ -173,7 +186,7 @@
     .report-container {
       display: grid;
       grid-auto-rows: 12rem;
-      grid-template-columns: repeat(auto-fill, 45rem);
+      grid-template-columns: repeat(auto-fill, 46rem);
       gap: 1rem;
       padding: 2rem;
       background-color: #282b30;
@@ -207,6 +220,11 @@
           transition: all 0.3s ease-in-out;
           border-radius: 0 0 1rem 1rem;
           margin-top: 1rem;
+
+          .days-container::-webkit-scrollbar-thumb {
+            background-color: $primary-feature-bg;
+          }
+
           .days-container {
             background-color: $primary-compliment-landing;
             overflow: hidden;
@@ -216,6 +234,7 @@
             padding: 1rem;
             border-radius: 0 0 1rem 1rem;
             margin-top: -1rem;
+            overflow-y: auto;
             button {
               font-family: $poppins-font-family;
               padding: 1rem 1.5rem;
@@ -226,13 +245,14 @@
               transition: all 0.2s ease-in-out;
               font-weight: 600;
               &:hover {
-                background-color: $primary-bg-color;
+                background-color: $primary-feature-bg;
                 color: #fff;
               }
             }
 
             .narrative-day {
               background-color: #d9d9d9;
+              width: 100%;
               border-radius: 1rem;
               padding: 1rem;
               gap: 1rem;
@@ -260,6 +280,7 @@
               .btn-container {
                 gap: 1rem;
                 button {
+                  @include flexCenter;
                   background-color: #fff;
                   border: none;
                   outline: none;
@@ -304,7 +325,7 @@
           }
         }
         .active {
-          grid-template-rows: 53rem 1fr;
+          grid-template-rows: 34rem 1fr;
           z-index: 4;
         }
       }
@@ -663,6 +684,15 @@
         grid-template-rows: auto auto;
         padding: 1rem 2rem;
         gap: 0;
+        h3 {
+          font-size: 1.9rem;
+        }
+        & > :nth-child(1) {
+          font-size: 2.2rem;
+        }
+        & > :nth-child(2) {
+          color: $primary-bg-color-landing-compliment;
+        }
         & > :nth-child(3) {
           margin: auto;
           grid-column: 2/3;
@@ -675,6 +705,10 @@
 }
 @media screen and (max-width: 650px) {
   .reports {
+    .pdf-container {
+      height: 100%;
+      width: 100%;
+    }
     .content {
       .report-container {
         grid-template-columns: 1fr;
@@ -689,9 +723,6 @@
               }
             }
           }
-          .active {
-            grid-template-rows: 53rem 1fr;
-          }
         }
       }
     }
@@ -703,8 +734,8 @@
     .modal {
       height: 90%;
       .upper {
-        h3 {
-          font-size: 2rem;
+        & > :nth-child(1) {
+          font-size: 2.1rem;
         }
       }
     }
@@ -715,46 +746,39 @@
         .narrative-content {
           .dropdown-container {
             .days-container {
-              display: grid;
-              grid-template-columns: repeat(2, 1fr);
-              grid-template-rows: repeat(3, 1fr);
-
               .narrative-day {
-                grid-template-rows: repeat(3, auto);
-                grid-template-columns: auto;
-                gap: 0;
-                & > * {
-                  @include flexCenter;
-                  background-color: #fff;
-                }
-                .num-days {
-                  // gap: 1rem;
-                  padding: 0;
-                  border-radius: 1rem 1rem 0 0;
-                }
-                .status {
-                  padding: 0;
-                  border-radius: 0;
-                }
                 .btn-container {
-                  border-radius: 0 0 1rem 1rem;
                   flex-direction: row;
-                  padding: 0.5rem 0;
-                  button {
-                    background-color: #d9d9d9;
-                  }
                 }
-              }
-              & > :nth-child(5) {
-                width: 60%;
-                margin: auto;
-                grid-row: 3/4;
-                grid-column: 1/3;
               }
             }
           }
           .active {
-            grid-template-rows: 43rem 1fr;
+            grid-template-rows: 25rem 1fr;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .reports {
+    .content {
+      .report-container {
+        .narrative-content {
+          .dropdown-container {
+            .days-container {
+              .narrative-day {
+                .btn-container {
+                  flex-direction: column;
+                  button {
+                    height: 3.5rem;
+                    width: 6rem;
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -765,13 +789,11 @@
 @media screen and (max-width: 500px) {
   .reports {
     .modal {
+      border-radius: 0;
       width: 100%;
       height: 100%;
       .upper {
         gap: 0.5rem;
-        h3 {
-          font-size: 1.9rem;
-        }
       }
       .btn-controller {
         button {
@@ -782,7 +804,7 @@
   }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 480px) {
   .reports {
     .content {
       grid-template-rows: auto minmax(45rem, 67vh);
@@ -793,7 +815,14 @@
         padding: 1rem;
         gap: 0.5rem;
         button {
+          height: 3.5rem;
           border-radius: 1rem;
+          span {
+            font-size: 1.6rem;
+          }
+          p {
+            font-size: 1.3rem;
+          }
           &:hover {
             border-radius: 0;
           }
@@ -806,47 +835,64 @@
         }
       }
       .report-container {
-        grid-auto-rows: 14rem;
         .narrative-content {
+          .sub-container {
+            & > * {
+              font-size: 1.7rem;
+            }
+          }
           .dropdown-container {
             .days-container {
-              display: grid;
-              grid-template-columns: auto;
-              grid-template-rows: repeat(5, 10.5rem);
+              @include flexColumn;
               .narrative-day {
+                gap: 0.5rem;
                 grid-template-rows: repeat(2, auto);
                 grid-template-columns: repeat(2, auto);
-
-                .num-days {
-                  // flex-direction: row;
-                  // gap: 0.5rem;
-                  border-radius: 1rem 0 0 0;
-                }
-                .status {
-                  border-radius: 0 0 0 1rem;
-                }
                 .btn-container {
-                  padding: 0.5rem;
-                  flex-direction: column;
-                  grid-column: 2/3;
-                  grid-row: 1/3;
-                  border-radius: 0 1rem 1rem 0;
+                  flex-direction: row;
+                  justify-content: center;
+                  grid-column: 1/3;
+                  grid-row: 2/3;
                 }
               }
             }
-          }
-          .active {
-            grid-template-rows: 58rem 1fr;
           }
         }
       }
     }
   }
 }
-@media screen and (max-width: 380px) {
+
+@media screen and (max-width: 400px) {
   .reports {
     .content {
-      grid-template-rows: auto minmax(35rem, 64vh);
+      .report-container {
+        grid-auto-rows: 13rem;
+        .narrative-content {
+          .dropdown-container {
+            .days-container {
+              .narrative-day {
+                gap: 0;
+                padding: 0.5rem;
+                display: flex;
+                flex-direction: column;
+                .num-days {
+                  padding: 0.5rem 0 0 0;
+                  border-radius: 1rem 1rem 0 0;
+                }
+                .status {
+                  padding: 0 0 0.5rem 0;
+                  border-radius: 0 0 1rem 1rem;
+                }
+
+                .btn-container {
+                  padding: 0.5rem 0 0 0;
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

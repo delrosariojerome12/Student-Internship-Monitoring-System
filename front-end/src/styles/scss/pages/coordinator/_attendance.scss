@@ -52,9 +52,6 @@
     }
     .mid {
       justify-content: space-between;
-      // & > * {
-      //   border: solid 1px #fff;
-      // }
       .btn-container {
         display: flex;
         align-items: center;
@@ -381,7 +378,6 @@
 
 @media screen and (max-width: 750px) {
   .monitor-attendance {
-    // grid-template-rows: auto minmax(40rem, 72vh);
     .display {
       h1 {
         font-size: 2.5rem;
@@ -415,6 +411,14 @@
             }
             .second {
               gap: 0;
+              .more-details-btn {
+                button {
+                  border-radius: 1rem;
+                  &:hover {
+                    border-radius: 0;
+                  }
+                }
+              }
             }
           }
         }
@@ -422,6 +426,7 @@
     }
     .more-details,
     .narrative-content {
+      border-radius: 0;
       width: 100%;
       height: 100%;
     }

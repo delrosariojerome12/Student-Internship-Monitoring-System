@@ -1,3 +1,5 @@
+/** @format */
+
 import React, {useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {getAllAttendance} from "../../../features/interns/attendanceReducer";
@@ -44,23 +46,20 @@ const AttendanceViewer = React.memo(() => {
   } = user;
 
   useEffect(() => {
-    dispatch(getAllAttendance({email, scheduleDetails}));
+    if (!allAttendance) {
+      dispatch(getAllAttendance({email, scheduleDetails}));
+    }
   }, []);
-
-  if (isLoading || !allAttendance) {
-    return <h1>Loading...</h1>;
-  }
 
   if (isError) {
     return <ServerError />;
   }
-
+  if (isLoading || !allAttendance) {
+    return <h1>Loading...</h1>;
+  }
   if (status === "Not Started") {
     return <CantStart startingDate={startingDate} />;
   }
-
-  console.log(allAttendance);
-
   const formatDate = (date) => {
     const dateArr = date.split("-");
     return `${months[parseInt(dateArr[0].slice(1)) - 1]} ${dateArr[1]} ${
@@ -87,7 +86,7 @@ const AttendanceViewer = React.memo(() => {
           <div className="attendance-view" key={index}>
             <div className="left">
               <h4>{formatDate(date)}</h4>
-              <h4>Present</h4>
+              <h4 className="present">Present</h4>
             </div>
             <h4>Total Rendered: {totalRendered}hrs</h4>
             <div className="right">
@@ -98,9 +97,9 @@ const AttendanceViewer = React.memo(() => {
         );
       }
       return (
-        <div className="attendance-view" key={index}>
+        <div className="attendance-absent" key={index}>
           <h4>{formatDate(date)}</h4>
-          <h4>Absent</h4>
+          <h4 className="Absent">Absent</h4>
         </div>
       );
     });

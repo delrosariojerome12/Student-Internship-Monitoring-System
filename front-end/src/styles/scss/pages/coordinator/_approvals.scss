@@ -38,7 +38,6 @@
   header {
     display: grid;
     grid-template-columns: 1fr;
-    border: solid 1px #fff;
     background-color: #282b30;
     padding: 1rem 2rem;
     border-radius: 1rem;
@@ -69,7 +68,6 @@
     // }
   }
   .approval-container {
-    border: solid 1px #fff;
     background-color: #282b30;
     padding: 2rem;
     height: 100%;
@@ -114,7 +112,6 @@
           position: absolute;
           top: 0%;
           left: 0%;
-          overflow-y: auto;
           z-index: 8;
           .intern-modal {
             display: grid;
@@ -125,7 +122,8 @@
             gap: 1rem;
             grid-template-rows: auto auto;
             height: 90%;
-            width: 120rem;
+            width: 90vw;
+            overflow-y: auto;
             & > * {
               border-radius: 1rem;
               padding: 1rem;
@@ -312,10 +310,23 @@
 
         // margin: 0 auto;
         // letter-spacing: 0.2rem;
-        &.decline-btn:hover {
+        &.decline-btn {
           background-color: $red-primary-color;
+          &:hover {
+            background-color: #d9d9d9;
+            color: $red-primary-color;
+            border: solid 1px $red-primary-color;
+          }
         }
-        &.back-btn:hover,
+        &.back-btn {
+          background-color: #aaaaaa;
+          &:hover {
+            background-color: #d9d9d9;
+            color: #000;
+            border: solid 1px #000;
+          }
+        }
+
         &.approve-btn:hover,
         &.view:hover {
           background-color: #d9d9d9;
@@ -350,8 +361,6 @@
               grid-template-rows: auto auto;
               padding: 1rem;
               overflow-y: auto;
-              // height: 90vh;
-              width: 90vw;
 
               .sent-details {
                 grid-template-columns: repeat(4, 1fr);
@@ -423,6 +432,7 @@
             .intern-modal {
               width: 100%;
               height: 100%;
+              border-radius: 0;
               .sent-details {
                 display: flex;
                 flex-direction: column;
@@ -436,10 +446,6 @@
                     width: 14rem;
                   }
                 }
-                // p {
-                //   word-wrap: break-word;
-                //   word-break: break-all;
-                // }
               }
               .feedback-container {
                 form {

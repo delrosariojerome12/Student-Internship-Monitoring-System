@@ -522,15 +522,6 @@
   }
 }
 
-// @media screen and (max-height: 800px) {
-//   .internship-container {
-//     .modal {
-//       width: 60rem;
-//       height: 40rem !important;
-//     }
-//   }
-// }
-
 // Responsive
 
 @media screen and (max-width: 1150px) {
@@ -732,7 +723,6 @@
 
 @media screen and (max-width: 500px) {
   .internship-container {
-    // grid-template-rows: auto minmax(40rem, 70vh);
     header {
       .page-title {
         padding: 1rem 0.5rem 1rem 2rem;
@@ -774,6 +764,7 @@
       }
     }
     .add-modal {
+      border-radius: 0;
       width: 100%;
       height: 100%;
       form {
@@ -795,6 +786,7 @@
       }
     }
     .view-modal {
+      border-radius: 0;
       width: 100%;
       height: 100%;
       .close-btn {
