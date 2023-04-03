@@ -55,18 +55,15 @@ const DailyTimeRecord = React.memo(() => {
     dispatch(getAllAttendance({email, scheduleDetails}));
   }, []);
 
-  if (isLoading || !allAttendance) {
-    return <Bouncing />;
-  }
-
   if (isError) {
     return <ServerError />;
   }
-
+  if (isLoading || !allAttendance) {
+    return <Bouncing />;
+  }
   if (status === "Not Started") {
     return <CantStart startingDate={startingDate} />;
   }
-
   const renderAttendance = () => {
     if (allAttendance.length === 0) {
       return (

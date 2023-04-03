@@ -40,12 +40,11 @@ const Reports = React.memo(() => {
     dispatch(getAllNarrative({email}));
   }, []);
 
-  if (isLoading || !allNarrative) {
-    return <Bouncing />;
-  }
-
   if (isError) {
     return <ServerError />;
+  }
+  if (isLoading || !allNarrative) {
+    return <Bouncing />;
   }
 
   const renderNarrative = () => {
