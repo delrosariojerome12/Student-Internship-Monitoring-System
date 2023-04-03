@@ -835,8 +835,12 @@
         }
       }
       .report-container {
-        grid-auto-rows: 14rem;
         .narrative-content {
+          .sub-container {
+            & > * {
+              font-size: 1.7rem;
+            }
+          }
           .dropdown-container {
             .days-container {
               @include flexColumn;
@@ -863,6 +867,7 @@
   .reports {
     .content {
       .report-container {
+        grid-auto-rows: 13rem;
         .narrative-content {
           .dropdown-container {
             .days-container {

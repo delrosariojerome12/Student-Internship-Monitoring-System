@@ -1,18 +1,20 @@
 /** @format */
 
-import React, {useState, useEffect} from "react";
-import {Route, Routes, Link, Navigate, useNavigate} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Route, Routes, Link, Navigate, useNavigate } from "react-router-dom";
 import InternsDetail from "./profile/InternsDetail";
 import InternshipDetail from "./profile/InternshipDetail";
 import AttendanceViewer from "./profile/AttendanceViewer";
 import Narrative from "./profile/Narrative";
 import Request from "./profile/Request ";
-import {useSelector} from "react-redux";
-import {FaEdit} from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { FaEdit } from "react-icons/fa";
 import ReactPDF from "../../components/utils/ReactPDF";
 import AddModal from "../../components/intern/reports/AddModal";
 import EditModal from "../../components/intern/reports/EditModal";
 import ViewModal from "../../components/intern/reports/ViewModal";
+import CdsgaImg from "../../assets/img/CDSGA.png";
+
 const buttons = [
   {
     path: "/dashboard/profile/internsDetail",
@@ -47,7 +49,7 @@ const Profile = React.memo(() => {
 
   const {
     user: {
-      user: {firstName, lastName, profileImage},
+      user: { firstName, lastName, profileImage },
       schoolDetails,
       internshipDetails,
     },
@@ -75,11 +77,9 @@ const Profile = React.memo(() => {
         <div
           className="profile-bg"
           style={{
-            // background: `url(${colegioLogo}) no-repeat center`,
-            // backgroundColor: "#fff",
+            background: `url(${CdsgaImg}) no-repeat center`,
             backgroundSize: "cover",
-          }}
-        ></div>
+          }}></div>
         <div className="profile-details">
           <div className="profile-img">
             <img src={profileImage} alt="" />
@@ -104,7 +104,7 @@ const Profile = React.memo(() => {
       <div className="content">
         <div className="button-container">
           {buttons.map((item, index) => {
-            const {path, btnName, code} = item;
+            const { path, btnName, code } = item;
 
             return (
               <button
@@ -113,8 +113,7 @@ const Profile = React.memo(() => {
                 onClick={() => {
                   navigate(path);
                   setSelected(code);
-                }}
-              >
+                }}>
                 {btnName}
               </button>
             );
