@@ -18,7 +18,7 @@ export const getAllNarrative = createAsyncThunk(
   "/narrative/getAllNarrative",
   async ({email}, {rejectWithValue}) => {
     try {
-      const url = `https://sims-twqb.onrender.com/attendance/getAllNarrative/${email}`;
+      const url = `http://localhost:5000/attendance/getAllNarrative/${email}`;
       const {data: res} = await axios.get(url);
       console.log(res);
       return {res: res.data};
@@ -37,7 +37,7 @@ export const updateNarrative = createAsyncThunk(
   "/narrative/update",
   async ({date, content, email}, {rejectWithValue}) => {
     try {
-      const url = `https://sims-twqb.onrender.com/attendance/updateNarrative/${email}`;
+      const url = `http://localhost:5000/attendance/updateNarrative/${email}`;
       const {data: res} = await axios.patch(url, {
         params: {date},
         data: {content},

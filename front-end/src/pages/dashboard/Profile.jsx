@@ -9,8 +9,10 @@ import Narrative from "./profile/Narrative";
 import Request from "./profile/Request ";
 import {useSelector} from "react-redux";
 import {FaEdit} from "react-icons/fa";
-// import colegioLogo from "../../assets/img/colegio.svg";
-
+import ReactPDF from "../../components/utils/ReactPDF";
+import AddModal from "../../components/intern/reports/AddModal";
+import EditModal from "../../components/intern/reports/EditModal";
+import ViewModal from "../../components/intern/reports/ViewModal";
 const buttons = [
   {
     path: "/dashboard/profile/internsDetail",
@@ -51,6 +53,16 @@ const Profile = React.memo(() => {
     },
   } = useSelector((state) => state.user);
 
+  const {
+    allNarrative,
+    isError,
+    isLoading,
+    isAddModalOpen,
+    isEditModalOpen,
+    isViewModalOpen,
+    isGenerateOpen,
+  } = useSelector((state) => state.narrative);
+
   useEffect(() => {
     const path = window.location.pathname.split("/");
 
@@ -64,6 +76,7 @@ const Profile = React.memo(() => {
           className="profile-bg"
           style={{
             // background: `url(${colegioLogo}) no-repeat center`,
+            // backgroundColor: "#fff",
             backgroundSize: "cover",
           }}
         ></div>
@@ -118,6 +131,17 @@ const Profile = React.memo(() => {
           </Routes>
         </div>
       </div>
+
+      {isAddModalOpen && <AddModal />}
+      {isEditModalOpen && <EditModal />}
+      {isViewModalOpen && <ViewModal />}
+
+      {isGenerateOpen && (
+        <>
+          <div className="overlay"></div>
+          <ReactPDF />
+        </>
+      )}
     </section>
   );
 });

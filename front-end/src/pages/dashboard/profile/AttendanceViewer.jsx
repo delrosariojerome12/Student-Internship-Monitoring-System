@@ -1,8 +1,8 @@
 /** @format */
 
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getAllAttendance } from "../../../features/interns/attendanceReducer";
+import React, {useEffect} from "react";
+import {useSelector, useDispatch} from "react-redux";
+import {getAllAttendance} from "../../../features/interns/attendanceReducer";
 import Bouncing from "../../../components/loading/Bouncing";
 import ServerError from "../../serverError";
 import Attendance from "../../../components/intern/Attendance";
@@ -25,7 +25,7 @@ const months = [
 ];
 
 const AttendanceViewer = React.memo(() => {
-  const { user } = useSelector((state) => state.user);
+  const {user} = useSelector((state) => state.user);
   const {
     isLoading,
     isError,
@@ -38,31 +38,28 @@ const AttendanceViewer = React.memo(() => {
   const dispatch = useDispatch();
 
   const {
-    user: { firstName, lastName, profileImage, email },
-    internshipDetails: { renderedHours, startingDate },
-    schoolDetails: { program, requiredHours },
+    user: {firstName, lastName, profileImage, email},
+    internshipDetails: {renderedHours, startingDate},
+    schoolDetails: {program, requiredHours},
     scheduleDetails,
     status,
   } = user;
 
   useEffect(() => {
-    dispatch(getAllAttendance({ email, scheduleDetails }));
+    if (!allAttendance) {
+      dispatch(getAllAttendance({email, scheduleDetails}));
+    }
   }, []);
-
-  if (isLoading || !allAttendance) {
-    return <h1>Loading...</h1>;
-  }
 
   if (isError) {
     return <ServerError />;
   }
-
+  if (isLoading || !allAttendance) {
+    return <h1>Loading...</h1>;
+  }
   if (status === "Not Started") {
     return <CantStart startingDate={startingDate} />;
   }
-
-  console.log(allAttendance);
-
   const formatDate = (date) => {
     const dateArr = date.split("-");
     return `${months[parseInt(dateArr[0].slice(1)) - 1]} ${dateArr[1]} ${
@@ -82,7 +79,7 @@ const AttendanceViewer = React.memo(() => {
       );
     }
     return allAttendance.map((item, index) => {
-      const { date, isPresent, timeIn, timeOut, totalRendered } = item;
+      const {date, isPresent, timeIn, timeOut, totalRendered} = item;
 
       if (isPresent) {
         return (
