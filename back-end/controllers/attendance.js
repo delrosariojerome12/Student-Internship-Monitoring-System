@@ -67,7 +67,8 @@ const getAllAttendance = async (req, res) => {
   const {email} = req.params;
   const {
     scheduleDetails: {scheduleType},
-    // timeObject: {day, hours, minutes, amOrPm, todayDate},
+    timeObject,
+    timeObject: {day, hours, minutes, amOrPm, todayDate},
   } = req.query;
 
   const userExists = await Intern.findOne({email});
@@ -76,19 +77,19 @@ const getAllAttendance = async (req, res) => {
     throw new NotFound("User not found");
   }
 
-  const now = new Date();
-  const year = now.getFullYear();
-  const month =
-    now.getMonth() + 1 < 10 ? `0${now.getMonth() + 1}` : now.getMonth() + 1;
-  const date = now.getDate() + 1 < 10 ? `0${now.getDate()}` : now.getDate();
+  // const now = new Date();
+  // const year = now.getFullYear();
+  // const month =
+  //   now.getMonth() + 1 < 10 ? `0${now.getMonth() + 1}` : now.getMonth() + 1;
+  // const date = now.getDate() + 1 < 10 ? `0${now.getDate()}` : now.getDate();
 
-  const day = now.getDay();
+  // const day = now.getDay();
 
-  const todayDate = `${month}-${date}-${year}`;
+  // const todayDate = `${month}-${date}-${year}`;
 
-  const hours = now.getHours() % 12 || 12;
-  const minutes = now.getMinutes();
-  const amOrPm = now.getHours() >= 12 ? "PM" : "AM";
+  // const hours = now.getHours() % 12 || 12;
+  // const minutes = now.getMinutes();
+  // const amOrPm = now.getHours() >= 12 ? "PM" : "AM";
 
   const attendance = await Attendance.find({email});
   const todayExists = await Attendance.findOne({

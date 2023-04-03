@@ -1,10 +1,10 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 // import searchIcon from "../../assets/img/search.svg";
 import {useSelector, useDispatch} from "react-redux";
-import {FaHourglass} from "react-icons/fa";
 import {BiSearchAlt} from "react-icons/bi";
 import {checkStartingDate} from "../../features/interns/attendanceReducer";
 import {useNavigate} from "react-router";
+import ReactMap from "../../components/utils/ReactMap";
 
 const DashboardMain = React.memo(() => {
   const {
@@ -25,6 +25,8 @@ const DashboardMain = React.memo(() => {
       status,
     },
   } = useSelector((state) => state.user);
+
+  const [isMapOpen, setMapOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -145,8 +147,18 @@ const DashboardMain = React.memo(() => {
             <h4>Email: {supEmail}</h4>
           </div>
         </div>
+        {isMapOpen && (
+          <>
+            <div className="overlay"></div>
+            <div className="map-con">
+              <ReactMap />
+              <button onClick={() => setMapOpen(false)}>Close Map</button>
+            </div>
+          </>
+        )}
+
         <div className="map">
-          <p>Maps</p>
+          <button onClick={() => setMapOpen(true)}>View Map</button>
         </div>
       </div>
     </section>

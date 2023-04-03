@@ -74,18 +74,11 @@ export const getAllAttendance = createAsyncThunk(
   "/attendance/getAllAttendance",
   async ({email, scheduleDetails}, {rejectWithValue}) => {
     try {
-      const apiUrl1 = `http://worldtimeapi.org/api/timezone/Asia/Manila`;
-      const apiUrl2 = `http://localhost:5000/attendance/getAllAttendance/${email}`;
-      const [response1, {data: response2}] = await axios.all([
-        axios.get(apiUrl1),
-        axios.get(apiUrl2, {
-          params: {
-            scheduleDetails,
-          },
-        }),
-      ]);
+      const apiKey = "YWPMVZTIXVDO";
+      const apiUrl = `http://api.timezonedb.com/v2.1/get-time-zone?key=${apiKey}&format=json&by=zone&zone=Asia/Manila`;
+      const response = await axios.get(apiUrl);
 
-      const dateTime = response1.data.datetime;
+      const dateTime = response.data.formatted;
       const date = new Date(dateTime);
 
       const day = date.getDay();
@@ -111,8 +104,14 @@ export const getAllAttendance = createAsyncThunk(
         dateTime,
       };
 
-      console.log(response2);
-      return {res: response2, timeObject};
+      console.log(timeObject);
+
+      const url = `http://localhost:5000/attendance/getAllAttendance/${email}`;
+      const {data: res} = await axios.get(url, {
+        params: {scheduleDetails, timeObject},
+      });
+      console.log(res);
+      return {res, timeObject};
     } catch (error) {
       console.log(error);
       return rejectWithValue({
