@@ -942,6 +942,33 @@ button {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 }
+.dashboard .leaflet-container, .dashboard-active .leaflet-container {
+  height: 100%;
+  width: 100%;
+}
+.dashboard .overlay, .dashboard-active .overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(48, 47, 47, 0.753);
+  position: absolute;
+  filter: blur(20px);
+  top: 0%;
+  left: 0%;
+  z-index: 6;
+}
+.dashboard .map-con, .dashboard-active .map-con {
+  height: 80vh;
+  width: 80vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 7;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  background-color: #fff;
+  border-radius: 1rem;
+}
 .dashboard .main, .dashboard-active .main {
   height: 100%;
   width: 100%;
@@ -1005,9 +1032,26 @@ button {
   flex-direction: column;
   gap: 1rem;
 }
-.dashboard .main .content h4, .dashboard-active .main .content h4 {
-  color: #f1faee;
-  text-align: center;
+.dashboard .main .content button, .dashboard-active .main .content button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  background-color: #0d7377;
+  border: none;
+  border-radius: 1rem;
+  outline: none;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  transition: all 0.2s linear;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #d9d9d9;
+}
+.dashboard .main .content button:hover, .dashboard-active .main .content button:hover {
+  background-color: #00adb5;
+  border-radius: 0;
+  color: #fff;
 }
 .dashboard .main .content .time-keeper, .dashboard-active .main .content .time-keeper {
   position: relative;
@@ -1016,10 +1060,31 @@ button {
   gap: 0px;
   border-radius: 2rem 2rem 0 0;
 }
+.dashboard .main .content .time-keeper h4, .dashboard-active .main .content .time-keeper h4 {
+  color: #f1faee;
+  text-align: center;
+}
 .dashboard .main .content .time-keeper .time-keeper-contents, .dashboard-active .main .content .time-keeper .time-keeper-contents {
-  background-color: #f1faee;
+  display: grid;
+  grid-template-columns: 40rem 1fr;
+  gap: 1rem;
   height: 100%;
   border-radius: 2rem;
+  padding: 1rem;
+}
+.dashboard .main .content .time-keeper .time-keeper-contents .btn-controller, .dashboard-active .main .content .time-keeper .time-keeper-contents .btn-controller {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dashboard .main .content .time-keeper .time-keeper-contents .text, .dashboard-active .main .content .time-keeper .time-keeper-contents .text {
+  border-radius: 1rem;
+  background-color: #f1faee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   padding: 1rem;
 }
 .dashboard .main .content .documents, .dashboard-active .main .content .documents {
@@ -1028,11 +1093,31 @@ button {
   z-index: 1;
   border-radius: 0 0 0 2rem;
 }
+.dashboard .main .content .documents > h4, .dashboard-active .main .content .documents > h4 {
+  color: #f1faee;
+  text-align: center;
+}
 .dashboard .main .content .documents .document-contents, .dashboard-active .main .content .documents .document-contents {
   background-color: #f1faee;
   height: 100%;
   border-radius: 2rem;
   padding: 1rem;
+  overflow-y: auto;
+  display: grid;
+  gap: 1rem;
+}
+.dashboard .main .content .documents .document-contents .document-dashboard, .dashboard-active .main .content .documents .document-contents .document-dashboard {
+  background-color: #0d7377;
+  color: #fff;
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dashboard .main .content .internship-details > h4, .dashboard-active .main .content .internship-details > h4 {
+  color: #f1faee;
+  text-align: center;
 }
 .dashboard .main .content .internship-details .internship-contents, .dashboard-active .main .content .internship-details .internship-contents {
   background-color: #11999e;
@@ -1047,6 +1132,9 @@ button {
 .dashboard .main .content .map, .dashboard-active .main .content .map {
   background-color: #f1faee;
   border-radius: 0 0 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .dashboard .cant-start, .dashboard-active .cant-start {
   background-color: #212121;

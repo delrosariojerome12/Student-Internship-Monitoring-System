@@ -21,16 +21,64 @@ const initialState = {
   timeObject: null,
 };
 
+// export const getAllAttendance = createAsyncThunk(
+//   "/attendance/getAllAttendance",
+//   async ({email, scheduleDetails}, {rejectWithValue}) => {
+//     try {
+//       const apiUrl = `http://worldtimeapi.org/api/timezone/Asia/Manila`;
+//       const response = await axios.get(apiUrl);
+
+//       const dateTime = response.data.datetime;
+//       const date = new Date(dateTime);
+
+//       const day = date.getDay();
+//       const hours = date.getHours() % 12 || 12;
+//       const minutes = date.getMinutes();
+//       const amOrPm = hours >= 12 ? "PM" : "AM";
+
+//       const month =
+//         date.getMonth() + 1 < 10
+//           ? `0${date.getMonth() + 1}`
+//           : date.getMonth() + 1;
+//       const dayDate =
+//         date.getDate() + 1 < 10 ? `0${date.getDate()}` : date.getDate();
+//       const year = date.getFullYear();
+//       const todayDate = `${month}-${dayDate}-${year}`;
+
+//       const timeObject = {
+//         day,
+//         hours,
+//         minutes,
+//         amOrPm,
+//         todayDate,
+//         dateTime,
+//       };
+
+//       const url = `http://localhost:5000/attendance/getAllAttendance/${email}`;
+//       const {data: res} = await axios.get(url, {
+//         params: {scheduleDetails, timeObject},
+//       });
+//       console.log(res);
+//       return {res, timeObject};
+//     } catch (error) {
+//       console.log(error);
+//       return rejectWithValue({
+//         error: error.response.data,
+//         status: error.response.status,
+//       });
+//     }
+//   }
+// );
+
 export const getAllAttendance = createAsyncThunk(
   "/attendance/getAllAttendance",
   async ({email, scheduleDetails}, {rejectWithValue}) => {
     try {
-      // const location = "Asia/Manila";
-
-      const apiUrl = `http://worldtimeapi.org/api/timezone/Asia/Manila`;
+      const apiKey = "YWPMVZTIXVDO";
+      const apiUrl = `http://api.timezonedb.com/v2.1/get-time-zone?key=${apiKey}&format=json&by=zone&zone=Asia/Manila`;
       const response = await axios.get(apiUrl);
 
-      const dateTime = response.data.datetime;
+      const dateTime = response.data.formatted;
       const date = new Date(dateTime);
 
       const day = date.getDay();
@@ -56,6 +104,8 @@ export const getAllAttendance = createAsyncThunk(
         dateTime,
       };
 
+      console.log(timeObject);
+
       const url = `http://localhost:5000/attendance/getAllAttendance/${email}`;
       const {data: res} = await axios.get(url, {
         params: {scheduleDetails, timeObject},
@@ -71,6 +121,7 @@ export const getAllAttendance = createAsyncThunk(
     }
   }
 );
+
 export const checkStartingDate = createAsyncThunk(
   "/attendance/checkStartingDate",
   async ({email}, {rejectWithValue, getState}) => {
