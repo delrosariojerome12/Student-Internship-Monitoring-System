@@ -1,15 +1,15 @@
 import React, {useEffect} from "react";
 import DashboardIntern from "../../components/coordinator/dashboardCoordinator/DashboardIntern";
 import DashboardApprovals from "../../components/coordinator/dashboardCoordinator/DashboardApprovals";
-
+import ApprovalWaiting from "../../assets/img/waiting.svg";
+import Approval from "../../components/coordinator/ApprovalIntern";
 import {useSelector, useDispatch} from "react-redux";
 import {getAllInterns} from "../../features/interns/internReducer";
 import {BiSearchAlt} from "react-icons/bi";
 
 import internImg from "../../assets/img/head.svg";
-import approvalImg from "../../assets/img/approvals.svg";
 
-const Dashboard = () => {
+const Dashboard = React.memo(() => {
   const {approvalInterns, interns, isError} = useSelector(
     (state) => state.intern
   );
@@ -52,17 +52,21 @@ const Dashboard = () => {
 
     if (approvalInterns.length === 0) {
       return (
-        <section className="all-approvals-container">
-          <div className="no-approvals">
-            <img src={approvalImg} alt="No Intern Found" />
-            <h4>No approvals found!</h4>
+        <section className="approvals">
+          <div className="no-entries">
+            <h4>
+              Oops, there were no <b>entries</b> yet come back again later
+            </h4>
+            <div className="img-waiting">
+              <img src={ApprovalWaiting} alt="Approvals waiting image" />
+            </div>
           </div>
         </section>
       );
     }
 
     return approvalInterns.map((intern, index) => {
-      return <DashboardApprovals intern={intern} key={index} index={index} />;
+      return <Approval intern={intern} key={index} index={index} />;
     });
   };
 
@@ -100,7 +104,7 @@ const Dashboard = () => {
           <div className="all-approvals-container">{renderApprovals()}</div>
         </div>
         <div className="dashboard-internships">
-          <h3 className="internships-title">Companies</h3>
+          <h3 className="internships-title">Internships</h3>
           <div className="all-internship-container">
             {/* {renderInternship()} */}
           </div>
@@ -108,6 +112,6 @@ const Dashboard = () => {
       </div>
     </section>
   );
-};
+});
 
 export default Dashboard;

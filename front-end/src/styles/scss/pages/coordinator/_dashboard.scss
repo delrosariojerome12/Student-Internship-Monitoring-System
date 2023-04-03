@@ -156,31 +156,25 @@
         overflow-y: auto;
         max-height: 37vh;
         background-color: #d9d9d9;
-
-        .no-approvals {
-          @include flexColumn;
-          justify-content: center;
-          align-items: center;
-          // flex-direction: column;
-          gap: 1;
-          padding: 4rem 0 0 0;
-
-          img {
-            height: 15rem;
-            width: 15rem;
-          }
-          h4 {
-            color: $primary-compliment-landing;
-          }
-        }
-
-        .approvals-container {
-          display: grid;
-          grid-template-columns: 12rem auto;
-          grid-auto-rows: 12rem;
-          background-color: #d9d9d9;
-          gap: 1rem;
+        display: grid;
+        grid-auto-rows: 12rem;
+        gap: 1rem;
+        .approval-intern {
+          // border: solid 1px #fff;
           padding: 1rem;
+          display: grid;
+          grid-template-columns: 10rem auto;
+          // grid-auto-rows: 10rem;
+          gap: 1rem;
+          border-radius: 1rem;
+          background-color: #d9d9d9;
+          // color: #fff;
+
+          & > * {
+            border-radius: 1rem;
+            background-color: #fff;
+          }
+
           .overlay {
             @include flexCenter;
             width: 100%;
@@ -190,7 +184,6 @@
             top: 0%;
             left: 0%;
             z-index: 8;
-
             .intern-modal {
               display: grid;
               background-color: #fff;
@@ -199,20 +192,17 @@
               padding: 2rem;
               gap: 1rem;
               grid-template-rows: auto auto;
-
-              //scroll
-              height: auto;
-              width: auto;
-              // overflow-y: auto;
+              height: 90%;
+              width: 90vw;
+              overflow-y: auto;
               & > * {
                 border-radius: 1rem;
-
                 padding: 1rem;
               }
               .sent-details {
                 display: grid;
-                grid-template-columns: 20rem 1fr 1fr 1fr;
-                grid-template-rows: 20rem auto;
+                grid-template-columns: 20rem 1fr 1fr 1fr 1fr;
+                grid-template-rows: auto auto;
                 background-color: #d9d9d9;
                 gap: 2rem;
                 padding: 2rem;
@@ -230,22 +220,85 @@
                     width: 17rem;
                     border-radius: 1rem;
                     border: solid 2px $primary-compliment-landing;
+                    margin: auto;
                   }
                 }
                 .student-details-container {
-                  grid-column: 2/5;
+                  grid-column: 2/6;
                   display: grid;
                   padding: 2rem;
+                  .student-details {
+                    display: grid;
+                    gap: 0.5rem;
+                  }
                 }
                 .schedule-details-container {
                   grid-column: 1/3;
                   display: grid;
                   padding: 2rem;
+                  gap: 0.5rem;
                 }
                 .internship-details-container {
-                  grid-column: 3/5;
+                  grid-column: 3/6;
+                  // padding: 1rem;
                   display: grid;
-                  padding: 2rem;
+                  grid-template-columns: 10rem auto auto auto;
+                  grid-template-rows: repeat(7, auto);
+                  background-color: #d9d9d9;
+                  gap: 0.5rem;
+                  & > * {
+                    // border-radius: 1rem;
+                    background-color: #fff;
+                    padding: 0.5rem 1rem;
+                    align-items: center;
+                  }
+                  h4 {
+                    grid-column: 1/5;
+                    grid-row: 1/2;
+                    // padding: 1rem;
+                    border-radius: 1rem 1rem 0 0;
+                  }
+                  img {
+                    margin: auto;
+                    grid-row: 2/4;
+                    grid-column: 1/2;
+                    // height: 10rem;
+                    height: 100%;
+                    width: 10rem;
+                    object-fit: contain;
+                  }
+                  p {
+                    word-break: break-all;
+                  }
+                  & > *:nth-child(3) {
+                    grid-column: 2/5;
+                    grid-row: 2/3;
+                  }
+                  & > *:nth-child(4) {
+                    grid-column: 2/5;
+                    grid-row: 3/4;
+                  }
+                  & > *:nth-child(5) {
+                    grid-column: 1/3;
+                    grid-row: 4/5;
+                  }
+                  & > *:nth-child(6) {
+                    grid-column: 3/5;
+                    grid-row: 4/5;
+                  }
+                  & > *:nth-child(7) {
+                    grid-column: 1/3;
+                    grid-row: 5/6;
+                  }
+                  & > *:nth-child(8) {
+                    grid-column: 3/5;
+                    grid-row: 5/6;
+                  }
+                  & > *:nth-child(9) {
+                    grid-column: 1/5;
+                    grid-row: 6/8;
+                    border-radius: 0 0 1rem 1rem;
+                  }
                 }
               }
               .feedback-container {
@@ -263,7 +316,7 @@
                       height: 100%;
                       padding: 1rem;
                       textarea {
-                        overflow-y: scroll;
+                        // overflow-y: scroll;
                         height: 100%;
                         resize: none;
                         padding: 1rem;
@@ -283,39 +336,238 @@
               }
             }
           }
-          // & > * {
-          //   background-color: #fff;
-          // }
-          .img-approvals {
-            height: 12rem;
-            width: 12rem;
+          .intern-left {
+            margin: auto;
+          }
+
+          .intern-right {
+            display: flex;
+            gap: 2rem;
+            padding: 1rem 2rem;
+            align-items: center;
+            justify-content: space-between;
+            // background-color: #d9d9d9;
+            // font-weight: 550;
+            .intern-details {
+              display: flex;
+              flex-direction: column;
+              gap: 0.5rem;
+            }
+          }
+
+          .intern-left {
+            height: 10rem;
+            width: 10rem;
             img {
               height: 100%;
               width: 100%;
-              background-color: #fff;
+              border: solid 1px #fff;
               border-radius: 1rem;
             }
           }
-          .text-approvals {
-            display: flex;
-            gap: 0.5rem;
-            padding: 0 1rem;
-            align-items: center;
-            justify-content: space-between;
-            border-radius: 1rem;
-            background-color: #fff;
+        }
+        button {
+          @include flexCenter;
+          cursor: pointer;
+          height: 4.5rem;
+          padding: 1.6rem;
+          border-radius: 5px;
+          border: solid 1px transparent;
+          outline: none;
+          color: $primary-font-color;
+          background-color: $primary-compliment-landing;
+          transition: all 0.3s ease-in-out;
+          font-weight: 600;
 
-            .approvals-details {
-              h4,
-              p {
-                font-size: 1.5rem;
-              }
-            }
-            .view-more {
-              height: 5rem;
+          // margin: 0 auto;
+          // letter-spacing: 0.2rem;
+          &.decline-btn {
+            background-color: $red-primary-color;
+            &:hover {
+              background-color: #d9d9d9;
+              color: $red-primary-color;
+              border: solid 1px $red-primary-color;
             }
           }
+          &.back-btn {
+            background-color: #aaaaaa;
+            &:hover {
+              background-color: #d9d9d9;
+              color: #000;
+              border: solid 1px #000;
+            }
+          }
+
+          &.approve-btn:hover,
+          &.view:hover {
+            background-color: #d9d9d9;
+            color: $primary-compliment-landing;
+            border: solid 1px $primary-compliment-landing;
+          }
         }
+        .no-approvals {
+          @include flexColumn;
+          justify-content: center;
+          align-items: center;
+          // flex-direction: column;
+          gap: 1;
+          padding: 4rem 0 0 0;
+
+          img {
+            height: 15rem;
+            width: 15rem;
+          }
+          h4 {
+            color: $primary-compliment-landing;
+          }
+        }
+        .all-intern-container {
+          display: grid;
+          grid-template-rows: 10rem;
+        }
+
+        // .approvals-container {
+        //   display: grid;
+        //   grid-template-columns: 12rem auto;
+        //   grid-auto-rows: 12rem;
+        //   background-color: #d9d9d9;
+        //   gap: 1rem;
+        //   padding: 1rem;
+        //   .overlay {
+        //     @include flexCenter;
+        //     width: 100%;
+        //     height: 100%;
+        //     background-color: rgba(48, 47, 47, 0.753);
+        //     position: absolute;
+        //     top: 0%;
+        //     left: 0%;
+        //     z-index: 8;
+
+        //     .intern-modal {
+        //       display: grid;
+        //       background-color: #fff;
+        //       margin: auto;
+        //       border-radius: 1rem;
+        //       padding: 2rem;
+        //       gap: 1rem;
+        //       grid-template-rows: auto auto;
+
+        //       //scroll
+        //       height: auto;
+        //       width: auto;
+        //       // overflow-y: auto;
+        //       & > * {
+        //         border-radius: 1rem;
+
+        //         padding: 1rem;
+        //       }
+        //       .sent-details {
+        //         display: grid;
+        //         grid-template-columns: 20rem 1fr 1fr 1fr;
+        //         grid-template-rows: 20rem auto;
+        //         background-color: #d9d9d9;
+        //         gap: 2rem;
+        //         padding: 2rem;
+        //         & > * {
+        //           background-color: #fff;
+        //           border-radius: 1rem;
+        //         }
+        //         .img-container {
+        //           grid-row: 1/2;
+        //           grid-column: 1/2;
+        //           background-color: #fff;
+        //           @include flexCenter;
+        //           img {
+        //             height: 17rem;
+        //             width: 17rem;
+        //             border-radius: 1rem;
+        //             border: solid 2px $primary-compliment-landing;
+        //           }
+        //         }
+        //         .student-details-container {
+        //           grid-column: 2/5;
+        //           display: grid;
+        //           padding: 2rem;
+        //         }
+        //         .schedule-details-container {
+        //           grid-column: 1/3;
+        //           display: grid;
+        //           padding: 2rem;
+        //         }
+        //         .internship-details-container {
+        //           grid-column: 3/5;
+        //           display: grid;
+        //           padding: 2rem;
+        //         }
+        //       }
+        //       .feedback-container {
+        //         display: grid;
+        //         background-color: #d9d9d9;
+
+        //         form {
+        //           display: grid;
+        //           grid-template-rows: 12rem auto;
+        //           .forms {
+        //             label {
+        //               display: grid;
+        //               grid-template-rows: auto 1fr;
+        //               width: 100%;
+        //               height: 100%;
+        //               padding: 1rem;
+        //               textarea {
+        //                 overflow-y: scroll;
+        //                 height: 100%;
+        //                 resize: none;
+        //                 padding: 1rem;
+        //               }
+        //             }
+        //           }
+        //           .btn-container {
+        //             @include flexCenter;
+        //             gap: 1rem;
+        //             span {
+        //               @include flexCenter;
+        //               padding-right: 0.3rem;
+        //               font-size: 1.3rem;
+        //             }
+        //           }
+        //         }
+        //       }
+        //     }
+        //   }
+        //   // & > * {
+        //   //   background-color: #fff;
+        //   // }
+        //   .img-approvals {
+        //     height: 12rem;
+        //     width: 12rem;
+        //     img {
+        //       height: 100%;
+        //       width: 100%;
+        //       background-color: #fff;
+        //       border-radius: 1rem;
+        //     }
+        //   }
+        //   .text-approvals {
+        //     display: flex;
+        //     gap: 0.5rem;
+        //     padding: 0 1rem;
+        //     align-items: center;
+        //     justify-content: space-between;
+        //     border-radius: 1rem;
+        //     background-color: #fff;
+
+        //     .approvals-details {
+        //       h4,
+        //       p {
+        //         font-size: 1.5rem;
+        //       }
+        //     }
+        //     .view-more {
+        //       height: 5rem;
+        //     }
+        //   }
+        // }
       }
     }
     .dashboard-internships {
