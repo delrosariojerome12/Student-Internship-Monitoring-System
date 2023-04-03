@@ -974,7 +974,7 @@ button {
   width: 100%;
   margin: 0 auto;
   display: grid;
-  grid-template-rows: 10rem minmax(450px, auto);
+  grid-template-rows: auto minmax(45rem, 77vh);
   gap: 1rem;
   padding: 1rem;
 }
@@ -986,11 +986,15 @@ button {
 }
 .dashboard .main header .name-container, .dashboard-active .main header .name-container {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   color: #f1faee;
 }
 .dashboard .main header .name-container .name, .dashboard-active .main header .name-container .name {
   font-size: 4rem;
+}
+.dashboard .main header .name-container .name b, .dashboard-active .main header .name-container .name b {
+  color: #00adb5;
 }
 .dashboard .main header .name-container h4, .dashboard-active .main header .name-container h4 {
   font-size: 2rem;
@@ -1021,8 +1025,8 @@ button {
 }
 .dashboard .main .content, .dashboard-active .main .content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   gap: 1.2rem;
 }
 .dashboard .main .content > *, .dashboard-active .main .content > * {
@@ -1031,6 +1035,8 @@ button {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  background-color: #282b30;
+  border-radius: 1rem;
 }
 .dashboard .main .content button, .dashboard-active .main .content button {
   display: flex;
@@ -1056,21 +1062,30 @@ button {
 .dashboard .main .content .time-keeper, .dashboard-active .main .content .time-keeper {
   position: relative;
   grid-column: 1/3;
+  grid-row: 1/3;
   z-index: 1;
   gap: 0px;
-  border-radius: 2rem 2rem 0 0;
 }
 .dashboard .main .content .time-keeper h4, .dashboard-active .main .content .time-keeper h4 {
-  color: #f1faee;
+  color: #fff;
   text-align: center;
 }
 .dashboard .main .content .time-keeper .time-keeper-contents, .dashboard-active .main .content .time-keeper .time-keeper-contents {
   display: grid;
-  grid-template-columns: 40rem 1fr;
-  gap: 1rem;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 0.5fr;
+  background-color: #f1faee;
+  border-radius: 1rem;
   height: 100%;
-  border-radius: 2rem;
   padding: 1rem;
+  gap: 1rem;
+}
+.dashboard .main .content .time-keeper .time-keeper-contents .text, .dashboard-active .main .content .time-keeper .time-keeper-contents .text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow-y: auto;
 }
 .dashboard .main .content .time-keeper .time-keeper-contents .btn-controller, .dashboard-active .main .content .time-keeper .time-keeper-contents .btn-controller {
   background-color: transparent;
@@ -1078,26 +1093,17 @@ button {
   align-items: center;
   justify-content: center;
 }
-.dashboard .main .content .time-keeper .time-keeper-contents .text, .dashboard-active .main .content .time-keeper .time-keeper-contents .text {
-  border-radius: 1rem;
-  background-color: #f1faee;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 1rem;
-}
 .dashboard .main .content .documents, .dashboard-active .main .content .documents {
   position: relative;
-  grid-row: 2/4;
+  grid-row: 3/6;
+  grid-column: 1/3;
   z-index: 1;
-  border-radius: 0 0 0 2rem;
 }
 .dashboard .main .content .documents > h4, .dashboard-active .main .content .documents > h4 {
-  color: #f1faee;
+  color: #fff;
   text-align: center;
 }
-.dashboard .main .content .documents .document-contents, .dashboard-active .main .content .documents .document-contents {
+.dashboard .main .content .documents .document-container, .dashboard-active .main .content .documents .document-container {
   background-color: #f1faee;
   height: 100%;
   border-radius: 2rem;
@@ -1106,17 +1112,31 @@ button {
   display: grid;
   gap: 1rem;
 }
-.dashboard .main .content .documents .document-contents .document-dashboard, .dashboard-active .main .content .documents .document-contents .document-dashboard {
-  background-color: #0d7377;
-  color: #fff;
+.dashboard .main .content .documents .document-container .document-contents, .dashboard-active .main .content .documents .document-container .document-contents {
+  display: grid;
+  gap: 1rem;
+}
+.dashboard .main .content .documents .document-container .document-contents .document-dashboard, .dashboard-active .main .content .documents .document-container .document-contents .document-dashboard {
+  background-color: #d9d9d9;
   border-radius: 1rem;
   padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+.dashboard .main .content .documents .document-container .document-contents .document-dashboard > :nth-child(2), .dashboard-active .main .content .documents .document-container .document-contents .document-dashboard > :nth-child(2), .dashboard .main .content .documents .document-container .document-contents .document-dashboard > :nth-child(3), .dashboard-active .main .content .documents .document-container .document-contents .document-dashboard > :nth-child(3) {
+  text-align: center;
+}
+.dashboard .main .content .documents .document-container .btn-document, .dashboard-active .main .content .documents .document-container .btn-document {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
+}
+.dashboard .main .content .internship-details, .dashboard-active .main .content .internship-details {
+  grid-column: 3/4;
+  grid-row: 1/4;
 }
 .dashboard .main .content .internship-details > h4, .dashboard-active .main .content .internship-details > h4 {
-  color: #f1faee;
+  color: #fff;
   text-align: center;
 }
 .dashboard .main .content .internship-details .internship-contents, .dashboard-active .main .content .internship-details .internship-contents {
@@ -1126,12 +1146,18 @@ button {
   padding: 1rem;
   border-radius: 1rem;
 }
-.dashboard .main .content .internship-details .internship-contents > *, .dashboard-active .main .content .internship-details .internship-contents > * {
-  padding-bottom: 1rem;
-}
 .dashboard .main .content .map, .dashboard-active .main .content .map {
+  grid-column: 3/4;
+  grid-row: 4/6;
+}
+.dashboard .main .content .map h4, .dashboard-active .main .content .map h4 {
+  color: #fff;
+  text-align: center;
+}
+.dashboard .main .content .map .btn-map, .dashboard-active .main .content .map .btn-map {
+  height: 100%;
+  border-radius: 1rem;
   background-color: #f1faee;
-  border-radius: 0 0 2rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5445,6 +5471,60 @@ button {
     width: 22rem;
   }
 }
+@media screen and (min-height: 700px) {
+  .dashboard .main, .dashboard-active .main {
+    grid-template-rows: auto minmax(45rem, 80vh);
+  }
+  .dashboard .main .content, .dashboard-active .main .content {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+  .dashboard .main .content .time-keeper, .dashboard-active .main .content .time-keeper {
+    grid-column: 1/3;
+    grid-row: 1/3;
+  }
+  .dashboard .main .content .documents, .dashboard-active .main .content .documents {
+    grid-row: 3/5;
+    grid-column: 1/3;
+  }
+  .dashboard .main .content .internship-details, .dashboard-active .main .content .internship-details {
+    grid-column: 3/4;
+    grid-row: 1/3;
+  }
+  .dashboard .main .content .map, .dashboard-active .main .content .map {
+    grid-column: 3/4;
+    grid-row: 3/5;
+  }
+}
+@media screen and (min-height: 820px) {
+  .dashboard .main, .dashboard-active .main {
+    grid-template-rows: auto minmax(45rem, 83vh);
+  }
+  .dashboard .main .content, .dashboard-active .main .content {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+  }
+  .dashboard .main .content .time-keeper, .dashboard-active .main .content .time-keeper {
+    grid-column: 1/3;
+    grid-row: 1/3;
+  }
+  .dashboard .main .content .documents, .dashboard-active .main .content .documents {
+    grid-row: 3/6;
+    grid-column: 1/3;
+  }
+  .dashboard .main .content .documents .btn-document, .dashboard-active .main .content .documents .btn-document {
+    margin: auto;
+    grid-row: 2/3;
+  }
+  .dashboard .main .content .internship-details, .dashboard-active .main .content .internship-details {
+    grid-column: 3/4;
+    grid-row: 1/4;
+  }
+  .dashboard .main .content .map, .dashboard-active .main .content .map {
+    grid-column: 3/4;
+    grid-row: 4/6;
+  }
+}
 .pending {
   height: 100%;
   margin: 0 auto;
@@ -7562,8 +7642,8 @@ button {
   }
 }
 @media screen and (max-width: 480px) {
-  .profile-page .content .display .narrative-container .report-container {
-    grid-auto-rows: 14rem;
+  .profile-page .content .display .narrative-container .report-container .narrative-content .sub-container > * {
+    font-size: 1.7rem;
   }
   .profile-page .content .display .narrative-container .report-container .narrative-content .dropdown-container .days-container {
     display: flex;
@@ -7625,6 +7705,9 @@ button {
   .profile-page .content .display .request-container {
     font-size: 1.5rem;
   }
+  .profile-page .content .display .narrative-container .report-container {
+    grid-auto-rows: 13rem;
+  }
   .profile-page .content .display .narrative-container .report-container .narrative-content .dropdown-container .days-container .narrative-day {
     gap: 0;
     padding: 0.5rem;
@@ -7648,7 +7731,7 @@ button {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: auto minmax(35rem, 61vh);
+  grid-template-rows: auto minmax(35rem, 58vh);
   gap: 1rem;
 }
 .daily-time-record button {
@@ -8012,6 +8095,16 @@ button {
   width: 35rem;
 }
 
+@media screen and (min-height: 700px) {
+  .daily-time-record {
+    grid-template-rows: auto minmax(35rem, 63vh);
+  }
+}
+@media screen and (min-height: 800px) {
+  .daily-time-record {
+    grid-template-rows: auto minmax(35rem, 67vh);
+  }
+}
 @media screen and (max-width: 1030px) {
   .daily-time-record .no-internship img {
     height: 30rem;
@@ -9608,6 +9701,16 @@ button {
   background-color: rgba(255, 255, 255, 0.521);
 }
 
+@media screen and (min-height: 680px) {
+  .reports .content {
+    grid-template-rows: auto minmax(45rem, 83vh);
+  }
+}
+@media screen and (min-height: 760px) {
+  .reports .content {
+    grid-template-rows: auto minmax(45rem, 85vh);
+  }
+}
 @media screen and (max-width: 750px) {
   .reports .modal {
     width: 90%;

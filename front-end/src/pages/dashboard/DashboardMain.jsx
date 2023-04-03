@@ -1,15 +1,17 @@
-import React, {useEffect, useState} from "react";
+/** @format */
+
+import React, { useEffect, useState } from "react";
 // import searchIcon from "../../assets/img/search.svg";
-import {useSelector, useDispatch} from "react-redux";
-import {BiSearchAlt} from "react-icons/bi";
-import {checkStartingDate} from "../../features/interns/attendanceReducer";
-import {useNavigate} from "react-router";
+import { useSelector, useDispatch } from "react-redux";
+import { BiSearchAlt } from "react-icons/bi";
+import { checkStartingDate } from "../../features/interns/attendanceReducer";
+import { useNavigate } from "react-router";
 import ReactMap from "../../components/utils/ReactMap";
 
 const DashboardMain = React.memo(() => {
   const {
     user: {
-      user: {firstName},
+      user: { firstName },
       email,
       internshipDetails: {
         renderedHours,
@@ -20,7 +22,7 @@ const DashboardMain = React.memo(() => {
         supervisorContact,
         email: supEmail,
       },
-      schoolDetails: {requiredHours},
+      schoolDetails: { requiredHours },
       documentDetails,
       status,
     },
@@ -41,7 +43,7 @@ const DashboardMain = React.memo(() => {
     const today = `${year}-${month}-${day}`;
 
     if (today === startingDate && status !== "Starting") {
-      dispatch(checkStartingDate({email}));
+      dispatch(checkStartingDate({ email }));
     }
   }, []);
 
@@ -51,8 +53,8 @@ const DashboardMain = React.memo(() => {
     }
     return documentDetails.map((item, index) => {
       const {
-        document: {name, format},
-        completion: {isApproved, hasSent, isRejected},
+        document: { name, format },
+        completion: { isApproved, hasSent, isRejected },
       } = item;
       return (
         <div className="document-dashboard" key={index}>
@@ -67,8 +69,7 @@ const DashboardMain = React.memo(() => {
                 : isRejected
                 ? "#e63946"
                 : "#F18805",
-            }}
-          >
+            }}>
             {isApproved
               ? "Approved"
               : hasSent
@@ -103,7 +104,9 @@ const DashboardMain = React.memo(() => {
     <section className="main">
       <header>
         <div className="name-container">
-          <h1 className="name">Hello, {firstName}</h1>
+          <h1 className="name">
+            Hello, <b>{firstName}</b>
+          </h1>
           <h4>Welcome Back!</h4>
         </div>
         <div className="search-box">
@@ -117,34 +120,46 @@ const DashboardMain = React.memo(() => {
         <div className="time-keeper">
           <h4>Time Keeper</h4>
           <div className="time-keeper-contents">
+            <div className="text">
+              <h3>{`Rendered Hours: ${renderedHours}hrs/${requiredHours}hrs`}</h3>
+              {DaysNeeded(renderedHours, requiredHours)}
+            </div>
             <div className="btn-controller">
               <button onClick={() => navigate("/dashboard/daily-time-record")}>
                 Daily Time Record
               </button>
             </div>
-            <div className="text">
-              <h3>{`Rendered Hours: ${renderedHours}hrs/${requiredHours}hrs`}</h3>
-              {DaysNeeded(renderedHours, requiredHours)}
-            </div>
           </div>
         </div>
         <div className="documents">
           <h4>Documents</h4>
-          <div className="document-contents">
-            {renderDocuments()}
-            <button onClick={() => navigate("/dashboard/documents")}>
-              Manage Documents
-            </button>
+          <div className="document-container">
+            <div className="btn-document">
+              <button onClick={() => navigate("/dashboard/documents")}>
+                Manage Documents
+              </button>
+            </div>
+            <div className="document-contents">{renderDocuments()}</div>
           </div>
         </div>
         <div className="internship-details">
           <h4>Intership Details</h4>
           <div className="internship-contents">
-            <h4>Internship at {companyName}</h4>
-            <h4>Type of Work: {typeOfWork}</h4>
-            <h4>Supervisor: {supervisor}</h4>
-            <h4>Contact: {supervisorContact}</h4>
-            <h4>Email: {supEmail}</h4>
+            <p>
+              <b>Internship at: </b> {companyName}
+            </p>
+            <p>
+              <b>Type of Work: </b> {typeOfWork}
+            </p>
+            <p>
+              <b>Supervisor: </b> {supervisor}
+            </p>
+            <p>
+              <b>Contact: </b> {supervisorContact}
+            </p>
+            <p>
+              <b>Email: </b> {supEmail}
+            </p>
           </div>
         </div>
         {isMapOpen && (
@@ -156,9 +171,11 @@ const DashboardMain = React.memo(() => {
             </div>
           </>
         )}
-
         <div className="map">
-          <button onClick={() => setMapOpen(true)}>View Map</button>
+          <h4>Maps</h4>
+          <div className="btn-map">
+            <button onClick={() => setMapOpen(true)}>View Map</button>
+          </div>
         </div>
       </div>
     </section>

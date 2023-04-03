@@ -7,7 +7,7 @@
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: auto minmax(35rem, 61vh);
+  grid-template-rows: auto minmax(35rem, 58vh);
   gap: 1rem;
 
   button {
@@ -369,6 +369,20 @@
 
 //responsive
 
+//min-height
+@media screen and (min-height: 700px) {
+  .daily-time-record {
+    grid-template-rows: auto minmax(35rem, 63vh);
+  }
+}
+
+@media screen and (min-height: 800px) {
+  .daily-time-record {
+    grid-template-rows: auto minmax(35rem, 67vh);
+  }
+}
+
+//max-width
 @media screen and (max-width: 1030px) {
   .daily-time-record {
     .no-internship {

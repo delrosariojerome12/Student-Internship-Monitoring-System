@@ -673,6 +673,22 @@
   }
 }
 
+//min-height
+@media screen and (min-height: 680px) {
+  .reports {
+    .content {
+      grid-template-rows: auto minmax(45rem, 83vh);
+    }
+  }
+}
+@media screen and (min-height: 760px) {
+  .reports {
+    .content {
+      grid-template-rows: auto minmax(45rem, 85vh);
+    }
+  }
+}
+
 // Responsive
 @media screen and (max-width: 750px) {
   .reports {
