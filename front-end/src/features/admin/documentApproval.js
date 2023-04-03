@@ -17,7 +17,7 @@ export const getAllVerifiedInterns = createAsyncThunk(
   "/documentApproval/getAllVerifiedInterns",
   async (x, {rejectWithValue}) => {
     try {
-      const url = "http://localhost:5000/intern/getAllVerifiedInterns";
+      const url = "https://sims-twqb.onrender.com/intern/getAllVerifiedInterns";
       const {data: res} = await axios.get(url);
 
       const newInterns = res.interns
@@ -82,7 +82,7 @@ export const approveDocumentRequest = createAsyncThunk(
     const allInterns = [...interns].filter((item) => item.email !== email);
 
     try {
-      const url = `http://localhost:5000/intern/approveDocument/${email}`;
+      const url = `https://sims-twqb.onrender.com/intern/approveDocument/${email}`;
       const {data: res} = await axios.patch(url, {
         documentDetails: completeDocumentDetails,
       });
@@ -136,7 +136,7 @@ export const rejectDocumentRequest = createAsyncThunk(
 
     const allInterns = [...interns].filter((item) => item.email !== email);
     try {
-      const url = `http://localhost:5000/intern/rejectDocument/${email}`;
+      const url = `https://sims-twqb.onrender.com/intern/rejectDocument/${email}`;
       const {data: res} = await axios.patch(url, {
         documentDetails: completeDocumentDetails,
       });

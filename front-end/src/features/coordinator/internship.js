@@ -19,7 +19,7 @@ export const getAllInternship = createAsyncThunk(
   "/internship/getAllInternship",
   async (x, {rejectWithValue}) => {
     try {
-      const url = `http://localhost:5000/internship/getAllInternship`;
+      const url = `https://sims-twqb.onrender.com/internship/getAllInternship`;
       const {data: res} = await axios.get(url);
       console.log(res);
       return {res};
@@ -34,7 +34,7 @@ export const createInternship = createAsyncThunk(
   "/internship/createInternship",
   async ({internship}, {rejectWithValue}) => {
     try {
-      const url = `http://localhost:5000/internship/createInternship`;
+      const url = `https://sims-twqb.onrender.com/internship/createInternship`;
       const {data: res} = await axios.post(url, internship);
       return {res};
     } catch (error) {
@@ -50,7 +50,7 @@ export const updateInternship = createAsyncThunk(
   "/internship/updateInternship",
   async ({form, id}, {rejectWithValue}) => {
     try {
-      const url = `http://localhost:5000/internship/updateInternship/${id}`;
+      const url = `https://sims-twqb.onrender.com/internship/updateInternship/${id}`;
       const {data: res} = await axios.patch(url, form);
       return {res};
     } catch (error) {
@@ -65,7 +65,7 @@ export const deleteInternship = createAsyncThunk(
   "/internship/deleteInternship",
   async ({id}, {rejectWithValue}) => {
     try {
-      const url = `http://localhost:5000/internship/deleteInternship/${id}`;
+      const url = `https://sims-twqb.onrender.com/internship/deleteInternship/${id}`;
       const {data: res} = await axios.delete(url);
       return {res};
     } catch (error) {

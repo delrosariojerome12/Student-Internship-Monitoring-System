@@ -15,7 +15,7 @@ export const getAllInterns = createAsyncThunk(
   "/intern/getAllInterns",
   async () => {
     try {
-      const url = "http://localhost:5000/intern/getAllInterns";
+      const url = "https://sims-twqb.onrender.com/intern/getAllInterns";
       const {data: res} = await axios.get(url);
 
       const interns = [...res.interns].sort((a, b) => {
@@ -44,7 +44,7 @@ export const getIntern = createAsyncThunk(
   "/intern/getIntern",
   async (email) => {
     try {
-      const url = `http://localhost:5000/intern/getIntern/${email}`;
+      const url = `https://sims-twqb.onrender.com/intern/getIntern/${email}`;
       const {data: res} = await axios.get(url);
       return {user: res.user};
     } catch (error) {
@@ -61,7 +61,7 @@ export const updateIntern = createAsyncThunk(
     try {
       const {form} = payload;
       const {email} = form;
-      const url = `http://localhost:5000/intern/updateIntern`;
+      const url = `https://sims-twqb.onrender.com/intern/updateIntern`;
       const {data: res} = await axios.patch(url, form);
 
       const newApprovalIntern = [...state.intern.approvalInterns].filter(

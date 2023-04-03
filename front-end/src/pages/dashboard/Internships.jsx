@@ -1,9 +1,9 @@
 /** @format */
 
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 
-import { useSelector, useDispatch } from "react-redux";
-import { getAllInternship } from "../../features/coordinator/internship";
+import {useSelector, useDispatch} from "react-redux";
+import {getAllInternship} from "../../features/coordinator/internship";
 import ViewModal from "../../components/coordinator/ViewModal";
 import Internship from "../../components/coordinator/Internship";
 import Bouncing from "../../components/loading/Bouncing";
@@ -124,7 +124,7 @@ const form = [
 const Internships = React.memo(() => {
   const dispatch = useDispatch();
 
-  const { internships, isLoading, isError, isViewOpen, selectedInternship } =
+  const {internships, isLoading, isError, isViewOpen, selectedInternship} =
     useSelector((state) => state.internship);
 
   const [isSortOpen, setSortOpen] = useState(false);
@@ -169,18 +169,20 @@ const Internships = React.memo(() => {
         <h2>Looking for Internship?</h2>
       </header>
       <div className="btn-contoller">
-        <button
+        {/* <button
           onClick={() => {
             setSortOpen(!isSortOpen);
           }}
-          type="button">
+          type="button"
+        >
           Sort
-        </button>
+        </button> */}
         <button
           onClick={() => {
             setFilterOpen(!isFilterOpen);
           }}
-          type="button">
+          type="button"
+        >
           Filter
         </button>
       </div>

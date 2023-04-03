@@ -341,7 +341,7 @@ const Verification = React.memo(() => {
               },
             };
 
-            console.log(finalForm);
+            // console.log(finalForm);
             dispatch(requestVerification(finalForm));
           }
         }
@@ -489,8 +489,6 @@ const Verification = React.memo(() => {
           isStudentNumbetValid
             ? (newForm[mainIndex].forms[index].isError = false)
             : (newForm[mainIndex].forms[index].isError = true);
-
-          console.log(value.toUpperCase());
 
           newForm[mainIndex].forms[index].value = value;
           setForm(newForm);

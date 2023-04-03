@@ -16,7 +16,7 @@ export const updateDocumentsOnLoad = createAsyncThunk(
   "/intern/loadDocuments",
   async (email, {rejectWithValue}) => {
     try {
-      const url = `http://localhost:5000/intern/updateDocuments/${email}`;
+      const url = `https://sims-twqb.onrender.com/intern/updateDocuments/${email}`;
       const {data: res} = await axios.patch(url);
       return {res: res.intern.documentDetails};
     } catch (error) {
@@ -61,7 +61,7 @@ export const sendDocument = createAsyncThunk(
     const completeDocumentDetails = [...allDocuments, newDocument[0]];
 
     try {
-      const url = `http://localhost:5000/intern/sendDocument/${email}`;
+      const url = `https://sims-twqb.onrender.com/intern/sendDocument/${email}`;
       const {data: res} = await axios.patch(url, {
         documentDetails: completeDocumentDetails,
       });
@@ -121,7 +121,7 @@ export const removeDocument = createAsyncThunk(
     // console.log(documentDetails);
     // console.log(allDocuments);
     try {
-      const url = `http://localhost:5000/intern/removeDocument/${email}`;
+      const url = `https://sims-twqb.onrender.com/intern/removeDocument/${email}`;
       const {data: res} = await axios.patch(url, {
         documentDetails: completeDocumentDetails,
       });

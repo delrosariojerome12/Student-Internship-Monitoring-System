@@ -12,7 +12,7 @@ export const handleGetDocuments = createAsyncThunk(
   "/documents/getDocuments",
   async (x, {rejectWithValue}) => {
     try {
-      const url = `http://localhost:5000/document/getAllDocuments`;
+      const url = `https://sims-twqb.onrender.com/document/getAllDocuments`;
       const {data: res} = await axios.get(url);
       return {res};
     } catch (error) {
@@ -25,7 +25,7 @@ export const handleCreateDocument = createAsyncThunk(
   "/documents/createDocument",
   async (form, {rejectWithValue}) => {
     try {
-      const url = `http://localhost:5000/document/createDocument`;
+      const url = `https://sims-twqb.onrender.com/document/createDocument`;
       const {data: res} = await axios.post(url, form);
       return {res};
     } catch (error) {
@@ -38,7 +38,7 @@ export const handleDeleteDocument = createAsyncThunk(
   "/documents/deleteDocument",
   async (id, {rejectWithValue}) => {
     try {
-      const url = `http://localhost:5000/document/deleteDocument/${id}`;
+      const url = `https://sims-twqb.onrender.com/document/deleteDocument/${id}`;
       const {data} = await axios.delete(url);
       return {data};
     } catch (error) {
@@ -51,7 +51,7 @@ export const handleUpdateDocument = createAsyncThunk(
   "/documents/updateDocument",
   async ({form, id}, {rejectWithValue}) => {
     try {
-      const url = `http://localhost:5000/document/updateDocument/${id}`;
+      const url = `https://sims-twqb.onrender.com/document/updateDocument/${id}`;
       const {data: res} = await axios.patch(url, form);
       return {res};
     } catch (error) {

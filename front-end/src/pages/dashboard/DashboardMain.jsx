@@ -5,7 +5,7 @@ import {useSelector, useDispatch} from "react-redux";
 import {BiSearchAlt} from "react-icons/bi";
 import {checkStartingDate} from "../../features/interns/attendanceReducer";
 
-const DashboardMain = () => {
+const DashboardMain = React.memo(() => {
   const {
     user: {
       user: {firstName},
@@ -84,6 +84,6 @@ const DashboardMain = () => {
       </div>
     </section>
   );
-};
+});
 
 export default DashboardMain;
