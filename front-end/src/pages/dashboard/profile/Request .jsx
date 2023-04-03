@@ -9,8 +9,6 @@ const Request = React.memo(() => {
   } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  console.log(documentDetails);
-
   const renderDocumentRecords = () => {
     return documentDetails.map((item, index) => {
       const {completion, document} = item;
