@@ -283,10 +283,10 @@
         }
       }
     }
-    * {
-      box-sizing: border-box;
+    /* {
+      
       justify-items: center;
-    }
+    }*/
 
     img {
       height: 80px;
@@ -295,6 +295,7 @@
     }
 
     .the-team-container {
+      box-sizing: border-box;
       margin: 0 auto;
       text-align: center;
       background-color: whitesmoke;
