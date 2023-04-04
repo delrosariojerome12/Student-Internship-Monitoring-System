@@ -151,8 +151,11 @@ export const internshipReducer = createSlice({
       .addCase(enrollInternship.pending, (state, action) => {
         state.isLoading = true;
       })
-      .addCase(enrollInternship.fulfilled, (state, action) => {
+      .addCase(enrollInternship.fulfilled, (state, {payload: {res}}) => {
+        const {allInternships, enrolledIntern} = res.data;
+        console.log(res);
         state.isLoading = false;
+        state.internships = [...allInternships];
       })
       .addCase(enrollInternship.rejected, (state, action) => {
         state.isLoading = false;

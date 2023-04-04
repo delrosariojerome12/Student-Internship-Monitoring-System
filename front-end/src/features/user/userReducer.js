@@ -3,6 +3,7 @@ import {
   timeOutAttendance,
   checkStartingDate,
 } from "../interns/attendanceReducer";
+import {enrollInternship, unEnrollInternship} from "../coordinator/internship";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -110,6 +111,24 @@ export const userReducer = createSlice({
     },
   },
   extraReducers: (builder) => {
+    // enroll
+    builder
+      .addCase(enrollInternship.pending, (state, action) => {})
+      .addCase(enrollInternship.fulfilled, (state, {payload: {res}}) => {
+        const {enrolledIntern} = res.data;
+        console.log(enrolledIntern);
+        state.user = enrolledIntern;
+      })
+      .addCase(enrollInternship.rejected, (state, action) => {});
+    // unenroll
+    builder
+      .addCase(unEnrollInternship.pending, (state, action) => {})
+      .addCase(unEnrollInternship.fulfilled, (state, {payload: {res}}) => {
+        const {enrolledIntern} = res.data;
+        console.log(enrolledIntern);
+        state.user = enrolledIntern;
+      })
+      .addCase(unEnrollInternship.rejected, (state, action) => {});
     // login
     builder
       .addCase(handleLogin.pending, (state) => {
