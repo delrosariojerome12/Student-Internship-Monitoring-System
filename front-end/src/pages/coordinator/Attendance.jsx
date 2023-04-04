@@ -66,11 +66,11 @@ const MonitorAttendance = React.memo(() => {
   });
 
   useEffect(() => {
-    const now = new Date();
-    const hours = now.getHours();
-    if (hours >= 14) {
-      dispatch(checkAbsents({}));
-    }
+    // const now = new Date();
+    // const hours = now.getHours();
+    // if (hours >= 14) {
+    //   dispatch(checkAbsents({}));
+    // }
     dispatch(getAllAttendanceToday({}));
   }, []);
 

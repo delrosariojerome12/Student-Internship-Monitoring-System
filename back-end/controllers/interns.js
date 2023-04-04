@@ -44,56 +44,6 @@ const requestVerification = async (req, res) => {
   res.status(StatusCodes.OK).json({user});
 };
 
-// const updateIntern = async (req, res) => {
-//   const {email, internshipDetails} = req.body;
-
-//   const user = await Intern.findOneAndUpdate({email}, req.body, {
-//     new: true,
-//     runValidators: true,
-//   }).populate({
-//     path: "user",
-//     model: "User",
-//   });
-
-//   if (!user) {
-//     throw new NotFound(`Email not found`);
-//   }
-//   console.log(internshipDetails, "internshipDetails");
-
-//   if (internshipDetails) {
-//     console.log("yes");
-
-//     delete internshipDetails.renderedHours;
-
-//     const doesExist = await Internship.findOne({
-//       companyName: internshipDetails.companyName,
-//     });
-
-//     console.log(doesExist, "doesExist");
-
-//     if (!doesExist) {
-//       var internship = await Internship.create({...internshipDetails});
-//       Internship.createIndexes();
-//     }
-
-//     const interns = await Intern.find({}).populate({
-//       path: "user",
-//       model: "User",
-//     });
-
-//     return res
-//       .status(StatusCodes.OK)
-//       .json({user, interns, internship, doesExist});
-//   }
-
-//   const interns = await Intern.find({}).populate({
-//     path: "user",
-//     model: "User",
-//   });
-
-//   return res.status(StatusCodes.OK).json({user, interns});
-// };
-
 const updateIntern = async (req, res) => {
   try {
     const {email, internshipDetails} = req.body;
@@ -197,6 +147,87 @@ const updateDocuments = async (req, res) => {
   res.status(StatusCodes.OK).json({intern});
 };
 
+const enrollInternship = async (req, res) => {
+  const {email} = req.params;
+
+  const {
+    params: {companyName},
+  } = req.body;
+
+  const internExists = await Intern.find({email}).populate({
+    path: "user",
+    model: "User",
+  });
+  const internshipExists = await Internship.find({companyName});
+
+  if (!internExists) {
+    throw new NotFound(`No intern with email ${email}`);
+  }
+
+  if (!internshipExists) {
+    throw new NotFound(`No internship with name of ${companyName}`);
+  }
+
+  const internship = await Internship.findOneAndUpdate(
+    {companyName},
+    {$inc: {students: 1}},
+    {new: true}
+  );
+
+  const enrolledIntern = await Intern.findOneAndUpdate(
+    {email},
+    {internshipDetails: {...internship}},
+    {new: true}
+  );
+
+  const allInternships = await Internship.find({});
+
+  res
+    .status(StatusCodes.OK)
+    .json({success: true, data: {enrolledIntern, allInternships}});
+};
+
+const unEnrolledInternship = async (req, res) => {
+  const {email} = req.params;
+
+  // const {
+  //   params: {companyName},
+  // } = req.body;
+
+  // const internExists = await Intern.find({email}).populate({
+  //   path: "user",
+  //   model: "User",
+  // });
+  // const internshipExists = await Internship.find({companyName});
+
+  // if (!internExists) {
+  //   throw new NotFound(`No intern with email ${email}`);
+  // }
+
+  // if (!internshipExists) {
+  //   throw new NotFound(`No internship with name of ${companyName}`);
+  // }
+
+  // const internship = await Internship.findOneAndUpdate(
+  //   {companyName},
+  //   {$inc: {students: -1}},
+  //   {new: true}
+  // );
+
+  // const enrolledIntern = await Intern.findOneAndUpdate(
+  //   {email},
+  //   {internshipDetails: {...internship}},
+  //   {new: true}
+  // );
+
+  // const allInternships = await Internship.find({});
+  // res
+  //   .status(StatusCodes.OK)
+  //   .json({success: true, data: {enrolledIntern, allInternships}});
+
+  res.status(StatusCodes.OK).json({success: true, data: "working"});
+};
+
 const sendDocument = async (req, res) => {
   const {email} = req.params;
   const {documentDetails} = req.body;
@@ -291,4 +322,6 @@ module.exports = {
   getAllVerifiedInterns,
   approveDocument,
   rejectDocument,
+  enrollInternship,
+  unEnrolledInternship,
 };

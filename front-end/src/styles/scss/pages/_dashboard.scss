@@ -22,7 +22,6 @@
     height: 100%;
     background-color: rgba(48, 47, 47, 0.753);
     position: absolute;
-    filter: blur(20px);
     top: 0%;
     left: 0%;
     z-index: 6;
@@ -46,8 +45,7 @@
     width: 100%;
     margin: 0 auto;
     display: grid;
-    grid-template-rows: auto minmax(45rem, 77vh);
-
+    grid-template-rows: 10rem 82vh;
     gap: 1rem;
     padding: 1rem;
     header {
@@ -100,7 +98,7 @@
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(5, 1fr);
       gap: 1.2rem;
-      & > * {
+      & > *:not(.overlay) {
         border: solid 1.5px #fff;
         // border-radius: 2rem;
         padding: 1rem;

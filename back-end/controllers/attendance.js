@@ -7,6 +7,7 @@ const User = require("../models/User");
 
 const moment = require("moment-timezone");
 const axios = require("axios");
+const cron = require("node-cron");
 
 function countRenderedHours(timeIn, timeOut) {
   const millisecondsInHour = 1000 * 60 * 60;
@@ -324,69 +325,6 @@ const getAllAttendanceToday = async (req, res) => {
   });
 };
 
-const checkAbsents = async (req, res) => {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = now.getMonth() + 1;
-  const date = now.getDate();
-
-  const day = now.getDay();
-
-  const todayDate = `${month < 10 ? "0" : ""}${month}-${
-    date < 10 ? "0" : ""
-  }${date}-${year}`;
-
-  if (day > 0 && day < 6) {
-    const allInterns = await Intern.find({
-      status: "Starting",
-    });
-    const todayDate = `${month < 10 ? "0" : ""}${month}-${
-      date < 10 ? "0" : ""
-    }${date}-${year}`;
-
-    const internEmails = allInterns.map((item) => item.email);
-
-    for (let email of internEmails) {
-      const attendance = await Attendance.findOne({
-        email: email,
-        date: todayDate,
-      });
-      if (!attendance) {
-        // Create attendance for absent interns
-        const user = await User.findOne({email});
-        const intern = await Intern.findOne({email});
-        const newAttendance = new Attendance({
-          email: email,
-          date: todayDate,
-          isPresent: false,
-          isComplete: true,
-          timeIn: null,
-          timeOut: null,
-          user: user._id,
-          intern: intern._id,
-          proof: null,
-        });
-        await newAttendance.save();
-      }
-    }
-  }
-
-  const allAttendanceToday = await Attendance.find({date: todayDate})
-    .populate({
-      path: "user",
-      model: "User",
-    })
-    .populate({
-      path: "intern",
-      model: "Intern",
-    });
-
-  res.status(StatusCodes.OK).json({
-    success: true,
-    data: allAttendanceToday,
-  });
-};
-
 const getAllAttendanceByDate = async (req, res) => {
   const {date, renderedHours} = req.query;
 
@@ -577,6 +515,84 @@ const updateNarrative = async (req, res) => {
     res.status(StatusCodes.OK).json({success: true, attendance, allAttendance});
   }
 };
+
+const checkAbsents = async (req, res) => {
+  const todayDate = moment().tz("Asia/Manila").format("MM-DD-YY");
+  const day = moment().tz("Asia/Manila").day();
+
+  if (day > 0 && day < 6) {
+    const allInterns = await Intern.find({
+      status: "Starting",
+    });
+    const internEmails = allInterns.map((item) => item.email);
+
+    for (let email of internEmails) {
+      const attendance = await Attendance.findOne({
+        email: email,
+        date: todayDate,
+      });
+      if (!attendance) {
+        // Create attendance for absent interns
+        const user = await User.findOne({email});
+        const intern = await Intern.findOne({email});
+        const newAttendance = new Attendance({
+          email: email,
+          date: todayDate,
+          isPresent: false,
+          isComplete: true,
+          timeIn: null,
+          timeOut: null,
+          user: user._id,
+          intern: intern._id,
+          proof: null,
+        });
+        await newAttendance.save();
+      }
+    }
+  }
+
+  const allAttendanceToday = await Attendance.find({date: todayDate})
+    .populate({
+      path: "user",
+      model: "User",
+    })
+    .populate({
+      path: "intern",
+      model: "Intern",
+    });
+
+  console.log(allAttendanceToday);
+
+  res.status(StatusCodes.OK).json({
+    success: true,
+    data: allAttendanceToday,
+  });
+};
+
+const runCheckAbsents = async () => {
+  console.log("running");
+  try {
+    const response = await axios.post(
+      "http://localhost:5000/attendance/checkAbsents"
+    );
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+cron.schedule(
+  "0 14 * * *",
+  () => {
+    const currentTime = moment().tz("Asia/Manila");
+    if (currentTime.hour() === 14 && currentTime.minute() === 0) {
+      runCheckAbsents();
+    }
+  },
+  {
+    timezone: "Asia/Manila",
+  }
+);
 
 module.exports = {
   getAllAttendance,
