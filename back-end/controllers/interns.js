@@ -190,40 +190,42 @@ const enrollInternship = async (req, res) => {
 const unEnrolledInternship = async (req, res) => {
   const {email} = req.params;
 
-  const {
-    params: {companyName},
-  } = req.body;
+  // const {
+  //   params: {companyName},
+  // } = req.body;
 
-  const internExists = await Intern.find({email}).populate({
-    path: "user",
-    model: "User",
-  });
-  const internshipExists = await Internship.find({companyName});
+  // const internExists = await Intern.find({email}).populate({
+  //   path: "user",
+  //   model: "User",
+  // });
+  // const internshipExists = await Internship.find({companyName});
 
-  if (!internExists) {
-    throw new NotFound(`No intern with email ${email}`);
-  }
+  // if (!internExists) {
+  //   throw new NotFound(`No intern with email ${email}`);
+  // }
 
-  if (!internshipExists) {
-    throw new NotFound(`No internship with name of ${companyName}`);
-  }
+  // if (!internshipExists) {
+  //   throw new NotFound(`No internship with name of ${companyName}`);
+  // }
 
-  const internship = await Internship.findOneAndUpdate(
-    {companyName},
-    {$inc: {students: 1}},
-    {new: true}
-  );
+  // const internship = await Internship.findOneAndUpdate(
+  //   {companyName},
+  //   {$inc: {students: -1}},
+  //   {new: true}
+  // );
 
-  const enrolledIntern = await Intern.findOneAndUpdate(
-    {email},
-    {internshipDetails: {...internship}},
-    {new: true}
-  );
+  // const enrolledIntern = await Intern.findOneAndUpdate(
+  //   {email},
+  //   {internshipDetails: {...internship}},
+  //   {new: true}
+  // );
 
-  const allInternships = await Internship.find({});
-  res
-    .status(StatusCodes.OK)
-    .json({success: true, data: {enrolledIntern, allInternships}});
+  // const allInternships = await Internship.find({});
+  // res
+  //   .status(StatusCodes.OK)
+  //   .json({success: true, data: {enrolledIntern, allInternships}});
+
+  res.status(StatusCodes.OK).json({success: true, data: "working"});
 };
 
 const sendDocument = async (req, res) => {
