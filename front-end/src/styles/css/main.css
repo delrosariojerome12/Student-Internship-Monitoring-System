@@ -4124,6 +4124,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  justify-items: center;
   align-items: center;
 }
 .dashboard .monitor-attendance .display .content .no-record h3, .dashboard-active .monitor-attendance .display .content .no-record h3 {

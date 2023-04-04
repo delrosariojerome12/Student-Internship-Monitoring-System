@@ -80,6 +80,7 @@
       .no-record {
         height: 100%;
         @include flexColumn;
+      justify-items: center;
         align-items: center;
         h3 {
           text-align: center;
