@@ -12,7 +12,7 @@ import {storage} from "../../Firebase";
 import {v4} from "uuid";
 
 const Signup = React.memo(() => {
-  const {isError, errorMessage} = useSelector((state) => state.user);
+  const {isError, errorMessage, isLoading} = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const [form, setForm] = useState([
@@ -371,11 +371,13 @@ const Signup = React.memo(() => {
               style={
                 isComplete
                   ? {opacity: "1"}
+                  : isLoading
+                  ? {opacity: ".7", pointerEvents: "none"}
                   : {opacity: ".7", pointerEvents: "none"}
               }
               type="submit"
             >
-              Sign up
+              {isLoading ? "Loading..." : "Login"}
             </button>
           </IconContext.Provider>
         </form>

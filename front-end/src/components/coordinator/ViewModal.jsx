@@ -1,13 +1,16 @@
-/** @format */
-
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {handleView} from "../../features/coordinator/internship";
+import {
+  handleView,
+  enrollInternship,
+  unEnrollInternship,
+} from "../../features/coordinator/internship";
 
 const ViewModal = React.memo(({form}) => {
   const {
     user: {
-      user: {role},
+      user: {role, email},
+      internshipDetails,
     },
   } = useSelector((state) => state.user);
   const {selectedInternship} = useSelector((state) => state.internship);
@@ -31,7 +34,27 @@ const ViewModal = React.memo(({form}) => {
     return final;
   };
 
-  const {students} = selectedInternship[0];
+  const {students, companyName} = selectedInternship[0];
+
+  const renderButtons = () => {
+    if (internshipDetails.companyName === "") {
+      return (
+        <button
+          onClick={() => dispatch(enrollInternship({email, companyName}))}
+        >
+          Enroll
+        </button>
+      );
+    } else if (internshipDetails.companyName === companyName) {
+      return (
+        <button
+          onClick={() => dispatch(enrollInternship({email, companyName}))}
+        >
+          Unenroll
+        </button>
+      );
+    }
+  };
 
   return (
     <>
@@ -63,7 +86,7 @@ const ViewModal = React.memo(({form}) => {
         {role === "intern" ? (
           <div className="close-btn">
             <button onClick={() => dispatch(handleView())}>Close</button>
-            <button onClick={() => console.log("enroll")}>Enroll</button>
+            {renderButtons()}
           </div>
         ) : (
           <div className="close-btn">

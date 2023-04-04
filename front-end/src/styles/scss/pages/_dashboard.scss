@@ -45,7 +45,7 @@
     width: 100%;
     margin: 0 auto;
     display: grid;
-    grid-template-rows: 10rem minmax(450px, auto);
+    grid-template-rows: 10rem 82vh;
     gap: 1rem;
     padding: 1rem;
     header {
@@ -94,7 +94,7 @@
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr 1fr;
       gap: 1.2rem;
-      & > * {
+      & > *:not(.overlay) {
         border: solid 1.5px #fff;
         // border-radius: 2rem;
         padding: 1rem;

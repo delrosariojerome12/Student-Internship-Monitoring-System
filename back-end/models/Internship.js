@@ -55,8 +55,8 @@ const InternshipSchema = new mongoose.Schema({
     required: [true, "Please provide description"],
   },
   students: {
-    type: String,
-    default: "0",
+    type: Number,
+    default: 0,
   },
 });
 

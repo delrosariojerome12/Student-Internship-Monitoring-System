@@ -973,7 +973,7 @@ button {
   width: 100%;
   margin: 0 auto;
   display: grid;
-  grid-template-rows: 10rem minmax(450px, auto);
+  grid-template-rows: 10rem 82vh;
   gap: 1rem;
   padding: 1rem;
 }
@@ -1024,7 +1024,7 @@ button {
   grid-template-rows: 1fr 1fr 1fr;
   gap: 1.2rem;
 }
-.dashboard .main .content > *, .dashboard-active .main .content > * {
+.dashboard .main .content > *:not(.overlay), .dashboard-active .main .content > *:not(.overlay) {
   border: solid 1.5px #fff;
   padding: 1rem;
   display: flex;

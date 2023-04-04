@@ -11,7 +11,7 @@ import {handleLogin} from "../../features/user/userReducer";
 
 const Login = React.memo(() => {
   const dispatch = useDispatch();
-  const {isError, errorMessage} = useSelector((state) => state.user);
+  const {isError, errorMessage, isLoading} = useSelector((state) => state.user);
 
   const [form, setForm] = useState([
     {
@@ -171,11 +171,13 @@ const Login = React.memo(() => {
               style={
                 isComplete
                   ? {opacity: "1"}
+                  : isLoading
+                  ? {pointerEvents: "none", opacity: ".7"}
                   : {opacity: ".7", pointerEvents: "none"}
               }
               type="submit"
             >
-              Login
+              {isLoading ? "Loading..." : "Login"}
             </button>
           </IconContext.Provider>
         </form>
