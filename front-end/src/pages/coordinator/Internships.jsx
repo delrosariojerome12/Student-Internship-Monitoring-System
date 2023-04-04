@@ -173,18 +173,18 @@ const Internships = React.memo(() => {
   }
 
   const renderInternship = () => {
-    if (internships.length > 0) {
-      return (
-        <div className="content">
-          {internships.map((item, index) => (
-            <Internship key={index} internship={item} editForm={editForm} />
-          ))}
-          <div className={isMessageOpen ? "message-con active" : "message-con"}>
-            <p>{requestMessage}</p>
-          </div>
-        </div>
-      );
-    }
+    // if (internships.length > 0) {
+    //   return (
+    //     <div className="content">
+    //       {internships.map((item, index) => (
+    //         <Internship key={index} internship={item} editForm={editForm} />
+    //       ))}
+    //       <div className={isMessageOpen ? "message-con active" : "message-con"}>
+    //         <p>{requestMessage}</p>
+    //       </div>
+    //     </div>
+    //   );
+    // }
     return (
       <div className="no-internship">
         <h3>No existing internships at the moment.</h3>

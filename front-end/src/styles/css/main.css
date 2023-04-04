@@ -70,6 +70,7 @@ button {
 
 ::-webkit-scrollbar {
   width: 1.2rem;
+  height: 1.2rem;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -1945,27 +1946,25 @@ button {
 }
 .dashboard .intern-container .interns .no-entries, .dashboard-active .intern-container .interns .no-entries {
   height: 100%;
-  display: grid;
-  grid-template-rows: auto auto;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
+  align-items: center;
+  padding: 1rem;
 }
 .dashboard .intern-container .interns .no-entries h3, .dashboard-active .intern-container .interns .no-entries h3 {
   text-align: center;
-  padding: 1rem 0;
   color: #fff;
 }
 .dashboard .intern-container .interns .no-entries h3 b, .dashboard-active .intern-container .interns .no-entries h3 b {
   color: #109da1;
 }
 .dashboard .intern-container .interns .no-entries .img-waiting, .dashboard-active .intern-container .interns .no-entries .img-waiting {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 0 auto;
 }
 .dashboard .intern-container .interns .no-entries .img-waiting img, .dashboard-active .intern-container .interns .no-entries .img-waiting img {
-  height: 40rem;
-  width: 40rem;
+  height: 35rem;
+  width: 35rem;
 }
 .dashboard .intern-container .interns .intern, .dashboard-active .intern-container .interns .intern {
   display: grid;
@@ -2155,10 +2154,30 @@ button {
   display: flex;
   gap: 1rem;
 }
+@media screen and (min-height: 700px) {
+  .dashboard .intern-container, .dashboard-active .intern-container {
+    grid-template-rows: auto minmax(45rem, 76vh);
+  }
+  .dashboard .intern-container .interns .no-entries .img-waiting img, .dashboard-active .intern-container .interns .no-entries .img-waiting img {
+    height: 40rem;
+    width: 40rem;
+  }
+}
+@media screen and (min-height: 800px) {
+  .dashboard .intern-container, .dashboard-active .intern-container {
+    grid-template-rows: auto minmax(45rem, 79vh);
+  }
+}
 @media screen and (max-width: 920px) {
   .dashboard .intern-container .interns-active, .dashboard-active .intern-container .interns-active {
     grid-template-columns: 1fr;
     grid-auto-rows: 14rem;
+  }
+}
+@media screen and (max-width: 750px) {
+  .dashboard .intern-container .interns .no-entries .img-waiting img, .dashboard-active .intern-container .interns .no-entries .img-waiting img {
+    height: 30rem;
+    width: 30rem;
   }
 }
 @media screen and (max-width: 630px) {
@@ -2181,6 +2200,13 @@ button {
   .dashboard .intern-container .preview-container .selected-intern img, .dashboard-active .intern-container .preview-container .selected-intern img {
     height: 13rem;
     width: 13rem;
+  }
+  .dashboard .intern-container .interns .no-entries h3, .dashboard-active .intern-container .interns .no-entries h3 {
+    font-size: 1.9rem;
+  }
+  .dashboard .intern-container .interns .no-entries .img-waiting img, .dashboard-active .intern-container .interns .no-entries .img-waiting img {
+    height: 25rem;
+    width: 25rem;
   }
 }
 @media screen and (max-width: 500px) {
@@ -2294,30 +2320,26 @@ button {
   gap: 1rem;
 }
 .dashboard .approvals .no-entries, .dashboard-active .approvals .no-entries {
-  display: grid;
-  grid-template-rows: auto auto;
-  justify-content: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
+  align-items: center;
+  padding: 1rem;
 }
-.dashboard .approvals .no-entries h4, .dashboard-active .approvals .no-entries h4 {
-  font-size: 2.5rem;
+.dashboard .approvals .no-entries h3, .dashboard-active .approvals .no-entries h3 {
   text-align: center;
-  padding: 1rem 0;
   color: #fff;
 }
-.dashboard .approvals .no-entries h4 b, .dashboard-active .approvals .no-entries h4 b {
+.dashboard .approvals .no-entries h3 b, .dashboard-active .approvals .no-entries h3 b {
   color: #109da1;
 }
 .dashboard .approvals .no-entries .img-waiting, .dashboard-active .approvals .no-entries .img-waiting {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
+  margin: 0 auto;
 }
 .dashboard .approvals .no-entries .img-waiting img, .dashboard-active .approvals .no-entries .img-waiting img {
-  height: 45rem;
-  width: 45rem;
+  height: 35rem;
+  width: 35rem;
 }
 .dashboard .approvals header, .dashboard-active .approvals header {
   display: grid;
@@ -2579,13 +2601,6 @@ button {
   border: solid 1px #0d7377;
 }
 @media screen and (max-width: 1030px) {
-  .dashboard .approvals .no-entries h4, .dashboard-active .approvals .no-entries h4 {
-    font-size: 2.2rem;
-  }
-  .dashboard .approvals .no-entries .img-waiting img, .dashboard-active .approvals .no-entries .img-waiting img {
-    height: 40rem;
-    width: 40rem;
-  }
   .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal {
     grid-template-rows: auto auto;
     padding: 1rem;
@@ -4103,24 +4118,25 @@ button {
   overflow-y: auto;
 }
 .dashboard .monitor-attendance .display .content .no-record, .dashboard-active .monitor-attendance .display .content .no-record {
-  display: grid;
-  grid-template-rows: auto auto;
-  justify-content: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
+  align-items: center;
 }
-.dashboard .monitor-attendance .display .content .no-record h2, .dashboard-active .monitor-attendance .display .content .no-record h2 {
-  margin: auto;
+.dashboard .monitor-attendance .display .content .no-record h3, .dashboard-active .monitor-attendance .display .content .no-record h3 {
+  text-align: center;
+  color: #fff;
+}
+.dashboard .monitor-attendance .display .content .no-record h3 b, .dashboard-active .monitor-attendance .display .content .no-record h3 b {
+  color: #109da1;
 }
 .dashboard .monitor-attendance .display .content .no-record .img-waiting, .dashboard-active .monitor-attendance .display .content .no-record .img-waiting {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
+  margin: 0 auto;
 }
 .dashboard .monitor-attendance .display .content .no-record .img-waiting img, .dashboard-active .monitor-attendance .display .content .no-record .img-waiting img {
-  height: 30rem;
-  width: 30rem;
+  height: 33rem;
+  width: 33rem;
 }
 .dashboard .monitor-attendance .display .content .day-attendance, .dashboard-active .monitor-attendance .display .content .day-attendance {
   background-color: #d9d9d9;
@@ -4352,6 +4368,27 @@ button {
   border-radius: 0;
   color: #fff;
 }
+@media screen and (min-height: 700px) {
+  .dashboard .monitor-attendance, .dashboard-active .monitor-attendance {
+    grid-template-rows: auto minmax(45rem, 76vh);
+  }
+  .dashboard .monitor-attendance .display .content .no-record .img-waiting img, .dashboard-active .monitor-attendance .display .content .no-record .img-waiting img {
+    height: 38rem;
+    width: 38rem;
+  }
+}
+@media screen and (min-height: 800px) {
+  .dashboard .monitor-attendance, .dashboard-active .monitor-attendance {
+    grid-template-rows: auto minmax(45rem, 79vh);
+  }
+  .dashboard .monitor-attendance .display .content .no-record h3, .dashboard-active .monitor-attendance .display .content .no-record h3 {
+    font-size: 2.5rem;
+  }
+  .dashboard .monitor-attendance .display .content .no-record .img-waiting img, .dashboard-active .monitor-attendance .display .content .no-record .img-waiting img {
+    height: 42rem;
+    width: 42rem;
+  }
+}
 @media screen and (max-width: 850px) {
   .dashboard .monitor-attendance .more-details, .dashboard-active .monitor-attendance .more-details,
   .dashboard .monitor-attendance .narrative-content,
@@ -4447,7 +4484,7 @@ button {
     grid-template-rows: repeat(2, auto);
     justify-content: center;
     gap: 0.5rem;
-    padding: 0.5rem;
+    padding: 0.5rem 0.5rem 1rem 0.5rem;
   }
   .dashboard .monitor-attendance header .mid > *:nth-child(1), .dashboard-active .monitor-attendance header .mid > *:nth-child(1) {
     grid-row: 2/3;
