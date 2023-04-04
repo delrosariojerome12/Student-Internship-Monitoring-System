@@ -31,6 +31,7 @@ const ViewModal = React.memo(({form}) => {
       })
       .filter((x) => x);
 
+    console.log(final);
     return final;
   };
 

@@ -10,6 +10,93 @@ import {ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage";
 import {v4} from "uuid";
 
 import {FaCheck} from "react-icons/fa";
+
+function convertObjectToFields(obj) {
+  const fields = [];
+  for (const key in obj) {
+    if (key === "renderedHours") {
+      continue;
+    }
+    let field = {};
+    switch (key) {
+      case "date":
+        field = {
+          code: "startingDate",
+          errorMessage: "Please Select a Weekday",
+          forInput: "Starting Date",
+          id: "starting-date",
+          isDisabled: false,
+          isError: false,
+          type: "image",
+          value: "",
+        };
+        break;
+      case "logo":
+        field = {
+          code: key,
+          errorMessage: "",
+          forInput: "Logo",
+          id: key,
+          isDisabled: false,
+          isError: false,
+          type: "image",
+          value: obj[key].link,
+        };
+        break;
+      case "description":
+        field = {
+          code: key,
+          errorMessage: "At least 10 characters and max of 500",
+          forInput: "Description",
+          id: key,
+          isDisabled: false,
+          isError: false,
+          type: "textArea",
+          value: obj[key],
+        };
+        break;
+      case "typeOfWork":
+        field = {
+          code: key,
+          errorMessage: "",
+          forInput: "Type of Work",
+          id: key,
+          isDisabled: false,
+          isError: false,
+          type: "list",
+          value: obj[key],
+        };
+        break;
+      case "email":
+        field = {
+          code: key,
+          errorMessage: "",
+          forInput: "email",
+          id: key,
+          isDisabled: false,
+          isError: false,
+          type: "email",
+          value: obj[key],
+        };
+        break;
+      default:
+        field = {
+          code: key,
+          errorMessage: "",
+          forInput: key.charAt(0).toUpperCase() + key.slice(1),
+          id: key,
+          isDisabled: false,
+          isError: false,
+          type: typeof obj[key] === "number" ? "number" : "text",
+          value: obj[key],
+        };
+        break;
+    }
+    fields.push(field);
+  }
+  return fields;
+}
+
 const Verification = React.memo(() => {
   const dispatch = useDispatch();
   const {user} = useSelector((state) => state.user);
@@ -17,7 +104,20 @@ const Verification = React.memo(() => {
   const {
     user: {firstName},
     schoolDetails,
+    internshipDetails,
+    verification: {isRejected, hasSentVerification},
   } = user;
+
+  const {
+    companyName,
+    companyAddress,
+    logo: {link},
+    description,
+    email,
+    supervisor,
+    supervisorContact,
+    typeOfWork,
+  } = internshipDetails;
 
   const [form, setForm] = useState([
     {
@@ -275,11 +375,6 @@ const Verification = React.memo(() => {
   ]);
 
   const convertForm = (form) => {
-    // const newData = form.filter((input) => {
-    //   const {code, value, name} = input;
-    //   return name ? {code, value, name} : {code, value};
-    // });
-
     const newData = form.map((input) => {
       const {code, value, name} = input;
       if (name) {
@@ -670,6 +765,7 @@ const Verification = React.memo(() => {
   };
 
   const renderInputs = (arr, group, mainIndex) => {
+    console.log(arr);
     return arr.map((item, index) => {
       const {
         type,
@@ -914,6 +1010,143 @@ const Verification = React.memo(() => {
     });
   };
 
+  const renderEnrolledInputs = (arr) => {
+    return arr.map((item, index) => {
+      const {
+        type,
+        id,
+        value,
+        forInput,
+        maxLength,
+        minLength,
+        isError,
+        errorMessage,
+        isDisabled,
+        link,
+      } = item;
+      switch (type) {
+        // case "date":
+        //   const now = new Date();
+        //   const year = now.getFullYear();
+        //   const month = now.getMonth() + 1;
+        //   const date = now.getDate();
+        //   const minDate = `${year}-${month < 10 ? "0" : ""}${month}-${
+        //     date < 10 ? "0" : ""
+        //   }${date}`;
+        //   const maxDate = "2023-12-31";
+
+        //   return (
+        //     <div className="input-contain" key={index}>
+        //       <input
+        //         min={minDate}
+        //         max={maxDate}
+        //         tabIndex={-1}
+        //         disabled
+        //         required
+        //         value={value}
+        //         onChange={(e) =>
+        //           handleOnChange(e.target.value, group, index, mainIndex)
+        //         }
+        //         onKeyDown={handleKeydown}
+        //         type={type}
+        //         name={forInput}
+        //       />
+        //       <div className="placeholder-container">
+        //         <label
+        //           htmlFor={id}
+        //           className={
+        //             value ? "placeholder-text active" : "placeholder-text"
+        //           }
+        //         >
+        //           <div className="text">{forInput}</div>
+        //         </label>
+        //       </div>
+        //       {isError && <p className="error-message">{errorMessage}</p>}
+        //     </div>
+        //   );
+        case "list":
+        case "email":
+        case "text":
+          return (
+            <div className="input-contain" key={index}>
+              <input
+                tabIndex={-1}
+                disabled
+                required
+                value={value}
+                type={type}
+                name={forInput}
+              />
+              <div className="placeholder-container">
+                <label
+                  htmlFor={id}
+                  className={
+                    value ? "placeholder-text active" : "placeholder-text"
+                  }
+                >
+                  <div className="text">{forInput}</div>
+                </label>
+              </div>
+              {isError && <p className="error-message">{errorMessage}</p>}
+            </div>
+          );
+        case "image":
+          return (
+            <div className="img-input" key={index}>
+              <label htmlFor={id}>
+                <h4>{forInput}:</h4>
+                <input
+                  disabled
+                  tabIndex={-1}
+                  required
+                  type="file"
+                  name={id}
+                  id={id}
+                  accept="image/*"
+                />
+                {!isError && !value && <p>Select File</p>}
+                {isError && (
+                  <p
+                    style={{color: "red", fontSize: "18px"}}
+                    className="error-message"
+                  >
+                    {errorMessage}{" "}
+                  </p>
+                )}
+                {link && <img onClick={handleImageView} src={link} alt={id} />}
+              </label>
+            </div>
+          );
+        case "textArea":
+          return (
+            <div className="input-contain" key={index}>
+              <textarea
+                tabIndex={-1}
+                disabled
+                required
+                value={value}
+                type={type}
+                name={forInput}
+              ></textarea>
+              <div className="placeholder-container">
+                <label
+                  htmlFor={id}
+                  className={
+                    value ? "placeholder-text active" : "placeholder-text"
+                  }
+                >
+                  <div className="text">{forInput}</div>
+                </label>
+              </div>
+              {isError && <p className="error-message">{errorMessage}</p>}
+            </div>
+          );
+        default:
+          return null;
+      }
+    });
+  };
+
   const renderSteps = () => {
     return steps.map((item, index) => {
       const {step, isCompleted} = item;
@@ -944,23 +1177,10 @@ const Verification = React.memo(() => {
         handleSuccessModal(true);
         handleFinalizing(false);
       }
-      // if (imageList.length === 0) {
-      //   const imageListRef = ref(storage, "images/validID/");
-      //   listAll(imageListRef).then((res) => {
-      //     // setImageList(res);
-      //     // console.log(res);
-      //     res.items.forEach((item) => {
-      //       getDownloadURL(item).then((url) => {
-      //         // console.log(url);
-      //         // setImageList((imageList) => [...imageList, url]);
-      //         setImageList((prev) => [...prev, url]);
-      //       });
-      //     });
-      //   });
-      // }
     },
     [isSubmitted, handleSubmit]
   );
+
   return (
     <section className="verification-container">
       {isFinalizing ? (
@@ -993,22 +1213,46 @@ const Verification = React.memo(() => {
           <h2>{form[position].group}</h2>
         </div>
         <form onSubmit={handleSubmit}>
-          <div
-            className={
-              position === 0
-                ? "internship-details"
-                : position === 2
-                ? "internship-details inactive-1"
-                : "internship-details inactive"
-            }
-          >
-            <div className="forms-con">
-              {renderInputs(form[0].forms, "Internship Details", 0)}
+          {companyName || isRejected ? (
+            <div
+              className={
+                position === 0
+                  ? "internship-details"
+                  : position === 2
+                  ? "internship-details inactive-1"
+                  : "internship-details inactive"
+              }
+            >
+              <div className="forms-con">
+                {renderEnrolledInputs(
+                  convertObjectToFields({
+                    ...internshipDetails,
+                    date: "startingDate",
+                  })
+                )}
+              </div>
+              <button tabIndex={-1} onClick={handleNext}>
+                Next
+              </button>
             </div>
-            <button tabIndex={-1} onClick={handleNext}>
-              Next
-            </button>
-          </div>
+          ) : (
+            <div
+              className={
+                position === 0
+                  ? "internship-details"
+                  : position === 2
+                  ? "internship-details inactive-1"
+                  : "internship-details inactive"
+              }
+            >
+              <div className="forms-con">
+                {renderInputs(form[0].forms, "Internship Details", 0)}
+              </div>
+              <button tabIndex={-1} onClick={handleNext}>
+                Next
+              </button>
+            </div>
+          )}
           <div
             className={
               position === 1
