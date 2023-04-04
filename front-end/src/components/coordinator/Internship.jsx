@@ -49,8 +49,6 @@ const Internship = React.memo(({internship, editForm}) => {
     }
   };
 
-  console.log(user.role);
-
   return (
     <div className="internship">
       <div className="img-con">
