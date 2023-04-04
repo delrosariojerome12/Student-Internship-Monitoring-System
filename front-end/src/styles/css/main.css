@@ -1949,6 +1949,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  justify-items: center;
   align-items: center;
   padding: 1rem;
 }
@@ -2324,6 +2325,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  justify-items: center;
   align-items: center;
   padding: 1rem;
 }

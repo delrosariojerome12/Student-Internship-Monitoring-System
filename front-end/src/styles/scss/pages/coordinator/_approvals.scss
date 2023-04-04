@@ -13,6 +13,7 @@
   .no-entries {
     height: 100%;
     @include flexColumn;
+      justify-items: center;
     align-items: center;
     padding: 1rem;
     h3 {
