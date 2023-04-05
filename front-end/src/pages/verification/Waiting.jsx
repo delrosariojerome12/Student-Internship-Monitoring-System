@@ -2,18 +2,18 @@
 
 import React from "react";
 import waitingImg from "../../assets/img/verification/waiting.svg";
-import { useNavigate } from "react-router";
-import { IconContext } from "react-icons";
-import { FaChevronDown } from "react-icons/fa";
+import {useNavigate} from "react-router";
+import {IconContext} from "react-icons";
+import {FaChevronDown} from "react-icons/fa";
 import RejectErrorSvg from "../../assets/ERROR IMAGE/RejectError.svg";
 const Waiting = React.memo((user) => {
   const {
     user: {
-      user: { firstName, lastName, email },
+      user: {firstName, lastName, email},
       schoolDetails: {
         program,
         studentContact,
-        validID: { link },
+        validID: {link},
         requiredHours,
       },
       internshipDetails,
@@ -23,7 +23,7 @@ const Waiting = React.memo((user) => {
         timeInSchedule,
         timeOutSchedule,
       },
-      verification: { isRejected, remarks, hasSentVerification },
+      verification: {isRejected, remarks, hasSentVerification},
     },
   } = user;
 
@@ -52,9 +52,37 @@ const Waiting = React.memo((user) => {
     );
   }
 
+  if (!companyName) {
+    return (
+      <div className="waiting-container-pending">
+        <IconContext.Provider value={{className: "icons"}}>
+          <header>
+            <div className="text">
+              <h3>Your request for approval has been rejected.</h3>
+              <p>
+                To know more how to get immdiate approval please follow the
+                remarks.
+              </p>
+            </div>
+            <div className="remarks-container">
+              <h5>Remarks:</h5>
+              <div className="remarks">
+                <img src={RejectErrorSvg} alt="" />
+                <h6>{remarks}</h6>
+              </div>
+            </div>
+          </header>
+          <button onClick={() => navigate("/dashboard/verification")}>
+            Resubmit
+          </button>
+        </IconContext.Provider>
+      </div>
+    );
+  }
+
   return (
     <div className="waiting-container-pending">
-      <IconContext.Provider value={{ className: "icons" }}>
+      <IconContext.Provider value={{className: "icons"}}>
         <header>
           <div className="text">
             <h3>Your request for approval has been rejected.</h3>

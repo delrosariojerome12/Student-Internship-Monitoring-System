@@ -1,9 +1,9 @@
 /** @format */
 
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 
-import { useSelector, useDispatch } from "react-redux";
-import { getAllInternship } from "../../features/coordinator/internship";
+import {useSelector, useDispatch} from "react-redux";
+import {getAllInternship} from "../../features/coordinator/internship";
 import ViewModal from "../../components/coordinator/ViewModal";
 import Internship from "../../components/coordinator/Internship";
 import Bouncing from "../../components/loading/Bouncing";
@@ -124,8 +124,14 @@ const form = [
 const Internships = React.memo(() => {
   const dispatch = useDispatch();
 
-  const { internships, isLoading, isError, isViewOpen, selectedInternship } =
+  const {internships, isLoading, isError, isViewOpen, selectedInternship} =
     useSelector((state) => state.internship);
+
+  const {
+    user: {verification},
+  } = useSelector((state) => state.user);
+
+  console.log(verification);
 
   const [isSortOpen, setSortOpen] = useState(false);
   const [sortValue, setSortValue] = useState(null);
@@ -184,7 +190,8 @@ const Internships = React.memo(() => {
             onClick={() => {
               setFilterOpen(!isFilterOpen);
             }}
-            type="button">
+            type="button"
+          >
             Filter
           </button>
         </div>
