@@ -12,6 +12,7 @@ import {
   enrollInternship,
   unEnrollInternship,
 } from "../../features/coordinator/internship";
+import {isRejected} from "@reduxjs/toolkit";
 
 const Internship = React.memo(({internship, editForm}) => {
   const {
@@ -20,13 +21,17 @@ const Internship = React.memo(({internship, editForm}) => {
     _id,
   } = internship;
   const {
-    user: {user, internshipDetails},
+    user: {
+      user,
+      internshipDetails,
+      verification: {hasSentVerification},
+    },
   } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
 
   const renderButtons = () => {
-    if (!internshipDetails.companyName) {
+    if (!internshipDetails.companyName && !hasSentVerification) {
       return (
         <button
           onClick={() =>
@@ -36,7 +41,10 @@ const Internship = React.memo(({internship, editForm}) => {
           Enroll
         </button>
       );
-    } else if (internshipDetails.companyName === companyName) {
+    } else if (
+      internshipDetails.companyName === companyName &&
+      !hasSentVerification
+    ) {
       return (
         <button
           onClick={() =>
