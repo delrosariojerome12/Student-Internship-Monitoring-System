@@ -1,3 +1,5 @@
+/** @format */
+
 import React, {useEffect, useState} from "react";
 // import searchIcon from "../../assets/img/search.svg";
 import {useSelector, useDispatch} from "react-redux";
@@ -5,7 +7,7 @@ import {BiSearchAlt} from "react-icons/bi";
 import {checkStartingDate} from "../../features/interns/attendanceReducer";
 import {useNavigate} from "react-router";
 import ReactMap from "../../components/utils/ReactMap";
-
+import Waiting from "../../assets/img/waiting.svg";
 const DashboardMain = React.memo(() => {
   const {
     user: {
@@ -54,7 +56,13 @@ const DashboardMain = React.memo(() => {
 
   const renderDocuments = () => {
     if (documentDetails.length === 0) {
-      return <h3>Please Reload, it may take some time.</h3>;
+      return (
+        <div className="no-content">
+          <h3>No Reports found.</h3>
+          <h3>Please Reload, it may take some time.</h3>;
+          <img src={Waiting} alt="waiting" />
+        </div>
+      );
     }
     return documentDetails.map((item, index) => {
       const {
@@ -110,7 +118,9 @@ const DashboardMain = React.memo(() => {
     <section className="main">
       <header>
         <div className="name-container">
-          <h1 className="name">Hello, {firstName}</h1>
+          <h1 className="name">
+            Hello, <b>{firstName}</b>
+          </h1>
           <h4>Welcome Back!</h4>
         </div>
         <div className="search-box">
@@ -124,14 +134,14 @@ const DashboardMain = React.memo(() => {
         <div className="time-keeper">
           <h4>Time Keeper</h4>
           <div className="time-keeper-contents">
+            <div className="text">
+              <h3>{`Rendered Hours: ${renderedHours}hrs/${requiredHours}hrs`}</h3>
+              {DaysNeeded(renderedHours, requiredHours)}
+            </div>
             <div className="btn-controller">
               <button onClick={() => navigate("/dashboard/daily-time-record")}>
                 Daily Time Record
               </button>
-            </div>
-            <div className="text">
-              <h3>{`Rendered Hours: ${renderedHours}hrs/${requiredHours}hrs`}</h3>
-              {DaysNeeded(renderedHours, requiredHours)}
             </div>
           </div>
         </div>
@@ -149,11 +159,21 @@ const DashboardMain = React.memo(() => {
         <div className="internship-details">
           <h4>Intership Details</h4>
           <div className="internship-contents">
-            <h4>Internship at {companyName}</h4>
-            <h4>Type of Work: {typeOfWork}</h4>
-            <h4>Supervisor: {supervisor}</h4>
-            <h4>Contact: {supervisorContact}</h4>
-            <h4>Email: {supEmail}</h4>
+            <p>
+              <b>Internship at: </b> {companyName}
+            </p>
+            <p>
+              <b>Type of Work: </b> {typeOfWork}
+            </p>
+            <p>
+              <b>Supervisor: </b> {supervisor}
+            </p>
+            <p>
+              <b>Contact: </b> {supervisorContact}
+            </p>
+            <p>
+              <b>Email: </b> {supEmail}
+            </p>
           </div>
         </div>
         {isMapOpen && (
@@ -166,9 +186,11 @@ const DashboardMain = React.memo(() => {
             </div>
           </>
         )}
-
         <div className="map">
-          <button onClick={() => setMapOpen(true)}>View Map</button>
+          <h4>Maps</h4>
+          <div className="btn-map">
+            <button onClick={() => setMapOpen(true)}>View Map</button>
+          </div>
         </div>
       </div>
     </section>

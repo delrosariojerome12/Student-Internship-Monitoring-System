@@ -20,11 +20,7 @@ const Internship = React.memo(({internship, editForm}) => {
     _id,
   } = internship;
   const {
-    user: {
-      user,
-      internshipDetails,
-      // verification: {isRejected},
-    },
+    user: {user, internshipDetails},
   } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();

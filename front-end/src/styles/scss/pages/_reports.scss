@@ -1,5 +1,3 @@
-/** @format */
-
 @import "../variables";
 @import "../utils";
 
@@ -9,18 +7,18 @@
   width: 100%;
   border-radius: 1rem;
 
-  // .no-content {
-  //   color: #fff;
-  //   padding: 2rem;
-  //   border-radius: 1rem;
-  //   background-color: #282b30;
-  //   @include flexCenter;
-  //   flex-direction: column;
-  //   img {
-  //     height: 50rem;
-  //     width: 40rem;
-  //   }
-  // }
+  .no-content {
+    color: #fff;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: #282b30;
+    @include flexCenter;
+    flex-direction: column;
+    img {
+      height: 50rem;
+      width: 40rem;
+    }
+  }
 
   .overlay {
     width: 100%;
@@ -669,6 +667,22 @@
           }
         }
       }
+    }
+  }
+}
+
+//min-height
+@media screen and (min-height: 680px) {
+  .reports {
+    .content {
+      grid-template-rows: auto minmax(45rem, 83vh);
+    }
+  }
+}
+@media screen and (min-height: 760px) {
+  .reports {
+    .content {
+      grid-template-rows: auto minmax(45rem, 85vh);
     }
   }
 }

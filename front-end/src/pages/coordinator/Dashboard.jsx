@@ -1,36 +1,42 @@
+/** @format */
+
 import React, {useEffect} from "react";
 import DashboardIntern from "../../components/coordinator/dashboardCoordinator/DashboardIntern";
 import DashboardApprovals from "../../components/coordinator/dashboardCoordinator/DashboardApprovals";
-import ApprovalWaiting from "../../assets/img/waiting.svg";
 import Approval from "../../components/coordinator/ApprovalIntern";
 import {useSelector, useDispatch} from "react-redux";
 import {getAllInterns} from "../../features/interns/internReducer";
 import {BiSearchAlt} from "react-icons/bi";
 
-import internImg from "../../assets/img/head.svg";
+import NoIntern from "../../assets/img/head.svg";
+import NoApprovals from "../../assets/img/approvals.svg";
+import NoInternship from "../../assets/img/waiting.svg";
+import {getAllInternship} from "../../features/coordinator/internship";
 
+import Internship from "../../components/coordinator/Internship";
 const Dashboard = React.memo(() => {
   const {approvalInterns, interns, isError} = useSelector(
     (state) => state.intern
   );
+  const {internships} = useSelector((state) => state.internship);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllInterns());
+    dispatch(getAllInternship());
   }, []);
 
   const renderInterns = () => {
     if (!interns) {
       return <h1>Loading...</h1>;
     }
-
     if (
       interns.filter((intern) => intern.verification.isVerified).length === 0
     ) {
       return (
         <section className="all-intern-container">
           <div className="no-intern">
-            <img src={internImg} alt="" className="no-intern-img" />
+            <img src={NoIntern} alt="" className="no-intern-img" />
             <h3>No verified intern found!</h3>
           </div>
         </section>
@@ -52,14 +58,10 @@ const Dashboard = React.memo(() => {
 
     if (approvalInterns.length === 0) {
       return (
-        <section className="approvals">
-          <div className="no-entries">
-            <h4>
-              Oops, there were no <b>entries</b> yet come back again later
-            </h4>
-            <div className="img-waiting">
-              <img src={ApprovalWaiting} alt="Approvals waiting image" />
-            </div>
+        <section className="dashboard-approvals">
+          <div className="no-approvals">
+            <img src={NoApprovals} alt="Approvals waiting image" />
+            <h3>No verified approval found!</h3>
           </div>
         </section>
       );
@@ -67,6 +69,40 @@ const Dashboard = React.memo(() => {
 
     return approvalInterns.map((intern, index) => {
       return <Approval intern={intern} key={index} index={index} />;
+    });
+  };
+
+  const renderInternships = () => {
+    if (!internships) {
+      return <h1>loading...</h1>;
+    }
+    if (internships.length === 0) {
+      return (
+        <section className="dashboard-internships">
+          <div className="no-internships">
+            <img src={NoApprovals} alt="Internship waiting image" />
+            <h3>No internship found</h3>
+          </div>
+        </section>
+      );
+    }
+    return internships.map((item, index) => {
+      const {
+        logo: {link},
+        companyName,
+        students,
+      } = item;
+      return (
+        <div className="internship" key={index}>
+          <div className="img-con">
+            <img src={link} alt={companyName} />
+          </div>
+          <div className="text">
+            <h4>{companyName}</h4>
+            <p>No. of Interns: {students}</p>
+          </div>
+        </div>
+      );
     });
   };
 
@@ -86,28 +122,21 @@ const Dashboard = React.memo(() => {
           <input placeholder="Search" type="text" />
         </div>
       </header>
-
-      <div className="dashboard-intern">
-        <h4 className="container-title">Interns</h4>
-        {/* <h4 className="course">
-          Bachelor of Science in Information Technology
-        </h4> */}
-        <div className="all-intern-container">{renderInterns()}</div>
-      </div>
-
       <div className="dashboard-content">
+        <div className="dashboard-intern">
+          <h4 className="container-title">Interns</h4>
+          {/* <div className="all-intern-container">{renderInterns()}</div> */}
+          <div className="all-intern-container">{renderApprovals()}</div>
+        </div>
+
         <div className="dashboard-approvals">
           <h3 className="approvals-title">Approvals</h3>
-          {/* <h4 className="course">
-            Bachelor of Science in Information Technology
-          </h4> */}
           <div className="all-approvals-container">{renderApprovals()}</div>
         </div>
+
         <div className="dashboard-internships">
           <h3 className="internships-title">Internships</h3>
-          <div className="all-internship-container">
-            {/* {renderInternship()} */}
-          </div>
+          <div className="all-internship-container">{renderInternships()}</div>
         </div>
       </div>
     </section>

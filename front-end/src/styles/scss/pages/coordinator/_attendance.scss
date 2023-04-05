@@ -78,21 +78,23 @@
       padding: 1rem;
       overflow-y: auto;
       .no-record {
-        display: grid;
-        grid-template-rows: auto auto;
-        justify-content: center;
+        height: 100%;
+        @include flexCenter;
+        flex-direction: column;
+        padding: 1rem;
         gap: 1rem;
-
-        h2 {
-          margin: auto;
+        h3 {
+          text-align: center;
+          color: #fff;
+          b {
+            color: #109da1;
+          }
         }
         .img-waiting {
-          @include flexCenter;
-          height: 100%;
-          width: 100%;
+          margin: 0 auto;
           img {
-            height: 30rem;
-            width: 30rem;
+            height: 33rem;
+            width: 33rem;
           }
         }
       }
@@ -344,6 +346,49 @@
 
 // Responsive
 
+//min-height
+@media screen and (min-height: 700px) {
+  .monitor-attendance {
+    grid-template-rows: auto minmax(45rem, 76vh);
+
+    .display {
+      .content {
+        .no-record {
+          .img-waiting {
+            img {
+              height: 38rem;
+              width: 38rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-height: 800px) {
+  .monitor-attendance {
+    grid-template-rows: auto minmax(45rem, 79vh);
+
+    .display {
+      .content {
+        .no-record {
+          h3 {
+            font-size: 2.5rem;
+          }
+          .img-waiting {
+            img {
+              height: 42rem;
+              width: 42rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//max-width
 @media screen and (max-width: 850px) {
   .monitor-attendance {
     .more-details,
@@ -476,7 +521,7 @@
         grid-template-rows: repeat(2, auto);
         justify-content: center;
         gap: 0.5rem;
-        padding: 0.5rem;
+        padding: 0.5rem 0.5rem 1rem 0.5rem;
         & > *:nth-child(1) {
           grid-row: 2/3;
         }
