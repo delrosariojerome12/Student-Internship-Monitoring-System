@@ -20,36 +20,38 @@ const Internship = React.memo(({internship, editForm}) => {
     _id,
   } = internship;
   const {
-    user: {
-      user,
-      internshipDetails,
-      verification: {hasSentVerification, isRejected},
-    },
+    user: {user, internshipDetails, verification},
   } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
   const renderButtons = () => {
-    if (!isRejected) {
-      if (!internshipDetails.companyName) {
-        return (
-          <button
-            onClick={() =>
-              dispatch(enrollInternship({email: user.email, companyName}))
-            }
-          >
-            Enroll
-          </button>
-        );
-      } else if (internshipDetails.companyName === companyName) {
-        return (
-          <button
-            onClick={() =>
-              dispatch(unEnrollInternship({email: user.email, companyName}))
-            }
-          >
-            Unenroll
-          </button>
-        );
+    if (user.role === "intern") {
+      const {hasSentVerification, isRejected} = verification;
+      if (!isRejected) {
+        if (!internshipDetails.companyName) {
+          return (
+            <button
+              onClick={() =>
+                dispatch(enrollInternship({email: user.email, companyName}))
+              }
+            >
+              Enroll
+            </button>
+          );
+        } else if (
+          internshipDetails.companyName === companyName &&
+          !hasSentVerification
+        ) {
+          return (
+            <button
+              onClick={() =>
+                dispatch(unEnrollInternship({email: user.email, companyName}))
+              }
+            >
+              Unenroll
+            </button>
+          );
+        }
       }
     }
   };
