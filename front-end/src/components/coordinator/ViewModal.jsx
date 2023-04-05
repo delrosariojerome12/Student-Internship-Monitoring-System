@@ -11,6 +11,7 @@ const ViewModal = React.memo(({form}) => {
     user: {
       user: {role, email},
       internshipDetails,
+      verification: {isRejected},
     },
   } = useSelector((state) => state.user);
   const {selectedInternship} = useSelector((state) => state.internship);
@@ -38,22 +39,24 @@ const ViewModal = React.memo(({form}) => {
   const {students, companyName} = selectedInternship[0];
 
   const renderButtons = () => {
-    if (!internshipDetails.companyName) {
-      return (
-        <button
-          onClick={() => dispatch(enrollInternship({email, companyName}))}
-        >
-          Enroll
-        </button>
-      );
-    } else if (internshipDetails.companyName === companyName) {
-      return (
-        <button
-          onClick={() => dispatch(unEnrollInternship({email, companyName}))}
-        >
-          Unenroll
-        </button>
-      );
+    if (!isRejected) {
+      if (!internshipDetails.companyName) {
+        return (
+          <button
+            onClick={() => dispatch(enrollInternship({email, companyName}))}
+          >
+            Enroll
+          </button>
+        );
+      } else if (internshipDetails.companyName === companyName) {
+        return (
+          <button
+            onClick={() => dispatch(unEnrollInternship({email, companyName}))}
+          >
+            Unenroll
+          </button>
+        );
+      }
     }
   };
 

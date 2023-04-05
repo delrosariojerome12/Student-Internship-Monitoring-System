@@ -445,6 +445,27 @@ const Verification = React.memo(() => {
               };
 
               dispatch(requestVerification(finalForm));
+            } else if (companyName && !isRejected) {
+              const finalForm = {
+                email: user.email,
+                internshipDetails: {
+                  ...internshipDetails,
+                  ...convertForm(
+                    [...form[0].forms].filter(
+                      (item) => item.id === "starting-date"
+                    )
+                  ),
+                },
+                schoolDetails: convertForm([...form[1].forms]),
+                scheduleDetails: convertForm([...form[2].forms]),
+                verification: {
+                  hasSentVerification: true,
+                  isVerified: false,
+                  isRejected: false,
+                },
+              };
+
+              dispatch(requestVerification(finalForm));
             } else {
               const finalForm = {
                 email: user.email,
@@ -592,6 +613,41 @@ const Verification = React.memo(() => {
     let numOfValues = 0;
 
     if (companyName && isRejected) {
+      console.log("1");
+      if (position >= 1) {
+        form[position].forms.forEach((item) => {
+          item.isError && numOfErrors++;
+          item.value && numOfValues++;
+        });
+
+        const lengthForms = form[position].forms.length;
+
+        if (numOfErrors === 0 && numOfValues === lengthForms) {
+          if (position < 2) {
+            setPosition((prev) => prev + 1);
+          }
+        }
+      } else {
+        form[position].forms
+          .filter((item) => item.id === "starting-date")
+          .forEach((item) => {
+            item.isError && numOfErrors++;
+            item.value && numOfValues++;
+          });
+
+        const lengthForms = form[position].forms.filter(
+          (item) => item.id === "starting-date"
+        ).length;
+
+        if (numOfErrors === 0 && numOfValues === lengthForms) {
+          console.log("test");
+
+          if (position < 2) {
+            setPosition((prev) => prev + 1);
+          }
+        }
+      }
+    } else if (companyName && !isRejected) {
       if (position >= 1) {
         form[position].forms.forEach((item) => {
           item.isError && numOfErrors++;
@@ -626,6 +682,7 @@ const Verification = React.memo(() => {
         }
       }
     } else {
+      console.log("2");
       form[position].forms.forEach((item) => {
         item.isError && numOfErrors++;
         item.value && numOfValues++;
