@@ -7,15 +7,15 @@
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: auto minmax(45rem, 85vh);
+  grid-template-rows: auto minmax(45rem, 83vh);
   gap: 1rem;
 
   .no-entries {
     height: 100%;
-    @include flexColumn;
-      justify-items: center;
-    align-items: center;
+    @include flexCenter;
+    flex-direction: column;
     padding: 1rem;
+    gap: 1rem;
     h3 {
       text-align: center;
       color: #fff;
@@ -36,7 +36,7 @@
     display: grid;
     grid-template-columns: 1fr;
     background-color: #282b30;
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem;
     border-radius: 1rem;
     h2 {
       display: flex;
@@ -338,8 +338,28 @@
 //Responsive
 
 //min-height
-// @media screen and (min-height: 700px) {
+@media screen and (min-height: 700px) {
+  .approvals {
+    grid-template-rows: auto minmax(45rem, 85vh);
+    .no-entries {
+      h3 {
+        font-size: 2.4rem;
+      }
+      .img-waiting {
+        img {
+          height: 40rem;
+          width: 40rem;
+        }
+      }
+    }
+  }
+}
 
+@media screen and (min-height: 800px) {
+  .approvals {
+    grid-template-rows: auto minmax(45rem, 87vh);
+  }
+}
 //max-width
 @media screen and (max-width: 1030px) {
   .approvals {

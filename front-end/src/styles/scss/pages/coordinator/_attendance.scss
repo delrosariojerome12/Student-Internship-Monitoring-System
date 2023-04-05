@@ -79,9 +79,10 @@
       overflow-y: auto;
       .no-record {
         height: 100%;
-        @include flexColumn;
-      justify-items: center;
-        align-items: center;
+        @include flexCenter;
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
         h3 {
           text-align: center;
           color: #fff;

@@ -1,9 +1,9 @@
 /** @format */
 
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
-import {useSelector, useDispatch} from "react-redux";
-import {getAllInternship} from "../../features/coordinator/internship";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllInternship } from "../../features/coordinator/internship";
 import ViewModal from "../../components/coordinator/ViewModal";
 import Internship from "../../components/coordinator/Internship";
 import Bouncing from "../../components/loading/Bouncing";
@@ -124,7 +124,7 @@ const form = [
 const Internships = React.memo(() => {
   const dispatch = useDispatch();
 
-  const {internships, isLoading, isError, isViewOpen, selectedInternship} =
+  const { internships, isLoading, isError, isViewOpen, selectedInternship } =
     useSelector((state) => state.internship);
 
   const [isSortOpen, setSortOpen] = useState(false);
@@ -158,7 +158,9 @@ const Internships = React.memo(() => {
     }
     return (
       <div className="no-internship">
-        <h3>No existing internships at the moment.</h3>
+        <h3>
+          No existing <b>internships</b> at the moment.
+        </h3>
         <img src={NoDocumentSvg} alt="no-internship" />
       </div>
     );
@@ -166,10 +168,11 @@ const Internships = React.memo(() => {
   return (
     <section className="internship-container-intern">
       <header>
-        <h2>Looking for Internship?</h2>
-      </header>
-      <div className="btn-contoller">
-        {/* <button
+        <div className="page-title">
+          <h2>Looking for Internship?</h2>
+        </div>
+        <div className="btn-contoller">
+          {/* <button
           onClick={() => {
             setSortOpen(!isSortOpen);
           }}
@@ -177,15 +180,15 @@ const Internships = React.memo(() => {
         >
           Sort
         </button> */}
-        <button
-          onClick={() => {
-            setFilterOpen(!isFilterOpen);
-          }}
-          type="button"
-        >
-          Filter
-        </button>
-      </div>
+          <button
+            onClick={() => {
+              setFilterOpen(!isFilterOpen);
+            }}
+            type="button">
+            Filter
+          </button>
+        </div>
+      </header>
       {renderInternship()}
       {isViewOpen && <ViewModal form={form} />}
       {/* not working */}
