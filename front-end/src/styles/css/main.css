@@ -5697,10 +5697,10 @@ button {
   overflow-y: auto;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern, .dashboard-active .admin-document-page .document-approval-container .document-intern {
-  display: grid;
+  display: flex;
+  flex: 12rem 1;
   margin-bottom: 2rem;
-  height: 12rem;
-  grid-template-columns: 12rem 1fr;
+  flex-direction: row;
   gap: 2rem;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .img-container, .dashboard-active .admin-document-page .document-approval-container .document-intern .img-container {
@@ -5744,6 +5744,7 @@ button {
   height: 100%;
   background-color: #0d7377;
   position: relative;
+  z-index: 2;
   display: grid;
   grid-auto-rows: auto;
   gap: 1rem;
@@ -5762,6 +5763,7 @@ button {
   transform: translateX(-50%);
   border-radius: 1rem !important;
   height: 2rem;
+  z-index: 1;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .drop-btn .icon, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .drop-btn .icon {
   color: #fff;
@@ -9782,6 +9784,20 @@ button {
   height: 100%;
   width: 100%;
   border-radius: 1rem;
+}
+.reports .no-content {
+  color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: #282b30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.reports .no-content img {
+  height: 50rem;
+  width: 40rem;
 }
 .reports .overlay {
   width: 100%;
