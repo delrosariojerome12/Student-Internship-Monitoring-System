@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 
 const DashboardIntern = React.memo(({ intern }) => {
@@ -6,6 +8,7 @@ const DashboardIntern = React.memo(({ intern }) => {
     schoolDetails,
     verification: { isVerified, hasSentVerification },
     internshipDetails,
+    scheduleDetails,
   } = intern;
 
   return (
@@ -14,14 +17,19 @@ const DashboardIntern = React.memo(({ intern }) => {
         <img src={profileImage} alt="profile-image" />
       </div>
       <div className="intern-detail">
-        <p className="full-name">
+        <h4 className="full-name">
           {firstName} {lastName}
-        </p>
-        <p className="program">{schoolDetails?.program}</p>
-        <p className="is-verify">{isVerified ? "Verified" : "Not Verified"}</p>
+        </h4>
+        <h4 className="program">{schoolDetails?.program}</h4>
+        <h4 className="course">BSIT</h4>
+        <h4 className="schedType">{scheduleDetails?.scheduleType}</h4>
         <p className="rendered">
-          <b>Rendered Hours: </b>
-          {internshipDetails?.renderedHours}
+          Total Hours:
+          <b>
+            {" "}
+            `${internshipDetails?.renderedHours}/${schoolDetails?.requiredHours}
+            `}
+          </b>
         </p>
       </div>
     </section>

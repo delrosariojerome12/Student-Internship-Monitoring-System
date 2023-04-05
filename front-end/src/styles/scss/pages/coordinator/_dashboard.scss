@@ -80,65 +80,71 @@
     }
 
     .dashboard-intern {
-      // display: grid;
-      // grid-template-rows: 3.5rem auto;
-      // padding: 2rem;
-      // grid-auto-rows: 12rem;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      padding: 2rem;
+      grid-auto-rows: 12rem;
+
       grid-column: 1/2;
       grid-row: 1/3;
 
-      // .all-intern-container {
-      //   overflow-y: auto;
-      //   height: 100%;
-      //   background-color: #d9d9d9;
+      .no-intern {
+        @include flexColumn;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+        img {
+          height: 18rem;
+          width: 18rem;
+        }
+        h3 {
+          color: $primary-compliment-landing;
+        }
+      }
 
-      //   .no-intern {
-      //     @include flexColumn;
-      //     justify-content: center;
-      //     align-items: center;
-      //     padding: 4rem 1rem 1rem 1rem;
-      //     gap: 1;
-      //     img {
-      //       height: 18rem;
-      //       width: 18rem;
-      //     }
-      //     h3 {
-      //       color: $primary-compliment-landing;
-      //     }
-      //   }
-      //   .all-interns {
-      //     display: grid;
-      //     grid-template-columns: 10rem auto;
-      //     padding: 1rem;
-      //     gap: 1rem;
-      //     font-size: 1.4rem;
-      //     cursor: pointer;
+      .all-intern-container {
+        display: grid;
+        gap: 1rem;
+        padding: 1rem;
+        overflow-y: auto;
+        height: 100%;
+        background-color: #d9d9d9;
+        grid-auto-rows: 12rem;
 
-      //     .img-intern {
-      //       height: 10rem;
-      //       width: 10rem;
-      //       img {
-      //         background-color: #fff;
-      //         height: 100%;
-      //         width: 100%;
-      //         border-radius: 1rem;
-      //       }
-      //     }
-      //     .intern-detail {
-      //       background-color: #fff;
-      //       border-radius: 1rem;
-      //       padding: 1rem;
-      //       display: grid;
-      //       grid-template-columns: auto auto;
-      //       gap: 1rem;
-      //     }
-      //   }
-      // }
+        .all-interns {
+          display: grid;
+          grid-template-columns: 10rem auto;
+          gap: 1rem;
+          border-radius: 1rem;
+
+          .img-intern {
+            height: 10rem;
+            width: 10rem;
+            img {
+              background-color: #fff;
+              height: 100%;
+              width: 100%;
+              border-radius: 1rem;
+            }
+          }
+          .intern-detail {
+            background-color: #fff;
+            border-radius: 1rem;
+            padding: 1rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-content: center;
+            gap: 0.5rem;
+            .course {
+              display: none;
+            }
+          }
+        }
+      }
     }
 
     .dashboard-approvals,
-    .dashboard-internships,
-    .dashboard-intern {
+    .dashboard-internships {
       display: grid;
       grid-template-rows: auto 1fr;
       padding: 2rem;
@@ -148,11 +154,10 @@
         @include flexColumn;
         justify-content: center;
         align-items: center;
-        padding: 1rem;
         gap: 0;
         img {
-          height: 9rem;
-          width: 9rem;
+          height: 8rem;
+          width: 8rem;
         }
         h3 {
           color: $primary-compliment-landing;
@@ -160,8 +165,7 @@
       }
 
       .all-approvals-container,
-      .all-internship-container,
-      .all-intern-container {
+      .all-internship-container {
         overflow-y: auto;
         height: 100%;
         background-color: #d9d9d9;
@@ -353,11 +357,12 @@
             padding: 1rem 2rem;
             align-items: center;
             justify-content: space-between;
-            // background-color: #d9d9d9;
-            // font-weight: 550;
             .intern-details {
               display: flex;
               flex-direction: column;
+              .course {
+                display: none;
+              }
             }
           }
           .intern-left {
@@ -522,16 +527,22 @@
         grid-column: 1/3;
         grid-row: 1/2;
       }
+      .dashboard-intern {
+        .all-intern-container {
+          grid-auto-rows: 10rem;
+        }
+      }
+
+      //no content icons
       .dashboard-intern,
       .dashboard-approvals {
         .all-intern-container,
         .all-approvals-container {
           .no-intern,
           .no-approvals {
-            padding: 2rem 1rem 1rem 1rem;
             img {
-              height: 12rem;
-              width: 12rem;
+              height: 11rem;
+              width: 11rem;
             }
           }
         }
@@ -550,7 +561,6 @@
         .all-approvals-container {
           .no-intern,
           .no-approvals {
-            padding: 3rem 1rem 1rem 1rem;
             img {
               height: 15rem;
               width: 15rem;

@@ -223,6 +223,7 @@ const ApprovalIntern = React.memo(({ intern, index }) => {
             </b>
           </p>
           <p className="program">{program}</p>
+          <p className="course">BSIT</p>
         </div>
         <button className="view" onClick={handleDetails}>
           View More Details
