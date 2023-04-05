@@ -169,13 +169,26 @@
           text-align: center;
         }
         .document-contents {
-          background-color: $light-bg-color;
+          background-color: #282b30;
           height: 100%;
           border-radius: 2rem;
           padding: 1rem;
           overflow-y: auto;
           display: grid;
           gap: 1rem;
+
+          .no-content {
+            color: #fff;
+            padding: 2rem;
+            border-radius: 1rem;
+            background-color: #282b30;
+            @include flexCenter;
+            flex-direction: column;
+            img {
+              height: 30rem;
+              width: 30rem;
+            }
+          }
 
           .document-dashboard {
             background-color: $primary-compliment-landing;

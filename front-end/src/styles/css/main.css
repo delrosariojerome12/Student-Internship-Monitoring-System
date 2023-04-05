@@ -1097,13 +1097,27 @@ button {
   text-align: center;
 }
 .dashboard .main .content .documents .document-contents, .dashboard-active .main .content .documents .document-contents {
-  background-color: #f1faee;
+  background-color: #282b30;
   height: 100%;
   border-radius: 2rem;
   padding: 1rem;
   overflow-y: auto;
   display: grid;
   gap: 1rem;
+}
+.dashboard .main .content .documents .document-contents .no-content, .dashboard-active .main .content .documents .document-contents .no-content {
+  color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: #282b30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.dashboard .main .content .documents .document-contents .no-content img, .dashboard-active .main .content .documents .document-contents .no-content img {
+  height: 30rem;
+  width: 30rem;
 }
 .dashboard .main .content .documents .document-contents .document-dashboard, .dashboard-active .main .content .documents .document-contents .document-dashboard {
   background-color: #0d7377;
@@ -7331,23 +7345,52 @@ button {
   gap: 1rem;
 }
 .profile-page .content .display .request-container {
-  background-color: #fff;
+  background-color: #282b30;
   padding: 2rem;
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
+.profile-page .content .display .request-container .no-content {
+  color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: #282b30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.profile-page .content .display .request-container .no-content img {
+  height: 50rem;
+  width: 40rem;
+}
 .profile-page .content .display .request-container .document-record {
   display: flex;
   justify-content: space-between;
-  background-color: #d9d9d9;
+  background: #0d7377;
+  color: #fff;
   gap: 1rem;
   padding: 1.5rem;
   border-radius: 1rem;
 }
 .profile-page .content .display .narrative-container {
   display: grid;
+}
+.profile-page .content .display .narrative-container .no-content {
+  color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: #282b30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.profile-page .content .display .narrative-container .no-content img {
+  height: 50rem;
+  width: 40rem;
 }
 .profile-page .content .display .narrative-container .report-container {
   display: grid;
@@ -9033,12 +9076,25 @@ button {
     grid-template-rows: auto minmax(20rem, 44vh);
   }
 }
-/** @format */
 .reports {
   display: grid;
   height: 100%;
   width: 100%;
   border-radius: 1rem;
+}
+.reports .no-content {
+  color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: #282b30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.reports .no-content img {
+  height: 50rem;
+  width: 40rem;
 }
 .reports .overlay {
   width: 100%;

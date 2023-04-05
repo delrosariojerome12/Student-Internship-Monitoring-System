@@ -5,7 +5,7 @@ import {BiSearchAlt} from "react-icons/bi";
 import {checkStartingDate} from "../../features/interns/attendanceReducer";
 import {useNavigate} from "react-router";
 import ReactMap from "../../components/utils/ReactMap";
-
+import Waiting from "../../assets/img/waiting.svg";
 const DashboardMain = React.memo(() => {
   const {
     user: {
@@ -54,7 +54,13 @@ const DashboardMain = React.memo(() => {
 
   const renderDocuments = () => {
     if (documentDetails.length === 0) {
-      return <h3>Please Reload, it may take some time.</h3>;
+      return (
+        <div className="no-content">
+          <h3>No Reports found.</h3>
+          <h3>Please Reload, it may take some time.</h3>;
+          <img src={Waiting} alt="waiting" />
+        </div>
+      );
     }
     return documentDetails.map((item, index) => {
       const {

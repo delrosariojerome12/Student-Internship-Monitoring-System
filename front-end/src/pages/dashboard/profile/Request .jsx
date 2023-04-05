@@ -2,6 +2,7 @@
 
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
+import Waiting from "../../../assets/img/waiting.svg";
 
 const Request = React.memo(() => {
   const {
@@ -10,6 +11,15 @@ const Request = React.memo(() => {
   const dispatch = useDispatch();
 
   const renderDocumentRecords = () => {
+    if (documentDetails.length === 0) {
+      return (
+        <div className="no-content">
+          <h3>No Reports found.</h3>
+          <img src={Waiting} alt="waiting" />
+        </div>
+      );
+    }
+
     return documentDetails.map((item, index) => {
       const {completion, document} = item;
       return (
