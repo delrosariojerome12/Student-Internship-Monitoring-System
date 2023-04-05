@@ -1152,6 +1152,7 @@ button {
   image-rendering: auto;
 }
 .landing-page .contents .the-team-container {
+  position: none;
   box-sizing: border-box;
   margin: 0 auto;
   text-align: center;
@@ -1213,6 +1214,7 @@ button {
   font-weight: bold;
   font-size: 0.7em;
   margin-bottom: 5px;
+  width: 100%;
 }
 .landing-page .contents .member-position {
   font-style: italic;
@@ -1302,6 +1304,10 @@ button {
   }
 }
 @media screen and (max-width: 650px) {
+  .landing-page .contents .the-team-container {
+    height: 90%;
+    width: 90%;
+  }
   .landing-page .contents .member-img1,
   .landing-page .contents .member-img2,
   .landing-page .contents .member-img3,

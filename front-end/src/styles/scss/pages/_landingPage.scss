@@ -295,6 +295,7 @@
     }
 
     .the-team-container {
+      position: none;
       box-sizing: border-box;
       margin: 0 auto;
       text-align: center;
@@ -360,6 +361,7 @@
       font-weight: bold;
       font-size: 0.7em;
       margin-bottom: 5px;
+      width: 100%;
     }
 
     .member-position {
@@ -458,6 +460,10 @@
       }
     }
     @media screen and (max-width: 650px) {
+      .the-team-container {
+        height: 90%;
+        width: 90%;
+      }
       .member-img1,
       .member-img2,
       .member-img3,
