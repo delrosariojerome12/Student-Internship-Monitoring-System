@@ -1,25 +1,29 @@
 /** @format */
 
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import DashboardIntern from "../../components/coordinator/dashboardCoordinator/DashboardIntern";
 import DashboardApprovals from "../../components/coordinator/dashboardCoordinator/DashboardApprovals";
 import Approval from "../../components/coordinator/ApprovalIntern";
-import { useSelector, useDispatch } from "react-redux";
-import { getAllInterns } from "../../features/interns/internReducer";
-import { BiSearchAlt } from "react-icons/bi";
+import {useSelector, useDispatch} from "react-redux";
+import {getAllInterns} from "../../features/interns/internReducer";
+import {BiSearchAlt} from "react-icons/bi";
 
 import NoIntern from "../../assets/img/head.svg";
 import NoApprovals from "../../assets/img/approvals.svg";
 import NoInternship from "../../assets/img/waiting.svg";
+import {getAllInternship} from "../../features/coordinator/internship";
 
+import Internship from "../../components/coordinator/Internship";
 const Dashboard = React.memo(() => {
-  const { approvalInterns, interns, isError } = useSelector(
+  const {approvalInterns, interns, isError} = useSelector(
     (state) => state.intern
   );
+  const {internships} = useSelector((state) => state.internship);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllInterns());
+    dispatch(getAllInternship());
   }, []);
 
   const renderInterns = () => {
@@ -68,6 +72,40 @@ const Dashboard = React.memo(() => {
     });
   };
 
+  const renderInternships = () => {
+    if (!internships) {
+      return <h1>loading...</h1>;
+    }
+    if (internships.length === 0) {
+      return (
+        <section className="dashboard-internships">
+          <div className="no-internships">
+            <img src={NoApprovals} alt="Internship waiting image" />
+            <h3>No internship found</h3>
+          </div>
+        </section>
+      );
+    }
+    return internships.map((item, index) => {
+      const {
+        logo: {link},
+        companyName,
+        students,
+      } = item;
+      return (
+        <div className="internship" key={index}>
+          <div className="img-con">
+            <img src={link} alt={companyName} />
+          </div>
+          <div className="text">
+            <h4>{companyName}</h4>
+            <p>No. of Interns: {students}</p>
+          </div>
+        </div>
+      );
+    });
+  };
+
   return (
     <section className="coordinator-dashboard">
       <header>
@@ -97,7 +135,7 @@ const Dashboard = React.memo(() => {
 
         <div className="dashboard-internships">
           <h3 className="internships-title">Internships</h3>
-          <div className="all-internship-container">{renderApprovals()}</div>
+          <div className="all-internship-container">{renderInternships()}</div>
         </div>
       </div>
     </section>
