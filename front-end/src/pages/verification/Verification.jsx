@@ -111,7 +111,7 @@ const Verification = React.memo(() => {
   const {
     companyName,
     companyAddress,
-    logo: {link},
+    logo,
     description,
     email,
     supervisor,
