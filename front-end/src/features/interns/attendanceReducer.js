@@ -84,7 +84,7 @@ export const getAllAttendance = createAsyncThunk(
       const day = date.getDay();
       const hours = date.getHours() % 12 || 12;
       const minutes = date.getMinutes();
-      const amOrPm = hours >= 12 ? "PM" : "AM";
+      const amOrPm = date.getHours() >= 12 ? "PM" : "AM";
 
       const month =
         date.getMonth() + 1 < 10
