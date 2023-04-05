@@ -412,58 +412,106 @@
         }
       }
     }
-    // .dashboard-internships {
-    //   display: grid;
-    //   grid-template-rows: auto 1fr;
-    //   padding: 2rem;
+    .dashboard-internships {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      padding: 2rem;
 
-    //   .all-internship-container {
-    //     overflow-y: auto;
-    //     max-height: 37vh;
-    //     background-color: #d9d9d9;
-    //     .no-internship {
-    //       @include flexColumn;
-    //       justify-content: center;
-    //       align-items: center;
-    //       gap: 1;
-    //       padding: 4rem 0 0 0;
-    //       img {
-    //         height: 15rem;
-    //         width: 15rem;
-    //       }
-    //       h4 {
-    //         color: $primary-compliment-landing;
-    //       }
-    //     }
-    //     .all-internships {
-    //       display: grid;
-    //       grid-template-columns: 10rem auto;
-    //       grid-auto-rows: 10rem;
-    //       padding: 1rem;
-    //       gap: 1rem;
-    //       background-color: #d9d9d9;
+      .all-internship-container {
+        overflow-y: auto;
+        max-height: 37vh;
+        // background-color: #d9d9d9;
+        background-color: #282b30;
+        display: grid;
+        grid-auto-rows: 14rem;
+        .no-internship {
+          @include flexColumn;
+          justify-content: center;
+          align-items: center;
+          gap: 1;
+          padding: 4rem 0 0 0;
+          img {
+            height: 15rem;
+            width: 15rem;
+          }
+          h4 {
+            color: $primary-compliment-landing;
+          }
+        }
+        .internship {
+          // background-color: #282b30;
+          background-color: #fff;
+          border-radius: 1rem;
+          padding: 1rem;
+          display: grid;
+          grid-template-columns: 13rem 1fr;
+          gap: 1rem;
+          .img-con {
+            height: 12rem;
+            width: 12rem;
+            margin: auto;
 
-    //       & > * {
-    //         background-color: #fff;
-    //         border-radius: 1rem;
-    //       }
+            img {
+              height: 100%;
+              width: 100%;
+              object-fit: contain;
+            }
+          }
+          .controls {
+            display: grid;
+            background-color: #fff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            h4 {
+              white-space: nowrap; /* Prevents text from wrapping */
+              overflow: hidden; /* Hides any overflowed text */
+              text-overflow: ellipsis;
+            }
+            .internship-btn {
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+              button {
+                border-radius: 1rem;
+                background-color: #d9d9d9;
+                &:hover {
+                  background-color: $primary-compliment-landing;
+                  border-radius: 0;
+                  color: #fff;
+                }
+              }
+            }
+          }
+        }
+        // .all-internships {
+        //   display: grid;
+        //   grid-template-columns: 10rem auto;
+        //   grid-auto-rows: 10rem;
+        //   padding: 1rem;
+        //   gap: 1rem;
+        //   background-color: #d9d9d9;
 
-    //       .img-internships {
-    //         width: 10rem;
-    //         height: 10rem;
-    //       }
-    //       .text-internships {
-    //         @include flexCenter;
-    //         flex-direction: column;
-    //         gap: 0.5rem;
-    //         p {
-    //           padding: 1rem;
-    //           font: 1.5rem;
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
+        //   & > * {
+        //     background-color: #fff;
+        //     border-radius: 1rem;
+        //   }
+
+        //   .img-internships {
+        //     width: 10rem;
+        //     height: 10rem;
+        //   }
+        //   .text-internships {
+        //     @include flexCenter;
+        //     flex-direction: column;
+        //     gap: 0.5rem;
+        //     p {
+        //       padding: 1rem;
+        //       font: 1.5rem;
+        //     }
+        //   }
+        // }
+      }
+    }
 
     .edit-details,
     .approvals-btn button {
