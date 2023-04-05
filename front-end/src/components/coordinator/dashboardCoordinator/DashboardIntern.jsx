@@ -26,9 +26,7 @@ const DashboardIntern = React.memo(({ intern }) => {
         <p className="rendered">
           Total Hours:
           <b>
-            {" "}
-            `${internshipDetails?.renderedHours}/${schoolDetails?.requiredHours}
-            `}
+            {`${internshipDetails?.renderedHours}/${schoolDetails?.requiredHours}`}
           </b>
         </p>
       </div>
