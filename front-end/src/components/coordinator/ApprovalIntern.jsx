@@ -226,7 +226,7 @@ const ApprovalIntern = React.memo(({ intern, index }) => {
           <p className="course">BSIT</p>
         </div>
         <button className="view" onClick={handleDetails}>
-          View More Details
+          More
         </button>
       </div>
     </section>
