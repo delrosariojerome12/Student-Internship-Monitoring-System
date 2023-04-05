@@ -131,8 +131,6 @@ const Internships = React.memo(() => {
     user: {verification},
   } = useSelector((state) => state.user);
 
-  console.log(verification);
-
   const [isSortOpen, setSortOpen] = useState(false);
   const [sortValue, setSortValue] = useState(null);
   const [isFilterOpen, setFilterOpen] = useState(false);

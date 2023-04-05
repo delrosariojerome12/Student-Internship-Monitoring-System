@@ -12,7 +12,6 @@ import {
   enrollInternship,
   unEnrollInternship,
 } from "../../features/coordinator/internship";
-import {isRejected} from "@reduxjs/toolkit";
 
 const Internship = React.memo(({internship, editForm}) => {
   const {
@@ -24,33 +23,34 @@ const Internship = React.memo(({internship, editForm}) => {
     user: {
       user,
       internshipDetails,
-      verification: {hasSentVerification},
+      verification: {hasSentVerification, isRejected},
     },
   } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
-
   const renderButtons = () => {
-    if (!internshipDetails.companyName && !isRejected) {
-      return (
-        <button
-          onClick={() =>
-            dispatch(enrollInternship({email: user.email, companyName}))
-          }
-        >
-          Enroll
-        </button>
-      );
-    } else if (internshipDetails.companyName === companyName && !isRejected) {
-      return (
-        <button
-          onClick={() =>
-            dispatch(unEnrollInternship({email: user.email, companyName}))
-          }
-        >
-          Unenroll
-        </button>
-      );
+    if (!isRejected) {
+      if (!internshipDetails.companyName) {
+        return (
+          <button
+            onClick={() =>
+              dispatch(enrollInternship({email: user.email, companyName}))
+            }
+          >
+            Enroll
+          </button>
+        );
+      } else if (internshipDetails.companyName === companyName) {
+        return (
+          <button
+            onClick={() =>
+              dispatch(unEnrollInternship({email: user.email, companyName}))
+            }
+          >
+            Unenroll
+          </button>
+        );
+      }
     }
   };
 
