@@ -31,7 +31,7 @@ const Internship = React.memo(({internship, editForm}) => {
   const dispatch = useDispatch();
 
   const renderButtons = () => {
-    if (!internshipDetails.companyName && !hasSentVerification) {
+    if (!internshipDetails.companyName && !isRejected) {
       return (
         <button
           onClick={() =>
@@ -41,10 +41,7 @@ const Internship = React.memo(({internship, editForm}) => {
           Enroll
         </button>
       );
-    } else if (
-      internshipDetails.companyName === companyName &&
-      !hasSentVerification
-    ) {
+    } else if (internshipDetails.companyName === companyName && !isRejected) {
       return (
         <button
           onClick={() =>
