@@ -85,7 +85,7 @@ export const getUserOnLoad = createAsyncThunk(
 export const requestVerification = createAsyncThunk(
   "/user/requestVerify",
   async (form, {rejectWithValue}) => {
-    // const
+    console.log(form);
     try {
       const url = `https://sims-twqb.onrender.com/intern/requestVerify`;
       const {data: res} = await axios.patch(url, form);
