@@ -20,6 +20,7 @@ export const getAllInternship = createAsyncThunk(
   async (x, {rejectWithValue}) => {
     try {
       const url = `https://sims-twqb.onrender.com/internship/getAllInternship`;
+
       const {data: res} = await axios.get(url);
       console.log(res);
       return {res};
@@ -34,7 +35,8 @@ export const createInternship = createAsyncThunk(
   "/internship/createInternship",
   async ({internship}, {rejectWithValue}) => {
     try {
-      const url = `https://sims-twqb.onrender.com/internship/createInternship`;
+      // const url = `https://sims-twqb.onrender.com/internship/createInternship`;
+      const url = `http://localhost:5000/internship/createInternship`;
       const {data: res} = await axios.post(url, internship);
       return {res};
     } catch (error) {
@@ -50,7 +52,8 @@ export const updateInternship = createAsyncThunk(
   "/internship/updateInternship",
   async ({form, id}, {rejectWithValue}) => {
     try {
-      const url = `https://sims-twqb.onrender.com/internship/updateInternship/${id}`;
+      // const url = `https://sims-twqb.onrender.com/internship/updateInternship/${id}`;
+      const url = `http://localhost:5000/internship/updateInternship/${id}`;
       const {data: res} = await axios.patch(url, form);
       return {res};
     } catch (error) {
@@ -67,6 +70,41 @@ export const deleteInternship = createAsyncThunk(
     try {
       const url = `https://sims-twqb.onrender.com/internship/deleteInternship/${id}`;
       const {data: res} = await axios.delete(url);
+      return {res};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const enrollInternship = createAsyncThunk(
+  "internship/enroll",
+  async ({email, companyName}, {rejectWithValue}) => {
+    try {
+      const url = `http://localhost:5000/intern/enrollInternship/${email}`;
+
+      const {data: res} = await axios.patch(url, {
+        params: {companyName},
+      });
+      console.log(res);
+      return {res};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const unEnrollInternship = createAsyncThunk(
+  "internship/unEnroll",
+  async ({email, companyName}, {rejectWithValue}) => {
+    try {
+      const url = `http://localhost:5000/intern/unEnrollInternship/${email}`;
+      const {data: res} = await axios.patch(url, {
+        params: {companyName},
+      });
+      console.log(res);
       return {res};
     } catch (error) {
       console.log(error);
@@ -108,6 +146,36 @@ export const internshipReducer = createSlice({
     },
   },
   extraReducers: (build) => {
+    // enroll
+    build
+      .addCase(enrollInternship.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(enrollInternship.fulfilled, (state, {payload: {res}}) => {
+        const {allInternships, enrolledIntern} = res.data;
+        console.log(res);
+        state.isLoading = false;
+        state.internships = [...allInternships];
+      })
+      .addCase(enrollInternship.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+      });
+    // unenroll
+    build
+      .addCase(unEnrollInternship.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(unEnrollInternship.fulfilled, (state, {payload: {res}}) => {
+        const {allInternships, enrolledIntern} = res.data;
+        console.log(res);
+        state.isLoading = false;
+        state.internships = [...allInternships];
+      })
+      .addCase(unEnrollInternship.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+      });
     build
       .addCase(getAllInternship.pending, (state, action) => {
         state.isLoading = true;

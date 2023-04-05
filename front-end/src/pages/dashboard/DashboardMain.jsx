@@ -39,8 +39,15 @@ const DashboardMain = React.memo(() => {
         : date.getMonth() + 1;
     const year = date.getFullYear();
     const today = `${year}-${month}-${day}`;
+    const startDate = new Date(startingDate);
 
-    if (today === startingDate && status !== "Starting") {
+    console.log(date);
+    console.log(startDate);
+
+    // if (today === startingDate && status !== "Starting") {
+    //   dispatch(checkStartingDate({email}));
+    // }
+    if (today >= startingDate && status !== "Starting") {
       dispatch(checkStartingDate({email}));
     }
   }, []);
@@ -132,9 +139,11 @@ const DashboardMain = React.memo(() => {
           <h4>Documents</h4>
           <div className="document-contents">
             {renderDocuments()}
-            <button onClick={() => navigate("/dashboard/documents")}>
-              Manage Documents
-            </button>
+            {documentDetails.length > 0 && (
+              <button onClick={() => navigate("/dashboard/documents")}>
+                Manage Documents
+              </button>
+            )}
           </div>
         </div>
         <div className="internship-details">
@@ -151,6 +160,7 @@ const DashboardMain = React.memo(() => {
           <>
             <div className="overlay"></div>
             <div className="map-con">
+              <h3>Click the map to test location.</h3>
               <ReactMap />
               <button onClick={() => setMapOpen(false)}>Close Map</button>
             </div>

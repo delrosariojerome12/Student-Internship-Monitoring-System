@@ -1,5 +1,3 @@
-/** @format */
-
 import React, {useState} from "react";
 import {FaRegEdit, FaRegCheckCircle} from "react-icons/fa";
 import {useDispatch, useSelector} from "react-redux";
@@ -10,24 +8,46 @@ import {
   deleteInternship,
   handleMessage,
 } from "../../features/coordinator/internship";
+import {
+  enrollInternship,
+  unEnrollInternship,
+} from "../../features/coordinator/internship";
 
 const Internship = React.memo(({internship, editForm}) => {
   const {
     companyName,
-    companyAddress,
     logo: {link},
-    supervisor,
-    supervisorContact,
-    students,
-    typeOfWork,
-    description,
     _id,
   } = internship;
   const {
-    user: {user},
+    user: {user, internshipDetails},
   } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
+
+  const renderButtons = () => {
+    if (internshipDetails.companyName === "") {
+      return (
+        <button
+          onClick={() =>
+            dispatch(enrollInternship({email: user.email, companyName}))
+          }
+        >
+          Enroll
+        </button>
+      );
+    } else if (internshipDetails.companyName === companyName) {
+      return (
+        <button
+          onClick={() =>
+            dispatch(unEnrollInternship({email: user.email, companyName}))
+          }
+        >
+          Unenroll
+        </button>
+      );
+    }
+  };
 
   return (
     <div className="internship">
@@ -46,7 +66,7 @@ const Internship = React.memo(({internship, editForm}) => {
             >
               View
             </button>
-            <button onClick={() => console.log("test")}>Enroll</button>
+            {renderButtons()}
           </div>
         ) : (
           <div className="internship-btn">

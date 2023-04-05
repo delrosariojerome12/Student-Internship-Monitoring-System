@@ -10,6 +10,93 @@ import {ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage";
 import {v4} from "uuid";
 
 import {FaCheck} from "react-icons/fa";
+
+function convertObjectToFields(obj) {
+  const fields = [];
+  for (const key in obj) {
+    if (key === "renderedHours" || key === "startingDate") {
+      continue;
+    }
+    let field = {};
+    switch (key) {
+      case "date":
+        field = {
+          code: "startingDate",
+          errorMessage: "Please Select a Weekday",
+          forInput: "Starting Date",
+          id: "starting-date",
+          isDisabled: false,
+          isError: false,
+          type: "image",
+          value: "",
+        };
+        break;
+      case "logo":
+        field = {
+          code: key,
+          errorMessage: "",
+          forInput: "Logo",
+          id: key,
+          isDisabled: false,
+          isError: false,
+          type: "image",
+          value: obj[key].link,
+        };
+        break;
+      case "description":
+        field = {
+          code: key,
+          errorMessage: "At least 10 characters and max of 500",
+          forInput: "Description",
+          id: key,
+          isDisabled: false,
+          isError: false,
+          type: "textArea",
+          value: obj[key],
+        };
+        break;
+      case "typeOfWork":
+        field = {
+          code: key,
+          errorMessage: "",
+          forInput: "Type of Work",
+          id: key,
+          isDisabled: false,
+          isError: false,
+          type: "list",
+          value: obj[key],
+        };
+        break;
+      case "email":
+        field = {
+          code: key,
+          errorMessage: "",
+          forInput: "email",
+          id: key,
+          isDisabled: false,
+          isError: false,
+          type: "email",
+          value: obj[key],
+        };
+        break;
+      default:
+        field = {
+          code: key,
+          errorMessage: "",
+          forInput: key.charAt(0).toUpperCase() + key.slice(1),
+          id: key,
+          isDisabled: false,
+          isError: false,
+          type: typeof obj[key] === "number" ? "number" : "text",
+          value: obj[key],
+        };
+        break;
+    }
+    fields.push(field);
+  }
+  return fields;
+}
+
 const Verification = React.memo(() => {
   const dispatch = useDispatch();
   const {user} = useSelector((state) => state.user);
@@ -17,7 +104,20 @@ const Verification = React.memo(() => {
   const {
     user: {firstName},
     schoolDetails,
+    internshipDetails,
+    verification: {isRejected, hasSentVerification},
   } = user;
+
+  const {
+    companyName,
+    companyAddress,
+    logo: {link},
+    description,
+    email,
+    supervisor,
+    supervisorContact,
+    typeOfWork,
+  } = internshipDetails;
 
   const [form, setForm] = useState([
     {
@@ -275,11 +375,6 @@ const Verification = React.memo(() => {
   ]);
 
   const convertForm = (form) => {
-    // const newData = form.filter((input) => {
-    //   const {code, value, name} = input;
-    //   return name ? {code, value, name} : {code, value};
-    // });
-
     const newData = form.map((input) => {
       const {code, value, name} = input;
       if (name) {
@@ -329,20 +424,42 @@ const Verification = React.memo(() => {
       if (isSubmitted) {
         if (numOfErrors === 0 && numOfValues === lengthForms) {
           if (position < 3) {
-            const finalForm = {
-              email: user.email,
-              internshipDetails: convertForm([...form[0].forms]),
-              schoolDetails: convertForm([...form[1].forms]),
-              scheduleDetails: convertForm([...form[2].forms]),
-              verification: {
-                hasSentVerification: true,
-                isVerified: false,
-                isRejected: false,
-              },
-            };
+            if (companyName && !isRejected) {
+              const finalForm = {
+                email: user.email,
+                internshipDetails: {
+                  ...internshipDetails,
+                  ...convertForm(
+                    [...form[0].forms].filter(
+                      (item) => item.id === "starting-date"
+                    )
+                  ),
+                },
+                schoolDetails: convertForm([...form[1].forms]),
+                scheduleDetails: convertForm([...form[2].forms]),
+                verification: {
+                  hasSentVerification: true,
+                  isVerified: false,
+                  isRejected: false,
+                },
+              };
 
-            // console.log(finalForm);
-            dispatch(requestVerification(finalForm));
+              dispatch(requestVerification(finalForm));
+            } else {
+              const finalForm = {
+                email: user.email,
+                internshipDetails: convertForm([...form[0].forms]),
+                schoolDetails: convertForm([...form[1].forms]),
+                scheduleDetails: convertForm([...form[2].forms]),
+                verification: {
+                  hasSentVerification: true,
+                  isVerified: false,
+                  isRejected: false,
+                },
+              };
+
+              dispatch(requestVerification(finalForm));
+            }
           }
         }
       }
@@ -380,23 +497,49 @@ const Verification = React.memo(() => {
   );
 
   const checkCompletion = (index) => {
-    let numOfErrors = 0;
-    let numOfValues = 0;
-    form[position].forms.forEach((item) => {
-      item.isError && numOfErrors++;
-      item.value && numOfValues++;
-    });
+    if (companyName && !isRejected) {
+      let numOfErrors = 0;
+      let numOfValues = 0;
 
-    const lengthForms = form[position].forms.length;
-    const newSteps = [...steps];
+      form[position].forms
+        .filter((item) => item.id === "starting-date")
+        .forEach((item) => {
+          item.isError && numOfErrors++;
+          item.value && numOfValues++;
+        });
 
-    if (numOfErrors === 0 && numOfValues === lengthForms) {
-      newSteps[index].isCompleted = true;
-      setSteps(newSteps);
+      const lengthForms = form[position].forms.filter(
+        (item) => item.id === "starting-date"
+      ).length;
+      const newSteps = [...steps];
+
+      if (numOfErrors === 0 && numOfValues === lengthForms) {
+        newSteps[index].isCompleted = true;
+        setSteps(newSteps);
+      } else {
+        newSteps[index].isCompleted = false;
+        setSteps(newSteps);
+      }
     } else {
-      newSteps[index].isCompleted = false;
-      setSteps(newSteps);
+      let numOfErrors = 0;
+      let numOfValues = 0;
+      form[position].forms.forEach((item) => {
+        item.isError && numOfErrors++;
+        item.value && numOfValues++;
+      });
+
+      const lengthForms = form[position].forms.length;
+      const newSteps = [...steps];
+
+      if (numOfErrors === 0 && numOfValues === lengthForms) {
+        newSteps[index].isCompleted = true;
+        setSteps(newSteps);
+      } else {
+        newSteps[index].isCompleted = false;
+        setSteps(newSteps);
+      }
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   };
 
@@ -418,220 +561,59 @@ const Verification = React.memo(() => {
       });
   };
 
-  const handleOnChange = useCallback(
-    (value, group, index, mainIndex) => {
-      const newForm = [...form];
-      const inputField = newForm[mainIndex].forms[index].id;
-      switch (inputField) {
-        case "company-name":
-          value.length >= 2 && value.length <= 75
-            ? (newForm[mainIndex].forms[index].isError = false)
-            : (newForm[mainIndex].forms[index].isError = true);
-          newForm[mainIndex].forms[index].value = value;
-          setForm(newForm);
-          checkCompletion(mainIndex);
-          return;
-        case "company-address":
-          value.length >= 5 && value.length <= 100
-            ? (newForm[mainIndex].forms[index].isError = false)
-            : (newForm[mainIndex].forms[index].isError = true);
-          newForm[mainIndex].forms[index].value = value;
-          setForm(newForm);
-          checkCompletion(mainIndex);
-          return;
-        case "supervisor":
-          newForm[mainIndex].forms[index].value = value;
-          const regex =
-            /^(?=.{2,50}$)(?!(\s.*){3,})(?!\s{3,})[^\d]*(\s[^\d]*){0,2}$/;
-          let isSuperValid = regex.test(value);
-          if (isSuperValid) {
-            newForm[mainIndex].forms[index].isError = false;
-          } else {
-            newForm[mainIndex].forms[index].isError = true;
-            if (/\d/.test(value)) {
-              newForm[mainIndex].forms[index].errorMessage =
-                "Supervisor name should not contain numbers";
-            } else if (value.length < 2) {
-              newForm[mainIndex].forms[index].errorMessage =
-                "Supervisor name should have at least 2 and maximum of 50 characters";
-            } else if (/\s{3,}/.test(value)) {
-              newForm[mainIndex].forms[index].errorMessage =
-                "Supervisor name should have at most 2 white spaces";
-            }
-          }
-          setForm(newForm);
-          checkCompletion(mainIndex);
-          return;
-
-        case "supervisor-contact":
-        case "student-contact":
-          newForm[mainIndex].forms[index].value = value;
-          const passwordRegex = /^(09|\+639)\d{9}$/;
-          let isConctactValid = passwordRegex.test(value);
-          if (isConctactValid) {
-            newForm[mainIndex].forms[index].isError = false;
-          } else {
-            newForm[mainIndex].forms[index].isError = true;
-          }
-          setForm(newForm);
-          checkCompletion(mainIndex);
-          return;
-        case "program":
-          newForm[mainIndex].forms[index].value = value;
-          const programValue = newForm[mainIndex].forms[index].value;
-          checkProgram(programValue, mainIndex, index);
-          setForm(newForm);
-          checkCompletion(mainIndex);
-          return;
-        case "student-number":
-          const studentNumberRegex = /^A20200\d{4}$/;
-          const isStudentNumbetValid = studentNumberRegex.test(value);
-          isStudentNumbetValid
-            ? (newForm[mainIndex].forms[index].isError = false)
-            : (newForm[mainIndex].forms[index].isError = true);
-
-          newForm[mainIndex].forms[index].value = value;
-          setForm(newForm);
-          checkCompletion(mainIndex);
-          return;
-        case "valid-id":
-        case "logo":
-          if (schoolDetails) {
-            const {
-              validID: {name},
-            } = schoolDetails;
-            deleteDuplicateFirebase(name);
-          }
-          if (value) {
-            const {name, type} = value;
-            if (!type.includes("image")) {
-              newForm[mainIndex].forms[index].isError = true;
-              newForm[mainIndex].forms[index].errorMessage =
-                "Invalid file type";
-              newForm[mainIndex].forms[index].value = "";
-              setForm(newForm);
-            } else {
-              const imageName = `images/validID/${v4() + name}`;
-              const imageRef = ref(storage, imageName);
-
-              uploadBytes(imageRef, value)
-                .then((res) => {
-                  getDownloadURL(res.ref)
-                    .then((url) => {
-                      newForm[mainIndex].forms[index].isError = false;
-                      newForm[mainIndex].forms[index].link = url;
-                      newForm[mainIndex].forms[index].value = url;
-                      newForm[mainIndex].forms[index].name = imageName;
-                      newForm[mainIndex].forms[index].isDisabled = true;
-                      setForm(newForm);
-                      checkCompletion(mainIndex);
-                    })
-                    .catch((err) => console.log(err));
-                })
-                .catch((err) => console.log(err));
-            }
-          }
-
-          return;
-        case "schedule-type":
-          if (value === "Regular") {
-            newForm[mainIndex].forms[index].value = value;
-            newForm[mainIndex].forms[index + 1].value = "8:00 AM";
-            newForm[mainIndex].forms[index + 2].value = "5:00 PM";
-            newForm[mainIndex].forms[index + 3].value = "Monday - Friday";
-          } else {
-            newForm[mainIndex].forms[index].value = value;
-            newForm[mainIndex].forms[index + 1].value = "Not Specified";
-            newForm[mainIndex].forms[index + 2].value = "Not Specified";
-            newForm[mainIndex].forms[index + 3].value = "Not Specified";
-          }
-          let numOfErrors = 0;
-          let numOfValues = 0;
-          form[position].forms.forEach((item) => {
-            item.isError && numOfErrors++;
-            item.value && numOfValues++;
-          });
-          const lengthForms = form[position].forms.length;
-          if (numOfErrors === 0 && numOfValues === lengthForms) {
-            setComplete(true);
-          }
-          setForm(newForm);
-          checkCompletion(mainIndex);
-          return;
-        case "description":
-          if (
-            value.length >= newForm[mainIndex].forms[index].minLength &&
-            value.length <= newForm[mainIndex].forms[index].maxLength
-          ) {
-            newForm[mainIndex].forms[index].isError = false;
-          } else {
-            newForm[mainIndex].forms[index].isError = true;
-          }
-
-          newForm[mainIndex].forms[index].value = value;
-          setForm(newForm);
-          checkCompletion(mainIndex);
-          return;
-        case "email":
-          const emailRegex =
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-          let isValid = emailRegex.test(value);
-          isValid
-            ? (newForm[mainIndex].forms[index].isError = false)
-            : (newForm[mainIndex].forms[index].isError = true);
-
-          newForm[mainIndex].forms[index].value = value.slice(0).toLowerCase();
-          setForm(newForm);
-          checkCompletion(mainIndex);
-          return;
-
-        case "starting-date":
-          const selectedDate = new Date(value);
-          const dayOfWeek = selectedDate.getDay();
-
-          // Check if the selected date is a weekend
-          if (dayOfWeek === 0 || dayOfWeek === 6) {
-            newForm[mainIndex].forms[index].isError = true;
-            newForm[mainIndex].forms[index].value = "";
-          } else {
-            newForm[mainIndex].forms[index].isError = false;
-            newForm[mainIndex].forms[index].value = value;
-          }
-
-          setForm(newForm);
-          checkCompletion(mainIndex);
-          return;
-
-        default:
-          newForm[mainIndex].forms[index].value = value;
-          setForm(newForm);
-          checkCompletion(mainIndex);
-          return;
-      }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [checkProgram, form, position]
-  );
-
   const handleNext = (e) => {
     e.preventDefault();
     let numOfErrors = 0;
     let numOfValues = 0;
-    form[position].forms.forEach((item) => {
-      item.isError && numOfErrors++;
-      item.value && numOfValues++;
-    });
 
-    const lengthForms = form[position].forms.length;
+    if (companyName && !isRejected) {
+      if (position >= 1) {
+        form[position].forms.forEach((item) => {
+          item.isError && numOfErrors++;
+          item.value && numOfValues++;
+        });
 
-    if (numOfErrors === 0 && numOfValues === lengthForms) {
-      if (position < 2) {
-        setPosition((prev) => prev + 1);
+        const lengthForms = form[position].forms.length;
+
+        if (numOfErrors === 0 && numOfValues === lengthForms) {
+          if (position < 2) {
+            setPosition((prev) => prev + 1);
+          }
+        }
+      } else {
+        form[position].forms
+          .filter((item) => item.id === "starting-date")
+          .forEach((item) => {
+            item.isError && numOfErrors++;
+            item.value && numOfValues++;
+          });
+
+        const lengthForms = form[position].forms.filter(
+          (item) => item.id === "starting-date"
+        ).length;
+
+        if (numOfErrors === 0 && numOfValues === lengthForms) {
+          console.log("test");
+
+          if (position < 2) {
+            setPosition((prev) => prev + 1);
+          }
+        }
+      }
+    } else {
+      form[position].forms.forEach((item) => {
+        item.isError && numOfErrors++;
+        item.value && numOfValues++;
+      });
+
+      const lengthForms = form[position].forms.length;
+
+      if (numOfErrors === 0 && numOfValues === lengthForms) {
+        if (position < 2) {
+          setPosition((prev) => prev + 1);
+        }
       }
     }
-    // if (position < 2) {
-    //   setPosition((prev) => prev + 1);
-    // }
   };
 
   const handleReturn = (e) => {
@@ -668,6 +650,222 @@ const Verification = React.memo(() => {
       marginTop: 0,
     }),
   };
+
+  const handleOnChange = useCallback(
+    (value, group, index, mainIndex) => {
+      const newForm = [...form];
+
+      if (companyName && !isRejected && position === 0) {
+        const inputField = newForm[mainIndex].forms[7].id;
+        switch (inputField) {
+          case "starting-date":
+            const selectedDate = new Date(value);
+            const dayOfWeek = selectedDate.getDay();
+
+            if (dayOfWeek === 0 || dayOfWeek === 6) {
+              newForm[mainIndex].forms[7].isError = true;
+              newForm[mainIndex].forms[7].value = "";
+            } else {
+              newForm[mainIndex].forms[7].isError = false;
+              newForm[mainIndex].forms[7].value = value;
+            }
+
+            setForm(newForm);
+            checkCompletion(mainIndex);
+            return;
+        }
+      } else {
+        const inputField = newForm[mainIndex].forms[index].id;
+
+        switch (inputField) {
+          case "starting-date":
+            const selectedDate = new Date(value);
+            const dayOfWeek = selectedDate.getDay();
+
+            // Check if the selected date is a weekend
+            if (dayOfWeek === 0 || dayOfWeek === 6) {
+              newForm[mainIndex].forms[index].isError = true;
+              newForm[mainIndex].forms[index].value = "";
+            } else {
+              newForm[mainIndex].forms[index].isError = false;
+              newForm[mainIndex].forms[index].value = value;
+            }
+
+            setForm(newForm);
+            checkCompletion(mainIndex);
+            return;
+          case "company-name":
+            value.length >= 2 && value.length <= 75
+              ? (newForm[mainIndex].forms[index].isError = false)
+              : (newForm[mainIndex].forms[index].isError = true);
+            newForm[mainIndex].forms[index].value = value;
+            setForm(newForm);
+            checkCompletion(mainIndex);
+            return;
+          case "company-address":
+            value.length >= 5 && value.length <= 100
+              ? (newForm[mainIndex].forms[index].isError = false)
+              : (newForm[mainIndex].forms[index].isError = true);
+            newForm[mainIndex].forms[index].value = value;
+            setForm(newForm);
+            checkCompletion(mainIndex);
+            return;
+          case "supervisor":
+            newForm[mainIndex].forms[index].value = value;
+            const regex =
+              /^(?=.{2,50}$)(?!(\s.*){3,})(?!\s{3,})[^\d]*(\s[^\d]*){0,2}$/;
+            let isSuperValid = regex.test(value);
+            if (isSuperValid) {
+              newForm[mainIndex].forms[index].isError = false;
+            } else {
+              newForm[mainIndex].forms[index].isError = true;
+              if (/\d/.test(value)) {
+                newForm[mainIndex].forms[index].errorMessage =
+                  "Supervisor name should not contain numbers";
+              } else if (value.length < 2) {
+                newForm[mainIndex].forms[index].errorMessage =
+                  "Supervisor name should have at least 2 and maximum of 50 characters";
+              } else if (/\s{3,}/.test(value)) {
+                newForm[mainIndex].forms[index].errorMessage =
+                  "Supervisor name should have at most 2 white spaces";
+              }
+            }
+            setForm(newForm);
+            checkCompletion(mainIndex);
+            return;
+          case "supervisor-contact":
+          case "student-contact":
+            newForm[mainIndex].forms[index].value = value;
+            const passwordRegex = /^(09|\+639)\d{9}$/;
+            let isConctactValid = passwordRegex.test(value);
+            if (isConctactValid) {
+              newForm[mainIndex].forms[index].isError = false;
+            } else {
+              newForm[mainIndex].forms[index].isError = true;
+            }
+            setForm(newForm);
+            checkCompletion(mainIndex);
+            return;
+          case "program":
+            newForm[mainIndex].forms[index].value = value;
+            const programValue = newForm[mainIndex].forms[index].value;
+            checkProgram(programValue, mainIndex, index);
+            setForm(newForm);
+            checkCompletion(mainIndex);
+            return;
+          case "student-number":
+            const studentNumberRegex = /^A20200\d{4}$/;
+            const isStudentNumbetValid = studentNumberRegex.test(value);
+            isStudentNumbetValid
+              ? (newForm[mainIndex].forms[index].isError = false)
+              : (newForm[mainIndex].forms[index].isError = true);
+
+            newForm[mainIndex].forms[index].value = value;
+            setForm(newForm);
+            checkCompletion(mainIndex);
+            return;
+          case "valid-id":
+          case "logo":
+            if (schoolDetails) {
+              const {
+                validID: {name},
+              } = schoolDetails;
+              deleteDuplicateFirebase(name);
+            }
+            if (value) {
+              const {name, type} = value;
+              if (!type.includes("image")) {
+                newForm[mainIndex].forms[index].isError = true;
+                newForm[mainIndex].forms[index].errorMessage =
+                  "Invalid file type";
+                newForm[mainIndex].forms[index].value = "";
+                setForm(newForm);
+              } else {
+                const imageName = `images/validID/${v4() + name}`;
+                const imageRef = ref(storage, imageName);
+
+                uploadBytes(imageRef, value)
+                  .then((res) => {
+                    getDownloadURL(res.ref)
+                      .then((url) => {
+                        newForm[mainIndex].forms[index].isError = false;
+                        newForm[mainIndex].forms[index].link = url;
+                        newForm[mainIndex].forms[index].value = url;
+                        newForm[mainIndex].forms[index].name = imageName;
+                        newForm[mainIndex].forms[index].isDisabled = true;
+                        setForm(newForm);
+                        checkCompletion(mainIndex);
+                      })
+                      .catch((err) => console.log(err));
+                  })
+                  .catch((err) => console.log(err));
+              }
+            }
+            return;
+          case "schedule-type":
+            if (value === "Regular") {
+              newForm[mainIndex].forms[index].value = value;
+              newForm[mainIndex].forms[index + 1].value = "8:00 AM";
+              newForm[mainIndex].forms[index + 2].value = "5:00 PM";
+              newForm[mainIndex].forms[index + 3].value = "Monday - Friday";
+            } else {
+              newForm[mainIndex].forms[index].value = value;
+              newForm[mainIndex].forms[index + 1].value = "Not Specified";
+              newForm[mainIndex].forms[index + 2].value = "Not Specified";
+              newForm[mainIndex].forms[index + 3].value = "Not Specified";
+            }
+            let numOfErrors = 0;
+            let numOfValues = 0;
+            form[position].forms.forEach((item) => {
+              item.isError && numOfErrors++;
+              item.value && numOfValues++;
+            });
+            const lengthForms = form[position].forms.length;
+            if (numOfErrors === 0 && numOfValues === lengthForms) {
+              setComplete(true);
+            }
+            setForm(newForm);
+            checkCompletion(mainIndex);
+            return;
+          case "description":
+            if (
+              value.length >= newForm[mainIndex].forms[index].minLength &&
+              value.length <= newForm[mainIndex].forms[index].maxLength
+            ) {
+              newForm[mainIndex].forms[index].isError = false;
+            } else {
+              newForm[mainIndex].forms[index].isError = true;
+            }
+
+            newForm[mainIndex].forms[index].value = value;
+            setForm(newForm);
+            checkCompletion(mainIndex);
+            return;
+          case "email":
+            const emailRegex =
+              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            let isValid = emailRegex.test(value);
+            isValid
+              ? (newForm[mainIndex].forms[index].isError = false)
+              : (newForm[mainIndex].forms[index].isError = true);
+
+            newForm[mainIndex].forms[index].value = value
+              .slice(0)
+              .toLowerCase();
+            setForm(newForm);
+            checkCompletion(mainIndex);
+            return;
+          default:
+            newForm[mainIndex].forms[index].value = value;
+            setForm(newForm);
+            checkCompletion(mainIndex);
+            return;
+        }
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [checkProgram, form, position]
+  );
 
   const renderInputs = (arr, group, mainIndex) => {
     return arr.map((item, index) => {
@@ -712,12 +910,7 @@ const Verification = React.memo(() => {
                 name={forInput}
               />
               <div className="placeholder-container">
-                <label
-                  htmlFor={id}
-                  className={
-                    value ? "placeholder-text active" : "placeholder-text"
-                  }
-                >
+                <label htmlFor={id} className={"placeholder-text active"}>
                   <div className="text">{forInput}</div>
                 </label>
               </div>
@@ -914,6 +1107,93 @@ const Verification = React.memo(() => {
     });
   };
 
+  const renderEnrolledInputs = (arr) => {
+    return arr.map((item, index) => {
+      const {type, id, value, forInput, isError, errorMessage, link} = item;
+      switch (type) {
+        case "list":
+        case "email":
+        case "text":
+          return (
+            <div className="input-contain" key={index}>
+              <input
+                tabIndex={-1}
+                disabled
+                required
+                value={value}
+                type={type}
+                name={forInput}
+              />
+              <div className="placeholder-container">
+                <label
+                  htmlFor={id}
+                  className={
+                    value ? "placeholder-text active" : "placeholder-text"
+                  }
+                >
+                  <div className="text">{forInput}</div>
+                </label>
+              </div>
+              {isError && <p className="error-message">{errorMessage}</p>}
+            </div>
+          );
+        case "image":
+          return (
+            <div className="img-input" key={index}>
+              <label htmlFor={id}>
+                <h4>{forInput}:</h4>
+                <input
+                  disabled
+                  tabIndex={-1}
+                  required
+                  type="file"
+                  name={id}
+                  id={id}
+                  accept="image/*"
+                />
+                {!isError && !value && <p>Select File</p>}
+                {isError && (
+                  <p
+                    style={{color: "red", fontSize: "18px"}}
+                    className="error-message"
+                  >
+                    {errorMessage}{" "}
+                  </p>
+                )}
+                <img onClick={handleImageView} src={value} alt={id} />
+              </label>
+            </div>
+          );
+        case "textArea":
+          return (
+            <div className="input-contain" key={index}>
+              <textarea
+                tabIndex={-1}
+                disabled
+                required
+                value={value}
+                type={type}
+                name={forInput}
+              ></textarea>
+              <div className="placeholder-container">
+                <label
+                  htmlFor={id}
+                  className={
+                    value ? "placeholder-text active" : "placeholder-text"
+                  }
+                >
+                  <div className="text">{forInput}</div>
+                </label>
+              </div>
+              {isError && <p className="error-message">{errorMessage}</p>}
+            </div>
+          );
+        default:
+          return null;
+      }
+    });
+  };
+
   const renderSteps = () => {
     return steps.map((item, index) => {
       const {step, isCompleted} = item;
@@ -936,7 +1216,6 @@ const Verification = React.memo(() => {
     });
   };
 
-  // send verification
   useEffect(
     (e) => {
       if (isSubmitted) {
@@ -944,23 +1223,10 @@ const Verification = React.memo(() => {
         handleSuccessModal(true);
         handleFinalizing(false);
       }
-      // if (imageList.length === 0) {
-      //   const imageListRef = ref(storage, "images/validID/");
-      //   listAll(imageListRef).then((res) => {
-      //     // setImageList(res);
-      //     // console.log(res);
-      //     res.items.forEach((item) => {
-      //       getDownloadURL(item).then((url) => {
-      //         // console.log(url);
-      //         // setImageList((imageList) => [...imageList, url]);
-      //         setImageList((prev) => [...prev, url]);
-      //       });
-      //     });
-      //   });
-      // }
     },
     [isSubmitted, handleSubmit]
   );
+
   return (
     <section className="verification-container">
       {isFinalizing ? (
@@ -993,22 +1259,50 @@ const Verification = React.memo(() => {
           <h2>{form[position].group}</h2>
         </div>
         <form onSubmit={handleSubmit}>
-          <div
-            className={
-              position === 0
-                ? "internship-details"
-                : position === 2
-                ? "internship-details inactive-1"
-                : "internship-details inactive"
-            }
-          >
-            <div className="forms-con">
-              {renderInputs(form[0].forms, "Internship Details", 0)}
+          {companyName || isRejected ? (
+            <div
+              className={
+                position === 0
+                  ? "internship-details"
+                  : position === 2
+                  ? "internship-details inactive-1"
+                  : "internship-details inactive"
+              }
+            >
+              <div className="forms-con">
+                {renderEnrolledInputs(
+                  convertObjectToFields({
+                    ...internshipDetails,
+                  })
+                )}
+                {renderInputs(
+                  form[0].forms.filter((item) => item.id === "starting-date"),
+                  "Internship Details",
+                  0
+                )}
+              </div>
+              <button tabIndex={-1} onClick={handleNext}>
+                Next
+              </button>
             </div>
-            <button tabIndex={-1} onClick={handleNext}>
-              Next
-            </button>
-          </div>
+          ) : (
+            <div
+              className={
+                position === 0
+                  ? "internship-details"
+                  : position === 2
+                  ? "internship-details inactive-1"
+                  : "internship-details inactive"
+              }
+            >
+              <div className="forms-con">
+                {renderInputs(form[0].forms, "Internship Details", 0)}
+              </div>
+              <button tabIndex={-1} onClick={handleNext}>
+                Next
+              </button>
+            </div>
+          )}
           <div
             className={
               position === 1
