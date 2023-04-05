@@ -1,17 +1,17 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 // import searchIcon from "../../assets/img/search.svg";
-import { useSelector, useDispatch } from "react-redux";
-import { BiSearchAlt } from "react-icons/bi";
-import { checkStartingDate } from "../../features/interns/attendanceReducer";
-import { useNavigate } from "react-router";
+import {useSelector, useDispatch} from "react-redux";
+import {BiSearchAlt} from "react-icons/bi";
+import {checkStartingDate} from "../../features/interns/attendanceReducer";
+import {useNavigate} from "react-router";
 import ReactMap from "../../components/utils/ReactMap";
-
+import Waiting from "../../assets/img/waiting.svg";
 const DashboardMain = React.memo(() => {
   const {
     user: {
-      user: { firstName },
+      user: {firstName},
       email,
       internshipDetails: {
         renderedHours,
@@ -22,7 +22,7 @@ const DashboardMain = React.memo(() => {
         supervisorContact,
         email: supEmail,
       },
-      schoolDetails: { requiredHours },
+      schoolDetails: {requiredHours},
       documentDetails,
       status,
     },
@@ -41,20 +41,33 @@ const DashboardMain = React.memo(() => {
         : date.getMonth() + 1;
     const year = date.getFullYear();
     const today = `${year}-${month}-${day}`;
+    const startDate = new Date(startingDate);
 
-    if (today === startingDate && status !== "Starting") {
-      dispatch(checkStartingDate({ email }));
+    console.log(date);
+    console.log(startDate);
+
+    // if (today === startingDate && status !== "Starting") {
+    //   dispatch(checkStartingDate({email}));
+    // }
+    if (today >= startingDate && status !== "Starting") {
+      dispatch(checkStartingDate({email}));
     }
   }, []);
 
   const renderDocuments = () => {
     if (documentDetails.length === 0) {
-      return <h3>Please Reload, it may take some time.</h3>;
+      return (
+        <div className="no-content">
+          <h3>No Reports found.</h3>
+          <h3>Please Reload, it may take some time.</h3>;
+          <img src={Waiting} alt="waiting" />
+        </div>
+      );
     }
     return documentDetails.map((item, index) => {
       const {
-        document: { name, format },
-        completion: { isApproved, hasSent, isRejected },
+        document: {name, format},
+        completion: {isApproved, hasSent, isRejected},
       } = item;
       return (
         <div className="document-dashboard" key={index}>
@@ -69,7 +82,8 @@ const DashboardMain = React.memo(() => {
                 : isRejected
                 ? "#e63946"
                 : "#F18805",
-            }}>
+            }}
+          >
             {isApproved
               ? "Approved"
               : hasSent
@@ -133,13 +147,13 @@ const DashboardMain = React.memo(() => {
         </div>
         <div className="documents">
           <h4>Documents</h4>
-          <div className="document-container">
-            <div className="btn-document">
+          <div className="document-contents">
+            {renderDocuments()}
+            {documentDetails.length > 0 && (
               <button onClick={() => navigate("/dashboard/documents")}>
                 Manage Documents
               </button>
-            </div>
-            <div className="document-contents">{renderDocuments()}</div>
+            )}
           </div>
         </div>
         <div className="internship-details">

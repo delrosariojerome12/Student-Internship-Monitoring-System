@@ -16,23 +16,21 @@ import {
 const Internship = React.memo(({internship, editForm}) => {
   const {
     companyName,
-    companyAddress,
     logo: {link},
-    supervisor,
-    supervisorContact,
-    students,
-    typeOfWork,
-    description,
     _id,
   } = internship;
   const {
-    user: {user, internshipDetails},
+    user: {
+      user,
+      internshipDetails,
+      // verification: {isRejected},
+    },
   } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
 
   const renderButtons = () => {
-    if (internshipDetails.companyName === "") {
+    if (!internshipDetails.companyName) {
       return (
         <button
           onClick={() =>
@@ -46,7 +44,7 @@ const Internship = React.memo(({internship, editForm}) => {
       return (
         <button
           onClick={() =>
-            dispatch(enrollInternship({email: user.email, companyName}))
+            dispatch(unEnrollInternship({email: user.email, companyName}))
           }
         >
           Unenroll

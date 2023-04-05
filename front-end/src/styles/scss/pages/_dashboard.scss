@@ -174,31 +174,33 @@
           color: #fff;
           text-align: center;
         }
-        .document-container {
-          background-color: $light-bg-color;
+        .document-contents {
+          background-color: #282b30;
           height: 100%;
           border-radius: 2rem;
           padding: 1rem;
           overflow-y: auto;
           display: grid;
           gap: 1rem;
-          .document-contents {
-            display: grid;
-            gap: 1rem;
-            .document-dashboard {
-              background-color: #d9d9d9;
-              border-radius: 1rem;
-              padding: 1rem;
-              display: grid;
-              gap: 1rem;
-              grid-template-columns: repeat(3, 1fr);
-              & > :nth-child(2),
-              & > :nth-child(3) {
-                text-align: center;
-              }
+
+          .no-content {
+            color: #fff;
+            padding: 2rem;
+            border-radius: 1rem;
+            background-color: #282b30;
+            @include flexCenter;
+            flex-direction: column;
+            img {
+              height: 30rem;
+              width: 30rem;
             }
           }
-          .btn-document {
+
+          .document-dashboard {
+            background-color: $primary-compliment-landing;
+            color: #fff;
+            border-radius: 1rem;
+            padding: 1rem;
             display: flex;
             justify-content: flex-end;
           }

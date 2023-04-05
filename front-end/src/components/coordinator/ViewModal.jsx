@@ -31,13 +31,14 @@ const ViewModal = React.memo(({form}) => {
       })
       .filter((x) => x);
 
+    console.log(final);
     return final;
   };
 
   const {students, companyName} = selectedInternship[0];
 
   const renderButtons = () => {
-    if (internshipDetails.companyName === "") {
+    if (!internshipDetails.companyName) {
       return (
         <button
           onClick={() => dispatch(enrollInternship({email, companyName}))}
@@ -48,7 +49,7 @@ const ViewModal = React.memo(({form}) => {
     } else if (internshipDetails.companyName === companyName) {
       return (
         <button
-          onClick={() => dispatch(enrollInternship({email, companyName}))}
+          onClick={() => dispatch(unEnrollInternship({email, companyName}))}
         >
           Unenroll
         </button>
