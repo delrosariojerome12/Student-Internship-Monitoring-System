@@ -38,7 +38,7 @@ const ViewModal = React.memo(({form}) => {
   const {students, companyName} = selectedInternship[0];
 
   const renderButtons = () => {
-    if (internshipDetails.companyName === "") {
+    if (!internshipDetails.companyName) {
       return (
         <button
           onClick={() => dispatch(enrollInternship({email, companyName}))}
