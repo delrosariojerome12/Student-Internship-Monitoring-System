@@ -114,67 +114,6 @@ const updateIntern = async (req, res) => {
   }
 };
 
-// const updateIntern = async (req, res) => {
-//   console.log(req.body);
-
-//   try {
-//     const {email, internshipDetails} = req.body;
-
-//     const user = await Intern.findOne({email}).populate({
-//       path: "user",
-//       model: "User",
-//     });
-
-//     if (!user) {
-//       throw new NotFound(`Email not found`);
-//     }
-
-//     if (internshipDetails) {
-//       const {renderedHours, ...details} = internshipDetails;
-
-//       const doesExist = await Internship.findOne({
-//         companyName: details.companyName,
-//       });
-
-//       if (!doesExist) {
-//         console.log("here");
-//         var internship = await Internship.updateOne(
-//           {companyName: details.companyName},
-//           {$set: details},
-//           {upsert: true}
-//         );
-//       }
-
-//       const interns = await Intern.find({}).populate({
-//         path: "user",
-//         model: "User",
-//       });
-
-//       return res
-//         .status(StatusCodes.OK)
-//         .json({user, interns, internship, doesExist});
-//     }
-
-//     const interns = await Intern.find({}).populate({
-//       path: "user",
-//       model: "User",
-//     });
-
-//     return res.status(StatusCodes.OK).json({user, interns});
-//   } catch (error) {
-//     console.error(error);
-//     return res
-//       .status(StatusCodes.INTERNAL_SERVER_ERROR)
-//       .json({error: error.message});
-//   }
-// };
-
-// const handleRequest = async (req, res) => {
-//   const {email, form} = req.params;
-
-//   res.status(StatusCodes.OK).json({msg: "test"});
-// };
-
 const updateDocuments = async (req, res) => {
   const {email} = req.params;
   const documents = await Document.find({});
@@ -413,5 +352,4 @@ module.exports = {
   rejectDocument,
   enrollInternship,
   unEnrolledInternship,
-  handleRequest,
 };
