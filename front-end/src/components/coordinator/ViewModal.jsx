@@ -17,6 +17,17 @@ const ViewModal = React.memo(({form}) => {
   const {selectedInternship} = useSelector((state) => state.internship);
   const dispatch = useDispatch();
 
+  const typeOrder = [
+    "company-name",
+    "company-address",
+    "description",
+    "email",
+    "logo",
+    "supervisor",
+    "supervisor-contact",
+    "duties",
+  ];
+
   const convertForm = () => {
     const entries = Object.entries(selectedInternship[0]).map((item) => {
       const x = Object.assign({}, item);
@@ -28,11 +39,13 @@ const ViewModal = React.memo(({form}) => {
         const newForm = form.map(
           (item) => item.code === i.code && {...item, value: i.value}
         );
+
         return newForm.filter((c) => c).sort((item) => item.type)[0];
       })
       .filter((x) => x);
 
     console.log(final);
+
     return final;
   };
 
@@ -77,13 +90,13 @@ const ViewModal = React.memo(({form}) => {
               value: {link, name},
             } = item;
             return (
-              <div key={index} className="input img-con">
+              <div key={index} className={`input img-con ${id}`}>
                 <img src={link} alt="logo" />
               </div>
             );
           }
           return (
-            <div key={index} className="input text-con">
+            <div key={index} className={`input text-con ${id}`}>
               <h4>{forInput}</h4>
               <p>{value}</p>
             </div>
