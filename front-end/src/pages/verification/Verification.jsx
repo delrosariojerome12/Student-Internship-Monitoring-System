@@ -424,7 +424,28 @@ const Verification = React.memo(() => {
       if (isSubmitted) {
         if (numOfErrors === 0 && numOfValues === lengthForms) {
           if (position < 3) {
-            if (companyName && !isRejected) {
+            if (companyName && isRejected) {
+              const finalForm = {
+                email: user.email,
+                internshipDetails: {
+                  ...internshipDetails,
+                  ...convertForm(
+                    [...form[0].forms].filter(
+                      (item) => item.id === "starting-date"
+                    )
+                  ),
+                },
+                schoolDetails: convertForm([...form[1].forms]),
+                scheduleDetails: convertForm([...form[2].forms]),
+                verification: {
+                  hasSentVerification: true,
+                  isVerified: false,
+                  isRejected: false,
+                },
+              };
+
+              dispatch(requestVerification(finalForm));
+            } else if (companyName && !isRejected) {
               const finalForm = {
                 email: user.email,
                 internshipDetails: {
@@ -497,28 +518,53 @@ const Verification = React.memo(() => {
   );
 
   const checkCompletion = (index) => {
-    if (companyName && !isRejected) {
-      let numOfErrors = 0;
-      let numOfValues = 0;
+    if (companyName && isRejected) {
+      if (position >= 1) {
+        let numOfErrors = 0;
+        let numOfValues = 0;
 
-      form[position].forms
-        .filter((item) => item.id === "starting-date")
-        .forEach((item) => {
+        form[position].forms.forEach((item) => {
           item.isError && numOfErrors++;
           item.value && numOfValues++;
         });
 
-      const lengthForms = form[position].forms.filter(
-        (item) => item.id === "starting-date"
-      ).length;
-      const newSteps = [...steps];
+        const lengthForms = form[position].forms.length;
+        const newSteps = [...steps];
 
-      if (numOfErrors === 0 && numOfValues === lengthForms) {
-        newSteps[index].isCompleted = true;
-        setSteps(newSteps);
+        console.log(numOfErrors, numOfValues, lengthForms);
+
+        if (numOfErrors === 0 && numOfValues === lengthForms) {
+          newSteps[index].isCompleted = true;
+          setSteps(newSteps);
+        } else {
+          newSteps[index].isCompleted = false;
+          setSteps(newSteps);
+        }
       } else {
-        newSteps[index].isCompleted = false;
-        setSteps(newSteps);
+        let numOfErrors = 0;
+        let numOfValues = 0;
+
+        form[position].forms
+          .filter((item) => item.id === "starting-date")
+          .forEach((item) => {
+            item.isError && numOfErrors++;
+            item.value && numOfValues++;
+          });
+
+        const lengthForms = form[position].forms.filter(
+          (item) => item.id === "starting-date"
+        ).length;
+        const newSteps = [...steps];
+
+        console.log(numOfErrors, numOfValues, lengthForms);
+
+        if (numOfErrors === 0 && numOfValues === lengthForms) {
+          newSteps[index].isCompleted = true;
+          setSteps(newSteps);
+        } else {
+          newSteps[index].isCompleted = false;
+          setSteps(newSteps);
+        }
       }
     } else {
       let numOfErrors = 0;
@@ -566,7 +612,42 @@ const Verification = React.memo(() => {
     let numOfErrors = 0;
     let numOfValues = 0;
 
-    if (companyName && !isRejected) {
+    if (companyName && isRejected) {
+      console.log("1");
+      if (position >= 1) {
+        form[position].forms.forEach((item) => {
+          item.isError && numOfErrors++;
+          item.value && numOfValues++;
+        });
+
+        const lengthForms = form[position].forms.length;
+
+        if (numOfErrors === 0 && numOfValues === lengthForms) {
+          if (position < 2) {
+            setPosition((prev) => prev + 1);
+          }
+        }
+      } else {
+        form[position].forms
+          .filter((item) => item.id === "starting-date")
+          .forEach((item) => {
+            item.isError && numOfErrors++;
+            item.value && numOfValues++;
+          });
+
+        const lengthForms = form[position].forms.filter(
+          (item) => item.id === "starting-date"
+        ).length;
+
+        if (numOfErrors === 0 && numOfValues === lengthForms) {
+          console.log("test");
+
+          if (position < 2) {
+            setPosition((prev) => prev + 1);
+          }
+        }
+      }
+    } else if (companyName && !isRejected) {
       if (position >= 1) {
         form[position].forms.forEach((item) => {
           item.isError && numOfErrors++;
@@ -601,6 +682,7 @@ const Verification = React.memo(() => {
         }
       }
     } else {
+      console.log("2");
       form[position].forms.forEach((item) => {
         item.isError && numOfErrors++;
         item.value && numOfValues++;
@@ -655,7 +737,8 @@ const Verification = React.memo(() => {
     (value, group, index, mainIndex) => {
       const newForm = [...form];
 
-      if (companyName && !isRejected && position === 0) {
+      if (companyName && position === 0) {
+        console.log("1");
         const inputField = newForm[mainIndex].forms[7].id;
         switch (inputField) {
           case "starting-date":
@@ -675,6 +758,7 @@ const Verification = React.memo(() => {
             return;
         }
       } else {
+        console.log("2");
         const inputField = newForm[mainIndex].forms[index].id;
 
         switch (inputField) {
@@ -770,7 +854,7 @@ const Verification = React.memo(() => {
               const {
                 validID: {name},
               } = schoolDetails;
-              deleteDuplicateFirebase(name);
+              // deleteDuplicateFirebase(name);
             }
             if (value) {
               const {name, type} = value;
@@ -1259,7 +1343,7 @@ const Verification = React.memo(() => {
           <h2>{form[position].group}</h2>
         </div>
         <form onSubmit={handleSubmit}>
-          {companyName || isRejected ? (
+          {companyName ? (
             <div
               className={
                 position === 0

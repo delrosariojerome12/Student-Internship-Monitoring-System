@@ -52,6 +52,34 @@ const Waiting = React.memo((user) => {
     );
   }
 
+  if (!companyName) {
+    return (
+      <div className="waiting-container-pending">
+        <IconContext.Provider value={{className: "icons"}}>
+          <header>
+            <div className="text">
+              <h3>Your request for approval has been rejected.</h3>
+              <p>
+                To know more how to get immdiate approval please follow the
+                remarks.
+              </p>
+            </div>
+            <div className="remarks-container">
+              <h5>Remarks:</h5>
+              <div className="remarks">
+                <img src={RejectErrorSvg} alt="" />
+                <h6>{remarks}</h6>
+              </div>
+            </div>
+          </header>
+          <button onClick={() => navigate("/dashboard/verification")}>
+            Resubmit
+          </button>
+        </IconContext.Provider>
+      </div>
+    );
+  }
+
   return (
     <div className="waiting-container-pending">
       <IconContext.Provider value={{className: "icons"}}>
