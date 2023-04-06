@@ -26,7 +26,7 @@ export const getAllAttendance = createAsyncThunk(
   async ({email, scheduleDetails}, {rejectWithValue}) => {
     try {
       const apiKey = "YWPMVZTIXVDO";
-      const apiUrl = `http://api.timezonedb.com/v2.1/get-time-zone?key=${apiKey}&format=json&by=zone&zone=Asia/Manila`;
+      const apiUrl = `https://api.timezonedb.com/v2.1/get-time-zone?key=${apiKey}&format=json&by=zone&zone=Asia/Manila`;
       const response = await axios.get(apiUrl);
 
       const dateTime = response.data.formatted;
