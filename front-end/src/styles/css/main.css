@@ -980,7 +980,7 @@ button {
 }
 .dashboard .main header, .dashboard-active .main header {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr;
   padding: 0 1rem;
   gap: 1rem;
 }
@@ -998,30 +998,6 @@ button {
 }
 .dashboard .main header .name-container h4, .dashboard-active .main header .name-container h4 {
   font-size: 2rem;
-}
-.dashboard .main header .search-box, .dashboard-active .main header .search-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f1faee;
-  width: 80%;
-  border-radius: 2rem;
-  padding: 0 1.5rem;
-  margin: auto;
-}
-.dashboard .main header .search-box span, .dashboard-active .main header .search-box span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  cursor: pointer;
-}
-.dashboard .main header .search-box input, .dashboard-active .main header .search-box input {
-  width: 100%;
-  background: transparent;
-  padding: 1rem;
-  outline: none;
-  border: 0;
 }
 .dashboard .main .content, .dashboard-active .main .content {
   display: grid;
@@ -1107,11 +1083,12 @@ button {
 .dashboard .main .content .documents .document-contents, .dashboard-active .main .content .documents .document-contents {
   background-color: #282b30;
   height: 100%;
-  border-radius: 2rem;
+  border-radius: 1rem;
   padding: 1rem;
   overflow-y: auto;
   display: grid;
   gap: 1rem;
+  background-color: #d9d9d9;
 }
 .dashboard .main .content .documents .document-contents .no-content, .dashboard-active .main .content .documents .document-contents .no-content {
   display: flex;
@@ -1120,20 +1097,28 @@ button {
   justify-content: center;
   align-items: center;
   gap: 0;
-  background-color: #fff;
   border-radius: 1rem;
 }
 .dashboard .main .content .documents .document-contents .no-content img, .dashboard-active .main .content .documents .document-contents .no-content img {
   height: 8rem;
   width: 8rem;
 }
-.dashboard .main .content .documents .document-contents .document-dashboard, .dashboard-active .main .content .documents .document-contents .document-dashboard {
-  background-color: #0d7377;
-  color: #fff;
-  border-radius: 1rem;
-  padding: 1rem;
+.dashboard .main .content .documents .document-contents .btn-documents, .dashboard-active .main .content .documents .document-contents .btn-documents {
   display: flex;
   justify-content: flex-end;
+}
+.dashboard .main .content .documents .document-contents .document-dashboard, .dashboard-active .main .content .documents .document-contents .document-dashboard {
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.dashboard .main .content .documents .document-contents .document-dashboard .format, .dashboard-active .main .content .documents .document-contents .document-dashboard .format,
+.dashboard .main .content .documents .document-contents .document-dashboard .status,
+.dashboard-active .main .content .documents .document-contents .document-dashboard .status {
+  display: flex;
+  justify-content: center;
 }
 .dashboard .main .content .internship-details, .dashboard-active .main .content .internship-details {
   grid-column: 3/4;
@@ -5938,10 +5923,6 @@ button {
   .dashboard .main .content .documents, .dashboard-active .main .content .documents {
     grid-row: 3/6;
     grid-column: 1/3;
-  }
-  .dashboard .main .content .documents .btn-document, .dashboard-active .main .content .documents .btn-document {
-    margin: auto;
-    grid-row: 2/3;
   }
   .dashboard .main .content .documents .document-contents .no-content img, .dashboard-active .main .content .documents .document-contents .no-content img {
     height: 15rem;

@@ -56,46 +56,46 @@ const DashboardMain = React.memo(() => {
   }, []);
 
   const renderDocuments = () => {
-    // if (documentDetails.length === 0) {
-    return (
-      <div className="no-content">
-        <h3>No Reports found.</h3>
-        <h3>Please Reload, it may take some time.</h3>
-        <img src={NoInternship} alt="waiting" />
-      </div>
-    );
-    // }
-    // return documentDetails.map((item, index) => {
-    //   const {
-    //     document: {name, format},
-    //     completion: {isApproved, hasSent, isRejected},
-    //   } = item;
-    //   return (
-    //     <div className="document-dashboard" key={index}>
-    //       <h4>{name}</h4>
-    //       <p>{format}</p>
-    //       <h4
-    //         style={{
-    //           color: isApproved
-    //             ? "#00adb5"
-    //             : hasSent
-    //             ? "#fff"
-    //             : isRejected
-    //             ? "#e63946"
-    //             : "#F18805",
-    //         }}
-    //       >
-    //         {isApproved
-    //           ? "Approved"
-    //           : hasSent
-    //           ? "Sent"
-    //           : isRejected
-    //           ? "Rejected"
-    //           : "Missing"}
-    //       </h4>
-    //     </div>
-    //   );
-    // });
+    if (documentDetails.length === 0) {
+      return (
+        <div className="no-content">
+          <h3>No Reports found.</h3>
+          <h3>Please Reload, it may take some time.</h3>
+          <img src={NoInternship} alt="waiting" />
+        </div>
+      );
+    }
+    return documentDetails.map((item, index) => {
+      const {
+        document: { name, format },
+        completion: { isApproved, hasSent, isRejected },
+      } = item;
+      return (
+        <div className="document-dashboard" key={index}>
+          <h4>{name}</h4>
+          <p className="format">{format}</p>
+          <h4
+            className="status"
+            style={{
+              color: isApproved
+                ? "#00adb5"
+                : hasSent
+                ? "#323232"
+                : isRejected
+                ? "#e63946"
+                : "#F18805",
+            }}>
+            {isApproved
+              ? "Approved"
+              : hasSent
+              ? "Sent"
+              : isRejected
+              ? "Rejected"
+              : "Missing"}
+          </h4>
+        </div>
+      );
+    });
   };
 
   const DaysNeeded = (rendered, required) => {
@@ -124,12 +124,12 @@ const DashboardMain = React.memo(() => {
           </h1>
           <h4>Welcome Back!</h4>
         </div>
-        <div className="search-box">
+        {/* <div className="search-box">
           <span>
             <BiSearchAlt />
           </span>
           <input placeholder="Search" type="text" />
-        </div>
+        </div> */}
       </header>
       <div className="content">
         <div className="time-keeper">
@@ -149,12 +149,14 @@ const DashboardMain = React.memo(() => {
         <div className="documents">
           <h4>Documents</h4>
           <div className="document-contents">
+            <div className="btn-documents">
+              {documentDetails.length > 0 && (
+                <button onClick={() => navigate("/dashboard/documents")}>
+                  Manage Documents
+                </button>
+              )}
+            </div>
             {renderDocuments()}
-            {documentDetails.length > 0 && (
-              <button onClick={() => navigate("/dashboard/documents")}>
-                Manage Documents
-              </button>
-            )}
           </div>
         </div>
         <div className="internship-details">
