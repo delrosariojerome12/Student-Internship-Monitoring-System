@@ -76,34 +76,34 @@ const Dashboard = React.memo(() => {
     if (!internships) {
       return <h1>loading...</h1>;
     }
-    // if (internships.length === 0) {
-    return (
-      <section className="dashboard-internships">
-        <div className="no-internships">
-          <img src={NoInternship} alt="Internship waiting image" />
-          <h3>No internship found</h3>
+    if (internships.length === 0) {
+      return (
+        <section className="dashboard-internships">
+          <div className="no-internships">
+            <img src={NoInternship} alt="Internship waiting image" />
+            <h3>No internship found</h3>
+          </div>
+        </section>
+      );
+    }
+    return internships.map((item, index) => {
+      const {
+        logo: { link },
+        companyName,
+        students,
+      } = item;
+      return (
+        <div className="internship" key={index}>
+          <div className="img-con">
+            <img src={link} alt={companyName} />
+          </div>
+          <div className="text">
+            <h4>{companyName}</h4>
+            <p>No. of Interns: {students}</p>
+          </div>
         </div>
-      </section>
-    );
-    // }
-    // return internships.map((item, index) => {
-    //   const {
-    //     logo: { link },
-    //     companyName,
-    //     students,
-    //   } = item;
-    //   return (
-    //     <div className="internship" key={index}>
-    //       <div className="img-con">
-    //         <img src={link} alt={companyName} />
-    //       </div>
-    //       <div className="text">
-    //         <h4>{companyName}</h4>
-    //         <p>No. of Interns: {students}</p>
-    //       </div>
-    //     </div>
-    //   );
-    // });
+      );
+    });
   };
 
   return (

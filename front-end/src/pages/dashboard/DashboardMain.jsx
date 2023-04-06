@@ -1,17 +1,18 @@
 /** @format */
 
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 // import searchIcon from "../../assets/img/search.svg";
-import {useSelector, useDispatch} from "react-redux";
-import {BiSearchAlt} from "react-icons/bi";
-import {checkStartingDate} from "../../features/interns/attendanceReducer";
-import {useNavigate} from "react-router";
+import { useSelector, useDispatch } from "react-redux";
+import { BiSearchAlt } from "react-icons/bi";
+import { checkStartingDate } from "../../features/interns/attendanceReducer";
+import { useNavigate } from "react-router";
 import ReactMap from "../../components/utils/ReactMap";
-import Waiting from "../../assets/img/waiting.svg";
+import NoInternship from "../../assets/img/no-internship.svg";
+
 const DashboardMain = React.memo(() => {
   const {
     user: {
-      user: {firstName},
+      user: { firstName },
       email,
       internshipDetails: {
         renderedHours,
@@ -22,7 +23,7 @@ const DashboardMain = React.memo(() => {
         supervisorContact,
         email: supEmail,
       },
-      schoolDetails: {requiredHours},
+      schoolDetails: { requiredHours },
       documentDetails,
       status,
     },
@@ -50,51 +51,51 @@ const DashboardMain = React.memo(() => {
     //   dispatch(checkStartingDate({email}));
     // }
     if (today >= startingDate && status !== "Starting") {
-      dispatch(checkStartingDate({email}));
+      dispatch(checkStartingDate({ email }));
     }
   }, []);
 
   const renderDocuments = () => {
-    if (documentDetails.length === 0) {
-      return (
-        <div className="no-content">
-          <h3>No Reports found.</h3>
-          <h3>Please Reload, it may take some time.</h3>;
-          <img src={Waiting} alt="waiting" />
-        </div>
-      );
-    }
-    return documentDetails.map((item, index) => {
-      const {
-        document: {name, format},
-        completion: {isApproved, hasSent, isRejected},
-      } = item;
-      return (
-        <div className="document-dashboard" key={index}>
-          <h4>{name}</h4>
-          <p>{format}</p>
-          <h4
-            style={{
-              color: isApproved
-                ? "#00adb5"
-                : hasSent
-                ? "#fff"
-                : isRejected
-                ? "#e63946"
-                : "#F18805",
-            }}
-          >
-            {isApproved
-              ? "Approved"
-              : hasSent
-              ? "Sent"
-              : isRejected
-              ? "Rejected"
-              : "Missing"}
-          </h4>
-        </div>
-      );
-    });
+    // if (documentDetails.length === 0) {
+    return (
+      <div className="no-content">
+        <h3>No Reports found.</h3>
+        <h3>Please Reload, it may take some time.</h3>
+        <img src={NoInternship} alt="waiting" />
+      </div>
+    );
+    // }
+    // return documentDetails.map((item, index) => {
+    //   const {
+    //     document: {name, format},
+    //     completion: {isApproved, hasSent, isRejected},
+    //   } = item;
+    //   return (
+    //     <div className="document-dashboard" key={index}>
+    //       <h4>{name}</h4>
+    //       <p>{format}</p>
+    //       <h4
+    //         style={{
+    //           color: isApproved
+    //             ? "#00adb5"
+    //             : hasSent
+    //             ? "#fff"
+    //             : isRejected
+    //             ? "#e63946"
+    //             : "#F18805",
+    //         }}
+    //       >
+    //         {isApproved
+    //           ? "Approved"
+    //           : hasSent
+    //           ? "Sent"
+    //           : isRejected
+    //           ? "Rejected"
+    //           : "Missing"}
+    //       </h4>
+    //     </div>
+    //   );
+    // });
   };
 
   const DaysNeeded = (rendered, required) => {
