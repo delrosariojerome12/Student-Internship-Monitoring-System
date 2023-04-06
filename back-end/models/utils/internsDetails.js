@@ -95,6 +95,10 @@ const verification = {
   remarks: {
     type: String,
   },
+  requests: {
+    requestedForMOA: Boolean,
+    requestedForEndoresement: Boolean,
+  },
 };
 
 const documentDetails = [
