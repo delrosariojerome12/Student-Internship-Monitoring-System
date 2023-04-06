@@ -1070,8 +1070,8 @@ button {
 }
 @media screen and (max-width: 480px) {
   .landing-page .contents img {
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
   }
   .landing-page .contents .the-team-container {
     height: 90%;
@@ -1086,8 +1086,8 @@ button {
   .landing-page .contents .member-img4,
   .landing-page .contents .member-img5,
   .landing-page .contents .member-img6 {
-    width: 40%;
-    height: 80%;
+    width: 50%;
+    height: 90%;
     margin: 10px auto;
   }
   .landing-page .contents .member-name {
@@ -10253,31 +10253,99 @@ button {
     font-size: 1.3rem;
   }
 }
-@media screen and (max-width: 480px) {
+@media only screen and (max-width: 600px) {
   .aboutUs-container {
-    padding: 1em;
+    padding: 2em;
+    height: auto;
+    grid-template-columns: 1fr;
   }
   .aboutUs-contents {
     padding: 1em;
   }
   .aboutUs-Text {
     width: 100%;
-    text-align: center;
+  }
+  .aboutUs-Text css Copy code p:nth-of-type(1) {
+    font-size: 28px;
   }
   .getStarted {
     padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    margin-top: 2em;
+    height: auto;
   }
   .getStarted-P {
+    padding: 1em;
     padding-left: 0;
     align-items: center;
   }
+  .getStarted-P css Copy code p:nth-of-type(1) {
+    text-align: center;
+    font-size: 28px;
+    padding-bottom: 0.5em;
+  }
+  .getStarted-P p:nth-of-type(2) {
+    width: 100%;
+    text-align: center;
+  }
   .btn-CreateAcc {
     padding: 1em 2em;
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 }
+.aboutUs-container {
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.aboutUs-contents {
+  padding: 1em;
+  border-radius: 10px;
+}
+
+.aboutUs-Text {
+  width: 100%;
+  padding-bottom: 10px;
+}
+.aboutUs-Text p:nth-of-type(1) {
+  font-size: 24px;
+}
+.aboutUs-Text p:nth-of-type(2) {
+  font-size: 16px;
+}
+
+.getStarted {
+  padding: 1em;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.getStarted-P {
+  padding: 1em;
+  padding-left: 0;
+  flex-direction: column;
+}
+.getStarted-P p:nth-of-type(1) {
+  font-size: 24px;
+  padding-bottom: 0.5em;
+}
+.getStarted-P p:nth-of-type(2) {
+  width: 100%;
+  font-size: 16px;
+  padding-bottom: 1em;
+}
+
+.btn-CreateAcc {
+  padding: 1em 2em;
+  font-size: 1.2rem;
+}
+
 @media screen and (max-width: 320px) {
   .aboutUs-container {
     display: block;
