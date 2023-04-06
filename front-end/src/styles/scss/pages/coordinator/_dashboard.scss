@@ -6,7 +6,6 @@
 .coordinator-dashboard {
   display: grid;
   grid-template-rows: auto minmax(45rem, 77vh);
-  // grid-template-rows: auto minmax(45rem, 77vh);
   width: 100%;
   height: 100%;
   gap: 1rem;
@@ -14,9 +13,9 @@
 
   header {
     display: grid;
-    grid-template-columns: 1fr auto;
-    padding: 0 1rem;
-    gap: 1rem;
+    padding: 0 0 0 1rem;
+    // grid-template-columns: 1fr auto;
+    // gap: 1rem;
 
     .name-greet {
       display: flex;
@@ -34,27 +33,26 @@
         font-size: 2rem;
       }
     }
-    .search-bar {
-      @include flexCenter;
-      background-color: $light-bg-color;
-      width: 80%;
-      border-radius: 2rem;
-      padding: 0 1.5rem;
-      margin: auto;
+    // .search-bar {
+    //   @include flexCenter;
+    //   background-color: $light-bg-color;
+    //   border-radius: 2rem;
+    //   padding: 0 1.5rem;
+    //   margin: auto;
 
-      span {
-        @include flexCenter;
-        font-size: 2rem;
-        cursor: pointer;
-      }
-      input {
-        width: 100%;
-        background: transparent;
-        padding: 1rem;
-        outline: none;
-        border: 0;
-      }
-    }
+    //   span {
+    //     @include flexCenter;
+    //     font-size: 2rem;
+    //     cursor: pointer;
+    //   }
+    //   input {
+    //     width: 100%;
+    //     background: transparent;
+    //     padding: 1rem;
+    //     outline: none;
+    //     border: 0;
+    //   }
+    // }
   }
 
   .dashboard-content {
@@ -107,7 +105,7 @@
         overflow-y: auto;
         height: 100%;
         background-color: #fff;
-        grid-auto-rows: auto;
+        grid-auto-rows: 10rem;
 
         .all-interns {
           display: grid;
@@ -118,10 +116,11 @@
           padding: 1rem;
 
           .img-intern {
-            @include flexCenter;
+            margin: auto;
             height: 8rem;
             width: 8rem;
             img {
+              border: solid 1px #fff;
               background-color: #fff;
               height: 100%;
               width: 100%;
@@ -133,13 +132,17 @@
             border-radius: 1rem;
             padding: 1rem;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr auto;
             column-gap: 0.5rem;
             & > * {
               display: flex;
               align-items: center;
               font-size: 1.7rem;
               gap: 0.5rem;
+            }
+            .program,
+            .rendered {
+              justify-content: flex-end;
             }
             .course {
               display: none;
@@ -176,7 +179,7 @@
         display: grid;
         gap: 1rem;
         padding: 1rem;
-        grid-auto-rows: auto;
+        grid-auto-rows: 10rem;
 
         .approval-intern {
           display: grid;
@@ -367,14 +370,14 @@
           }
           .intern-right {
             display: flex;
-            gap: 2rem;
+            gap: 1rem;
             padding: 1rem 2rem;
             align-items: center;
             justify-content: space-between;
             .intern-details {
               display: flex;
               flex-direction: column;
-              .program {
+              .course {
                 display: none;
               }
             }
@@ -449,7 +452,7 @@
         overflow-y: auto;
         height: 100%;
         background-color: #fff;
-        grid-auto-rows: auto;
+        grid-auto-rows: 10rem;
 
         .internship {
           display: grid;
@@ -484,51 +487,6 @@
         }
       }
     }
-
-    .edit-details,
-    .approvals-btn button {
-      height: 3rem;
-      padding: 0rem 2rem;
-      border-radius: 1rem;
-      border: transparent 1px solid;
-      background-color: $primary-compliment-landing;
-      color: $primary-font-color;
-      transition: all 0.4s ease-in-out;
-      font-weight: 650;
-      font-size: 1.2rem;
-      cursor: pointer;
-
-      &:hover {
-        background-color: $primary-font-color;
-        color: $primary-compliment-landing;
-        border: solid 1px $primary-compliment-landing;
-      }
-    }
-
-    .btn-container button {
-      cursor: pointer;
-      height: 4.5rem;
-      @include flexCenter;
-      // margin: 0 auto;
-      padding: 1.6rem;
-      border-radius: 5px;
-      border: solid 1px transparent;
-      outline: none;
-      color: $primary-font-color;
-      background-color: $primary-compliment-landing;
-      letter-spacing: 0.2rem;
-      transition: all 0.3s ease-in-out;
-      font-weight: 600;
-      &.decline-btn:hover {
-        background-color: $red-primary-color;
-      }
-      &.back-btn:hover,
-      &.approve-btn:hover {
-        background-color: #d9d9d9;
-        color: #000;
-        border: solid 1px #000;
-      }
-    }
   }
 }
 
@@ -538,25 +496,6 @@
   .coordinator-dashboard {
     grid-template-rows: auto minmax(45rem, 80vh);
     .dashboard-content {
-      // .dashboard-intern {
-      //   grid-column: 1/3;
-      //   grid-row: 1/2;
-      // }
-      // .dashboard-intern {
-      //   .all-intern-container {
-      //     .all-interns {
-      //       .intern-detail {
-      //         .program {
-      //           display: flex;
-      //         }
-      //         .course {
-      //           display: none;
-      //         }
-      //       }
-      //     }
-      //   }
-      // }
-
       //no content icons
       .dashboard-intern,
       .dashboard-approvals {
@@ -597,6 +536,29 @@
 }
 
 //max-height
+@media screen and (max-width: 1450px) {
+  .coordinator-dashboard {
+    .dashboard-content {
+      .dashboard-approvals {
+        .all-approvals-container {
+          .approval-intern {
+            .intern-right {
+              .intern-details {
+                .program {
+                  display: none;
+                }
+                .course {
+                  display: flex;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 1350px) {
   .coordinator-dashboard {
     .dashboard-content::-webkit-scrollbar {
@@ -633,21 +595,23 @@
       .dashboard-intern {
         grid-column: 1/2;
         grid-row: 1/2;
-        .all-intern-container {
-          .all-interns {
-            .intern-detail {
-              .course {
-                display: flex;
-              }
-              .program {
-                display: none;
+      }
+      .dashboard-approvals {
+        grid-column: 1/2;
+        .all-approvals-container {
+          .approval-intern {
+            .intern-right {
+              .intern-details {
+                .program {
+                  display: flex;
+                }
+                .course {
+                  display: none;
+                }
               }
             }
           }
         }
-      }
-      .dashboard-approvals {
-        grid-column: 1/2;
       }
 
       .dashboard-intern,
@@ -659,6 +623,385 @@
         .all-approvals-container,
         .all-internship-container {
           border-radius: 0 0 1rem 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .coordinator-dashboard {
+    .dashboard-content {
+      .dashboard-intern {
+        .all-intern-container {
+          .all-interns {
+            .intern-detail {
+              .course {
+                justify-content: flex-end;
+                display: flex;
+              }
+              .program {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1030px) {
+  .coordinator-dashboard {
+    .dashboard-content {
+      .dashboard-approvals {
+        .all-approvals-container {
+          .approval-intern {
+            .overlay {
+              .intern-modal {
+                grid-template-rows: auto auto;
+                padding: 1rem;
+                overflow-y: auto;
+
+                .sent-details {
+                  grid-template-columns: repeat(4, 1fr);
+                  grid-template-rows: repeat(3, 1fr);
+
+                  .img-container {
+                    background-color: transparent;
+                  }
+                  .student-details-container {
+                    grid-column: 2/5;
+                  }
+                  .schedule-details-container {
+                    grid-column: 1/5;
+                    grid-row: 2/3;
+                  }
+                  .internship-details-container {
+                    grid-column: 1/5;
+                    grid-row: 3/4;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .coordinator-dashboard {
+    header {
+      .name-greet {
+        h1 {
+          font-size: 3.5rem;
+        }
+        h4 {
+          font-size: 1.8rem;
+        }
+      }
+    }
+
+    .dashboard-content {
+      .dashboard-approvals {
+        .all-approvals-container {
+          .approval-intern {
+            .intern-right {
+              .intern-details {
+                .program {
+                  display: none;
+                }
+                .course {
+                  display: flex;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .coordinator-dashboard {
+    .dashboard-content {
+      .dashboard-intern {
+        .all-intern-container {
+          grid-auto-rows: 12rem;
+          .all-interns {
+            grid-template-columns: 9rem auto;
+            .img-intern {
+              height: 9rem;
+              width: 9rem;
+            }
+            .intern-detail {
+              grid-template-columns: 1fr;
+              grid-template-rows: repeat(3, auto);
+              padding: 0.5rem 1rem;
+
+              .course,
+              .rendered {
+                justify-content: flex-start;
+              }
+              .schedType {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .coordinator-dashboard {
+    .dashboard-content {
+      .dashboard-approvals {
+        .all-approvals-container {
+          .approval-intern {
+            .overlay {
+              .intern-modal {
+                width: 100%;
+                height: 100%;
+                border-radius: 0;
+                .sent-details {
+                  display: flex;
+                  flex-direction: column;
+                  font-size: 1.7rem;
+                  gap: 1rem;
+                  padding: 2rem 1rem 1rem;
+
+                  .img-container {
+                    img {
+                      height: 14rem;
+                      width: 14rem;
+                    }
+                  }
+                }
+                .feedback-container {
+                  form {
+                    p {
+                      font-size: 1.5rem;
+                    }
+                    .btn-container {
+                      button {
+                        height: 1rem;
+                        // padding: 1rem;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .coordinator-dashboard {
+    padding: 0;
+    grid-template-rows: auto minmax(45rem, 82vh);
+    header {
+      .name-greet {
+        h1 {
+          font-size: 3.2rem;
+        }
+        h4 {
+          font-size: 1.7rem;
+        }
+      }
+    }
+
+    .dashboard-content {
+      grid-template-rows: repeat(3, minmax(28rem, 40vh));
+      .dashboard-intern {
+        .all-intern-container {
+          .all-interns {
+            .intern-detail {
+              .schedType {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+      .dashboard-approvals {
+        .all-approvals-container {
+          .approval-intern {
+            .intern-right {
+              padding: 0.5rem 1rem;
+              font-size: 1.7rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .coordinator-dashboard {
+    grid-template-rows: auto minmax(35rem, 75vh);
+    .dashboard-content {
+      grid-template-rows: repeat(3, minmax(24rem, 35vh));
+      .dashboard-intern {
+        .all-intern-container {
+          grid-auto-rows: 9rem;
+          .all-interns {
+            gap: 0.5rem;
+            padding: 0.5rem;
+
+            .img-intern {
+              height: 8rem;
+              width: 8rem;
+            }
+            .intern-detail {
+              grid-template-rows: repeat(2, auto);
+              .course {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+      .dashboard-approvals {
+        .all-approvals-container {
+          .approval-intern {
+            padding: 0.5rem;
+            .intern-right {
+              button {
+                height: 3.5rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .coordinator-dashboard {
+    grid-template-rows: auto minmax(35rem, 75vh);
+    .dashboard-content {
+      .dashboard-intern {
+        .all-intern-container {
+          grid-auto-rows: 10.5rem;
+          .all-interns {
+            grid-template-columns: 1fr;
+            .img-intern {
+              display: none;
+            }
+            .intern-detail {
+              @include flexCenter;
+              flex-direction: column;
+              text-align: center;
+            }
+          }
+        }
+      }
+      .dashboard-approvals {
+        .all-approvals-container {
+          grid-auto-rows: 11rem;
+          .approval-intern {
+            grid-template-columns: 1fr;
+            .overlay {
+              .intern-modal {
+                .sent-details {
+                  font-size: 1.5rem;
+                  .img-container {
+                    img {
+                      height: 12rem;
+                      width: 12rem;
+                    }
+                  }
+                }
+              }
+            }
+            .intern-left {
+              display: none;
+            }
+            .intern-right {
+              flex-direction: column;
+              gap: 0;
+              .intern-details {
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+              }
+            }
+          }
+        }
+      }
+      .dashboard-internships {
+        .all-internship-container {
+          .internship {
+            grid-template-columns: 1fr;
+            .img-con {
+              display: none;
+            }
+            .text {
+              font-size: 1.7rem;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 400px) {
+  .coordinator-dashboard {
+    grid-template-rows: auto minmax(30rem, 70vh);
+    header {
+      .name-greet {
+        h1 {
+          font-size: 2.9rem;
+        }
+        h4 {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 350px) {
+  .coordinator-dashboard {
+    .dashboard-content {
+      .dashboard-approvals {
+        .all-approvals-container {
+          .approval-intern {
+            .overlay {
+              .intern-modal {
+                .feedback-container {
+                  form {
+                    .btn-container {
+                      display: grid;
+                      grid-template-rows: repeat(3, auto);
+                      gap: 0.5rem;
+                      & > :nth-child(3) {
+                        grid-row: 1/2;
+                      }
+                      & > :nth-child(2) {
+                        grid-row: 2/3;
+                      }
+                      & > :nth-child(1) {
+                        grid-row: 3/4;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

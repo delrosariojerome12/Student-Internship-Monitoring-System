@@ -115,12 +115,12 @@ const Dashboard = React.memo(() => {
           </h1>
           <h4> Welcome Back!</h4>
         </div>
-        <div className="search-bar">
+        {/* <div className="search-bar">
           <span>
             <BiSearchAlt />
           </span>
           <input placeholder="Search" type="text" />
-        </div>
+        </div> */}
       </header>
       <div className="dashboard-content">
         <div className="dashboard-intern">
