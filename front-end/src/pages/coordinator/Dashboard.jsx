@@ -30,25 +30,25 @@ const Dashboard = React.memo(() => {
     if (!interns) {
       return <h1>Loading...</h1>;
     }
-    // if (
-    //   interns.filter((intern) => intern.verification.isVerified).length === 0
-    // ) {
-    return (
-      <section className="dashboard-intern">
-        <div className="no-intern">
-          <img src={NoIntern} alt="" className="no-intern-img" />
-          <h3>No verified intern found!</h3>
-        </div>
-      </section>
-    );
-    // }
+    if (
+      interns.filter((intern) => intern.verification.isVerified).length === 0
+    ) {
+      return (
+        <section className="dashboard-intern">
+          <div className="no-intern">
+            <img src={NoIntern} alt="" className="no-intern-img" />
+            <h3>No verified intern found!</h3>
+          </div>
+        </section>
+      );
+    }
 
-    // // can make conditional
-    // return interns
-    //   .filter((intern) => intern.verification.isVerified)
-    //   .map((intern, index) => {
-    //     return <DashboardIntern intern={intern} key={index} />;
-    //   });
+    // can make conditional
+    return interns
+      .filter((intern) => intern.verification.isVerified)
+      .map((intern, index) => {
+        return <DashboardIntern intern={intern} key={index} />;
+      });
   };
 
   const renderApprovals = () => {
@@ -56,20 +56,20 @@ const Dashboard = React.memo(() => {
       return <h1>loading...</h1>;
     }
 
-    // if (approvalInterns.length === 0) {
-    return (
-      <section className="dashboard-approvals">
-        <div className="no-approvals">
-          <img src={NoApprovals} alt="Approvals waiting image" />
-          <h3>No verified approval found!</h3>
-        </div>
-      </section>
-    );
-    // }
+    if (approvalInterns.length === 0) {
+      return (
+        <section className="dashboard-approvals">
+          <div className="no-approvals">
+            <img src={NoApprovals} alt="Approvals waiting image" />
+            <h3>No verified approval found!</h3>
+          </div>
+        </section>
+      );
+    }
 
-    // return approvalInterns.map((intern, index) => {
-    //   return <Approval intern={intern} key={index} index={index} />;
-    // });
+    return approvalInterns.map((intern, index) => {
+      return <Approval intern={intern} key={index} index={index} />;
+    });
   };
 
   const renderInternships = () => {
