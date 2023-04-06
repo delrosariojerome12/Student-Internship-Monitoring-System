@@ -90,8 +90,8 @@
         align-items: center;
         gap: 0;
         img {
-          height: 18rem;
-          width: 18rem;
+          height: 8rem;
+          width: 8rem;
         }
         h3 {
           color: $primary-compliment-landing;
@@ -430,17 +430,16 @@
       grid-template-rows: auto 1fr;
       padding: 2rem;
 
-      .no-internship {
+      .no-internships {
         @include flexColumn;
         justify-content: center;
         align-items: center;
-        gap: 1;
-        padding: 4rem 0 0 0;
+        gap: 0;
         img {
-          height: 15rem;
-          width: 15rem;
+          height: 8rem;
+          width: 8rem;
         }
-        h4 {
+        h3 {
           color: $primary-compliment-landing;
         }
       }
@@ -498,15 +497,14 @@
     .dashboard-content {
       //no content icons
       .dashboard-intern,
-      .dashboard-approvals {
-        .all-intern-container,
-        .all-approvals-container {
-          .no-intern,
-          .no-approvals {
-            img {
-              height: 11rem;
-              width: 11rem;
-            }
+      .dashboard-approvals,
+      .dashboard-internships {
+        .no-intern,
+        .no-approvals,
+        .no-internships {
+          img {
+            height: 11rem;
+            width: 11rem;
           }
         }
       }
@@ -519,15 +517,14 @@
     grid-template-rows: auto minmax(45rem, 82vh);
     .dashboard-content {
       .dashboard-intern,
-      .dashboard-approvals {
-        .all-intern-container,
-        .all-approvals-container {
-          .no-intern,
-          .no-approvals {
-            img {
-              height: 15rem;
-              width: 15rem;
-            }
+      .dashboard-approvals,
+      .dashboard-internships {
+        .no-intern,
+        .no-approvals,
+        .no-internships {
+          img {
+            height: 15rem;
+            width: 15rem;
           }
         }
       }
@@ -623,6 +620,21 @@
         .all-approvals-container,
         .all-internship-container {
           border-radius: 0 0 1rem 1rem;
+        }
+      }
+    }
+
+    .dashboard-content {
+      .dashboard-intern,
+      .dashboard-approvals,
+      .dashboard-internships {
+        .no-intern,
+        .no-approvals,
+        .no-internships {
+          img {
+            height: 13rem;
+            width: 13rem;
+          }
         }
       }
     }
@@ -843,6 +855,21 @@
         }
       }
     }
+
+    .dashboard-content {
+      .dashboard-intern,
+      .dashboard-approvals,
+      .dashboard-internships {
+        .no-intern,
+        .no-approvals,
+        .no-internships {
+          img {
+            height: 10rem;
+            width: 10rem;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -952,6 +979,26 @@
               align-items: center;
               text-align: center;
             }
+          }
+        }
+      }
+    }
+
+    .dashboard-content {
+      .dashboard-intern,
+      .dashboard-approvals,
+      .dashboard-internships {
+        .no-intern,
+        .no-approvals,
+        .no-internships {
+          img {
+            height: 8rem;
+            width: 8rem;
+          }
+          h3 {
+            font-size: 1.7rem;
+            text-align: center;
+            display: flex;
           }
         }
       }

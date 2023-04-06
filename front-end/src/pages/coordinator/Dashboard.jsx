@@ -10,7 +10,7 @@ import { BiSearchAlt } from "react-icons/bi";
 
 import NoIntern from "../../assets/img/head.svg";
 import NoApprovals from "../../assets/img/approvals.svg";
-import NoInternship from "../../assets/img/waiting.svg";
+import NoInternship from "../../assets/img/no-internship.svg";
 import { getAllInternship } from "../../features/coordinator/internship";
 
 import Internship from "../../components/coordinator/Internship";
@@ -30,25 +30,25 @@ const Dashboard = React.memo(() => {
     if (!interns) {
       return <h1>Loading...</h1>;
     }
-    if (
-      interns.filter((intern) => intern.verification.isVerified).length === 0
-    ) {
-      return (
-        <section className="dashboard-intern">
-          <div className="no-intern">
-            <img src={NoIntern} alt="" className="no-intern-img" />
-            <h3>No verified intern found!</h3>
-          </div>
-        </section>
-      );
-    }
+    // if (
+    //   interns.filter((intern) => intern.verification.isVerified).length === 0
+    // ) {
+    return (
+      <section className="dashboard-intern">
+        <div className="no-intern">
+          <img src={NoIntern} alt="" className="no-intern-img" />
+          <h3>No verified intern found!</h3>
+        </div>
+      </section>
+    );
+    // }
 
-    // can make conditional
-    return interns
-      .filter((intern) => intern.verification.isVerified)
-      .map((intern, index) => {
-        return <DashboardIntern intern={intern} key={index} />;
-      });
+    // // can make conditional
+    // return interns
+    //   .filter((intern) => intern.verification.isVerified)
+    //   .map((intern, index) => {
+    //     return <DashboardIntern intern={intern} key={index} />;
+    //   });
   };
 
   const renderApprovals = () => {
@@ -56,54 +56,54 @@ const Dashboard = React.memo(() => {
       return <h1>loading...</h1>;
     }
 
-    if (approvalInterns.length === 0) {
-      return (
-        <section className="dashboard-approvals">
-          <div className="no-approvals">
-            <img src={NoApprovals} alt="Approvals waiting image" />
-            <h3>No verified approval found!</h3>
-          </div>
-        </section>
-      );
-    }
+    // if (approvalInterns.length === 0) {
+    return (
+      <section className="dashboard-approvals">
+        <div className="no-approvals">
+          <img src={NoApprovals} alt="Approvals waiting image" />
+          <h3>No verified approval found!</h3>
+        </div>
+      </section>
+    );
+    // }
 
-    return approvalInterns.map((intern, index) => {
-      return <Approval intern={intern} key={index} index={index} />;
-    });
+    // return approvalInterns.map((intern, index) => {
+    //   return <Approval intern={intern} key={index} index={index} />;
+    // });
   };
 
   const renderInternships = () => {
     if (!internships) {
       return <h1>loading...</h1>;
     }
-    if (internships.length === 0) {
-      return (
-        <section className="dashboard-internships">
-          <div className="no-internships">
-            <img src={NoApprovals} alt="Internship waiting image" />
-            <h3>No internship found</h3>
-          </div>
-        </section>
-      );
-    }
-    return internships.map((item, index) => {
-      const {
-        logo: { link },
-        companyName,
-        students,
-      } = item;
-      return (
-        <div className="internship" key={index}>
-          <div className="img-con">
-            <img src={link} alt={companyName} />
-          </div>
-          <div className="text">
-            <h4>{companyName}</h4>
-            <p>No. of Interns: {students}</p>
-          </div>
+    // if (internships.length === 0) {
+    return (
+      <section className="dashboard-internships">
+        <div className="no-internships">
+          <img src={NoInternship} alt="Internship waiting image" />
+          <h3>No internship found</h3>
         </div>
-      );
-    });
+      </section>
+    );
+    // }
+    // return internships.map((item, index) => {
+    //   const {
+    //     logo: { link },
+    //     companyName,
+    //     students,
+    //   } = item;
+    //   return (
+    //     <div className="internship" key={index}>
+    //       <div className="img-con">
+    //         <img src={link} alt={companyName} />
+    //       </div>
+    //       <div className="text">
+    //         <h4>{companyName}</h4>
+    //         <p>No. of Interns: {students}</p>
+    //       </div>
+    //     </div>
+    //   );
+    // });
   };
 
   return (
