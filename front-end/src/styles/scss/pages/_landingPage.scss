@@ -376,6 +376,7 @@
 
       .the-team-container {
         //margin: 50px auto;
+        display: relative;
         text-align: center;
         background-color: whitesmoke;
         align-items: center;
@@ -413,7 +414,6 @@
       .members-container {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(3, 1fr);
-        margin: 10px 0 10px 0;
       }
 
       .member-img1,
@@ -423,8 +423,7 @@
       .member-img5,
       .member-img6 {
         width: 50%;
-        height: 80%;
-        margin-bottom: 20px;
+        height: 95%;
       }
     }
     @media screen and (max-width: 820px) {
@@ -439,6 +438,7 @@
       .member-img5,
       .member-img6 {
         width: 60%;
+        height: 100%;
       }
       .member-name {
         font-size: 0.6em;
@@ -461,7 +461,6 @@
       .member-img6 {
         //width: 80%;
         height: 90%;
-        gap: 2rem;
       }
     }
 
@@ -488,7 +487,7 @@
       .member-img5,
       .member-img6 {
         //width: 80%;
-        height: 85%;
+        height: 90%;
         width: 35%;
       }
       .member-name {
@@ -518,6 +517,7 @@
         height: 90%;
       }
       .members-container {
+        padding-top: 10px;
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: repeat(6, 1fr);
       }
@@ -529,7 +529,6 @@
       .member-img6 {
         width: 50%;
         height: 90%;
-        margin: 10px auto;
       }
 
       .member-name {
