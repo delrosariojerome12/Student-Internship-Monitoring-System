@@ -185,9 +185,11 @@ const DashboardMain = React.memo(() => {
           <>
             <div className="overlay"></div>
             <div className="map-con">
-              <h3>Click the map to test location.</h3>
+              <h3>Click the map to test and see your location.</h3>
               <ReactMap />
-              <button onClick={() => setMapOpen(false)}>Close Map</button>
+              <div className="btn-close">
+                <button onClick={() => setMapOpen(false)}>Close Map</button>
+              </div>
             </div>
           </>
         )}

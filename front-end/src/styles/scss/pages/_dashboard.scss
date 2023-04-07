@@ -15,6 +15,7 @@
   .leaflet-container {
     height: 100%;
     width: 100%;
+    border-radius: 1rem;
   }
 
   .overlay {
@@ -38,6 +39,15 @@
     grid-template-rows: 1fr auto;
     background-color: #fff;
     border-radius: 1rem;
+    gap: 1rem;
+    h3 {
+      @include flexCenter;
+      text-align: center;
+      color: #fff;
+    }
+    .btn-close {
+      @include flexCenter;
+    }
   }
 
   .main {
@@ -100,7 +110,6 @@
       gap: 1.2rem;
       & > *:not(.overlay) {
         border: solid 1.5px #fff;
-        // border-radius: 2rem;
         padding: 1rem;
         @include flexColumn;
         background-color: #282b30;
@@ -422,6 +431,12 @@
 
 @media screen and (max-width: 1250px) {
   .dashboard {
+    .map-con {
+      border: solid 1.5px #fff !important;
+      padding: 1rem !important;
+      background-color: #282b30 !important;
+      gap: 1rem !important;
+    }
     .main {
       .content::-webkit-scrollbar {
         width: 1rem;
@@ -546,6 +561,10 @@
 
 @media screen and (max-width: 800px) {
   .dashboard {
+    .map-con {
+      height: 90vh;
+      width: 90vw;
+    }
     .main {
       header {
         .name-container {
@@ -573,6 +592,11 @@
 
 @media screen and (max-width: 730px) {
   .dashboard {
+    .map-con {
+      height: 100%;
+      width: 100%;
+      border-radius: 0 !important;
+    }
     .main {
       padding: 0;
       .content {

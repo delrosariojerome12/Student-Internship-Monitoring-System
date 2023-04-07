@@ -946,6 +946,7 @@ button {
 .dashboard .leaflet-container, .dashboard-active .leaflet-container {
   height: 100%;
   width: 100%;
+  border-radius: 1rem;
 }
 .dashboard .overlay, .dashboard-active .overlay {
   width: 100%;
@@ -968,6 +969,19 @@ button {
   grid-template-rows: 1fr auto;
   background-color: #fff;
   border-radius: 1rem;
+  gap: 1rem;
+}
+.dashboard .map-con h3, .dashboard-active .map-con h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+.dashboard .map-con .btn-close, .dashboard-active .map-con .btn-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .dashboard .main, .dashboard-active .main {
   height: 100%;
@@ -5897,6 +5911,12 @@ button {
   }
 }
 @media screen and (max-width: 1250px) {
+  .dashboard .map-con, .dashboard-active .map-con {
+    border: solid 1.5px #fff !important;
+    padding: 1rem !important;
+    background-color: #282b30 !important;
+    gap: 1rem !important;
+  }
   .dashboard .main .content::-webkit-scrollbar, .dashboard-active .main .content::-webkit-scrollbar {
     width: 1rem;
     height: 1rem;
@@ -6004,6 +6024,10 @@ button {
   }
 }
 @media screen and (max-width: 800px) {
+  .dashboard .map-con, .dashboard-active .map-con {
+    height: 90vh;
+    width: 90vw;
+  }
   .dashboard .main header .name-container .name, .dashboard-active .main header .name-container .name {
     font-size: 3.5rem;
   }
@@ -6022,6 +6046,11 @@ button {
   }
 }
 @media screen and (max-width: 730px) {
+  .dashboard .map-con, .dashboard-active .map-con {
+    height: 100%;
+    width: 100%;
+    border-radius: 0 !important;
+  }
   .dashboard .main, .dashboard-active .main {
     padding: 0;
   }
