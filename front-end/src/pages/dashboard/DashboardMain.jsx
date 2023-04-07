@@ -72,8 +72,10 @@ const DashboardMain = React.memo(() => {
       } = item;
       return (
         <div className="document-dashboard" key={index}>
-          <h4>{name}</h4>
-          <p className="format">{format}</p>
+          <h4>
+            {name}.{format}
+          </h4>
+          {/* <p className="format">{format}</p> */}
           <h4
             className="status"
             style={{

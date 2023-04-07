@@ -311,7 +311,7 @@
         }
       }
       .attendance-container {
-        background-color: #fff;
+        background-color: #d9d9d9;
         padding: 2rem;
         border-radius: 1rem;
         display: flex;
@@ -332,11 +332,9 @@
         }
         .attendance-view,
         .attendance-absent {
-          // background-color: $primary-compliment-landing;
-          background-color: #d9d9d9;
+          background-color: #fff;
           border-radius: 1rem;
           padding: 1.5rem;
-          // color: #fff;
           display: flex;
           justify-content: space-between;
           gap: 1rem;
@@ -353,9 +351,7 @@
         }
       }
       .request-container {
-        // background-color: #d9d9d9;
-        background-color: #282b30;
-
+        background-color: #d9d9d9;
         padding: 2rem;
         border-radius: 1rem;
         display: flex;
@@ -376,15 +372,9 @@
         .document-record {
           display: flex;
           justify-content: space-between;
-          // background-color: #d9d9d9;
-          background: $primary-compliment-landing;
-          color: #fff;
-
-          gap: 1rem;
-          // background-color: $primary-compliment-landing;
-          padding: 1.5rem;
+          background-color: #fff;
           border-radius: 1rem;
-          // color: #fff;
+          padding: 1.5rem;
         }
       }
       .narrative-container {
@@ -408,10 +398,9 @@
           grid-auto-rows: 12rem;
           grid-template-columns: repeat(auto-fill, 46rem);
           gap: 1rem;
-          padding: 1rem;
           background-color: #282b30;
           border-radius: 1rem;
-          overflow-y: auto;
+          // overflow-y: auto;
 
           .narrative-content {
             background-color: #d9d9d9;
@@ -960,6 +949,13 @@
         }
         .request-container {
           font-size: 1.5rem;
+          .document-record {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0.5rem 1rem;
+          }
         }
         .narrative-container {
           .report-container {
