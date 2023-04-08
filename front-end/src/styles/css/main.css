@@ -9249,10 +9249,10 @@ button {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 }
 .documents-page .no-content {
+  background-color: #282b30;
   color: #fff;
   padding: 2rem;
   border-radius: 1rem;
-  background-color: #282b30;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9265,8 +9265,8 @@ button {
   color: #0d7377;
 }
 .documents-page .no-content img {
-  height: 25rem;
-  width: 25rem;
+  height: 30rem;
+  width: 30rem;
 }
 .documents-page .overlay {
   width: 100%;
@@ -9764,6 +9764,10 @@ button {
     grid-template-rows: auto minmax(30rem, 52vh);
     gap: 1rem;
   }
+  .documents-page .no-content img {
+    height: 27rem;
+    width: 27rem;
+  }
   .documents-page .top {
     grid-template-columns: auto;
     grid-template-rows: auto 1fr;
@@ -9886,6 +9890,16 @@ button {
 @media screen and (max-width: 600px) {
   .documents-page {
     grid-template-rows: auto minmax(20rem, 45vh);
+  }
+  .documents-page .no-content {
+    padding: 1rem;
+  }
+  .documents-page .no-content h3 {
+    font-size: 2rem;
+  }
+  .documents-page .no-content img {
+    height: 22rem;
+    width: 22rem;
   }
   .documents-page .sample-view-container {
     border-radius: 0;

@@ -15,7 +15,7 @@ const Request = React.memo(() => {
       return (
         <div className="no-request">
           <h3>
-            No <b>Documents</b> found.
+            No <b>Documents</b> Found.
           </h3>
           <img src={Waiting} alt="waiting" />
         </div>
