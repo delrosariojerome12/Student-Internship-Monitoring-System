@@ -709,19 +709,27 @@
       .img-container {
         display: none !important;
       }
-      // .mockup-contents {
-      //   .card {
-      //     grid-template-columns: auto;
-      //     grid-template-rows: 1fr 1fr;
+      .mockup-contents {
+        .text-container {
+          p {
+            &:nth-of-type(3) {
+              margin-left: 1rem;
+              font-size: 1.4rem;
+            }
+          }
 
-      //   }
-      // }
+          //   .card {
+          //     grid-template-columns: auto;
+          //     grid-template-rows: 1fr 1fr;
+
+          //   }
+          // }
+        }
+      }
     }
-  }
-}
 
-/* styles for screens up to 480px */
-/* @media only screen and (max-width: 480px) {
+    /* styles for screens up to 480px */
+    /* @media only screen and (max-width: 480px) {
   .landing-page {
     grid-template-rows: minmax(100vh, auto) auto; 
     padding: 3rem 2rem 0 2rem; 
@@ -827,43 +835,45 @@
   }
 } */
 
-//hamburger menu
-@media screen and (max-width: 850px) {
-  .landing-page {
-    nav {
-      padding: 3rem;
-      display: flex;
-      justify-content: space-between;
-      .link-container {
-        height: 0;
-        overflow: hidden;
-        @include flexColumn;
-        border-top: solid #636363 1px;
-        position: absolute;
-        left: 0%;
-        top: 100%;
-        width: 100%;
-        transition: all 0.2s ease-in-out;
-        .links,
-        .auth-links {
-          @include flexColumn;
-        }
-      }
-      .active-drop {
-        height: 30rem;
-        padding: 2rem;
-      }
-      .active {
-        transform: rotate(90deg);
-      }
-      .menu-icon {
-        grid-column: 2/3;
-        grid-row: 1/2;
-        transition: all 0.2s ease-in-out;
-        @include flexCenter;
-        font-size: 3rem;
-        svg {
-          cursor: pointer;
+    //hamburger menu
+    @media screen and (max-width: 850px) {
+      .landing-page {
+        nav {
+          padding: 3rem;
+          display: flex;
+          justify-content: space-between;
+          .link-container {
+            height: 0;
+            overflow: hidden;
+            @include flexColumn;
+            border-top: solid #636363 1px;
+            position: absolute;
+            left: 0%;
+            top: 100%;
+            width: 100%;
+            transition: all 0.2s ease-in-out;
+            .links,
+            .auth-links {
+              @include flexColumn;
+            }
+          }
+          .active-drop {
+            height: auto;
+            padding: 2rem;
+          }
+          .active {
+            transform: rotate(90deg);
+          }
+          .menu-icon {
+            grid-column: 2/3;
+            grid-row: 1/2;
+            transition: all 0.2s ease-in-out;
+            @include flexCenter;
+            font-size: 3rem;
+            svg {
+              cursor: pointer;
+            }
+          }
         }
       }
     }
