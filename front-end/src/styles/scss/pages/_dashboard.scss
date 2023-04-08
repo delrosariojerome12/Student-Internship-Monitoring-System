@@ -254,9 +254,9 @@
   }
 
   .cant-start {
-    background-color: #212121;
+    background-color: #282b30;
     @include flexCenter;
-
+    border-radius: 1rem;
     button {
       height: 5rem;
       width: 12rem;
@@ -290,7 +290,6 @@
       @include flexColumn;
       align-items: center;
       justify-content: center;
-      gap: 1rem;
       background-color: #fff;
       border-radius: 1rem;
       width: 50rem;
