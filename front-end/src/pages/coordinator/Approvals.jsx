@@ -1,14 +1,14 @@
 /** @format */
 
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import Approval from "../../components/coordinator/ApprovalIntern";
-import {useSelector, useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ApprovalWaiting from "../../assets/img/waiting.svg";
 import Bouncing from "../../components/loading/Bouncing";
 import ServerError from "../serverError";
-import {getAllInterns} from "../../features/interns/internReducer";
+import { getAllInterns } from "../../features/interns/internReducer";
 const Approvals = React.memo(() => {
-  const {approvalInterns, isLoading, isError} = useSelector(
+  const { approvalInterns, isLoading, isError } = useSelector(
     (state) => state.intern
   );
   const dispatch = useDispatch();

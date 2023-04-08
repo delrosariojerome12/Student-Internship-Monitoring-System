@@ -194,7 +194,8 @@
           display: grid;
           gap: 1rem;
           background-color: #d9d9d9;
-
+          grid-auto-rows: 4.7rem;
+          margin: auto 0;
           .no-content {
             @include flexColumn;
             align-items: center;
@@ -209,12 +210,14 @@
           .btn-documents {
             display: flex;
             justify-content: flex-end;
+            align-items: center;
           }
           .document-dashboard {
             background-color: #fff;
             border-radius: 1rem;
             padding: 1rem;
             display: flex;
+            align-items: center;
             justify-content: space-between;
           }
         }
@@ -579,6 +582,8 @@
                 width: 10rem;
               }
             }
+            grid-auto-rows: 6.4rem;
+
             .document-dashboard {
               text-align: center;
               flex-direction: column;

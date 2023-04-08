@@ -1105,6 +1105,8 @@ button {
   display: grid;
   gap: 1rem;
   background-color: #d9d9d9;
+  grid-auto-rows: 4.7rem;
+  margin: auto 0;
 }
 .dashboard .main .content .documents .document-contents .no-content, .dashboard-active .main .content .documents .document-contents .no-content {
   display: flex;
@@ -1122,12 +1124,14 @@ button {
 .dashboard .main .content .documents .document-contents .btn-documents, .dashboard-active .main .content .documents .document-contents .btn-documents {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 .dashboard .main .content .documents .document-contents .document-dashboard, .dashboard-active .main .content .documents .document-contents .document-dashboard {
   background-color: #fff;
   border-radius: 1rem;
   padding: 1rem;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 .dashboard .main .content .internship-details, .dashboard-active .main .content .internship-details {
@@ -2323,6 +2327,7 @@ button {
 }
 .dashboard .approvals .no-entries, .dashboard-active .approvals .no-entries {
   height: 100%;
+  margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2365,7 +2370,6 @@ button {
 }
 .dashboard .approvals .approval-container .approvals-intern-container, .dashboard-active .approvals .approval-container .approvals-intern-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 52rem);
   grid-auto-rows: 12rem;
   gap: 1rem;
 }
@@ -6056,6 +6060,9 @@ button {
   }
   .dashboard .main, .dashboard-active .main {
     padding: 0;
+  }
+  .dashboard .main .content .documents .document-contents, .dashboard-active .main .content .documents .document-contents {
+    grid-auto-rows: 6.4rem;
   }
   .dashboard .main .content .documents .document-contents .no-content h3, .dashboard-active .main .content .documents .document-contents .no-content h3 {
     font-size: 2rem;
