@@ -340,15 +340,15 @@ const Documents = React.memo(() => {
             </form>
           </div>
         </div>
-        {/* {documentDetails.length === 0 ? ( */}
-        <div className="no-content">
-          <h3>
-            No <b>Documents</b> Found.
-          </h3>
-          <img src={NoDocumentsImg} alt="no document" />
-        </div>
-        {/* // ) : ( */}
-        {/* <div className="display">
+        {documentDetails.length === 0 ? (
+          <div className="no-content">
+            <h3>
+              No <b>Documents</b> Found.
+            </h3>
+            <img src={NoDocumentsImg} alt="no document" />
+          </div>
+        ) : (
+          <div className="display">
             <div className={isStatusOpen ? "status active" : "status"}>
               <p>{renderStatus()}</p>
             </div>
@@ -361,8 +361,9 @@ const Documents = React.memo(() => {
                 />
               );
             })}
-          </div> */}
-        {/* )} */}
+          </div>
+        )}
+
         {isDocumentOpen && (
           <>
             <div
