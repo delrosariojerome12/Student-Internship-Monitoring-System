@@ -868,11 +868,6 @@ button {
   -o-object-fit: cover;
      object-fit: cover;
 }
-.landing-page .contents img {
-  height: 80px;
-  width: 80px;
-  image-rendering: auto;
-}
 .landing-page .contents .the-team-container {
   position: none;
   margin: 20px auto;
@@ -886,6 +881,7 @@ button {
   border-radius: 10px;
 }
 .landing-page .contents .text-container-top {
+  padding: 1.5rem 1rem;
   grid-column: 1/-1;
   color: #088f8f;
   background-color: white;
@@ -894,15 +890,10 @@ button {
   border-radius: 10px 10px 0 0;
 }
 .landing-page .contents .members-container {
-  padding-top: 30px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  grid-gap: 2rem;
-  position: relative;
-  text-align: center;
-  align-items: center;
-  justify-items: center;
+  gap: 1rem;
 }
 .landing-page .contents .member-img1,
 .landing-page .contents .member-img2,
@@ -910,6 +901,7 @@ button {
 .landing-page .contents .member-img4,
 .landing-page .contents .member-img5,
 .landing-page .contents .member-img6 {
+  margin: auto;
   border: 1px solid #ccc;
   padding: 20px 0 20px 0;
   width: 50%;
@@ -917,6 +909,18 @@ button {
   background-color: white;
   transition: 0.4s;
   cursor: pointer;
+}
+.landing-page .contents .member-img1 img,
+.landing-page .contents .member-img2 img,
+.landing-page .contents .member-img3 img,
+.landing-page .contents .member-img4 img,
+.landing-page .contents .member-img5 img,
+.landing-page .contents .member-img6 img {
+  height: 80px;
+  width: 80px;
+  image-rendering: auto;
+  border: 1px solid white;
+  border-radius: 50%;
 }
 .landing-page .contents .member-img1:hover,
 .landing-page .contents .member-img2:hover,
@@ -1034,14 +1038,14 @@ button {
     width: 50px;
   }
   .landing-page .contents .the-team-container {
-    height: 90%;
+    height: 95%;
     width: 90%;
   }
   .landing-page .contents .members-container {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(6, auto);
     height: auto;
-    gap: 0.5rem;
+    gap: 0;
   }
   .landing-page .contents .member-img1,
   .landing-page .contents .member-img2,
@@ -1071,9 +1075,6 @@ button {
   .landing-page .contents img {
     height: 50px;
     width: 50px;
-  }
-  .landing-page .contents .the-team-container {
-    height: 90%;
   }
   .landing-page .contents .members-container {
     padding-top: 10px;
@@ -10151,17 +10152,24 @@ button {
     flex-direction: column;
   }
   .aboutUs-contents {
-    padding: 1em;
-    margin-bottom: 2em;
+    padding: 2rem;
+    margin: auto;
     width: 100%;
   }
   .aboutUs-Text {
     width: 100%;
   }
+  .aboutUs-Text p:nth-of-type(1) {
+    padding: 2rem 1rem !important;
+  }
   .getStarted {
     padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    margin-bottom: 2em;
+    height: auto;
   }
   .getStarted-P {
     padding: 1em;
@@ -10216,27 +10224,18 @@ button {
 }
 @media only screen and (max-width: 600px) {
   .aboutUs-container {
-    padding: 2em;
+    padding: 1.5rem;
     height: auto;
     grid-template-columns: 1fr;
   }
   .aboutUs-contents {
-    padding: 1em;
+    padding: 1rem !important;
   }
   .aboutUs-Text {
     width: 100%;
   }
   .aboutUs-Text css Copy code p:nth-of-type(1) {
     font-size: 28px;
-  }
-  .getStarted {
-    padding: 1em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: auto;
   }
   .getStarted-P {
     padding: 1em;
