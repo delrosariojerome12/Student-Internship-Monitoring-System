@@ -1110,10 +1110,10 @@ button {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  justify-content: center;
   align-items: center;
   gap: 0;
   border-radius: 1rem;
+  text-align: center;
 }
 .dashboard .main .content .documents .document-contents .no-content img, .dashboard-active .main .content .documents .document-contents .no-content img {
   height: 8rem;
@@ -1564,6 +1564,7 @@ button {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    height: 100%;
     gap: 1rem;
   }
   .dashboard .left-sidebar .links-con .sub-container .link-container .icon-con, .dashboard-active .left-sidebar .links-con .sub-container .link-container .icon-con {
@@ -1594,7 +1595,9 @@ button {
   .dashboard .left-sidebar .links-con .sub-container .user, .dashboard-active .left-sidebar .links-con .sub-container .user {
     display: grid;
     grid-template-columns: 7rem auto;
-    gap: 1rem;
+    -moz-column-gap: 1rem;
+         column-gap: 1rem;
+    row-gap: 0.5rem;
     padding: 1rem;
     color: #fff;
     background-color: #1d3557;
@@ -6054,6 +6057,13 @@ button {
   .dashboard .main, .dashboard-active .main {
     padding: 0;
   }
+  .dashboard .main .content .documents .document-contents .no-content h3, .dashboard-active .main .content .documents .document-contents .no-content h3 {
+    font-size: 2rem;
+  }
+  .dashboard .main .content .documents .document-contents .no-content img, .dashboard-active .main .content .documents .document-contents .no-content img {
+    height: 10rem;
+    width: 10rem;
+  }
   .dashboard .main .content .documents .document-contents .document-dashboard, .dashboard-active .main .content .documents .document-contents .document-dashboard {
     text-align: center;
     flex-direction: column;
@@ -6065,7 +6075,7 @@ button {
 }
 @media screen and (max-width: 600px) {
   .dashboard .main, .dashboard-active .main {
-    grid-template-rows: auto minmax(45rem, 72vh);
+    grid-template-rows: auto minmax(45rem, 75vh);
   }
   .dashboard .main .content, .dashboard-active .main .content {
     grid-template-rows: auto 32rem 26rem 12rem;
@@ -6082,10 +6092,17 @@ button {
 }
 @media screen and (max-width: 500px) {
   .dashboard .main, .dashboard-active .main {
-    grid-template-rows: auto minmax(45rem, 70vh);
+    grid-template-rows: auto minmax(45rem, 73vh);
   }
   .dashboard .main .content button, .dashboard-active .main .content button {
     height: 3.5rem;
+  }
+  .dashboard .main .content .documents .document-contents .no-content h3, .dashboard-active .main .content .documents .document-contents .no-content h3 {
+    font-size: 1.9rem;
+  }
+  .dashboard .main .content .documents .document-contents .no-content img, .dashboard-active .main .content .documents .document-contents .no-content img {
+    height: 9rem;
+    width: 9rem;
   }
   .dashboard .main .content .documents .document-contents .document-dashboard, .dashboard-active .main .content .documents .document-contents .document-dashboard {
     font-size: 1.7rem;
@@ -6096,7 +6113,7 @@ button {
 }
 @media screen and (max-width: 420px) {
   .dashboard .main, .dashboard-active .main {
-    grid-template-rows: auto minmax(45rem, 67vh);
+    grid-template-rows: auto minmax(45rem, 72vh);
   }
   .dashboard .main header .name-container .name, .dashboard-active .main header .name-container .name {
     font-size: 3rem;
@@ -6113,6 +6130,13 @@ button {
   .dashboard .main .content .time-keeper .time-keeper-contents .text, .dashboard-active .main .content .time-keeper .time-keeper-contents .text {
     font-size: 1.5rem;
   }
+  .dashboard .main .content .documents .document-contents .no-content h3, .dashboard-active .main .content .documents .document-contents .no-content h3 {
+    font-size: 1.8rem;
+  }
+  .dashboard .main .content .documents .document-contents .no-content img, .dashboard-active .main .content .documents .document-contents .no-content img {
+    height: 8rem;
+    width: 8rem;
+  }
   .dashboard .main .content .documents .document-contents .document-dashboard, .dashboard-active .main .content .documents .document-contents .document-dashboard {
     font-size: 1.6rem;
   }
@@ -6125,6 +6149,9 @@ button {
   }
 }
 @media screen and (max-width: 375px) {
+  .dashboard .main, .dashboard-active .main {
+    grid-template-rows: auto minmax(45rem, 71vh);
+  }
   .dashboard .main .content button, .dashboard-active .main .content button {
     height: 3rem;
   }
@@ -7981,14 +8008,22 @@ button {
 }
 .profile-page .content .display .attendance-container .no-record {
   display: flex;
-  height: 100%;
   flex-direction: column;
+  gap: 1rem;
+  height: 100%;
   justify-content: center;
   align-items: center;
+  text-align: center;
+}
+.profile-page .content .display .attendance-container .no-record h3 {
+  font-size: 2.3rem;
+}
+.profile-page .content .display .attendance-container .no-record h3 b {
+  color: #0d7377;
 }
 .profile-page .content .display .attendance-container .no-record img {
-  height: 23rem;
-  width: 23rem;
+  height: 18rem;
+  width: 18rem;
 }
 .profile-page .content .display .attendance-container .attendance-view,
 .profile-page .content .display .attendance-container .attendance-absent {
@@ -8020,19 +8055,24 @@ button {
   flex-direction: column;
   gap: 1rem;
 }
-.profile-page .content .display .request-container .no-content {
-  color: #fff;
-  padding: 2rem;
-  border-radius: 1rem;
-  background-color: #282b30;
+.profile-page .content .display .request-container .no-request {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
-.profile-page .content .display .request-container .no-content img {
-  height: 50rem;
-  width: 40rem;
+.profile-page .content .display .request-container .no-request h3 {
+  font-size: 2.3rem;
+}
+.profile-page .content .display .request-container .no-request h3 b {
+  color: #0d7377;
+}
+.profile-page .content .display .request-container .no-request img {
+  height: 18rem;
+  width: 18rem;
 }
 .profile-page .content .display .request-container .document-record {
   display: flex;
@@ -8054,9 +8094,15 @@ button {
   justify-content: center;
   flex-direction: column;
 }
+.profile-page .content .display .narrative-container .no-content h3 {
+  font-size: 2.3rem;
+}
+.profile-page .content .display .narrative-container .no-content h3 b {
+  color: #0d7377;
+}
 .profile-page .content .display .narrative-container .no-content img {
-  height: 50rem;
-  width: 40rem;
+  height: 25rem;
+  width: 25rem;
 }
 .profile-page .content .display .narrative-container .report-container {
   display: grid;
@@ -8218,6 +8264,19 @@ button {
   .profile-page .content .display .internship-details-container .img-con {
     margin: auto;
   }
+  .profile-page .content .display .attendance-container .no-record h3,
+  .profile-page .content .display .attendance-container .no-request h3,
+  .profile-page .content .display .request-container .no-record h3,
+  .profile-page .content .display .request-container .no-request h3 {
+    font-size: 2rem;
+  }
+  .profile-page .content .display .attendance-container .no-record img,
+  .profile-page .content .display .attendance-container .no-request img,
+  .profile-page .content .display .request-container .no-record img,
+  .profile-page .content .display .request-container .no-request img {
+    height: 16rem;
+    width: 16rem;
+  }
 }
 @media screen and (max-width: 780px) {
   .profile-page .profile-user .intern-info .intern-details .program {
@@ -8306,12 +8365,27 @@ button {
     height: 13rem;
     width: 13rem;
   }
+  .profile-page .content .display .attendance-container .no-record img {
+    height: 14rem;
+    width: 14rem;
+  }
   .profile-page .content .display .attendance-container .attendance-view,
   .profile-page .content .display .attendance-container .attendance-absent {
     font-size: 1.7rem;
   }
   .profile-page .content .display .request-container {
     font-size: 1.7rem;
+  }
+  .profile-page .content .display .request-container .no-request img {
+    height: 14rem;
+    width: 14rem;
+  }
+  .profile-page .content .display .narrative-container .no-content h3 {
+    font-size: 2rem;
+  }
+  .profile-page .content .display .narrative-container .no-content img {
+    height: 22rem;
+    width: 22rem;
   }
   .profile-page .content .display .narrative-container .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container {
     flex-direction: row;
@@ -8426,8 +8500,8 @@ button {
     font-size: 1.8rem;
   }
   .profile-page .content .display .attendance-container .no-record img {
-    height: 20rem;
-    width: 20rem;
+    height: 12rem;
+    width: 12rem;
   }
   .profile-page .content .display .attendance-container .attendance-view,
   .profile-page .content .display .attendance-container .attendance-absent {
@@ -8436,12 +8510,23 @@ button {
   .profile-page .content .display .request-container {
     font-size: 1.5rem;
   }
+  .profile-page .content .display .request-container .no-request h3 {
+    font-size: 1.8rem;
+  }
+  .profile-page .content .display .request-container .no-request img {
+    height: 12rem;
+    width: 12rem;
+  }
   .profile-page .content .display .request-container .document-record {
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 0.5rem 1rem;
+  }
+  .profile-page .content .display .narrative-container .no-content img {
+    height: 20rem;
+    width: 20rem;
   }
   .profile-page .content .display .narrative-container .report-container {
     grid-auto-rows: 13rem;
@@ -9760,6 +9845,7 @@ button {
     grid-template-rows: auto minmax(20rem, 44vh);
   }
 }
+/** @format */
 .reports {
   display: grid;
   height: 100%;
@@ -9776,8 +9862,14 @@ button {
   justify-content: center;
   flex-direction: column;
 }
+.reports .no-content h3 {
+  font-size: 2.5rem;
+}
+.reports .no-content h3 b {
+  color: #0d7377;
+}
 .reports .no-content img {
-  height: 50rem;
+  height: 40rem;
   width: 40rem;
 }
 .reports .overlay {
@@ -10463,6 +10555,13 @@ button {
   }
 }
 @media screen and (max-width: 750px) {
+  .reports .no-content h3 {
+    font-size: 2.2rem;
+  }
+  .reports .no-content img {
+    height: 32rem;
+    width: 32rem;
+  }
   .reports .modal {
     width: 90%;
   }
@@ -10489,6 +10588,13 @@ button {
   }
 }
 @media screen and (max-width: 650px) {
+  .reports .no-content h3 {
+    font-size: 2rem;
+  }
+  .reports .no-content img {
+    height: 28rem;
+    width: 28rem;
+  }
   .reports .pdf-container {
     height: 100%;
     width: 100%;
@@ -10528,6 +10634,10 @@ button {
   }
 }
 @media screen and (max-width: 500px) {
+  .reports .no-content img {
+    height: 25rem;
+    width: 25rem;
+  }
   .reports .modal {
     border-radius: 0;
     width: 100%;

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Waiting from "../../../assets/img/waiting.svg";
+import Waiting from "../../../assets/img/no-internship.svg";
 
 const Request = React.memo(() => {
   const {
@@ -13,8 +13,10 @@ const Request = React.memo(() => {
   const renderDocumentRecords = () => {
     if (documentDetails.length === 0) {
       return (
-        <div className="no-content">
-          <h3>No Reports found.</h3>
+        <div className="no-request">
+          <h3>
+            No <b>Documents</b> found.
+          </h3>
           <img src={Waiting} alt="waiting" />
         </div>
       );

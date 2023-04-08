@@ -1,6 +1,8 @@
-import React, {useEffect} from "react";
-import {useSelector, useDispatch} from "react-redux";
-import {getAllNarrative} from "../../../features/interns/narrativeReducer";
+/** @format */
+
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllNarrative } from "../../../features/interns/narrativeReducer";
 import ReportContent from "../../../components/intern/NarrativeContent";
 import _ from "lodash";
 import ServerError from "../../serverError";
@@ -9,14 +11,14 @@ import ApprovalWaiting from "../../../assets/img/waiting.svg";
 
 const Narrative = React.memo(() => {
   const {
-    user: {email},
+    user: { email },
   } = useSelector((state) => state.user);
-  const {allNarrative, isError} = useSelector((state) => state.narrative);
+  const { allNarrative, isError } = useSelector((state) => state.narrative);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (!allNarrative) {
-      dispatch(getAllNarrative({email}));
+      dispatch(getAllNarrative({ email }));
     }
   }, []);
 
@@ -24,7 +26,9 @@ const Narrative = React.memo(() => {
     if (allNarrative.length === 0) {
       return (
         <div className="no-content">
-          <h3>No Reports found.</h3>
+          <h3>
+            No <b>Reports</b> Available.
+          </h3>
           <img src={ApprovalWaiting} alt="waiting" />
         </div>
       );
