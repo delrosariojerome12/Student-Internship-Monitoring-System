@@ -1,18 +1,18 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 // import searchIcon from "../../assets/img/search.svg";
-import { useSelector, useDispatch } from "react-redux";
-import { BiSearchAlt } from "react-icons/bi";
-import { checkStartingDate } from "../../features/interns/attendanceReducer";
-import { useNavigate } from "react-router";
+import {useSelector, useDispatch} from "react-redux";
+import {BiSearchAlt} from "react-icons/bi";
+import {checkStartingDate} from "../../features/interns/attendanceReducer";
+import {useNavigate} from "react-router";
 import ReactMap from "../../components/utils/ReactMap";
 import NoInternship from "../../assets/img/no-internship.svg";
 
 const DashboardMain = React.memo(() => {
   const {
     user: {
-      user: { firstName },
+      user: {firstName},
       email,
       internshipDetails: {
         renderedHours,
@@ -23,7 +23,7 @@ const DashboardMain = React.memo(() => {
         supervisorContact,
         email: supEmail,
       },
-      schoolDetails: { requiredHours },
+      schoolDetails: {requiredHours},
       documentDetails,
       status,
     },
@@ -34,24 +34,8 @@ const DashboardMain = React.memo(() => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const date = new Date();
-    const day = date.getDate() + 1 < 10 ? `0${date.getDate()}` : date.getDate();
-    const month =
-      date.getMonth() + 1 < 10
-        ? `0${date.getMonth() + 1}`
-        : date.getMonth() + 1;
-    const year = date.getFullYear();
-    const today = `${year}-${month}-${day}`;
-    const startDate = new Date(startingDate);
-
-    console.log(date);
-    console.log(startDate);
-
-    // if (today === startingDate && status !== "Starting") {
-    //   dispatch(checkStartingDate({email}));
-    // }
-    if (today >= startingDate && status !== "Starting") {
-      dispatch(checkStartingDate({ email }));
+    if (status !== "Starting") {
+      dispatch(checkStartingDate({email}));
     }
   }, []);
 
@@ -67,8 +51,8 @@ const DashboardMain = React.memo(() => {
     }
     return documentDetails.map((item, index) => {
       const {
-        document: { name, format },
-        completion: { isApproved, hasSent, isRejected },
+        document: {name, format},
+        completion: {isApproved, hasSent, isRejected},
       } = item;
       return (
         <div className="document-dashboard" key={index}>
@@ -86,7 +70,8 @@ const DashboardMain = React.memo(() => {
                 : isRejected
                 ? "#e63946"
                 : "#F18805",
-            }}>
+            }}
+          >
             {isApproved
               ? "Approved"
               : hasSent
