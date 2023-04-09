@@ -290,7 +290,7 @@ const Interns = React.memo(() => {
                   navigate(`/dashboard/interns/${selectedIntern.email}`)
                 }
               >
-                View More
+                Intern Profile
               </button>
             </div>
           </div>

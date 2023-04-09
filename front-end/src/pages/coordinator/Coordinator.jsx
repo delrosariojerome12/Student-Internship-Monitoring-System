@@ -34,7 +34,7 @@ const Coordinator = React.memo(({isSidebarOpen}) => {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/interns" element={<Interns />} />
-          <Route path="/interns/:email" element={<Test />} />
+          <Route path="/interns/:email/*" element={<Test />} />
           <Route path="/attendance" element={<Attendance />} />
           <Route path="/approvals" element={<Approvals />} />
           <Route path="/documents" element={<Documents />} />
