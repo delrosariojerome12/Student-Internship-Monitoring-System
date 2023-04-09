@@ -1,7 +1,9 @@
-import React, {useEffect, useState} from "react";
-import {FaSortAmountUp, FaRegCalendarCheck, FaFilter} from "react-icons/fa";
-import {useSelector, useDispatch} from "react-redux";
-import {getAllNarrative} from "../../features/interns/narrativeReducer";
+/** @format */
+
+import React, { useEffect, useState } from "react";
+import { FaSortAmountUp, FaRegCalendarCheck, FaFilter } from "react-icons/fa";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllNarrative } from "../../features/interns/narrativeReducer";
 import ReportContent from "../../components/intern/NarrativeContent";
 import Bouncing from "../../components/loading/Bouncing";
 import ServerError from "../serverError";
@@ -20,7 +22,7 @@ import ApprovalWaiting from "../../assets/img/waiting.svg";
 const Reports = React.memo(() => {
   const {
     user: {
-      user: {email},
+      user: { email },
     },
   } = useSelector((state) => state.user);
 
@@ -37,7 +39,7 @@ const Reports = React.memo(() => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllNarrative({email}));
+    dispatch(getAllNarrative({ email }));
   }, []);
 
   if (isError) {
@@ -51,7 +53,9 @@ const Reports = React.memo(() => {
     if (allNarrative.length === 0) {
       return (
         <div className="no-content">
-          <h3>No Reports found.</h3>
+          <h3>
+            No <b>Reports</b> Found.
+          </h3>
           <img src={ApprovalWaiting} alt="waiting" />
         </div>
       );

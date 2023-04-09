@@ -1,27 +1,29 @@
 /** @format */
 
 import React from "react";
-import {useSelector, useDispatch} from "react-redux";
-import Waiting from "../../../assets/img/waiting.svg";
+import { useSelector, useDispatch } from "react-redux";
+import Waiting from "../../../assets/img/no-internship.svg";
 
 const Request = React.memo(() => {
   const {
-    user: {documentDetails},
+    user: { documentDetails },
   } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const renderDocumentRecords = () => {
     if (documentDetails.length === 0) {
       return (
-        <div className="no-content">
-          <h3>No Reports found.</h3>
+        <div className="no-request">
+          <h3>
+            No <b>Documents</b> found.
+          </h3>
           <img src={Waiting} alt="waiting" />
         </div>
       );
     }
 
     return documentDetails.map((item, index) => {
-      const {completion, document} = item;
+      const { completion, document } = item;
       return (
         <div className="document-record" key={index}>
           <h4>{document.name}</h4>
@@ -30,12 +32,11 @@ const Request = React.memo(() => {
               color: completion.isApproved
                 ? "#00adb5"
                 : completion.hasSent
-                ? "#5DB7DE"
+                ? "#323232"
                 : completion.isRejected
                 ? "#e63946"
                 : "#F18805",
-            }}
-          >
+            }}>
             {completion.isApproved
               ? "Approved"
               : completion.hasSent

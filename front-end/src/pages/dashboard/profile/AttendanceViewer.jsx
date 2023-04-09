@@ -1,13 +1,13 @@
 /** @format */
 
-import React, {useEffect} from "react";
-import {useSelector, useDispatch} from "react-redux";
-import {getAllAttendance} from "../../../features/interns/attendanceReducer";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllAttendance } from "../../../features/interns/attendanceReducer";
 import Bouncing from "../../../components/loading/Bouncing";
 import ServerError from "../../serverError";
 import Attendance from "../../../components/intern/Attendance";
 import CantStart from "../CantStart";
-import NoDocumentSvg from "../../../assets/img/waiting.svg";
+import NoDocumentSvg from "../../../assets/img/approvals.svg";
 
 const months = [
   "January",
@@ -25,7 +25,7 @@ const months = [
 ];
 
 const AttendanceViewer = React.memo(() => {
-  const {user} = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
   const {
     isLoading,
     isError,
@@ -38,16 +38,16 @@ const AttendanceViewer = React.memo(() => {
   const dispatch = useDispatch();
 
   const {
-    user: {firstName, lastName, profileImage, email},
-    internshipDetails: {renderedHours, startingDate},
-    schoolDetails: {program, requiredHours},
+    user: { firstName, lastName, profileImage, email },
+    internshipDetails: { renderedHours, startingDate },
+    schoolDetails: { program, requiredHours },
     scheduleDetails,
     status,
   } = user;
 
   useEffect(() => {
     if (!allAttendance) {
-      dispatch(getAllAttendance({email, scheduleDetails}));
+      dispatch(getAllAttendance({ email, scheduleDetails }));
     }
   }, []);
 
@@ -72,14 +72,14 @@ const AttendanceViewer = React.memo(() => {
       return (
         <div className="no-record">
           <h3>
-            No <b>Record</b> Yet
+            No Attendance <b>Recorded</b> Yet.
           </h3>
-          <img src={NoDocumentSvg} alt="no-internship" />
+          <img src={NoDocumentSvg} alt="no-attendace-img" />
         </div>
       );
     }
     return allAttendance.map((item, index) => {
-      const {date, isPresent, timeIn, timeOut, totalRendered} = item;
+      const { date, isPresent, timeIn, timeOut, totalRendered } = item;
 
       if (isPresent) {
         return (

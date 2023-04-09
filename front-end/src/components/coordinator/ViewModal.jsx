@@ -1,52 +1,68 @@
-import React, {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+/** @format */
+
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   handleView,
   enrollInternship,
   unEnrollInternship,
 } from "../../features/coordinator/internship";
 
-const ViewModal = React.memo(({form}) => {
+const ViewModal = React.memo(({ form }) => {
   const {
     user: {
-      user: {role, email},
+      user: { role, email },
       internshipDetails,
       verification,
     },
   } = useSelector((state) => state.user);
-  const {selectedInternship} = useSelector((state) => state.internship);
+  const { selectedInternship } = useSelector((state) => state.internship);
   const dispatch = useDispatch();
+
+  const typeOrder = [
+    "company-name",
+    "company-address",
+    "description",
+    "email",
+    "logo",
+    "supervisor",
+    "supervisor-contact",
+    "duties",
+  ];
 
   const convertForm = () => {
     const entries = Object.entries(selectedInternship[0]).map((item) => {
       const x = Object.assign({}, item);
-      return {[x[0]]: x[1], code: x[0], value: x[1]};
+      return { [x[0]]: x[1], code: x[0], value: x[1] };
     });
 
     const final = entries
       .map((i) => {
         const newForm = form.map(
-          (item) => item.code === i.code && {...item, value: i.value}
+          (item) => item.code === i.code && { ...item, value: i.value }
         );
+
         return newForm.filter((c) => c).sort((item) => item.type)[0];
       })
       .filter((x) => x);
 
     console.log(final);
+
     return final;
   };
 
-  const {students, companyName} = selectedInternship[0];
+  const { students, companyName } = selectedInternship[0];
 
   const renderButtons = () => {
     if (role === "intern") {
-      const {hasSentVerification, isRejected} = verification;
+      const { hasSentVerification, isRejected } = verification;
       if (!isRejected) {
         if (!internshipDetails.companyName) {
           return (
             <button
-              onClick={() => dispatch(enrollInternship({email, companyName}))}
-            >
+              onClick={() =>
+                dispatch(enrollInternship({ email, companyName }))
+              }>
               Enroll
             </button>
           );
@@ -56,8 +72,9 @@ const ViewModal = React.memo(({form}) => {
         ) {
           return (
             <button
-              onClick={() => dispatch(unEnrollInternship({email, companyName}))}
-            >
+              onClick={() =>
+                dispatch(unEnrollInternship({ email, companyName }))
+              }>
               Unenroll
             </button>
           );
@@ -71,19 +88,19 @@ const ViewModal = React.memo(({form}) => {
       <div onClick={() => dispatch(handleView())} className="overlay"></div>
       <div className="view-modal modal">
         {convertForm().map((item, index) => {
-          const {forInput, value, id} = item;
+          const { forInput, value, id } = item;
           if (id === "logo") {
             const {
-              value: {link, name},
+              value: { link, name },
             } = item;
             return (
-              <div key={index} className="input img-con">
+              <div key={index} className={`input img-con ${id}`}>
                 <img src={link} alt="logo" />
               </div>
             );
           }
           return (
-            <div key={index} className="input text-con">
+            <div key={index} className={`input text-con ${id}`}>
               <h4>{forInput}</h4>
               <p>{value}</p>
             </div>

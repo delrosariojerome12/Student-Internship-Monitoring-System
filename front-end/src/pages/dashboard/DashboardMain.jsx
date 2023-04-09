@@ -7,7 +7,8 @@ import {BiSearchAlt} from "react-icons/bi";
 import {checkStartingDate} from "../../features/interns/attendanceReducer";
 import {useNavigate} from "react-router";
 import ReactMap from "../../components/utils/ReactMap";
-import Waiting from "../../assets/img/waiting.svg";
+import NoInternship from "../../assets/img/no-internship.svg";
+
 const DashboardMain = React.memo(() => {
   const {
     user: {
@@ -33,23 +34,7 @@ const DashboardMain = React.memo(() => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const date = new Date();
-    const day = date.getDate() + 1 < 10 ? `0${date.getDate()}` : date.getDate();
-    const month =
-      date.getMonth() + 1 < 10
-        ? `0${date.getMonth() + 1}`
-        : date.getMonth() + 1;
-    const year = date.getFullYear();
-    const today = `${year}-${month}-${day}`;
-    const startDate = new Date(startingDate);
-
-    console.log(date);
-    console.log(startDate);
-
-    // if (today === startingDate && status !== "Starting") {
-    //   dispatch(checkStartingDate({email}));
-    // }
-    if (today >= startingDate && status !== "Starting") {
+    if (status !== "Starting") {
       dispatch(checkStartingDate({email}));
     }
   }, []);
@@ -59,8 +44,8 @@ const DashboardMain = React.memo(() => {
       return (
         <div className="no-content">
           <h3>No Reports found.</h3>
-          <h3>Please Reload, it may take some time.</h3>;
-          <img src={Waiting} alt="waiting" />
+          <h3>Please Reload, it may take some time.</h3>
+          <img src={NoInternship} alt="waiting" />
         </div>
       );
     }
@@ -71,14 +56,17 @@ const DashboardMain = React.memo(() => {
       } = item;
       return (
         <div className="document-dashboard" key={index}>
-          <h4>{name}</h4>
-          <p>{format}</p>
+          <h4>
+            {name}.{format}
+          </h4>
+          {/* <p className="format">{format}</p> */}
           <h4
+            className="status"
             style={{
               color: isApproved
                 ? "#00adb5"
                 : hasSent
-                ? "#fff"
+                ? "#323232"
                 : isRejected
                 ? "#e63946"
                 : "#F18805",
@@ -123,12 +111,12 @@ const DashboardMain = React.memo(() => {
           </h1>
           <h4>Welcome Back!</h4>
         </div>
-        <div className="search-box">
+        {/* <div className="search-box">
           <span>
             <BiSearchAlt />
           </span>
           <input placeholder="Search" type="text" />
-        </div>
+        </div> */}
       </header>
       <div className="content">
         <div className="time-keeper">
@@ -148,12 +136,14 @@ const DashboardMain = React.memo(() => {
         <div className="documents">
           <h4>Documents</h4>
           <div className="document-contents">
+            <div className="btn-documents">
+              {documentDetails.length > 0 && (
+                <button onClick={() => navigate("/dashboard/documents")}>
+                  Manage Documents
+                </button>
+              )}
+            </div>
             {renderDocuments()}
-            {documentDetails.length > 0 && (
-              <button onClick={() => navigate("/dashboard/documents")}>
-                Manage Documents
-              </button>
-            )}
           </div>
         </div>
         <div className="internship-details">
@@ -180,9 +170,11 @@ const DashboardMain = React.memo(() => {
           <>
             <div className="overlay"></div>
             <div className="map-con">
-              <h3>Click the map to test location.</h3>
+              <h3>Click the map to test and see your location.</h3>
               <ReactMap />
-              <button onClick={() => setMapOpen(false)}>Close Map</button>
+              <div className="btn-close">
+                <button onClick={() => setMapOpen(false)}>Close Map</button>
+              </div>
             </div>
           </>
         )}

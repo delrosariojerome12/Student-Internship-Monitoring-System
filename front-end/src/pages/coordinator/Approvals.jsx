@@ -1,5 +1,3 @@
-/** @format */
-
 import React, {useEffect} from "react";
 import Approval from "../../components/coordinator/ApprovalIntern";
 import {useSelector, useDispatch} from "react-redux";

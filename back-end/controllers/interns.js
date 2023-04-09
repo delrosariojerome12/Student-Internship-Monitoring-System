@@ -29,6 +29,7 @@ const getIntern = async (req, res) => {
 
 const requestVerification = async (req, res) => {
   const {email} = req.body;
+
   const user = await Intern.findOneAndUpdate({email}, req.body, {
     new: true,
     runValidators: true,
@@ -46,7 +47,9 @@ const requestVerification = async (req, res) => {
 
 const updateIntern = async (req, res) => {
   try {
-    const {email, internshipDetails} = req.body;
+    const {email, internshipDetails, verification} = req.body;
+
+    const {isVerified, isRejected} = verification;
 
     const user = await Intern.findOne({email}).populate({
       path: "user",
@@ -57,35 +60,60 @@ const updateIntern = async (req, res) => {
       throw new NotFound(`Email not found`);
     }
 
-    console.log(internshipDetails);
-
     if (internshipDetails) {
-      console.log(internshipDetails);
-
       const {renderedHours, ...details} = internshipDetails;
 
       const doesExist = await Internship.findOne({
         companyName: details.companyName,
       });
 
+      console.log(details);
+
       if (!doesExist) {
-        console.log("here");
         var internship = await Internship.updateOne(
           {companyName: details.companyName},
           {$set: details},
-          {upsert: true}
+          {upsert: true, new: true}
         );
       }
+
+      const updateInternship = await Internship.findOneAndUpdate(
+        {companyName: details.companyName},
+        {$inc: {students: 1}},
+        {new: true}
+      );
+
+      console.log(updateInternship);
 
       const interns = await Intern.find({}).populate({
         path: "user",
         model: "User",
       });
 
+      const updateIntern = await Intern.findOneAndUpdate(
+        {email},
+        {verification},
+        {new: true}
+      );
+
+      const allInternships = await Internship.find({});
+
       return res
         .status(StatusCodes.OK)
-        .json({user, interns, internship, doesExist});
+        .json({user, interns, internship, doesExist, allInternships});
+    } else {
+      const updateIntern = await Intern.findOneAndUpdate(
+        {email},
+        {verification},
+        {new: true}
+      );
     }
+
+    // const updateIntern = await Intern.findOneAndUpdate(
+    //   {email},
+    //   {verification},
+    //   {new: true}
+    // );
 
     const interns = await Intern.find({}).populate({
       path: "user",
@@ -158,21 +186,22 @@ const enrollInternship = async (req, res) => {
     path: "user",
     model: "User",
   });
-  const internshipExists = await Internship.find({companyName});
 
   if (!internExists) {
     throw new NotFound(`No intern with email ${email}`);
   }
 
-  if (!internshipExists) {
-    throw new NotFound(`No internship with name of ${companyName}`);
-  }
+  // if (!internshipExists) {
+  //   throw new NotFound(`No internship with name of ${companyName}`);
+  // }
 
-  const internship = await Internship.findOneAndUpdate(
-    {companyName},
-    {$inc: {students: 1}},
-    {new: true}
-  );
+  // const internship = await Internship.findOneAndUpdate(
+  //   {companyName},
+  //   {$inc: {students: 1}},
+  //   {new: true}
+  // );
+
+  const internship = await Internship.findOne({companyName});
 
   const enrolledIntern = await Intern.findOneAndUpdate(
     {email},
@@ -201,21 +230,21 @@ const unEnrolledInternship = async (req, res) => {
     path: "user",
     model: "User",
   });
-  const internshipExists = await Internship.find({companyName});
+  // const internshipExists = await Internship.find({companyName});
 
   if (!internExists) {
     throw new NotFound(`No intern with email ${email}`);
   }
 
-  if (!internshipExists) {
-    throw new NotFound(`No internship with name of ${companyName}`);
-  }
+  // if (!internshipExists) {
+  //   throw new NotFound(`No internship with name of ${companyName}`);
+  // }
 
-  const internship = await Internship.findOneAndUpdate(
-    {companyName},
-    {$inc: {students: -1}},
-    {new: true}
-  );
+  // const internship = await Internship.findOneAndUpdate(
+  //   {companyName},
+  //   {$inc: {students: -1}},
+  //   {new: true}
+  // );
 
   const emptyObject = {
     companyName: "",

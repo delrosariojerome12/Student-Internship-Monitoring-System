@@ -7,7 +7,6 @@
   display: grid;
   height: 100%;
   width: 100%;
-  // grid-template-rows: 30vh 63vh;
   grid-template-rows: auto minmax(30rem, 66vh);
   gap: 1rem;
 
@@ -83,10 +82,6 @@
     display: grid;
     grid-template-rows: auto 1fr auto;
     gap: 1rem;
-    // & > * {
-    //   background-color: #fff;
-    //   border: solid 1px #000;
-    // }
     .upper {
       display: flex;
       align-items: center;
@@ -248,10 +243,6 @@
       }
       .active {
         background-color: $primary-compliment-landing;
-        // background-color: lighten(
-        //   $color: $primary-bg-color-landing-compliment,
-        //   $amount: 30
-        // );
         &::before {
           width: 80%;
         }
@@ -287,7 +278,6 @@
         gap: 1rem;
         .img-con {
           background-color: #fff;
-          // border: solid 1px #000;
           border-radius: 1rem;
           height: 15rem;
           width: 15rem;
@@ -311,32 +301,34 @@
         }
       }
       .attendance-container {
-        background-color: #fff;
+        background-color: #d9d9d9;
         padding: 2rem;
         border-radius: 1rem;
         display: flex;
         flex-direction: column;
         gap: 1rem;
         .no-record {
-          display: flex;
+          @include flexColumn;
           height: 100%;
-          flex-direction: column;
           justify-content: center;
           align-items: center;
-          // gap: 1rem;
-          // color: #fff;
+          text-align: center;
+          h3 {
+            font-size: 2.3rem;
+            b {
+              color: $primary-compliment-landing;
+            }
+          }
           img {
-            height: 23rem;
-            width: 23rem;
+            height: 18rem;
+            width: 18rem;
           }
         }
         .attendance-view,
         .attendance-absent {
-          // background-color: $primary-compliment-landing;
-          background-color: #d9d9d9;
+          background-color: #fff;
           border-radius: 1rem;
           padding: 1.5rem;
-          // color: #fff;
           display: flex;
           justify-content: space-between;
           gap: 1rem;
@@ -352,39 +344,53 @@
           }
         }
       }
+      .cant-start {
+        button {
+          height: 4rem;
+        }
+        .cant-start-modal {
+          width: 45rem;
+          height: 30rem;
+          gap: 0;
+          h3 {
+            font-size: 1.8rem;
+          }
+          img {
+            height: 16rem;
+            width: 16rem;
+          }
+        }
+      }
       .request-container {
-        // background-color: #d9d9d9;
-        background-color: #282b30;
-
+        background-color: #d9d9d9;
         padding: 2rem;
         border-radius: 1rem;
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        .no-content {
-          color: #fff;
-          padding: 2rem;
-          border-radius: 1rem;
-          background-color: #282b30;
-          @include flexCenter;
-          flex-direction: column;
+        .no-request {
+          @include flexColumn;
+          height: 100%;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          h3 {
+            font-size: 2.3rem;
+            b {
+              color: $primary-compliment-landing;
+            }
+          }
           img {
-            height: 50rem;
-            width: 40rem;
+            height: 18rem;
+            width: 18rem;
           }
         }
         .document-record {
           display: flex;
           justify-content: space-between;
-          // background-color: #d9d9d9;
-          background: $primary-compliment-landing;
-          color: #fff;
-
-          gap: 1rem;
-          // background-color: $primary-compliment-landing;
-          padding: 1.5rem;
+          background-color: #fff;
           border-radius: 1rem;
-          // color: #fff;
+          padding: 1.5rem;
         }
       }
       .narrative-container {
@@ -397,9 +403,15 @@
           background-color: #282b30;
           @include flexCenter;
           flex-direction: column;
+          h3 {
+            font-size: 2.3rem;
+            b {
+              color: $primary-compliment-landing;
+            }
+          }
           img {
-            height: 50rem;
-            width: 40rem;
+            height: 25rem;
+            width: 25rem;
           }
         }
 
@@ -408,10 +420,9 @@
           grid-auto-rows: 12rem;
           grid-template-columns: repeat(auto-fill, 46rem);
           gap: 1rem;
-          padding: 1rem;
           background-color: #282b30;
           border-radius: 1rem;
-          overflow-y: auto;
+          // overflow-y: auto;
 
           .narrative-content {
             background-color: #d9d9d9;
@@ -588,6 +599,19 @@
             margin: auto;
           }
         }
+        .attendance-container,
+        .request-container {
+          .no-record,
+          .no-request {
+            h3 {
+              font-size: 2rem;
+            }
+            img {
+              height: 16rem;
+              width: 16rem;
+            }
+          }
+        }
       }
     }
   }
@@ -667,6 +691,18 @@
             }
           }
         }
+        .cant-start {
+          .cant-start-modal {
+            width: 100%;
+            h3 {
+              font-size: 1.7rem;
+            }
+            img {
+              height: 15rem;
+              width: 15rem;
+            }
+          }
+        }
       }
     }
   }
@@ -742,6 +778,12 @@
           }
         }
         .attendance-container {
+          .no-record {
+            img {
+              height: 14rem;
+              width: 14rem;
+            }
+          }
           .attendance-view,
           .attendance-absent {
             font-size: 1.7rem;
@@ -749,9 +791,24 @@
         }
         .request-container {
           font-size: 1.7rem;
+          .no-request {
+            img {
+              height: 14rem;
+              width: 14rem;
+            }
+          }
         }
 
         .narrative-container {
+          .no-content {
+            h3 {
+              font-size: 2rem;
+            }
+            img {
+              height: 22rem;
+              width: 22rem;
+            }
+          }
           .report-container {
             .narrative-content {
               .dropdown-container {
@@ -857,6 +914,32 @@
             font-size: 1.6rem;
           }
         }
+        .cant-start {
+          button {
+            height: 3.5rem;
+          }
+          .cant-start-modal {
+            padding: 1rem 1rem 1.5rem 1rem;
+            height: auto;
+
+            display: grid;
+            grid-template-rows: repeat(4, auto);
+            & > * {
+              margin: auto;
+            }
+            h3 {
+              font-size: 1.6rem;
+            }
+            img {
+              height: 13rem;
+              width: 13rem;
+            }
+            & > :nth-child(2) {
+              grid-row: 3/4;
+              padding-bottom: 0.5rem;
+            }
+          }
+        }
         .request-container {
           font-size: 1.6rem;
         }
@@ -949,8 +1032,8 @@
               font-size: 1.8rem;
             }
             img {
-              height: 20rem;
-              width: 20rem;
+              height: 12rem;
+              width: 12rem;
             }
           }
           .attendance-view,
@@ -958,10 +1041,43 @@
             font-size: 1.5rem;
           }
         }
+        .cant-start {
+          .cant-start-modal {
+            h3 {
+              width: 85%;
+            }
+            img {
+              height: 11rem;
+              width: 11rem;
+            }
+          }
+        }
         .request-container {
           font-size: 1.5rem;
+          .no-request {
+            h3 {
+              font-size: 1.8rem;
+            }
+            img {
+              height: 12rem;
+              width: 12rem;
+            }
+          }
+          .document-record {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0.5rem 1rem;
+          }
         }
         .narrative-container {
+          .no-content {
+            img {
+              height: 20rem;
+              width: 20rem;
+            }
+          }
           .report-container {
             grid-auto-rows: 13rem;
             .narrative-content {

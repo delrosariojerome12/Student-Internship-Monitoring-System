@@ -10,7 +10,7 @@ import {BiSearchAlt} from "react-icons/bi";
 
 import NoIntern from "../../assets/img/head.svg";
 import NoApprovals from "../../assets/img/approvals.svg";
-import NoInternship from "../../assets/img/waiting.svg";
+import NoInternship from "../../assets/img/no-internship.svg";
 import {getAllInternship} from "../../features/coordinator/internship";
 
 import Internship from "../../components/coordinator/Internship";
@@ -34,7 +34,7 @@ const Dashboard = React.memo(() => {
       interns.filter((intern) => intern.verification.isVerified).length === 0
     ) {
       return (
-        <section className="all-intern-container">
+        <section className="dashboard-intern">
           <div className="no-intern">
             <img src={NoIntern} alt="" className="no-intern-img" />
             <h3>No verified intern found!</h3>
@@ -80,7 +80,7 @@ const Dashboard = React.memo(() => {
       return (
         <section className="dashboard-internships">
           <div className="no-internships">
-            <img src={NoApprovals} alt="Internship waiting image" />
+            <img src={NoInternship} alt="Internship waiting image" />
             <h3>No internship found</h3>
           </div>
         </section>
@@ -115,18 +115,17 @@ const Dashboard = React.memo(() => {
           </h1>
           <h4> Welcome Back!</h4>
         </div>
-        <div className="search-bar">
+        {/* <div className="search-bar">
           <span>
             <BiSearchAlt />
           </span>
           <input placeholder="Search" type="text" />
-        </div>
+        </div> */}
       </header>
       <div className="dashboard-content">
         <div className="dashboard-intern">
           <h4 className="container-title">Interns</h4>
-          {/* <div className="all-intern-container">{renderInterns()}</div> */}
-          <div className="all-intern-container">{renderApprovals()}</div>
+          <div className="all-intern-container">{renderInterns()}</div>
         </div>
 
         <div className="dashboard-approvals">

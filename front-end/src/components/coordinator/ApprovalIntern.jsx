@@ -1,21 +1,21 @@
 /** @format */
 
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { updateIntern } from "../../features/interns/internReducer";
-import { FaCheck, FaTrash } from "react-icons/fa";
-import { isRejected } from "@reduxjs/toolkit";
+import React, {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {updateIntern} from "../../features/interns/internReducer";
+import {FaCheck, FaTrash} from "react-icons/fa";
+import {isRejected} from "@reduxjs/toolkit";
 
-const ApprovalIntern = React.memo(({ intern, index }) => {
+const ApprovalIntern = React.memo(({intern, index}) => {
   // const {selectedIntern} = useSelector((state) => state.intern);
   const dispatch = useDispatch();
 
   const {
-    user: { firstName, lastName, email, profileImage },
+    user: {firstName, lastName, email, profileImage},
     schoolDetails: {
       program,
       studentContact,
-      validID: { link },
+      validID: {link},
       requiredHours,
     },
     internshipDetails: {
@@ -28,7 +28,7 @@ const ApprovalIntern = React.memo(({ intern, index }) => {
       startingDate,
       description,
     },
-    verification: { isVerified, hasSentVerification },
+    verification: {isVerified, hasSentVerification},
     scheduleDetails: {
       scheduleType,
       scheduledDays,
@@ -37,7 +37,7 @@ const ApprovalIntern = React.memo(({ intern, index }) => {
     },
   } = intern;
 
-  const { internshipDetails } = intern;
+  const {internshipDetails} = intern;
 
   const [isDetailsOpen, setDetailsOpen] = useState(false);
   const [remarks, setRemarks] = useState("");
@@ -66,7 +66,7 @@ const ApprovalIntern = React.memo(({ intern, index }) => {
         },
       };
       console.log("Request Rejected");
-      dispatch(updateIntern({ form, index }));
+      dispatch(updateIntern({form, index}));
     } else {
       const form = {
         email,
@@ -76,14 +76,12 @@ const ApprovalIntern = React.memo(({ intern, index }) => {
           isRejected: false,
           remarks,
         },
-        internshipDetails: { ...intern.internshipDetails },
+        internshipDetails: {...intern.internshipDetails},
       };
-      dispatch(updateIntern({ form, index }));
+      dispatch(updateIntern({form, index}));
       console.log("Request Accepted");
     }
   };
-
-  console.log(intern);
 
   return (
     <section className="approval-intern">
@@ -187,7 +185,8 @@ const ApprovalIntern = React.memo(({ intern, index }) => {
                       onChange={(e) => handleTextAreaChange(e.target.value)}
                       name="remarks"
                       id="remarks"
-                      maxLength={60}></textarea>
+                      maxLength={60}
+                    ></textarea>
                   </label>
                 </div>
                 <div className="btn-container">
@@ -223,9 +222,10 @@ const ApprovalIntern = React.memo(({ intern, index }) => {
             </b>
           </p>
           <p className="program">{program}</p>
+          <p className="course">BSIT</p>
         </div>
         <button className="view" onClick={handleDetails}>
-          View More Details
+          More
         </button>
       </div>
     </section>

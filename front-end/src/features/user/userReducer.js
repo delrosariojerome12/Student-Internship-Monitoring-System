@@ -208,8 +208,11 @@ export const userReducer = createSlice({
     builder
       .addCase(checkStartingDate.pending, (state, action) => {})
       .addCase(checkStartingDate.fulfilled, (state, {payload}) => {
-        console.log(payload.res.data);
-        state.user = payload.res.data;
+        console.log(payload.res);
+
+        if (!payload.res) {
+          state.user = payload.res.data;
+        }
       })
       .addCase(checkStartingDate.rejected, (state, action) => {});
   },

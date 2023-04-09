@@ -15,6 +15,7 @@
   .leaflet-container {
     height: 100%;
     width: 100%;
+    border-radius: 1rem;
   }
 
   .overlay {
@@ -38,6 +39,15 @@
     grid-template-rows: 1fr auto;
     background-color: #fff;
     border-radius: 1rem;
+    gap: 1rem;
+    h3 {
+      @include flexCenter;
+      text-align: center;
+      color: #fff;
+    }
+    .btn-close {
+      @include flexCenter;
+    }
   }
 
   .main {
@@ -50,7 +60,7 @@
     padding: 1rem;
     header {
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 1fr;
       padding: 0 1rem;
       gap: 1rem;
 
@@ -70,27 +80,27 @@
           font-size: 2rem;
         }
       }
-      .search-box {
-        @include flexCenter;
-        background-color: $light-bg-color;
-        width: 80%;
-        border-radius: 2rem;
-        padding: 0 1.5rem;
-        margin: auto;
+      // .search-box {
+      //   @include flexCenter;
+      //   background-color: $light-bg-color;
+      //   width: 80%;
+      //   border-radius: 2rem;
+      //   padding: 0 1.5rem;
+      //   margin: auto;
 
-        span {
-          @include flexCenter;
-          font-size: 2rem;
-          cursor: pointer;
-        }
-        input {
-          width: 100%;
-          background: transparent;
-          padding: 1rem;
-          outline: none;
-          border: 0;
-        }
-      }
+      //   span {
+      //     @include flexCenter;
+      //     font-size: 2rem;
+      //     cursor: pointer;
+      //   }
+      //   input {
+      //     width: 100%;
+      //     background: transparent;
+      //     padding: 1rem;
+      //     outline: none;
+      //     border: 0;
+      //   }
+      // }
     }
 
     .content {
@@ -100,7 +110,6 @@
       gap: 1.2rem;
       & > *:not(.overlay) {
         border: solid 1.5px #fff;
-        // border-radius: 2rem;
         padding: 1rem;
         @include flexColumn;
         background-color: #282b30;
@@ -139,20 +148,24 @@
           text-align: center;
         }
         .time-keeper-contents {
-          display: grid;
-          grid-template-columns: 1fr;
-          grid-template-rows: 1fr 0.5fr;
-          background-color: $light-bg-color;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          background-color: #fff;
           border-radius: 1rem;
           height: 100%;
           padding: 1rem;
-          gap: 1rem;
+
           .text {
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
+            text-align: center;
             overflow-y: auto;
+            font-size: 1.7rem;
           }
           .btn-controller {
             background-color: transparent;
@@ -163,8 +176,6 @@
         }
       }
       .documents {
-        // @include flexColumn;
-        // padding: 1rem;
         grid-row: 3/6;
         grid-column: 1/3;
         position: relative;
@@ -177,32 +188,34 @@
         .document-contents {
           background-color: #282b30;
           height: 100%;
-          border-radius: 2rem;
+          border-radius: 1rem;
           padding: 1rem;
           overflow-y: auto;
           display: grid;
           gap: 1rem;
+          background-color: #d9d9d9;
 
           .no-content {
-            color: #fff;
-            padding: 2rem;
+            @include flexColumn;
+            align-items: center;
+            gap: 0;
             border-radius: 1rem;
-            background-color: #282b30;
-            @include flexCenter;
-            flex-direction: column;
+            text-align: center;
             img {
-              height: 30rem;
-              width: 30rem;
+              height: 8rem;
+              width: 8rem;
             }
           }
-
+          .btn-documents {
+            display: flex;
+            justify-content: flex-end;
+          }
           .document-dashboard {
-            background-color: $primary-compliment-landing;
-            color: #fff;
+            background-color: #fff;
             border-radius: 1rem;
             padding: 1rem;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
           }
         }
       }
@@ -219,13 +232,9 @@
           color: #fff;
           padding: 1rem;
           border-radius: 1rem;
-          // & > * {
-          //   padding-bottom: 1rem;
-          // }
         }
       }
       .map {
-        // padding: 1rem;
         grid-column: 3/4;
         grid-row: 4/6;
         h4 {
@@ -245,9 +254,9 @@
   }
 
   .cant-start {
-    background-color: #212121;
+    background-color: #282b30;
     @include flexCenter;
-
+    border-radius: 1rem;
     button {
       height: 5rem;
       width: 12rem;
@@ -281,7 +290,6 @@
       @include flexColumn;
       align-items: center;
       justify-content: center;
-      gap: 1rem;
       background-color: #fff;
       border-radius: 1rem;
       width: 50rem;
@@ -307,6 +315,435 @@
 .dashboard-active {
   @extend .dashboard;
   padding: 2rem 9rem 2rem 29rem;
+}
+
+//min-height
+@media screen and (min-height: 700px) {
+  .dashboard {
+    .main {
+      grid-template-rows: auto minmax(45rem, 80vh);
+      .content {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        .time-keeper {
+          grid-column: 1/3;
+          grid-row: 1/3;
+          .time-keeper-contents {
+            .text {
+              font-size: 1.8rem;
+            }
+          }
+        }
+        .documents {
+          grid-row: 3/5;
+          grid-column: 1/3;
+          .document-contents {
+            .no-content {
+              img {
+                height: 12rem;
+                width: 12rem;
+              }
+            }
+          }
+        }
+        .internship-details {
+          grid-column: 3/4;
+          grid-row: 1/3;
+        }
+        .map {
+          grid-column: 3/4;
+          grid-row: 3/5;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-height: 820px) {
+  .dashboard {
+    .main {
+      grid-template-rows: auto minmax(45rem, 83vh);
+      .content {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        .time-keeper {
+          grid-column: 1/3;
+          grid-row: 1/3;
+          .time-keeper-contents {
+            .text {
+              font-size: 1.9rem;
+            }
+          }
+        }
+        .documents {
+          grid-row: 3/6;
+          grid-column: 1/3;
+          .document-contents {
+            .no-content {
+              img {
+                height: 15rem;
+                width: 15rem;
+              }
+            }
+          }
+        }
+        .internship-details {
+          grid-column: 3/4;
+          grid-row: 1/4;
+        }
+        .map {
+          grid-column: 3/4;
+          grid-row: 4/6;
+        }
+      }
+    }
+  }
+}
+
+//max-height
+@media screen and (max-width: 1350px) {
+  .dashboard {
+    .main {
+      .content {
+        .time-keeper {
+          .time-keeper-contents {
+            .text {
+              font-size: 1.7rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .dashboard {
+    .map-con {
+      border: solid 1.5px #fff !important;
+      padding: 1rem !important;
+      background-color: #282b30 !important;
+      gap: 1rem !important;
+    }
+    .main {
+      .content::-webkit-scrollbar {
+        width: 1rem;
+        height: 1rem;
+      }
+      .content::-webkit-scrollbar-thumb {
+        border-radius: 0;
+        margin: 1.5rem;
+      }
+      .content::-webkit-scrollbar-track {
+        border-radius: 0;
+        margin: 1.5rem;
+      }
+
+      .content {
+        overflow-y: auto;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 22rem 32rem 26rem;
+        padding: 1.5rem;
+        gap: 1.5rem;
+        border: solid 1px #fff;
+        border-radius: 1rem;
+        background-color: #282b30;
+
+        & > *:not(.overlay) {
+          background-color: #555252;
+          padding: 0;
+          border: none;
+          gap: 0.5rem;
+        }
+
+        .time-keeper {
+          grid-column: 1/4;
+          grid-row: 1/2;
+        }
+
+        .documents {
+          grid-column: 1/4;
+          grid-row: 2/3;
+          .document-contents::-webkit-scrollbar {
+            width: 1rem;
+            height: 1rem;
+          }
+          .document-contents::-webkit-scrollbar-thumb {
+            border-radius: 0 0 1rem 1rem;
+          }
+
+          .document-contents::-webkit-scrollbar-track {
+            border-radius: 0 0 2rem 1rem;
+          }
+        }
+        .internship-details {
+          grid-column: 1/3;
+          grid-row: 3/4;
+          .internship-contents {
+            background-color: #d9d9d9;
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            overflow-y: auto;
+            & > * {
+              background-color: #fff;
+              border-radius: 1rem;
+              padding: 0.5rem 0.5rem 0.5rem 1rem;
+            }
+          }
+        }
+        .map {
+          grid-column: 3/4;
+          grid-row: 3/4;
+        }
+        .time-keeper,
+        .documents,
+        .internship-details,
+        .map {
+          .btn-map,
+          .internship-contents,
+          .time-keeper-contents,
+          .document-contents {
+            border-radius: 0 0 1rem 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .dashboard {
+    .main {
+      header {
+        .name-container {
+          .name {
+            font-size: 3.8rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .dashboard {
+    .map-con {
+      height: 90vh;
+      width: 90vw;
+    }
+    .main {
+      header {
+        .name-container {
+          .name {
+            font-size: 3.5rem;
+          }
+          h4 {
+            font-size: 1.8rem;
+          }
+        }
+      }
+      .content {
+        grid-template-rows: 22rem 32rem 26rem 12rem;
+        .internship-details {
+          grid-column: 1/4;
+        }
+        .map {
+          grid-column: 1/4;
+          grid-row: 4/5;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .dashboard {
+    .map-con {
+      height: 100%;
+      width: 100%;
+      border-radius: 0 !important;
+    }
+    .main {
+      padding: 0;
+      .content {
+        .documents {
+          .document-contents {
+            .no-content {
+              h3 {
+                font-size: 2rem;
+              }
+              img {
+                height: 10rem;
+                width: 10rem;
+              }
+            }
+            .document-dashboard {
+              text-align: center;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              padding: 0.5rem;
+              word-break: break-all;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .dashboard {
+    .main {
+      grid-template-rows: auto minmax(45rem, 75vh);
+      .content {
+        grid-template-rows: auto 32rem 26rem 12rem;
+        button {
+          height: 3.8rem;
+        }
+        .time-keeper {
+          .time-keeper-contents {
+            padding: 1rem 1rem 1.5rem 1rem;
+            .text {
+              font-size: 1.6rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .dashboard {
+    .main {
+      grid-template-rows: auto minmax(45rem, 73vh);
+      .content {
+        button {
+          height: 3.5rem;
+        }
+        .documents {
+          .document-contents {
+            .no-content {
+              h3 {
+                font-size: 1.9rem;
+              }
+              img {
+                height: 9rem;
+                width: 9rem;
+              }
+            }
+            .document-dashboard {
+              font-size: 1.7rem;
+            }
+          }
+        }
+        .internship-details {
+          .internship-contents {
+            font-size: 1.7rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .dashboard {
+    .main {
+      grid-template-rows: auto minmax(45rem, 72vh);
+      header {
+        .name-container {
+          .name {
+            font-size: 3rem;
+          }
+          h4 {
+            font-size: 1.7rem;
+          }
+        }
+      }
+      .content {
+        grid-template-rows: auto 32rem 27.5rem 12rem;
+        button {
+          height: 3.2rem;
+        }
+
+        .time-keeper {
+          .time-keeper-contents {
+            .text {
+              font-size: 1.5rem;
+            }
+          }
+        }
+
+        .documents {
+          .document-contents {
+            .no-content {
+              h3 {
+                font-size: 1.8rem;
+              }
+              img {
+                height: 8rem;
+                width: 8rem;
+              }
+            }
+          }
+        }
+
+        .documents {
+          .document-contents {
+            .document-dashboard {
+              font-size: 1.6rem;
+            }
+            .btn-documents {
+              justify-content: center;
+              align-items: center;
+            }
+          }
+        }
+        .internship-details {
+          .internship-contents {
+            font-size: 1.6rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .dashboard {
+    .main {
+      grid-template-rows: auto minmax(45rem, 71vh);
+      .content {
+        button {
+          height: 3rem;
+        }
+        .time-keeper {
+          .time-keeper-contents {
+            .text {
+              font-size: 1.5rem;
+            }
+          }
+        }
+
+        .documents {
+          .document-contents {
+            .document-dashboard {
+              font-size: 1.6rem;
+            }
+          }
+        }
+        .internship-details {
+          .internship-contents {
+            font-size: 1.6rem;
+          }
+        }
+      }
+    }
+  }
 }
 
 //
@@ -335,25 +772,6 @@
   }
 }
 
-@media screen and (max-width: 750px) {
-  .dashboard {
-    .main {
-      .content {
-        @include flexColumn;
-        & > * {
-          height: 100%;
-        }
-        .documents {
-          border-radius: 0;
-        }
-        .map {
-          border-radius: 0 0 2rem 2rem;
-        }
-      }
-    }
-  }
-}
-
 @media screen and (max-width: 500px) {
   .dashboard {
     .cant-start {
@@ -365,67 +783,6 @@
         img {
           height: 22rem;
           width: 22rem;
-        }
-      }
-    }
-  }
-}
-
-//min-height
-@media screen and (min-height: 700px) {
-  .dashboard {
-    .main {
-      grid-template-rows: auto minmax(45rem, 80vh);
-      .content {
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(4, 1fr);
-        .time-keeper {
-          grid-column: 1/3;
-          grid-row: 1/3;
-        }
-        .documents {
-          grid-row: 3/5;
-          grid-column: 1/3;
-        }
-        .internship-details {
-          grid-column: 3/4;
-          grid-row: 1/3;
-        }
-        .map {
-          grid-column: 3/4;
-          grid-row: 3/5;
-        }
-      }
-    }
-  }
-}
-
-@media screen and (min-height: 820px) {
-  .dashboard {
-    .main {
-      grid-template-rows: auto minmax(45rem, 83vh);
-      .content {
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(5, 1fr);
-        .time-keeper {
-          grid-column: 1/3;
-          grid-row: 1/3;
-        }
-        .documents {
-          grid-row: 3/6;
-          grid-column: 1/3;
-          .btn-document {
-            margin: auto;
-            grid-row: 2/3;
-          }
-        }
-        .internship-details {
-          grid-column: 3/4;
-          grid-row: 1/4;
-        }
-        .map {
-          grid-column: 3/4;
-          grid-row: 4/6;
         }
       }
     }

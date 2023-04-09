@@ -393,6 +393,7 @@
           display: flex;
           flex-direction: column;
           align-items: flex-start;
+          height: 100%;
           gap: 1rem;
           .icon-con {
             display: flex;
@@ -422,7 +423,8 @@
         .user {
           display: grid;
           grid-template-columns: 7rem auto;
-          gap: 1rem;
+          column-gap: 1rem;
+          row-gap: 0.5rem;
           padding: 1rem;
           color: #fff;
           background-color: $secondary-bg-color;

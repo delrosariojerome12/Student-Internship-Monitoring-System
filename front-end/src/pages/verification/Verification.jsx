@@ -316,10 +316,10 @@ const Verification = React.memo(() => {
               value: "Regular",
               label: "Regular",
             },
-            {
-              value: "Irregular",
-              label: "Irregular",
-            },
+            // {
+            //   value: "Irregular",
+            //   label: "Irregular",
+            // },
           ],
         },
         {
@@ -589,9 +589,9 @@ const Verification = React.memo(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   };
 
-  const handleImageView = () => {
-    setImageOpen(!isImageOpen);
-  };
+  // const handleImageView = () => {
+  //   setImageOpen(!isImageOpen);
+  // };
 
   const deleteDuplicateFirebase = (imgName) => {
     const desertRef = ref(storage, imgName);
@@ -969,18 +969,27 @@ const Verification = React.memo(() => {
       switch (type) {
         case "date":
           const now = new Date();
+          const today = now.getDay(); // get today's day of the week
           const year = now.getFullYear();
           const month = now.getMonth() + 1;
           const date = now.getDate();
-          const minDate = `${year}-${month < 10 ? "0" : ""}${month}-${
-            date < 10 ? "0" : ""
-          }${date}`;
+
+          // find the next day after today
+          let minDate = new Date();
+          minDate.setDate(minDate.getDate() + 1);
+          const minYear = minDate.getFullYear();
+          const minMonth = minDate.getMonth() + 1;
+          const minDateOfMonth = minDate.getDate();
+          const minDateFormatted = `${minYear}-${
+            minMonth < 10 ? "0" : ""
+          }${minMonth}-${minDateOfMonth < 10 ? "0" : ""}${minDateOfMonth}`;
+
           const maxDate = "2023-12-31";
 
           return (
             <div className="input-contain" key={index}>
               <input
-                min={minDate}
+                min={minDateFormatted} // set minimum date as the next day after today
                 max={maxDate}
                 tabIndex={-1}
                 disabled={isDisabled}
@@ -1059,7 +1068,7 @@ const Verification = React.memo(() => {
                     {errorMessage}{" "}
                   </p>
                 )}
-                {link && <img onClick={handleImageView} src={link} alt={id} />}
+                {link && <img src={link} alt={id} />}
               </label>
             </div>
           );
@@ -1244,7 +1253,7 @@ const Verification = React.memo(() => {
                     {errorMessage}{" "}
                   </p>
                 )}
-                <img onClick={handleImageView} src={value} alt={id} />
+                <img src={value} alt={id} />
               </label>
             </div>
           );
@@ -1330,12 +1339,18 @@ const Verification = React.memo(() => {
       <div className="greetings">
         <h1>Verification</h1>
       </div>
-      {isImageOpen && (
+      {/* {isImageOpen && (
         <div className="valid-id-modal">
           <img src={form[1].forms[1].value} alt={`valid-id`} />
           <button onClick={handleImageView}>Back</button>
         </div>
-      )}
+      )} */}
+      {/* {isLogoOpen && (
+        <div className="valid-id-modal">
+          <img src={form[1].forms[1].value} alt={`logo`} />
+          <button onClick={handleImageView}>Back</button>
+        </div>
+      )} */}
 
       <div className="verification-steps">
         <div className="steps-container">
