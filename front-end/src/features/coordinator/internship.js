@@ -83,8 +83,8 @@ export const enrollInternship = createAsyncThunk(
   "internship/enroll",
   async ({email, companyName}, {rejectWithValue}) => {
     try {
-      // const url = `https://sims-twqb.onrender.com/intern/enrollInternship/${email}`;
-      const url = `http://localhost:5000/intern/enrollInternship/${email}`;
+      const url = `https://sims-twqb.onrender.com/intern/enrollInternship/${email}`;
+      // const url = `http://localhost:5000/intern/enrollInternship/${email}`;
 
       const {data: res} = await axios.patch(url, {
         params: {companyName},
@@ -102,8 +102,8 @@ export const unEnrollInternship = createAsyncThunk(
   "internship/unEnroll",
   async ({email, companyName}, {rejectWithValue}) => {
     try {
-      // const url = `https://sims-twqb.onrender.com/intern/unEnrollInternship/${email}`;
-      const url = `http://localhost:5000/intern/unEnrollInternship/${email}`;
+      const url = `https://sims-twqb.onrender.com/intern/unEnrollInternship/${email}`;
+      // const url = `http://localhost:5000/intern/unEnrollInternship/${email}`;
       const {data: res} = await axios.patch(url, {
         params: {companyName},
       });

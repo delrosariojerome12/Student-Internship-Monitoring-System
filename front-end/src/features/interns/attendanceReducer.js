@@ -80,8 +80,8 @@ export const checkStartingDate = createAsyncThunk(
       user: {user},
     } = getState();
     try {
-      // const url = `https://sims-twqb.onrender.com/attendance/checkStartingDate/${email}`;
-      const url = `http://localhost:5000/attendance/checkStartingDate/${email}`;
+      const url = `https://sims-twqb.onrender.com/attendance/checkStartingDate/${email}`;
+      // const url = `http://localhost:5000/attendance/checkStartingDate/${email}`;
 
       const {data: res} = await axios.patch(url, {...user, status: "Starting"});
       return {res};

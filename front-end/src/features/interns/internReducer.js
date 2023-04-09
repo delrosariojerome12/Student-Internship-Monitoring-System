@@ -64,8 +64,8 @@ export const updateIntern = createAsyncThunk(
     try {
       const {form} = payload;
       const {email} = form;
-      // const url = `https://sims-twqb.onrender.com/intern/updateIntern`;
-      const url = `http://localhost:5000/intern/updateIntern`;
+      const url = `https://sims-twqb.onrender.com/intern/updateIntern`;
+      // const url = `http://localhost:5000/intern/updateIntern`;
       const {data: res} = await axios.patch(url, form);
 
       const newApprovalIntern = [...state.intern.approvalInterns].filter(
