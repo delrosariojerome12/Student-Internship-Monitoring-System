@@ -121,6 +121,7 @@ const DocumentIntern = React.memo(({intern}) => {
             Approved:
             <b> {`${approvedDocuments.length}/${totalDocuments}`}</b>
           </p>
+          <p>{`Sent Documents: ${filteredDocumentDetails.length}`}</p>
         </div>
         <div className="bottom">
           <div className="dropdown-container">
