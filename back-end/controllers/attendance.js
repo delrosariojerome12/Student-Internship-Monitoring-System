@@ -485,11 +485,9 @@ const checkStartingDate = async (req, res) => {
   } = internDetails;
 
   const today = moment();
-  // const formattedStartingDate = moment(startingDate, "YYYY-MM-DD");
-  const formattedStartingDate = moment("2023-04-05", "YYYY-MM-DD");
+  const formattedStartingDate = moment(startingDate, "YYYY-MM-DD");
 
-  if (formattedStartingDate.isSameOrAfter(today, "week")) {
-    console.log("Test");
+  if (formattedStartingDate.isSameOrBefore(today, "day")) {
     const intern = await Intern.findOneAndUpdate({email}, req.body, {
       new: true,
       runValidators: true,
@@ -497,8 +495,9 @@ const checkStartingDate = async (req, res) => {
       path: "user",
       model: "User",
     });
-    res.status(StatusCodes.OK).json({success: true, data: intern});
+    return res.status(StatusCodes.OK).json({success: true, data: intern});
   }
+  res.status(StatusCodes.OK).json({success: true, msg: "not yet"});
 };
 
 const updateNarrative = async (req, res) => {
