@@ -8687,6 +8687,7 @@ button {
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
   background-color: #282b30;
   border-radius: 1rem;
   color: #fff;
