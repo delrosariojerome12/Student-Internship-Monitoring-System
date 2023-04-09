@@ -1,21 +1,21 @@
 /** @format */
 
-import React, { useState, useCallback, useEffect } from "react";
+import React, {useState, useCallback, useEffect} from "react";
 import Intern from "../../components/coordinator/Intern";
-import { useSelector, useDispatch } from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 import internWaiting from "../../assets/img/waiting.svg";
 import {
   getAllInterns,
   handleInternModal,
 } from "../../features/interns/internReducer";
 
-import { BiSearchAlt } from "react-icons/bi";
+import {BiSearchAlt} from "react-icons/bi";
 import Bouncing from "../../components/loading/Bouncing";
 import SelectedIntern from "../../components/coordinator/dashboardCoordinator/SelectedIntern";
-import approvalImg from "../../assets/img/approvals.svg";
+import {useNavigate} from "react-router";
 
 const Interns = React.memo(() => {
-  const { interns, isError, selectedIntern, isInternOpen } = useSelector(
+  const {interns, isError, selectedIntern, isInternOpen} = useSelector(
     (state) => state.intern
   );
   const [searchIntern, setSearchIntern] = useState("");
@@ -23,6 +23,7 @@ const Interns = React.memo(() => {
   const [sortValue, setSortValue] = useState(null);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const renderInterns = () => {
     if (!interns) {
@@ -276,12 +277,20 @@ const Interns = React.memo(() => {
         <>
           <div
             onClick={() => dispatch(handleInternModal())}
-            className="overlay"></div>
+            className="overlay"
+          ></div>
           <div className="preview-container modal">
             <SelectedIntern />
             <div className="btn-close">
               <button onClick={() => dispatch(handleInternModal())}>
                 Close
+              </button>
+              <button
+                onClick={() =>
+                  navigate(`/dashboard/interns/${selectedIntern.email}`)
+                }
+              >
+                View More
               </button>
             </div>
           </div>

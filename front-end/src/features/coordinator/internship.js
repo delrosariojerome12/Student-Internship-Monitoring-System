@@ -202,6 +202,8 @@ export const internshipReducer = createSlice({
       })
       .addCase(getAllInternship.fulfilled, (state, {payload: {res}}) => {
         state.internships = res.data;
+        // .sort((a, b) => b.students - a.students)
+        // .splice(0, 5);
         state.isLoading = false;
       })
       .addCase(getAllInternship.rejected, (state, action) => {
