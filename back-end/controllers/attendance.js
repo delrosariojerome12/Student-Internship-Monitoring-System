@@ -478,15 +478,27 @@ const timeOut = async (req, res) => {
 const checkStartingDate = async (req, res) => {
   const {email} = req.params;
 
-  const intern = await Intern.findOneAndUpdate({email}, req.body, {
-    new: true,
-    runValidators: true,
-  }).populate({
-    path: "user",
-    model: "User",
-  });
+  const internDetails = await Intern.findOne({email});
 
-  res.status(StatusCodes.OK).json({success: true, data: intern});
+  const {
+    internshipDetails: {startingDate},
+  } = internDetails;
+
+  const today = moment();
+  // const formattedStartingDate = moment(startingDate, "YYYY-MM-DD");
+  const formattedStartingDate = moment("2023-04-05", "YYYY-MM-DD");
+
+  if (formattedStartingDate.isSameOrAfter(today, "week")) {
+    console.log("Test");
+    const intern = await Intern.findOneAndUpdate({email}, req.body, {
+      new: true,
+      runValidators: true,
+    }).populate({
+      path: "user",
+      model: "User",
+    });
+    res.status(StatusCodes.OK).json({success: true, data: intern});
+  }
 };
 
 const updateNarrative = async (req, res) => {
@@ -570,10 +582,12 @@ const checkAbsents = async (req, res) => {
 };
 
 const runCheckAbsents = async () => {
-  console.log("running");
   try {
+    // const response = await axios.post(
+    //   "http://localhost:5000/attendance/checkAbsents"
+    // );
     const response = await axios.post(
-      "http://localhost:5000/attendance/checkAbsents"
+      "https://sims-twqb.onrender.com/attendance/checkAbsents"
     );
     console.log(response.data);
   } catch (error) {

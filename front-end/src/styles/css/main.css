@@ -7539,6 +7539,8 @@ button {
 .internship-container-intern .view-modal .close-btn {
   grid-column: 1/4;
   margin: auto;
+  display: flex;
+  gap: 1rem;
 }
 .internship-container-intern .view-modal .close-btn button {
   border-radius: 1rem;
