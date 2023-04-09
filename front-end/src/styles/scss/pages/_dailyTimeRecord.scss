@@ -156,7 +156,6 @@
 
   .no-camera {
     @include flexCenter;
-
     .top {
       @include flexColumn;
       b {
@@ -351,6 +350,7 @@
   .no-internship {
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     background-color: #282b30;
     border-radius: 1rem;

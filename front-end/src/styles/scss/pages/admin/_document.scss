@@ -5,7 +5,7 @@
 
 .admin-document-page {
   display: grid;
-  grid-template-rows: auto minmax(45rem, 70vh);
+  grid-template-rows: auto minmax(45rem, 61vh);
 
   gap: 1rem;
   overflow: hidden;
@@ -353,7 +353,7 @@
       background-color: #282b30;
       display: flex;
       align-items: center;
-      padding: 1rem 2rem;
+      padding: 1.5rem 2rem;
       border-radius: 1rem;
 
       h2 {
@@ -693,7 +693,9 @@
 }
 
 // Responsive
+// @media screen and (min-height: 700px) {
 
+//max-width
 @media screen and (max-width: 1030px) {
   .admin-document-page {
     // grid-template-rows: auto minmax(40rem, 73vh);
