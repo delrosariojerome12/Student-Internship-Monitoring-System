@@ -1,13 +1,15 @@
+/** @format */
+
 import React from "react";
 import {
   handleSelectedIntern,
   handleInternModal,
 } from "../../features/interns/internReducer";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-const Intern = React.memo(({intern}) => {
+const Intern = React.memo(({ intern }) => {
   const {
-    user: {email, firstName, lastName, profileImage},
+    user: { email, firstName, lastName, profileImage },
     internshipDetails: {
       companyAddress,
       companyName,
@@ -15,12 +17,12 @@ const Intern = React.memo(({intern}) => {
       supervisor,
       typeOfWork,
     },
-    schoolDetails: {requiredHours, program, studentContact},
-    scheduleDetails: {scheduleType, timeInSchedule, timeOutSchedule},
+    schoolDetails: { requiredHours, program, studentContact },
+    scheduleDetails: { scheduleType, timeInSchedule, timeOutSchedule },
   } = intern;
 
   const dispatch = useDispatch();
-  const {selectedIntern} = useSelector((state) => state.intern);
+  const { selectedIntern } = useSelector((state) => state.intern);
 
   return (
     <div
@@ -32,13 +34,12 @@ const Intern = React.memo(({intern}) => {
       onClick={() => {
         dispatch(handleSelectedIntern(intern));
         dispatch(handleInternModal());
-      }}
-    >
+      }}>
       <div className="img-container">
         <img src={profileImage} alt="profile-image" />
       </div>
       <div className="intern-details">
-        <h3>{`${firstName} ${lastName}`}</h3>
+        <h3>{`${lastName} ${firstName}`}</h3>
         <p>
           Total Hours: <b>{`${renderedHours}/${requiredHours}`}</b>
         </p>
