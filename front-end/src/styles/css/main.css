@@ -4384,6 +4384,25 @@ button {
     align-items: center;
     text-align: center;
   }
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-intern .no-intern, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-intern .no-intern,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-intern .no-approvals,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-intern .no-approvals,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-intern .no-internships,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-intern .no-internships,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .no-intern,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .no-intern,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .no-approvals,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .no-approvals,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .no-internships,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .no-internships,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .no-intern,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .no-intern,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .no-approvals,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .no-approvals,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .no-internships,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .no-internships {
+    padding: 2.5rem;
+  }
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-intern .no-intern img, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-intern .no-intern img,
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-intern .no-approvals img,
   .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-intern .no-approvals img,
