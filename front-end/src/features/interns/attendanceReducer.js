@@ -57,7 +57,10 @@ export const getAllAttendance = createAsyncThunk(
 
       console.log(timeObject);
 
+      // const url = `http://localhost:5000/attendance/getAllAttendance/${email}`;
+
       const url = `https://sims-twqb.onrender.com/attendance/getAllAttendance/${email}`;
+
       const {data: res} = await axios.get(url, {
         params: {scheduleDetails, timeObject},
       });
@@ -100,6 +103,7 @@ export const timeInAttendance = createAsyncThunk(
   async ({email, form}, {rejectWithValue}) => {
     try {
       const url = `https://sims-twqb.onrender.com/attendance/timeIn/${email}`;
+      // const url = `http://localhost:5000/attendance/timeIn/${email}`;
       const {data: res} = await axios.post(url, form);
       console.log(res);
       return {res};

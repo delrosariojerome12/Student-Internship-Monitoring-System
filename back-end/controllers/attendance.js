@@ -377,6 +377,8 @@ const timeIn = async (req, res) => {
     throw new NotFound("Email not found");
   }
 
+  console.log(req.body);
+
   const user = await User.findOne({email});
   const intern = await Intern.findOne({email});
 
