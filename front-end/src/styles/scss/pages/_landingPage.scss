@@ -101,7 +101,7 @@
 
   .contents {
     display: grid;
-    grid-template-rows: minmax(90vh, auto) repeat(2, 70vh);
+    grid-template-rows: minmax(90vh, auto) repeat(3, 70vh) minmax(90vh, auto);
     gap: 10rem;
 
     .landing-contents {
