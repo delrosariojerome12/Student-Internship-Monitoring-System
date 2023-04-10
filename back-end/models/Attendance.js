@@ -66,6 +66,7 @@ const AttendanceSchema = new mongoose.Schema({
   },
   missingTimeOut: {
     type: Boolean,
+    default: false,
   },
   OT: {
     type: String,
