@@ -248,7 +248,9 @@
       }
     }
     .btn-close {
-      justify-content: center;
+      // justify-content: center;
+      display: flex;
+      gap: 1rem;
     }
   }
   .sort,
