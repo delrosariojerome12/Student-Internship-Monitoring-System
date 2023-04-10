@@ -4610,12 +4610,12 @@ button {
 }
 .dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn {
   display: flex;
+  justify-content: center;
   align-items: flex-start;
   gap: 1rem;
 }
 .dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn h4, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn h4 {
-  display: flex;
-  align-items: center;
+  margin: auto 0;
   text-align: center;
   color: #e63946;
 }
@@ -4685,7 +4685,7 @@ button {
   border: solid 2px #e63946;
 }
 .dashboard .monitor-attendance .narrative-content, .dashboard-active .monitor-attendance .narrative-content {
-  height: 70rem;
+  height: 80%;
   width: 80rem;
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -4821,11 +4821,19 @@ button {
     width: 42rem;
   }
 }
+@media screen and (max-width: 900px) {
+  .dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn h4, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn h4 {
+    font-size: 1.5rem;
+  }
+}
 @media screen and (max-width: 850px) {
   .dashboard .monitor-attendance .more-details, .dashboard-active .monitor-attendance .more-details,
   .dashboard .monitor-attendance .narrative-content,
   .dashboard-active .monitor-attendance .narrative-content {
     width: 72rem;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn h4, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn h4 {
+    font-size: 1.2rem;
   }
 }
 @media screen and (max-width: 800px) {
@@ -4835,6 +4843,10 @@ button {
   .dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn {
     flex-direction: column;
     gap: 0.5rem;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn h4, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn h4 {
+    font-size: 1.7rem;
+    padding-left: 0.5rem;
   }
   .dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn button, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn button {
     height: 4rem;
@@ -4958,6 +4970,12 @@ button {
   .dashboard .monitor-attendance, .dashboard-active .monitor-attendance {
     grid-template-rows: auto minmax(35rem, 59vh);
   }
+  .dashboard .monitor-attendance header .top h2, .dashboard-active .monitor-attendance header .top h2 {
+    font-size: 2.4rem;
+  }
+  .dashboard .monitor-attendance header .mid h3, .dashboard-active .monitor-attendance header .mid h3 {
+    font-size: 2.2rem;
+  }
   .dashboard .monitor-attendance .display h1, .dashboard-active .monitor-attendance .display h1 {
     text-align: center;
     font-size: 2rem;
@@ -4990,6 +5008,9 @@ button {
   .dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn {
     flex-direction: row;
     align-items: center;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn h4, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn h4 {
+    font-size: 1.5rem;
   }
   .dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn button, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn button {
     font-size: 1.2rem;
