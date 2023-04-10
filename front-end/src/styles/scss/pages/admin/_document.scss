@@ -283,7 +283,25 @@
       }
     }
     .btn-container {
-      margin: auto;
+      @include flexCenter;
+      button {
+        @include flexCenter;
+        height: 4rem;
+        background-color: #d9d9d9;
+        border: none;
+        border-radius: 1rem;
+        outline: none;
+        cursor: pointer;
+        padding: 1rem 2rem;
+        transition: all 0.2s linear;
+        font-weight: 600;
+        &:hover {
+          background-color: $primary-feature-bg;
+          border: none !important;
+          border-radius: 0;
+          color: #fff;
+        }
+      }
     }
   }
   .sample-view-container {
@@ -297,12 +315,16 @@
     border-radius: 1rem;
     padding: 2rem 1rem;
     width: 65rem;
-    height: 93vh;
+    height: 93%;
     overflow: auto;
+    @include flexColumn;
 
     img {
-      height: 100%;
+      height: auto;
       width: 100%;
+    }
+    .btn-close {
+      display: none;
     }
   }
   .delete-document-modal {
@@ -542,8 +564,9 @@
             grid-column: 1/3;
           }
           .internship-at {
-            grid-column: 2/3;
-            grid-row: 2/4;
+            white-space: nowrap; /* Prevents text from wrapping */
+            overflow: hidden; /* Hides any overflowed text */
+            text-overflow: ellipsis;
           }
         }
         .bottom {
@@ -677,6 +700,7 @@
       width: 65rem;
       height: 93vh;
       overflow: auto;
+      @include flexColumn;
 
       img {
         height: 100%;
@@ -685,6 +709,9 @@
     }
     .no-approval {
       color: #fff;
+    }
+    .btn-close {
+      display: none;
     }
   }
 }
@@ -797,6 +824,30 @@
     .document-approval-container .view-document-container {
       width: 60rem;
       height: 90vh;
+    }
+    .sample-view-container,
+    .view-document-container {
+      .btn-close {
+        @include flexCenter;
+        button {
+          @include flexCenter;
+          height: 4rem;
+          background-color: #d9d9d9;
+          border: none;
+          border-radius: 1rem;
+          outline: none;
+          cursor: pointer;
+          padding: 1rem 2rem;
+          transition: all 0.2s linear;
+          font-weight: 600;
+
+          &:hover {
+            background-color: $primary-feature-bg;
+            border-radius: 0;
+            color: #fff;
+          }
+        }
+      }
     }
     .document-modal {
       width: 40rem;
@@ -918,7 +969,8 @@
     .sample-view-container,
     .document-approval-container .view-document-container {
       width: 100%;
-      height: 80vh;
+      height: 100%;
+      border-radius: 0;
     }
     header {
       .title-page {
