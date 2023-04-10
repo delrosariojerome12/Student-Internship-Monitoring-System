@@ -117,11 +117,11 @@ const TimeOutModal = React.memo(({email}) => {
       const date = new Date();
 
       // hour
-      const hours = (date.getHours() % 12 || 12).toString().padStart(2, "0");
-      // const hours =
-      //   date.getHours() % 12 || 12 < 10
-      //     ? `0${date.getHours() % 12 || 12}`
-      //     : date.getHours() % 12 || 12;
+      // const hours = (date.getHours() % 12 || 12).toString().padStart(2, "0");
+      const hours =
+        date.getHours() % 12 || 12 < 10
+          ? `0${date.getHours() % 12 || 12}`
+          : date.getHours() % 12 || 12;
       const minutes =
         10 > date.getMinutes() ? `0${date.getMinutes()}` : date.getMinutes();
       const seconds =

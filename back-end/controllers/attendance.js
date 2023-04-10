@@ -40,7 +40,8 @@ function countRenderedHours(timeIn, timeOut) {
 
   const difference = dateOut - dateIn;
 
-  console.log(difference);
+  console.log(dateIn, dateOut, "date in");
+  console.log(difference, "difference");
 
   let hours = difference / millisecondsInHour;
   hours = Math.round(hours * 4) / 4; // Round to nearest quarter hour
@@ -406,9 +407,24 @@ const timeOut = async (req, res) => {
 
   const todayDate = moment().tz("Asia/Manila").format("MM-DD-YYYY");
   const currentTime = moment().tz("Asia/Manila");
-  const hours = currentTime.hour();
-  const minutes = currentTime.minute();
-  const seconds = currentTime.seconds();
+  // const hours = currentTime.hour() > 12 ? hours - 12 : hours;
+  // const minutes = currentTime.minute();
+  // const seconds = currentTime.seconds();
+
+  const hours =
+    currentTime.hour() > 12
+      ? currentTime.hour() - 12
+      : currentTime.hour() < 10
+      ? "0" + currentTime.hour()
+      : currentTime.hour();
+  const minutes =
+    currentTime.minute() < 10
+      ? "0" + currentTime.minute()
+      : currentTime.minute();
+  const seconds =
+    currentTime.second() < 10
+      ? "0" + currentTime.second()
+      : currentTime.second();
   const amPm = moment().format("A");
 
   // const now = new Date();
@@ -448,6 +464,7 @@ const timeOut = async (req, res) => {
 
   const totalRendered = countRenderedHours(startingTime, fullHour);
 
+  console.log(fullHour, "fullHour");
   console.log(totalRendered);
 
   const currentTotalHours =
