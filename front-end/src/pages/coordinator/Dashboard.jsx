@@ -46,6 +46,13 @@ const Dashboard = React.memo(() => {
     // can make conditional
     return interns
       .filter((intern) => intern.verification.isVerified)
+      .sort((a, b) => {
+        return (
+          parseFloat(b.internshipDetails.renderedHours) -
+          parseFloat(a.internshipDetails.renderedHours)
+        );
+      })
+      .splice(0, 10)
       .map((intern, index) => {
         return <DashboardIntern intern={intern} key={index} />;
       });
@@ -67,7 +74,9 @@ const Dashboard = React.memo(() => {
       );
     }
 
-    return approvalInterns.map((intern, index) => {
+    let dashboardApprovals = [...approvalInterns].splice(0, 5);
+
+    return dashboardApprovals.map((intern, index) => {
       return <Approval intern={intern} key={index} index={index} />;
     });
   };
@@ -86,7 +95,12 @@ const Dashboard = React.memo(() => {
         </section>
       );
     }
-    return internships.map((item, index) => {
+
+    const dashboardInternships = [...internships]
+      .sort((a, b) => b.students - a.students)
+      .splice(0, 5);
+
+    return dashboardInternships.map((item, index) => {
       const {
         logo: { link },
         companyName,

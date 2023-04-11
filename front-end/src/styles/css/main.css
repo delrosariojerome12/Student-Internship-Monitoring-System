@@ -2101,7 +2101,8 @@ button {
   width: 14rem;
 }
 .dashboard .intern-container .preview-container .btn-close, .dashboard-active .intern-container .preview-container .btn-close {
-  justify-content: center;
+  display: flex;
+  gap: 1rem;
 }
 .dashboard .intern-container .sort, .dashboard-active .intern-container .sort,
 .dashboard .intern-container .filter,

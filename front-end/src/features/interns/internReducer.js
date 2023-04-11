@@ -44,13 +44,15 @@ export const getAllInterns = createAsyncThunk(
 
 export const getIntern = createAsyncThunk(
   "/intern/getIntern",
-  async (email) => {
+  async ({email}, {rejectWithValue}) => {
     try {
       const url = `https://sims-twqb.onrender.com/intern/getIntern/${email}`;
       const {data: res} = await axios.get(url);
-      return {user: res.user};
+      console.log(res);
+      return {intern: res.user};
     } catch (error) {
       console.log(error);
+      return rejectWithValue(error.response.data);
     }
   }
 );
@@ -62,8 +64,8 @@ export const updateIntern = createAsyncThunk(
     try {
       const {form} = payload;
       const {email} = form;
-      // const url = `https://sims-twqb.onrender.com/intern/updateIntern`;
-      const url = `http://localhost:5000/intern/updateIntern`;
+      const url = `https://sims-twqb.onrender.com/intern/updateIntern`;
+      // const url = `http://localhost:5000/intern/updateIntern`;
       const {data: res} = await axios.patch(url, form);
 
       const newApprovalIntern = [...state.intern.approvalInterns].filter(
@@ -145,7 +147,7 @@ export const internReducer = createSlice({
       })
       .addCase(getIntern.fulfilled, (state, action) => {
         state.isLoading = false;
-        console.log(action.payload);
+        state.selectedIntern = action.payload.intern;
       })
       .addCase(getIntern.rejected, (state, action) => {
         state.isLoading = false;

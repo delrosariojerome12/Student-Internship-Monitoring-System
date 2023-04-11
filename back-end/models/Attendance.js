@@ -1,13 +1,10 @@
 const mongoose = require("mongoose");
+const moment = require("moment-timezone");
+const today = moment.tz("Asia/Manila").format("MM-DD-YYYY");
 
-const now = new Date();
-const year = now.getFullYear();
-const month = now.getMonth() + 1;
-const date = now.getDate();
-
-const today = `${month < 10 ? "0" : ""}${month}-${
-  date < 10 ? "0" : ""
-}${date}-${year}`;
+// const today = `${month < 10 ? "0" : ""}${month}-${
+//   date < 10 ? "0" : ""
+// }${date}-${year}`;
 
 const AttendanceSchema = new mongoose.Schema({
   intern: {type: mongoose.Schema.Types.ObjectId, ref: "Intern"},
@@ -69,6 +66,7 @@ const AttendanceSchema = new mongoose.Schema({
   },
   missingTimeOut: {
     type: Boolean,
+    default: false,
   },
   OT: {
     type: String,
