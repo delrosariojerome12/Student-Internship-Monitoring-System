@@ -459,7 +459,7 @@ const timeIn = async (req, res) => {
 
 // change time zone here
 const timeOut = async (req, res) => {
-  const {email, id} = req.params;
+  const {email} = req.params;
 
   const todayDate = moment().tz("Asia/Manila").format("MM-DD-YYYY");
   const currentTime = moment().tz("Asia/Manila");
@@ -482,21 +482,6 @@ const timeOut = async (req, res) => {
       ? "0" + currentTime.second()
       : currentTime.second();
   const amPm = moment().format("A");
-
-  // const now = new Date();
-  // const year = now.getFullYear();
-  // const month = now.getMonth() + 1;
-  // const date = now.getDate();
-
-  // const hours =
-  //   now.getHours() % 12 || 12 < 10
-  //     ? `0${now.getHours() % 12 || 12}`
-  //     : now.getHours() % 12 || 12;
-  // const minutes =
-  //   10 > now.getMinutes() ? `0${now.getMinutes()}` : now.getMinutes();
-  // const seconds =
-  //   now.getSeconds() < 10 ? `0${now.getSeconds()}` : now.getSeconds();
-  // const amOrPm = now.getHours() >= 12 ? "PM" : "AM"; // set AM or PM
 
   const fullHour = `${hours}:${minutes}:${seconds} ${amPm}`;
 
