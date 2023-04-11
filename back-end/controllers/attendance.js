@@ -109,6 +109,7 @@ const getAllAttendance = async (req, res) => {
     if (day > 0 && day < 6) {
       if (hours >= 7 && hours <= 10 && amOrPm === "AM") {
         // check if greater than 10:30
+
         if (minutes > 30 && hours === 10) {
           doesExists = {
             status: "too-late",
@@ -128,6 +129,7 @@ const getAllAttendance = async (req, res) => {
       } else if (hours >= 12 && minutes <= 59 && amOrPm === "PM") {
         // adjust
         // lunch
+
         if (!todayExists) {
           doesExists = {
             status: "no-time-in-lunch",
@@ -157,12 +159,13 @@ const getAllAttendance = async (req, res) => {
       } else if (hours >= 2 && amOrPm === "PM") {
         // absent
         // disable time in and time out
+
         if (!todayExists) {
           doesExists = {
             status: "absent",
           };
         } else {
-          if (hours >= 4 && hours <= 5 && amOrPm === "PM") {
+          if (hours >= 2 && hours <= 5 && amOrPm === "PM") {
             // time out
             if (!todayExists) {
               doesExists = {
@@ -178,7 +181,6 @@ const getAllAttendance = async (req, res) => {
                 };
               }
               if (todayExists.timeIn !== null && todayExists.timeOut !== null) {
-                console.log(todayExists.timeOut);
                 doesExists = {
                   status: "complete",
                 };
