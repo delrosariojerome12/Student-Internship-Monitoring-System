@@ -44,7 +44,9 @@ function countRenderedHours(timeIn, timeOut) {
   console.log(difference, "difference");
 
   let hours = difference / millisecondsInHour;
-  hours = Math.round(hours * 4) / 4; // Round to nearest quarter hour
+  // hours = Math.round(hours * 4) / 4; // Round to nearest quarter hour
+
+  hours = Math.round(hours * 2) / 2;
 
   if (hours >= 8) {
     console.log("Test");
