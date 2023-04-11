@@ -574,7 +574,11 @@ const checkAbsents = async (req, res) => {
         date: todayDate,
       });
 
-      if (!attendance) {
+      if (
+        !attendance &&
+        currentTime.hour() === 14 &&
+        currentTime.minute() === 0
+      ) {
         // Create attendance for absent interns
         const user = await User.findOne({email});
         const intern = await Intern.findOne({email});
@@ -644,6 +648,19 @@ const checkAbsents = async (req, res) => {
   });
 };
 
+const checkInternsStartingToday = async (req, res) => {
+  const todayDate = moment().tz("Asia/Manila").format("MM-DD-YYYY");
+  const day = moment().tz("Asia/Manila").day();
+  const currentTime = moment().tz("Asia/Manila");
+
+  const allIntern = await Intern.find({status: "Not Started"});
+
+  for (let intern of allIntern) {
+  }
+
+  res.status(StatusCodes.OK).json({success: true, data: {todayDate}});
+};
+
 const runCheckAbsents = async () => {
   try {
     // const response = await axios.post(
@@ -664,6 +681,19 @@ cron.schedule(
     const currentTime = moment().tz("Asia/Manila");
     if (currentTime.hour() === 14 && currentTime.minute() === 0) {
       runCheckAbsents();
+    }
+  },
+  {
+    timezone: "Asia/Manila",
+  }
+);
+
+cron.schedule(
+  "55 9 * * *",
+  () => {
+    const currentTime = moment().tz("Asia/Manila");
+    if (currentTime.hour() === 9 && currentTime.minute() === 55) {
+      console.log("running");
     }
   },
   {
@@ -694,6 +724,7 @@ module.exports = {
   timeIn,
   timeOut,
   checkStartingDate,
+  checkInternsStartingToday,
   checkAbsents,
   updateNarrative,
 };
