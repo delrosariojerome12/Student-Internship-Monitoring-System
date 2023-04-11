@@ -1,18 +1,22 @@
-import React, {useState} from "react";
-import {Link} from "react-router-dom";
-import logo from "../../assets/img/logo.svg";
-import {FaUserAlt, FaLock, FaEye, FaEyeSlash, FaCheck} from "react-icons/fa";
-import {GrMail} from "react-icons/gr";
-import {IconContext} from "react-icons";
-import {useDispatch, useSelector} from "react-redux";
-import {handleSignup} from "../../features/user/userReducer";
+/** @format */
 
-import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
-import {storage} from "../../Firebase";
-import {v4} from "uuid";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import logo from "../../assets/img/logo.svg";
+import { FaUserAlt, FaLock, FaEye, FaEyeSlash, FaCheck } from "react-icons/fa";
+import { GrMail } from "react-icons/gr";
+import { IconContext } from "react-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { handleSignup } from "../../features/user/userReducer";
+
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from "../../Firebase";
+import { v4 } from "uuid";
 
 const Signup = React.memo(() => {
-  const {isError, errorMessage, isLoading} = useSelector((state) => state.user);
+  const { isError, errorMessage, isLoading } = useSelector(
+    (state) => state.user
+  );
   const dispatch = useDispatch();
 
   const [form, setForm] = useState([
@@ -190,7 +194,7 @@ const Signup = React.memo(() => {
         return;
       case "Profile Image":
         if (value) {
-          const {name, type} = value;
+          const { name, type } = value;
           if (!type.includes("image")) {
             console.log("error");
             data[index].isError = true;
@@ -295,8 +299,7 @@ const Signup = React.memo(() => {
                     htmlFor={id}
                     className={
                       value ? "placeholder-text active" : "placeholder-text"
-                    }
-                  >
+                    }>
                     <div className={isError ? "text icons-error" : "text"}>
                       <span>
                         <IconType
@@ -324,7 +327,7 @@ const Signup = React.memo(() => {
                   <img src={value} alt="profile" />
                 </div>
                 {isError ? (
-                  <p style={{color: "red"}}>{errorMessage}</p>
+                  <p style={{ color: "red" }}>{errorMessage}</p>
                 ) : value.includes("firebase") ? (
                   <p>
                     Profile Selected
@@ -358,10 +361,10 @@ const Signup = React.memo(() => {
         <header>
           <img src={logo} alt="" />
           <h1>Create Your Account</h1>
-          {isError && <h3 style={{color: "red"}}>{errorMessage}</h3>}
+          {isError && <h3 style={{ color: "red" }}>{errorMessage}</h3>}
         </header>
         <form onSubmit={handleSubmit}>
-          <IconContext.Provider value={{className: "icons"}}>
+          <IconContext.Provider value={{ className: "icons" }}>
             {renderInputs()}
             <span>
               <p>Already have an account?</p>
@@ -370,14 +373,13 @@ const Signup = React.memo(() => {
             <button
               style={
                 isComplete
-                  ? {opacity: "1"}
+                  ? { opacity: "1" }
                   : isLoading
-                  ? {opacity: ".7", pointerEvents: "none"}
-                  : {opacity: ".7", pointerEvents: "none"}
+                  ? { opacity: ".7", pointerEvents: "none" }
+                  : { opacity: ".7", pointerEvents: "none" }
               }
-              type="submit"
-            >
-              {isLoading ? "Loading..." : "Login"}
+              type="submit">
+              {isLoading ? "Loading..." : "Sign Up"}
             </button>
           </IconContext.Provider>
         </form>
