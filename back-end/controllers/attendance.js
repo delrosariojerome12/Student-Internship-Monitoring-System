@@ -649,16 +649,39 @@ const checkAbsents = async (req, res) => {
 };
 
 const checkInternsStartingToday = async (req, res) => {
-  const todayDate = moment().tz("Asia/Manila").format("MM-DD-YYYY");
-  const day = moment().tz("Asia/Manila").day();
-  const currentTime = moment().tz("Asia/Manila");
-
-  const allIntern = await Intern.find({status: "Not Started"});
+  const allIntern = await Intern.find({
+    "verification.isVerified": true,
+    status: "Not Started",
+  }).populate({
+    path: "user",
+    model: "User",
+  });
 
   for (let intern of allIntern) {
-  }
+    const {
+      internshipDetails: {startingDate},
+      email,
+    } = intern;
 
-  res.status(StatusCodes.OK).json({success: true, data: {todayDate}});
+    const today = moment();
+    const formattedStartingDate = moment(startingDate, "YYYY-MM-DD");
+
+    if (formattedStartingDate.isSameOrBefore(today, "day")) {
+      const intern = await Intern.findOneAndUpdate(
+        {email},
+        {status: "Starting"},
+        {
+          new: true,
+          runValidators: true,
+        }
+      ).populate({
+        path: "user",
+        model: "User",
+      });
+      return res.status(StatusCodes.OK).json({success: true, data: intern});
+    }
+  }
+  res.status(StatusCodes.OK).json({success: true, msg: "not yet"});
 };
 
 const runCheckAbsents = async () => {
@@ -675,6 +698,21 @@ const runCheckAbsents = async () => {
   }
 };
 
+const runStartingToday = async () => {
+  try {
+    // const response = await axios.patch(
+    //   "http://localhost:5000/attendance/checkInternsStartingToday"
+    // );
+    const response = await axios.patch(
+      "https://sims-twqb.onrender.com/attendance/checkInternsStartingToday"
+    );
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// check absents
 cron.schedule(
   "0 14 * * *",
   () => {
@@ -688,12 +726,14 @@ cron.schedule(
   }
 );
 
+// check starting today
 cron.schedule(
-  "55 9 * * *",
+  "12 11 * * *",
   () => {
     const currentTime = moment().tz("Asia/Manila");
-    if (currentTime.hour() === 9 && currentTime.minute() === 55) {
+    if (currentTime.hour() === 11 && currentTime.minute() === 12) {
       console.log("running");
+      runStartingToday();
     }
   },
   {
@@ -701,6 +741,7 @@ cron.schedule(
   }
 );
 
+// check without timeouts
 cron.schedule(
   "0 18 * * *",
   () => {
