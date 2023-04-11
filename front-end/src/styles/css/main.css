@@ -252,6 +252,7 @@ button {
   border: solid 1px #457b9d;
 }
 
+/** @format */
 .login {
   display: grid;
   grid-template-columns: 45.2rem 1fr;
@@ -4760,20 +4761,28 @@ button {
   overflow-y: auto;
 }
 .dashboard .monitor-attendance .more-details .details, .dashboard-active .monitor-attendance .more-details .details {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto 1fr;
   gap: 1rem;
-}
-.dashboard .monitor-attendance .more-details .details > *, .dashboard-active .monitor-attendance .more-details .details > * {
-  background-color: #fff;
-  border-radius: 1rem;
 }
 .dashboard .monitor-attendance .more-details .details .rendered-hours, .dashboard-active .monitor-attendance .more-details .details .rendered-hours {
   padding: 1rem;
+  background-color: #fff;
+  border-radius: 1rem;
 }
-.dashboard .monitor-attendance .more-details .details .time-in, .dashboard-active .monitor-attendance .more-details .details .time-in,
-.dashboard .monitor-attendance .more-details .details .time-out,
-.dashboard-active .monitor-attendance .more-details .details .time-out {
+.dashboard .monitor-attendance .more-details .details .timeIn-Out, .dashboard-active .monitor-attendance .more-details .details .timeIn-Out {
+  display: grid;
+  grid-template-rows: auto;
+  gap: 1rem;
+}
+.dashboard .monitor-attendance .more-details .details .timeIn-Out > *, .dashboard-active .monitor-attendance .more-details .details .timeIn-Out > * {
+  background-color: #fff;
+  border-radius: 1rem;
+}
+.dashboard .monitor-attendance .more-details .details .timeIn-Out .time-in, .dashboard-active .monitor-attendance .more-details .details .timeIn-Out .time-in,
+.dashboard .monitor-attendance .more-details .details .timeIn-Out .time-out,
+.dashboard-active .monitor-attendance .more-details .details .timeIn-Out .time-out {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -4782,7 +4791,7 @@ button {
   gap: 0.5rem;
   padding: 1rem 1rem 1.5rem 1rem;
 }
-.dashboard .monitor-attendance .more-details .details img, .dashboard-active .monitor-attendance .more-details .details img {
+.dashboard .monitor-attendance .more-details .details .timeIn-Out img, .dashboard-active .monitor-attendance .more-details .details .timeIn-Out img {
   height: 30rem;
   width: 30rem;
 }
@@ -6387,19 +6396,23 @@ button {
     width: 22rem;
   }
 }
+/** @format */
 .pending {
   height: 100%;
-  margin: 0 auto;
   display: grid;
-  grid-template-rows: 7rem auto;
+  grid-template-rows: auto minmax(45rem, 83vh);
   gap: 1rem;
   padding: 1rem;
 }
 .pending .greetings {
   color: #f1faee;
+  margin: auto 0;
 }
 .pending .greetings .name {
-  font-size: 3.9rem;
+  font-size: 3.5rem;
+}
+.pending .greetings .name b {
+  color: #00adb5;
 }
 .pending .pending-content {
   display: flex;
@@ -6410,22 +6423,24 @@ button {
   color: #f1faee;
   border: solid 1px #fff;
   background-color: rgba(34, 40, 49, 0.4509803922);
-  gap: 1.5rem;
-  padding: 2rem 10rem;
+  gap: 1rem;
+  padding: 1rem;
   border-radius: 1rem;
   position: relative;
+  height: 100%;
+  overflow-y: auto;
 }
 .pending .pending-content h3 {
-  font-size: 2.5rem;
+  font-size: 2.3rem;
 }
 .pending .pending-content img {
-  height: 30rem;
+  height: 23rem;
 }
 .pending .pending-content p {
-  font-size: 2rem;
+  font-size: 1.9rem;
 }
 .pending .pending-content > button {
-  padding: 1.5rem 5rem;
+  padding: 1.5rem 4.5rem;
   background-color: #0d7377;
   color: #f1faee;
   transition: all 0.5s ease-in-out;
@@ -6442,6 +6457,128 @@ button {
   height: 50rem;
 }
 
+@media screen and (min-height: 700px) {
+  .pending {
+    grid-template-rows: auto minmax(45rem, 84vh);
+  }
+  .pending .greetings .name {
+    font-size: 3.7rem;
+  }
+  .pending .pending-content h3 {
+    font-size: 2.5rem;
+  }
+  .pending .pending-content img {
+    height: 28rem;
+  }
+  .pending .pending-content p {
+    font-size: 2rem;
+  }
+  .pending .pending-content > button {
+    padding: 1.5rem 5rem;
+  }
+}
+@media screen and (min-height: 820px) {
+  .pending {
+    grid-template-rows: auto minmax(45rem, 87vh);
+  }
+  .pending .greetings .name {
+    font-size: 3.8rem;
+  }
+  .pending .pending-content h3 {
+    font-size: 2.6rem;
+  }
+  .pending .pending-content img {
+    height: 33rem;
+  }
+}
+@media screen and (max-width: 900px) {
+  .pending .greetings .name {
+    font-size: 3.5rem;
+  }
+  .pending .pending-content h3 {
+    font-size: 2.3rem;
+  }
+  .pending .pending-content img {
+    height: 22rem;
+  }
+  .pending .pending-content p {
+    font-size: 1.9rem;
+  }
+  .pending .pending-content > button {
+    padding: 1.5rem 4.5rem;
+  }
+}
+@media screen and (max-width: 750px) {
+  .pending .greetings .name {
+    font-size: 3.2rem;
+  }
+  .pending .pending-content h3 {
+    font-size: 2rem;
+  }
+  .pending .pending-content img {
+    height: 20rem;
+  }
+  .pending .pending-content p {
+    font-size: 1.7rem;
+  }
+  .pending .pending-content > button {
+    padding: 1.2rem 4rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .pending {
+    grid-template-rows: auto minmax(45rem, 75vh);
+  }
+  .pending .greetings .name {
+    font-size: 3rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .pending {
+    grid-template-rows: auto minmax(45rem, 75vh);
+  }
+  .pending .greetings .name {
+    font-size: 2.8rem;
+  }
+  .pending .pending-content h3 {
+    font-size: 1.9rem;
+  }
+  .pending .pending-content img {
+    height: 18rem;
+  }
+  .pending .pending-content p {
+    font-size: 1.6rem;
+  }
+  .pending .pending-content > button {
+    padding: 1rem 3.7rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  .pending {
+    grid-template-rows: auto minmax(45rem, 71vh);
+    padding: 0;
+    gap: 0.5rem;
+  }
+  .pending .greetings {
+    text-align: center;
+    margin: auto;
+  }
+  .pending .greetings .name {
+    font-size: 2.6rem;
+  }
+  .pending .pending-content h3 {
+    font-size: 1.8rem;
+  }
+  .pending .pending-content img {
+    height: 15rem;
+  }
+  .pending .pending-content p {
+    font-size: 1.6rem;
+  }
+  .pending .pending-content > button {
+    padding: 1rem 3.7rem;
+  }
+}
 /** @format */
 .verification-container {
   border: solid 1px #fff;
@@ -11394,82 +11531,10 @@ button {
     margin: 0;
   }
 }
-@media screen and (max-width: 1300px) {
-  .pending {
-    grid-template-rows: 6rem auto;
-  }
-  .pending .greetings .name {
-    font-size: 3.5rem;
-  }
-  .pending .pending-content img {
-    height: 28rem;
-  }
-}
-@media screen and (max-width: 1000px) {
-  .pending .pending-content h3 {
-    font-size: 2.2rem;
-  }
-  .pending .pending-content img {
-    height: 25rem;
-  }
-  .pending .pending-content p {
-    font-size: 1.8rem;
-  }
-}
-@media screen and (max-width: 800px) {
-  .pending {
-    grid-template-rows: 5rem auto;
-  }
-  .pending .greetings .name {
-    font-size: 3.2rem;
-  }
-  .pending .pending-content {
-    padding: 3rem 6rem;
-  }
-  .pending .pending-content h3 {
-    font-size: 2.1rem;
-  }
-  .pending .pending-content img {
-    height: 24rem;
-  }
-  .pending .pending-content p {
-    font-size: 1.6rem;
-  }
-}
-@media screen and (max-width: 640px) {
-  .pending .greetings .name {
-    font-size: 3rem;
-  }
-  .pending .pending-content h3 {
-    font-size: 2rem;
-  }
-  .pending .pending-content img {
-    height: 22rem;
-  }
-  .pending .pending-content p {
-    font-size: 1.5rem;
-  }
-}
-@media screen and (max-width: 600px) {
-  .pending .greetings .name {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.8rem;
-  }
-  .pending .pending-content h3 {
-    font-size: 2rem;
-  }
-  .pending .pending-content img {
-    height: 20rem;
-  }
-  .pending .pending-content p {
-    font-size: 1.5rem;
-  }
-}
+/** @format */
 @media screen and (max-width: 800px) {
   .signin {
-    grid-template-columns: 150px 1fr;
+    grid-template-columns: 15rem 1fr;
     grid-template-rows: 1fr;
   }
   .signin .bg-container {
@@ -11478,16 +11543,16 @@ button {
   }
   .signin .card-container {
     grid-column: 2/3;
-    gap: 2rem;
+    gap: 1.5rem;
   }
   .signin .card-container header {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.7rem;
     flex-direction: column;
   }
   .signin .card-container header h1 {
+    text-align: center;
     font-size: 3rem;
   }
   .signin .card-container header img {
@@ -11496,6 +11561,7 @@ button {
   .signin .card-container form {
     width: 100%;
     align-items: center;
+    gap: 2rem;
   }
   .signin .card-container form .input-contain {
     width: 100%;
@@ -11507,10 +11573,22 @@ button {
     height: 50px;
     width: 100%;
   }
+  .signin .card-container form .img-input label .profile-con {
+    height: 11rem;
+    width: 11rem;
+  }
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
+  .signin .card-container header h1 {
+    font-size: 2.7rem;
+  }
+  .signin .card-container header img {
+    height: 3.7rem;
+  }
+}
+@media screen and (max-width: 500px) {
   .signin {
-    grid-template-columns: 50px 1fr;
+    grid-template-columns: 5rem 1fr;
     grid-template-rows: 1fr;
   }
   .signin .bg-container {
@@ -11518,23 +11596,34 @@ button {
     grid-row: 1/2;
   }
   .signin .card-container {
+    gap: 1rem;
     grid-column: 2/3;
   }
   .signin .card-container header {
     align-items: flex-start;
   }
   .signin .card-container header h1 {
-    font-size: 3rem;
+    font-size: 2.3rem;
+    text-align: right;
   }
   .signin .card-container header img {
     height: 4rem;
   }
   .signin .card-container form {
+    gap: 1.5rem;
     align-items: flex-start;
   }
   .signin .card-container form span {
     align-items: flex-start;
     margin: 0;
+  }
+  .signin .card-container form .img-input label .profile-con {
+    height: 10rem;
+    width: 10rem;
+  }
+  .signin .card-container form button {
+    height: 4rem;
+    width: 11rem;
   }
 }
 @media screen and (max-width: 357px) {
@@ -11543,9 +11632,6 @@ button {
   }
   .signin .card-container {
     padding: 2rem;
-  }
-  .signin .card-container form {
-    gap: 2.5rem;
   }
   .signin .card-container form span {
     align-items: flex-start;

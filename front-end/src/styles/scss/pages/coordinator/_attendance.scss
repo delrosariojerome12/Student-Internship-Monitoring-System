@@ -299,29 +299,37 @@
     width: 80rem;
     overflow-y: auto;
     .details {
-      @include flexColumn;
-      // display: flex;
-      // flex-direction: column;
-      & > * {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 1rem;
+      .rendered-hours {
+        padding: 1rem;
         background-color: #fff;
         border-radius: 1rem;
       }
-      .rendered-hours {
-        padding: 1rem;
-      }
-      .time-in,
-      .time-out {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        gap: 0.5rem;
-        padding: 1rem 1rem 1.5rem 1rem;
-      }
-      img {
-        height: 30rem;
-        width: 30rem;
+      .timeIn-Out {
+        display: grid;
+        grid-template-rows: auto;
+        gap: 1rem;
+        & > * {
+          background-color: #fff;
+          border-radius: 1rem;
+        }
+        .time-in,
+        .time-out {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          gap: 0.5rem;
+          padding: 1rem 1rem 1.5rem 1rem;
+        }
+        img {
+          height: 30rem;
+          width: 30rem;
+        }
       }
     }
     .btn-controller {

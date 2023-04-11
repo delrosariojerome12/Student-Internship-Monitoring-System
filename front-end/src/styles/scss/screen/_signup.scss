@@ -1,10 +1,12 @@
+/** @format */
+
 @import "../utils";
+@import "../variables";
 
 // tablet
-
 @media screen and (max-width: 800px) {
   .signin {
-    grid-template-columns: 150px 1fr;
+    grid-template-columns: 15rem 1fr;
     grid-template-rows: 1fr;
 
     .bg-container {
@@ -13,14 +15,13 @@
     }
     .card-container {
       grid-column: 2/3;
-      gap: 2rem;
+      gap: 1.5rem;
 
       header {
         @include flexCenter;
-        gap: 0.7rem;
         flex-direction: column;
-
         h1 {
+          text-align: center;
           font-size: 3rem;
         }
         img {
@@ -31,6 +32,7 @@
       form {
         width: 100%;
         align-items: center;
+        gap: 2rem;
         .input-contain {
           width: 100%;
           .text {
@@ -41,37 +43,72 @@
             width: 100%;
           }
         }
+        .img-input {
+          label {
+            .profile-con {
+              height: 11rem;
+              width: 11rem;
+            }
+          }
+        }
       }
     }
   }
 }
 
-// mobile
-
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
   .signin {
-    grid-template-columns: 50px 1fr;
+    .card-container {
+      header {
+        h1 {
+          font-size: 2.7rem;
+        }
+        img {
+          height: 3.7rem;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .signin {
+    grid-template-columns: 5rem 1fr;
     grid-template-rows: 1fr;
     .bg-container {
       grid-column: 1/2;
       grid-row: 1/2;
     }
     .card-container {
+      gap: 1rem;
       grid-column: 2/3;
       header {
         align-items: flex-start;
         h1 {
-          font-size: 3rem;
+          font-size: 2.3rem;
+          text-align: right;
         }
         img {
           height: 4rem;
         }
       }
       form {
+        gap: 1.5rem;
         align-items: flex-start;
         span {
           align-items: flex-start;
           margin: 0;
+        }
+        .img-input {
+          label {
+            .profile-con {
+              height: 10rem;
+              width: 10rem;
+            }
+          }
+        }
+        button {
+          height: 4rem;
+          width: 11rem;
         }
       }
     }
@@ -83,7 +120,6 @@
     .card-container {
       padding: 2rem;
       form {
-        gap: 2.5rem;
         span {
           align-items: flex-start;
           flex-direction: column;

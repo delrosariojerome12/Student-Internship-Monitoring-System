@@ -1,19 +1,23 @@
+/** @format */
+
 import React from "react";
-import {useSelector} from "react-redux";
-import {useNavigate} from "react-router";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 import pendingImg from "../../assets/img/landingPage/landing-dashboard.svg";
 
 const Pending = React.memo(() => {
-  const {user} = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
   const {
-    user: {firstName},
+    user: { firstName },
   } = user;
   const navigate = useNavigate();
 
   return (
     <div className="pending">
       <div className="greetings">
-        <h1 className="name">Welcome, {firstName}</h1>
+        <h1 className="name">
+          Welcome, <b> {firstName}</b>
+        </h1>
       </div>
       <div className="pending-content">
         <>
