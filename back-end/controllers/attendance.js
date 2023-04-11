@@ -461,29 +461,33 @@ const timeIn = async (req, res) => {
 const timeOut = async (req, res) => {
   const {email} = req.params;
 
+  const form = {...req.body};
+
+  console.log(form.timeOut);
+
   const todayDate = moment().tz("Asia/Manila").format("MM-DD-YYYY");
-  const currentTime = moment().tz("Asia/Manila");
+  // const currentTime = moment().tz("Asia/Manila");
   // const hours = currentTime.hour() > 12 ? hours - 12 : hours;
   // const minutes = currentTime.minute();
   // const seconds = currentTime.seconds();
 
-  const hours =
-    currentTime.hour() > 12
-      ? currentTime.hour() - 12
-      : currentTime.hour() < 10
-      ? "0" + currentTime.hour()
-      : currentTime.hour();
-  const minutes =
-    currentTime.minute() < 10
-      ? "0" + currentTime.minute()
-      : currentTime.minute();
-  const seconds =
-    currentTime.second() < 10
-      ? "0" + currentTime.second()
-      : currentTime.second();
-  const amPm = moment().format("A");
+  // const hours =
+  //   currentTime.hour() > 12
+  //     ? currentTime.hour() - 12
+  //     : currentTime.hour() < 10
+  //     ? "0" + currentTime.hour()
+  //     : currentTime.hour();
+  // const minutes =
+  //   currentTime.minute() < 10
+  //     ? "0" + currentTime.minute()
+  //     : currentTime.minute();
+  // const seconds =
+  //   currentTime.second() < 10
+  //     ? "0" + currentTime.second()
+  //     : currentTime.second();
+  // const amPm = moment().format("A");
 
-  const fullHour = `${hours}:${minutes}:${seconds} ${amPm}`;
+  // const fullHour = `${hours}:${minutes}:${seconds} ${amPm}`;
 
   if (!email) {
     throw new NotFound("Email not found");
@@ -503,10 +507,7 @@ const timeOut = async (req, res) => {
 
   const startingTime = attendance.timeIn;
 
-  const totalRendered = countRenderedHours(startingTime, fullHour);
-
-  console.log(fullHour, "fullHour");
-  console.log(totalRendered);
+  const totalRendered = countRenderedHours(startingTime, form.timeOut);
 
   const currentTotalHours =
     parseFloat(intern.internshipDetails.renderedHours) + totalRendered;
