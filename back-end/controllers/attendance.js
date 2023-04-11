@@ -9,6 +9,54 @@ const moment = require("moment-timezone");
 const axios = require("axios");
 const cron = require("node-cron");
 
+// function countRenderedHours(timeIn, timeOut) {
+//   const millisecondsInHour = 1000 * 60 * 60;
+
+//   console.log(timeIn, "timeIn");
+//   console.log(timeOut, "timeOut");
+//   // Convert 12-hour time to 24-hour time
+//   const [hoursIn, minutesIn, secondsIn, meridiemIn] = timeIn.split(/:|\s/);
+//   const [hoursOut, minutesOut, secondsOut, meridiemOut] = timeOut.split(/:|\s/);
+
+//   const hours24In =
+//     meridiemIn === "AM"
+//       ? parseInt(hoursIn) % 12
+//       : (parseInt(hoursIn) % 12) + 12;
+//   const hours24Out =
+//     meridiemOut === "AM"
+//       ? parseInt(hoursOut, 10) % 12
+//       : (parseInt(hoursOut, 10) % 12) + 12;
+
+//   const dateIn = new Date(
+//     `2000-01-01T${
+//       hours24In < 10 ? `0${hours24In}` : hours24In
+//     }:${minutesIn}:${secondsIn}`
+//   );
+//   const dateOut = new Date(
+//     `2000-01-01T${
+//       hours24Out < 10 ? `0${hours24Out}` : hours24Out
+//     }:${minutesOut}:${secondsOut}`
+//   );
+
+//   const difference = dateOut - dateIn;
+
+//   console.log(dateIn, dateOut, "date in");
+//   console.log(difference, "difference");
+
+//   let hours = difference / millisecondsInHour;
+//   // hours = Math.round(hours * 4) / 4; // Round to nearest quarter hour
+
+//   hours = Math.round(hours * 2) / 2;
+
+//   if (hours >= 8) {
+//     console.log("Test");
+//     hours--;
+//   }
+//   console.log(typeof hours);
+//   console.log(hours);
+//   return hours;
+// }
+
 function countRenderedHours(timeIn, timeOut) {
   const millisecondsInHour = 1000 * 60 * 60;
 
@@ -18,14 +66,18 @@ function countRenderedHours(timeIn, timeOut) {
   const [hoursIn, minutesIn, secondsIn, meridiemIn] = timeIn.split(/:|\s/);
   const [hoursOut, minutesOut, secondsOut, meridiemOut] = timeOut.split(/:|\s/);
 
-  const hours24In =
+  let hours24In =
     meridiemIn === "AM"
       ? parseInt(hoursIn) % 12
       : (parseInt(hoursIn) % 12) + 12;
-  const hours24Out =
+  let hours24Out =
     meridiemOut === "AM"
       ? parseInt(hoursOut, 10) % 12
       : (parseInt(hoursOut, 10) % 12) + 12;
+
+  if (hours24Out < hours24In) {
+    hours24Out += 24; // add 24 hours if time-out is on a different day
+  }
 
   const dateIn = new Date(
     `2000-01-01T${
