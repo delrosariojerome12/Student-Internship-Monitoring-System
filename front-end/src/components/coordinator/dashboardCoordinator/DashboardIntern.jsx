@@ -22,7 +22,9 @@ const DashboardIntern = React.memo(({ intern }) => {
         </h4>
         <h4 className="program">{schoolDetails?.program}</h4>
         <h4 className="course">BSIT</h4>
-        <h4 className="schedType">{scheduleDetails?.scheduleType}</h4>
+        <p className="schedType">
+          Starting Date: <b> {internshipDetails?.startingDate}</b>
+        </p>
         <p className="rendered">
           Total Hours:
           <b>

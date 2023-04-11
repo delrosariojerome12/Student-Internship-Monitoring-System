@@ -512,6 +512,9 @@ const Documents = React.memo(() => {
               onClick={() => setSampleViewed(false)}></div>
             <div className="sample-view-container">
               {renderDocumentDetails()}
+              <div className="btn-close">
+                <button onClick={() => setSampleViewed(false)}>Close</button>
+              </div>
             </div>
           </>
         )}

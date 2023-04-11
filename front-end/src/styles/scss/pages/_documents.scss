@@ -10,10 +10,10 @@
   border-radius: 1.5rem;
 
   .no-content {
+    background-color: #282b30;
     color: #fff;
     padding: 2rem;
     border-radius: 1rem;
-    background-color: #282b30;
     @include flexCenter;
     flex-direction: column;
     h3 {
@@ -23,8 +23,8 @@
       }
     }
     img {
-      height: 25rem;
-      width: 25rem;
+      height: 30rem;
+      width: 30rem;
     }
   }
   .overlay {
@@ -494,6 +494,13 @@
     grid-template-rows: auto minmax(30rem, 52vh);
     gap: 1rem;
 
+    .no-content {
+      img {
+        height: 27rem;
+        width: 27rem;
+      }
+    }
+
     .top {
       grid-template-columns: auto;
       grid-template-rows: auto 1fr;
@@ -664,6 +671,17 @@
 @media screen and (max-width: 600px) {
   .documents-page {
     grid-template-rows: auto minmax(20rem, 45vh);
+    .no-content {
+      padding: 1rem;
+      h3 {
+        font-size: 2rem;
+      }
+      img {
+        height: 22rem;
+        width: 22rem;
+      }
+    }
+
     .sample-view-container {
       border-radius: 0;
       width: 100%;

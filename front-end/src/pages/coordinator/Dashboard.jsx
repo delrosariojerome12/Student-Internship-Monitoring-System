@@ -1,24 +1,24 @@
 /** @format */
 
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import DashboardIntern from "../../components/coordinator/dashboardCoordinator/DashboardIntern";
 import DashboardApprovals from "../../components/coordinator/dashboardCoordinator/DashboardApprovals";
 import Approval from "../../components/coordinator/ApprovalIntern";
-import {useSelector, useDispatch} from "react-redux";
-import {getAllInterns} from "../../features/interns/internReducer";
-import {BiSearchAlt} from "react-icons/bi";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllInterns } from "../../features/interns/internReducer";
+import { BiSearchAlt } from "react-icons/bi";
 
 import NoIntern from "../../assets/img/head.svg";
 import NoApprovals from "../../assets/img/approvals.svg";
 import NoInternship from "../../assets/img/no-internship.svg";
-import {getAllInternship} from "../../features/coordinator/internship";
+import { getAllInternship } from "../../features/coordinator/internship";
 
 import Internship from "../../components/coordinator/Internship";
 const Dashboard = React.memo(() => {
-  const {approvalInterns, interns, isError} = useSelector(
+  const { approvalInterns, interns, isError } = useSelector(
     (state) => state.intern
   );
-  const {internships} = useSelector((state) => state.internship);
+  const { internships } = useSelector((state) => state.internship);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -46,6 +46,13 @@ const Dashboard = React.memo(() => {
     // can make conditional
     return interns
       .filter((intern) => intern.verification.isVerified)
+      .sort((a, b) => {
+        return (
+          parseFloat(b.internshipDetails.renderedHours) -
+          parseFloat(a.internshipDetails.renderedHours)
+        );
+      })
+      .splice(0, 10)
       .map((intern, index) => {
         return <DashboardIntern intern={intern} key={index} />;
       });
@@ -67,7 +74,9 @@ const Dashboard = React.memo(() => {
       );
     }
 
-    return approvalInterns.map((intern, index) => {
+    let dashboardApprovals = [...approvalInterns].splice(0, 5);
+
+    return dashboardApprovals.map((intern, index) => {
       return <Approval intern={intern} key={index} index={index} />;
     });
   };
@@ -86,9 +95,14 @@ const Dashboard = React.memo(() => {
         </section>
       );
     }
-    return internships.map((item, index) => {
+
+    const dashboardInternships = [...internships]
+      .sort((a, b) => b.students - a.students)
+      .splice(0, 5);
+
+    return dashboardInternships.map((item, index) => {
       const {
-        logo: {link},
+        logo: { link },
         companyName,
         students,
       } = item;

@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -54,10 +56,14 @@ const DocumentApproval = () => {
         <>
           <div
             className="overlay"
-            onClick={() => dispatch(handleCloseDocument())}
-          ></div>
+            onClick={() => dispatch(handleCloseDocument())}></div>
           <div className="view-document-container">
             {renderDocumentDetails()}
+            <div className="btn-close">
+              <button onClick={() => dispatch(handleCloseDocument())}>
+                Close
+              </button>
+            </div>
           </div>
         </>
       )}

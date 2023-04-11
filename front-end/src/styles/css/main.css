@@ -1105,6 +1105,8 @@ button {
   display: grid;
   gap: 1rem;
   background-color: #d9d9d9;
+  grid-auto-rows: 4.7rem;
+  margin: auto 0;
 }
 .dashboard .main .content .documents .document-contents .no-content, .dashboard-active .main .content .documents .document-contents .no-content {
   display: flex;
@@ -1122,12 +1124,14 @@ button {
 .dashboard .main .content .documents .document-contents .btn-documents, .dashboard-active .main .content .documents .document-contents .btn-documents {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 .dashboard .main .content .documents .document-contents .document-dashboard, .dashboard-active .main .content .documents .document-contents .document-dashboard {
   background-color: #fff;
   border-radius: 1rem;
   padding: 1rem;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 .dashboard .main .content .internship-details, .dashboard-active .main .content .internship-details {
@@ -2097,7 +2101,8 @@ button {
   width: 14rem;
 }
 .dashboard .intern-container .preview-container .btn-close, .dashboard-active .intern-container .preview-container .btn-close {
-  justify-content: center;
+  display: flex;
+  gap: 1rem;
 }
 .dashboard .intern-container .sort, .dashboard-active .intern-container .sort,
 .dashboard .intern-container .filter,
@@ -2323,6 +2328,7 @@ button {
 }
 .dashboard .approvals .no-entries, .dashboard-active .approvals .no-entries {
   height: 100%;
+  margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2365,7 +2371,6 @@ button {
 }
 .dashboard .approvals .approval-container .approvals-intern-container, .dashboard-active .approvals .approval-container .approvals-intern-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 52rem);
   grid-auto-rows: 12rem;
   gap: 1rem;
 }
@@ -2758,7 +2763,7 @@ button {
 }
 .dashboard .internship-container, .dashboard-active .internship-container {
   display: grid;
-  grid-template-rows: auto 5rem minmax(30rem, 69vh);
+  grid-template-rows: auto minmax(30rem, 61vh);
   gap: 1rem;
 }
 .dashboard .internship-container header, .dashboard-active .internship-container header {
@@ -2767,24 +2772,33 @@ button {
   grid-template-rows: auto;
   gap: 1rem;
 }
-.dashboard .internship-container header .page-title, .dashboard-active .internship-container header .page-title {
-  color: #fff;
-  padding: 2rem;
-  background-color: #282b30;
+.dashboard .internship-container header > *, .dashboard-active .internship-container header > * {
   border-radius: 1rem;
   display: flex;
   align-items: center;
 }
+.dashboard .internship-container header .page-title, .dashboard-active .internship-container header .page-title {
+  color: #fff;
+  background-color: #282b30;
+  padding: 1.5rem 2rem;
+}
 .dashboard .internship-container header .btn-container, .dashboard-active .internship-container header .btn-container {
   background-color: #282b30;
-  display: flex;
-  align-items: center;
   padding: 1rem 2rem;
-  border-radius: 1rem;
 }
 .dashboard .internship-container header .btn-container button, .dashboard-active .internship-container header .btn-container button {
   height: 5rem;
   width: 12rem;
+}
+.dashboard .internship-container header .warning, .dashboard-active .internship-container header .warning {
+  color: #fff;
+  justify-content: center;
+  text-align: center;
+  background-color: #282b30;
+  padding: 1rem;
+}
+.dashboard .internship-container header .warning h4, .dashboard-active .internship-container header .warning h4 {
+  width: 85%;
 }
 .dashboard .internship-container button, .dashboard-active .internship-container button {
   background-color: #fff;
@@ -3089,37 +3103,37 @@ button {
      object-fit: contain;
   cursor: pointer;
 }
-.dashboard .internship-container .add-modal form > :nth-child(1), .dashboard-active .internship-container .add-modal form > :nth-child(1), .dashboard .internship-container .edit-modal form > :nth-child(1), .dashboard-active .internship-container .edit-modal form > :nth-child(1) {
+.dashboard .internship-container .add-modal form .company-name, .dashboard-active .internship-container .add-modal form .company-name, .dashboard .internship-container .edit-modal form .company-name, .dashboard-active .internship-container .edit-modal form .company-name {
   grid-column: 2/5;
   grid-row: 1/2;
 }
-.dashboard .internship-container .add-modal form > :nth-child(2), .dashboard-active .internship-container .add-modal form > :nth-child(2), .dashboard .internship-container .edit-modal form > :nth-child(2), .dashboard-active .internship-container .edit-modal form > :nth-child(2) {
+.dashboard .internship-container .add-modal form .company-address, .dashboard-active .internship-container .add-modal form .company-address, .dashboard .internship-container .edit-modal form .company-address, .dashboard-active .internship-container .edit-modal form .company-address {
   grid-column: 2/5;
   grid-row: 2/3;
 }
-.dashboard .internship-container .add-modal form > :nth-child(3), .dashboard-active .internship-container .add-modal form > :nth-child(3), .dashboard .internship-container .edit-modal form > :nth-child(3), .dashboard-active .internship-container .edit-modal form > :nth-child(3) {
+.dashboard .internship-container .add-modal form .supervisor, .dashboard-active .internship-container .add-modal form .supervisor, .dashboard .internship-container .edit-modal form .supervisor, .dashboard-active .internship-container .edit-modal form .supervisor {
   grid-column: 1/3;
   grid-row: 3/4;
 }
-.dashboard .internship-container .add-modal form > :nth-child(4), .dashboard-active .internship-container .add-modal form > :nth-child(4), .dashboard .internship-container .edit-modal form > :nth-child(4), .dashboard-active .internship-container .edit-modal form > :nth-child(4) {
+.dashboard .internship-container .add-modal form .supervisor-contact, .dashboard-active .internship-container .add-modal form .supervisor-contact, .dashboard .internship-container .edit-modal form .supervisor-contact, .dashboard-active .internship-container .edit-modal form .supervisor-contact {
   grid-column: 3/5;
   grid-row: 3/4;
 }
-.dashboard .internship-container .add-modal form > :nth-child(5), .dashboard-active .internship-container .add-modal form > :nth-child(5), .dashboard .internship-container .edit-modal form > :nth-child(5), .dashboard-active .internship-container .edit-modal form > :nth-child(5) {
+.dashboard .internship-container .add-modal form .email, .dashboard-active .internship-container .add-modal form .email, .dashboard .internship-container .edit-modal form .email, .dashboard-active .internship-container .edit-modal form .email {
   grid-column: 1/3;
   grid-row: 4/5;
 }
-.dashboard .internship-container .add-modal form > :nth-child(6), .dashboard-active .internship-container .add-modal form > :nth-child(6), .dashboard .internship-container .edit-modal form > :nth-child(6), .dashboard-active .internship-container .edit-modal form > :nth-child(6) {
+.dashboard .internship-container .add-modal form .duties, .dashboard-active .internship-container .add-modal form .duties, .dashboard .internship-container .edit-modal form .duties, .dashboard-active .internship-container .edit-modal form .duties {
   grid-column: 3/5;
   grid-row: 4/5;
 }
-.dashboard .internship-container .add-modal form > :nth-child(7), .dashboard-active .internship-container .add-modal form > :nth-child(7), .dashboard .internship-container .edit-modal form > :nth-child(7), .dashboard-active .internship-container .edit-modal form > :nth-child(7) {
+.dashboard .internship-container .add-modal form .logo, .dashboard-active .internship-container .add-modal form .logo, .dashboard .internship-container .edit-modal form .logo, .dashboard-active .internship-container .edit-modal form .logo {
   height: 100%;
   width: 100%;
   grid-row: 1/3;
   grid-column: 1/2;
 }
-.dashboard .internship-container .add-modal form > :nth-child(8), .dashboard-active .internship-container .add-modal form > :nth-child(8), .dashboard .internship-container .edit-modal form > :nth-child(8), .dashboard-active .internship-container .edit-modal form > :nth-child(8) {
+.dashboard .internship-container .add-modal form .description, .dashboard-active .internship-container .add-modal form .description, .dashboard .internship-container .edit-modal form .description, .dashboard-active .internship-container .edit-modal form .description {
   height: 100%;
   width: 100%;
   grid-row: 5/7;
@@ -3253,6 +3267,298 @@ button {
 .dashboard .internship-container .view-modal .close-btn button:hover, .dashboard-active .internship-container .view-modal .close-btn button:hover {
   border-radius: 0;
   background-color: #00adb5;
+}
+@media screen and (min-height: 680px) {
+  .dashboard .internship-container, .dashboard-active .internship-container {
+    grid-template-rows: auto minmax(30rem, 65vh);
+  }
+  .dashboard .internship-container .no-internship, .dashboard-active .internship-container .no-internship {
+    font-size: 2.3rem;
+  }
+  .dashboard .internship-container .no-internship img, .dashboard-active .internship-container .no-internship img {
+    height: 40rem;
+    width: 40rem;
+  }
+}
+@media screen and (min-height: 750px) {
+  .dashboard .internship-container, .dashboard-active .internship-container {
+    grid-template-rows: auto minmax(30rem, 68vh);
+  }
+}
+@media screen and (min-height: 820px) {
+  .dashboard .internship-container, .dashboard-active .internship-container {
+    grid-template-rows: auto minmax(30rem, 70vh);
+  }
+  .dashboard .internship-container .no-internship, .dashboard-active .internship-container .no-internship {
+    font-size: 2.5rem;
+  }
+  .dashboard .internship-container .no-internship img, .dashboard-active .internship-container .no-internship img {
+    height: 45rem;
+    width: 45rem;
+  }
+}
+@media screen and (max-width: 1150px) {
+  .dashboard .internship-container .content, .dashboard-active .internship-container .content {
+    grid-template-columns: 1fr;
+  }
+}
+@media screen and (max-width: 1030px) {
+  .dashboard .internship-container .content, .dashboard-active .internship-container .content {
+    grid-auto-rows: 14rem;
+  }
+  .dashboard .internship-container .content .internship, .dashboard-active .internship-container .content .internship {
+    grid-template-columns: 13rem 1fr;
+  }
+  .dashboard .internship-container .content .internship .img-con, .dashboard-active .internship-container .content .internship .img-con {
+    height: 12rem;
+    width: 12rem;
+  }
+  .dashboard .internship-container .add-modal, .dashboard-active .internship-container .add-modal, .dashboard .internship-container .edit-modal, .dashboard-active .internship-container .edit-modal {
+    width: 85%;
+  }
+  .dashboard .internship-container .add-modal form, .dashboard-active .internship-container .add-modal form, .dashboard .internship-container .edit-modal form, .dashboard-active .internship-container .edit-modal form {
+    grid-template-rows: repeat(2, 9.5rem) auto repeat(3, 9.5rem) auto;
+  }
+  .dashboard .internship-container .view-modal, .dashboard-active .internship-container .view-modal {
+    width: 72rem;
+    height: 95%;
+  }
+  .dashboard .internship-container .no-internship h2, .dashboard-active .internship-container .no-internship h2 {
+    font-size: 2.2rem;
+  }
+  .dashboard .internship-container .no-internship img, .dashboard-active .internship-container .no-internship img {
+    height: 35rem;
+    width: 35rem;
+  }
+}
+@media screen and (max-width: 750px) {
+  .dashboard .internship-container .add-modal, .dashboard-active .internship-container .add-modal, .dashboard .internship-container .edit-modal, .dashboard-active .internship-container .edit-modal {
+    width: 90%;
+    height: 90%;
+  }
+  .dashboard .internship-container .add-modal form, .dashboard-active .internship-container .add-modal form, .dashboard .internship-container .edit-modal form, .dashboard-active .internship-container .edit-modal form {
+    grid-template-rows: repeat(3, 9.5rem) auto repeat(3, 9.5rem) auto;
+  }
+  .dashboard .internship-container .add-modal form .input-contain h3, .dashboard-active .internship-container .add-modal form .input-contain h3, .dashboard .internship-container .edit-modal form .input-contain h3, .dashboard-active .internship-container .edit-modal form .input-contain h3 {
+    font-size: 1.9rem;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(1), .dashboard-active .internship-container .add-modal form > :nth-child(1), .dashboard .internship-container .edit-modal form > :nth-child(1), .dashboard-active .internship-container .edit-modal form > :nth-child(1) {
+    grid-column: 1/3;
+    grid-row: 3/4;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(2), .dashboard-active .internship-container .add-modal form > :nth-child(2), .dashboard .internship-container .edit-modal form > :nth-child(2), .dashboard-active .internship-container .edit-modal form > :nth-child(2) {
+    grid-column: 3/5;
+    grid-row: 3/4;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(3), .dashboard-active .internship-container .add-modal form > :nth-child(3), .dashboard .internship-container .edit-modal form > :nth-child(3), .dashboard-active .internship-container .edit-modal form > :nth-child(3) {
+    grid-column: 1/3;
+    grid-row: 4/5;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(4), .dashboard-active .internship-container .add-modal form > :nth-child(4), .dashboard .internship-container .edit-modal form > :nth-child(4), .dashboard-active .internship-container .edit-modal form > :nth-child(4) {
+    grid-column: 3/5;
+    grid-row: 4/5;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(5), .dashboard-active .internship-container .add-modal form > :nth-child(5), .dashboard .internship-container .edit-modal form > :nth-child(5), .dashboard-active .internship-container .edit-modal form > :nth-child(5) {
+    grid-column: 1/3;
+    grid-row: 5/6;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(6), .dashboard-active .internship-container .add-modal form > :nth-child(6), .dashboard .internship-container .edit-modal form > :nth-child(6), .dashboard-active .internship-container .edit-modal form > :nth-child(6) {
+    grid-column: 3/5;
+    grid-row: 5/6;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(7), .dashboard-active .internship-container .add-modal form > :nth-child(7), .dashboard .internship-container .edit-modal form > :nth-child(7), .dashboard-active .internship-container .edit-modal form > :nth-child(7) {
+    height: 100%;
+    width: 100%;
+    grid-row: 1/3;
+    grid-column: 1/5;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(8), .dashboard-active .internship-container .add-modal form > :nth-child(8), .dashboard .internship-container .edit-modal form > :nth-child(8), .dashboard-active .internship-container .edit-modal form > :nth-child(8) {
+    height: 100%;
+    width: 100%;
+    grid-row: 6/8;
+    grid-column: 1/5;
+  }
+  .dashboard .internship-container .view-modal, .dashboard-active .internship-container .view-modal {
+    width: 90%;
+    height: 92%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .dashboard .internship-container .add-modal, .dashboard-active .internship-container .add-modal, .dashboard .internship-container .edit-modal, .dashboard-active .internship-container .edit-modal {
+    width: 100%;
+  }
+  .dashboard .internship-container .add-modal form, .dashboard-active .internship-container .add-modal form, .dashboard .internship-container .edit-modal form, .dashboard-active .internship-container .edit-modal form {
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: 15rem repeat(6, 9.5rem) 15rem auto;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(1), .dashboard-active .internship-container .add-modal form > :nth-child(1), .dashboard .internship-container .edit-modal form > :nth-child(1), .dashboard-active .internship-container .edit-modal form > :nth-child(1) {
+    grid-column: 1/5;
+    grid-row: 2/3;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(2), .dashboard-active .internship-container .add-modal form > :nth-child(2), .dashboard .internship-container .edit-modal form > :nth-child(2), .dashboard-active .internship-container .edit-modal form > :nth-child(2) {
+    grid-column: 1/5;
+    grid-row: 3/4;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(3), .dashboard-active .internship-container .add-modal form > :nth-child(3), .dashboard .internship-container .edit-modal form > :nth-child(3), .dashboard-active .internship-container .edit-modal form > :nth-child(3) {
+    grid-column: 1/5;
+    grid-row: 4/5;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(4), .dashboard-active .internship-container .add-modal form > :nth-child(4), .dashboard .internship-container .edit-modal form > :nth-child(4), .dashboard-active .internship-container .edit-modal form > :nth-child(4) {
+    grid-column: 1/5;
+    grid-row: 5/6;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(5), .dashboard-active .internship-container .add-modal form > :nth-child(5), .dashboard .internship-container .edit-modal form > :nth-child(5), .dashboard-active .internship-container .edit-modal form > :nth-child(5) {
+    grid-column: 1/5;
+    grid-row: 6/7;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(6), .dashboard-active .internship-container .add-modal form > :nth-child(6), .dashboard .internship-container .edit-modal form > :nth-child(6), .dashboard-active .internship-container .edit-modal form > :nth-child(6) {
+    grid-column: 1/5;
+    grid-row: 7/8;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(7), .dashboard-active .internship-container .add-modal form > :nth-child(7), .dashboard .internship-container .edit-modal form > :nth-child(7), .dashboard-active .internship-container .edit-modal form > :nth-child(7) {
+    height: 100%;
+    width: 100%;
+    grid-row: 1/2;
+    grid-column: 1/5;
+  }
+  .dashboard .internship-container .add-modal form > :nth-child(8), .dashboard-active .internship-container .add-modal form > :nth-child(8), .dashboard .internship-container .edit-modal form > :nth-child(8), .dashboard-active .internship-container .edit-modal form > :nth-child(8) {
+    height: 100%;
+    width: 100%;
+    grid-row: 8/9;
+    grid-column: 1/5;
+  }
+}
+@media screen and (max-width: 600px) {
+  .dashboard .internship-container, .dashboard-active .internship-container {
+    grid-template-rows: auto minmax(40rem, 60vh);
+  }
+  .dashboard .internship-container header, .dashboard-active .internship-container header {
+    grid-template-columns: 1fr auto;
+    grid-auto-rows: auto;
+    gap: 0;
+    row-gap: 1rem;
+  }
+  .dashboard .internship-container header .page-title, .dashboard-active .internship-container header .page-title {
+    border-radius: 1rem 0 0 1rem;
+  }
+  .dashboard .internship-container header .btn-container, .dashboard-active .internship-container header .btn-container {
+    border-radius: 0 1rem 1rem 0;
+  }
+  .dashboard .internship-container header .btn-container button, .dashboard-active .internship-container header .btn-container button {
+    height: 4rem;
+  }
+  .dashboard .internship-container header .warning, .dashboard-active .internship-container header .warning {
+    grid-column: 1/3;
+  }
+  .dashboard .internship-container header .warning h4, .dashboard-active .internship-container header .warning h4 {
+    width: 95%;
+  }
+  .dashboard .internship-container .content, .dashboard-active .internship-container .content {
+    grid-auto-rows: 12rem;
+  }
+  .dashboard .internship-container .content .internship, .dashboard-active .internship-container .content .internship {
+    grid-template-columns: 11rem 1fr;
+  }
+  .dashboard .internship-container .content .internship .img-con, .dashboard-active .internship-container .content .internship .img-con {
+    height: 10rem;
+    width: 10rem;
+  }
+  .dashboard .internship-container .view-modal, .dashboard-active .internship-container .view-modal {
+    padding: 2rem;
+    width: 95%;
+    height: 95%;
+  }
+  .dashboard .internship-container .view-modal .input, .dashboard-active .internship-container .view-modal .input {
+    grid-template-columns: 9.5rem auto;
+  }
+  .dashboard .internship-container .no-internship h2, .dashboard-active .internship-container .no-internship h2 {
+    font-size: 2rem;
+  }
+  .dashboard .internship-container .no-internship img, .dashboard-active .internship-container .no-internship img {
+    height: 28rem;
+    width: 28rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .dashboard .internship-container header .page-title, .dashboard-active .internship-container header .page-title {
+    padding: 1rem 0.5rem 1rem 2rem;
+  }
+  .dashboard .internship-container header .btn-container, .dashboard-active .internship-container header .btn-container {
+    padding: 1rem 2rem 1rem 0.5rem;
+  }
+  .dashboard .internship-container header .btn-container button, .dashboard-active .internship-container header .btn-container button {
+    height: 3.5rem;
+    width: 10rem;
+  }
+  .dashboard .internship-container header .warning h4, .dashboard-active .internship-container header .warning h4 {
+    font-size: 1.7rem;
+  }
+  .dashboard .internship-container .content, .dashboard-active .internship-container .content {
+    padding: 6rem 2rem 2rem 2rem;
+    grid-auto-rows: 12rem;
+  }
+  .dashboard .internship-container .content .internship, .dashboard-active .internship-container .content .internship {
+    grid-template-columns: 1fr;
+    background-color: #0d7377;
+  }
+  .dashboard .internship-container .content .internship .img-con, .dashboard-active .internship-container .content .internship .img-con {
+    display: none;
+  }
+  .dashboard .internship-container .content .internship .controls, .dashboard-active .internship-container .content .internship .controls {
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .dashboard .internship-container .content .internship .controls h4, .dashboard-active .internship-container .content .internship .controls h4 {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+  .dashboard .internship-container .content .internship .controls .internship-btn, .dashboard-active .internship-container .content .internship .controls .internship-btn {
+    justify-content: center;
+  }
+  .dashboard .internship-container .content .message-con, .dashboard-active .internship-container .content .message-con {
+    font-size: 1.5rem;
+    min-width: 28rem;
+    top: 0;
+    height: 4.5rem;
+  }
+  .dashboard .internship-container .add-modal, .dashboard-active .internship-container .add-modal, .dashboard .internship-container .edit-modal, .dashboard-active .internship-container .edit-modal {
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .dashboard .internship-container .add-modal form, .dashboard-active .internship-container .add-modal form, .dashboard .internship-container .edit-modal form, .dashboard-active .internship-container .edit-modal form {
+    grid-template-rows: 15rem repeat(6, auto) 15rem auto;
+    padding: 1rem;
+  }
+  .dashboard .internship-container .add-modal form .input-contain h3, .dashboard-active .internship-container .add-modal form .input-contain h3, .dashboard .internship-container .edit-modal form .input-contain h3, .dashboard-active .internship-container .edit-modal form .input-contain h3 {
+    font-size: 1.6rem;
+  }
+  .dashboard .internship-container .add-modal form .input-contain input, .dashboard-active .internship-container .add-modal form .input-contain input, .dashboard .internship-container .edit-modal form .input-contain input, .dashboard-active .internship-container .edit-modal form .input-contain input {
+    height: 3.5rem;
+  }
+  .dashboard .internship-container .add-modal form .btn-holder button, .dashboard-active .internship-container .add-modal form .btn-holder button, .dashboard .internship-container .edit-modal form .btn-holder button, .dashboard-active .internship-container .edit-modal form .btn-holder button {
+    height: 3.5rem;
+  }
+  .dashboard .internship-container .view-modal, .dashboard-active .internship-container .view-modal {
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .dashboard .internship-container .view-modal .close-btn button, .dashboard-active .internship-container .view-modal .close-btn button {
+    height: 3.5rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  .dashboard .internship-container, .dashboard-active .internship-container {
+    grid-template-rows: auto minmax(30rem, 53vh);
+  }
+  .dashboard .internship-container header .page-title h2, .dashboard-active .internship-container header .page-title h2 {
+    font-size: 2.4rem;
+  }
+  .dashboard .internship-container header .warning h4, .dashboard-active .internship-container header .warning h4 {
+    font-size: 1.6rem;
+    width: 100%;
+  }
 }
 .dashboard .coordinator-dashboard, .dashboard-active .coordinator-dashboard {
   display: grid;
@@ -4079,6 +4385,25 @@ button {
     align-items: center;
     text-align: center;
   }
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-intern .no-intern, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-intern .no-intern,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-intern .no-approvals,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-intern .no-approvals,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-intern .no-internships,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-intern .no-internships,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .no-intern,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .no-intern,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .no-approvals,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .no-approvals,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .no-internships,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .no-internships,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .no-intern,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .no-intern,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .no-approvals,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .no-approvals,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .no-internships,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .no-internships {
+    padding: 2.5rem;
+  }
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-intern .no-intern img, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-intern .no-intern img,
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-intern .no-approvals img,
   .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-intern .no-approvals img,
@@ -4286,12 +4611,12 @@ button {
 }
 .dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn {
   display: flex;
+  justify-content: center;
   align-items: flex-start;
   gap: 1rem;
 }
 .dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn h4, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn h4 {
-  display: flex;
-  align-items: center;
+  margin: auto 0;
   text-align: center;
   color: #e63946;
 }
@@ -4361,7 +4686,7 @@ button {
   border: solid 2px #e63946;
 }
 .dashboard .monitor-attendance .narrative-content, .dashboard-active .monitor-attendance .narrative-content {
-  height: 70rem;
+  height: 80%;
   width: 80rem;
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -4497,11 +4822,19 @@ button {
     width: 42rem;
   }
 }
+@media screen and (max-width: 900px) {
+  .dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn h4, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn h4 {
+    font-size: 1.5rem;
+  }
+}
 @media screen and (max-width: 850px) {
   .dashboard .monitor-attendance .more-details, .dashboard-active .monitor-attendance .more-details,
   .dashboard .monitor-attendance .narrative-content,
   .dashboard-active .monitor-attendance .narrative-content {
     width: 72rem;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn h4, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn h4 {
+    font-size: 1.2rem;
   }
 }
 @media screen and (max-width: 800px) {
@@ -4511,6 +4844,10 @@ button {
   .dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn {
     flex-direction: column;
     gap: 0.5rem;
+  }
+  .dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn h4, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn h4 {
+    font-size: 1.7rem;
+    padding-left: 0.5rem;
   }
   .dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn button, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn button {
     height: 4rem;
@@ -4634,6 +4971,12 @@ button {
   .dashboard .monitor-attendance, .dashboard-active .monitor-attendance {
     grid-template-rows: auto minmax(35rem, 59vh);
   }
+  .dashboard .monitor-attendance header .top h2, .dashboard-active .monitor-attendance header .top h2 {
+    font-size: 2.4rem;
+  }
+  .dashboard .monitor-attendance header .mid h3, .dashboard-active .monitor-attendance header .mid h3 {
+    font-size: 2.2rem;
+  }
   .dashboard .monitor-attendance .display h1, .dashboard-active .monitor-attendance .display h1 {
     text-align: center;
     font-size: 2rem;
@@ -4667,6 +5010,9 @@ button {
     flex-direction: row;
     align-items: center;
   }
+  .dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn h4, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn h4 {
+    font-size: 1.5rem;
+  }
   .dashboard .monitor-attendance .display .content .day-attendance .right .second .more-details-btn button, .dashboard-active .monitor-attendance .display .content .day-attendance .right .second .more-details-btn button {
     font-size: 1.2rem;
   }
@@ -4682,7 +5028,7 @@ button {
 }
 .dashboard .admin-document-page, .dashboard-active .admin-document-page {
   display: grid;
-  grid-template-rows: auto minmax(45rem, 70vh);
+  grid-template-rows: auto minmax(30rem, 70.5vh);
   gap: 1rem;
   overflow: hidden;
 }
@@ -4948,7 +5294,29 @@ button {
   text-decoration: underline;
 }
 .dashboard .admin-document-page .document-modal .btn-container, .dashboard-active .admin-document-page .document-modal .btn-container {
-  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dashboard .admin-document-page .document-modal .btn-container button, .dashboard-active .admin-document-page .document-modal .btn-container button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  background-color: #d9d9d9;
+  border: none;
+  border-radius: 1rem;
+  outline: none;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  transition: all 0.2s linear;
+  font-weight: 600;
+}
+.dashboard .admin-document-page .document-modal .btn-container button:hover, .dashboard-active .admin-document-page .document-modal .btn-container button:hover {
+  background-color: #00adb5;
+  border: none !important;
+  border-radius: 0;
+  color: #fff;
 }
 .dashboard .admin-document-page .sample-view-container, .dashboard-active .admin-document-page .sample-view-container {
   position: absolute;
@@ -4960,12 +5328,18 @@ button {
   border-radius: 1rem;
   padding: 2rem 1rem;
   width: 65rem;
-  height: 93vh;
+  height: 93%;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 .dashboard .admin-document-page .sample-view-container img, .dashboard-active .admin-document-page .sample-view-container img {
-  height: 100%;
+  height: auto;
   width: 100%;
+}
+.dashboard .admin-document-page .sample-view-container .btn-close, .dashboard-active .admin-document-page .sample-view-container .btn-close {
+  display: none;
 }
 .dashboard .admin-document-page .delete-document-modal, .dashboard-active .admin-document-page .delete-document-modal {
   grid-template-rows: auto auto auto 6rem;
@@ -5011,7 +5385,7 @@ button {
   background-color: #282b30;
   display: flex;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 1.5rem 2rem;
   border-radius: 1rem;
 }
 .dashboard .admin-document-page > header .title-page h2, .dashboard-active .admin-document-page > header .title-page h2 {
@@ -5144,21 +5518,21 @@ button {
   height: 40rem;
 }
 .dashboard .admin-document-page .document-approval-container, .dashboard-active .admin-document-page .document-approval-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   padding: 2rem;
   background-color: #282b30;
   border-radius: 1rem;
-  gap: 1rem;
   overflow-y: auto;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern, .dashboard-active .admin-document-page .document-approval-container .document-intern {
-  display: flex;
-  flex: 12rem 1;
-  margin-bottom: 2rem;
-  flex-direction: row;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .img-container, .dashboard-active .admin-document-page .document-approval-container .document-intern .img-container {
-  border-radius: 1rem;
   height: 12rem;
   width: 12rem;
 }
@@ -5166,8 +5540,6 @@ button {
   border-radius: 1rem;
   height: 100%;
   width: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .text, .dashboard-active .admin-document-page .document-approval-container .document-intern .text {
   height: 100%;
@@ -5175,24 +5547,30 @@ button {
   border-radius: 1rem;
   display: grid;
   grid-template-rows: 10rem 2rem;
+  background-color: #fff;
   transition: all 0.2s linear;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .text .top, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .top {
   padding: 1rem;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr 1fr;
-  gap: 0.5rem;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: auto;
+  -moz-column-gap: 0.5rem;
+       column-gap: 0.5rem;
+}
+.dashboard .admin-document-page .document-approval-container .document-intern .text .top .name, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .top .name {
+  grid-column: 1/3;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .text .top .internship-at, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .top .internship-at {
-  grid-column: 2/3;
-  grid-row: 1/3;
+  white-space: nowrap; /* Prevents text from wrapping */
+  overflow: hidden; /* Hides any overflowed text */
+  text-overflow: ellipsis;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom {
-  transition: all 0.2s linear;
+  transition: all 0.5s linear;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container {
-  padding: 1rem 1rem 2rem 1rem;
+  padding: 1rem 1rem 1rem 1rem;
   transition: all 0.2s linear;
   width: 100%;
   height: 100%;
@@ -5200,7 +5578,7 @@ button {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-auto-rows: auto;
+  grid-auto-rows: 8rem;
   gap: 1rem;
   border-radius: 0 0 1rem 1rem;
 }
@@ -5215,7 +5593,7 @@ button {
   bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
-  border-radius: 1rem !important;
+  border-radius: 1rem;
   height: 2rem;
   z-index: 1;
 }
@@ -5292,9 +5670,6 @@ button {
 .dashboard .admin-document-page .document-approval-container .document-intern .active-1, .dashboard-active .admin-document-page .document-approval-container .document-intern .active-1 {
   grid-template-rows: 10rem 10rem;
 }
-.dashboard .admin-document-page .document-approval-container .document-intern > *, .dashboard-active .admin-document-page .document-approval-container .document-intern > * {
-  background-color: #fff;
-}
 .dashboard .admin-document-page .document-approval-container .overlay, .dashboard-active .admin-document-page .document-approval-container .overlay {
   width: 100%;
   min-height: 100%;
@@ -5317,6 +5692,9 @@ button {
   width: 65rem;
   height: 93vh;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 .dashboard .admin-document-page .document-approval-container .view-document-container img, .dashboard-active .admin-document-page .document-approval-container .view-document-container img {
   height: 100%;
@@ -5324,6 +5702,19 @@ button {
 }
 .dashboard .admin-document-page .document-approval-container .no-approval, .dashboard-active .admin-document-page .document-approval-container .no-approval {
   color: #fff;
+}
+.dashboard .admin-document-page .document-approval-container .btn-close, .dashboard-active .admin-document-page .document-approval-container .btn-close {
+  display: none;
+}
+@media screen and (min-height: 700px) {
+  .dashboard .admin-document-page, .dashboard-active .admin-document-page {
+    grid-template-rows: auto minmax(30rem, 74vh);
+  }
+}
+@media screen and (min-height: 800px) {
+  .dashboard .admin-document-page, .dashboard-active .admin-document-page {
+    grid-template-rows: auto minmax(30rem, 77vh);
+  }
 }
 @media screen and (max-width: 1030px) {
   .dashboard .admin-document-page .document-container .documents, .dashboard-active .admin-document-page .document-container .documents {
@@ -5337,15 +5728,53 @@ button {
   .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
     height: 30rem;
   }
+  .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container {
+    grid-auto-rows: 12rem;
+  }
   .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document {
     grid-template-rows: auto auto;
-    grid-template-columns: 0.25fr 1fr;
-    gap: 0.5rem;
-    height: auto;
+    grid-template-columns: 6rem 1fr;
+    gap: 0;
+    -moz-column-gap: 1rem;
+         column-gap: 1rem;
   }
   .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document img, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document img {
     grid-row: 1/3;
     grid-column: 1/2;
+  }
+}
+@media screen and (max-width: 850px) {
+  .dashboard .admin-document-page .document-approval-container, .dashboard-active .admin-document-page .document-approval-container {
+    gap: 1rem;
+  }
+  .dashboard .admin-document-page .document-approval-container .document-intern .text, .dashboard-active .admin-document-page .document-approval-container .document-intern .text {
+    grid-template-rows: 12rem 2rem;
+  }
+  .dashboard .admin-document-page .document-approval-container .document-intern .text .top, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .top {
+    padding: 0.5rem 1rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+    -moz-column-gap: 0;
+         column-gap: 0;
+  }
+  .dashboard .admin-document-page .document-approval-container .document-intern .text .top .name, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .top .name {
+    grid-column: 1/3;
+  }
+  .dashboard .admin-document-page .document-approval-container .document-intern .text .top .internship-at, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .top .internship-at {
+    grid-column: 1/3;
+    grid-row: 2/3;
+  }
+  .dashboard .admin-document-page .document-approval-container .document-intern .text .top .approved-doc, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .top .approved-doc {
+    grid-row: 3/4;
+  }
+  .dashboard .admin-document-page .document-approval-container .document-intern .text .top .send-doc, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .top .send-doc {
+    grid-row: 4/5;
+  }
+  .dashboard .admin-document-page .document-approval-container .document-intern .active, .dashboard-active .admin-document-page .document-approval-container .document-intern .active {
+    grid-template-rows: 12rem minmax(12rem, auto);
+  }
+  .dashboard .admin-document-page .document-approval-container .document-intern .active-1, .dashboard-active .admin-document-page .document-approval-container .document-intern .active-1 {
+    grid-template-rows: 12rem 12rem;
   }
 }
 @media screen and (max-width: 750px) {
@@ -5354,6 +5783,36 @@ button {
   .dashboard-active .admin-document-page .document-approval-container .view-document-container {
     width: 60rem;
     height: 90vh;
+  }
+  .dashboard .admin-document-page .sample-view-container .btn-close, .dashboard-active .admin-document-page .sample-view-container .btn-close,
+  .dashboard .admin-document-page .view-document-container .btn-close,
+  .dashboard-active .admin-document-page .view-document-container .btn-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .dashboard .admin-document-page .sample-view-container .btn-close button, .dashboard-active .admin-document-page .sample-view-container .btn-close button,
+  .dashboard .admin-document-page .view-document-container .btn-close button,
+  .dashboard-active .admin-document-page .view-document-container .btn-close button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+    background-color: #d9d9d9;
+    border: none;
+    border-radius: 1rem;
+    outline: none;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    transition: all 0.2s linear;
+    font-weight: 600;
+  }
+  .dashboard .admin-document-page .sample-view-container .btn-close button:hover, .dashboard-active .admin-document-page .sample-view-container .btn-close button:hover,
+  .dashboard .admin-document-page .view-document-container .btn-close button:hover,
+  .dashboard-active .admin-document-page .view-document-container .btn-close button:hover {
+    background-color: #00adb5;
+    border-radius: 0;
+    color: #fff;
   }
   .dashboard .admin-document-page .document-modal, .dashboard-active .admin-document-page .document-modal {
     width: 40rem;
@@ -5413,15 +5872,27 @@ button {
     justify-content: center;
   }
   .dashboard .admin-document-page .document-container .documents, .dashboard-active .admin-document-page .document-container .documents {
-    grid-auto-rows: 8rem;
+    grid-auto-rows: 7rem;
     grid-template-columns: 1fr;
   }
   .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
     height: 25rem;
   }
+  .dashboard .admin-document-page .document-approval-container .document-intern, .dashboard-active .admin-document-page .document-approval-container .document-intern {
+    grid-template-columns: 10rem 1fr;
+  }
   .dashboard .admin-document-page .document-approval-container .document-intern .img-container, .dashboard-active .admin-document-page .document-approval-container .document-intern .img-container {
     height: 10rem;
     width: 10rem;
+  }
+  .dashboard .admin-document-page .document-approval-container .document-intern .text p, .dashboard-active .admin-document-page .document-approval-container .document-intern .text p {
+    font-size: 1.7rem;
+  }
+  .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container {
+    grid-auto-rows: 11rem;
+  }
+  .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document {
+    padding: 0.5rem 1rem 1rem 1rem;
   }
 }
 @media screen and (max-width: 650px) {
@@ -5439,13 +5910,14 @@ button {
 }
 @media screen and (max-width: 600px) {
   .dashboard .admin-document-page, .dashboard-active .admin-document-page {
-    grid-template-rows: auto minmax(35rem, 58vh);
+    grid-template-rows: auto minmax(35rem, 65vh);
   }
   .dashboard .admin-document-page .sample-view-container, .dashboard-active .admin-document-page .sample-view-container,
   .dashboard .admin-document-page .document-approval-container .view-document-container,
   .dashboard-active .admin-document-page .document-approval-container .view-document-container {
     width: 100%;
-    height: 80vh;
+    height: 100%;
+    border-radius: 0;
   }
   .dashboard .admin-document-page header .title-page, .dashboard-active .admin-document-page header .title-page {
     justify-content: center;
@@ -5518,11 +5990,11 @@ button {
   .dashboard .admin-document-page .document-container .no-document img, .dashboard-active .admin-document-page .document-container .no-document img {
     height: 20rem;
   }
-  .dashboard .admin-document-page .document-approval-container .document-intern, .dashboard-active .admin-document-page .document-approval-container .document-intern {
-    min-height: 8rem;
-  }
   .dashboard .admin-document-page .document-approval-container .document-intern .text .top > *, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .top > * {
     font-size: 1.6rem;
+  }
+  .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container {
+    grid-auto-rows: 10rem;
   }
   .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document img, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .document img {
     height: 3.5rem;
@@ -5544,17 +6016,6 @@ button {
   .dashboard .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .no-document img, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .bottom .dropdown-container .no-document img {
     height: 3.5rem;
     width: 3.5rem;
-  }
-}
-@media screen and (max-width: 450px) {
-  .dashboard .admin-document-page .document-approval-container .document-intern .text .top, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .top {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-  .dashboard .admin-document-page .document-approval-container .document-intern .text .top .internship-at, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .top .internship-at {
-    display: none;
   }
 }
 @media screen and (max-width: 400px) {
@@ -5782,6 +6243,9 @@ button {
   }
   .dashboard .main, .dashboard-active .main {
     padding: 0;
+  }
+  .dashboard .main .content .documents .document-contents, .dashboard-active .main .content .documents .document-contents {
+    grid-auto-rows: 6.4rem;
   }
   .dashboard .main .content .documents .document-contents .no-content h3, .dashboard-active .main .content .documents .document-contents .no-content h3 {
     font-size: 2rem;
@@ -8686,7 +9150,9 @@ button {
 .daily-time-record .no-internship {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
+  justify-content: center;
   background-color: #282b30;
   border-radius: 1rem;
   color: #fff;
@@ -8970,10 +9436,10 @@ button {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 }
 .documents-page .no-content {
+  background-color: #282b30;
   color: #fff;
   padding: 2rem;
   border-radius: 1rem;
-  background-color: #282b30;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8986,8 +9452,8 @@ button {
   color: #0d7377;
 }
 .documents-page .no-content img {
-  height: 25rem;
-  width: 25rem;
+  height: 30rem;
+  width: 30rem;
 }
 .documents-page .overlay {
   width: 100%;
@@ -9485,6 +9951,10 @@ button {
     grid-template-rows: auto minmax(30rem, 52vh);
     gap: 1rem;
   }
+  .documents-page .no-content img {
+    height: 27rem;
+    width: 27rem;
+  }
   .documents-page .top {
     grid-template-columns: auto;
     grid-template-rows: auto 1fr;
@@ -9607,6 +10077,16 @@ button {
 @media screen and (max-width: 600px) {
   .documents-page {
     grid-template-rows: auto minmax(20rem, 45vh);
+  }
+  .documents-page .no-content {
+    padding: 1rem;
+  }
+  .documents-page .no-content h3 {
+    font-size: 2rem;
+  }
+  .documents-page .no-content img {
+    height: 22rem;
+    width: 22rem;
   }
   .documents-page .sample-view-container {
     border-radius: 0;

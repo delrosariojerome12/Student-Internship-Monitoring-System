@@ -1,11 +1,11 @@
 /** @format */
 
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { handleCloseModal } from "../../features/coordinator/monitorAttendance";
+import {useSelector, useDispatch} from "react-redux";
+import {handleCloseModal} from "../../features/coordinator/monitorAttendance";
 
 const ViewMoreDetailsModal = React.memo(() => {
-  const { selectedIntern } = useSelector((state) => state.monitorAttendance);
+  const {selectedIntern} = useSelector((state) => state.monitorAttendance);
   const dispatch = useDispatch();
 
   const {
@@ -20,7 +20,7 @@ const ViewMoreDetailsModal = React.memo(() => {
     OT,
     isPresent,
     proof,
-    narrative: { content },
+    narrative: {content},
   } = selectedIntern;
 
   const months = [
@@ -49,7 +49,8 @@ const ViewMoreDetailsModal = React.memo(() => {
     <>
       <div
         className="overlay"
-        onClick={() => dispatch(handleCloseModal())}></div>
+        onClick={() => dispatch(handleCloseModal())}
+      ></div>
       <div className="more-details modal">
         <div className="details">
           <div className="rendered-hours">
@@ -78,19 +79,17 @@ const ViewMoreDetailsModal = React.memo(() => {
               </>
             )}
           </div>
-          <div className="time-out">
-            {proof.timeOutLink && (
-              <>
-                <p>
-                  <b>Time out: </b> {timeOut}
-                </p>
-                <p>
-                  <b>Location Time out: </b> {locationTimeOut}
-                </p>
-                <img src={proof.timeOutLink} alt="time-out" />
-              </>
-            )}
-          </div>
+          {proof.timeOutLink && (
+            <div className="time-out">
+              <p>
+                <b>Time out: </b> {timeOut}
+              </p>
+              <p>
+                <b>Location Time out: </b> {locationTimeOut}
+              </p>
+              <img src={proof.timeOutLink} alt="time-out" />
+            </div>
+          )}
         </div>
         <div className="btn-controller">
           <button onClick={() => dispatch(handleCloseModal())}>Close</button>

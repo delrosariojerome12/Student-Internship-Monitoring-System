@@ -5,7 +5,7 @@
 
 .internship-container {
   display: grid;
-  grid-template-rows: auto 5rem minmax(30rem, 69vh);
+  grid-template-rows: auto minmax(30rem, 61vh);
   gap: 1rem;
 
   header {
@@ -13,23 +13,32 @@
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     gap: 1rem;
-    .page-title {
-      color: #fff;
-      padding: 2rem;
-      background-color: #282b30;
+    & > * {
       border-radius: 1rem;
       display: flex;
       align-items: center;
     }
+    .page-title {
+      color: #fff;
+      background-color: #282b30;
+      padding: 1.5rem 2rem;
+    }
     .btn-container {
       background-color: #282b30;
-      display: flex;
-      align-items: center;
       padding: 1rem 2rem;
-      border-radius: 1rem;
       button {
         height: 5rem;
         width: 12rem;
+      }
+    }
+    .warning {
+      color: #fff;
+      justify-content: center;
+      text-align: center;
+      background-color: #282b30;
+      padding: 1rem;
+      h4 {
+        width: 85%;
       }
     }
   }
@@ -132,7 +141,6 @@
   .no-internship {
     display: flex;
     align-items: center;
-    // justify-content: center;
     text-align: center;
     flex-direction: column;
     background-color: #282b30;
@@ -175,7 +183,6 @@
     z-index: 7;
     padding: 1rem;
   }
-
   .add-modal {
     width: 75rem;
     // height: 75rem;
@@ -350,44 +357,42 @@
         }
       }
 
-      & > :nth-child(1) {
+      .company-name {
         grid-column: 2/5;
         grid-row: 1/2;
       }
-      & > :nth-child(2) {
+      .company-address {
         grid-column: 2/5;
         grid-row: 2/3;
       }
-      & > :nth-child(3) {
+      .supervisor {
         grid-column: 1/3;
         grid-row: 3/4;
       }
-      & > :nth-child(4) {
+      .supervisor-contact {
         grid-column: 3/5;
         grid-row: 3/4;
       }
-      & > :nth-child(5) {
+      .email {
         grid-column: 1/3;
         grid-row: 4/5;
       }
-      & > :nth-child(6) {
+      .duties {
         grid-column: 3/5;
         grid-row: 4/5;
       }
-
-      & > :nth-child(7) {
+      .logo {
         height: 100%;
         width: 100%;
         grid-row: 1/3;
         grid-column: 1/2;
       }
-      & > :nth-child(8) {
+      .description {
         height: 100%;
         width: 100%;
         grid-row: 5/7;
         grid-column: 1/5;
       }
-
       .btn-holder {
         grid-column: 1/5;
         @include flexCenter;
@@ -458,6 +463,7 @@
         border-radius: 1rem;
       }
     }
+
     .company-name {
       grid-row: 2/3;
       grid-column: 1/4;
@@ -529,318 +535,344 @@
 // Responsive
 
 //min-height
-// @media screen and (min-height: 680px) {
-//   .internship-container {
-//     grid-template-rows: auto minmax(30rem, 72vh);
-//     .no-internship {
-//       font-size: 2.3rem;
-//       img {
-//         height: 40rem;
-//         width: 40rem;
-//       }
-//     }
-//   }
-// }
-// @media screen and (min-height: 750px) {
-//   .internship-container {
-//     grid-template-rows: auto minmax(30rem, 74vh);
-//   }
-// }
+@media screen and (min-height: 680px) {
+  .internship-container {
+    grid-template-rows: auto minmax(30rem, 65vh);
+    .no-internship {
+      font-size: 2.3rem;
+      img {
+        height: 40rem;
+        width: 40rem;
+      }
+    }
+  }
+}
+@media screen and (min-height: 750px) {
+  .internship-container {
+    grid-template-rows: auto minmax(30rem, 68vh);
+  }
+}
 
-// @media screen and (min-height: 820px) {
-//   .internship-container {
-//     grid-template-rows: auto minmax(30rem, 77vh);
-//     .no-internship {
-//       font-size: 2.5rem;
-//       img {
-//         height: 45rem;
-//         width: 45rem;
-//       }
-//     }
-//   }
-// }
+@media screen and (min-height: 820px) {
+  .internship-container {
+    grid-template-rows: auto minmax(30rem, 70vh);
+    .no-internship {
+      font-size: 2.5rem;
+      img {
+        height: 45rem;
+        width: 45rem;
+      }
+    }
+  }
+}
 
-// //max-width
-// @media screen and (max-width: 1150px) {
-//   .internship-container {
-//     .content {
-//       grid-template-columns: 1fr;
-//     }
-//   }
-// }
+//max-width
+@media screen and (max-width: 1150px) {
+  .internship-container {
+    .content {
+      grid-template-columns: 1fr;
+    }
+  }
+}
 
-// @media screen and (max-width: 1030px) {
-//   .internship-container {
-//     .content {
-//       grid-auto-rows: 14rem;
-//       .internship {
-//         grid-template-columns: 13rem 1fr;
-//         .img-con {
-//           height: 12rem;
-//           width: 12rem;
-//         }
-//       }
-//     }
-//     .add-modal {
-//       width: 85%;
-//       form {
-//         grid-template-rows: repeat(2, 9.5rem) auto repeat(3, 9.5rem) auto;
-//       }
-//     }
+@media screen and (max-width: 1030px) {
+  .internship-container {
+    .content {
+      grid-auto-rows: 14rem;
+      .internship {
+        grid-template-columns: 13rem 1fr;
+        .img-con {
+          height: 12rem;
+          width: 12rem;
+        }
+      }
+    }
+    .add-modal {
+      width: 85%;
+      form {
+        grid-template-rows: repeat(2, 9.5rem) auto repeat(3, 9.5rem) auto;
+      }
+    }
 
-//     .view-modal {
-//       width: 72rem;
-//       height: 95%;
-//     }
-//     .no-internship {
-//       h2 {
-//         font-size: 2.2rem;
-//       }
-//       img {
-//         height: 35rem;
-//         width: 35rem;
-//       }
-//     }
-//   }
-// }
+    .view-modal {
+      width: 72rem;
+      height: 95%;
+    }
+    .no-internship {
+      h2 {
+        font-size: 2.2rem;
+      }
+      img {
+        height: 35rem;
+        width: 35rem;
+      }
+    }
+  }
+}
 
-// @media screen and (max-width: 750px) {
-//   .internship-container {
-//     .add-modal {
-//       width: 90%;
-//       height: 90%;
-//       form {
-//         grid-template-rows: repeat(3, 9.5rem) auto repeat(3, 9.5rem) auto;
+@media screen and (max-width: 750px) {
+  .internship-container {
+    .add-modal {
+      width: 90%;
+      height: 90%;
+      form {
+        grid-template-rows: repeat(3, 9.5rem) auto repeat(3, 9.5rem) auto;
 
-//         .input-contain {
-//           h3 {
-//             font-size: 1.9rem;
-//           }
-//         }
+        .input-contain {
+          h3 {
+            font-size: 1.9rem;
+          }
+        }
 
-//         & > :nth-child(1) {
-//           grid-column: 1/3;
-//           grid-row: 3/4;
-//         }
-//         & > :nth-child(2) {
-//           grid-column: 3/5;
-//           grid-row: 3/4;
-//         }
-//         & > :nth-child(3) {
-//           grid-column: 1/3;
-//           grid-row: 4/5;
-//         }
-//         & > :nth-child(4) {
-//           grid-column: 3/5;
-//           grid-row: 4/5;
-//         }
-//         & > :nth-child(5) {
-//           grid-column: 1/3;
-//           grid-row: 5/6;
-//         }
-//         & > :nth-child(6) {
-//           grid-column: 3/5;
-//           grid-row: 5/6;
-//         }
+        & > :nth-child(1) {
+          grid-column: 1/3;
+          grid-row: 3/4;
+        }
+        & > :nth-child(2) {
+          grid-column: 3/5;
+          grid-row: 3/4;
+        }
+        & > :nth-child(3) {
+          grid-column: 1/3;
+          grid-row: 4/5;
+        }
+        & > :nth-child(4) {
+          grid-column: 3/5;
+          grid-row: 4/5;
+        }
+        & > :nth-child(5) {
+          grid-column: 1/3;
+          grid-row: 5/6;
+        }
+        & > :nth-child(6) {
+          grid-column: 3/5;
+          grid-row: 5/6;
+        }
 
-//         & > :nth-child(7) {
-//           height: 100%;
-//           width: 100%;
-//           grid-row: 1/3;
-//           grid-column: 1/5;
-//         }
-//         & > :nth-child(8) {
-//           height: 100%;
-//           width: 100%;
-//           grid-row: 6/8;
-//           grid-column: 1/5;
-//         }
-//       }
-//     }
+        & > :nth-child(7) {
+          height: 100%;
+          width: 100%;
+          grid-row: 1/3;
+          grid-column: 1/5;
+        }
+        & > :nth-child(8) {
+          height: 100%;
+          width: 100%;
+          grid-row: 6/8;
+          grid-column: 1/5;
+        }
+      }
+    }
 
-//     .view-modal {
-//       width: 90%;
-//       height: 92%;
-//     }
-//   }
-// }
+    .view-modal {
+      width: 90%;
+      height: 92%;
+    }
+  }
+}
 
-// @media screen and (max-width: 700px) {
-//   .internship-container {
-//     .add-modal {
-//       width: 100%;
-//       form {
-//         grid-template-columns: repeat(4, auto);
+@media screen and (max-width: 700px) {
+  .internship-container {
+    .add-modal {
+      width: 100%;
+      form {
+        grid-template-columns: repeat(4, auto);
 
-//         grid-template-rows: 15rem repeat(6, 9.5rem) 15rem auto;
+        grid-template-rows: 15rem repeat(6, 9.5rem) 15rem auto;
 
-//         & > :nth-child(1) {
-//           grid-column: 1/5;
-//           grid-row: 2/3;
-//         }
-//         & > :nth-child(2) {
-//           grid-column: 1/5;
-//           grid-row: 3/4;
-//         }
-//         & > :nth-child(3) {
-//           grid-column: 1/5;
-//           grid-row: 4/5;
-//         }
-//         & > :nth-child(4) {
-//           grid-column: 1/5;
-//           grid-row: 5/6;
-//         }
-//         & > :nth-child(5) {
-//           grid-column: 1/5;
-//           grid-row: 6/7;
-//         }
-//         & > :nth-child(6) {
-//           grid-column: 1/5;
-//           grid-row: 7/8;
-//         }
-//         & > :nth-child(7) {
-//           height: 100%;
-//           width: 100%;
-//           grid-row: 1/2;
-//           grid-column: 1/5;
-//         }
-//         & > :nth-child(8) {
-//           height: 100%;
-//           width: 100%;
-//           grid-row: 8/9;
-//           grid-column: 1/5;
-//         }
-//       }
-//     }
-//   }
-// }
-// @media screen and (max-width: 600px) {
-//   .internship-container {
-//     grid-template-rows: auto minmax(40rem, 70vh);
-//     header {
-//       grid-template-columns: 1fr auto;
-//       gap: 0;
-//       .page-title {
-//         border-radius: 1rem 0 0 1rem;
-//       }
-//       .btn-container {
-//         border-radius: 0 1rem 1rem 0;
-//         button {
-//           height: 4rem;
-//         }
-//       }
-//     }
-//     .content {
-//       grid-auto-rows: 12rem;
-//       .internship {
-//         grid-template-columns: 11rem 1fr;
-//         .img-con {
-//           height: 10rem;
-//           width: 10rem;
-//         }
-//       }
-//     }
-//     .view-modal {
-//       padding: 2rem;
-//       width: 95%;
-//       height: 95%;
+        & > :nth-child(1) {
+          grid-column: 1/5;
+          grid-row: 2/3;
+        }
+        & > :nth-child(2) {
+          grid-column: 1/5;
+          grid-row: 3/4;
+        }
+        & > :nth-child(3) {
+          grid-column: 1/5;
+          grid-row: 4/5;
+        }
+        & > :nth-child(4) {
+          grid-column: 1/5;
+          grid-row: 5/6;
+        }
+        & > :nth-child(5) {
+          grid-column: 1/5;
+          grid-row: 6/7;
+        }
+        & > :nth-child(6) {
+          grid-column: 1/5;
+          grid-row: 7/8;
+        }
+        & > :nth-child(7) {
+          height: 100%;
+          width: 100%;
+          grid-row: 1/2;
+          grid-column: 1/5;
+        }
+        & > :nth-child(8) {
+          height: 100%;
+          width: 100%;
+          grid-row: 8/9;
+          grid-column: 1/5;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .internship-container {
+    grid-template-rows: auto minmax(40rem, 60vh);
+    header {
+      grid-template-columns: 1fr auto;
+      grid-auto-rows: auto;
+      gap: 0;
+      row-gap: 1rem;
+      .page-title {
+        border-radius: 1rem 0 0 1rem;
+      }
+      .btn-container {
+        border-radius: 0 1rem 1rem 0;
+        button {
+          height: 4rem;
+        }
+      }
+      .warning {
+        grid-column: 1/3;
+        h4 {
+          width: 95%;
+        }
+      }
+    }
+    .content {
+      grid-auto-rows: 12rem;
+      .internship {
+        grid-template-columns: 11rem 1fr;
+        .img-con {
+          height: 10rem;
+          width: 10rem;
+        }
+      }
+    }
+    .view-modal {
+      padding: 2rem;
+      width: 95%;
+      height: 95%;
 
-//       .input {
-//         grid-template-columns: 9.5rem auto;
-//       }
-//     }
+      .input {
+        grid-template-columns: 9.5rem auto;
+      }
+    }
 
-//     .no-internship {
-//       h2 {
-//         font-size: 2rem;
-//       }
-//       img {
-//         height: 28rem;
-//         width: 28rem;
-//       }
-//     }
-//   }
-// }
+    .no-internship {
+      h2 {
+        font-size: 2rem;
+      }
+      img {
+        height: 28rem;
+        width: 28rem;
+      }
+    }
+  }
+}
 
-// @media screen and (max-width: 500px) {
-//   .internship-container {
-//     header {
-//       .page-title {
-//         padding: 1rem 0.5rem 1rem 2rem;
-//       }
-//       .btn-container {
-//         padding: 1rem 2rem 1rem 0.5rem;
-//         button {
-//           height: 3.5rem;
-//           width: 10rem;
-//         }
-//       }
-//     }
-//     .content {
-//       padding: 6rem 2rem 2rem 2rem;
-//       grid-auto-rows: 12rem;
-//       .internship {
-//         grid-template-columns: 1fr;
-//         background-color: $primary-compliment-landing;
-//         .img-con {
-//           display: none;
-//         }
-//         .controls {
-//           justify-content: center;
-//           gap: 0.5rem;
-//           h4 {
-//             font-size: 1.6rem;
-//             text-align: center;
-//           }
-//           .internship-btn {
-//             justify-content: center;
-//           }
-//         }
-//       }
-//       .message-con {
-//         font-size: 1.5rem;
-//         min-width: 28rem;
-//         top: 0;
-//         height: 4.5rem;
-//       }
-//     }
-//     .add-modal {
-//       border-radius: 0;
-//       width: 100%;
-//       height: 100%;
-//       form {
-//         grid-template-rows: 15rem repeat(6, auto) 15rem auto;
-//         padding: 1rem;
-//         .input-contain {
-//           h3 {
-//             font-size: 1.6rem;
-//           }
-//           input {
-//             height: 3.5rem;
-//           }
-//         }
-//         .btn-holder {
-//           button {
-//             height: 3.5rem;
-//           }
-//         }
-//       }
-//     }
-//     .view-modal {
-//       border-radius: 0;
-//       width: 100%;
-//       height: 100%;
-//       .close-btn {
-//         button {
-//           height: 3.5rem;
-//         }
-//       }
-//     }
-//   }
-// }
+@media screen and (max-width: 500px) {
+  .internship-container {
+    header {
+      .page-title {
+        padding: 1rem 0.5rem 1rem 2rem;
+      }
+      .btn-container {
+        padding: 1rem 2rem 1rem 0.5rem;
+        button {
+          height: 3.5rem;
+          width: 10rem;
+        }
+      }
+      .warning {
+        h4 {
+          font-size: 1.7rem;
+        }
+      }
+    }
+    .content {
+      padding: 6rem 2rem 2rem 2rem;
+      grid-auto-rows: 12rem;
+      .internship {
+        grid-template-columns: 1fr;
+        background-color: $primary-compliment-landing;
+        .img-con {
+          display: none;
+        }
+        .controls {
+          justify-content: center;
+          gap: 0.5rem;
+          h4 {
+            font-size: 1.6rem;
+            text-align: center;
+          }
+          .internship-btn {
+            justify-content: center;
+          }
+        }
+      }
+      .message-con {
+        font-size: 1.5rem;
+        min-width: 28rem;
+        top: 0;
+        height: 4.5rem;
+      }
+    }
+    .add-modal {
+      border-radius: 0;
+      width: 100%;
+      height: 100%;
+      form {
+        grid-template-rows: 15rem repeat(6, auto) 15rem auto;
+        padding: 1rem;
+        .input-contain {
+          h3 {
+            font-size: 1.6rem;
+          }
+          input {
+            height: 3.5rem;
+          }
+        }
+        .btn-holder {
+          button {
+            height: 3.5rem;
+          }
+        }
+      }
+    }
+    .view-modal {
+      border-radius: 0;
+      width: 100%;
+      height: 100%;
+      .close-btn {
+        button {
+          height: 3.5rem;
+        }
+      }
+    }
+  }
+}
 
-// @media screen and (max-width: 400px) {
-//   .internship-container {
-//     grid-template-rows: auto minmax(40rem, 73vh);
-//   }
-// }
+@media screen and (max-width: 400px) {
+  .internship-container {
+    grid-template-rows: auto minmax(30rem, 53vh);
+    header {
+      .page-title {
+        h2 {
+          font-size: 2.4rem;
+        }
+      }
+      .warning {
+        h4 {
+          font-size: 1.6rem;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

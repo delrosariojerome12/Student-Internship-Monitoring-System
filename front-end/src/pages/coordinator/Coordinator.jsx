@@ -8,6 +8,7 @@ import {useSelector, useDispatch} from "react-redux";
 import {getAllInterns} from "../../features/interns/internReducer";
 
 import Bouncing from "../../components/loading/Bouncing";
+import Test from "./InternProfile";
 
 const Dashboard = lazy(() => import("./Dashboard"));
 const Approvals = lazy(() => import("./Approvals"));
@@ -23,7 +24,6 @@ const Coordinator = React.memo(({isSidebarOpen}) => {
   // useEffect(() => {
   //   dispatch(getAllInterns());
   // }, []);
-
   return (
     <section
       // style={isSidebarOpen ? {padding: "2rem 9rem 2rem 29rem"} : null}
@@ -34,6 +34,7 @@ const Coordinator = React.memo(({isSidebarOpen}) => {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/interns" element={<Interns />} />
+          <Route path="/interns/:email/*" element={<Test />} />
           <Route path="/attendance" element={<Attendance />} />
           <Route path="/approvals" element={<Approvals />} />
           <Route path="/documents" element={<Documents />} />

@@ -12,7 +12,7 @@ import {
 import { BiSearchAlt } from "react-icons/bi";
 import Bouncing from "../../components/loading/Bouncing";
 import SelectedIntern from "../../components/coordinator/dashboardCoordinator/SelectedIntern";
-import approvalImg from "../../assets/img/approvals.svg";
+import { useNavigate } from "react-router";
 
 const Interns = React.memo(() => {
   const { interns, isError, selectedIntern, isInternOpen } = useSelector(
@@ -23,6 +23,7 @@ const Interns = React.memo(() => {
   const [sortValue, setSortValue] = useState(null);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const renderInterns = () => {
     if (!interns) {
@@ -276,12 +277,21 @@ const Interns = React.memo(() => {
         <>
           <div
             onClick={() => dispatch(handleInternModal())}
-            className="overlay"></div>
+            className="overlay"
+          ></div>
           <div className="preview-container modal">
             <SelectedIntern />
             <div className="btn-close">
               <button onClick={() => dispatch(handleInternModal())}>
                 Close
+              </button>
+              <button
+                onClick={() => {
+                  dispatch(handleInternModal());
+                  navigate(`/dashboard/interns/${selectedIntern.email}`);
+                }}
+              >
+                Intern Profile
               </button>
             </div>
           </div>

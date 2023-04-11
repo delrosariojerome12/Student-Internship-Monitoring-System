@@ -12,6 +12,7 @@
 
   .no-entries {
     height: 100%;
+    margin: auto;
     @include flexCenter;
     flex-direction: column;
     padding: 1rem;
@@ -73,7 +74,7 @@
 
     .approvals-intern-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, 52rem);
+      // grid-template-columns: repeat(auto-fill, 52rem);
       grid-auto-rows: 12rem;
       gap: 1rem;
 

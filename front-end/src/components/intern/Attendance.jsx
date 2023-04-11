@@ -22,6 +22,8 @@ const Attendance = React.memo(({attendance}) => {
   const dispatch = useDispatch();
   const {_id, date} = attendance;
 
+  console.log(date);
+
   const formatDate = (date) => {
     const dateArr = date.split("-");
     return `${months[parseInt(dateArr[0].slice(1)) - 1]} ${dateArr[1]}, ${
