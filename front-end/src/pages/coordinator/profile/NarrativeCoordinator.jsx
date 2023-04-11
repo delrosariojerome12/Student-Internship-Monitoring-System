@@ -1,20 +1,20 @@
-import React, { useEffect } from "react";
-import { getAllNarrative } from "../../../features/interns/narrativeReducer";
-import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router";
+import React, {useEffect} from "react";
+import {getAllNarrative} from "../../../features/interns/narrativeReducer";
+import {useSelector, useDispatch} from "react-redux";
+import {useParams} from "react-router";
 import ReportContent from "../../../components/intern/NarrativeContent";
 import _ from "lodash";
 import ServerError from "../../serverError";
 import Bouncing from "../../../components/loading/Bouncing";
 import ApprovalWaiting from "../../../assets/img/waiting.svg";
 
-const NarrativeCoordinator = () => {
-  const { allNarrative, isError } = useSelector((state) => state.narrative);
+const NarrativeCoordinator = React.memo(() => {
+  const {allNarrative, isError} = useSelector((state) => state.narrative);
   const dispatch = useDispatch();
-  const { email } = useParams();
+  const {email} = useParams();
 
   useEffect(() => {
-    dispatch(getAllNarrative({ email }));
+    dispatch(getAllNarrative({email}));
   }, []);
 
   const renderNarrative = () => {
@@ -46,6 +46,6 @@ const NarrativeCoordinator = () => {
     return <ServerError />;
   }
   return <div className="narrative-container">{renderNarrative()}</div>;
-};
+});
 
 export default NarrativeCoordinator;

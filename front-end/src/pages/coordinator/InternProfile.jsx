@@ -10,11 +10,20 @@ import InternshipDetailsCoordinator from "./profile/InternshipDetailsCoordinator
 import AttendanceCoordinator from "./profile/AttendanceCoordinator";
 import NarrativeCoordinator from "./profile/NarrativeCoordinator";
 import DocumentsCoordinator from "./profile/DocumentsCoordinator";
+import ViewModal from "../../components/intern/reports/ViewModal";
 
 const InternProfile = React.memo(() => {
   const {selectedIntern, isError, isLoading} = useSelector(
     (state) => state.intern
   );
+  const {
+    allNarrative,
+    isAddModalOpen,
+    isEditModalOpen,
+    isViewModalOpen,
+    isGenerateOpen,
+  } = useSelector((state) => state.narrative);
+
   const dispatch = useDispatch();
   const {email} = useParams();
   const navigate = useNavigate();
@@ -61,8 +70,6 @@ const InternProfile = React.memo(() => {
   if (isError || !selectedIntern) {
     return <ServerError />;
   }
-
-  console.log(selectedIntern);
 
   const {
     user: {profileImage, firstName, lastName},
@@ -128,17 +135,7 @@ const InternProfile = React.memo(() => {
           </Routes>
         </div>
       </div>
-
-      {/* {isAddModalOpen && <AddModal />}
-      {isEditModalOpen && <EditModal />}
-      {isViewModalOpen && <ViewModal />} */}
-
-      {/* {isGenerateOpen && (
-        <>
-          <div className="overlay"></div>
-          <ReactPDF />
-        </>
-      )} */}
+      {isViewModalOpen && <ViewModal />}
     </section>
   );
 });

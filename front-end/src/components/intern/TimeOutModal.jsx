@@ -115,7 +115,6 @@ const TimeOutModal = React.memo(({email}) => {
     const interval = setInterval(() => {
       // const date = new Date(dateTime);
       const date = new Date();
-
       // hour
       // const hours = (date.getHours() % 12 || 12).toString().padStart(2, "0");
       const hours =
