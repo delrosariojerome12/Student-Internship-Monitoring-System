@@ -1,3 +1,5 @@
+/** @format */
+
 @import "../utils";
 
 //tablet
@@ -137,73 +139,73 @@
   }
 }
 
-.main-carousel {
-  border: 1px solid #ffff;
-  height: 636px;
-  width: 100%;
-  padding: 3rem;
-  background-color: #323232;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(40%, 50rem) minmax(60%, 70rem);
+// .main-carousel {
+//   border: 1px solid #ffff;
+//   height: 636px;
+//   width: 100%;
+//   padding: 3rem;
+//   background-color: #323232;
+//   margin: 0 auto;
+//   display: grid;
+//   grid-template-columns: minmax(40%, 50rem) minmax(60%, 70rem);
 
-  .text-container-left {
-    border: 1px solid #ffff;
-    width: 100%;
-    height: 100%;
-    & {
-      p {
-        color: #ffff;
-      }
-      p:nth-of-type(1) {
-        font-size: 68px;
-      }
-      p:nth-of-type(2) {
-        font-size: 36px;
-      }
-      p:nth-of-type(3) {
-        opacity: 0.5;
-      }
-    }
-  }
+//   .text-container-left {
+//     border: 1px solid #ffff;
+//     width: 100%;
+//     height: 100%;
+//     & {
+//       p {
+//         color: #ffff;
+//       }
+//       p:nth-of-type(1) {
+//         font-size: 68px;
+//       }
+//       p:nth-of-type(2) {
+//         font-size: 36px;
+//       }
+//       p:nth-of-type(3) {
+//         opacity: 0.5;
+//       }
+//     }
+//   }
 
-  .slides {
-    width: 100%;
-    height: 100%;
-    border: 1px solid #ffff;
-    // border-radius: 10px;
-    position: relative;
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-points-x: repeat(100%);
-    scroll-snap-type: mandatory;
-  }
+//   .slides {
+//     width: 100%;
+//     height: 100%;
+//     border: 1px solid #ffff;
+//     // border-radius: 10px;
+//     position: relative;
+//     display: flex;
+//     overflow-x: auto;
+//     scroll-snap-type: x mandatory;
+//     scroll-behavior: smooth;
+//     -webkit-overflow-scrolling: touch;
+//     scroll-snap-points-x: repeat(100%);
+//     scroll-snap-type: mandatory;
+//   }
 
-  & {
-    .btn-prev,
-    .btn-next {
-      width: 80px;
-      height: 100%;
-      background-color: #323232;
-      border: none;
-    }
-    .btn-prev {
-      position: absolute;
-      top: 50%;
-      left: 0%;
-      transform: translateY(-50%);
-    }
-    .btn-next {
-      position: absolute;
-      right: 0%;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-  }
-}
+//   & {
+//     .btn-prev,
+//     .btn-next {
+//       width: 80px;
+//       height: 100%;
+//       background-color: #323232;
+//       border: none;
+//     }
+//     .btn-prev {
+//       position: absolute;
+//       top: 50%;
+//       left: 0%;
+//       transform: translateY(-50%);
+//     }
+//     .btn-next {
+//       position: absolute;
+//       right: 0%;
+//       top: 50%;
+//       transform: translateY(-50%);
+//     }
+//   }
+// }
 
 // ABOUT US
 .aboutUs-container {

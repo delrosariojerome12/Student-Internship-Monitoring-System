@@ -592,6 +592,7 @@ button {
   border: solid 1px #457b9d;
 }
 
+/** @format */
 .landing-page {
   display: grid;
   grid-template-rows: minmax(100vh, auto) 25rem;
@@ -864,6 +865,67 @@ button {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+.landing-page .contents .the-team-container {
+  margin: auto;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: whitesmoke;
+  /* align-items: center;
+  justify-items: center; */
+  height: 100%;
+  width: 90%;
+  border-radius: 10px;
+}
+.landing-page .contents .aboutUs-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 1em;
+  height: 100%;
+  padding: 5em;
+  display: grid;
+  grid-template-columns: minmax(30%, 50rem) minmax(50%, 100rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: #fff;
+}
+.landing-page .contents .aboutUs-container .aboutUs-contents {
+  padding: 2em;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 20px;
+  background-color: #323232;
+}
+.landing-page .contents .aboutUs-container .aboutUs-Text {
+  position: relative;
+  width: 85%;
+  padding-bottom: 20px;
+}
+.landing-page .contents .aboutUs-container .aboutUs-Text p:nth-of-type(1) {
+  text-align: center;
+  padding: 1em;
+  font-size: 32px;
+}
+.landing-page .contents .aboutUs-container .aboutUs-Text p:nth-of-type(2) {
+  text-align: justify;
+  padding: 1em;
+}
+.landing-page .contents .aboutUs-container .getStarted {
+  padding: 1em;
+  display: flex;
+  position: relative;
+  align-items: center;
+  width: 85%;
+  background-color: #d9d9d9;
+  border-radius: 20px;
+  color: #323232;
+  height: 100%;
 }
 .landing-page footer {
   background-color: #323232;
@@ -11639,6 +11701,7 @@ button {
     margin: 0;
   }
 }
+/** @format */
 @media screen and (max-width: 1100px) {
   .landing-page {
     grid-template-rows: minmax(100vh, auto) 15rem;
@@ -11745,66 +11808,6 @@ button {
     height: 2.5rem;
   }
 }
-.main-carousel {
-  border: 1px solid white;
-  height: 636px;
-  width: 100%;
-  padding: 3rem;
-  background-color: #323232;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(40%, 50rem) minmax(60%, 70rem);
-}
-.main-carousel .text-container-left {
-  border: 1px solid white;
-  width: 100%;
-  height: 100%;
-}
-.main-carousel .text-container-left p {
-  color: white;
-}
-.main-carousel .text-container-left p:nth-of-type(1) {
-  font-size: 68px;
-}
-.main-carousel .text-container-left p:nth-of-type(2) {
-  font-size: 36px;
-}
-.main-carousel .text-container-left p:nth-of-type(3) {
-  opacity: 0.5;
-}
-.main-carousel .slides {
-  width: 100%;
-  height: 100%;
-  border: 1px solid white;
-  position: relative;
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-points-x: repeat(100%);
-  scroll-snap-type: mandatory;
-}
-.main-carousel .btn-prev,
-.main-carousel .btn-next {
-  width: 80px;
-  height: 100%;
-  background-color: #323232;
-  border: none;
-}
-.main-carousel .btn-prev {
-  position: absolute;
-  top: 50%;
-  left: 0%;
-  transform: translateY(-50%);
-}
-.main-carousel .btn-next {
-  position: absolute;
-  right: 0%;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 .aboutUs-container {
   position: relative;
   display: flex;
