@@ -37,6 +37,7 @@
     .contents {
       grid-template-rows: minmax(100vh, auto) repeat(2, 70vh);
       gap: 4rem;
+      height: 95%;
 
       .landing-contents {
         grid-template-columns: 1.5fr 2fr;
@@ -82,6 +83,7 @@
       }
       .mockup-contents {
         .card {
+          height: 40rem;
           grid-template-columns: 30rem auto;
 
           .text-container {
@@ -100,8 +102,8 @@
             }
             .img-con {
               img {
-                height: 25rem;
-                width: 25rem;
+                height: 23rem;
+                width: 23rem;
               }
             }
           }
@@ -210,9 +212,9 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding: 1em;
+  padding: 0;
   height: 100%;
-  padding: 5em;
+  //padding: 5em;
   display: grid;
   grid-template-columns: minmax(30%, 50rem) minmax(50%, 100rem);
   display: flex;
@@ -546,8 +548,8 @@
             }
             .img-con {
               img {
-                height: 22rem;
-                width: 22rem;
+                height: 21rem;
+                width: 21rem !important;
               }
             }
           }
@@ -566,6 +568,7 @@
       .landing-contents {
         .text {
           padding: 2rem;
+          //height: 40rem;
           p,
           h3 {
             font-size: 1.8rem;
@@ -586,8 +589,8 @@
           .img-features {
             @include flexCenter;
             img {
-              width: 55%;
-              height: 55%;
+              width: 40%;
+              height: 40%;
             }
           }
         }
@@ -595,7 +598,8 @@
       .mockup-contents {
         .card {
           grid-template-columns: 25rem auto;
-          width: 90%;
+          height: 40rem;
+          width: 80%;
           padding: 1rem;
           &::after {
             top: -2rem;
