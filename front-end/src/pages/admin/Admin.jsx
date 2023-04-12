@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {handleGetDocuments} from "../../features/admin/document";
 import Bouncing from "../../components/loading/Bouncing";
 import ServerError from "../serverError";
+import Dashboard from "./Dashboard";
 
 const Documents = lazy(() => import("./Documents"));
 
@@ -33,7 +34,7 @@ const Admin = React.memo(() => {
       <SidebarLeft />
       <Suspense fallback={<Bouncing />}>
         <Routes>
-          <Route path="/" element={<h1>ADMIN</h1>} />
+          <Route path="/" element={<Dashboard />} />
           <Route path="/documents/*" element={<Documents />} />
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Routes>

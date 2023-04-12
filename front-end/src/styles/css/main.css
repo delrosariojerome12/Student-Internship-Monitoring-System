@@ -942,6 +942,8 @@ button {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 }
 .dashboard .leaflet-container, .dashboard-active .leaflet-container {
   height: 100%;
@@ -6025,6 +6027,304 @@ button {
   .dashboard .admin-document-page .document-container .documents, .dashboard-active .admin-document-page .document-container .documents {
     grid-template-columns: 1fr;
   }
+}
+.dashboard .admin-dashboard, .dashboard-active .admin-dashboard {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 1.5rem;
+}
+.dashboard .admin-dashboard > header, .dashboard-active .admin-dashboard > header {
+  color: #fff;
+  background-color: #212121;
+}
+.dashboard .admin-dashboard > header h1, .dashboard-active .admin-dashboard > header h1 {
+  font-size: 3.5rem;
+}
+.dashboard .admin-dashboard > header h3, .dashboard-active .admin-dashboard > header h3 {
+  font-size: 2rem;
+}
+.dashboard .admin-dashboard > *, .dashboard-active .admin-dashboard > * {
+  border-radius: 1rem;
+  padding: 2.5rem;
+}
+.dashboard .admin-dashboard .content, .dashboard-active .admin-dashboard .content {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 1rem;
+  background-color: #212121;
+  color: #fff;
+}
+.dashboard .admin-dashboard .content header, .dashboard-active .admin-dashboard .content header {
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.dashboard .admin-dashboard .content header h2, .dashboard-active .admin-dashboard .content header h2 {
+  color: #fff;
+}
+.dashboard .admin-dashboard .content header .brief-text, .dashboard-active .admin-dashboard .content header .brief-text {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+.dashboard .admin-dashboard .content .form-container, .dashboard-active .admin-dashboard .content .form-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 15rem 16rem 10rem 10rem auto;
+  padding: 2rem;
+  background-color: #d9d9d9;
+  border-radius: 1rem;
+  gap: 1rem;
+}
+.dashboard .admin-dashboard .content .form-container > *, .dashboard-active .admin-dashboard .content .form-container > * {
+  border: solid 1px #000;
+}
+.dashboard .admin-dashboard .content .form-container > div:nth-child(1), .dashboard-active .admin-dashboard .content .form-container > div:nth-child(1) {
+  grid-row: 1/2;
+  grid-column: 1/2;
+}
+.dashboard .admin-dashboard .content .form-container > div:nth-child(5), .dashboard-active .admin-dashboard .content .form-container > div:nth-child(5) {
+  grid-row: 1/2;
+  grid-column: 2/7;
+}
+.dashboard .admin-dashboard .content .form-container > div:nth-child(2), .dashboard-active .admin-dashboard .content .form-container > div:nth-child(2) {
+  grid-row: 2/3;
+  grid-column: 1/7;
+}
+.dashboard .admin-dashboard .content .form-container > div:nth-child(3), .dashboard-active .admin-dashboard .content .form-container > div:nth-child(3) {
+  grid-row: 3/4;
+  grid-column: 1/4;
+}
+.dashboard .admin-dashboard .content .form-container > div:nth-child(4), .dashboard-active .admin-dashboard .content .form-container > div:nth-child(4) {
+  grid-row: 3/4;
+  grid-column: 4/7;
+}
+.dashboard .admin-dashboard .content .form-container > div:nth-child(6), .dashboard-active .admin-dashboard .content .form-container > div:nth-child(6) {
+  grid-row: 4/5;
+  grid-column: 1/4;
+}
+.dashboard .admin-dashboard .content .form-container > div:nth-child(7), .dashboard-active .admin-dashboard .content .form-container > div:nth-child(7) {
+  grid-row: 4/5;
+  grid-column: 4/7;
+}
+.dashboard .admin-dashboard .content .form-container > button, .dashboard-active .admin-dashboard .content .form-container > button {
+  margin: auto;
+  grid-column: 1/7;
+}
+.dashboard .admin-dashboard .content .form-container .icons, .dashboard-active .admin-dashboard .content .form-container .icons {
+  color: #000;
+}
+.dashboard .admin-dashboard .content .form-container .input-contain, .dashboard-active .admin-dashboard .content .form-container .input-contain {
+  margin: auto 0;
+  background-color: #fff;
+  display: flex;
+  position: relative;
+  height: -moz-fit-content;
+  height: fit-content;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  gap: 1rem;
+  padding: 1rem;
+  color: #000;
+}
+.dashboard .admin-dashboard .content .form-container .input-contain .placeholder-container, .dashboard-active .admin-dashboard .content .form-container .input-contain .placeholder-container {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  height: 4.5rem;
+  width: 100%;
+  pointer-events: none;
+}
+.dashboard .admin-dashboard .content .form-container .input-contain .eye-container, .dashboard-active .admin-dashboard .content .form-container .input-contain .eye-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 1.4rem;
+  right: 3%;
+}
+.dashboard .admin-dashboard .content .form-container .input-contain .eye-container svg, .dashboard-active .admin-dashboard .content .form-container .input-contain .eye-container svg {
+  font-size: 1.7rem;
+  cursor: pointer;
+  pointer-events: all;
+}
+.dashboard .admin-dashboard .content .form-container .input-contain input, .dashboard-active .admin-dashboard .content .form-container .input-contain input {
+  border: solid 3px transparent;
+  outline: solid 1px #8b8b8b;
+  border-radius: 0.5rem;
+  padding: 1.1rem 3.5rem 1.1rem 1.1rem;
+  letter-spacing: 2px;
+  transition: all 0.1s ease-in-out;
+}
+.dashboard .admin-dashboard .content .form-container .input-contain input:focus, .dashboard-active .admin-dashboard .content .form-container .input-contain input:focus {
+  border: solid 3px #457b9d;
+  outline: none;
+}
+.dashboard .admin-dashboard .content .form-container .input-contain input:focus + .placeholder-container .placeholder-text, .dashboard-active .admin-dashboard .content .form-container .input-contain input:focus + .placeholder-container .placeholder-text {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  color: black;
+  scale: 0.8;
+}
+.dashboard .admin-dashboard .content .form-container .input-contain .input-error, .dashboard-active .admin-dashboard .content .form-container .input-contain .input-error {
+  border: solid 2px #ed3737 !important;
+}
+.dashboard .admin-dashboard .content .form-container .input-contain .error-message, .dashboard-active .admin-dashboard .content .form-container .input-contain .error-message {
+  color: #ed3737;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.dashboard .admin-dashboard .content .form-container .input-contain .icons-error, .dashboard-active .admin-dashboard .content .form-container .input-contain .icons-error {
+  color: red !important;
+}
+.dashboard .admin-dashboard .content .form-container .input-contain p, .dashboard-active .admin-dashboard .content .form-container .input-contain p {
+  width: 30rem;
+}
+.dashboard .admin-dashboard .content .form-container .input-contain .placeholder-text, .dashboard-active .admin-dashboard .content .form-container .input-contain .placeholder-text {
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+  top: 50%;
+  left: 5%;
+  transform: translate(0%, -50%);
+}
+.dashboard .admin-dashboard .content .form-container .input-contain .placeholder-text:nth-child(1), .dashboard-active .admin-dashboard .content .form-container .input-contain .placeholder-text:nth-child(1) {
+  left: 2% !important;
+}
+.dashboard .admin-dashboard .content .form-container .input-contain .placeholder-text .text, .dashboard-active .admin-dashboard .content .form-container .input-contain .placeholder-text .text {
+  font-size: 1.4rem;
+  padding: 0 0.5rem;
+  background-color: transparent;
+  color: black;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.dashboard .admin-dashboard .content .form-container .input-contain .active, .dashboard-active .admin-dashboard .content .form-container .input-contain .active {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  border-color: #8b8b8b;
+  scale: 0.8;
+}
+.dashboard .admin-dashboard .content .form-container span, .dashboard-active .admin-dashboard .content .form-container span {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.dashboard .admin-dashboard .content .form-container span svg, .dashboard-active .admin-dashboard .content .form-container span svg {
+  font-size: 1.7rem;
+}
+.dashboard .admin-dashboard .content .form-container .img-input, .dashboard-active .admin-dashboard .content .form-container .img-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.dashboard .admin-dashboard .content .form-container .img-input label, .dashboard-active .admin-dashboard .content .form-container .img-input label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.6rem;
+}
+.dashboard .admin-dashboard .content .form-container .img-input label p, .dashboard-active .admin-dashboard .content .form-container .img-input label p {
+  color: #000;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.dashboard .admin-dashboard .content .form-container .img-input label p .icons, .dashboard-active .admin-dashboard .content .form-container .img-input label p .icons {
+  color: green;
+}
+.dashboard .admin-dashboard .content .form-container .img-input label input[type=file], .dashboard-active .admin-dashboard .content .form-container .img-input label input[type=file] {
+  display: none;
+}
+.dashboard .admin-dashboard .content .form-container .img-input label .profile-con, .dashboard-active .admin-dashboard .content .form-container .img-input label .profile-con {
+  border-radius: 50%;
+  height: 10rem;
+  width: 10rem;
+}
+.dashboard .admin-dashboard .content .form-container .img-input label .profile-con img, .dashboard-active .admin-dashboard .content .form-container .img-input label .profile-con img {
+  border: solid 1px #000;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.dashboard .admin-dashboard .content .form-container .choice-contain, .dashboard-active .admin-dashboard .content .form-container .choice-contain {
+  background-color: #fff;
+  display: grid;
+  grid-template-columns: auto repeat(2, 1fr);
+  grid-template-rows: auto 1fr;
+  position: relative;
+  justify-content: center;
+  border-radius: 0.5rem;
+  gap: 1rem;
+  padding: 1rem;
+  color: #000;
+}
+.dashboard .admin-dashboard .content .form-container .choice-contain .placeholder-container label .text, .dashboard-active .admin-dashboard .content .form-container .choice-contain .placeholder-container label .text {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.dashboard .admin-dashboard .content .form-container .choice-contain .choices, .dashboard-active .admin-dashboard .content .form-container .choice-contain .choices {
+  background-color: #d9d9d9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border-radius: 1rem;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+.dashboard .admin-dashboard .content .form-container .choice-contain .choices:hover, .dashboard-active .admin-dashboard .content .form-container .choice-contain .choices:hover {
+  background-color: #0d7377;
+  color: #fff;
+}
+.dashboard .admin-dashboard .content .form-container .choice-contain :nth-child(2), .dashboard-active .admin-dashboard .content .form-container .choice-contain :nth-child(2) {
+  text-align: center;
+  grid-column: 2/4;
+  grid-row: 1/2;
+}
+.dashboard .admin-dashboard .content .form-container .choice-contain :nth-child(3), .dashboard-active .admin-dashboard .content .form-container .choice-contain :nth-child(3) {
+  grid-row: 2/3;
+  grid-column: 2/3;
+}
+.dashboard .admin-dashboard .content .form-container .choice-contain :nth-child(4), .dashboard-active .admin-dashboard .content .form-container .choice-contain :nth-child(4) {
+  grid-row: 2/3;
+  grid-column: 3/4;
+}
+.dashboard .admin-dashboard .content .form-container .choice-contain label, .dashboard-active .admin-dashboard .content .form-container .choice-contain label,
+.dashboard .admin-dashboard .content .form-container .choice-contain input,
+.dashboard-active .admin-dashboard .content .form-container .choice-contain input {
+  cursor: pointer;
+}
+.dashboard .admin-dashboard .content .form-container button, .dashboard-active .admin-dashboard .content .form-container button {
+  cursor: pointer;
+  height: 4.5rem;
+  width: 12.5rem;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  background-color: #457b9d;
+  color: #f1faee;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.dashboard .admin-dashboard .content .form-container button:hover, .dashboard-active .admin-dashboard .content .form-container button:hover {
+  background-color: #f1faee;
+  color: #457b9d;
+  border: solid 1px #457b9d;
 }
 
 .dashboard-active {
