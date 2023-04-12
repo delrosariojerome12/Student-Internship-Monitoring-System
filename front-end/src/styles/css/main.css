@@ -697,9 +697,6 @@ button {
   height: 100%;
   color: #fff;
 }
-.landing-page .contents .landing-contents > * {
-  border: solid 1px red;
-}
 .landing-page .contents .landing-contents .text {
   display: flex;
   align-items: center;

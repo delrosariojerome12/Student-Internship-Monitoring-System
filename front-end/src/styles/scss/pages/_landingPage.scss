@@ -118,9 +118,9 @@
       grid-template-columns: 1fr 1.4fr;
       height: 100%;
       color: #fff;
-      & > * {
-        border: solid 1px red;
-      }
+      // & > * {
+      //   border: solid 1px red;
+      // }
       .text {
         @include flexCenter;
         flex-direction: column;
