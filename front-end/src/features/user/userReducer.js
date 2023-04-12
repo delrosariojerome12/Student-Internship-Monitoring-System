@@ -136,11 +136,11 @@ export const userReducer = createSlice({
     builder
       .addCase(handleCreateUser.pending, (state, action) => {
         state.isLoading = true;
-        state.createdSucessful = false;
+        state.createdSuccessful = false;
       })
       .addCase(handleCreateUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.createdSucessful = true;
+        state.createdSuccessful = true;
       })
       .addCase(handleCreateUser.rejected, (state, action) => {
         state.isLoading = false;
