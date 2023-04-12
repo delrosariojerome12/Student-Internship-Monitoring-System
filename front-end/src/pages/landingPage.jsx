@@ -48,15 +48,15 @@ const links = [
   },
   {
     link: "FAQ",
-    path: "faqs",
-  },
-  {
-    link: "About Us ",
-    path: "/about-us",
+    path: "FAQ",
   },
   {
     link: "The Team ",
     path: "/the team",
+  },
+  {
+    link: "About Us ",
+    path: "/about-us",
   },
 ];
 const authLinks = [
@@ -75,19 +75,14 @@ const handleScroll = (path) => {
 };
 const teamMembers = [
   {
-    name: "Jerico B. Balisi",
-    position: "Frontend Developer",
-    image: Jerico,
-  },
-  {
     name: "Jerome D. Ramos",
     position: "Lead Developer",
     image: Jerome,
   },
   {
-    name: "Diosa D. Tadiosa",
-    position: "Documentation/Tester",
-    image: Diosa,
+    name: "Jerico B. Balisi",
+    position: "Frontend Developer",
+    image: Jerico,
   },
   {
     name: "Jake A. Bristol",
@@ -95,31 +90,33 @@ const teamMembers = [
     image: Jake,
   },
   {
-    name: "Jezreel Dannah D. Menor",
-    position: "Documentation/Tester",
-    image: Jez,
-  },
-  {
     name: "Ivan Cedie C. Batario",
     position: "Backend Developer",
     image: Ivan,
+  },
+  {
+    name: "Diosa D. Tadiosa",
+    position: "Documentation/Tester",
+    image: Diosa,
+  },
+  {
+    name: "Jezreel Dannah D. Menor",
+    position: "Documentation/Tester",
+    image: Jez,
   },
 ];
 
 const displayTeam = () => {
   return (
-    <div className="the-team-container" id="/the team">
-      <div className="text-container-top">
-        <p>The Team</p>
-      </div>
-
+    <div className="team-container" id="/the team">
+      <h3>The Team</h3>
       <div className="members-container">
         {teamMembers.map((member) => (
           <div
             key={member.name}
             className={`member-img${member.image ? "2" : "1"}`}>
             {member.image && <img src={member.image} alt="" />}
-            <p className="member-name">{member.name}</p>
+            <h4 className="member-name">{member.name}</h4>
             <p className="member-position">{member.position}</p>
           </div>
         ))}
@@ -217,7 +214,9 @@ const LandingPage = () => {
             </ul>
             {showBackToTop && (
               <button
-                className={showBackToTop ? "back-to-top active" : "back-to-top"}
+                className={
+                  showBackToTop ? "back-to-top active-btn" : "back-to-top"
+                }
                 onClick={handleScrollToTop}>
                 <FaArrowUp />
               </button>
@@ -267,7 +266,7 @@ const LandingPage = () => {
             </div>
           </div>
 
-          <div className="mockup-contents">
+          <div className="mockup-contents" id="FAQ">
             <div className="card">
               <div className="text-container">
                 <p>Do you need assistance with your internship?</p>
@@ -306,22 +305,22 @@ const LandingPage = () => {
                 </p>
               </div>
               <div className="getStarted">
-                {/* <div className="getStarted-content"> */}
                 <div className="getStarted-P">
-                  <p>Ready to get started?</p>
+                  <h3>Ready to get started?</h3>
                   <p>
                     Discover a quick and simple approach to organize your time
                     and provide guidance throughout your internship.
                   </p>
                 </div>
-                <button
-                  className="btn-CreateAcc"
-                  onClick={() => {
-                    navigate("/account/signup");
-                  }}>
-                  Create Account
-                </button>
-                {/* </div> */}
+                <div className="btn-CreateAcc">
+                  <button
+                    className="create-btn"
+                    onClick={() => {
+                      navigate("/account/signup");
+                    }}>
+                    Create Account
+                  </button>
+                </div>
               </div>
             </div>
           </div>
