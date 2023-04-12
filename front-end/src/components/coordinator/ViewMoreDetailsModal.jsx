@@ -21,6 +21,7 @@ const ViewMoreDetailsModal = React.memo(() => {
     isPresent,
     proof,
     narrative: {content},
+    missingTimeOut,
   } = selectedIntern;
 
   const months = [
@@ -79,6 +80,14 @@ const ViewMoreDetailsModal = React.memo(() => {
               </>
             )}
           </div>
+
+          {missingTimeOut && (
+            <div className="time-out">
+              <h3>Missing Time-out</h3>
+              <p>Marked as Absent.</p>
+            </div>
+          )}
+
           {proof.timeOutLink && (
             <div className="time-out">
               <p>
