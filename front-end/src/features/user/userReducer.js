@@ -17,6 +17,8 @@ const initialState = {
   isLoading: false,
   isError: false,
   errorMessage: "",
+  createdSuccessful: false,
+  createdUser: null,
 };
 
 const convertForm = (form) => {
@@ -35,6 +37,21 @@ const convertForm = (form) => {
 
   return newObject;
 };
+
+export const handleCreateUser = createAsyncThunk(
+  "/user/createUser",
+  async ({form}, {rejectWithValue}) => {
+    try {
+      const url = "https://sims-twqb.onrender.com/auth/signup";
+      // const url = "http://localhost:5000/auth/signup";
+      const {data: res} = await axios.post(url, convertForm(form));
+      return {res};
+    } catch (err) {
+      console.log(err);
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
 
 export const handleSignup = createAsyncThunk(
   "/user/signUser",
@@ -109,8 +126,33 @@ export const userReducer = createSlice({
       state.user = null;
       localStorage.removeItem("token");
     },
+    handleCloseSuccess: (state, action) => {
+      state.createdSuccessful = !state.createdSuccessful;
+      state.createdUser = null;
+    },
+    handleCloseError: (state, action) => {
+      state.isError = false;
+    },
   },
   extraReducers: (builder) => {
+    //create user
+    builder
+      .addCase(handleCreateUser.pending, (state, action) => {
+        state.isLoading = true;
+        state.createdSuccessful = false;
+      })
+      .addCase(handleCreateUser.fulfilled, (state, action) => {
+        console.log(action.payload.user);
+        state.isLoading = false;
+        state.createdSuccessful = true;
+        // state.createdUser
+      })
+      .addCase(handleCreateUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.errorMessage = action.payload.msg;
+      });
+
     // enroll
     builder
       .addCase(enrollInternship.pending, (state, action) => {})
@@ -218,6 +260,7 @@ export const userReducer = createSlice({
   },
 });
 
-export const {setUser, handleLogout} = userReducer.actions;
+export const {setUser, handleLogout, handleCloseSuccess, handleCloseError} =
+  userReducer.actions;
 
 export default userReducer.reducer;
