@@ -466,6 +466,9 @@ const checkStartingDate = async (req, res) => {
   const today = moment();
   const formattedStartingDate = moment(startingDate, "YYYY-MM-DD");
 
+  console.log(formattedStartingDate);
+  console.log(today);
+
   if (formattedStartingDate.isSameOrBefore(today, "day")) {
     const intern = await Intern.findOneAndUpdate({email}, req.body, {
       new: true,
@@ -677,10 +680,10 @@ cron.schedule(
 
 // check starting today
 cron.schedule(
-  "12 11 * * 1-5",
+  "33 7 * * 1-5",
   () => {
     const currentTime = moment().tz("Asia/Manila");
-    if (currentTime.hour() === 11 && currentTime.minute() === 12) {
+    if (currentTime.hour() === 7 && currentTime.minute() === 33) {
       console.log("running");
       runStartingToday();
     }
