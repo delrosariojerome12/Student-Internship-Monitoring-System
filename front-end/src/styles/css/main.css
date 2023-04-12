@@ -6042,7 +6042,7 @@ button {
   left: 0%;
   z-index: 6;
 }
-.dashboard .admin-dashboard .success-modal, .dashboard-active .admin-dashboard .success-modal {
+.dashboard .admin-dashboard .success-modal, .dashboard-active .admin-dashboard .success-modal, .dashboard .admin-dashboard .error-modal, .dashboard-active .admin-dashboard .error-modal {
   background-color: #fff;
   border-radius: 1rem;
   height: 60rem;
@@ -6898,7 +6898,7 @@ button {
   background-color: #f1faee;
   border: solid 1px #0d7377;
 }
-.verification-container .success-modal {
+.verification-container .success-modal, .verification-container .dashboard .admin-dashboard .error-modal, .dashboard .admin-dashboard .verification-container .error-modal, .verification-container .dashboard-active .admin-dashboard .error-modal, .dashboard-active .admin-dashboard .verification-container .error-modal {
   display: grid;
   align-items: center;
   text-align: center;
@@ -6914,7 +6914,7 @@ button {
   border-radius: 2rem;
   padding: 2rem;
 }
-.verification-container .success-modal button {
+.verification-container .success-modal button, .verification-container .dashboard .admin-dashboard .error-modal button, .dashboard .admin-dashboard .verification-container .error-modal button, .verification-container .dashboard-active .admin-dashboard .error-modal button, .dashboard-active .admin-dashboard .verification-container .error-modal button {
   margin: auto;
   cursor: pointer;
   height: 4.5rem;
@@ -6931,7 +6931,7 @@ button {
   transition: all 0.3s ease-in-out;
   font-weight: 600;
 }
-.verification-container .success-modal button:last-child:hover {
+.verification-container .success-modal button:last-child:hover, .verification-container .dashboard .admin-dashboard .error-modal button:last-child:hover, .dashboard .admin-dashboard .verification-container .error-modal button:last-child:hover, .verification-container .dashboard-active .admin-dashboard .error-modal button:last-child:hover, .dashboard-active .admin-dashboard .verification-container .error-modal button:last-child:hover {
   background-color: #f1faee;
   color: #457b9d;
   border: solid 1px #457b9d;

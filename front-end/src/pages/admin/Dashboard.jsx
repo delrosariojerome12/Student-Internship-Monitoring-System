@@ -8,6 +8,7 @@ import {v4} from "uuid";
 import {
   handleCreateUser,
   handleCloseSuccess,
+  handleCloseError,
 } from "../../features/user/userReducer";
 import {useDispatch, useSelector} from "react-redux";
 
@@ -43,7 +44,7 @@ const Dashboard = React.memo(() => {
       hasEyeIcon: false,
       code: "role",
       isVisible: true,
-      choices: ["administrator", "coordinator"],
+      choices: ["admin", "coordinator"],
     },
     {
       forInput: "First Name",
@@ -109,6 +110,17 @@ const Dashboard = React.memo(() => {
       isVisible: false,
     },
   ]);
+
+  const clearForm = () => {
+    const newForm = form.map((input) => ({
+      ...input,
+      value:
+        input.forInput === "Profile Image"
+          ? "https://toppng.com/uploads/preview/instagram-default-profile-picture-11562973083brycehrmyv.png"
+          : "",
+    }));
+    setForm(newForm);
+  };
 
   const [isComplete, setComplete] = useState(false);
 
@@ -449,13 +461,30 @@ const Dashboard = React.memo(() => {
           <div
             className="overlay"
             onClick={() => dispatch(handleCloseSuccess())}
-          >
-            <h3>Create Successful!</h3>
-          </div>
+          ></div>
           <div className="success-modal">
-            <button onClick={() => dispatch(handleCloseSuccess())}>
+            <h3>Created Successful!</h3>
+            <button
+              onClick={() => {
+                dispatch(handleCloseSuccess());
+                clearForm();
+              }}
+            >
               Close
             </button>
+          </div>
+        </>
+      )}
+      {isError && (
+        <>
+          <div
+            className="overlay"
+            onClick={() => dispatch(handleCloseError())}
+          ></div>
+          <div className="error-modal">
+            <h3>Oops!</h3>
+            <h4>{errorMessage}</h4>
+            <button onClick={() => dispatch(handleCloseError())}>Close</button>
           </div>
         </>
       )}

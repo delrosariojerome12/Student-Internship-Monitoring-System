@@ -42,10 +42,9 @@ export const handleCreateUser = createAsyncThunk(
   "/user/createUser",
   async ({form}, {rejectWithValue}) => {
     try {
-      // const url = "https://sims-twqb.onrender.com/auth/signup";
-      const url = "http://localhost:5000/auth/signup";
+      const url = "https://sims-twqb.onrender.com/auth/signup";
+      // const url = "http://localhost:5000/auth/signup";
       const {data: res} = await axios.post(url, convertForm(form));
-      console.log(res);
       return {res};
     } catch (err) {
       console.log(err);
@@ -129,6 +128,10 @@ export const userReducer = createSlice({
     },
     handleCloseSuccess: (state, action) => {
       state.createdSuccessful = !state.createdSuccessful;
+      state.createdUser = null;
+    },
+    handleCloseError: (state, action) => {
+      state.isError = false;
     },
   },
   extraReducers: (builder) => {
@@ -139,12 +142,15 @@ export const userReducer = createSlice({
         state.createdSuccessful = false;
       })
       .addCase(handleCreateUser.fulfilled, (state, action) => {
+        console.log(action.payload.user);
         state.isLoading = false;
         state.createdSuccessful = true;
+        // state.createdUser
       })
       .addCase(handleCreateUser.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
+        state.errorMessage = action.payload.msg;
       });
 
     // enroll
@@ -254,6 +260,7 @@ export const userReducer = createSlice({
   },
 });
 
-export const {setUser, handleLogout, handleCloseSuccess} = userReducer.actions;
+export const {setUser, handleLogout, handleCloseSuccess, handleCloseError} =
+  userReducer.actions;
 
 export default userReducer.reducer;
