@@ -1,14 +1,15 @@
 /** @format */
 
 import React from "react";
-import { useDispatch } from "react-redux";
+import {useDispatch} from "react-redux";
 import {
   handleSelectIntern,
   handleViewNarrative,
 } from "../../features/coordinator/monitorAttendance";
-const Attendance = React.memo(({ attendance }) => {
+
+const Attendance = React.memo(({attendance}) => {
   const {
-    user: { firstName, lastName, profileImage },
+    user: {firstName, lastName, profileImage},
     intern: {
       internshipDetails: {
         companyAddress,
@@ -19,7 +20,7 @@ const Attendance = React.memo(({ attendance }) => {
         logo,
         renderedHours,
       },
-      scheduleDetails: { scheduleType },
+      scheduleDetails: {scheduleType},
     },
     timeIn,
     timeOut,
@@ -28,10 +29,39 @@ const Attendance = React.memo(({ attendance }) => {
     isPresent,
     locationTimeIn,
     locationTimeOut,
-    narrative: { isComplete },
+    narrative: {isComplete},
+    missingTimeOut,
   } = attendance;
 
   const dispatch = useDispatch();
+
+  if (missingTimeOut) {
+    return (
+      <div className="day-attendance">
+        <div className="left">
+          <img src={profileImage} alt="profile" />
+        </div>
+        <div className="right">
+          <div className="first">
+            <h4>{`${firstName} ${lastName}`}</h4>
+            <p>
+              <b>Status:</b> Absent/Missing TimeOut
+            </p>
+            <h4>{scheduleType}</h4>
+          </div>
+          <div className="second">
+            <h4>{companyName}</h4>
+
+            <div className="more-details-btn">
+              <button onClick={() => dispatch(handleSelectIntern(attendance))}>
+                View More Details
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (!isPresent) {
     return (

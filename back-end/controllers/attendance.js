@@ -18,14 +18,18 @@ function countRenderedHours(timeIn, timeOut) {
   const [hoursIn, minutesIn, secondsIn, meridiemIn] = timeIn.split(/:|\s/);
   const [hoursOut, minutesOut, secondsOut, meridiemOut] = timeOut.split(/:|\s/);
 
-  const hours24In =
+  let hours24In =
     meridiemIn === "AM"
       ? parseInt(hoursIn) % 12
       : (parseInt(hoursIn) % 12) + 12;
-  const hours24Out =
+  let hours24Out =
     meridiemOut === "AM"
       ? parseInt(hoursOut, 10) % 12
       : (parseInt(hoursOut, 10) % 12) + 12;
+
+  if (hours24Out < hours24In) {
+    hours24Out += 24; // add 24 hours if time-out is on a different day
+  }
 
   const dateIn = new Date(
     `2000-01-01T${
@@ -44,7 +48,9 @@ function countRenderedHours(timeIn, timeOut) {
   console.log(difference, "difference");
 
   let hours = difference / millisecondsInHour;
-  hours = Math.round(hours * 4) / 4; // Round to nearest quarter hour
+  // hours = Math.round(hours * 4) / 4; // Round to nearest quarter hour
+
+  hours = Math.round(hours * 2) / 2;
 
   if (hours >= 8) {
     console.log("Test");
@@ -83,20 +89,6 @@ const getAllAttendance = async (req, res) => {
     throw new NotFound("User not found");
   }
 
-  // const now = new Date();
-  // const year = now.getFullYear();
-  // const month =
-  //   now.getMonth() + 1 < 10 ? `0${now.getMonth() + 1}` : now.getMonth() + 1;
-  // const date = now.getDate() + 1 < 10 ? `0${now.getDate()}` : now.getDate();
-
-  // const day = now.getDay();
-
-  // const todayDate = `${month}-${date}-${year}`;
-
-  // const hours = now.getHours() % 12 || 12;
-  // const minutes = now.getMinutes();
-  // const amOrPm = now.getHours() >= 12 ? "PM" : "AM";
-
   const attendance = await Attendance.find({email});
   const todayExists = await Attendance.findOne({
     date: todayDate,
@@ -109,6 +101,7 @@ const getAllAttendance = async (req, res) => {
     if (day > 0 && day < 6) {
       if (hours >= 7 && hours <= 10 && amOrPm === "AM") {
         // check if greater than 10:30
+
         if (minutes > 30 && hours === 10) {
           doesExists = {
             status: "too-late",
@@ -128,6 +121,7 @@ const getAllAttendance = async (req, res) => {
       } else if (hours >= 12 && minutes <= 59 && amOrPm === "PM") {
         // adjust
         // lunch
+
         if (!todayExists) {
           doesExists = {
             status: "no-time-in-lunch",
@@ -157,12 +151,13 @@ const getAllAttendance = async (req, res) => {
       } else if (hours >= 2 && amOrPm === "PM") {
         // absent
         // disable time in and time out
+
         if (!todayExists) {
           doesExists = {
             status: "absent",
           };
         } else {
-          if (hours >= 4 && hours <= 5 && amOrPm === "PM") {
+          if (hours >= 2 && hours <= 5 && amOrPm === "PM") {
             // time out
             if (!todayExists) {
               doesExists = {
@@ -178,12 +173,11 @@ const getAllAttendance = async (req, res) => {
                 };
               }
               if (todayExists.timeIn !== null && todayExists.timeOut !== null) {
-                console.log(todayExists.timeOut);
                 doesExists = {
                   status: "complete",
                 };
               }
-            } else if (hours <= 6 && amOrPm === "PM") {
+            } else if (hours === 6 && amOrPm === "PM") {
               // ot
               if (!todayExists) {
                 doesExists = {
@@ -305,14 +299,7 @@ const getAllAttendance = async (req, res) => {
 
 // coordinator
 const getAllAttendanceToday = async (req, res) => {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = now.getMonth() + 1;
-  const date = now.getDate();
-
-  const todayDate = `${month < 10 ? "0" : ""}${month}-${
-    date < 10 ? "0" : ""
-  }${date}-${year}`;
+  const todayDate = moment().tz("Asia/Manila").format("MM-DD-YYYY");
 
   const allAttendanceToday = await Attendance.find({date: todayDate})
     .populate({
@@ -403,46 +390,11 @@ const timeIn = async (req, res) => {
 
 // change time zone here
 const timeOut = async (req, res) => {
-  const {email, id} = req.params;
+  const {email} = req.params;
+
+  const form = {...req.body};
 
   const todayDate = moment().tz("Asia/Manila").format("MM-DD-YYYY");
-  const currentTime = moment().tz("Asia/Manila");
-  // const hours = currentTime.hour() > 12 ? hours - 12 : hours;
-  // const minutes = currentTime.minute();
-  // const seconds = currentTime.seconds();
-
-  const hours =
-    currentTime.hour() > 12
-      ? currentTime.hour() - 12
-      : currentTime.hour() < 10
-      ? "0" + currentTime.hour()
-      : currentTime.hour();
-  const minutes =
-    currentTime.minute() < 10
-      ? "0" + currentTime.minute()
-      : currentTime.minute();
-  const seconds =
-    currentTime.second() < 10
-      ? "0" + currentTime.second()
-      : currentTime.second();
-  const amPm = moment().format("A");
-
-  // const now = new Date();
-  // const year = now.getFullYear();
-  // const month = now.getMonth() + 1;
-  // const date = now.getDate();
-
-  // const hours =
-  //   now.getHours() % 12 || 12 < 10
-  //     ? `0${now.getHours() % 12 || 12}`
-  //     : now.getHours() % 12 || 12;
-  // const minutes =
-  //   10 > now.getMinutes() ? `0${now.getMinutes()}` : now.getMinutes();
-  // const seconds =
-  //   now.getSeconds() < 10 ? `0${now.getSeconds()}` : now.getSeconds();
-  // const amOrPm = now.getHours() >= 12 ? "PM" : "AM"; // set AM or PM
-
-  const fullHour = `${hours}:${minutes}:${seconds} ${amPm}`;
 
   if (!email) {
     throw new NotFound("Email not found");
@@ -462,10 +414,7 @@ const timeOut = async (req, res) => {
 
   const startingTime = attendance.timeIn;
 
-  const totalRendered = countRenderedHours(startingTime, fullHour);
-
-  console.log(fullHour, "fullHour");
-  console.log(totalRendered);
+  const totalRendered = countRenderedHours(startingTime, form.timeOut);
 
   const currentTotalHours =
     parseFloat(intern.internshipDetails.renderedHours) + totalRendered;
@@ -574,7 +523,11 @@ const checkAbsents = async (req, res) => {
         date: todayDate,
       });
 
-      if (!attendance) {
+      if (
+        !attendance &&
+        currentTime.hour() === 14 &&
+        currentTime.minute() === 0
+      ) {
         // Create attendance for absent interns
         const user = await User.findOne({email});
         const intern = await Intern.findOne({email});
@@ -644,6 +597,42 @@ const checkAbsents = async (req, res) => {
   });
 };
 
+const checkInternsStartingToday = async (req, res) => {
+  const allIntern = await Intern.find({
+    "verification.isVerified": true,
+    status: "Not Started",
+  }).populate({
+    path: "user",
+    model: "User",
+  });
+
+  for (let intern of allIntern) {
+    const {
+      internshipDetails: {startingDate},
+      email,
+    } = intern;
+
+    const today = moment();
+    const formattedStartingDate = moment(startingDate, "YYYY-MM-DD");
+
+    if (formattedStartingDate.isSameOrBefore(today, "day")) {
+      const intern = await Intern.findOneAndUpdate(
+        {email},
+        {status: "Starting"},
+        {
+          new: true,
+          runValidators: true,
+        }
+      ).populate({
+        path: "user",
+        model: "User",
+      });
+      return res.status(StatusCodes.OK).json({success: true, data: intern});
+    }
+  }
+  res.status(StatusCodes.OK).json({success: true, msg: "not yet"});
+};
+
 const runCheckAbsents = async () => {
   try {
     // const response = await axios.post(
@@ -658,8 +647,23 @@ const runCheckAbsents = async () => {
   }
 };
 
+const runStartingToday = async () => {
+  try {
+    // const response = await axios.patch(
+    //   "http://localhost:5000/attendance/checkInternsStartingToday"
+    // );
+    const response = await axios.patch(
+      "https://sims-twqb.onrender.com/attendance/checkInternsStartingToday"
+    );
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// check absents
 cron.schedule(
-  "0 14 * * *",
+  "0 14 * * 1-5",
   () => {
     const currentTime = moment().tz("Asia/Manila");
     if (currentTime.hour() === 14 && currentTime.minute() === 0) {
@@ -671,13 +675,28 @@ cron.schedule(
   }
 );
 
+// check starting today
 cron.schedule(
-  "0 18 * * *",
+  "12 11 * * 1-5",
   () => {
     const currentTime = moment().tz("Asia/Manila");
-    if (currentTime.hour() === 18 && currentTime.minute() === 0) {
-      runCheckAbsents();
+    if (currentTime.hour() === 11 && currentTime.minute() === 12) {
       console.log("running");
+      runStartingToday();
+    }
+  },
+  {
+    timezone: "Asia/Manila",
+  }
+);
+
+// check without timeouts
+cron.schedule(
+  "0 19 * * 1-5",
+  () => {
+    const currentTime = moment().tz("Asia/Manila");
+    if (currentTime.hour() === 19 && currentTime.minute() === 0) {
+      runCheckAbsents();
     }
   },
   {
@@ -694,6 +713,7 @@ module.exports = {
   timeIn,
   timeOut,
   checkStartingDate,
+  checkInternsStartingToday,
   checkAbsents,
   updateNarrative,
 };
