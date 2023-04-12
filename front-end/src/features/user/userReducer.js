@@ -17,6 +17,8 @@ const initialState = {
   isLoading: false,
   isError: false,
   errorMessage: "",
+  createdSuccessful: false,
+  createdUser: null,
 };
 
 const convertForm = (form) => {
@@ -35,6 +37,22 @@ const convertForm = (form) => {
 
   return newObject;
 };
+
+export const handleCreateUser = createAsyncThunk(
+  "/user/createUser",
+  async ({form}, {rejectWithValue}) => {
+    try {
+      // const url = "https://sims-twqb.onrender.com/auth/signup";
+      const url = "http://localhost:5000/auth/signup";
+      const {data: res} = await axios.post(url, convertForm(form));
+      console.log(res);
+      return {res};
+    } catch (err) {
+      console.log(err);
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
 
 export const handleSignup = createAsyncThunk(
   "/user/signUser",
@@ -109,8 +127,26 @@ export const userReducer = createSlice({
       state.user = null;
       localStorage.removeItem("token");
     },
+    handleCloseSuccess: (state, action) => {
+      state.createdSuccessful = !state.createdSuccessful;
+    },
   },
   extraReducers: (builder) => {
+    //create user
+    builder
+      .addCase(handleCreateUser.pending, (state, action) => {
+        state.isLoading = true;
+        state.createdSucessful = false;
+      })
+      .addCase(handleCreateUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.createdSucessful = true;
+      })
+      .addCase(handleCreateUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+      });
+
     // enroll
     builder
       .addCase(enrollInternship.pending, (state, action) => {})
@@ -218,6 +254,6 @@ export const userReducer = createSlice({
   },
 });
 
-export const {setUser, handleLogout} = userReducer.actions;
+export const {setUser, handleLogout, handleCloseSuccess} = userReducer.actions;
 
 export default userReducer.reducer;

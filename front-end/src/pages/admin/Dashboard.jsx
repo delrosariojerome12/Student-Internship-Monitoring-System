@@ -5,7 +5,18 @@ import {IconContext} from "react-icons";
 import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
 import {storage} from "../../Firebase";
 import {v4} from "uuid";
+import {
+  handleCreateUser,
+  handleCloseSuccess,
+} from "../../features/user/userReducer";
+import {useDispatch, useSelector} from "react-redux";
+
 const Dashboard = React.memo(() => {
+  const {isError, errorMessage, isLoading, createdSuccessful} = useSelector(
+    (state) => state.user
+  );
+  const dispatch = useDispatch();
+
   const [form, setForm] = useState([
     {
       forInput: "Profile Image",
@@ -32,7 +43,7 @@ const Dashboard = React.memo(() => {
       hasEyeIcon: false,
       code: "role",
       isVisible: true,
-      choices: ["Administrator", "Coordinator"],
+      choices: ["administrator", "coordinator"],
     },
     {
       forInput: "First Name",
@@ -123,6 +134,11 @@ const Dashboard = React.memo(() => {
   const handleOnChange = (value, index, input) => {
     const data = [...form];
     switch (input) {
+      case "Role":
+        data[index].value = value;
+        setForm(data);
+        checkCompletion();
+        return;
       case "First Name":
         data[index].value = value;
         let firstNameRegex = /(\b[a-z](?!\s))/g;
@@ -162,7 +178,6 @@ const Dashboard = React.memo(() => {
         return;
       case "Password":
         data[index].value = value;
-
         const passwordRegex =
           /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_.-]).*$/;
         let isPasswordValid = passwordRegex.test(value);
@@ -297,7 +312,7 @@ const Dashboard = React.memo(() => {
                         value={radioValue}
                         required
                         onChange={(e) =>
-                          handleOnChange(e.target.value, index, forInput)
+                          handleOnChange(e.target.value, 1, forInput)
                         }
                         autoComplete={hasEyeIcon ? "true" : null}
                       />
@@ -391,7 +406,7 @@ const Dashboard = React.memo(() => {
     });
     // api send
     if (x === 0) {
-      // dispatch(handleSignup(form));
+      dispatch(handleCreateUser({form}));
     }
   };
 
@@ -415,21 +430,35 @@ const Dashboard = React.memo(() => {
           <IconContext.Provider value={{className: "icons"}}>
             {renderInputs()}
             <button
-              // style={
-              //   isComplete
-              //     ? {opacity: "1"}
-              //     : isLoading
-              //     ? {opacity: ".7", pointerEvents: "none"}
-              //     : {opacity: ".7", pointerEvents: "none"}
-              // }
+              style={
+                isComplete
+                  ? {opacity: "1"}
+                  : isLoading
+                  ? {opacity: ".7", pointerEvents: "none"}
+                  : {opacity: ".7", pointerEvents: "none"}
+              }
               type="submit"
             >
-              {/* {isLoading ? "Loading..." : "Login"} */}
-              Create
+              {isLoading ? "Creating User..." : "Create User"}
             </button>
           </IconContext.Provider>
         </form>
       </section>
+      {createdSuccessful && (
+        <>
+          <div
+            className="overlay"
+            onClick={() => dispatch(handleCloseSuccess())}
+          >
+            <h3>Create Successful!</h3>
+          </div>
+          <div className="success-modal">
+            <button onClick={() => dispatch(handleCloseSuccess())}>
+              Close
+            </button>
+          </div>
+        </>
+      )}
     </section>
   );
 });

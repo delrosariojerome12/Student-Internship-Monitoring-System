@@ -6033,6 +6033,26 @@ button {
   grid-template-rows: auto 1fr;
   gap: 1.5rem;
 }
+.dashboard .admin-dashboard .overlay, .dashboard-active .admin-dashboard .overlay {
+  width: 100%;
+  min-height: 100%;
+  background-color: rgba(48, 47, 47, 0.753);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: 6;
+}
+.dashboard .admin-dashboard .success-modal, .dashboard-active .admin-dashboard .success-modal {
+  background-color: #fff;
+  border-radius: 1rem;
+  height: 60rem;
+  width: 50rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 6;
+}
 .dashboard .admin-dashboard > header, .dashboard-active .admin-dashboard > header {
   color: #fff;
   background-color: #212121;
@@ -6226,6 +6246,7 @@ button {
   background-color: #fff;
   border-radius: 1rem;
   padding: 1rem;
+  text-align: center;
 }
 .dashboard .admin-dashboard .content .form-container .img-input label, .dashboard-active .admin-dashboard .content .form-container .img-input label {
   display: flex;
@@ -6285,6 +6306,9 @@ button {
   border-radius: 1rem;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
+}
+.dashboard .admin-dashboard .content .form-container .choice-contain .choices label, .dashboard-active .admin-dashboard .content .form-container .choice-contain .choices label {
+  text-transform: capitalize;
 }
 .dashboard .admin-dashboard .content .form-container .choice-contain .choices:hover, .dashboard-active .admin-dashboard .content .form-container .choice-contain .choices:hover {
   background-color: #0d7377;
