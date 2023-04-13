@@ -635,6 +635,31 @@
 }
 @media screen and (max-width: 750px) {
   .profile-page {
+    .modal {
+      width: 90%;
+      .upper {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        padding: 1rem 2rem;
+        gap: 0;
+        h3 {
+          font-size: 1.9rem;
+        }
+        & > :nth-child(1) {
+          font-size: 2.2rem;
+        }
+        & > :nth-child(2) {
+          color: $primary-bg-color-landing-compliment;
+        }
+        & > :nth-child(3) {
+          margin: auto;
+          grid-column: 2/3;
+          // width: 60%;
+          grid-row: 1/3;
+        }
+      }
+    }
     .content {
       grid-template-rows: 6rem auto;
 
@@ -737,6 +762,14 @@
 @media screen and (max-width: 600px) {
   .profile-page {
     grid-template-rows: auto minmax(30rem, 60vh);
+    .modal {
+      height: 90%;
+      .upper {
+        & > :nth-child(1) {
+          font-size: 2.1rem;
+        }
+      }
+    }
     .profile-user {
       .profile-details {
         .profile-img {
@@ -878,6 +911,19 @@
           button {
             font-size: 2rem;
           }
+        }
+      }
+    }
+    .modal {
+      border-radius: 0;
+      width: 100%;
+      height: 100%;
+      .upper {
+        gap: 0.5rem;
+      }
+      .btn-controller {
+        button {
+          font-size: 1.3rem;
         }
       }
     }

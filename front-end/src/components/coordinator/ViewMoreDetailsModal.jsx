@@ -1,11 +1,11 @@
 /** @format */
 
 import React from "react";
-import {useSelector, useDispatch} from "react-redux";
-import {handleCloseModal} from "../../features/coordinator/monitorAttendance";
+import { useSelector, useDispatch } from "react-redux";
+import { handleCloseModal } from "../../features/coordinator/monitorAttendance";
 
 const ViewMoreDetailsModal = React.memo(() => {
-  const {selectedIntern} = useSelector((state) => state.monitorAttendance);
+  const { selectedIntern } = useSelector((state) => state.monitorAttendance);
   const dispatch = useDispatch();
 
   const {
@@ -20,7 +20,7 @@ const ViewMoreDetailsModal = React.memo(() => {
     OT,
     isPresent,
     proof,
-    narrative: {content},
+    narrative: { content },
     missingTimeOut,
   } = selectedIntern;
 
@@ -50,8 +50,7 @@ const ViewMoreDetailsModal = React.memo(() => {
     <>
       <div
         className="overlay"
-        onClick={() => dispatch(handleCloseModal())}
-      ></div>
+        onClick={() => dispatch(handleCloseModal())}></div>
       <div className="more-details modal">
         <div className="details">
           <div className="rendered-hours">

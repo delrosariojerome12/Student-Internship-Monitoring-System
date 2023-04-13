@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState } from "react";
 import { FaUserAlt, FaLock, FaEye, FaEyeSlash, FaCheck } from "react-icons/fa";
 import { GrMail } from "react-icons/gr";
@@ -11,7 +13,8 @@ import {
   handleCloseError,
 } from "../../features/user/userReducer";
 import { useDispatch, useSelector } from "react-redux";
-
+import errorIcon from "../../assets/img/errorCreate.svg";
+import success from "../../assets/img/successCreate.svg";
 const Dashboard = React.memo(() => {
   const { isError, errorMessage, isLoading, createdSuccessful } = useSelector(
     (state) => state.user
@@ -321,8 +324,7 @@ const Dashboard = React.memo(() => {
                   htmlFor={id}
                   className={
                     value ? "placeholder-text active" : "placeholder-text"
-                  }
-                >
+                  }>
                   <div className={isError ? "text icons-error" : "text"}>
                     <span>
                       <IconType className={isError ? "icons-error" : "icons"} />
@@ -331,7 +333,7 @@ const Dashboard = React.memo(() => {
                   </div>
                 </label>
               </div>
-              <h4>Select Role</h4>
+              <h5>Select the role of the account</h5>
               {choices.map((radioValue, index) => {
                 {
                   return (
@@ -377,8 +379,7 @@ const Dashboard = React.memo(() => {
                   htmlFor={id}
                   className={
                     value ? "placeholder-text active" : "placeholder-text"
-                  }
-                >
+                  }>
                   <div className={isError ? "text icons-error" : "text"}>
                     <span>
                       <IconType className={isError ? "icons-error" : "icons"} />
@@ -445,7 +446,9 @@ const Dashboard = React.memo(() => {
   return (
     <section className="admin-dashboard">
       <header>
-        <h1>Hello Admin</h1>
+        <h1>
+          Hello, <b>Admin</b>
+        </h1>
         <h3>Welcome Back!</h3>
       </header>
       <section className="content">
@@ -469,8 +472,7 @@ const Dashboard = React.memo(() => {
                   ? { opacity: ".7", pointerEvents: "none" }
                   : { opacity: ".7", pointerEvents: "none" }
               }
-              type="submit"
-            >
+              type="submit">
               {isLoading ? "Creating User..." : "Create User"}
             </button>
           </IconContext.Provider>
@@ -480,16 +482,15 @@ const Dashboard = React.memo(() => {
         <>
           <div
             className="overlay"
-            onClick={() => dispatch(handleCloseSuccess())}
-          ></div>
+            onClick={() => dispatch(handleCloseSuccess())}></div>
           <div className="success-modal">
             <h3>Created Successful!</h3>
+            <img src={success} alt="success" />
             <button
               onClick={() => {
                 dispatch(handleCloseSuccess());
                 clearForm();
-              }}
-            >
+              }}>
               Close
             </button>
           </div>
@@ -499,11 +500,11 @@ const Dashboard = React.memo(() => {
         <>
           <div
             className="overlay"
-            onClick={() => dispatch(handleCloseError())}
-          ></div>
+            onClick={() => dispatch(handleCloseError())}></div>
           <div className="error-modal">
             <h3>Oops!</h3>
             <h4>{errorMessage}</h4>
+            <img src={errorIcon} alt="success" />
             <button onClick={() => dispatch(handleCloseError())}>Close</button>
           </div>
         </>

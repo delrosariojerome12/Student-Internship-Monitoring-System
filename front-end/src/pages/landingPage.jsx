@@ -39,16 +39,12 @@ import Ivan from "../assets/Group Member/ivan.jpg";
 
 const links = [
   {
-    link: "How it Works?",
+    link: "System Info",
     path: "/how-it-works",
   },
   {
-    link: "Testimonial",
-    path: "feature-Content-Img",
-  },
-  {
-    link: "FAQ",
-    path: "FAQ",
+    link: "Information",
+    path: "Information",
   },
   {
     link: "The Team ",
@@ -252,7 +248,7 @@ const LandingPage = () => {
               <img className="landingBg" src={landingBg} alt="" />
             </div>
           </div>
-          <div className="feature-contents" id="feature-Content-Img">
+          <div className="feature-contents" id="Information">
             <div className="feature-Content-Img">
               <div className="img-features">
                 <img src={featureImg1} alt="" />
@@ -266,7 +262,7 @@ const LandingPage = () => {
             </div>
           </div>
 
-          <div className="mockup-contents" id="FAQ">
+          <div className="mockup-contents" id="Information">
             <div className="card">
               <div className="text-container">
                 <p>Do you need assistance with your internship?</p>
