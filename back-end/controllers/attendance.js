@@ -12,8 +12,6 @@ const cron = require("node-cron");
 function countRenderedHours(timeIn, timeOut) {
   const millisecondsInHour = 1000 * 60 * 60;
 
-  console.log(timeIn, "timeIn");
-  console.log(timeOut, "timeOut");
   // Convert 12-hour time to 24-hour time
   const [hoursIn, minutesIn, secondsIn, meridiemIn] = timeIn.split(/:|\s/);
   const [hoursOut, minutesOut, secondsOut, meridiemOut] = timeOut.split(/:|\s/);
@@ -136,8 +134,9 @@ const getAllAttendance = async (req, res) => {
             };
           }
         }
-      } else if (hours === 1 && minutes <= 30 && amOrPm === "PM") {
+      } else if (hours == 1 && minutes <= 30 && amOrPm === "PM") {
         // time in afternoon
+
         if (!todayExists) {
           doesExists = {
             status: "no-time-in",

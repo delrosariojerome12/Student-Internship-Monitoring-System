@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import { FaUserAlt, FaLock, FaEye, FaEyeSlash, FaCheck } from "react-icons/fa";
-import { GrMail } from "react-icons/gr";
-import { IconContext } from "react-icons";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { storage } from "../../Firebase";
-import { v4 } from "uuid";
+import React, {useState} from "react";
+import {FaUserAlt, FaLock, FaEye, FaEyeSlash, FaCheck} from "react-icons/fa";
+import {GrMail} from "react-icons/gr";
+import {IconContext} from "react-icons";
+import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
+import {storage} from "../../Firebase";
+import {v4} from "uuid";
 import {
   handleCreateUser,
   handleCloseSuccess,
   handleCloseError,
 } from "../../features/user/userReducer";
-import { useDispatch, useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 const Dashboard = React.memo(() => {
-  const { isError, errorMessage, isLoading, createdSuccessful } = useSelector(
+  const {isError, errorMessage, isLoading, createdSuccessful} = useSelector(
     (state) => state.user
   );
   const dispatch = useDispatch();
@@ -242,7 +242,7 @@ const Dashboard = React.memo(() => {
         return;
       case "Profile Image":
         if (value) {
-          const { name, type } = value;
+          const {name, type} = value;
           if (!type.includes("image")) {
             console.log("error");
             data[index].isError = true;
@@ -403,7 +403,7 @@ const Dashboard = React.memo(() => {
                   <img src={value} alt="profile" />
                 </div>
                 {isError ? (
-                  <p style={{ color: "red" }}>{errorMessage}</p>
+                  <p style={{color: "red"}}>{errorMessage}</p>
                 ) : value.includes("firebase") ? (
                   <p>
                     Profile Selected
@@ -438,7 +438,7 @@ const Dashboard = React.memo(() => {
     });
     // api send
     if (x === 0) {
-      dispatch(handleCreateUser({ form }));
+      dispatch(handleCreateUser({form}));
     }
   };
 
@@ -459,15 +459,15 @@ const Dashboard = React.memo(() => {
           </div>
         </header>
         <form className="form-container" onSubmit={handleSubmit}>
-          <IconContext.Provider value={{ className: "icons" }}>
+          <IconContext.Provider value={{className: "icons"}}>
             {renderInputs()}
             <button
               style={
                 isComplete
-                  ? { opacity: "1" }
+                  ? {opacity: "1"}
                   : isLoading
-                  ? { opacity: ".7", pointerEvents: "none" }
-                  : { opacity: ".7", pointerEvents: "none" }
+                  ? {opacity: ".7", pointerEvents: "none"}
+                  : {opacity: ".7", pointerEvents: "none"}
               }
               type="submit"
             >
