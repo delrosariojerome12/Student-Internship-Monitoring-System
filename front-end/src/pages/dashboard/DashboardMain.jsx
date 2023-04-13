@@ -34,9 +34,9 @@ const DashboardMain = React.memo(() => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // if (status !== "Starting") {
-    dispatch(checkStartingDate({email}));
-    // }
+    if (status !== "Starting") {
+      dispatch(checkStartingDate({email}));
+    }
   }, []);
 
   const renderDocuments = () => {

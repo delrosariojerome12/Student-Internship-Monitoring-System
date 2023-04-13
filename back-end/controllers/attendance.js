@@ -463,11 +463,10 @@ const checkStartingDate = async (req, res) => {
     internshipDetails: {startingDate},
   } = internDetails;
 
-  const today = moment();
+  const today = moment().tz("Asia/Manila");
   const formattedStartingDate = moment(startingDate, "YYYY-MM-DD");
 
-  console.log(formattedStartingDate);
-  console.log(today);
+  console.log(startingDate, formattedStartingDate, today);
 
   if (formattedStartingDate.isSameOrBefore(today, "day")) {
     const intern = await Intern.findOneAndUpdate({email}, req.body, {
@@ -615,7 +614,7 @@ const checkInternsStartingToday = async (req, res) => {
       email,
     } = intern;
 
-    const today = moment();
+    const today = moment().tz("Asia/Manila");
     const formattedStartingDate = moment(startingDate, "YYYY-MM-DD");
 
     if (formattedStartingDate.isSameOrBefore(today, "day")) {
@@ -680,10 +679,10 @@ cron.schedule(
 
 // check starting today
 cron.schedule(
-  "33 7 * * 1-5",
+  "0 0 * * 1-7",
   () => {
     const currentTime = moment().tz("Asia/Manila");
-    if (currentTime.hour() === 7 && currentTime.minute() === 33) {
+    if (currentTime.hour() === 0 && currentTime.minute() === 0) {
       console.log("running");
       runStartingToday();
     }
