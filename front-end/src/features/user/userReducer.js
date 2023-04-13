@@ -20,7 +20,7 @@ import { auth } from "../../Firebase";
 const initialState = {
   user: null,
   isLoading: false,
-  isError: false,
+  isError: true,
   errorMessage: "",
   createdSuccessful: false,
   createdUser: null,

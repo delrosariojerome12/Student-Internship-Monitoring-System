@@ -6853,6 +6853,9 @@ button {
   flex-direction: column;
   gap: 1rem;
 }
+.dashboard .admin-dashboard .success-modal h3, .dashboard-active .admin-dashboard .success-modal h3, .dashboard .admin-dashboard .error-modal h3, .dashboard-active .admin-dashboard .error-modal h3 {
+  color: #02c489;
+}
 .dashboard .admin-dashboard .success-modal img, .dashboard-active .admin-dashboard .success-modal img, .dashboard .admin-dashboard .error-modal img, .dashboard-active .admin-dashboard .error-modal img {
   height: 20rem;
   width: 20rem;
@@ -6865,21 +6868,30 @@ button {
   border: solid 1px transparent;
   outline: none;
   background-color: #fff;
-  color: #0d7377;
-  border: solid 1px #0d7377;
+  color: #000;
+  border: solid 1px #000;
   transition: all 0.3s ease-in-out;
-  font-weight: 600;
+  font-weight: bold;
 }
 .dashboard .admin-dashboard .success-modal button:hover, .dashboard-active .admin-dashboard .success-modal button:hover, .dashboard .admin-dashboard .error-modal button:hover, .dashboard-active .admin-dashboard .error-modal button:hover {
-  background-color: #0d7377;
+  background-color: #02c489;
+  border: solid 1px #02c489;
   color: #fff;
 }
 .dashboard .admin-dashboard .error-modal, .dashboard-active .admin-dashboard .error-modal {
   gap: 0;
 }
+.dashboard .admin-dashboard .error-modal h3, .dashboard-active .admin-dashboard .error-modal h3 {
+  color: red;
+}
 .dashboard .admin-dashboard .error-modal img, .dashboard-active .admin-dashboard .error-modal img {
   height: 20rem;
   width: 20rem;
+}
+.dashboard .admin-dashboard .error-modal button:hover, .dashboard-active .admin-dashboard .error-modal button:hover {
+  background-color: #e63946;
+  border: solid 1px #e63946;
+  color: #fff;
 }
 .dashboard .admin-dashboard > header, .dashboard-active .admin-dashboard > header {
   color: #fff;
@@ -7167,6 +7179,13 @@ button {
   }
 }
 @media screen and (max-width: 750px) {
+  .dashboard .admin-dashboard .success-modal, .dashboard-active .admin-dashboard .success-modal, .dashboard .admin-dashboard .error-modal, .dashboard-active .admin-dashboard .error-modal {
+    height: 55rem;
+  }
+  .dashboard .admin-dashboard .success-modal img, .dashboard-active .admin-dashboard .success-modal img, .dashboard .admin-dashboard .error-modal img, .dashboard-active .admin-dashboard .error-modal img {
+    height: 18rem;
+    width: 18rem;
+  }
   .dashboard .admin-dashboard .success-modal button, .dashboard-active .admin-dashboard .success-modal button, .dashboard .admin-dashboard .error-modal button, .dashboard-active .admin-dashboard .error-modal button {
     height: 4rem;
   }
@@ -7217,6 +7236,7 @@ button {
 }
 @media screen and (max-width: 520px) {
   .dashboard .admin-dashboard .success-modal, .dashboard-active .admin-dashboard .success-modal, .dashboard .admin-dashboard .error-modal, .dashboard-active .admin-dashboard .error-modal {
+    height: 50rem;
     width: 100%;
   }
   .dashboard .admin-dashboard .success-modal button, .dashboard-active .admin-dashboard .success-modal button, .dashboard .admin-dashboard .error-modal button, .dashboard-active .admin-dashboard .error-modal button {

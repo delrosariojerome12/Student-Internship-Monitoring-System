@@ -30,6 +30,9 @@
     @include flexCenter;
     flex-direction: column;
     gap: 1rem;
+    h3 {
+      color: #02c489;
+    }
     img {
       height: 20rem;
       width: 20rem;
@@ -44,12 +47,14 @@
       outline: none;
 
       background-color: #fff;
-      color: $primary-compliment-landing;
-      border: solid 1px $primary-compliment-landing;
+      color: #000;
+      border: solid 1px #000;
+
       transition: all 0.3s ease-in-out;
-      font-weight: 600;
+      font-weight: bold;
       &:hover {
-        background-color: $primary-compliment-landing;
+        background-color: #02c489;
+        border: solid 1px #02c489;
         color: #fff;
       }
     }
@@ -57,9 +62,19 @@
   .error-modal {
     @extend .success-modal;
     gap: 0;
+    h3 {
+      color: red;
+    }
     img {
       height: 20rem;
       width: 20rem;
+    }
+    button {
+      &:hover {
+        background-color: $red-primary-color;
+        border: solid 1px $red-primary-color;
+        color: #fff;
+      }
     }
   }
 
@@ -415,6 +430,11 @@
 @media screen and (max-width: 750px) {
   .admin-dashboard {
     .success-modal {
+      height: 55rem;
+      img {
+        height: 18rem;
+        width: 18rem;
+      }
       button {
         height: 4rem;
       }
@@ -490,6 +510,7 @@
 @media screen and (max-width: 520px) {
   .admin-dashboard {
     .success-modal {
+      height: 50rem;
       width: 100%;
       button {
         height: 3.5rem;
