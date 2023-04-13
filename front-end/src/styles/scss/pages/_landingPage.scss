@@ -107,7 +107,7 @@
 
   .contents {
     display: grid;
-    grid-template-rows: 90rem 60rem 60rem 60rem 45rem;
+    grid-template-rows: 90rem 60rem 60rem 60rem 38rem;
     gap: 10rem;
     // & > * {
     //   border: solid 1px red;
@@ -160,6 +160,7 @@
       .img-container {
         @include flexCenter;
         position: relative;
+        overflow: hidden;
         .landingImg {
           width: 100%;
           height: 100%;
@@ -344,7 +345,6 @@
       // display: none;
       flex-direction: column;
       padding: 2rem;
-      // display: grid;
       color: #fff;
       .aboutUs-contents {
         display: grid;
@@ -579,9 +579,10 @@
 
 @media screen and (max-width: 1000px) {
   .landing-page {
+    gap: 5rem;
     .contents {
       gap: 5rem;
-      grid-template-rows: 80rem 40rem 58rem 60rem 51rem;
+      grid-template-rows: 80rem 40rem 58rem 60rem 42rem;
       .feature-contents {
         .feature-Content-Img {
           width: 90%;
@@ -622,7 +623,7 @@
 @media screen and (max-width: 850px) {
   .landing-page {
     .contents {
-      grid-template-rows: 72rem 58rem 40rem 72rem 48rem;
+      grid-template-rows: 72rem 58rem 40rem 55rem 40rem;
 
       .landing-contents {
         grid-template-columns: 1fr;
@@ -730,8 +731,11 @@
           grid-template-rows: repeat(3, 1fr);
           gap: 1rem;
           padding: 1rem;
+          height: 100%;
+          overflow-y: auto;
           & > * {
             padding: 2rem 1rem 1rem 1rem;
+            height: 22rem;
 
             img {
               height: 10rem;
@@ -776,7 +780,7 @@
 @media screen and (max-width: 750px) {
   .landing-page {
     .contents {
-      grid-template-rows: 63rem 53rem 40rem 70rem 54rem;
+      grid-template-rows: 63rem 53rem 40rem 55rem 42rem;
       .landing-contents {
         .text {
           p,
@@ -859,7 +863,7 @@
     grid-template-rows: minmax(100vh, auto) 20rem;
 
     .contents {
-      grid-template-rows: 53rem 49rem 36rem 67rem 52rem;
+      grid-template-rows: 53rem 49rem 36rem 55rem 45rem;
 
       .feature-contents {
         .feature-Content-Img {
@@ -881,6 +885,7 @@
       .team-container {
         .members-container {
           & > * {
+            height: 20rem;
             img {
               height: 9rem;
               width: 9rem;
@@ -890,18 +895,7 @@
       }
       .aboutUs-container {
         .aboutUs-contents {
-          gap: 1rem;
-          padding: 1rem 1rem 2rem 1rem;
-          .aboutUs-Text {
-            p:nth-child(1) {
-              font-size: 2.6rem;
-            }
-            p:nth-child(2) {
-              font-size: 1.6rem;
-            }
-          }
           .getStarted {
-            width: 90%;
             @include flexCenter;
             flex-direction: column;
             padding: 1rem 0.5rem 1.5rem 0.5rem;
@@ -992,11 +986,10 @@
 @media screen and (max-width: 550px) {
   .landing-page {
     .contents {
-      grid-template-rows: 43rem 72rem 32rem 67rem 55rem;
+      grid-template-rows: 43rem 70rem 32rem 55rem 46rem;
       .landing-contents {
         .text {
-          p,
-          h3 {
+          p {
             font-size: 1.8rem;
           }
         }
@@ -1006,6 +999,7 @@
           display: grid;
           grid-template-columns: 1fr;
           grid-template-rows: repeat(3, 1fr);
+          gap: 1rem;
           width: auto;
           & > :nth-child(1) {
             height: 21rem;
@@ -1061,8 +1055,7 @@
         .members-container {
           grid-template-columns: 1fr;
           grid-template-rows: repeat(6, 1fr);
-          height: 100%;
-          overflow-y: auto;
+
           & > * {
             height: 19rem;
             h4 {
@@ -1108,13 +1101,15 @@
 @media screen and (max-width: 450px) {
   .landing-page {
     .contents {
-      grid-template-rows: 36rem 66rem 32rem 67rem 59rem;
+      grid-template-rows: 36rem 64rem 32rem 67rem 49rem;
       .landing-contents {
         .text {
           padding: 1rem;
-          p,
-          h3 {
+          p {
             font-size: 1.7rem;
+          }
+          h3 {
+            font-size: 1.8rem;
           }
         }
       }
@@ -1163,29 +1158,18 @@
 
       .aboutUs-container {
         .aboutUs-contents {
+          gap: 1rem;
+          padding: 1.5rem 1.5rem 2rem 1.5rem;
           .aboutUs-Text {
             p:nth-child(1) {
-              font-size: 2.4rem;
+              font-size: 2.6rem;
             }
             p:nth-child(2) {
-              font-size: 1.55rem;
+              font-size: 1.6rem;
             }
           }
           .getStarted {
-            width: 100%;
-            .getStarted-P {
-              h3 {
-                font-size: 2rem;
-              }
-              p {
-                font-size: 1.55rem;
-              }
-            }
-            .btn-CreateAcc {
-              button {
-                height: 3.5rem;
-              }
-            }
+            width: 90%;
           }
         }
       }
@@ -1196,15 +1180,17 @@
 @media screen and (max-width: 400px) {
   .landing-page {
     .contents {
-      grid-template-rows: 36rem 66rem 32rem 67rem 62rem;
+      grid-template-rows: 36rem 64rem 32rem 67rem 48rem;
       .landing-contents {
         .text {
           padding: 1rem;
           gap: 0.5rem;
           background-color: $primary-compliment-landing;
-          p,
-          h3 {
+          p {
             font-size: 1.6rem;
+          }
+          h3 {
+            font-size: 1.7rem;
           }
           .bg3 {
             .landingImg {
@@ -1216,6 +1202,19 @@
           }
         }
       }
+      .aboutUs-container {
+        .aboutUs-contents {
+          padding: 1rem 1rem 1.5rem 1rem;
+          .getStarted {
+            width: 100%;
+            .getStarted-P {
+              h3 {
+                font-size: 2rem;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -1223,14 +1222,15 @@
 @media screen and (max-width: 350px) {
   .landing-page {
     .contents {
+      grid-template-rows: 36rem 66rem 32rem 67rem 50rem;
       .landing-contents {
         .text {
           padding: 1rem;
           gap: 0.5rem;
-          p,
-          h3 {
-            font-size: 1.5rem;
-          }
+          // p,
+          // h3 {
+          //   font-size: 1.5rem;
+          // }
         }
       }
     }

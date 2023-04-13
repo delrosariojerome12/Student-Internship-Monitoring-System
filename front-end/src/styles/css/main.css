@@ -688,7 +688,7 @@ button {
 }
 .landing-page .contents {
   display: grid;
-  grid-template-rows: 90rem 60rem 60rem 60rem 45rem;
+  grid-template-rows: 90rem 60rem 60rem 60rem 38rem;
   gap: 10rem;
 }
 .landing-page .contents .landing-contents {
@@ -739,6 +739,7 @@ button {
   align-items: center;
   justify-content: center;
   position: relative;
+  overflow: hidden;
 }
 .landing-page .contents .landing-contents .img-container .landingImg {
   width: 100%;
@@ -1135,9 +1136,12 @@ button {
   }
 }
 @media screen and (max-width: 1000px) {
+  .landing-page {
+    gap: 5rem;
+  }
   .landing-page .contents {
     gap: 5rem;
-    grid-template-rows: 80rem 40rem 58rem 60rem 51rem;
+    grid-template-rows: 80rem 40rem 58rem 60rem 42rem;
   }
   .landing-page .contents .feature-contents .feature-Content-Img {
     width: 90%;
@@ -1168,7 +1172,7 @@ button {
 }
 @media screen and (max-width: 850px) {
   .landing-page .contents {
-    grid-template-rows: 72rem 58rem 40rem 72rem 48rem;
+    grid-template-rows: 72rem 58rem 40rem 55rem 40rem;
   }
   .landing-page .contents .landing-contents {
     grid-template-columns: 1fr;
@@ -1271,9 +1275,12 @@ button {
     grid-template-rows: repeat(3, 1fr);
     gap: 1rem;
     padding: 1rem;
+    height: 100%;
+    overflow-y: auto;
   }
   .landing-page .contents .team-container .members-container > * {
     padding: 2rem 1rem 1rem 1rem;
+    height: 22rem;
   }
   .landing-page .contents .team-container .members-container > * img {
     height: 10rem;
@@ -1303,7 +1310,7 @@ button {
 }
 @media screen and (max-width: 750px) {
   .landing-page .contents {
-    grid-template-rows: 63rem 53rem 40rem 70rem 54rem;
+    grid-template-rows: 63rem 53rem 40rem 55rem 42rem;
   }
   .landing-page .contents .landing-contents .text p,
   .landing-page .contents .landing-contents .text h3 {
@@ -1360,7 +1367,7 @@ button {
     grid-template-rows: minmax(100vh, auto) 20rem;
   }
   .landing-page .contents {
-    grid-template-rows: 53rem 49rem 36rem 67rem 52rem;
+    grid-template-rows: 53rem 49rem 36rem 55rem 45rem;
   }
   .landing-page .contents .feature-contents .feature-Content-Img {
     width: 95%;
@@ -1377,22 +1384,14 @@ button {
     height: 21rem;
     width: 16rem;
   }
+  .landing-page .contents .team-container .members-container > * {
+    height: 20rem;
+  }
   .landing-page .contents .team-container .members-container > * img {
     height: 9rem;
     width: 9rem;
   }
-  .landing-page .contents .aboutUs-container .aboutUs-contents {
-    gap: 1rem;
-    padding: 1rem 1rem 2rem 1rem;
-  }
-  .landing-page .contents .aboutUs-container .aboutUs-contents .aboutUs-Text p:nth-child(1) {
-    font-size: 2.6rem;
-  }
-  .landing-page .contents .aboutUs-container .aboutUs-contents .aboutUs-Text p:nth-child(2) {
-    font-size: 1.6rem;
-  }
   .landing-page .contents .aboutUs-container .aboutUs-contents .getStarted {
-    width: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1456,16 +1455,16 @@ button {
 }
 @media screen and (max-width: 550px) {
   .landing-page .contents {
-    grid-template-rows: 43rem 72rem 32rem 67rem 55rem;
+    grid-template-rows: 43rem 70rem 32rem 55rem 46rem;
   }
-  .landing-page .contents .landing-contents .text p,
-  .landing-page .contents .landing-contents .text h3 {
+  .landing-page .contents .landing-contents .text p {
     font-size: 1.8rem;
   }
   .landing-page .contents .feature-contents .feature-Content-Img {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, 1fr);
+    gap: 1rem;
     width: auto;
   }
   .landing-page .contents .feature-contents .feature-Content-Img > :nth-child(1) {
@@ -1515,8 +1514,6 @@ button {
   .landing-page .contents .team-container .members-container {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(6, 1fr);
-    height: 100%;
-    overflow-y: auto;
   }
   .landing-page .contents .team-container .members-container > * {
     height: 19rem;
@@ -1551,14 +1548,16 @@ button {
 }
 @media screen and (max-width: 450px) {
   .landing-page .contents {
-    grid-template-rows: 36rem 66rem 32rem 67rem 59rem;
+    grid-template-rows: 36rem 64rem 32rem 67rem 49rem;
   }
   .landing-page .contents .landing-contents .text {
     padding: 1rem;
   }
-  .landing-page .contents .landing-contents .text p,
-  .landing-page .contents .landing-contents .text h3 {
+  .landing-page .contents .landing-contents .text p {
     font-size: 1.7rem;
+  }
+  .landing-page .contents .landing-contents .text h3 {
+    font-size: 1.8rem;
   }
   .landing-page .contents .feature-contents .feature-Content-Img > :nth-child(1) {
     height: 19rem;
@@ -1587,37 +1586,34 @@ button {
   .landing-page .contents .team-container > h3 {
     font-size: 1.9rem;
   }
+  .landing-page .contents .aboutUs-container .aboutUs-contents {
+    gap: 1rem;
+    padding: 1.5rem 1.5rem 2rem 1.5rem;
+  }
   .landing-page .contents .aboutUs-container .aboutUs-contents .aboutUs-Text p:nth-child(1) {
-    font-size: 2.4rem;
+    font-size: 2.6rem;
   }
   .landing-page .contents .aboutUs-container .aboutUs-contents .aboutUs-Text p:nth-child(2) {
-    font-size: 1.55rem;
+    font-size: 1.6rem;
   }
   .landing-page .contents .aboutUs-container .aboutUs-contents .getStarted {
-    width: 100%;
-  }
-  .landing-page .contents .aboutUs-container .aboutUs-contents .getStarted .getStarted-P h3 {
-    font-size: 2rem;
-  }
-  .landing-page .contents .aboutUs-container .aboutUs-contents .getStarted .getStarted-P p {
-    font-size: 1.55rem;
-  }
-  .landing-page .contents .aboutUs-container .aboutUs-contents .getStarted .btn-CreateAcc button {
-    height: 3.5rem;
+    width: 90%;
   }
 }
 @media screen and (max-width: 400px) {
   .landing-page .contents {
-    grid-template-rows: 36rem 66rem 32rem 67rem 62rem;
+    grid-template-rows: 36rem 64rem 32rem 67rem 48rem;
   }
   .landing-page .contents .landing-contents .text {
     padding: 1rem;
     gap: 0.5rem;
     background-color: #0d7377;
   }
-  .landing-page .contents .landing-contents .text p,
-  .landing-page .contents .landing-contents .text h3 {
+  .landing-page .contents .landing-contents .text p {
     font-size: 1.6rem;
+  }
+  .landing-page .contents .landing-contents .text h3 {
+    font-size: 1.7rem;
   }
   .landing-page .contents .landing-contents .text .bg3 .landingImg {
     opacity: 0.6;
@@ -1625,15 +1621,23 @@ button {
   .landing-page .contents .landing-contents .text .bg3 .landingBg {
     display: none;
   }
+  .landing-page .contents .aboutUs-container .aboutUs-contents {
+    padding: 1rem 1rem 1.5rem 1rem;
+  }
+  .landing-page .contents .aboutUs-container .aboutUs-contents .getStarted {
+    width: 100%;
+  }
+  .landing-page .contents .aboutUs-container .aboutUs-contents .getStarted .getStarted-P h3 {
+    font-size: 2rem;
+  }
 }
 @media screen and (max-width: 350px) {
+  .landing-page .contents {
+    grid-template-rows: 36rem 66rem 32rem 67rem 50rem;
+  }
   .landing-page .contents .landing-contents .text {
     padding: 1rem;
     gap: 0.5rem;
-  }
-  .landing-page .contents .landing-contents .text p,
-  .landing-page .contents .landing-contents .text h3 {
-    font-size: 1.5rem;
   }
 }
 @media screen and (max-width: 950px) {
