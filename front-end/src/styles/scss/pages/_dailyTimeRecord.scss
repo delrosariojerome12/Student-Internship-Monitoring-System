@@ -153,6 +153,45 @@
     transform: translate(-50%, -50%);
     z-index: 7;
   }
+  .legend-modal {
+    overflow-y: auto;
+    background-color: #d9d9d9;
+    border-radius: 1rem;
+    height: 55rem;
+    width: 45rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 7;
+    padding: 2rem;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    justify-items: center;
+    gap: 1rem;
+    .time {
+      padding: 1rem;
+      background-color: #fff;
+      border-radius: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      gap: 1rem;
+      .upper {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .lower {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      h5 {
+        text-align: center;
+      }
+    }
+  }
 
   .no-camera {
     @include flexCenter;
@@ -315,6 +354,10 @@
           outline: none;
           border: 0;
         }
+      }
+      .legend {
+        display: flex;
+        justify-content: flex-end;
       }
     }
   }

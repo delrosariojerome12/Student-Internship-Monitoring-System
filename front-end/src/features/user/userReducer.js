@@ -11,6 +11,7 @@ import {
 } from "firebase/auth";
 import axios from "axios";
 import {auth} from "../../Firebase";
+import {sendDocument, removeDocument} from "../interns/documentsReducer";
 
 const initialState = {
   user: null,
@@ -257,6 +258,20 @@ export const userReducer = createSlice({
         }
       })
       .addCase(checkStartingDate.rejected, (state, action) => {});
+
+    // update user documents
+    builder
+      .addCase(sendDocument.pending, (state, action) => {})
+      .addCase(sendDocument.fulfilled, (state, {payload}) => {
+        state.user = payload.intern;
+      })
+      .addCase(sendDocument.rejected, (state, action) => {});
+    builder
+      .addCase(removeDocument.pending, (state, action) => {})
+      .addCase(removeDocument.fulfilled, (state, {payload}) => {
+        state.user = payload.intern;
+      })
+      .addCase(removeDocument.rejected, (state, action) => {});
   },
 });
 

@@ -119,7 +119,6 @@ const getAllAttendance = async (req, res) => {
       } else if (hours >= 12 && minutes <= 59 && amOrPm === "PM") {
         // adjust
         // lunch
-
         if (!todayExists) {
           doesExists = {
             status: "no-time-in-lunch",
@@ -694,7 +693,7 @@ cron.schedule(
 
 // check without timeouts
 cron.schedule(
-  "40 22 * * 1-5",
+  "0 19 * * 1-5",
   () => {
     const currentTime = moment().tz("Asia/Manila");
     if (currentTime.hour() === 22 && currentTime.minute() === 40) {
