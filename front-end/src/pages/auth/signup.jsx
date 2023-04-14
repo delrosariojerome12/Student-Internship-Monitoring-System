@@ -1,22 +1,20 @@
 /** @format */
 
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, {useState} from "react";
+import {Link} from "react-router-dom";
 import logo from "../../assets/img/logo.svg";
-import { FaUserAlt, FaLock, FaEye, FaEyeSlash, FaCheck } from "react-icons/fa";
-import { GrMail } from "react-icons/gr";
-import { IconContext } from "react-icons";
-import { useDispatch, useSelector } from "react-redux";
-import { handleSignup } from "../../features/user/userReducer";
+import {FaUserAlt, FaLock, FaEye, FaEyeSlash, FaCheck} from "react-icons/fa";
+import {GrMail} from "react-icons/gr";
+import {IconContext} from "react-icons";
+import {useDispatch, useSelector} from "react-redux";
+import {handleSignup} from "../../features/user/userReducer";
 
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { storage } from "../../Firebase";
-import { v4 } from "uuid";
+import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
+import {storage} from "../../Firebase";
+import {v4} from "uuid";
 
 const Signup = React.memo(() => {
-  const { isError, errorMessage, isLoading } = useSelector(
-    (state) => state.user
-  );
+  const {isError, errorMessage, isLoading} = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const [form, setForm] = useState([
@@ -41,7 +39,8 @@ const Signup = React.memo(() => {
       value: "",
       IconType: FaUserAlt,
       isError: false,
-      errorMessage: "First name must be between 3 and 20 characters long",
+      errorMessage:
+        "First name must be between 3 and 20 characters long. No Special Characters and Numbers.",
       hasEyeIcon: false,
       code: "firstName",
       isVisible: true,
@@ -53,7 +52,8 @@ const Signup = React.memo(() => {
       value: "",
       IconType: FaUserAlt,
       isError: false,
-      errorMessage: "Last name must be between 3 and 20 characters long",
+      errorMessage:
+        "Last name must be between 3 and 20 characters long. No Special Characters and Numbers",
       hasEyeIcon: false,
       code: "lastName",
       isVisible: true,
@@ -124,24 +124,24 @@ const Signup = React.memo(() => {
     switch (input) {
       case "First Name":
         data[index].value = value;
-        let firstNameRegex = /(\b[a-z](?!\s))/g;
-        value.length > 2 && value.length < 20
+        let firstNameRegex = /^[a-zA-Z]+$/; // regex pattern to match alphabetical characters only
+        value.length > 2 && value.length < 20 && firstNameRegex.test(value)
           ? (data[index].isError = false)
           : (data[index].isError = true);
-
-        let firstNameValue = data[index].value.replace(firstNameRegex, (x) =>
-          x.charAt(0).toUpperCase()
-        );
-        data[index].value = firstNameValue;
+        // data[index].value =
+        // value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+        data[index].value =
+          value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
         setForm(data);
         checkCompletion();
         return;
       case "Last Name":
         data[index].value = value;
-
-        value.length > 2 && value.length < 20
+        let lastNameRegex = /^[a-zA-Z]+$/;
+        value.length > 2 && value.length < 20 && lastNameRegex.test(value)
           ? (data[index].isError = false)
           : (data[index].isError = true);
+
         data[index].value =
           value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
         setForm(data);
@@ -163,7 +163,7 @@ const Signup = React.memo(() => {
         data[index].value = value;
 
         const passwordRegex =
-          /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_.-]).*$/;
+          /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_.-`!~]).*$/;
         let isPasswordValid = passwordRegex.test(value);
         if (isPasswordValid) {
           data[index].isError = false;
@@ -179,12 +179,14 @@ const Signup = React.memo(() => {
         return;
       case "Confirm Password":
         data[index].value = value;
-        const password = form[index - 1].value;
-        const confirmPassword = form[index];
+
+        const password = data[index - 1].value;
+        const confirmPassword = data[index];
         const confirmPasswordRegex =
-          /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$/;
+          /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_.-`!~]).*$/;
+
         let isConfirmPasswordValid = confirmPasswordRegex.test(value);
-        password === confirmPassword.value && isConfirmPasswordValid
+        password === value && isConfirmPasswordValid
           ? (confirmPassword.isError = false)
           : (confirmPassword.isError = true);
 
@@ -194,9 +196,8 @@ const Signup = React.memo(() => {
         return;
       case "Profile Image":
         if (value) {
-          const { name, type } = value;
+          const {name, type} = value;
           if (!type.includes("image")) {
-            console.log("error");
             data[index].isError = true;
             data[index].errorMessage = "Invalid File Type";
             setForm(data);
@@ -299,7 +300,8 @@ const Signup = React.memo(() => {
                     htmlFor={id}
                     className={
                       value ? "placeholder-text active" : "placeholder-text"
-                    }>
+                    }
+                  >
                     <div className={isError ? "text icons-error" : "text"}>
                       <span>
                         <IconType
@@ -327,7 +329,7 @@ const Signup = React.memo(() => {
                   <img src={value} alt="profile" />
                 </div>
                 {isError ? (
-                  <p style={{ color: "red" }}>{errorMessage}</p>
+                  <p style={{color: "red"}}>{errorMessage}</p>
                 ) : value.includes("firebase") ? (
                   <p>
                     Profile Selected
@@ -361,10 +363,10 @@ const Signup = React.memo(() => {
         <header>
           <img src={logo} alt="" />
           <h1>Create Your Account</h1>
-          {isError && <h3 style={{ color: "red" }}>{errorMessage}</h3>}
+          {isError && <h3 style={{color: "red"}}>{errorMessage}</h3>}
         </header>
         <form onSubmit={handleSubmit}>
-          <IconContext.Provider value={{ className: "icons" }}>
+          <IconContext.Provider value={{className: "icons"}}>
             {renderInputs()}
             <span>
               <p>Already have an account?</p>
@@ -373,12 +375,13 @@ const Signup = React.memo(() => {
             <button
               style={
                 isComplete
-                  ? { opacity: "1" }
+                  ? {opacity: "1"}
                   : isLoading
-                  ? { opacity: ".7", pointerEvents: "none" }
-                  : { opacity: ".7", pointerEvents: "none" }
+                  ? {opacity: ".7", pointerEvents: "none"}
+                  : {opacity: ".7", pointerEvents: "none"}
               }
-              type="submit">
+              type="submit"
+            >
               {isLoading ? "Loading..." : "Sign Up"}
             </button>
           </IconContext.Provider>

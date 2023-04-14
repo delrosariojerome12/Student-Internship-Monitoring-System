@@ -85,7 +85,6 @@ const DailyTimeRecord = React.memo(() => {
       </div>
     );
   };
-  isLegendOpen && console.log("testLegend");
 
   return (
     <IconContext.Provider value={{className: "icon"}}>
@@ -165,7 +164,7 @@ const DailyTimeRecord = React.memo(() => {
             <div className="legend-modal">
               <div className="time">
                 <div className="upper">
-                  <p>Time in (AM): 7:00 AM - 10:30 AM PM</p>
+                  <p>Time in (AM): 8:00 AM - 10:30 AM PM</p>
                   <p>Afternoon Time out (PM): 12:00 PM</p>
                   <p>Afternoon Time in (PM): 1:00 PM - 1:30 PM</p>
                   <p>Time out (PM): 2:00 PM - 6:00</p>
