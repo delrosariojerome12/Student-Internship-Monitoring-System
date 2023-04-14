@@ -43,6 +43,8 @@ const DailyTimeRecord = React.memo(() => {
   } = useSelector((state) => state.attendance);
   const dispatch = useDispatch();
 
+  const [isLegendOpen, setLegendOpen] = useState(false);
+
   const {
     user: {firstName, lastName, profileImage, email},
     internshipDetails: {renderedHours, startingDate, companyName},
@@ -135,18 +137,59 @@ const DailyTimeRecord = React.memo(() => {
                 Time Out
               </button>
             </div>
-            <div className="search-box">
+            <div className="legend">
+              <button
+                onClick={() => {
+                  setLegendOpen(!isLegendOpen);
+                }}
+              >
+                Show Legend
+              </button>
+            </div>
+            {/* <div className="search-box">
               <span>
                 <BiSearchAlt />
               </span>
               <input type="text" placeholder="Search" />
-            </div>
+            </div> */}
           </div>
         </header>
         {renderAttendance()}
         {isTimeInOpen && <TimeInModal email={email} />}
         {isTimeOutOpen && <TimeOutModal email={email} />}
         {isTodayOpen && <AttendanceModal />}
+        {isLegendOpen && (
+          <>
+            <div className="overlay"></div>
+            <div className="legend-modal">
+              <div className="time">
+                <div className="upper">
+                  <p>Time in (AM): 8:00 AM - 10:30 AM PM</p>
+                  <p>Afternoon Time out (PM): 12:00 PM</p>
+                  <p>Afternoon Time in (PM): 1:00 PM - 1:30 PM</p>
+                  <p>Time out (PM): 2:00 PM - 6:00</p>
+                </div>
+
+                <div className="lower">
+                  <h5>
+                    Failure to time in before 2:00 PM will mark you as absent.
+                  </h5>
+                  <h5>
+                    Similarly, failure to time out before 7 pm will mark you as
+                    absent.
+                  </h5>
+                </div>
+              </div>
+              <button
+                onClick={() => {
+                  setLegendOpen(!isLegendOpen);
+                }}
+              >
+                Close
+              </button>
+            </div>
+          </>
+        )}
       </section>
     </IconContext.Provider>
   );

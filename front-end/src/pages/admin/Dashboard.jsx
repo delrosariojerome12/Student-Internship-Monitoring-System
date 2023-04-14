@@ -1,3 +1,5 @@
+/** @format */
+
 import React, {useState} from "react";
 import {FaUserAlt, FaLock, FaEye, FaEyeSlash, FaCheck} from "react-icons/fa";
 import {GrMail} from "react-icons/gr";
@@ -11,7 +13,8 @@ import {
   handleCloseError,
 } from "../../features/user/userReducer";
 import {useDispatch, useSelector} from "react-redux";
-
+import errorIcon from "../../assets/img/errorCreate.svg";
+import success from "../../assets/img/successCreate.svg";
 const Dashboard = React.memo(() => {
   const {isError, errorMessage, isLoading, createdSuccessful} = useSelector(
     (state) => state.user
@@ -152,30 +155,50 @@ const Dashboard = React.memo(() => {
         checkCompletion();
         return;
       case "First Name":
-        data[index].value = value;
-        let firstNameRegex = /(\b[a-z](?!\s))/g;
-        value.length > 2 && value.length < 20
-          ? (data[index].isError = false)
-          : (data[index].isError = true);
+        if (!/\d/.test(value)) {
+          data[index].value = value;
+          let firstNameRegex = /(\b[a-z](?!\s))/g;
+          value.length > 2 && value.length < 20
+            ? (data[index].isError = false)
+            : (data[index].isError = true);
 
-        let firstNameValue = data[index].value.replace(firstNameRegex, (x) =>
-          x.charAt(0).toUpperCase()
-        );
-        data[index].value = firstNameValue;
-        setForm(data);
-        checkCompletion();
+          let firstNameValue = data[index].value.replace(firstNameRegex, (x) =>
+            x.charAt(0).toUpperCase()
+          );
+          data[index].value = firstNameValue;
+          if (value.length > 2 && value.length < 20) {
+            data[index].isError = false;
+          } else {
+            data[index].isError = true;
+            data[index].errorMessage =
+              "First name must be between 3 and 20 characters long";
+          }
+          setForm(data);
+          checkCompletion();
+        } else {
+          data[index].isError = true;
+          data[index].errorMessage = "Number is not allowed";
+          setForm(data);
+        }
         return;
       case "Last Name":
-        data[index].value = value;
-
-        value.length > 2 && value.length < 20
-          ? (data[index].isError = false)
-          : (data[index].isError = true);
-        data[index].value =
-          value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
-        setForm(data);
-        checkCompletion();
-
+        if (!/\d/.test(value)) {
+          data[index].value =
+            value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+          if (value.length > 2 && value.length < 20) {
+            data[index].isError = false;
+          } else {
+            data[index].isError = true;
+            data[index].errorMessage =
+              "Last name must be between 3 and 20 characters long";
+          }
+          setForm(data);
+          checkCompletion();
+        } else {
+          data[index].isError = true;
+          data[index].errorMessage = "Number is not allowed";
+          setForm(data);
+        }
         return;
       case "Email":
         data[index].value = value;
@@ -311,7 +334,7 @@ const Dashboard = React.memo(() => {
                   </div>
                 </label>
               </div>
-              <h4>Select Role</h4>
+              <h5>Select the role of the account</h5>
               {choices.map((radioValue, index) => {
                 {
                   return (
@@ -425,7 +448,9 @@ const Dashboard = React.memo(() => {
   return (
     <section className="admin-dashboard">
       <header>
-        <h1>Hello Admin</h1>
+        <h1>
+          Hello, <b>Admin</b>
+        </h1>
         <h3>Welcome Back!</h3>
       </header>
       <section className="content">
@@ -464,6 +489,7 @@ const Dashboard = React.memo(() => {
           ></div>
           <div className="success-modal">
             <h3>Created Successful!</h3>
+            <img src={success} alt="success" />
             <button
               onClick={() => {
                 dispatch(handleCloseSuccess());
@@ -484,6 +510,7 @@ const Dashboard = React.memo(() => {
           <div className="error-modal">
             <h3>Oops!</h3>
             <h4>{errorMessage}</h4>
+            <img src={errorIcon} alt="success" />
             <button onClick={() => dispatch(handleCloseError())}>Close</button>
           </div>
         </>

@@ -1,17 +1,21 @@
-import React, {useState} from "react";
-import {Link} from "react-router-dom";
+/** @format */
+
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../../assets/img/logo.svg";
-import {FaLock, FaEye, FaEyeSlash} from "react-icons/fa";
-import {GrMail} from "react-icons/gr";
-import {IconContext} from "react-icons";
-import {useRef} from "react";
-import {useNavigate} from "react-router-dom";
-import {useSelector, useDispatch} from "react-redux";
-import {handleLogin} from "../../features/user/userReducer";
+import { FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
+import { GrMail } from "react-icons/gr";
+import { IconContext } from "react-icons";
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { handleLogin } from "../../features/user/userReducer";
 
 const Login = React.memo(() => {
   const dispatch = useDispatch();
-  const {isError, errorMessage, isLoading} = useSelector((state) => state.user);
+  const { isError, errorMessage, isLoading } = useSelector(
+    (state) => state.user
+  );
 
   const [form, setForm] = useState([
     {
@@ -109,7 +113,7 @@ const Login = React.memo(() => {
 
   const renderInputs = () => {
     return form.map((inputs, index) => {
-      const {forInput, id, type, value, IconType, hasEyeIcon} = inputs;
+      const { forInput, id, type, value, IconType, hasEyeIcon } = inputs;
       return (
         <div className="input-contain" key={index}>
           {hasEyeIcon ? (
@@ -136,8 +140,9 @@ const Login = React.memo(() => {
           <div className="placeholder-container">
             <label
               htmlFor={id}
-              className={value ? "placeholder-text active" : "placeholder-text"}
-            >
+              className={
+                value ? "placeholder-text active" : "placeholder-text"
+              }>
               <div className={"text"}>
                 <span>
                   <IconType className={"icons"} />
@@ -158,25 +163,24 @@ const Login = React.memo(() => {
         <header>
           <img src={logo} alt="" />
           <h1>Login</h1>
-          {isError && <h3 style={{color: "red"}}>{errorMessage}</h3>}
+          {isError && <h3 style={{ color: "red" }}>{errorMessage}</h3>}
         </header>
         <form onSubmit={handleSubmit}>
-          <IconContext.Provider value={{color: "#000", className: "icons"}}>
+          <IconContext.Provider value={{ color: "#000", className: "icons" }}>
             {renderInputs()}
             <span>
-              <p>Already have an account?</p>
+              <p>Doesn't have an account?</p>
               <Link to="/account/signup">Sign up</Link>
             </span>
             <button
               style={
                 isComplete
-                  ? {opacity: "1"}
+                  ? { opacity: "1" }
                   : isLoading
-                  ? {pointerEvents: "none", opacity: ".7"}
-                  : {opacity: ".7", pointerEvents: "none"}
+                  ? { pointerEvents: "none", opacity: ".7" }
+                  : { opacity: ".7", pointerEvents: "none" }
               }
-              type="submit"
-            >
+              type="submit">
               {isLoading ? "Loading..." : "Login"}
             </button>
           </IconContext.Provider>

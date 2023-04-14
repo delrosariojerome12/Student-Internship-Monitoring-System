@@ -79,7 +79,7 @@ export const sendDocument = createAsyncThunk(
         return 0;
       });
 
-      return {res: res.documentDetails};
+      return {res: res.documentDetails, intern: res};
     } catch (error) {
       console.log(error);
       return rejectWithValue(error.response.data);
@@ -138,7 +138,8 @@ export const removeDocument = createAsyncThunk(
         }
         return 0;
       });
-      return {res: res.documentDetails};
+      // return {res: res.documentDetails};
+      return {res: res.documentDetails, intern: res};
     } catch (error) {
       console.log(error);
       return rejectWithValue(error.response.data);
@@ -182,6 +183,7 @@ export const internDocumentReducer = createSlice({
         state.sendLoading = true;
       })
       .addCase(sendDocument.fulfilled, (state, action) => {
+        console.log(action.payload);
         state.sendLoading = false;
         state.documentDetails = action.payload.res;
         state.selectedDocument = null;
@@ -195,6 +197,7 @@ export const internDocumentReducer = createSlice({
         state.sendLoading = true;
       })
       .addCase(removeDocument.fulfilled, (state, action) => {
+        console.log(action.payload);
         state.sendLoading = false;
         state.selectedDocument = null;
         state.documentDetails = action.payload.res;

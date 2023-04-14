@@ -63,19 +63,24 @@ const TimeOutModal = React.memo(({email}) => {
   const [address, setAddress] = useState("");
   const [capturedPhoto, setCapturedPhoto] = useState(null);
   const [hasCamera, setHasCamera] = useState(true);
+  const [facingMode, setFacingMode] = useState("user");
+  const [deviceType, setDeviceType] = useState(null);
 
   const cameraRef = useRef(null);
 
-  const handleUserMediaError = () => {
+  const handleUserMediaError = (error) => {
     setHasCamera(false);
+    console.log("Error accessing user media:", error);
   };
 
   const cameraConstraints = {
     width: 400,
     height: 400,
-    facingMode: "user",
+    facingMode: facingMode,
   };
-
+  const handleToggleCamera = () => {
+    setFacingMode(facingMode === "user" ? "environment" : "user");
+  };
   const getLocation = async (latitude, longitude) => {
     try {
       const url = `https://api.tomtom.com/search/2/reverseGeocode/${latitude},${longitude}.json?key=${key}`;
@@ -113,10 +118,8 @@ const TimeOutModal = React.memo(({email}) => {
   };
   useEffect(() => {
     const interval = setInterval(() => {
-      // const date = new Date(dateTime);
-      const date = new Date();
-      // hour
-      // const hours = (date.getHours() % 12 || 12).toString().padStart(2, "0");
+      const date = new Date(dateTime);
+
       const hours =
         date.getHours() % 12 || 12 < 10
           ? `0${date.getHours() % 12 || 12}`
@@ -128,10 +131,23 @@ const TimeOutModal = React.memo(({email}) => {
       const amOrPm = date.getHours() >= 12 ? "PM" : "AM"; // set AM or PM
 
       const fullHour = `${hours}:${minutes}:${seconds} ${amOrPm}`;
-      // const fullDate = `${month} ${day}, ${year}`;
 
       setTime(fullHour);
     }, 1000);
+
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width > 900) {
+        setDeviceType("desktop");
+      } else if (width > 768) {
+        setDeviceType("tablet");
+      } else {
+        setDeviceType("phone");
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
 
     navigator.geolocation.getCurrentPosition((position) => {
       const {latitude, longitude} = position.coords;
@@ -177,6 +193,14 @@ const TimeOutModal = React.memo(({email}) => {
     );
   }
 
+  console.log(deviceType);
+
+  const renderToggle = () => {
+    if (deviceType === "tablet" || deviceType === "phone") {
+      return <button onClick={handleToggleCamera}>Toggle Camera</button>;
+    }
+  };
+
   return (
     <>
       <div className="overlay" onClick={() => dispatch(handleTimeOut())}></div>
@@ -184,6 +208,9 @@ const TimeOutModal = React.memo(({email}) => {
         <div className="address">
           <h2>{time}</h2>
           <h3>{address}</h3>
+          <p>
+            Take a picture of your time record or yourself at your Internship.
+          </p>
         </div>
         <div className="camera">
           {capturedPhoto ? (
@@ -198,6 +225,7 @@ const TimeOutModal = React.memo(({email}) => {
                 onUserMediaError={handleUserMediaError}
               />
               <button onClick={handleCaptureImage}>Take Photo</button>
+              {renderToggle()}
             </>
           )}
         </div>

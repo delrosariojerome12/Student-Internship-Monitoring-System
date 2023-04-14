@@ -1,3 +1,5 @@
+/** @format */
+
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import logo from "../../assets/img/logo.svg";
@@ -37,7 +39,8 @@ const Signup = React.memo(() => {
       value: "",
       IconType: FaUserAlt,
       isError: false,
-      errorMessage: "First name must be between 3 and 20 characters long",
+      errorMessage:
+        "First name must be between 3 and 20 characters long. No Special Characters and Numbers.",
       hasEyeIcon: false,
       code: "firstName",
       isVisible: true,
@@ -49,7 +52,8 @@ const Signup = React.memo(() => {
       value: "",
       IconType: FaUserAlt,
       isError: false,
-      errorMessage: "Last name must be between 3 and 20 characters long",
+      errorMessage:
+        "Last name must be between 3 and 20 characters long. No Special Characters and Numbers",
       hasEyeIcon: false,
       code: "lastName",
       isVisible: true,
@@ -120,24 +124,24 @@ const Signup = React.memo(() => {
     switch (input) {
       case "First Name":
         data[index].value = value;
-        let firstNameRegex = /(\b[a-z](?!\s))/g;
-        value.length > 2 && value.length < 20
+        let firstNameRegex = /^[a-zA-Z]+$/; // regex pattern to match alphabetical characters only
+        value.length > 2 && value.length < 20 && firstNameRegex.test(value)
           ? (data[index].isError = false)
           : (data[index].isError = true);
-
-        let firstNameValue = data[index].value.replace(firstNameRegex, (x) =>
-          x.charAt(0).toUpperCase()
-        );
-        data[index].value = firstNameValue;
+        // data[index].value =
+        // value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+        data[index].value =
+          value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
         setForm(data);
         checkCompletion();
         return;
       case "Last Name":
         data[index].value = value;
-
-        value.length > 2 && value.length < 20
+        let lastNameRegex = /^[a-zA-Z]+$/;
+        value.length > 2 && value.length < 20 && lastNameRegex.test(value)
           ? (data[index].isError = false)
           : (data[index].isError = true);
+
         data[index].value =
           value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
         setForm(data);
@@ -159,7 +163,7 @@ const Signup = React.memo(() => {
         data[index].value = value;
 
         const passwordRegex =
-          /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_.-]).*$/;
+          /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_.-`!~]).*$/;
         let isPasswordValid = passwordRegex.test(value);
         if (isPasswordValid) {
           data[index].isError = false;
@@ -175,12 +179,14 @@ const Signup = React.memo(() => {
         return;
       case "Confirm Password":
         data[index].value = value;
-        const password = form[index - 1].value;
-        const confirmPassword = form[index];
+
+        const password = data[index - 1].value;
+        const confirmPassword = data[index];
         const confirmPasswordRegex =
-          /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$/;
+          /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_.-`!~]).*$/;
+
         let isConfirmPasswordValid = confirmPasswordRegex.test(value);
-        password === confirmPassword.value && isConfirmPasswordValid
+        password === value && isConfirmPasswordValid
           ? (confirmPassword.isError = false)
           : (confirmPassword.isError = true);
 
@@ -192,7 +198,6 @@ const Signup = React.memo(() => {
         if (value) {
           const {name, type} = value;
           if (!type.includes("image")) {
-            console.log("error");
             data[index].isError = true;
             data[index].errorMessage = "Invalid File Type";
             setForm(data);
@@ -377,7 +382,7 @@ const Signup = React.memo(() => {
               }
               type="submit"
             >
-              {isLoading ? "Loading..." : "Login"}
+              {isLoading ? "Loading..." : "Sign Up"}
             </button>
           </IconContext.Provider>
         </form>

@@ -624,38 +624,38 @@
           }
         }
 
-        & > :nth-child(1) {
+        .company-name {
           grid-column: 1/3;
           grid-row: 3/4;
         }
-        & > :nth-child(2) {
+        .company-address {
           grid-column: 3/5;
           grid-row: 3/4;
         }
-        & > :nth-child(3) {
+        .supervisor {
           grid-column: 1/3;
           grid-row: 4/5;
         }
-        & > :nth-child(4) {
+        .supervisor-contact {
           grid-column: 3/5;
           grid-row: 4/5;
         }
-        & > :nth-child(5) {
+        .duties {
           grid-column: 1/3;
           grid-row: 5/6;
         }
-        & > :nth-child(6) {
+        .email {
           grid-column: 3/5;
           grid-row: 5/6;
         }
 
-        & > :nth-child(7) {
+        .logo {
           height: 100%;
           width: 100%;
           grid-row: 1/3;
           grid-column: 1/5;
         }
-        & > :nth-child(8) {
+        .description {
           height: 100%;
           width: 100%;
           grid-row: 6/8;
@@ -680,37 +680,37 @@
 
         grid-template-rows: 15rem repeat(6, 9.5rem) 15rem auto;
 
-        & > :nth-child(1) {
+        .company-name {
           grid-column: 1/5;
           grid-row: 2/3;
         }
-        & > :nth-child(2) {
+        .company-address {
           grid-column: 1/5;
           grid-row: 3/4;
         }
-        & > :nth-child(3) {
+        .supervisor {
           grid-column: 1/5;
           grid-row: 4/5;
         }
-        & > :nth-child(4) {
+        .supervisor-contact {
           grid-column: 1/5;
           grid-row: 5/6;
         }
-        & > :nth-child(5) {
+        .email {
           grid-column: 1/5;
           grid-row: 6/7;
         }
-        & > :nth-child(6) {
+        .duties {
           grid-column: 1/5;
           grid-row: 7/8;
         }
-        & > :nth-child(7) {
+        .logo {
           height: 100%;
           width: 100%;
           grid-row: 1/2;
           grid-column: 1/5;
         }
-        & > :nth-child(8) {
+        .description {
           height: 100%;
           width: 100%;
           grid-row: 8/9;

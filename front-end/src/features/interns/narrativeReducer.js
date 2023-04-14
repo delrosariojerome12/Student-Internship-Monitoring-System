@@ -19,6 +19,8 @@ export const getAllNarrative = createAsyncThunk(
   async ({email}, {rejectWithValue}) => {
     try {
       const url = `https://sims-twqb.onrender.com/attendance/getAllNarrative/${email}`;
+      // const url = `http://localhost:5000/attendance/getAllNarrative/${email}`;
+
       const {data: res} = await axios.get(url);
       console.log(res);
       return {res: res.data};

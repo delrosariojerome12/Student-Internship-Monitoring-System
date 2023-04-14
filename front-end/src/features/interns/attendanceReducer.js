@@ -87,6 +87,8 @@ export const checkStartingDate = createAsyncThunk(
       // const url = `http://localhost:5000/attendance/checkStartingDate/${email}`;
 
       const {data: res} = await axios.patch(url, {...user, status: "Starting"});
+
+      console.log(res);
       return {res};
     } catch (error) {
       console.log(error);

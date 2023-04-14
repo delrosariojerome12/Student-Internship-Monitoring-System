@@ -136,10 +136,10 @@ const MonitorAttendance = React.memo(() => {
             className="overlay"
             onClick={() => dispatch(handleFilter())}></div>
           <div onClick={(e) => e.stopPropagation()} className="filter modal">
-            <p>Filter</p>
+            <h4>Filter</h4>
             <div className="inputs-container">
               <label htmlFor="date">
-                Date
+                <p>Date </p>
                 <input
                   value={filterDate}
                   type="date"
@@ -174,9 +174,8 @@ const MonitorAttendance = React.memo(() => {
         <>
           <div className="overlay" onClick={() => dispatch(handleSort())}></div>
           <div onClick={(e) => e.stopPropagation()} className="sort modal">
-            <div className="sort-div">
-              <p>Sort</p>
-            </div>
+            <h4>Sort</h4>
+            <div className="sort-div"></div>
             <div className="close-btn">
               <button onClick={() => dispatch(handleSort())}>Close</button>
             </div>
