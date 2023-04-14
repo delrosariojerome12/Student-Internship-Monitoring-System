@@ -56,7 +56,8 @@ const Dashboard = React.memo(() => {
       value: "",
       IconType: FaUserAlt,
       isError: false,
-      errorMessage: "First name must be between 3 and 20 characters long",
+      errorMessage:
+        "First name must be between 3 and 20 characters long. No Special Characters and Numbers.",
       hasEyeIcon: false,
       code: "firstName",
       isVisible: true,
@@ -68,7 +69,8 @@ const Dashboard = React.memo(() => {
       value: "",
       IconType: FaUserAlt,
       isError: false,
-      errorMessage: "Last name must be between 3 and 20 characters long",
+      errorMessage:
+        "Last name must be between 3 and 20 characters long. No Special Characters and Numbers",
       hasEyeIcon: false,
       code: "lastName",
       isVisible: true,
@@ -93,7 +95,7 @@ const Dashboard = React.memo(() => {
       IconType: FaLock,
       isError: false,
       errorMessage:
-        "Password must have: Atleast 1 uppercase, 1 lowercase, 1 number, 1 special characters and minimum of 8 characters",
+        "Password must have: Atleast 1 uppercase, 1 lowercase, 1 number minimum of 8 characters",
       requirements: [],
       hasEyeIcon: true,
       code: "password",
@@ -122,6 +124,7 @@ const Dashboard = React.memo(() => {
           ? "https://toppng.com/uploads/preview/instagram-default-profile-picture-11562973083brycehrmyv.png"
           : "",
     }));
+    newForm[0].isDisabled = false;
     setForm(newForm);
   };
 
@@ -155,50 +158,27 @@ const Dashboard = React.memo(() => {
         checkCompletion();
         return;
       case "First Name":
-        if (!/\d/.test(value)) {
-          data[index].value = value;
-          let firstNameRegex = /(\b[a-z](?!\s))/g;
-          value.length > 2 && value.length < 20
-            ? (data[index].isError = false)
-            : (data[index].isError = true);
-
-          let firstNameValue = data[index].value.replace(firstNameRegex, (x) =>
-            x.charAt(0).toUpperCase()
-          );
-          data[index].value = firstNameValue;
-          if (value.length > 2 && value.length < 20) {
-            data[index].isError = false;
-          } else {
-            data[index].isError = true;
-            data[index].errorMessage =
-              "First name must be between 3 and 20 characters long";
-          }
-          setForm(data);
-          checkCompletion();
-        } else {
-          data[index].isError = true;
-          data[index].errorMessage = "Number is not allowed";
-          setForm(data);
-        }
+        data[index].value = value;
+        let firstNameRegex = /^[a-zA-Z]+( [a-zA-Z]+){0,2}$/;
+        value.length > 2 && value.length < 20 && firstNameRegex.test(value)
+          ? (data[index].isError = false)
+          : (data[index].isError = true);
+        data[index].value = value;
+        setForm(data);
+        checkCompletion();
         return;
       case "Last Name":
-        if (!/\d/.test(value)) {
-          data[index].value =
-            value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
-          if (value.length > 2 && value.length < 20) {
-            data[index].isError = false;
-          } else {
-            data[index].isError = true;
-            data[index].errorMessage =
-              "Last name must be between 3 and 20 characters long";
-          }
-          setForm(data);
-          checkCompletion();
-        } else {
-          data[index].isError = true;
-          data[index].errorMessage = "Number is not allowed";
-          setForm(data);
-        }
+        data[index].value = value;
+
+        let lastNameRegex = /^[a-zA-Z]+( [a-zA-Z]+){0,2}$/;
+
+        value.length > 2 && value.length < 20 && lastNameRegex.test(value)
+          ? (data[index].isError = false)
+          : (data[index].isError = true);
+
+        data[index].value = value;
+        setForm(data);
+        checkCompletion();
         return;
       case "Email":
         data[index].value = value;
@@ -213,8 +193,10 @@ const Dashboard = React.memo(() => {
         return;
       case "Password":
         data[index].value = value;
+
         const passwordRegex =
-          /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_.-`!~]).*$/;
+          /^(?=.*\d)(?=.*[@#$%^&+=_.-`!~])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
         let isPasswordValid = passwordRegex.test(value);
         if (isPasswordValid) {
           data[index].isError = false;
@@ -230,12 +212,15 @@ const Dashboard = React.memo(() => {
         return;
       case "Confirm Password":
         data[index].value = value;
-        const password = form[index - 1].value;
-        const confirmPassword = form[index];
+
+        const password = data[index - 1].value;
+        const confirmPassword = data[index];
+
         const confirmPasswordRegex =
-          /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_.-`!~]).*$/;
+          /^(?=.*\d)(?=.*[@#$%^&+=_.-`!~])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
         let isConfirmPasswordValid = confirmPasswordRegex.test(value);
-        password === confirmPassword.value && isConfirmPasswordValid
+        password === value && isConfirmPasswordValid
           ? (confirmPassword.isError = false)
           : (confirmPassword.isError = true);
 
@@ -485,7 +470,10 @@ const Dashboard = React.memo(() => {
         <>
           <div
             className="overlay"
-            onClick={() => dispatch(handleCloseSuccess())}
+            onClick={() => {
+              window.location.reload();
+              dispatch(handleCloseSuccess());
+            }}
           ></div>
           <div className="success-modal">
             <h3>Created Successful!</h3>
@@ -494,6 +482,7 @@ const Dashboard = React.memo(() => {
               onClick={() => {
                 dispatch(handleCloseSuccess());
                 clearForm();
+                window.location.reload();
               }}
             >
               Close
