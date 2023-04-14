@@ -550,11 +550,10 @@ const checkAbsents = async (req, res) => {
 
         await newAttendance.save();
       } else if (
-        currentTime.hour() === 22 &&
+        currentTime.hour() === 19 &&
         attendance.timeIn &&
         !attendance.timeOut
       ) {
-        console.log("here");
         const attendance = await Attendance.findOne({email, date: todayDate})
           .populate({
             path: "user",
@@ -578,9 +577,6 @@ const checkAbsents = async (req, res) => {
           },
           {new: true, runValidators: true}
         );
-
-        // console.log(absentAttendance);
-        // console.log("no timeout");
 
         await absentAttendance.save();
       }
@@ -664,12 +660,12 @@ const runCheckAbsents = async () => {
 
 const runStartingToday = async () => {
   try {
-    // const response = await axios.patch(
-    //   "http://localhost:5000/attendance/checkInternsStartingToday"
-    // );
     const response = await axios.patch(
-      "https://sims-twqb.onrender.com/attendance/checkInternsStartingToday"
+      "http://localhost:5000/attendance/checkInternsStartingToday"
     );
+    // const response = await axios.patch(
+    //   "https://sims-twqb.onrender.com/attendance/checkInternsStartingToday"
+    // );
     console.log(response.data);
   } catch (error) {
     console.error(error);

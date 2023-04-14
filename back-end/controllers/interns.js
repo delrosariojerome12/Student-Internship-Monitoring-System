@@ -4,7 +4,9 @@ const Internship = require("../models/Internship");
 
 const {StatusCodes} = require("http-status-codes");
 const {BadRequest, NotFound, Duplicate} = require("../errors");
-
+const moment = require("moment-timezone");
+const axios = require("axios");
+const cron = require("node-cron");
 const getAllInterns = async (req, res) => {
   const {users} = req.body;
   const interns = await Intern.find({users}, {_id: 0}).populate({
@@ -354,6 +356,34 @@ const rejectDocument = async (req, res) => {
 
   res.status(StatusCodes.OK).json(intern);
 };
+
+const runCheckAbsents = async () => {
+  try {
+    const response = await axios.post(
+      "http://localhost:5000/attendance/checkAbsents"
+    );
+    // const response = await axios.post(
+    //   "https://sims-twqb.onrender.com/attendance/checkAbsents"
+    // );
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+cron.schedule(
+  "0 19 * * 1-5",
+  () => {
+    const currentTime = moment().tz("Asia/Manila");
+    if (currentTime.hour() === 19 && currentTime.minute() === 0) {
+      console.log("running");
+      runCheckAbsents();
+    }
+  },
+  {
+    timezone: "Asia/Manila",
+  }
+);
 
 module.exports = {
   updateIntern,
