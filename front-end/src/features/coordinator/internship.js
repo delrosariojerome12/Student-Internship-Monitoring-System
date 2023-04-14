@@ -14,6 +14,7 @@ const initialState = {
   requestMessage: null,
   isMessageOpen: false,
   errorType: null,
+  allInternshipsName: null,
 };
 
 export const getAllInternship = createAsyncThunk(
@@ -21,7 +22,6 @@ export const getAllInternship = createAsyncThunk(
   async (x, {rejectWithValue}) => {
     try {
       const url = `https://sims-twqb.onrender.com/internship/getAllInternship`;
-
       const {data: res} = await axios.get(url);
       console.log(res);
       return {res};
@@ -202,9 +202,12 @@ export const internshipReducer = createSlice({
       })
       .addCase(getAllInternship.fulfilled, (state, {payload: {res}}) => {
         state.internships = res.data;
-        // .sort((a, b) => b.students - a.students)
-        // .splice(0, 5);
+
         state.isLoading = false;
+        state.allInternshipsName = res.data.map((item, index) => {
+          const {companyName} = item;
+          return {value: companyName, label: companyName};
+        });
       })
       .addCase(getAllInternship.rejected, (state, action) => {
         state.isLoading = false;

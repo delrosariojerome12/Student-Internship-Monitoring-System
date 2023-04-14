@@ -5,11 +5,11 @@ import {
   handleSelectedIntern,
   handleInternModal,
 } from "../../features/interns/internReducer";
-import { useDispatch, useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
-const Intern = React.memo(({ intern }) => {
+const Intern = React.memo(({intern}) => {
   const {
-    user: { email, firstName, lastName, profileImage },
+    user: {email, firstName, lastName, profileImage},
     internshipDetails: {
       companyAddress,
       companyName,
@@ -17,12 +17,12 @@ const Intern = React.memo(({ intern }) => {
       supervisor,
       typeOfWork,
     },
-    schoolDetails: { requiredHours, program, studentContact },
-    scheduleDetails: { scheduleType, timeInSchedule, timeOutSchedule },
+    schoolDetails: {requiredHours, program, studentContact},
+    scheduleDetails: {scheduleType, timeInSchedule, timeOutSchedule},
   } = intern;
 
   const dispatch = useDispatch();
-  const { selectedIntern } = useSelector((state) => state.intern);
+  const {selectedIntern} = useSelector((state) => state.intern);
 
   return (
     <div
@@ -34,7 +34,8 @@ const Intern = React.memo(({ intern }) => {
       onClick={() => {
         dispatch(handleSelectedIntern(intern));
         dispatch(handleInternModal());
-      }}>
+      }}
+    >
       <div className="img-container">
         <img src={profileImage} alt="profile-image" />
       </div>
@@ -45,9 +46,7 @@ const Intern = React.memo(({ intern }) => {
         </p>
 
         <div className="btnContainer">
-          <button type="button" onClick={() => console.log("Test")}>
-            View Intern
-          </button>
+          <button type="button">View Intern</button>
         </div>
       </div>
     </div>
