@@ -117,7 +117,7 @@ const MonitorAttendance = React.memo(() => {
         <div className="mid">
           <div className="btn-container">
             <button onClick={() => dispatch(handleFilter())}>Filter</button>
-            <button onClick={() => dispatch(handleSort())}>Sort</button>
+            {/* <button onClick={() => dispatch(handleSort())}>Sort</button> */}
           </div>
           <div className="date-container">
             <h3>{formatDate(today)}</h3>
@@ -170,7 +170,7 @@ const MonitorAttendance = React.memo(() => {
           </div>
         </>
       )}
-      {isSortOpen && (
+      {/* {isSortOpen && (
         <>
           <div className="overlay" onClick={() => dispatch(handleSort())}></div>
           <div onClick={(e) => e.stopPropagation()} className="sort modal">
@@ -181,7 +181,7 @@ const MonitorAttendance = React.memo(() => {
             </div>
           </div>
         </>
-      )}
+      )} */}
       {isViewMoreDetailsOpen && <ViewMoreDetailsModal />}
       {isNarrativeOpen && <ViewNarrative />}
     </div>

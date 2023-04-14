@@ -11826,42 +11826,20 @@ button {
 }
 .reports .content {
   display: grid;
-  grid-template-rows: auto minmax(45rem, 81vh);
+  grid-template-rows: auto minmax(45rem, 83vh);
   gap: 1rem;
 }
-.reports .content .button-container {
+.reports .content header {
+  display: grid;
+  grid-template-columns: 1fr;
   background-color: #282b30;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 2rem 3rem;
+  padding: 1.5rem 2rem;
   border-radius: 1rem;
 }
-.reports .content .button-container button {
-  height: 4.5rem;
+.reports .content header h2 {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  border: none;
-  padding: 1rem 2rem;
-  outline: none;
-  font-weight: 500;
   color: #fff;
-  background-color: #0d7377;
-  transition: all 0.3s linear;
-  cursor: pointer;
-}
-.reports .content .button-container button span {
-  font-size: 1.8rem;
-  padding: 0.5rem 0.5rem 0;
-}
-.reports .content .button-container button p {
-  font-size: 1.5rem;
-}
-.reports .content .button-container button:hover {
-  background-color: #00adb5;
-  border-radius: 1rem;
 }
 .reports .content .report-container {
   display: grid;
@@ -12374,14 +12352,14 @@ button {
   background-color: rgba(255, 255, 255, 0.521);
 }
 
-@media screen and (min-height: 680px) {
-  .reports .content {
-    grid-template-rows: auto minmax(45rem, 83vh);
-  }
-}
-@media screen and (min-height: 760px) {
+@media screen and (min-height: 700px) {
   .reports .content {
     grid-template-rows: auto minmax(45rem, 85vh);
+  }
+}
+@media screen and (min-height: 800px) {
+  .reports .content {
+    grid-template-rows: auto minmax(45rem, 87vh);
   }
 }
 @media screen and (max-width: 750px) {
@@ -12445,7 +12423,7 @@ button {
     font-size: 2.1rem;
   }
   .reports .content {
-    grid-template-rows: auto minmax(45rem, 70vh);
+    grid-template-rows: auto minmax(45rem, 72vh);
   }
   .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container {
     flex-direction: row;
@@ -12484,32 +12462,6 @@ button {
   .reports .content {
     grid-template-rows: auto minmax(45rem, 67vh);
   }
-  .reports .content .button-container {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-template-rows: repeat(2, auto);
-    padding: 1rem;
-    gap: 0.5rem;
-  }
-  .reports .content .button-container button {
-    height: 3.5rem;
-    border-radius: 1rem;
-  }
-  .reports .content .button-container button span {
-    font-size: 1.6rem;
-  }
-  .reports .content .button-container button p {
-    font-size: 1.3rem;
-  }
-  .reports .content .button-container button:hover {
-    border-radius: 0;
-  }
-  .reports .content .button-container > :nth-child(2) {
-    margin: auto;
-    width: 60%;
-    grid-row: 2/3;
-    grid-column: 1/3;
-  }
   .reports .content .report-container .narrative-content .sub-container > * {
     font-size: 1.7rem;
   }
@@ -12531,6 +12483,9 @@ button {
   }
 }
 @media screen and (max-width: 400px) {
+  .reports .content header h2 {
+    justify-content: center;
+  }
   .reports .content .report-container {
     grid-auto-rows: 13rem;
   }

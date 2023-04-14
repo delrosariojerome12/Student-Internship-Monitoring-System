@@ -73,7 +73,7 @@ const Reports = React.memo(() => {
   return (
     <section className="reports">
       <div className="content">
-        <div className="button-container">
+        {/* <div className="button-container">
           <button className="sort">
             <span>
               <FaSortAmountUp />
@@ -92,7 +92,10 @@ const Reports = React.memo(() => {
             </span>
             <p>Filters</p>
           </button>
-        </div>
+        </div> */}
+        <header>
+          <h2>Reports</h2>
+        </header>
         {renderNarrative()}
       </div>
 
