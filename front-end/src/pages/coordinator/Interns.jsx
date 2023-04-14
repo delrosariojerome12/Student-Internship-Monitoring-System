@@ -188,7 +188,7 @@ const Interns = React.memo(() => {
               Filter
             </button>
           </div>
-          <div className="right-side">
+          {/* <div className="right-side">
             <form action="" onSubmit={handleSubmitSearchIntern}>
               <span>
                 <BiSearchAlt />
@@ -199,7 +199,7 @@ const Interns = React.memo(() => {
                 onChange={(e) => handleSearchIntern(e.target.value)}
               />
             </form>
-          </div>
+          </div> */}
         </nav>
         {isSortOpen && (
           <>
@@ -277,8 +277,7 @@ const Interns = React.memo(() => {
         <>
           <div
             onClick={() => dispatch(handleInternModal())}
-            className="overlay"
-          ></div>
+            className="overlay"></div>
           <div className="preview-container modal">
             <SelectedIntern />
             <div className="btn-close">
@@ -289,8 +288,7 @@ const Interns = React.memo(() => {
                 onClick={() => {
                   dispatch(handleInternModal());
                   navigate(`/dashboard/interns/${selectedIntern.email}`);
-                }}
-              >
+                }}>
                 Intern Profile
               </button>
             </div>

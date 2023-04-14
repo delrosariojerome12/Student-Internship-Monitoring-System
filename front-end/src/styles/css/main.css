@@ -2671,10 +2671,6 @@ button {
 .dashboard .intern-container header h2, .dashboard-active .intern-container header h2 {
   color: #fff;
 }
-.dashboard .intern-container header .navigation, .dashboard-active .intern-container header .navigation {
-  justify-content: space-between;
-  gap: 1rem;
-}
 .dashboard .intern-container header .navigation .left-side, .dashboard-active .intern-container header .navigation .left-side {
   display: flex;
   align-items: center;
@@ -2700,34 +2696,6 @@ button {
   background-color: #00adb5;
   color: #fff;
   border: solid 1px #00adb5;
-}
-.dashboard .intern-container header .navigation .right-side, .dashboard-active .intern-container header .navigation .right-side {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.dashboard .intern-container header .navigation .right-side form, .dashboard-active .intern-container header .navigation .right-side form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f1faee;
-  width: 80%;
-  border-radius: 2rem;
-  padding: 0 1.5rem;
-}
-.dashboard .intern-container header .navigation .right-side form span, .dashboard-active .intern-container header .navigation .right-side form span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  cursor: pointer;
-}
-.dashboard .intern-container header .navigation .right-side form input, .dashboard-active .intern-container header .navigation .right-side form input {
-  width: 100%;
-  background: transparent;
-  padding: 1rem;
-  outline: none;
-  border: 0;
 }
 .dashboard .intern-container .interns, .dashboard-active .intern-container .interns {
   background-color: #282b30;
@@ -3006,18 +2974,12 @@ button {
   }
 }
 @media screen and (max-width: 500px) {
-  .dashboard .intern-container header .navigation, .dashboard-active .intern-container header .navigation {
-    grid-template-columns: auto;
-    padding: 1rem;
-    gap: 0rem;
-  }
-  .dashboard .intern-container header .navigation .left-side, .dashboard-active .intern-container header .navigation .left-side,
-  .dashboard .intern-container header .navigation .right-side,
-  .dashboard-active .intern-container header .navigation .right-side {
+  .dashboard .intern-container header .navigation .left-side, .dashboard-active .intern-container header .navigation .left-side {
+    margin: auto;
     border: none;
   }
   .dashboard .intern-container header .navigation .left-side button, .dashboard-active .intern-container header .navigation .left-side button {
-    height: 3rem;
+    height: 3.5rem;
   }
   .dashboard .intern-container .interns .intern, .dashboard-active .intern-container .interns .intern {
     grid-template-columns: 10rem auto;
