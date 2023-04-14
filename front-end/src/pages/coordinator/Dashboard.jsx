@@ -30,32 +30,32 @@ const Dashboard = React.memo(() => {
     if (!interns) {
       return <h1>Loading...</h1>;
     }
-    // if (
-    //   interns.filter((intern) => intern.verification.isVerified).length === 0
-    // ) {
-    return (
-      <section className="dashboard-intern">
-        <div className="no-intern">
-          <img src={NoIntern} alt="" className="no-intern-img" />
-          <h3>No verified intern found!</h3>
-        </div>
-      </section>
-    );
-    // }
+    if (
+      interns.filter((intern) => intern.verification.isVerified).length === 0
+    ) {
+      return (
+        <section className="dashboard-intern">
+          <div className="no-intern">
+            <img src={NoIntern} alt="" className="no-intern-img" />
+            <h3>No verified intern found!</h3>
+          </div>
+        </section>
+      );
+    }
 
-    // // can make conditional
-    // return interns
-    //   .filter((intern) => intern.verification.isVerified)
-    //   .sort((a, b) => {
-    //     return (
-    //       parseFloat(b.internshipDetails.renderedHours) -
-    //       parseFloat(a.internshipDetails.renderedHours)
-    //     );
-    //   })
-    //   .splice(0, 10)
-    //   .map((intern, index) => {
-    //     return <DashboardIntern intern={intern} key={index} />;
-    //   });
+    // can make conditional
+    return interns
+      .filter((intern) => intern.verification.isVerified)
+      .sort((a, b) => {
+        return (
+          parseFloat(b.internshipDetails.renderedHours) -
+          parseFloat(a.internshipDetails.renderedHours)
+        );
+      })
+      .splice(0, 10)
+      .map((intern, index) => {
+        return <DashboardIntern intern={intern} key={index} />;
+      });
   };
 
   const renderApprovals = () => {
