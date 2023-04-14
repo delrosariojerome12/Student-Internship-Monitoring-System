@@ -264,11 +264,14 @@
     }
   }
   .sort {
-    display: grid;
-    grid-template-rows: 1fr auto;
+    @include flexColumn;
+
     .sort-div {
       padding: 1rem;
+      border-radius: 1rem;
+      background-color: #fff;
       border: solid 1px #000;
+      height: 100%;
     }
     .close-btn {
       @include flexCenter;
@@ -286,9 +289,22 @@
     }
   }
   .filter {
+    h4 {
+      padding-left: 1rem;
+    }
     .inputs-container {
       padding: 1rem;
+      border-radius: 1rem;
+      background-color: #fff;
       border: solid 1px #000;
+      label {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        input {
+          margin: auto 0;
+        }
+      }
     }
   }
   .more-details {
