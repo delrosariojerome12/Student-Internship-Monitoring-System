@@ -1,27 +1,39 @@
 /** @format */
 
-import React, { useState, useCallback, useEffect } from "react";
+import React, {useState, useCallback, useEffect} from "react";
 import Intern from "../../components/coordinator/Intern";
-import { useSelector, useDispatch } from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 import internWaiting from "../../assets/img/waiting.svg";
 import {
   getAllInterns,
   handleInternModal,
 } from "../../features/interns/internReducer";
-
-import { BiSearchAlt } from "react-icons/bi";
+import CreatableSelect from "react-select/creatable";
+import Select from "react-select";
+import {BiSearchAlt} from "react-icons/bi";
 import Bouncing from "../../components/loading/Bouncing";
 import SelectedIntern from "../../components/coordinator/dashboardCoordinator/SelectedIntern";
-import { useNavigate } from "react-router";
+import {useNavigate} from "react-router";
+import internship, {
+  getAllInternship,
+} from "../../features/coordinator/internship";
 
 const Interns = React.memo(() => {
-  const { interns, isError, selectedIntern, isInternOpen } = useSelector(
+  const {interns, isError, selectedIntern, isInternOpen} = useSelector(
     (state) => state.intern
   );
+  const {internships, allInternshipsName} = useSelector(
+    (state) => state.internship
+  );
+
   const [searchIntern, setSearchIntern] = useState("");
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [sortValue, setSortValue] = useState(null);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [filterValue, setFilterValue] = useState(null);
+  const [workFilterValue, setWorkFilterValue] = useState(null);
+  const [internshipFilterValue, setInternshipFilterValue] = useState(null);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -45,8 +57,8 @@ const Interns = React.memo(() => {
         </div>
       );
     } else {
-      if (sortValue) {
-        switch (sortValue) {
+      if (sortValue || filterValue) {
+        switch (sortValue || filterValue) {
           case "name-ascending":
             return (
               <div className="interns interns-active">
@@ -124,6 +136,38 @@ const Interns = React.memo(() => {
                   })}
               </div>
             );
+          case "work-filter":
+            return (
+              <div className="interns interns-active">
+                {interns
+                  .filter((item, index) => {
+                    const {
+                      internshipDetails: {typeOfWork},
+                      verification: {isVerified},
+                    } = item;
+                    return isVerified && typeOfWork === workFilterValue;
+                  })
+                  .map((intern, index) => {
+                    return <Intern intern={intern} key={index} />;
+                  })}
+              </div>
+            );
+          case "internship-filter":
+            return (
+              <div className="interns interns-active">
+                {interns
+                  .filter((item, index) => {
+                    const {
+                      internshipDetails: {companyName},
+                      verification: {isVerified},
+                    } = item;
+                    return isVerified && companyName === internshipFilterValue;
+                  })
+                  .map((intern, index) => {
+                    return <Intern intern={intern} key={index} />;
+                  })}
+              </div>
+            );
           default:
             break;
         }
@@ -173,7 +217,60 @@ const Interns = React.memo(() => {
 
   useEffect(() => {
     dispatch(getAllInterns());
+    dispatch(getAllInternship());
   }, []);
+
+  const options = [
+    {
+      value: "Encoding",
+      label: "Encoding",
+    },
+    {
+      value: "Paper Works",
+      label: "Paper Works",
+    },
+    {
+      value: "Sofware Development",
+      label: "Sofware Development",
+    },
+    {
+      value: "Hardware Related",
+      label: "Hardware Related",
+    },
+    {
+      value: "Not specified",
+      label: "Not specified",
+    },
+  ];
+
+  const customStyle = {
+    control: (styles) => ({
+      ...styles,
+      border: "solid 1px #8b8b8b",
+      fontSize: "1.5rem",
+      paddingLeft: "10px",
+      height: "50px",
+    }),
+    options: (base, state) => ({
+      ...base,
+      backgroundColor: state.isSelected ? "red" : "green",
+    }),
+    menu: (base) => ({
+      ...base,
+      marginTop: 0,
+    }),
+  };
+
+  if (interns) {
+    // const x = interns.filter((item, index) => {
+    //   const {
+    //     internshipDetails: {companyName},
+    //     verification: {isVerified},
+    //   } = item;
+    //   return isVerified && companyName === "Github";
+    // });
+    // console.log(x);
+  }
 
   return (
     <section className="intern-container" onClick={handleResetFocus}>
@@ -264,7 +361,54 @@ const Interns = React.memo(() => {
             <div className="overlay"></div>
             <div onClick={(e) => e.stopPropagation()} className="filter modal">
               <h3>Filter</h3>
-              <form></form>
+              <form>
+                <div className="work-filter">
+                  <CreatableSelect
+                    tabIndex={-1}
+                    styles={customStyle}
+                    required
+                    placeholder="Work in Internship"
+                    onChange={(e) => {
+                      setSortValue(null);
+                      setFilterValue("work-filter");
+                      setWorkFilterValue(e.value);
+                    }}
+                    theme={(theme) => ({
+                      ...theme,
+                      outline: "solid 1px #8b8b8b",
+                      colors: {
+                        ...theme.colors,
+                        primary25: "#8b8b8b",
+                        primary: "#457b9d",
+                      },
+                    })}
+                    options={options}
+                  />
+                </div>
+                <div className="internship-filter">
+                  <Select
+                    tabIndex={-1}
+                    styles={customStyle}
+                    required
+                    placeholder="Internships"
+                    onChange={(e) => {
+                      setSortValue(null);
+                      setInternshipFilterValue(e.value);
+                      setFilterValue("internship-filter");
+                    }}
+                    theme={(theme) => ({
+                      ...theme,
+                      outline: "solid 1px #8b8b8b",
+                      colors: {
+                        ...theme.colors,
+                        primary25: "#8b8b8b",
+                        primary: "#457b9d",
+                      },
+                    })}
+                    options={allInternshipsName}
+                  />
+                </div>
+              </form>
               <div className="btn-close">
                 <button onClick={handleResetFocus}>Close</button>
               </div>
@@ -277,7 +421,8 @@ const Interns = React.memo(() => {
         <>
           <div
             onClick={() => dispatch(handleInternModal())}
-            className="overlay"></div>
+            className="overlay"
+          ></div>
           <div className="preview-container modal">
             <SelectedIntern />
             <div className="btn-close">
@@ -288,7 +433,8 @@ const Interns = React.memo(() => {
                 onClick={() => {
                   dispatch(handleInternModal());
                   navigate(`/dashboard/interns/${selectedIntern.email}`);
-                }}>
+                }}
+              >
                 Intern Profile
               </button>
             </div>
