@@ -214,7 +214,7 @@ const Dashboard = React.memo(() => {
       case "Password":
         data[index].value = value;
         const passwordRegex =
-          /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_.-]).*$/;
+          /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_.-`!~]).*$/;
         let isPasswordValid = passwordRegex.test(value);
         if (isPasswordValid) {
           data[index].isError = false;
@@ -233,7 +233,7 @@ const Dashboard = React.memo(() => {
         const password = form[index - 1].value;
         const confirmPassword = form[index];
         const confirmPasswordRegex =
-          /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$/;
+          /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_.-`!~]).*$/;
         let isConfirmPasswordValid = confirmPasswordRegex.test(value);
         password === confirmPassword.value && isConfirmPasswordValid
           ? (confirmPassword.isError = false)

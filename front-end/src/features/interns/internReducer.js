@@ -48,7 +48,6 @@ export const getIntern = createAsyncThunk(
     try {
       const url = `https://sims-twqb.onrender.com/intern/getIntern/${email}`;
       const {data: res} = await axios.get(url);
-      console.log(res);
       return {intern: res.user};
     } catch (error) {
       console.log(error);
@@ -114,7 +113,6 @@ export const internReducer = createSlice({
     },
     handleSelectedIntern: (state, action) => {
       state.selectedIntern = action.payload;
-      console.log(state.selectedIntern);
     },
     handleSort: (state, action) => {
       console.log("sort");
