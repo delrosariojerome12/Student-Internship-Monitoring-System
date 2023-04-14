@@ -1,8 +1,10 @@
-import React, {useState, useEffect} from "react";
-import {useSelector, useDispatch} from "react-redux";
-import {FaCheck, FaCamera, FaRegImage} from "react-icons/fa";
-import {IconContext} from "react-icons";
-import {BiSearchAlt} from "react-icons/bi";
+/** @format */
+
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { FaCheck, FaCamera, FaRegImage } from "react-icons/fa";
+import { IconContext } from "react-icons";
+import { BiSearchAlt } from "react-icons/bi";
 
 import Bouncing from "../../components/loading/Bouncing";
 import ServerError from "../serverError";
@@ -12,7 +14,7 @@ import TimeOutModal from "../../components/intern/TimeOutModal";
 import AttendanceModal from "../../components/intern/AttendanceModal";
 import CantStart from "./CantStart";
 
-import {getAllAttendance} from "../../features/interns/attendanceReducer";
+import { getAllAttendance } from "../../features/interns/attendanceReducer";
 import NoDocumentSvg from "../../assets/img/waiting.svg";
 
 import {
@@ -25,7 +27,7 @@ import {
 } from "../../features/interns/attendanceReducer";
 
 const DailyTimeRecord = React.memo(() => {
-  const {user} = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
   const {
     isLoading,
     isError,
@@ -46,15 +48,15 @@ const DailyTimeRecord = React.memo(() => {
   const [isLegendOpen, setLegendOpen] = useState(false);
 
   const {
-    user: {firstName, lastName, profileImage, email},
-    internshipDetails: {renderedHours, startingDate, companyName},
-    schoolDetails: {program, requiredHours},
+    user: { firstName, lastName, profileImage, email },
+    internshipDetails: { renderedHours, startingDate, companyName },
+    schoolDetails: { program, requiredHours },
     scheduleDetails,
     status,
   } = user;
 
   useEffect(() => {
-    dispatch(getAllAttendance({email, scheduleDetails}));
+    dispatch(getAllAttendance({ email, scheduleDetails }));
   }, []);
 
   if (isError) {
@@ -87,7 +89,7 @@ const DailyTimeRecord = React.memo(() => {
   };
 
   return (
-    <IconContext.Provider value={{className: "icon"}}>
+    <IconContext.Provider value={{ className: "icon" }}>
       <section className="daily-time-record">
         <header>
           <div className="user">
@@ -119,10 +121,9 @@ const DailyTimeRecord = React.memo(() => {
                 onClick={() => dispatch(handleTimeIn())}
                 style={
                   isTimeInDisable
-                    ? {pointerEvents: "none", opacity: ".5"}
-                    : {opacity: "1"}
-                }
-              >
+                    ? { pointerEvents: "none", opacity: ".5" }
+                    : { opacity: "1" }
+                }>
                 Time In
               </button>
               <button
@@ -130,10 +131,9 @@ const DailyTimeRecord = React.memo(() => {
                 onClick={() => dispatch(handleTimeOut())}
                 style={
                   isTimeOutDisable
-                    ? {pointerEvents: "none", opacity: ".5"}
-                    : {opacity: "1"}
-                }
-              >
+                    ? { pointerEvents: "none", opacity: ".5" }
+                    : { opacity: "1" }
+                }>
                 Time Out
               </button>
             </div>
@@ -141,8 +141,7 @@ const DailyTimeRecord = React.memo(() => {
               <button
                 onClick={() => {
                   setLegendOpen(!isLegendOpen);
-                }}
-              >
+                }}>
                 Show Legend
               </button>
             </div>
@@ -160,14 +159,26 @@ const DailyTimeRecord = React.memo(() => {
         {isTodayOpen && <AttendanceModal />}
         {isLegendOpen && (
           <>
-            <div className="overlay"></div>
+            <div
+              className="overlay"
+              onClick={() => {
+                setLegendOpen(!isLegendOpen);
+              }}></div>
             <div className="legend-modal">
               <div className="time">
                 <div className="upper">
-                  <p>Time in (AM): 8:00 AM - 10:30 AM PM</p>
-                  <p>Afternoon Time out (PM): 12:00 PM</p>
-                  <p>Afternoon Time in (PM): 1:00 PM - 1:30 PM</p>
-                  <p>Time out (PM): 2:00 PM - 6:00</p>
+                  <p>
+                    <b>Time in (AM): </b> 8:00 AM - 10:30 AM
+                  </p>
+                  <p>
+                    <b>Afternoon Time out (PM):</b> 12:00 PM
+                  </p>
+                  <p>
+                    <b>Afternoon Time in (PM): </b> 1:00 PM - 1:30 PM
+                  </p>
+                  <p>
+                    <b>Time out (PM): </b> 2:00 PM - 6:00 PM
+                  </p>
                 </div>
 
                 <div className="lower">
@@ -183,8 +194,7 @@ const DailyTimeRecord = React.memo(() => {
               <button
                 onClick={() => {
                   setLegendOpen(!isLegendOpen);
-                }}
-              >
+                }}>
                 Close
               </button>
             </div>

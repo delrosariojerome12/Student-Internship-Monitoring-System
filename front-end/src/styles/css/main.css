@@ -5680,7 +5680,7 @@ button {
     width: 100%;
     height: 100%;
   }
-  .dashboard .monitor-attendance .more-details .details img, .dashboard-active .monitor-attendance .more-details .details img {
+  .dashboard .monitor-attendance .more-details .details .timeIn-Out img, .dashboard-active .monitor-attendance .more-details .details .timeIn-Out img {
     height: 25rem;
     width: 25rem;
   }
@@ -5695,7 +5695,7 @@ button {
   .dashboard .monitor-attendance .more-details .details > *, .dashboard-active .monitor-attendance .more-details .details > * {
     font-size: 1.7rem;
   }
-  .dashboard .monitor-attendance .more-details .details img, .dashboard-active .monitor-attendance .more-details .details img {
+  .dashboard .monitor-attendance .more-details .details .timeIn-Out img, .dashboard-active .monitor-attendance .more-details .details .timeIn-Out img {
     height: 20rem;
     width: 20rem;
   }
@@ -5741,7 +5741,7 @@ button {
   .dashboard .monitor-attendance .more-details .details > *, .dashboard-active .monitor-attendance .more-details .details > * {
     font-size: 1.6rem;
   }
-  .dashboard .monitor-attendance .more-details .details img, .dashboard-active .monitor-attendance .more-details .details img {
+  .dashboard .monitor-attendance .more-details .details .timeIn-Out img, .dashboard-active .monitor-attendance .more-details .details .timeIn-Out img {
     height: 17rem;
     width: 17rem;
   }
@@ -10374,8 +10374,8 @@ button {
   overflow-y: auto;
   background-color: #d9d9d9;
   border-radius: 1rem;
-  height: 55rem;
-  width: 45rem;
+  height: 45rem;
+  width: 55rem;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -10388,12 +10388,12 @@ button {
   gap: 1rem;
 }
 .daily-time-record .legend-modal .time {
-  padding: 1rem;
+  padding: 2rem;
   background-color: #fff;
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: 1rem;
 }
 .daily-time-record .legend-modal .time .upper {
@@ -10408,6 +10408,9 @@ button {
 }
 .daily-time-record .legend-modal .time h5 {
   text-align: center;
+}
+.daily-time-record .legend-modal button {
+  height: 4rem;
 }
 .daily-time-record .no-camera {
   display: flex;
@@ -10511,17 +10514,16 @@ button {
   border-radius: 1rem;
 }
 .daily-time-record header .mid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  justify-content: space-between;
   background-color: #282b30;
-  padding: 1rem;
+  padding: 1rem 4rem;
   border-radius: 1rem;
 }
 .daily-time-record header .mid .button-container {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding-left: 3rem;
 }
 .daily-time-record header .mid .button-container button {
   display: flex;
@@ -10549,34 +10551,25 @@ button {
   border-radius: 0;
   border: solid 1px #e63946;
 }
-.daily-time-record header .mid .search-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f1faee;
-  width: 80%;
-  border-radius: 2rem;
-  align-items: center;
-  padding: 0 1.5rem;
-  margin: auto;
-}
-.daily-time-record header .mid .search-box span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  cursor: pointer;
-}
-.daily-time-record header .mid .search-box input {
-  width: 100%;
-  background: transparent;
-  padding: 1rem;
-  outline: none;
-  border: 0;
-}
 .daily-time-record header .mid .legend {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+}
+.daily-time-record header .mid .legend button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.6rem 3rem;
+  border-radius: 1rem;
+  height: 4rem;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.daily-time-record header .mid .legend button:hover {
+  border-radius: 0;
+  background-color: #f1faee;
+  color: #0d7377;
+  border: solid 1px #0d7377;
 }
 .daily-time-record .DTR-content {
   display: grid;
@@ -10697,7 +10690,8 @@ button {
     height: 10rem;
     width: 10rem;
   }
-  .daily-time-record header .mid .button-container button {
+  .daily-time-record header .mid .button-container button,
+  .daily-time-record header .mid .legend button {
     height: 3.5rem;
   }
   .daily-time-record .DTR-content {
@@ -10723,12 +10717,37 @@ button {
     grid-template-columns: auto;
   }
 }
+@media screen and (max-width: 650px) {
+  .daily-time-record header .mid {
+    padding: 1rem 2rem;
+  }
+}
 @media screen and (max-width: 600px) {
   .daily-time-record {
     grid-template-rows: auto minmax(20rem, 47vh);
   }
   .daily-time-record .modal {
     width: 99%;
+  }
+  .daily-time-record .legend-modal {
+    height: 40rem;
+    width: 48rem;
+  }
+  .daily-time-record .legend-modal .time {
+    padding: 1rem;
+    display: grid;
+    grid-template-rows: 1fr auto;
+  }
+  .daily-time-record .legend-modal .time .upper {
+    gap: 0.4rem;
+    padding: 1rem 0 0 0;
+  }
+  .daily-time-record .legend-modal .time .upper p {
+    text-align: center;
+    font-size: 1.7rem;
+  }
+  .daily-time-record .legend-modal .time .lower {
+    gap: 0;
   }
   .daily-time-record .time-in .camera img,
   .daily-time-record .time-in .camera video,
@@ -10761,6 +10780,10 @@ button {
   .daily-time-record button {
     height: 4rem;
   }
+  .daily-time-record .legend-modal {
+    width: 100%;
+    padding: 1.5rem;
+  }
   .daily-time-record .time-in .address h2,
   .daily-time-record .time-out .address h2 {
     font-size: 1.8rem;
@@ -10790,15 +10813,16 @@ button {
     font-size: 1.6rem;
   }
   .daily-time-record header .mid {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 0.5rem;
     padding: 0.5rem;
   }
-  .daily-time-record header .mid .button-container {
+  .daily-time-record header .mid .button-container,
+  .daily-time-record header .mid .legend {
     justify-content: center;
-    padding: 0;
   }
-  .daily-time-record header .mid .button-container button {
+  .daily-time-record header .mid .button-container button,
+  .daily-time-record header .mid .legend button {
     height: 3rem;
   }
   .daily-time-record .no-camera {
@@ -10837,6 +10861,17 @@ button {
   }
   .daily-time-record .attendance-absent .btn-close button:hover {
     background-color: #fff;
+  }
+}
+@media screen and (max-width: 450px) {
+  .daily-time-record .legend-modal .time .upper p {
+    font-size: 1.6rem;
+  }
+  .daily-time-record .legend-modal .time .lower h5 {
+    font-size: 1.4rem;
+  }
+  .daily-time-record .legend-modal button {
+    height: 3.5rem;
   }
 }
 @media screen and (max-width: 400px) {
@@ -10881,6 +10916,14 @@ button {
   .daily-time-record .attendance-view .upper .img-con img {
     height: 18rem;
     width: 18rem;
+  }
+}
+@media screen and (max-width: 380px) {
+  .daily-time-record .legend-modal .time .upper p {
+    font-size: 1.55rem;
+  }
+  .daily-time-record .legend-modal .time .lower h5 {
+    font-size: 1.35rem;
   }
 }
 /** @format */
