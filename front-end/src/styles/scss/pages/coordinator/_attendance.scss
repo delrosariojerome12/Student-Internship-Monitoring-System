@@ -56,6 +56,18 @@
         display: flex;
         align-items: center;
         gap: 1rem;
+        button {
+          background-color: $primary-compliment-landing;
+          color: $primary-font-color;
+          transition: all 0.3s ease-in-out;
+          border-radius: 1rem;
+          letter-spacing: 0.2rem;
+          &:hover {
+            background-color: $primary-feature-bg;
+            color: #fff;
+            border-radius: 0;
+          }
+        }
       }
       .date-container {
         display: flex;

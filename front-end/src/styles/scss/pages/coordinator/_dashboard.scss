@@ -33,26 +33,6 @@
         font-size: 2rem;
       }
     }
-    // .search-bar {
-    //   @include flexCenter;
-    //   background-color: $light-bg-color;
-    //   border-radius: 2rem;
-    //   padding: 0 1.5rem;
-    //   margin: auto;
-
-    //   span {
-    //     @include flexCenter;
-    //     font-size: 2rem;
-    //     cursor: pointer;
-    //   }
-    //   input {
-    //     width: 100%;
-    //     background: transparent;
-    //     padding: 1rem;
-    //     outline: none;
-    //     border: 0;
-    //   }
-    // }
   }
 
   .dashboard-content {
@@ -635,6 +615,7 @@
         .no-intern,
         .no-approvals,
         .no-internships {
+          padding-top: 4rem;
           img {
             height: 13rem;
             width: 13rem;
@@ -912,6 +893,18 @@
               }
             }
           }
+        }
+      }
+    }
+
+    .dashboard-content {
+      .dashboard-intern,
+      .dashboard-approvals,
+      .dashboard-internships {
+        .no-intern,
+        .no-approvals,
+        .no-internships {
+          padding-top: 2rem;
         }
       }
     }

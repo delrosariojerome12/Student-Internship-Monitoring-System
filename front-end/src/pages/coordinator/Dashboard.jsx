@@ -1,24 +1,24 @@
 /** @format */
 
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import DashboardIntern from "../../components/coordinator/dashboardCoordinator/DashboardIntern";
 import DashboardApprovals from "../../components/coordinator/dashboardCoordinator/DashboardApprovals";
 import Approval from "../../components/coordinator/ApprovalIntern";
-import {useSelector, useDispatch} from "react-redux";
-import {getAllInterns} from "../../features/interns/internReducer";
-import {BiSearchAlt} from "react-icons/bi";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllInterns } from "../../features/interns/internReducer";
+import { BiSearchAlt } from "react-icons/bi";
 
 import NoIntern from "../../assets/img/head.svg";
 import NoApprovals from "../../assets/img/approvals.svg";
 import NoInternship from "../../assets/img/no-internship.svg";
-import {getAllInternship} from "../../features/coordinator/internship";
+import { getAllInternship } from "../../features/coordinator/internship";
 
 import Internship from "../../components/coordinator/Internship";
 const Dashboard = React.memo(() => {
-  const {approvalInterns, interns, isError} = useSelector(
+  const { approvalInterns, interns, isError } = useSelector(
     (state) => state.intern
   );
-  const {internships} = useSelector((state) => state.internship);
+  const { internships } = useSelector((state) => state.internship);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,32 +30,32 @@ const Dashboard = React.memo(() => {
     if (!interns) {
       return <h1>Loading...</h1>;
     }
-    if (
-      interns.filter((intern) => intern.verification.isVerified).length === 0
-    ) {
-      return (
-        <section className="dashboard-intern">
-          <div className="no-intern">
-            <img src={NoIntern} alt="" className="no-intern-img" />
-            <h3>No verified intern found!</h3>
-          </div>
-        </section>
-      );
-    }
+    // if (
+    //   interns.filter((intern) => intern.verification.isVerified).length === 0
+    // ) {
+    return (
+      <section className="dashboard-intern">
+        <div className="no-intern">
+          <img src={NoIntern} alt="" className="no-intern-img" />
+          <h3>No verified intern found!</h3>
+        </div>
+      </section>
+    );
+    // }
 
-    // can make conditional
-    return interns
-      .filter((intern) => intern.verification.isVerified)
-      .sort((a, b) => {
-        return (
-          parseFloat(b.internshipDetails.renderedHours) -
-          parseFloat(a.internshipDetails.renderedHours)
-        );
-      })
-      .splice(0, 10)
-      .map((intern, index) => {
-        return <DashboardIntern intern={intern} key={index} />;
-      });
+    // // can make conditional
+    // return interns
+    //   .filter((intern) => intern.verification.isVerified)
+    //   .sort((a, b) => {
+    //     return (
+    //       parseFloat(b.internshipDetails.renderedHours) -
+    //       parseFloat(a.internshipDetails.renderedHours)
+    //     );
+    //   })
+    //   .splice(0, 10)
+    //   .map((intern, index) => {
+    //     return <DashboardIntern intern={intern} key={index} />;
+    //   });
   };
 
   const renderApprovals = () => {
@@ -102,7 +102,7 @@ const Dashboard = React.memo(() => {
 
     return dashboardInternships.map((item, index) => {
       const {
-        logo: {link},
+        logo: { link },
         companyName,
         students,
       } = item;
@@ -129,12 +129,6 @@ const Dashboard = React.memo(() => {
           </h1>
           <h4> Welcome Back!</h4>
         </div>
-        {/* <div className="search-bar">
-          <span>
-            <BiSearchAlt />
-          </span>
-          <input placeholder="Search" type="text" />
-        </div> */}
       </header>
       <div className="dashboard-content">
         <div className="dashboard-intern">
