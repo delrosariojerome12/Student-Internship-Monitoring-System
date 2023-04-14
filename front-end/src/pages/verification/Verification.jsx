@@ -746,7 +746,6 @@ const Verification = React.memo(() => {
       const newForm = [...form];
 
       if (companyName && position === 0) {
-        console.log("1");
         const inputField = newForm[mainIndex].forms[7].id;
         switch (inputField) {
           case "starting-date":
@@ -766,7 +765,6 @@ const Verification = React.memo(() => {
             return;
         }
       } else {
-        console.log("2");
         const inputField = newForm[mainIndex].forms[index].id;
 
         switch (inputField) {
@@ -804,8 +802,8 @@ const Verification = React.memo(() => {
             return;
           case "supervisor":
             newForm[mainIndex].forms[index].value = value;
-            const regex =
-              /^(?=.{2,50}$)(?!(\s.*){3,})(?!\s{3,})[^\d]*(\s[^\d]*){0,2}$/;
+            const regex = /^(?=.{2,50}$)(?!(\s.*){3,})(?!\s{3,})[a-zA-Z\s]*$/;
+
             let isSuperValid = regex.test(value);
             if (isSuperValid) {
               newForm[mainIndex].forms[index].isError = false;
@@ -813,7 +811,7 @@ const Verification = React.memo(() => {
               newForm[mainIndex].forms[index].isError = true;
               if (/\d/.test(value)) {
                 newForm[mainIndex].forms[index].errorMessage =
-                  "Supervisor name should not contain numbers";
+                  "Supervisor name should not contain numbers or special characters.";
               } else if (value.length < 2) {
                 newForm[mainIndex].forms[index].errorMessage =
                   "Supervisor name should have at least 2 and maximum of 50 characters";

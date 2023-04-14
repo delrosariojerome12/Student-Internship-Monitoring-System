@@ -78,7 +78,7 @@ const Signup = React.memo(() => {
       IconType: FaLock,
       isError: false,
       errorMessage:
-        "Password must have: Atleast 1 uppercase, 1 lowercase, 1 number, 1 special characters and minimum of 8 characters",
+        "Password must have: Atleast 1 uppercase, 1 lowercase, 1 number minimum of 8 characters",
       requirements: [],
       hasEyeIcon: true,
       code: "password",
@@ -124,26 +124,26 @@ const Signup = React.memo(() => {
     switch (input) {
       case "First Name":
         data[index].value = value;
-        let firstNameRegex = /^[a-zA-Z]+$/; // regex pattern to match alphabetical characters only
+
+        let firstNameRegex = /^[a-zA-Z]+( [a-zA-Z]+){0,2}$/;
+
         value.length > 2 && value.length < 20 && firstNameRegex.test(value)
           ? (data[index].isError = false)
           : (data[index].isError = true);
-        // data[index].value =
-        // value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
-        data[index].value =
-          value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+
+        data[index].value = value;
         setForm(data);
         checkCompletion();
         return;
       case "Last Name":
         data[index].value = value;
-        let lastNameRegex = /^[a-zA-Z]+$/;
+        let lastNameRegex = /^[a-zA-Z]+( [a-zA-Z]+){0,2}$/;
         value.length > 2 && value.length < 20 && lastNameRegex.test(value)
           ? (data[index].isError = false)
           : (data[index].isError = true);
 
-        data[index].value =
-          value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+        data[index].value = value;
+        // value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
         setForm(data);
         checkCompletion();
 
@@ -163,7 +163,8 @@ const Signup = React.memo(() => {
         data[index].value = value;
 
         const passwordRegex =
-          /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_.-`!~]).*$/;
+          /^(?=.*\d)(?=.*[@#$%^&+=_.-`!~])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
         let isPasswordValid = passwordRegex.test(value);
         if (isPasswordValid) {
           data[index].isError = false;
@@ -182,8 +183,9 @@ const Signup = React.memo(() => {
 
         const password = data[index - 1].value;
         const confirmPassword = data[index];
+
         const confirmPasswordRegex =
-          /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_.-`!~]).*$/;
+          /^(?=.*\d)(?=.*[@#$%^&+=_.-`!~])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
         let isConfirmPasswordValid = confirmPasswordRegex.test(value);
         password === value && isConfirmPasswordValid
