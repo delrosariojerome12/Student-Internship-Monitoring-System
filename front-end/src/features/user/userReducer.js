@@ -1,21 +1,19 @@
 /** @format */
 
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import {
   timeOutAttendance,
   checkStartingDate,
 } from "../interns/attendanceReducer";
-import {
-  enrollInternship,
-  unEnrollInternship,
-} from "../coordinator/internship";
+import {enrollInternship, unEnrollInternship} from "../coordinator/internship";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   // signOut
 } from "firebase/auth";
 import axios from "axios";
-import { auth } from "../../Firebase";
+import {auth} from "../../Firebase";
+import {sendDocument, removeDocument} from "../interns/documentsReducer";
 
 const initialState = {
   user: null,
@@ -28,7 +26,7 @@ const initialState = {
 
 const convertForm = (form) => {
   const newData = form.map((input) => {
-    const { code, value } = input;
+    const {code, value} = input;
     return {
       code,
       value,
@@ -37,7 +35,7 @@ const convertForm = (form) => {
 
   const newObject = Object.assign(
     {},
-    ...newData.map((item) => ({ [item.code]: item.value }))
+    ...newData.map((item) => ({[item.code]: item.value}))
   );
 
   return newObject;
@@ -45,12 +43,12 @@ const convertForm = (form) => {
 
 export const handleCreateUser = createAsyncThunk(
   "/user/createUser",
-  async ({ form }, { rejectWithValue }) => {
+  async ({form}, {rejectWithValue}) => {
     try {
       const url = "https://sims-twqb.onrender.com/auth/signup";
       // const url = "http://localhost:5000/auth/signup";
-      const { data: res } = await axios.post(url, convertForm(form));
-      return { res };
+      const {data: res} = await axios.post(url, convertForm(form));
+      return {res};
     } catch (err) {
       console.log(err);
       return rejectWithValue(err.response.data);
@@ -60,13 +58,13 @@ export const handleCreateUser = createAsyncThunk(
 
 export const handleSignup = createAsyncThunk(
   "/user/signUser",
-  async (form, { rejectWithValue }) => {
+  async (form, {rejectWithValue}) => {
     try {
-      const { email, firstName, lastName, password } = convertForm(form);
+      const {email, firstName, lastName, password} = convertForm(form);
       const url = "https://sims-twqb.onrender.com/auth/signup";
       // const user = await createUserWithEmailAndPassword(auth, email, password);
-      const { data: res } = await axios.post(url, convertForm(form));
-      return { res };
+      const {data: res} = await axios.post(url, convertForm(form));
+      return {res};
     } catch (err) {
       console.log(err);
       return rejectWithValue(err.response.data);
@@ -76,13 +74,13 @@ export const handleSignup = createAsyncThunk(
 
 export const handleLogin = createAsyncThunk(
   "/user/logUser",
-  async (form, { rejectWithValue }) => {
+  async (form, {rejectWithValue}) => {
     try {
-      const { email, firstName, lastName, password } = convertForm(form);
+      const {email, firstName, lastName, password} = convertForm(form);
       // const user = signInWithEmailAndPassword(auth, email, password);
       const url = "https://sims-twqb.onrender.com/auth/login";
-      const { data: res } = await axios.post(url, convertForm(form));
-      return { res };
+      const {data: res} = await axios.post(url, convertForm(form));
+      return {res};
     } catch (err) {
       console.log(err);
       return rejectWithValue(err.response.data);
@@ -92,11 +90,11 @@ export const handleLogin = createAsyncThunk(
 
 export const getUserOnLoad = createAsyncThunk(
   "/user/getUserOnLoad",
-  async (email, { rejectWithValue }) => {
+  async (email, {rejectWithValue}) => {
     try {
       const url = `https://sims-twqb.onrender.com/user/getUser/${email}`;
-      const { data: res } = await axios.get(url);
-      return { res: res.user };
+      const {data: res} = await axios.get(url);
+      return {res: res.user};
     } catch (error) {
       console.log(error);
       return rejectWithValue(error.response.data);
@@ -106,13 +104,13 @@ export const getUserOnLoad = createAsyncThunk(
 
 export const requestVerification = createAsyncThunk(
   "/user/requestVerify",
-  async (form, { rejectWithValue }) => {
+  async (form, {rejectWithValue}) => {
     console.log(form);
     try {
       const url = `https://sims-twqb.onrender.com/intern/requestVerify`;
-      const { data: res } = await axios.patch(url, form);
+      const {data: res} = await axios.patch(url, form);
       console.log(res);
-      return { res: res.user };
+      return {res: res.user};
     } catch (error) {
       console.log(error);
       return rejectWithValue(error.response.data);
@@ -161,8 +159,8 @@ export const userReducer = createSlice({
     // enroll
     builder
       .addCase(enrollInternship.pending, (state, action) => {})
-      .addCase(enrollInternship.fulfilled, (state, { payload: { res } }) => {
-        const { enrolledIntern } = res.data;
+      .addCase(enrollInternship.fulfilled, (state, {payload: {res}}) => {
+        const {enrolledIntern} = res.data;
         console.log(enrolledIntern);
         state.user = enrolledIntern;
       })
@@ -170,8 +168,8 @@ export const userReducer = createSlice({
     // unenroll
     builder
       .addCase(unEnrollInternship.pending, (state, action) => {})
-      .addCase(unEnrollInternship.fulfilled, (state, { payload: { res } }) => {
-        const { enrolledIntern } = res.data;
+      .addCase(unEnrollInternship.fulfilled, (state, {payload: {res}}) => {
+        const {enrolledIntern} = res.data;
         console.log(enrolledIntern);
         state.user = enrolledIntern;
       })
@@ -182,7 +180,7 @@ export const userReducer = createSlice({
         state.isLoading = true;
       })
       .addCase(handleLogin.fulfilled, (state, action) => {
-        const { res } = action.payload;
+        const {res} = action.payload;
         state.isLoading = false;
         state.isError = false;
         state.user = res.user;
@@ -200,7 +198,7 @@ export const userReducer = createSlice({
         state.isLoading = true;
       })
       .addCase(handleSignup.fulfilled, (state, action) => {
-        const { res } = action.payload;
+        const {res} = action.payload;
         state.isLoading = false;
         state.isError = false;
         state.user = res.user;
@@ -217,7 +215,7 @@ export const userReducer = createSlice({
         state.isLoading = true;
       })
       .addCase(getUserOnLoad.fulfilled, (state, action) => {
-        const { res } = action.payload;
+        const {res} = action.payload;
 
         console.log(res);
         state.isLoading = false;
@@ -234,7 +232,7 @@ export const userReducer = createSlice({
         state.isLoading = true;
       })
       .addCase(requestVerification.fulfilled, (state, action) => {
-        const { res } = action.payload;
+        const {res} = action.payload;
         state.isLoading = false;
         state.user = res;
       })
@@ -246,7 +244,7 @@ export const userReducer = createSlice({
     // update total hours
     builder
       .addCase(timeOutAttendance.pending, (state, action) => {})
-      .addCase(timeOutAttendance.fulfilled, (state, { payload }) => {
+      .addCase(timeOutAttendance.fulfilled, (state, {payload}) => {
         // console.log(payload.res.updatedIntern);
         state.user = payload.res.updatedIntern;
       })
@@ -254,7 +252,7 @@ export const userReducer = createSlice({
     // update user for starting date
     builder
       .addCase(checkStartingDate.pending, (state, action) => {})
-      .addCase(checkStartingDate.fulfilled, (state, { payload }) => {
+      .addCase(checkStartingDate.fulfilled, (state, {payload}) => {
         console.log(payload.res);
 
         if (!payload.res) {
@@ -262,10 +260,24 @@ export const userReducer = createSlice({
         }
       })
       .addCase(checkStartingDate.rejected, (state, action) => {});
+
+    // update user documents
+    builder
+      .addCase(sendDocument.pending, (state, action) => {})
+      .addCase(sendDocument.fulfilled, (state, {payload}) => {
+        state.user = payload.intern;
+      })
+      .addCase(sendDocument.rejected, (state, action) => {});
+    builder
+      .addCase(removeDocument.pending, (state, action) => {})
+      .addCase(removeDocument.fulfilled, (state, {payload}) => {
+        state.user = payload.intern;
+      })
+      .addCase(removeDocument.rejected, (state, action) => {});
   },
 });
 
-export const { setUser, handleLogout, handleCloseSuccess, handleCloseError } =
+export const {setUser, handleLogout, handleCloseSuccess, handleCloseError} =
   userReducer.actions;
 
 export default userReducer.reducer;

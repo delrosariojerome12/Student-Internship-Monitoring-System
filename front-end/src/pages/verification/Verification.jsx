@@ -569,6 +569,7 @@ const Verification = React.memo(() => {
     } else {
       let numOfErrors = 0;
       let numOfValues = 0;
+
       form[position].forms.forEach((item) => {
         item.isError && numOfErrors++;
         item.value && numOfValues++;
@@ -576,6 +577,14 @@ const Verification = React.memo(() => {
 
       const lengthForms = form[position].forms.length;
       const newSteps = [...steps];
+
+      if (internshipDetails.companyName && index === 0) {
+        // newSteps[index].isCompleted = true;
+        // setSteps(newSteps);
+        numOfValues = 9;
+      }
+
+      console.log(numOfErrors, numOfValues, lengthForms);
 
       if (numOfErrors === 0 && numOfValues === lengthForms) {
         newSteps[index].isCompleted = true;
@@ -682,7 +691,6 @@ const Verification = React.memo(() => {
         }
       }
     } else {
-      console.log("2");
       form[position].forms.forEach((item) => {
         item.isError && numOfErrors++;
         item.value && numOfValues++;

@@ -61,16 +61,24 @@ const TimeInModal = React.memo(({email}) => {
   const [capturedPhoto, setCapturedPhoto] = useState(null);
   const [hasCamera, setHasCamera] = useState(true);
   const cameraRef = useRef(null);
+  const [facingMode, setFacingMode] = useState("user");
+  const [deviceType, setDeviceType] = useState(null);
 
-  const handleUserMediaError = () => {
+  const handleUserMediaError = (error) => {
     setHasCamera(false);
+    console.log("Error accessing user media:", error);
   };
 
   const cameraConstraints = {
+    facingMode: facingMode,
     width: 400,
     height: 400,
-    facingMode: "user",
   };
+
+  const handleToggleCamera = () => {
+    setFacingMode(facingMode === "user" ? "environment" : "user");
+  };
+
   const getLocation = async (latitude, longitude) => {
     try {
       const url = `https://api.tomtom.com/search/2/reverseGeocode/${latitude},${longitude}.json?key=${key}`;
@@ -111,14 +119,7 @@ const TimeInModal = React.memo(({email}) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // const date = new Date(dateTime);
-      const date = new Date();
-
-      // hour
-      // const hours =
-      //   date.getHours() % 12 || 12 < 10
-      //     ? `0${date.getHours() % 12 || 12}`
-      //     : date.getHours() % 12 || 12;
+      const date = new Date(dateTime);
       const hours = (date.getHours() % 12 || 12).toString().padStart(2, "0");
       const minutes =
         10 > date.getMinutes() ? `0${date.getMinutes()}` : date.getMinutes();
@@ -136,7 +137,19 @@ const TimeInModal = React.memo(({email}) => {
       timeout: 10000,
       maximumAge: 60000,
     };
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width > 1024) {
+        setDeviceType("desktop");
+      } else if (width > 768) {
+        setDeviceType("tablet");
+      } else {
+        setDeviceType("phone");
+      }
+    };
 
+    handleResize();
+    window.addEventListener("resize", handleResize);
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const {latitude, longitude} = position.coords;
@@ -149,8 +162,6 @@ const TimeInModal = React.memo(({email}) => {
     );
     return () => clearInterval(interval);
   }, []);
-
-  console.log(dateTime);
 
   if (!time || !address) {
     return (
@@ -182,6 +193,12 @@ const TimeInModal = React.memo(({email}) => {
     );
   }
 
+  const renderToggle = () => {
+    if (deviceType === "tablet" || deviceType === "phone") {
+      return <button onClick={handleToggleCamera}>Toggle Camera</button>;
+    }
+  };
+
   return (
     <>
       <div className="overlay" onClick={() => dispatch(handleTimeIn())}></div>
@@ -189,6 +206,9 @@ const TimeInModal = React.memo(({email}) => {
         <div className="address">
           <h2>{time}</h2>
           <h3>{address}</h3>
+          <p>
+            Take a picture of your time record or yourself at your Internship.
+          </p>
         </div>
         <div className="camera">
           {capturedPhoto ? (
@@ -203,6 +223,7 @@ const TimeInModal = React.memo(({email}) => {
                 onUserMediaError={handleUserMediaError}
               />
               <button onClick={handleCaptureImage}>Take Photo</button>
+              {renderToggle()}
             </>
           )}
         </div>

@@ -91,26 +91,13 @@ const ViewMoreDetailsModal = React.memo(() => {
                 <img src={proof.timeOutLink} alt="time-out" />
               </div>
             )}
+            {missingTimeOut && (
+              <div className="time-out">
+                <h3>Missing Time-out</h3>
+                <p>Marked as Absent.</p>
+              </div>
+            )}
           </div>
-
-          {missingTimeOut && (
-            <div className="time-out">
-              <h3>Missing Time-out</h3>
-              <p>Marked as Absent.</p>
-            </div>
-          )}
-
-          {proof.timeOutLink && (
-            <div className="time-out">
-              <p>
-                <b>Time out: </b> {timeOut}
-              </p>
-              <p>
-                <b>Location Time out: </b> {locationTimeOut}
-              </p>
-              <img src={proof.timeOutLink} alt="time-out" />
-            </div>
-          )}
         </div>
         <div className="btn-controller">
           <button onClick={() => dispatch(handleCloseModal())}>Close</button>

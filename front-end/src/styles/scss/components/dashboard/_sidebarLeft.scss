@@ -475,3 +475,18 @@
     }
   }
 }
+
+@media screen and (max-height: 520px) {
+  .left-sidebar {
+    .links-con {
+      .sub-container {
+        grid-template-rows: 13rem auto auto;
+        .link-container {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-auto-rows: auto;
+        }
+      }
+    }
+  }
+}

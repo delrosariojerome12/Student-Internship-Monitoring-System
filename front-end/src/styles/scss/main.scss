@@ -48,16 +48,11 @@
 
 @import "./pages/pageNotFound";
 @import "./pages/serverError";
-// @import "./screen/mobile";
-// @import "./screen/tablet";
-// @import "./screen/desktop";
 
 @import "./screen/login";
-// @import "./screen/pending";
 @import "./screen/signup";
 @import "./screen/landingPage";
 
-//Loading
 @import "./components/loading/circle";
 @import "./components/loading/dotted";
 @import "./components/loading/bouncing";

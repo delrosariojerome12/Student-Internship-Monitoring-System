@@ -12,8 +12,6 @@ const cron = require("node-cron");
 function countRenderedHours(timeIn, timeOut) {
   const millisecondsInHour = 1000 * 60 * 60;
 
-  console.log(timeIn, "timeIn");
-  console.log(timeOut, "timeOut");
   // Convert 12-hour time to 24-hour time
   const [hoursIn, minutesIn, secondsIn, meridiemIn] = timeIn.split(/:|\s/);
   const [hoursOut, minutesOut, secondsOut, meridiemOut] = timeOut.split(/:|\s/);
@@ -99,7 +97,7 @@ const getAllAttendance = async (req, res) => {
 
   if (scheduleType === "Regular") {
     if (day > 0 && day < 6) {
-      if (hours >= 7 && hours <= 10 && amOrPm === "AM") {
+      if (hours >= 8 && hours <= 10 && amOrPm === "AM") {
         // check if greater than 10:30
 
         if (minutes > 30 && hours === 10) {
@@ -121,7 +119,6 @@ const getAllAttendance = async (req, res) => {
       } else if (hours >= 12 && minutes <= 59 && amOrPm === "PM") {
         // adjust
         // lunch
-
         if (!todayExists) {
           doesExists = {
             status: "no-time-in-lunch",
@@ -136,8 +133,9 @@ const getAllAttendance = async (req, res) => {
             };
           }
         }
-      } else if (hours === 1 && minutes <= 30 && amOrPm === "PM") {
+      } else if (hours == 1 && minutes <= 30 && amOrPm === "PM") {
         // time in afternoon
+
         if (!todayExists) {
           doesExists = {
             status: "no-time-in",
@@ -201,8 +199,9 @@ const getAllAttendance = async (req, res) => {
     }
   } else {
     // irregular
-    if (hours >= 7 && hours <= 10 && amOrPm === "AM") {
+    if (hours >= 8 && hours <= 10 && amOrPm === "AM") {
       // check if greater than 10:30
+
       if (minutes > 30 && hours === 10) {
         doesExists = {
           status: "too-late",
@@ -236,8 +235,9 @@ const getAllAttendance = async (req, res) => {
           };
         }
       }
-    } else if (hours === 1 && minutes <= 30 && amOrPm === "PM") {
+    } else if (hours == 1 && minutes <= 30 && amOrPm === "PM") {
       // time in afternoon
+
       if (!todayExists) {
         doesExists = {
           status: "no-time-in",
@@ -251,12 +251,13 @@ const getAllAttendance = async (req, res) => {
     } else if (hours >= 2 && amOrPm === "PM") {
       // absent
       // disable time in and time out
+
       if (!todayExists) {
         doesExists = {
           status: "absent",
         };
       } else {
-        if (hours >= 4 && hours <= 5 && amOrPm === "PM") {
+        if (hours >= 2 && hours <= 5 && amOrPm === "PM") {
           // time out
           if (!todayExists) {
             doesExists = {
@@ -266,13 +267,17 @@ const getAllAttendance = async (req, res) => {
             doesExists = {
               status: "time-out-standard",
             };
+            if (todayExists.timeIn == null && todayExists.timeOut == null) {
+              doesExists = {
+                status: "absent",
+              };
+            }
             if (todayExists.timeIn !== null && todayExists.timeOut !== null) {
-              console.log(todayExists.timeOut);
               doesExists = {
                 status: "complete",
               };
             }
-          } else if (hours <= 6 && amOrPm === "PM") {
+          } else if (hours === 6 && amOrPm === "PM") {
             // ot
             if (!todayExists) {
               doesExists = {
@@ -463,11 +468,8 @@ const checkStartingDate = async (req, res) => {
     internshipDetails: {startingDate},
   } = internDetails;
 
-  const today = moment();
+  const today = moment().tz("Asia/Manila");
   const formattedStartingDate = moment(startingDate, "YYYY-MM-DD");
-
-  console.log(formattedStartingDate);
-  console.log(today);
 
   if (formattedStartingDate.isSameOrBefore(today, "day")) {
     const intern = await Intern.findOneAndUpdate({email}, req.body, {
@@ -548,10 +550,11 @@ const checkAbsents = async (req, res) => {
 
         await newAttendance.save();
       } else if (
-        currentTime.hour() === 18 &&
+        currentTime.hour() === 22 &&
         attendance.timeIn &&
         !attendance.timeOut
       ) {
+        console.log("here");
         const attendance = await Attendance.findOne({email, date: todayDate})
           .populate({
             path: "user",
@@ -576,8 +579,8 @@ const checkAbsents = async (req, res) => {
           {new: true, runValidators: true}
         );
 
-        console.log(absentAttendance);
-        console.log("no timeout");
+        // console.log(absentAttendance);
+        // console.log("no timeout");
 
         await absentAttendance.save();
       }
@@ -609,17 +612,19 @@ const checkInternsStartingToday = async (req, res) => {
     model: "User",
   });
 
+  const startingInterns = [];
+
   for (let intern of allIntern) {
     const {
       internshipDetails: {startingDate},
       email,
     } = intern;
 
-    const today = moment();
+    const today = moment().tz("Asia/Manila");
     const formattedStartingDate = moment(startingDate, "YYYY-MM-DD");
 
     if (formattedStartingDate.isSameOrBefore(today, "day")) {
-      const intern = await Intern.findOneAndUpdate(
+      const updatedIntern = await Intern.findOneAndUpdate(
         {email},
         {status: "Starting"},
         {
@@ -630,16 +635,23 @@ const checkInternsStartingToday = async (req, res) => {
         path: "user",
         model: "User",
       });
-      return res.status(StatusCodes.OK).json({success: true, data: intern});
+      startingInterns.push(updatedIntern);
     }
   }
-  res.status(StatusCodes.OK).json({success: true, msg: "not yet"});
+
+  if (startingInterns.length > 0) {
+    return res
+      .status(StatusCodes.OK)
+      .json({success: true, data: startingInterns});
+  } else {
+    return res.status(StatusCodes.OK).json({success: true, msg: "not yet"});
+  }
 };
 
 const runCheckAbsents = async () => {
   try {
     // const response = await axios.post(
-    //   "http://localhost:5000/attendance/checkAbsents"
+    // "http://localhost:5000/attendance/checkAbsents"
     // );
     const response = await axios.post(
       "https://sims-twqb.onrender.com/attendance/checkAbsents"
@@ -679,26 +691,27 @@ cron.schedule(
 );
 
 // check starting today
-cron.schedule(
-  "33 7 * * 1-5",
-  () => {
-    const currentTime = moment().tz("Asia/Manila");
-    if (currentTime.hour() === 7 && currentTime.minute() === 33) {
-      console.log("running");
-      runStartingToday();
-    }
-  },
-  {
-    timezone: "Asia/Manila",
-  }
-);
+// cron.schedule(
+//   "19 13 * * 1-7",
+//   () => {
+//     const currentTime = moment().tz("Asia/Manila");
+
+//     if (currentTime.hour() === 13 && currentTime.minute() === 19) {
+//       console.log("running");
+//       // runStartingToday();
+//     }
+//   },
+//   {
+//     timezone: "Asia/Manila",
+//   }
+// );
 
 // check without timeouts
 cron.schedule(
   "0 19 * * 1-5",
   () => {
     const currentTime = moment().tz("Asia/Manila");
-    if (currentTime.hour() === 19 && currentTime.minute() === 0) {
+    if (currentTime.hour() === 22 && currentTime.minute() === 40) {
       runCheckAbsents();
     }
   },
