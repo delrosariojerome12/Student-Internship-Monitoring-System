@@ -13,7 +13,10 @@ import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
 import {storage} from "../../Firebase";
 import {v4} from "uuid";
 
+import VerificationModal from "../../components/utils/VerificationModal";
+
 const Signup = React.memo(() => {
+  const {isVerifyModalOpen} = useSelector((state) => state.user);
   const {isError, errorMessage, isLoading} = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -389,6 +392,15 @@ const Signup = React.memo(() => {
           </IconContext.Provider>
         </form>
       </section>
+      {isVerifyModalOpen && (
+        <>
+          <div className="overlay"></div>
+          <VerificationModal />
+          {/* <div className="verification-modal">
+            <button>Send Verification Code</button>
+          </div> */}
+        </>
+      )}
     </section>
   );
 });

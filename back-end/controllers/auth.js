@@ -7,6 +7,7 @@ const {StatusCodes} = require("http-status-codes");
 const {BadRequest, Unauthorize, NotFound} = require("../errors");
 const nodemailer = require("nodemailer");
 const UserVerification = require("../models/UserVerification");
+const moment = require("moment-timezone");
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -14,16 +15,13 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    // user: "s21632945@gmail.com",
-    // pass: "dgmohhqvypqftnzd",
     user: process.env.AUTH_EMAIL,
     pass: process.env.AUTH_PASS,
   },
 });
 
 const generateCode = (length) => {
-  const chars =
-    "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const chars = "0123456789";
   let result = "";
   for (let i = 0; i < length; i++) {
     result += chars.charAt(Math.floor(Math.random() * chars.length));
@@ -34,7 +32,6 @@ const cleanUp = async () => {
   await UserVerification.deleteMany({expiry: {$lt: Date.now()}});
 };
 
-//register
 const signup = async (req, res) => {
   const {firstName, lastName, email, password, profileImage} = req.body;
 
@@ -44,6 +41,30 @@ const signup = async (req, res) => {
   const user = await User.create({...req.body});
 
   User.createIndexes();
+
+  const verificationCode = generateCode(4);
+  const expiry = moment.tz("Asia/Manila").add(24, "hours").valueOf();
+  const verification = new UserVerification({
+    email,
+    code: verificationCode,
+    expiry,
+  });
+  await verification.save();
+
+  console.log(verification);
+
+  await transporter.sendMail({
+    from: '"Jerome Ramos - SIMS Lead Developer" <sims@gmail.com>', // sender address
+    to: `${email}`, // list of receivers
+    subject: "SIMS - Signup Verification Code", // Subject line
+    text: `Your verification code is: ${verificationCode}`, // plain text body
+    html: `<div style="background-color: #457b9d; color: #f1faee;">
+      <p style="font-size: 20px;">Your verification code is: <span style="color: #e63946;">${verificationCode}</span></p>
+      <p style="font-size: 16px;">Thank you for using our service.</p>
+       </div>`, // html body
+  });
+
+  //register
 
   if (user.role === "intern") {
     const intern = await (
@@ -90,6 +111,58 @@ const signup = async (req, res) => {
   }
 };
 
+const verifyCode = async (req, res) => {
+  const {email, code} = req.body;
+
+  console.log(email, code);
+  const verification = await UserVerification.findOne({email, code});
+  if (!verification || verification.expiry < Date.now()) {
+    return res.status(400).json({message: "Invalid verification code"});
+  }
+  await User.updateOne({email}, {verified: true});
+
+  const user = await User.findOne({email});
+
+  if (user.role === "intern") {
+    const intern = await Intern.findOne({user}).populate({
+      path: "user",
+      model: "User",
+    });
+
+    const token = user.createJWT();
+    res.status(StatusCodes.OK).json({
+      user: intern,
+      token,
+    });
+  }
+
+  if (user.role === "admin") {
+    const admin = await Admin.findOne({user}).populate({
+      path: "user",
+      model: "User",
+    });
+
+    const token = user.createJWT();
+    res.status(StatusCodes.OK).json({
+      user: admin,
+      token,
+    });
+  }
+
+  if (user.role === "coordinator") {
+    const coordinator = await Coordinator.findOne({user}).populate({
+      path: "user",
+      model: "User",
+    });
+
+    const token = user.createJWT();
+    res.status(StatusCodes.OK).json({
+      user: coordinator,
+      token,
+    });
+  }
+};
+
 //login
 const login = async (req, res) => {
   const {email, password} = req.body;
@@ -113,19 +186,6 @@ const login = async (req, res) => {
     const intern = await Intern.findOne({user}).populate({
       path: "user",
       model: "User",
-    });
-
-    const verificationCode = generateCode(6);
-
-    let info = await transporter.sendMail({
-      from: '"Jerome Ramos - SIMS Lead Developer" <sims@gmail.com>', // sender address
-      to: "ramos12jerome@gmail.com", // list of receivers
-      subject: "Verification Code - FUCK YOU SHEENA", // Subject line
-      text: `Your verification code is: ${verificationCode}`, // plain text body
-      html: `<div style="background-color: #457b9d; color: #f1faee;">
-    <p style="font-size: 20px;">Your verification code is: <span style="color: #e63946;">${verificationCode}</span></p>
-    <p style="font-size: 16px;">Thank you for using our service.</p>
-     </div>`, // html body
     });
 
     const token = user.createJWT();
@@ -165,4 +225,5 @@ const login = async (req, res) => {
 module.exports = {
   signup,
   login,
+  verifyCode,
 };

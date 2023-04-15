@@ -22,6 +22,8 @@ const initialState = {
   errorMessage: "",
   createdSuccessful: false,
   createdUser: null,
+  isVerifyModalOpen: false,
+  isVerifyError: false,
 };
 
 const convertForm = (form) => {
@@ -61,7 +63,9 @@ export const handleSignup = createAsyncThunk(
   async (form, {rejectWithValue}) => {
     try {
       const {email, firstName, lastName, password} = convertForm(form);
-      const url = "https://sims-twqb.onrender.com/auth/signup";
+      // const url = "https://sims-twqb.onrender.com/auth/signup";
+      const url = "http://localhost:5000/auth/signup";
+
       // const user = await createUserWithEmailAndPassword(auth, email, password);
       const {data: res} = await axios.post(url, convertForm(form));
       return {res};
@@ -202,8 +206,9 @@ export const userReducer = createSlice({
         const {res} = action.payload;
         state.isLoading = false;
         state.isError = false;
-        state.user = res.user;
-        localStorage.setItem("token", res.token);
+        state.isVerifyModalOpen = true;
+        // state.user = res.user;
+        // localStorage.setItem("token", res.token);
       })
       .addCase(handleSignup.rejected, (state, action) => {
         state.isLoading = false;
