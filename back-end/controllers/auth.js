@@ -1,9 +1,38 @@
+require("dotenv").config();
 const User = require("../models/User");
 const Intern = require("../models/Intern");
 const Admin = require("../models/Admin");
 const Coordinator = require("../models/Coordinator");
 const {StatusCodes} = require("http-status-codes");
 const {BadRequest, Unauthorize, NotFound} = require("../errors");
+const nodemailer = require("nodemailer");
+const UserVerification = require("../models/UserVerification");
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
+  auth: {
+    // user: "s21632945@gmail.com",
+    // pass: "dgmohhqvypqftnzd",
+    user: process.env.AUTH_EMAIL,
+    pass: process.env.AUTH_PASS,
+  },
+});
+
+const generateCode = (length) => {
+  const chars =
+    "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let result = "";
+  for (let i = 0; i < length; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+};
+const cleanUp = async () => {
+  await UserVerification.deleteMany({expiry: {$lt: Date.now()}});
+};
 
 //register
 const signup = async (req, res) => {
@@ -85,6 +114,20 @@ const login = async (req, res) => {
       path: "user",
       model: "User",
     });
+
+    const verificationCode = generateCode(6);
+
+    let info = await transporter.sendMail({
+      from: '"Jerome Ramos - SIMS Lead Developer" <sims@gmail.com>', // sender address
+      to: "ramos12jerome@gmail.com", // list of receivers
+      subject: "Verification Code - FUCK YOU SHEENA", // Subject line
+      text: `Your verification code is: ${verificationCode}`, // plain text body
+      html: `<div style="background-color: #457b9d; color: #f1faee;">
+    <p style="font-size: 20px;">Your verification code is: <span style="color: #e63946;">${verificationCode}</span></p>
+    <p style="font-size: 16px;">Thank you for using our service.</p>
+     </div>`, // html body
+    });
+
     const token = user.createJWT();
     res.status(StatusCodes.OK).json({
       user: intern,

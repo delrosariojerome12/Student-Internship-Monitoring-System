@@ -24,6 +24,7 @@
     "moment-timezone": "^0.5.42",
     "mongoose": "^6.6.5",
     "node-cron": "^3.0.2",
+    "nodemailer": "^6.9.1",
     "nodemon": "^2.0.20"
   }
 }

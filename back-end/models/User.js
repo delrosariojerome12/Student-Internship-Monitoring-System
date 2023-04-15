@@ -40,6 +40,9 @@ const UserSchema = new mongoose.Schema({
   profileImage: {
     type: String,
   },
+  isVerified: {
+    type: Boolean,
+  },
 });
 
 UserSchema.pre("save", async function () {
