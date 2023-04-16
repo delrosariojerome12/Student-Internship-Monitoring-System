@@ -27,6 +27,11 @@ const initialState = {
   visitorEmail: null,
   isVerifyLoading: false,
   isVerifyError: false,
+  isForgotModalOpen: false,
+  resetErrorMessage: "",
+  isLoadingReset: false,
+  isSuccessResetSent: false,
+  isResetError: false,
 };
 
 const convertForm = (form) => {
@@ -126,6 +131,22 @@ export const requestVerification = createAsyncThunk(
   }
 );
 
+export const forgotPassword = createAsyncThunk(
+  "/user/forgotPassword",
+  async ({email}, {rejectWithValue}) => {
+    console.log(email);
+    try {
+      const url = `http://localhost:5000/auth/forgotPassword`;
+      const {data: res} = await axios.post(url, {email});
+      console.log(res);
+      return {res};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 export const verifyCode = createAsyncThunk(
   "/user/verifyCode",
   async ({email, code}, {rejectWithValue}) => {
@@ -146,6 +167,9 @@ export const userReducer = createSlice({
   name: "user",
   initialState: initialState,
   reducers: {
+    handleForgetModal: (state, action) => {
+      state.isForgotModalOpen = !state.isForgotModalOpen;
+    },
     setUser: (state, action) => {
       state.user = action.payload;
     },
@@ -162,6 +186,23 @@ export const userReducer = createSlice({
     },
   },
   extraReducers: (builder) => {
+    // forgot password
+    builder
+      .addCase(forgotPassword.pending, (state, action) => {
+        state.isLoadingReset = true;
+        state.isResetError = false;
+      })
+      .addCase(forgotPassword.fulfilled, (state, action) => {
+        console.log(action.payload);
+        state.isLoadingReset = false;
+        state.isSuccessResetSent = true;
+      })
+      .addCase(forgotPassword.rejected, (state, action) => {
+        console.log(action.payload);
+        state.isLoadingReset = false;
+        state.resetErrorMessage = action.payload.msg;
+        state.isResetError = true;
+      });
     // signup
     builder
       .addCase(handleSignup.pending, (state) => {
@@ -327,7 +368,12 @@ export const userReducer = createSlice({
   },
 });
 
-export const {setUser, handleLogout, handleCloseSuccess, handleCloseError} =
-  userReducer.actions;
+export const {
+  setUser,
+  handleLogout,
+  handleCloseSuccess,
+  handleCloseError,
+  handleForgetModal,
+} = userReducer.actions;
 
 export default userReducer.reducer;

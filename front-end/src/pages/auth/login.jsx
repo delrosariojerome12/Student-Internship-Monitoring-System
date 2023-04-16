@@ -1,21 +1,34 @@
 /** @format */
 
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, {useState} from "react";
+import {Link} from "react-router-dom";
 import logo from "../../assets/img/logo.svg";
-import { FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
-import { GrMail } from "react-icons/gr";
-import { IconContext } from "react-icons";
-import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { handleLogin } from "../../features/user/userReducer";
+import {FaLock, FaEye, FaEyeSlash} from "react-icons/fa";
+import {GrMail} from "react-icons/gr";
+import {IconContext} from "react-icons";
+import {useRef} from "react";
+import {useNavigate} from "react-router-dom";
+import {useSelector, useDispatch} from "react-redux";
+import {
+  handleLogin,
+  handleForgetModal,
+  forgotPassword,
+} from "../../features/user/userReducer";
 
 const Login = React.memo(() => {
   const dispatch = useDispatch();
-  const { isError, errorMessage, isLoading } = useSelector(
-    (state) => state.user
-  );
+  const {
+    isError,
+    errorMessage,
+    isLoading,
+    isForgotModalOpen,
+    isSuccessResetSent,
+    resetErrorMessage,
+    isResetError,
+    isLoadingReset,
+    isVerifyError,
+    isVerifyLoading,
+  } = useSelector((state) => state.user);
 
   const [form, setForm] = useState([
     {
@@ -45,6 +58,9 @@ const Login = React.memo(() => {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
   const [isComplete, setComplete] = useState(false);
   const refPassword = useRef();
+  const [verifyEmail, setVerifyEmail] = useState("");
+
+  const [resetCode, setResetCode] = useState(["", "", "", ""]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -113,7 +129,7 @@ const Login = React.memo(() => {
 
   const renderInputs = () => {
     return form.map((inputs, index) => {
-      const { forInput, id, type, value, IconType, hasEyeIcon } = inputs;
+      const {forInput, id, type, value, IconType, hasEyeIcon} = inputs;
       return (
         <div className="input-contain" key={index}>
           {hasEyeIcon ? (
@@ -140,9 +156,8 @@ const Login = React.memo(() => {
           <div className="placeholder-container">
             <label
               htmlFor={id}
-              className={
-                value ? "placeholder-text active" : "placeholder-text"
-              }>
+              className={value ? "placeholder-text active" : "placeholder-text"}
+            >
               <div className={"text"}>
                 <span>
                   <IconType className={"icons"} />
@@ -157,36 +172,156 @@ const Login = React.memo(() => {
     });
   };
 
+  const handleOTP = (e) => {
+    e.preventDefault();
+    dispatch(forgotPassword({email: verifyEmail}));
+  };
+
+  const handleResetChange = (index, value) => {
+    value = value.replace(/\D/g, "").slice(0, 1);
+
+    setResetCode((prevVerificationCode) => {
+      const newResetCode = [...prevVerificationCode];
+      newResetCode[index] = value;
+      return newResetCode;
+    });
+
+    if (value) {
+      const nextIndex = index + 1;
+      if (nextIndex < resetCode.length) {
+        document.getElementById(`verification-code-${nextIndex}`).focus();
+      }
+    }
+  };
+
   return (
     <section className="login">
       <section className="card-container">
         <header>
           <img src={logo} alt="" />
           <h1>Login</h1>
-          {isError && <h3 style={{ color: "red" }}>{errorMessage}</h3>}
+          {isError && <h3 style={{color: "red"}}>{errorMessage}</h3>}
         </header>
         <form onSubmit={handleSubmit}>
-          <IconContext.Provider value={{ color: "#000", className: "icons" }}>
+          <IconContext.Provider value={{color: "#000", className: "icons"}}>
             {renderInputs()}
             <span>
               <p>Doesn't have an account?</p>
               <Link to="/account/signup">Sign up</Link>
+              <button
+                onClick={() => {
+                  dispatch(handleForgetModal());
+                }}
+                className="forgot-btn"
+                type="button"
+              >
+                Forgot Password?
+              </button>
             </span>
             <button
               style={
                 isComplete
-                  ? { opacity: "1" }
+                  ? {opacity: "1"}
                   : isLoading
-                  ? { pointerEvents: "none", opacity: ".7" }
-                  : { opacity: ".7", pointerEvents: "none" }
+                  ? {pointerEvents: "none", opacity: ".7"}
+                  : {opacity: ".7", pointerEvents: "none"}
               }
-              type="submit">
+              type="submit"
+            >
               {isLoading ? "Loading..." : "Login"}
             </button>
           </IconContext.Provider>
         </form>
       </section>
       <section className="bg-container"></section>
+
+      {isForgotModalOpen && (
+        <>
+          <div className="overlay"></div>
+          <div className="forgot-modal">
+            <h2>Reset Password</h2>
+            {isResetError && (
+              <h4 className="error-text">{resetErrorMessage}</h4>
+            )}
+            {isSuccessResetSent && !isResetError && (
+              <h4>Code Successfully Sent</h4>
+            )}
+
+            <form onSubmit={handleOTP}>
+              <label
+                htmlFor="forgot-email"
+                className={
+                  verifyEmail ? "placeholder-text active" : "placeholder-text"
+                }
+              >
+                <div className={"text"}>
+                  <h3>Email:</h3>
+                </div>
+              </label>
+              <input
+                placeholder="example@gmail.com"
+                required
+                type="email"
+                name="forgot-email"
+                id="forgot-email"
+                value={verifyEmail}
+                onChange={(e) => {
+                  setVerifyEmail(e.target.value);
+                }}
+              />
+            </form>
+            {isSuccessResetSent && !isResetError && (
+              <form className="send-code">
+                <h2>Enter Your Code here</h2>
+                <label>
+                  {resetCode.map((digit, index) => (
+                    <input
+                      key={index}
+                      id={`verification-code-${index}`}
+                      type="text"
+                      value={digit}
+                      maxLength="1"
+                      onChange={(e) => handleResetChange(index, e.target.value)}
+                    />
+                  ))}
+                </label>
+
+                <button
+                  style={
+                    resetCode.filter((item) => item.length > 0).length !== 4
+                      ? {pointerEvents: "none", opacity: 0.5}
+                      : {
+                          opacity: 1,
+                        }
+                  }
+                  disabled={
+                    resetCode.filter((item) => item.length > 0).length !== 4
+                      ? true
+                      : false
+                  }
+                  type="submit"
+                >
+                  {isVerifyLoading ? "Verifying..." : "Verify"}
+                </button>
+                {isVerifyError && <h2>Invalid Code!</h2>}
+              </form>
+            )}
+
+            <a
+              style={isLoadingReset ? {pointerEvents: "none"} : null}
+              href="#"
+              onClick={handleOTP}
+              type="submit"
+            >
+              {isLoadingReset
+                ? "Sending..."
+                : isSuccessResetSent
+                ? "Resend Code"
+                : "Send Code"}
+            </a>
+          </div>
+        </>
+      )}
     </section>
   );
 });

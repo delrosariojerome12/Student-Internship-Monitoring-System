@@ -8,6 +8,7 @@ const {BadRequest, Unauthorize, NotFound} = require("../errors");
 const nodemailer = require("nodemailer");
 const UserVerification = require("../models/UserVerification");
 const moment = require("moment-timezone");
+const {json} = require("express");
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -223,8 +224,47 @@ const login = async (req, res) => {
   }
 };
 
+const forgotPassword = async (req, res) => {
+  const {email} = req.body;
+
+  if (!email) {
+    throw new BadRequest("Please provide email");
+  }
+
+  const user = await User.findOne({email});
+
+  if (!user) {
+    throw new NotFound("User not found");
+  }
+
+  const verificationCode = generateCode(4);
+  const expiry = moment.tz("Asia/Manila").add(24, "hours").valueOf();
+  const verification = new UserVerification({
+    email,
+    code: verificationCode,
+    expiry,
+  });
+  await verification.save();
+
+  await transporter.sendMail({
+    from: '"Jerome Ramos - SIMS Lead Developer" <sims@gmail.com>', // sender address
+    to: `${email}`,
+    subject: "SIMS - Password Reset Code", // Subject line
+    text: `Your Reset code is: ${verificationCode}`, // plain text body
+    html: `<div style="background-color: #457b9d; color: #f1faee;">
+      <p style="font-size: 20px;">Your verification code is: <span style="color: #e63946;">${verificationCode}</span></p>
+      <p style="font-size: 16px;">Thank you for using our service.</p>
+       </div>`,
+  });
+
+  res
+    .status(StatusCodes.OK)
+    .json({msg: `Reset Code was send successfully to : ${email}`});
+};
+
 module.exports = {
   signup,
   login,
   verifyCode,
+  forgotPassword,
 };
