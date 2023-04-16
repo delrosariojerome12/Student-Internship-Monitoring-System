@@ -1,6 +1,11 @@
-import React, {useState} from "react";
-
+import React, {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {verifyCode} from "../../features/user/userReducer";
 const VerificationModal = React.memo(() => {
+  const dispatch = useDispatch();
+  const {visitorEmail, isVerifyLoading, isVerifyError} = useSelector(
+    (state) => state.user
+  );
   const [verificationCode, setVerificationCode] = useState(["", "", "", ""]);
 
   const handleChange = (index, value) => {
@@ -24,12 +29,19 @@ const VerificationModal = React.memo(() => {
     e.preventDefault();
     const code = verificationCode.join("");
     console.log(`Verifying code: ${code}`);
+    dispatch(
+      verifyCode({email: visitorEmail, code: verificationCode.join("")})
+    );
   };
+
+  // useEffect
 
   return (
     <div className="verification-modal">
       <form onSubmit={handleSubmit}>
-        <h1>Verification code:</h1>
+        <h1>The code has been sent to: {visitorEmail}</h1>
+        <h2>Verification code:</h2>
+        <p>Codes are valid for 24hrs</p>
         <label>
           {verificationCode.map((digit, index) => (
             <input
@@ -42,7 +54,24 @@ const VerificationModal = React.memo(() => {
             />
           ))}
         </label>
-        <button type="submit">Verify</button>
+        <button
+          style={
+            verificationCode.filter((item) => item.length > 0).length !== 4
+              ? {pointerEvents: "none", opacity: 0.5}
+              : {
+                  opacity: 1,
+                }
+          }
+          disabled={
+            verificationCode.filter((item) => item.length > 0).length !== 4
+              ? true
+              : false
+          }
+          type="submit"
+        >
+          {isVerifyLoading ? "Verifying..." : "Verify"}
+        </button>
+        {isVerifyError && <h2>Invalid Code!</h2>}
       </form>
     </div>
   );

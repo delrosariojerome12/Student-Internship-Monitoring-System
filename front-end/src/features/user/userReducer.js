@@ -24,6 +24,9 @@ const initialState = {
   createdUser: null,
   isVerifyModalOpen: false,
   isVerifyError: false,
+  visitorEmail: null,
+  isVerifyLoading: false,
+  isVerifyError: false,
 };
 
 const convertForm = (form) => {
@@ -123,6 +126,22 @@ export const requestVerification = createAsyncThunk(
   }
 );
 
+export const verifyCode = createAsyncThunk(
+  "/user/verifyCode",
+  async ({email, code}, {rejectWithValue}) => {
+    console.log(email, code);
+    try {
+      const url = `http://localhost:5000/auth/verify`;
+      const {data: res} = await axios.post(url, {email, code});
+      console.log(res);
+      return {res};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 export const userReducer = createSlice({
   name: "user",
   initialState: initialState,
@@ -143,6 +162,48 @@ export const userReducer = createSlice({
     },
   },
   extraReducers: (builder) => {
+    // signup
+    builder
+      .addCase(handleSignup.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(handleSignup.fulfilled, (state, action) => {
+        const {res} = action.payload;
+
+        console.log(res);
+        state.isLoading = false;
+        state.isError = false;
+        state.isVerifyModalOpen = true;
+        state.visitorEmail = res.user.email;
+        // state.user = res.user;
+        // localStorage.setItem("token", res.token);
+      })
+      .addCase(handleSignup.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.errorMessage = action.payload.msg;
+      });
+    // verify code
+    builder
+      .addCase(verifyCode.pending, (state, action) => {
+        state.isVerifyLoading = true;
+        state.isVerifyError = false;
+      })
+      .addCase(verifyCode.fulfilled, (state, action) => {
+        const {res} = action.payload;
+
+        state.isVerifyLoading = false;
+        state.isVerifyError = false;
+        state.isVerifyModalOpen = false;
+        console.log(res);
+        state.user = res.user;
+        localStorage.setItem("token", res.token);
+      })
+      .addCase(verifyCode.rejected, (state, action) => {
+        state.isVerifyLoading = false;
+        state.isVerifyError = true;
+      });
+
     //create user
     builder
       .addCase(handleCreateUser.pending, (state, action) => {
@@ -197,24 +258,7 @@ export const userReducer = createSlice({
         state.isError = true;
         state.errorMessage = action.payload.msg;
       });
-    // signup
-    builder
-      .addCase(handleSignup.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(handleSignup.fulfilled, (state, action) => {
-        const {res} = action.payload;
-        state.isLoading = false;
-        state.isError = false;
-        state.isVerifyModalOpen = true;
-        // state.user = res.user;
-        // localStorage.setItem("token", res.token);
-      })
-      .addCase(handleSignup.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.errorMessage = action.payload.msg;
-      });
+
     // get user onload
     builder
       .addCase(getUserOnLoad.pending, (state, action) => {

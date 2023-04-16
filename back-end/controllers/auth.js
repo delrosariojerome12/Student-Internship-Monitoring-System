@@ -51,8 +51,6 @@ const signup = async (req, res) => {
   });
   await verification.save();
 
-  console.log(verification);
-
   await transporter.sendMail({
     from: '"Jerome Ramos - SIMS Lead Developer" <sims@gmail.com>', // sender address
     to: `${email}`, // list of receivers
@@ -113,13 +111,16 @@ const signup = async (req, res) => {
 
 const verifyCode = async (req, res) => {
   const {email, code} = req.body;
+  moment.tz.setDefault("Asia/Manila");
+  // res.status(StatusCodes.OK).json({email, code});
 
-  console.log(email, code);
   const verification = await UserVerification.findOne({email, code});
-  if (!verification || verification.expiry < Date.now()) {
+
+  console.log(verification);
+  if (!verification || moment() > moment(verification.expiry)) {
     return res.status(400).json({message: "Invalid verification code"});
   }
-  await User.updateOne({email}, {verified: true});
+  await User.updateOne({email}, {isVerified: true});
 
   const user = await User.findOne({email});
 

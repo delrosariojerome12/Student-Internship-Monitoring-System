@@ -469,6 +469,7 @@ button {
   color: #0d7377;
 }
 .signin .verification-modal form {
+  text-align: center;
   padding: 3rem;
   display: flex;
   align-items: center;
