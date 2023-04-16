@@ -8,7 +8,7 @@ const {BadRequest, Unauthorize, NotFound} = require("../errors");
 const nodemailer = require("nodemailer");
 const UserVerification = require("../models/UserVerification");
 const moment = require("moment-timezone");
-const {json} = require("express");
+const bcrypt = require("bcryptjs");
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -119,7 +119,9 @@ const verifyCode = async (req, res) => {
 
   console.log(verification);
   if (!verification || moment() > moment(verification.expiry)) {
-    return res.status(400).json({message: "Invalid verification code"});
+    return res
+      .status(400)
+      .json({message: "Invalid verification code", success: false});
   }
   await User.updateOne({email}, {isVerified: true});
 
@@ -135,6 +137,7 @@ const verifyCode = async (req, res) => {
     res.status(StatusCodes.OK).json({
       user: intern,
       token,
+      success: true,
     });
   }
 
@@ -148,6 +151,7 @@ const verifyCode = async (req, res) => {
     res.status(StatusCodes.OK).json({
       user: admin,
       token,
+      success: true,
     });
   }
 
@@ -161,6 +165,7 @@ const verifyCode = async (req, res) => {
     res.status(StatusCodes.OK).json({
       user: coordinator,
       token,
+      success: true,
     });
   }
 };
@@ -262,9 +267,35 @@ const forgotPassword = async (req, res) => {
     .json({msg: `Reset Code was send successfully to : ${email}`});
 };
 
+const resetPassword = async (req, res) => {
+  const {email, password} = req.body;
+
+  console.log(email, password);
+
+  const user = await User.findOne({email});
+
+  console.log(user);
+
+  const hashedPassword = await bcrypt.hash(password, 10);
+  user.password = hashedPassword;
+
+  await User.updateOne(
+    {email},
+    {
+      $set: {
+        password: hashedPassword,
+      },
+    },
+    {new: true}
+  );
+
+  res.status(StatusCodes.OK).json({message: "Password reset successfully"});
+};
+
 module.exports = {
   signup,
   login,
   verifyCode,
   forgotPassword,
+  resetPassword,
 };

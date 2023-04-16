@@ -13,8 +13,9 @@ import {
   handleLogin,
   handleForgetModal,
   forgotPassword,
+  verifyResetCode,
 } from "../../features/user/userReducer";
-
+import ResetForm from "../../components/utils/ResetForm";
 const Login = React.memo(() => {
   const dispatch = useDispatch();
   const {
@@ -28,6 +29,7 @@ const Login = React.memo(() => {
     isLoadingReset,
     isVerifyError,
     isVerifyLoading,
+    isCodeVerified,
   } = useSelector((state) => state.user);
 
   const [form, setForm] = useState([
@@ -194,6 +196,13 @@ const Login = React.memo(() => {
     }
   };
 
+  const handleVerifyReset = (e) => {
+    e.preventDefault();
+    const code = resetCode.join("");
+    console.log(`Verifying code: ${code}`);
+    dispatch(verifyResetCode({email: verifyEmail, code}));
+  };
+
   return (
     <section className="login">
       <section className="card-container">
@@ -259,6 +268,7 @@ const Login = React.memo(() => {
                 </div>
               </label>
               <input
+                disabled={isVerifyLoading}
                 placeholder="example@gmail.com"
                 required
                 type="email"
@@ -271,7 +281,7 @@ const Login = React.memo(() => {
               />
             </form>
             {isSuccessResetSent && !isResetError && (
-              <form className="send-code">
+              <form onSubmit={handleVerifyReset} className="send-code">
                 <h2>Enter Your Code here</h2>
                 <label>
                   {resetCode.map((digit, index) => (
@@ -322,6 +332,7 @@ const Login = React.memo(() => {
           </div>
         </>
       )}
+      {isCodeVerified && <ResetForm email={verifyEmail} />}
     </section>
   );
 });

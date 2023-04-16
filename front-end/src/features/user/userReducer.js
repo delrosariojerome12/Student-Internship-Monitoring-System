@@ -32,6 +32,7 @@ const initialState = {
   isLoadingReset: false,
   isSuccessResetSent: false,
   isResetError: false,
+  isCodeVerified: false,
 };
 
 const convertForm = (form) => {
@@ -163,6 +164,38 @@ export const verifyCode = createAsyncThunk(
   }
 );
 
+export const verifyResetCode = createAsyncThunk(
+  "/user/verifyResetCode",
+  async ({email, code}, {rejectWithValue}) => {
+    console.log(email, code);
+    try {
+      const url = `http://localhost:5000/auth/verify`;
+      const {data: res} = await axios.post(url, {email, code});
+      console.log(res);
+      return {res};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const resetPassword = createAsyncThunk(
+  "/user/resetPassword",
+  async ({email, password}, {rejectWithValue}) => {
+    console.log(email, password);
+    try {
+      const url = `http://localhost:5000/auth/resetPassword`;
+      const {data: res} = await axios.patch(url, {email, password});
+      console.log(res);
+      return {res};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 export const userReducer = createSlice({
   name: "user",
   initialState: initialState,
@@ -186,6 +219,28 @@ export const userReducer = createSlice({
     },
   },
   extraReducers: (builder) => {
+    // reset passoword
+    builder
+      .addCase(resetPassword.pending, (state, action) => {})
+      .addCase(resetPassword.fulfilled, (state, action) => {})
+      .addCase(resetPassword.rejected, (state, action) => {});
+    // verify reset code
+    builder
+      .addCase(verifyResetCode.pending, (state, action) => {
+        state.isVerifyLoading = true;
+        state.isVerifyError = false;
+      })
+      .addCase(verifyResetCode.fulfilled, (state, action) => {
+        console.log(action.payload.res.success);
+        state.isVerifyLoading = false;
+        state.isVerifyError = false;
+        state.isCodeVerified = action.payload.res.success;
+        state.isForgotModalOpen = false;
+      })
+      .addCase(verifyResetCode.rejected, (state, action) => {
+        state.isVerifyLoading = false;
+        state.isVerifyError = true;
+      });
     // forgot password
     builder
       .addCase(forgotPassword.pending, (state, action) => {

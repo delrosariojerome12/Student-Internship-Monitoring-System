@@ -192,6 +192,154 @@ button {
 .login .forgot-modal .error-text {
   color: #ed3737;
 }
+.login .reset-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  height: 50rem;
+  width: 50rem;
+  z-index: 7;
+  border-radius: 1rem;
+  padding: 3rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.login .reset-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.login .reset-form form .input-contain {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  gap: 1rem;
+}
+.login .reset-form form .input-contain .placeholder-container {
+  position: absolute;
+  top: 5%;
+  left: 0%;
+  height: 4.5rem;
+  width: 100%;
+  pointer-events: none;
+}
+.login .reset-form form .input-contain .eye-container {
+  z-index: 2;
+  position: absolute;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  top: 0%;
+  right: 2rem;
+}
+.login .reset-form form .input-contain .eye-container svg {
+  cursor: pointer;
+  pointer-events: all;
+  font-size: 1.9rem;
+}
+.login .reset-form form .input-contain input {
+  width: auto !important;
+  height: 5rem;
+  border: solid 3px transparent;
+  outline: solid 1px #8b8b8b;
+  border-radius: 0.5rem;
+  padding: 1.1rem 3.5rem 1.1rem 1.1rem;
+  letter-spacing: 2px;
+  transition: all 0.1s ease-in-out;
+}
+.login .reset-form form .input-contain input:focus {
+  border: solid 3px #457b9d;
+  outline: none;
+}
+.login .reset-form form .input-contain input:focus + .placeholder-container .placeholder-text {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  color: black;
+  scale: 0.8;
+}
+.login .reset-form form .input-contain .input-error {
+  border: solid 2px #ed3737 !important;
+}
+.login .reset-form form .input-contain .error-message {
+  color: #ed3737;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.login .reset-form form .input-contain .icons-error {
+  color: red !important;
+}
+.login .reset-form form .input-contain .placeholder-text {
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+  top: 50%;
+  left: 5%;
+  transform: translate(0%, -50%);
+}
+.login .reset-form form .input-contain .placeholder-text:nth-child(1) {
+  left: 2% !important;
+}
+.login .reset-form form .input-contain .placeholder-text .text {
+  font-size: 1.4rem;
+  padding: 0 0.5rem;
+  background-color: transparent;
+  color: black;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.login .reset-form form .input-contain .active {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  border-color: #8b8b8b;
+  scale: 0.8;
+}
+.login .reset-form form span {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.login .reset-form form span svg {
+  font-size: 1.7rem;
+}
+.login .reset-form form span .forgot-btn {
+  font-size: 1.4rem;
+  outline: none;
+  border: none;
+  height: 2rem;
+  display: flex;
+  background-color: transparent;
+  text-decoration: underline;
+  color: #030392;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+.login .reset-form form > button {
+  cursor: pointer;
+  height: 4.5rem;
+  width: 12.5rem;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  background-color: #457b9d;
+  color: #f1faee;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.login .reset-form form > button:hover {
+  background-color: #f1faee;
+  color: #457b9d;
+  border: solid 1px #457b9d;
+}
 .login .bg-container {
   height: 100%;
   width: 100%;
@@ -451,6 +599,154 @@ button {
 }
 .login .forgot-modal .error-text {
   color: #ed3737;
+}
+.login .reset-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  height: 50rem;
+  width: 50rem;
+  z-index: 7;
+  border-radius: 1rem;
+  padding: 3rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.login .reset-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.login .reset-form form .input-contain {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  gap: 1rem;
+}
+.login .reset-form form .input-contain .placeholder-container {
+  position: absolute;
+  top: 5%;
+  left: 0%;
+  height: 4.5rem;
+  width: 100%;
+  pointer-events: none;
+}
+.login .reset-form form .input-contain .eye-container {
+  z-index: 2;
+  position: absolute;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  top: 0%;
+  right: 2rem;
+}
+.login .reset-form form .input-contain .eye-container svg {
+  cursor: pointer;
+  pointer-events: all;
+  font-size: 1.9rem;
+}
+.login .reset-form form .input-contain input {
+  width: auto !important;
+  height: 5rem;
+  border: solid 3px transparent;
+  outline: solid 1px #8b8b8b;
+  border-radius: 0.5rem;
+  padding: 1.1rem 3.5rem 1.1rem 1.1rem;
+  letter-spacing: 2px;
+  transition: all 0.1s ease-in-out;
+}
+.login .reset-form form .input-contain input:focus {
+  border: solid 3px #457b9d;
+  outline: none;
+}
+.login .reset-form form .input-contain input:focus + .placeholder-container .placeholder-text {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  color: black;
+  scale: 0.8;
+}
+.login .reset-form form .input-contain .input-error {
+  border: solid 2px #ed3737 !important;
+}
+.login .reset-form form .input-contain .error-message {
+  color: #ed3737;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.login .reset-form form .input-contain .icons-error {
+  color: red !important;
+}
+.login .reset-form form .input-contain .placeholder-text {
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+  top: 50%;
+  left: 5%;
+  transform: translate(0%, -50%);
+}
+.login .reset-form form .input-contain .placeholder-text:nth-child(1) {
+  left: 2% !important;
+}
+.login .reset-form form .input-contain .placeholder-text .text {
+  font-size: 1.4rem;
+  padding: 0 0.5rem;
+  background-color: transparent;
+  color: black;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.login .reset-form form .input-contain .active {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  border-color: #8b8b8b;
+  scale: 0.8;
+}
+.login .reset-form form span {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.login .reset-form form span svg {
+  font-size: 1.7rem;
+}
+.login .reset-form form span .forgot-btn {
+  font-size: 1.4rem;
+  outline: none;
+  border: none;
+  height: 2rem;
+  display: flex;
+  background-color: transparent;
+  text-decoration: underline;
+  color: #030392;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+.login .reset-form form > button {
+  cursor: pointer;
+  height: 4.5rem;
+  width: 12.5rem;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  background-color: #457b9d;
+  color: #f1faee;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.login .reset-form form > button:hover {
+  background-color: #f1faee;
+  color: #457b9d;
+  border: solid 1px #457b9d;
 }
 .login .bg-container {
   height: 100%;
@@ -13016,6 +13312,154 @@ button {
 }
 .login .forgot-modal .error-text {
   color: #ed3737;
+}
+.login .reset-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  height: 50rem;
+  width: 50rem;
+  z-index: 7;
+  border-radius: 1rem;
+  padding: 3rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.login .reset-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.login .reset-form form .input-contain {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  gap: 1rem;
+}
+.login .reset-form form .input-contain .placeholder-container {
+  position: absolute;
+  top: 5%;
+  left: 0%;
+  height: 4.5rem;
+  width: 100%;
+  pointer-events: none;
+}
+.login .reset-form form .input-contain .eye-container {
+  z-index: 2;
+  position: absolute;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  top: 0%;
+  right: 2rem;
+}
+.login .reset-form form .input-contain .eye-container svg {
+  cursor: pointer;
+  pointer-events: all;
+  font-size: 1.9rem;
+}
+.login .reset-form form .input-contain input {
+  width: auto !important;
+  height: 5rem;
+  border: solid 3px transparent;
+  outline: solid 1px #8b8b8b;
+  border-radius: 0.5rem;
+  padding: 1.1rem 3.5rem 1.1rem 1.1rem;
+  letter-spacing: 2px;
+  transition: all 0.1s ease-in-out;
+}
+.login .reset-form form .input-contain input:focus {
+  border: solid 3px #457b9d;
+  outline: none;
+}
+.login .reset-form form .input-contain input:focus + .placeholder-container .placeholder-text {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  color: black;
+  scale: 0.8;
+}
+.login .reset-form form .input-contain .input-error {
+  border: solid 2px #ed3737 !important;
+}
+.login .reset-form form .input-contain .error-message {
+  color: #ed3737;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.login .reset-form form .input-contain .icons-error {
+  color: red !important;
+}
+.login .reset-form form .input-contain .placeholder-text {
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+  top: 50%;
+  left: 5%;
+  transform: translate(0%, -50%);
+}
+.login .reset-form form .input-contain .placeholder-text:nth-child(1) {
+  left: 2% !important;
+}
+.login .reset-form form .input-contain .placeholder-text .text {
+  font-size: 1.4rem;
+  padding: 0 0.5rem;
+  background-color: transparent;
+  color: black;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.login .reset-form form .input-contain .active {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  border-color: #8b8b8b;
+  scale: 0.8;
+}
+.login .reset-form form span {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.login .reset-form form span svg {
+  font-size: 1.7rem;
+}
+.login .reset-form form span .forgot-btn {
+  font-size: 1.4rem;
+  outline: none;
+  border: none;
+  height: 2rem;
+  display: flex;
+  background-color: transparent;
+  text-decoration: underline;
+  color: #030392;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+.login .reset-form form > button {
+  cursor: pointer;
+  height: 4.5rem;
+  width: 12.5rem;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  background-color: #457b9d;
+  color: #f1faee;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.login .reset-form form > button:hover {
+  background-color: #f1faee;
+  color: #457b9d;
+  border: solid 1px #457b9d;
 }
 .login .bg-container {
   height: 100%;
