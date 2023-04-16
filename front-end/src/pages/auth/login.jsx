@@ -30,6 +30,7 @@ const Login = React.memo(() => {
     isVerifyError,
     isVerifyLoading,
     isCodeVerified,
+    isPasswordChangeSuccess,
   } = useSelector((state) => state.user);
 
   const [form, setForm] = useState([
@@ -333,6 +334,15 @@ const Login = React.memo(() => {
         </>
       )}
       {isCodeVerified && <ResetForm email={verifyEmail} />}
+      {isPasswordChangeSuccess && (
+        <>
+          <div className="overlay"></div>
+          <div className="success-modal">
+            <h1>Password Changed Successfully</h1>
+            <button>Close</button>
+          </div>
+        </>
+      )}
     </section>
   );
 });

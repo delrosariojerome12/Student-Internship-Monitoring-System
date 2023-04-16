@@ -270,11 +270,7 @@ const forgotPassword = async (req, res) => {
 const resetPassword = async (req, res) => {
   const {email, password} = req.body;
 
-  console.log(email, password);
-
   const user = await User.findOne({email});
-
-  console.log(user);
 
   const hashedPassword = await bcrypt.hash(password, 10);
   user.password = hashedPassword;

@@ -340,6 +340,41 @@ button {
   color: #457b9d;
   border: solid 1px #457b9d;
 }
+.login .success-modal, .login .dashboard .admin-dashboard .error-modal, .login .dashboard-active .admin-dashboard .error-modal, .dashboard .admin-dashboard .login .error-modal, .dashboard-active .admin-dashboard .login .error-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  height: 50rem;
+  width: 50rem;
+  z-index: 7;
+  border-radius: 1rem;
+  padding: 3rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login .success-modal > button, .login .dashboard .admin-dashboard .error-modal > button, .login .dashboard-active .admin-dashboard .error-modal > button, .dashboard .admin-dashboard .login .error-modal > button, .dashboard-active .admin-dashboard .login .error-modal > button {
+  cursor: pointer;
+  height: 4.5rem;
+  width: 12.5rem;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  background-color: #457b9d;
+  color: #f1faee;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.login .success-modal > button:hover, .login .dashboard .admin-dashboard .error-modal > button:hover, .login .dashboard-active .admin-dashboard .error-modal > button:hover, .dashboard .admin-dashboard .login .error-modal > button:hover, .dashboard-active .admin-dashboard .login .error-modal > button:hover {
+  background-color: #f1faee;
+  color: #457b9d;
+  border: solid 1px #457b9d;
+}
 .login .bg-container {
   height: 100%;
   width: 100%;
@@ -744,6 +779,41 @@ button {
   font-weight: 600;
 }
 .login .reset-form form > button:hover {
+  background-color: #f1faee;
+  color: #457b9d;
+  border: solid 1px #457b9d;
+}
+.login .success-modal, .login .dashboard .admin-dashboard .error-modal, .login .dashboard-active .admin-dashboard .error-modal, .dashboard .admin-dashboard .login .error-modal, .dashboard-active .admin-dashboard .login .error-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  height: 50rem;
+  width: 50rem;
+  z-index: 7;
+  border-radius: 1rem;
+  padding: 3rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login .success-modal > button, .login .dashboard .admin-dashboard .error-modal > button, .login .dashboard-active .admin-dashboard .error-modal > button, .dashboard .admin-dashboard .login .error-modal > button, .dashboard-active .admin-dashboard .login .error-modal > button {
+  cursor: pointer;
+  height: 4.5rem;
+  width: 12.5rem;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  background-color: #457b9d;
+  color: #f1faee;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.login .success-modal > button:hover, .login .dashboard .admin-dashboard .error-modal > button:hover, .login .dashboard-active .admin-dashboard .error-modal > button:hover, .dashboard .admin-dashboard .login .error-modal > button:hover, .dashboard-active .admin-dashboard .login .error-modal > button:hover {
   background-color: #f1faee;
   color: #457b9d;
   border: solid 1px #457b9d;
@@ -13457,6 +13527,41 @@ button {
   font-weight: 600;
 }
 .login .reset-form form > button:hover {
+  background-color: #f1faee;
+  color: #457b9d;
+  border: solid 1px #457b9d;
+}
+.login .success-modal, .login .dashboard .admin-dashboard .error-modal, .dashboard .admin-dashboard .login .error-modal, .login .dashboard-active .admin-dashboard .error-modal, .dashboard-active .admin-dashboard .login .error-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  height: 50rem;
+  width: 50rem;
+  z-index: 7;
+  border-radius: 1rem;
+  padding: 3rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login .success-modal > button, .login .dashboard .admin-dashboard .error-modal > button, .dashboard .admin-dashboard .login .error-modal > button, .login .dashboard-active .admin-dashboard .error-modal > button, .dashboard-active .admin-dashboard .login .error-modal > button {
+  cursor: pointer;
+  height: 4.5rem;
+  width: 12.5rem;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  background-color: #457b9d;
+  color: #f1faee;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.login .success-modal > button:hover, .login .dashboard .admin-dashboard .error-modal > button:hover, .dashboard .admin-dashboard .login .error-modal > button:hover, .login .dashboard-active .admin-dashboard .error-modal > button:hover, .dashboard-active .admin-dashboard .login .error-modal > button:hover {
   background-color: #f1faee;
   color: #457b9d;
   border: solid 1px #457b9d;

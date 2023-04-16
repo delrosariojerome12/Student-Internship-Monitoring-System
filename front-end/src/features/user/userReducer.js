@@ -33,6 +33,7 @@ const initialState = {
   isSuccessResetSent: false,
   isResetError: false,
   isCodeVerified: false,
+  isPasswordChangeSuccess: false,
 };
 
 const convertForm = (form) => {
@@ -222,7 +223,10 @@ export const userReducer = createSlice({
     // reset passoword
     builder
       .addCase(resetPassword.pending, (state, action) => {})
-      .addCase(resetPassword.fulfilled, (state, action) => {})
+      .addCase(resetPassword.fulfilled, (state, action) => {
+        state.isCodeVerified = false;
+        state.isPasswordChangeSuccess = true;
+      })
       .addCase(resetPassword.rejected, (state, action) => {});
     // verify reset code
     builder
