@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     paddingTop: "30",
     paddingLeft: "140",
     paddingRight: "70",
-    paddingBottom: "20",
+    paddingBottom: "70",
     fontSize: 12,
   },
   headerText: {
@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
     borderBottom: 1,
     textAlign: "center",
     fontSize: 9,
+    paddingBottom: "20",
   },
   colegioLogo: {
     height: 50,
@@ -91,6 +92,7 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: "row",
+    flexWrap: "wrap",
   },
   cell: {
     borderWidth: 1,
@@ -98,12 +100,28 @@ const styles = StyleSheet.create({
     padding: 5,
     flex: 1,
   },
+  tasks: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: "#000",
+    padding: 5,
+    display: "flex",
+    flexdirection: "row",
+    flexWrap: "wrap",
+  },
+
   tableHeader: {
     borderWidth: 1,
     borderColor: "#000",
     padding: 5,
     fontWeight: "bold",
     flex: 1,
+  },
+  pageNumber: {
+    position: "absolute",
+    bottom: 10,
+    right: 10,
+    fontSize: 10,
   },
 });
 
@@ -142,7 +160,7 @@ const ReactPDF = React.memo(() => {
       <PDFViewer>
         <Document>
           <Page size="Legal" style={styles.page}>
-            <View style={styles.header}>
+            <View fixed style={styles.header}>
               <Text style={styles.headerText}>
                 Colegio de San Gabriel Arcangel, Inc.
               </Text>
@@ -199,7 +217,7 @@ const ReactPDF = React.memo(() => {
                 return (
                   <View style={styles.row} key={index}>
                     <Text style={styles.cell}>{formatDate(date)}</Text>
-                    <Text style={styles.cell}>{content}</Text>
+                    <Text style={styles.tasks}>{content}</Text>
                     <Text style={styles.cell}>{totalRendered}</Text>
                     <Text style={styles.cell}>
                       {isPresent ? "Accomplished" : "Absent"}
@@ -225,6 +243,18 @@ const ReactPDF = React.memo(() => {
               </Text>
               <Text style={{marginBottom: 6}}>Practicum Adviser</Text>
             </View>
+
+            <Text
+              render={({pageNumber, totalPages}) => `${pageNumber}`}
+              fixed
+              style={{
+                position: "absolute",
+                bottom: 30,
+                right: 0,
+                left: 0,
+                textAlign: "center",
+              }}
+            />
           </Page>
         </Document>
       </PDFViewer>
