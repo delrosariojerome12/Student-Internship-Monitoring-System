@@ -12,6 +12,7 @@ const initialState = {
   selectedDay: null,
   isGenerateOpen: false,
   generatingDocument: null,
+  isNarrativeSampleOpen: false,
 };
 
 export const getAllNarrative = createAsyncThunk(
@@ -60,6 +61,9 @@ export const narrativeReducer = createSlice({
   name: "narrative",
   initialState,
   reducers: {
+    handleNarrativeSample: (state, action) => {
+      state.isNarrativeSampleOpen = !state.isNarrativeSampleOpen;
+    },
     handleGenerate: (state, {payload}) => {
       if (payload) {
         state.generatingDocument = payload;
@@ -130,6 +134,7 @@ export const {
   handleEditModal,
   handleViewModal,
   handleGenerate,
+  handleNarrativeSample,
 } = narrativeReducer.actions;
 
 export default narrativeReducer.reducer;

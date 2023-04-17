@@ -14,6 +14,7 @@ import {
   handleForgetModal,
   forgotPassword,
   verifyResetCode,
+  handleClosePasswordChanged,
 } from "../../features/user/userReducer";
 import ResetForm from "../../components/utils/ResetForm";
 const Login = React.memo(() => {
@@ -339,7 +340,9 @@ const Login = React.memo(() => {
           <div className="overlay"></div>
           <div className="success-modal">
             <h1>Password Changed Successfully</h1>
-            <button>Close</button>
+            <button onClick={() => dispatch(handleClosePasswordChanged())}>
+              Close
+            </button>
           </div>
         </>
       )}

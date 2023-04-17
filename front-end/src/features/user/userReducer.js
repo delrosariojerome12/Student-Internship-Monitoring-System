@@ -201,6 +201,9 @@ export const userReducer = createSlice({
   name: "user",
   initialState: initialState,
   reducers: {
+    handleClosePasswordChanged: (state, action) => {
+      state.isPasswordChangeSuccess = false;
+    },
     handleForgetModal: (state, action) => {
       state.isForgotModalOpen = !state.isForgotModalOpen;
     },
@@ -433,6 +436,7 @@ export const {
   handleCloseSuccess,
   handleCloseError,
   handleForgetModal,
+  handleClosePasswordChanged,
 } = userReducer.actions;
 
 export default userReducer.reducer;

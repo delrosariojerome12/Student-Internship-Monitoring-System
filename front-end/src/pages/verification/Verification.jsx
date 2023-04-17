@@ -1,22 +1,17 @@
 /** @format */
 
-import React, { useEffect, useState, useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, {useEffect, useState, useCallback} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
-import { requestVerification } from "../../features/user/userReducer";
+import {requestVerification} from "../../features/user/userReducer";
 import AreYouSureModal from "../../components/verification/AreYouSureModal";
 
-import { storage } from "../../Firebase";
-import {
-  ref,
-  uploadBytes,
-  getDownloadURL,
-  deleteObject,
-} from "firebase/storage";
-import { v4 } from "uuid";
+import {storage} from "../../Firebase";
+import {ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage";
+import {v4} from "uuid";
 
-import { FaCheck } from "react-icons/fa";
+import {FaCheck} from "react-icons/fa";
 
 function convertObjectToFields(obj) {
   const fields = [];
@@ -29,7 +24,7 @@ function convertObjectToFields(obj) {
       case "date":
         field = {
           code: "startingDate",
-          errorMessage: "Please Select a Weekday",
+          errorMessage: "Please Valid Date and Weekdays.",
           forInput: "Starting Date",
           id: "starting-date",
           isDisabled: false,
@@ -106,13 +101,13 @@ function convertObjectToFields(obj) {
 
 const Verification = React.memo(() => {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.user);
+  const {user} = useSelector((state) => state.user);
 
   const {
-    user: { firstName },
+    user: {firstName},
     schoolDetails,
     internshipDetails,
-    verification: { isRejected, hasSentVerification },
+    verification: {isRejected, hasSentVerification},
   } = user;
 
   const {
@@ -211,7 +206,7 @@ const Verification = React.memo(() => {
           code: "startingDate",
           value: "",
           isError: false,
-          errorMessage: "Please Select a Weekday",
+          errorMessage: "Please Select a Weekday and Valid Date.",
           isDisabled: false,
         },
         {
@@ -237,10 +232,6 @@ const Verification = React.memo(() => {
             {
               value: "Hardware Related",
               label: "Hardware Related",
-            },
-            {
-              value: "Not specified",
-              label: "Not specified",
             },
           ],
         },
@@ -302,7 +293,7 @@ const Verification = React.memo(() => {
           forInput: "Student Number",
           value: "",
           isError: false,
-          errorMessage: "Please enter a valid student number",
+          errorMessage: "Enter a valid student number. E.g A202001234",
           isDisabled: false,
         },
       ],
@@ -383,7 +374,7 @@ const Verification = React.memo(() => {
 
   const convertForm = (form) => {
     const newData = form.map((input) => {
-      const { code, value, name } = input;
+      const {code, value, name} = input;
       if (name) {
         return {
           code,
@@ -401,8 +392,8 @@ const Verification = React.memo(() => {
       {},
       ...newData.map((item) =>
         !item.name
-          ? { [item.code]: item.value }
-          : { [item.code]: { link: item.value, name: item.name } }
+          ? {[item.code]: item.value}
+          : {[item.code]: {link: item.value, name: item.name}}
       )
     );
 
@@ -778,9 +769,14 @@ const Verification = React.memo(() => {
           case "starting-date":
             const selectedDate = new Date(value);
             const dayOfWeek = selectedDate.getDay();
+            const today = new Date();
 
-            // Check if the selected date is a weekend
             if (dayOfWeek === 0 || dayOfWeek === 6) {
+              newForm[mainIndex].forms[index].isError = true;
+              newForm[mainIndex].forms[index].value = "";
+            }
+            // Check if the selected date has already occurred
+            else if (selectedDate < today) {
               newForm[mainIndex].forms[index].isError = true;
               newForm[mainIndex].forms[index].value = "";
             } else {
@@ -865,12 +861,12 @@ const Verification = React.memo(() => {
           case "logo":
             if (schoolDetails) {
               const {
-                validID: { name },
+                validID: {name},
               } = schoolDetails;
               // deleteDuplicateFirebase(name);
             }
             if (value) {
-              const { name, type } = value;
+              const {name, type} = value;
               if (!type.includes("image")) {
                 newForm[mainIndex].forms[index].isError = true;
                 newForm[mainIndex].forms[index].errorMessage =
@@ -1002,7 +998,7 @@ const Verification = React.memo(() => {
           return (
             <div className="input-contain" key={index}>
               <input
-                min={minDateFormatted} // set minimum date as the next day after today
+                min={minDateFormatted}
                 max={maxDate}
                 tabIndex={-1}
                 disabled={isDisabled}
@@ -1047,7 +1043,8 @@ const Verification = React.memo(() => {
                   htmlFor={id}
                   className={
                     value ? "placeholder-text active" : "placeholder-text"
-                  }>
+                  }
+                >
                   <div className="text">{forInput}</div>
                 </label>
               </div>
@@ -1074,8 +1071,9 @@ const Verification = React.memo(() => {
                 {!isError && !value && <p>Select File</p>}
                 {isError && (
                   <p
-                    style={{ color: "red", fontSize: "18px" }}
-                    className="error-message">
+                    style={{color: "red", fontSize: "18px"}}
+                    className="error-message"
+                  >
                     {errorMessage}{" "}
                   </p>
                 )}
@@ -1084,7 +1082,7 @@ const Verification = React.memo(() => {
             </div>
           );
         case "select":
-          const { options, placeholder } = item;
+          const {options, placeholder} = item;
           const list = options.map((opt) => opt);
           return (
             <Select
@@ -1107,7 +1105,7 @@ const Verification = React.memo(() => {
             />
           );
         case "list":
-          const { optionItems } = item;
+          const {optionItems} = item;
           return (
             <CreatableSelect
               tabIndex={-1}
@@ -1129,7 +1127,7 @@ const Verification = React.memo(() => {
             />
           );
         case "time":
-          const { optionTime } = item;
+          const {optionTime} = item;
           return (
             <Select
               tabIndex={-1}
@@ -1152,7 +1150,7 @@ const Verification = React.memo(() => {
             />
           );
         case "scheduleType":
-          const { scheduleType } = item;
+          const {scheduleType} = item;
           return (
             <Select
               tabIndex={-1}
@@ -1190,13 +1188,15 @@ const Verification = React.memo(() => {
                 minLength={minLength}
                 maxLength={maxLength}
                 type={type}
-                name={forInput}></textarea>
+                name={forInput}
+              ></textarea>
               <div className="placeholder-container">
                 <label
                   htmlFor={id}
                   className={
                     value ? "placeholder-text active" : "placeholder-text"
-                  }>
+                  }
+                >
                   <div className="text">{forInput}</div>
                 </label>
               </div>
@@ -1211,7 +1211,7 @@ const Verification = React.memo(() => {
 
   const renderEnrolledInputs = (arr) => {
     return arr.map((item, index) => {
-      const { type, id, value, forInput, isError, errorMessage, link } = item;
+      const {type, id, value, forInput, isError, errorMessage, link} = item;
       switch (type) {
         case "list":
         case "email":
@@ -1231,7 +1231,8 @@ const Verification = React.memo(() => {
                   htmlFor={id}
                   className={
                     value ? "placeholder-text active" : "placeholder-text"
-                  }>
+                  }
+                >
                   <div className="text">{forInput}</div>
                 </label>
               </div>
@@ -1255,8 +1256,9 @@ const Verification = React.memo(() => {
                 {!isError && !value && <p>Select File</p>}
                 {isError && (
                   <p
-                    style={{ color: "red", fontSize: "18px" }}
-                    className="error-message">
+                    style={{color: "red", fontSize: "18px"}}
+                    className="error-message"
+                  >
                     {errorMessage}{" "}
                   </p>
                 )}
@@ -1273,13 +1275,15 @@ const Verification = React.memo(() => {
                 required
                 value={value}
                 type={type}
-                name={forInput}></textarea>
+                name={forInput}
+              ></textarea>
               <div className="placeholder-container">
                 <label
                   htmlFor={id}
                   className={
                     value ? "placeholder-text active" : "placeholder-text"
-                  }>
+                  }
+                >
                   <div className="text">{forInput}</div>
                 </label>
               </div>
@@ -1294,13 +1298,14 @@ const Verification = React.memo(() => {
 
   const renderSteps = () => {
     return steps.map((item, index) => {
-      const { step, isCompleted } = item;
+      const {step, isCompleted} = item;
       return (
         <div
           className={
             index === position ? `step-${step} active` : `step-${step} `
           }
-          key={index}>
+          key={index}
+        >
           {isCompleted ? (
             <span>
               <FaCheck />
@@ -1370,7 +1375,8 @@ const Verification = React.memo(() => {
                   : position === 2
                   ? "internship-details inactive-1"
                   : "internship-details inactive"
-              }>
+              }
+            >
               <div className="forms-con">
                 {renderEnrolledInputs(
                   convertObjectToFields({
@@ -1395,7 +1401,8 @@ const Verification = React.memo(() => {
                   : position === 2
                   ? "internship-details inactive-1"
                   : "internship-details inactive"
-              }>
+              }
+            >
               <div className="forms-con">
                 {renderInputs(form[0].forms, "Internship Details", 0)}
               </div>
@@ -1411,7 +1418,8 @@ const Verification = React.memo(() => {
                 : position === 2
                 ? "student-details inactive-1"
                 : "student-details"
-            }>
+            }
+          >
             <div className="forms-con">
               {renderInputs(form[1].forms, "Student Details", 1)}
             </div>
@@ -1432,7 +1440,8 @@ const Verification = React.memo(() => {
                 : position === 1
                 ? "schedule-details inactive-2"
                 : "schedule-details"
-            }>
+            }
+          >
             <div className="forms-con">
               {renderInputs(form[2].forms, "Schedule Details", 2)}
             </div>
@@ -1443,7 +1452,8 @@ const Verification = React.memo(() => {
               <button
                 tabIndex={-1}
                 disabled={isComplete ? false : true}
-                onClick={handleFinalizing}>
+                onClick={handleFinalizing}
+              >
                 Submit Verification
               </button>
             </div>

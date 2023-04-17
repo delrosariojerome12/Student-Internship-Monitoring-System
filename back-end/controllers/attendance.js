@@ -12,7 +12,6 @@ const cron = require("node-cron");
 function countRenderedHours(timeIn, timeOut) {
   const millisecondsInHour = 1000 * 60 * 60;
 
-  // Convert 12-hour time to 24-hour time
   const [hoursIn, minutesIn, secondsIn, meridiemIn] = timeIn.split(/:|\s/);
   const [hoursOut, minutesOut, secondsOut, meridiemOut] = timeOut.split(/:|\s/);
 
@@ -26,7 +25,7 @@ function countRenderedHours(timeIn, timeOut) {
       : (parseInt(hoursOut, 10) % 12) + 12;
 
   if (hours24Out < hours24In) {
-    hours24Out += 24; // add 24 hours if time-out is on a different day
+    hours24Out += 24;
   }
 
   const dateIn = new Date(
@@ -42,20 +41,15 @@ function countRenderedHours(timeIn, timeOut) {
 
   const difference = dateOut - dateIn;
 
-  console.log(dateIn, dateOut, "date in");
-  console.log(difference, "difference");
-
   let hours = difference / millisecondsInHour;
   // hours = Math.round(hours * 4) / 4; // Round to nearest quarter hour
 
   hours = Math.round(hours * 2) / 2;
 
   if (hours >= 8) {
-    console.log("Test");
-    hours--;
+    hours = 8;
   }
-  console.log(typeof hours);
-  console.log(hours);
+
   return hours;
 }
 

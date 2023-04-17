@@ -5,10 +5,29 @@ import {useDispatch, useSelector} from "react-redux";
 import {updateIntern} from "../../features/interns/internReducer";
 import {FaCheck, FaTrash} from "react-icons/fa";
 import {isRejected} from "@reduxjs/toolkit";
+import CreatableSelect from "react-select/creatable";
 
 const ApprovalIntern = React.memo(({intern, index}) => {
   // const {selectedIntern} = useSelector((state) => state.intern);
   const dispatch = useDispatch();
+
+  const customStyle = {
+    control: (styles) => ({
+      ...styles,
+      border: "solid 1px #8b8b8b",
+      fontSize: "1.5rem",
+      paddingLeft: "10px",
+      height: "50px",
+    }),
+    options: (base, state) => ({
+      ...base,
+      backgroundColor: state.isSelected ? "red" : "green",
+    }),
+    menu: (base) => ({
+      ...base,
+      marginTop: 0,
+    }),
+  };
 
   const {
     user: {firstName, lastName, email, profileImage},
@@ -82,6 +101,23 @@ const ApprovalIntern = React.memo(({intern, index}) => {
       console.log("Request Accepted");
     }
   };
+
+  const optionItems = [
+    {label: "Invalid ID", value: "Invalid ID"},
+    {label: "Invalid Company Logo", value: "Invalid Company Logo"},
+    {
+      label: "Invalid Company Description",
+      value: "Invalid Company Description",
+    },
+    {
+      label: "Invalid/Suspicious Company Email ",
+      value: "Invalid/Suspicious Company Email ",
+    },
+    {
+      label: "Gibberish Sent Details",
+      value: "Gibberish Sent Details",
+    },
+  ];
 
   return (
     <section className="approval-intern">
@@ -180,13 +216,31 @@ const ApprovalIntern = React.memo(({intern, index}) => {
                         Remarks <span>{`(optional)`}</span>
                       </b>
                     </p>
-                    <textarea
+                    {/* <textarea
                       value={remarks}
                       onChange={(e) => handleTextAreaChange(e.target.value)}
                       name="remarks"
                       id="remarks"
                       maxLength={60}
-                    ></textarea>
+                    ></textarea> */}
+                    <CreatableSelect
+                      tabIndex={-1}
+                      styles={customStyle}
+                      required
+                      onChange={(e) => handleTextAreaChange(e.value)}
+                      placeholder="Work in Internship"
+                      theme={(theme) => ({
+                        ...theme,
+                        outline: "solid 1px #8b8b8b",
+                        colors: {
+                          ...theme.colors,
+                          primary25: "#8b8b8b",
+                          primary: "#457b9d",
+                        },
+                      })}
+                      key={index}
+                      options={optionItems}
+                    />
                   </label>
                 </div>
                 <div className="btn-container">

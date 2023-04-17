@@ -38,6 +38,32 @@
     left: 0%;
     z-index: 6;
   }
+
+  .sample-view-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    z-index: 7;
+    border-radius: 1rem;
+    // padding: 2rem 1rem;
+    padding: 1rem;
+    width: 65rem;
+    height: 93%;
+    overflow: auto;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 1rem;
+    img {
+      margin: auto;
+      height: auto;
+      width: 100%;
+    }
+    .btn-close {
+      display: none;
+    }
+  }
   .modal {
     background-color: #d9d9d9;
     position: absolute;
@@ -190,7 +216,7 @@
     // }
     header {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr auto;
       background-color: #282b30;
       padding: 1.5rem 2rem;
       border-radius: 1rem;
@@ -198,6 +224,20 @@
         display: flex;
         align-items: center;
         color: #fff;
+      }
+      button {
+        font-family: $poppins-font-family;
+        padding: 1rem 1.5rem;
+        border-radius: 1rem;
+        border: solid 1px transparent;
+        outline: none;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        font-weight: 600;
+        &:hover {
+          background-color: $primary-feature-bg;
+          color: #fff;
+        }
       }
     }
 
@@ -924,11 +964,11 @@
 @media screen and (max-width: 400px) {
   .reports {
     .content {
-       header {
-      h2 {
-        justify-content: center;
+      header {
+        h2 {
+          justify-content: center;
+        }
       }
-    }
       .report-container {
         grid-auto-rows: 13rem;
         .narrative-content {

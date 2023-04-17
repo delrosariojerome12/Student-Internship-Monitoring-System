@@ -73,8 +73,6 @@ const AttendanceSchema = new mongoose.Schema({
     default: "0",
   },
   narrative: {
-    // type: mongoose.Schema.Types.ObjectId,
-    // ref: "Narrative",
     content: {
       type: String,
       default: "",
@@ -82,6 +80,11 @@ const AttendanceSchema = new mongoose.Schema({
     isComplete: {
       type: Boolean,
       default: false,
+    },
+    // this is the new one i want to add
+    tasks: {
+      type: Array,
+      default: [],
     },
   },
 });
