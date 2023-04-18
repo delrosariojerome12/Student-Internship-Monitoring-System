@@ -104,8 +104,8 @@ export const timeInAttendance = createAsyncThunk(
   "/attendance/timeIn",
   async ({email, form}, {rejectWithValue}) => {
     try {
-      const url = `https://sims-twqb.onrender.com/attendance/timeIn/${email}`;
-      // const url = `http://localhost:5000/attendance/timeIn/${email}`;
+      // const url = `https://sims-twqb.onrender.com/attendance/timeIn/${email}`;
+      const url = `http://localhost:5000/attendance/timeIn/${email}`;
       const {data: res} = await axios.post(url, form);
       console.log(res);
       return {res};
@@ -120,8 +120,8 @@ export const timeOutAttendance = createAsyncThunk(
   "/attendance/timeOut",
   async ({email, form}, {rejectWithValue}) => {
     try {
-      const url = `https://sims-twqb.onrender.com/attendance/timeOut/${email}`;
-      // const url = `http://localhost:5000/attendance/timeOut/${email}`;
+      // const url = `https://sims-twqb.onrender.com/attendance/timeOut/${email}`;
+      const url = `http://localhost:5000/attendance/timeOut/${email}`;
 
       const {data: res} = await axios.patch(url, form);
       console.log(res);

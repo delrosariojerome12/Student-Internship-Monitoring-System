@@ -40,7 +40,8 @@ export const updateNarrative = createAsyncThunk(
   "/narrative/update",
   async ({date, content, email}, {rejectWithValue}) => {
     try {
-      const url = `https://sims-twqb.onrender.com/attendance/updateNarrative/${email}`;
+      // const url = `https://sims-twqb.onrender.com/attendance/updateNarrative/${email}`;
+      const url = `http://localhost:5000/attendance/updateNarrative/${email}`;
       const {data: res} = await axios.patch(url, {
         params: {date},
         data: {content},

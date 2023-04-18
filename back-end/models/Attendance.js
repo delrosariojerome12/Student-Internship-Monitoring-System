@@ -6,6 +6,14 @@ const today = moment.tz("Asia/Manila").format("MM-DD-YYYY");
 //   date < 10 ? "0" : ""
 // }${date}-${year}`;
 
+const tasks = [
+  new mongoose.Schema({
+    title: String,
+    isCompleted: Boolean,
+    hoursConsumed: Number,
+  }),
+];
+
 const AttendanceSchema = new mongoose.Schema({
   intern: {type: mongoose.Schema.Types.ObjectId, ref: "Intern"},
   user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
@@ -82,10 +90,7 @@ const AttendanceSchema = new mongoose.Schema({
       default: false,
     },
     // this is the new one i want to add
-    tasks: {
-      type: Array,
-      default: [],
-    },
+    tasks,
   },
 });
 
