@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {
   handleAddModal,
   handleViewModal,
@@ -30,12 +30,12 @@ const formatDate = (date) => {
   }`;
 };
 
-const NarrativeDay = React.memo(({ day, details }) => {
+const NarrativeDay = React.memo(({day, details}) => {
   const dispatch = useDispatch();
-  const { isComplete, narrative, date, isPresent } = details;
+  const {isComplete, narrative, date, isPresent} = details;
   const {
     user: {
-      user: { role },
+      user: {role},
     },
   } = useSelector((state) => state.user);
   const renderStatus = () => {
@@ -43,13 +43,13 @@ const NarrativeDay = React.memo(({ day, details }) => {
     if (isComplete && isPresent) {
       if (narrative.isComplete) {
         color = "#0d7377";
-        return <h5 style={{ color }}>Completed</h5>;
+        return <h5 style={{color}}>Completed</h5>;
       }
       color = "#323232";
-      return <h5 style={{ color }}>Pending</h5>;
+      return <h5 style={{color}}>Pending</h5>;
     } else {
       color = "#e63946";
-      return <h5 style={{ color }}>Absent</h5>;
+      return <h5 style={{color}}>Absent</h5>;
     }
   };
 
@@ -59,44 +59,23 @@ const NarrativeDay = React.memo(({ day, details }) => {
         <h5>Day {day === 0 ? 1 : day + 1}</h5>
         <h5>{formatDate(date)}</h5>
       </div>
-      <div className="status">{renderStatus()}</div>
-
       {isComplete && isPresent && (
         <div className="btn-container">
           {role === "intern" ? (
             <>
-              {narrative.isComplete ? (
-                <>
-                  <button
-                    onClick={() => dispatch(handleViewModal({ day: details }))}
-                  >
-                    View
-                  </button>
-                  <button
-                    onClick={() => dispatch(handleEditModal({ day: details }))}
-                  >
-                    Edit
-                  </button>
-                </>
-              ) : (
-                <button
-                  onClick={() => dispatch(handleAddModal({ day: details }))}
-                >
-                  Add
-                </button>
-              )}
+              <button onClick={() => dispatch(handleAddModal({day: details}))}>
+                Add
+              </button>
             </>
           ) : (
             <>
-              {narrative.isComplete && (
-                <>
-                  <button
-                    onClick={() => dispatch(handleViewModal({ day: details }))}
-                  >
-                    View
-                  </button>
-                </>
-              )}
+              <>
+                <button
+                  onClick={() => dispatch(handleViewModal({day: details}))}
+                >
+                  View
+                </button>
+              </>
             </>
           )}
         </div>

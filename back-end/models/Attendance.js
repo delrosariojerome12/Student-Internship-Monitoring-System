@@ -90,7 +90,16 @@ const AttendanceSchema = new mongoose.Schema({
       default: false,
     },
     // this is the new one i want to add
-    tasks,
+    tasks: {
+      type: Array,
+      default: [
+        {
+          title: "Task 1",
+          status: "pending",
+          hoursConsumed: 0,
+        },
+      ],
+    },
   },
 });
 

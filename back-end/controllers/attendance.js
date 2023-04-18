@@ -482,27 +482,36 @@ const updateNarrative = async (req, res) => {
   const {email} = req.params;
   const {
     params: {date},
-    data: {content},
+    data: {content, tasks},
   } = req.body;
 
-  if (!content) {
-    const attendance = await Attendance.findOneAndUpdate(
-      {email, date},
-      {"narrative.content": content, "narrative.isComplete": false},
-      {new: true}
-    );
-    const allAttendance = await Attendance.find({email});
-    res.status(StatusCodes.OK).json({success: true, attendance, allAttendance});
-  } else {
-    const attendance = await Attendance.findOneAndUpdate(
-      {email, date},
-      {"narrative.content": content, "narrative.isComplete": true},
-      {new: true}
-    );
-    const allAttendance = await Attendance.find({email});
+  const attendance = await Attendance.findOneAndUpdate(
+    {email, date},
+    {
+      "narrative.content": content,
+      "narrative.isComplete": false,
+      "narrative.tasks": tasks,
+    },
+    {new: true}
+  );
+  const allAttendance = await Attendance.find({email});
+  res.status(StatusCodes.OK).json({success: true, attendance, allAttendance});
 
-    res.status(StatusCodes.OK).json({success: true, attendance, allAttendance});
-  }
+  // if (!content) {
+  // } else {
+  //   const attendance = await Attendance.findOneAndUpdate(
+  //     {email, date},
+  //     {
+  //       "narrative.content": content,
+  //       "narrative.isComplete": true,
+  //       "narrative.tasks": tasks,
+  //     },
+  //     {new: true}
+  //   );
+  //   const allAttendance = await Attendance.find({email});
+
+  //   res.status(StatusCodes.OK).json({success: true, attendance, allAttendance});
+  // }
 };
 
 const checkAbsents = async (req, res) => {

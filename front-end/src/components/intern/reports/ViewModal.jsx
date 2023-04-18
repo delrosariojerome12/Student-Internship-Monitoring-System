@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {handleViewModal} from "../../../features/interns/narrativeReducer";
+import Task from "./Task";
+
 const months = [
   "January",
   "February",
@@ -26,11 +28,13 @@ const formatDate = (date) => {
 const ViewModal = React.memo(() => {
   const {selectedDay} = useSelector((state) => state.narrative);
   const dispatch = useDispatch();
+  const [tasks, setTasks] = useState(selectedDay.day.narrative.tasks);
 
   const {
     day: {
       date,
       narrative: {isComplete, content},
+      totalRendered,
     },
   } = selectedDay;
 
@@ -44,17 +48,21 @@ const ViewModal = React.memo(() => {
         <div className="upper">
           <h3>View Narrative</h3>
           <h3>{formatDate(date)}</h3>
-          <h3 style={{color: isComplete ? "#00adb5" : "#e63946"}}>
-            {isComplete ? "Completed" : "Missing"}
-          </h3>
+          <h3>{totalRendered}hrs</h3>
         </div>
         <div className="middle">
-          <textarea
-            name="textValue"
-            id="textValue"
-            value={content}
-            disabled
-          ></textarea>
+          {tasks.map((item, index) => {
+            return (
+              <Task
+                key={index}
+                index={index}
+                item={item}
+                task={tasks[index]}
+                setTasks={setTasks}
+                tasks={tasks}
+              />
+            );
+          })}
         </div>
         <div className="btn-controller">
           <button
