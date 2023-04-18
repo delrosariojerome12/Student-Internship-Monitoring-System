@@ -533,8 +533,7 @@ button {
 .login .card-container form span {
   display: grid;
   grid-template-columns: auto 1fr;
-  -moz-column-gap: 1rem;
-       column-gap: 1rem;
+  gap: 1rem;
   grid-template-rows: auto auto;
 }
 .login .card-container form span svg {
@@ -1010,8 +1009,7 @@ button {
 .login .card-container form span {
   display: grid;
   grid-template-columns: auto 1fr;
-  -moz-column-gap: 1rem;
-       column-gap: 1rem;
+  gap: 1rem;
   grid-template-rows: auto auto;
 }
 .login .card-container form span svg {
@@ -1086,7 +1084,7 @@ button {
   height: 4.5rem;
   width: 12rem;
   background-color: #0d7377;
-  color: #fff;
+  color: #d9d9d9;
   border: 1px solid transparent;
   outline: none;
   cursor: pointer;
@@ -1106,9 +1104,9 @@ button {
 }
 .signin .verification-modal button:hover {
   border-radius: 1rem;
-  border: solid 1px #0d7377;
-  background-color: #fff;
-  color: #0d7377;
+  border: solid 1px #00adb5;
+  background-color: #00adb5;
+  color: #fff;
 }
 .signin .verification-modal form {
   text-align: center;
@@ -13705,7 +13703,7 @@ button {
     font-size: 1.3rem;
   }
 }
-/** @format */
+/** @format */ /** @format */
 .login {
   display: grid;
   grid-template-columns: 45.2rem 1fr;
@@ -14142,8 +14140,7 @@ button {
 .login .card-container form span {
   display: grid;
   grid-template-columns: auto 1fr;
-  -moz-column-gap: 1rem;
-       column-gap: 1rem;
+  gap: 1rem;
   grid-template-rows: auto auto;
 }
 .login .card-container form span svg {
@@ -14229,6 +14226,22 @@ button {
   }
   .login .card-container form button {
     margin: 0 auto;
+  }
+}
+@media screen and (max-width: 520px) {
+  .login .forgot-modal {
+    width: 100%;
+  }
+  .login .forgot-modal .forgot-modal-container {
+    overflow-y: auto;
+    overflow-x: auto;
+    width: 100%;
+    height: 100%;
+  }
+}
+@media screen and (max-height: 520px) {
+  .login .forgot-modal {
+    height: 100%;
   }
 }
 @media screen and (max-width: 480px) {
@@ -14330,6 +14343,23 @@ button {
     height: 3.7rem;
   }
 }
+@media screen and (max-width: 520px) {
+  .signin .verification-modal {
+    width: 100%;
+  }
+  .signin .verification-modal form {
+    overflow-y: auto;
+    overflow-x: auto;
+    width: 100%;
+    height: 100%;
+  }
+  .signin .verification-modal form h1 {
+    font-size: 2rem;
+  }
+  .signin .verification-modal form h2 {
+    font-size: 1.9rem;
+  }
+}
 @media screen and (max-width: 500px) {
   .signin {
     grid-template-columns: 5rem 1fr;
@@ -14381,6 +14411,21 @@ button {
     align-items: flex-start;
     flex-direction: column;
     margin: 0;
+  }
+}
+@media screen and (max-width: 380px) {
+  .signin .verification-modal form button {
+    height: 4rem;
+  }
+  .signin .verification-modal form input {
+    width: 4rem;
+    height: 4rem;
+  }
+  .signin .verification-modal form h1 {
+    font-size: 1.9rem;
+  }
+  .signin .verification-modal form h2 {
+    font-size: 1.8rem;
   }
 }
 /** @format */

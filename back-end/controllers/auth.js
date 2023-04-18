@@ -60,14 +60,14 @@ const signup = async (req, res) => {
     subject: "SIMS - Signup Verification Code", // Subject line
     text: `Your verification code is: ${verificationCode}`, // plain text body
     html: `<div
-      style="
+     style="
         background-color: #292929;
         color: #fff;
         padding: 2.3rem 2rem 2rem 2rem;
-        margin: auto;
+        margin: auto 0;
         border-radius: 10px;
         display: grid;
-        width: fit-content;
+        width: 300px;
         height: fit-content;
         background-image: url('https://firebasestorage.googleapis.com/v0/b/sims-9f681.appspot.com/o/Logo_3.png?alt=media&token=baa0455c-2916-4eb3-bf0c-3bfe5e4e804f');
         background-position: 10px 10px;
@@ -281,10 +281,10 @@ const forgotPassword = async (req, res) => {
         background-color: #292929;
         color: #fff;
         padding: 2.3rem 2rem 2rem 2rem;
-        margin: auto;
+        margin: auto 0;
         border-radius: 10px;
         display: grid;
-        width: fit-content;
+        width: 300px;
         height: fit-content;
         background-image: url('https://firebasestorage.googleapis.com/v0/b/sims-9f681.appspot.com/o/Logo_3.png?alt=media&token=baa0455c-2916-4eb3-bf0c-3bfe5e4e804f');
         background-position: 10px 10px;

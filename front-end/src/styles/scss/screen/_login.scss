@@ -1,7 +1,8 @@
+/** @format */
+
 @import "../components/login";
 @import "../utils";
 
-//tablet
 @media screen and (max-width: 800px) {
   .login {
     grid-template-columns: 1fr 150px;
@@ -51,7 +52,27 @@
   }
 }
 
-//mobile
+@media screen and (max-width: 520px) {
+  .login {
+    .forgot-modal {
+      width: 100%;
+      .forgot-modal-container {
+        overflow-y: auto;
+        overflow-x: auto;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+@media screen and (max-height: 520px) {
+  .login {
+    .forgot-modal {
+      height: 100%;
+    }
+  }
+}
+
 @media screen and (max-width: 480px) {
   .login {
     grid-template-columns: 1fr 50px;

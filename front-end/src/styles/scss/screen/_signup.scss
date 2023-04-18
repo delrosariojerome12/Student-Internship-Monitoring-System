@@ -70,6 +70,27 @@
     }
   }
 }
+
+@media screen and (max-width: 520px) {
+  .signin {
+    .verification-modal {
+      width: 100%;
+      form {
+        overflow-y: auto;
+        overflow-x: auto;
+        width: 100%;
+        height: 100%;
+        h1 {
+          font-size: 2rem;
+        }
+        h2 {
+          font-size: 1.9rem;
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 500px) {
   .signin {
     grid-template-columns: 5rem 1fr;
@@ -124,6 +145,28 @@
           align-items: flex-start;
           flex-direction: column;
           margin: 0;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .signin {
+    .verification-modal {
+      form {
+        button {
+          height: 4rem;
+        }
+        input {
+          width: 4rem;
+          height: 4rem;
+        }
+        h1 {
+          font-size: 1.9rem;
+        }
+        h2 {
+          font-size: 1.8rem;
         }
       }
     }
