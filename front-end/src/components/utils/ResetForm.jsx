@@ -1,8 +1,10 @@
-import React, {useState} from "react";
-import {FaLock, FaEye, FaEyeSlash} from "react-icons/fa";
-import {useDispatch} from "react-redux";
-import {resetPassword} from "../../features/user/userReducer";
-const ResetForm = React.memo(({email}) => {
+/** @format */
+
+import React, { useState } from "react";
+import { FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { resetPassword } from "../../features/user/userReducer";
+const ResetForm = React.memo(({ email }) => {
   const dispatch = useDispatch();
   const [form, setForm] = useState([
     {
@@ -111,7 +113,7 @@ const ResetForm = React.memo(({email}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     isComplete && console.log("Submit");
-    isComplete && dispatch(resetPassword({email, password: form[0].value}));
+    isComplete && dispatch(resetPassword({ email, password: form[0].value }));
   };
 
   const renderEyeIcon = (condition, index) => {
@@ -154,8 +156,7 @@ const ResetForm = React.memo(({email}) => {
                 htmlFor={id}
                 className={
                   value ? "placeholder-text active" : "placeholder-text"
-                }
-              >
+                }>
                 <div className={isError ? "text icons-error" : "text"}>
                   <span>
                     <IconType className={isError ? "icons-error" : "icons"} />
@@ -180,10 +181,14 @@ const ResetForm = React.memo(({email}) => {
       <div className="overlay"></div>
       <div className="reset-form">
         <h1>Create New Password</h1>
-        <form onSubmit={handleSubmit}>
-          {renderInputs()}
-          {isComplete && <button>Submit</button>}
-        </form>
+        <div className="reset-form-container">
+          <form onSubmit={handleSubmit}>
+            {renderInputs()}
+            <div className="btn-submit">
+              {isComplete && <button>Submit</button>}
+            </div>
+          </form>
+        </div>
       </div>
     </>
   );

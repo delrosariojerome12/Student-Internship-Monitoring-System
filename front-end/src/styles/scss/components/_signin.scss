@@ -25,15 +25,15 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
+    background-color: #d9d9d9;
     height: 50rem;
     width: 50rem;
     z-index: 7;
     border-radius: 1rem;
     display: grid;
-
+    padding: 2rem;
     button {
-      height: 5rem;
+      height: 4.5rem;
       width: 12rem;
       background-color: $primary-compliment-landing;
       color: #fff;
@@ -62,22 +62,38 @@
     }
     form {
       text-align: center;
-      padding: 3rem;
+      padding: 2rem;
       display: flex;
       align-items: center;
-      justify-content: space-evenly;
+      justify-content: center;
       flex-direction: column;
-      gap: 1rem;
+      background-color: #fff;
+      border-radius: 1rem;
+      gap: 2rem;
+      h1 {
+        display: grid;
+        gap: 0.5rem;
+        span {
+          color: $primary-feature-bg;
+        }
+      }
       label {
         display: flex;
         gap: 1rem;
       }
-
+      // .text {
+      //   display: flex;
+      //   flex-direction: column;
+      //   gap: 0.5rem;
+      // }
       input {
         text-align: center;
         font-size: 2rem;
         width: 5rem;
         height: 5rem;
+      }
+      .invalidCode {
+        color: $red-primary-color;
       }
     }
   }

@@ -1,9 +1,11 @@
-import React, {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {verifyCode} from "../../features/user/userReducer";
+/** @format */
+
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { verifyCode } from "../../features/user/userReducer";
 const VerificationModal = React.memo(() => {
   const dispatch = useDispatch();
-  const {visitorEmail, isVerifyLoading, isVerifyError} = useSelector(
+  const { visitorEmail, isVerifyLoading, isVerifyError } = useSelector(
     (state) => state.user
   );
   const [verificationCode, setVerificationCode] = useState(["", "", "", ""]);
@@ -30,7 +32,7 @@ const VerificationModal = React.memo(() => {
     const code = verificationCode.join("");
     console.log(`Verifying code: ${code}`);
     dispatch(
-      verifyCode({email: visitorEmail, code: verificationCode.join("")})
+      verifyCode({ email: visitorEmail, code: verificationCode.join("") })
     );
   };
 
@@ -39,9 +41,13 @@ const VerificationModal = React.memo(() => {
   return (
     <div className="verification-modal">
       <form onSubmit={handleSubmit}>
-        <h1>The code has been sent to: {visitorEmail}</h1>
-        <h2>Verification code:</h2>
-        <p>Codes are valid for 24hrs</p>
+        <h1>
+          The code has been sent to: <span>{visitorEmail}</span>
+        </h1>
+        <div className="text">
+          <h2>Verification code:</h2>
+          <p>Codes are valid for 24hrs</p>
+        </div>
         <label>
           {verificationCode.map((digit, index) => (
             <input
@@ -57,7 +63,7 @@ const VerificationModal = React.memo(() => {
         <button
           style={
             verificationCode.filter((item) => item.length > 0).length !== 4
-              ? {pointerEvents: "none", opacity: 0.5}
+              ? { pointerEvents: "none", opacity: 0.5 }
               : {
                   opacity: 1,
                 }
@@ -67,11 +73,10 @@ const VerificationModal = React.memo(() => {
               ? true
               : false
           }
-          type="submit"
-        >
+          type="submit">
           {isVerifyLoading ? "Verifying..." : "Verify"}
         </button>
-        {isVerifyError && <h2>Invalid Code!</h2>}
+        {isVerifyError && <h2 className="invalidCode">Invalid Code!</h2>}
       </form>
     </div>
   );
