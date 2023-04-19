@@ -16,6 +16,7 @@ import {auth} from "../../Firebase";
 import {sendDocument, removeDocument} from "../interns/documentsReducer";
 
 const initialState = {
+  pendingUser: null,
   user: null,
   isLoading: false,
   isError: false,
@@ -151,11 +152,11 @@ export const forgotPassword = createAsyncThunk(
 
 export const verifyCode = createAsyncThunk(
   "/user/verifyCode",
-  async ({email, code}, {rejectWithValue}) => {
-    console.log(email, code);
+  async ({email, code, pendingUser}, {rejectWithValue}) => {
+    console.log(email, code, pendingUser);
     try {
       const url = `http://localhost:5000/auth/verify`;
-      const {data: res} = await axios.post(url, {email, code});
+      const {data: res} = await axios.post(url, {email, code, pendingUser});
       console.log(res);
       return {res};
     } catch (error) {
@@ -201,6 +202,10 @@ export const userReducer = createSlice({
   name: "user",
   initialState: initialState,
   reducers: {
+    handlePendingUser: (state, action) => {
+      console.log(action.payload);
+      state.pendingUser = action.payload;
+    },
     handleClosePasswordChanged: (state, action) => {
       state.isPasswordChangeSuccess = false;
     },
@@ -223,7 +228,7 @@ export const userReducer = createSlice({
     },
   },
   extraReducers: (builder) => {
-    // reset passoword
+    // reset password
     builder
       .addCase(resetPassword.pending, (state, action) => {})
       .addCase(resetPassword.fulfilled, (state, action) => {
@@ -272,7 +277,6 @@ export const userReducer = createSlice({
       })
       .addCase(handleSignup.fulfilled, (state, action) => {
         const {res} = action.payload;
-
         console.log(res);
         state.isLoading = false;
         state.isError = false;
@@ -437,6 +441,7 @@ export const {
   handleCloseError,
   handleForgetModal,
   handleClosePasswordChanged,
+  handlePendingUser,
 } = userReducer.actions;
 
 export default userReducer.reducer;
