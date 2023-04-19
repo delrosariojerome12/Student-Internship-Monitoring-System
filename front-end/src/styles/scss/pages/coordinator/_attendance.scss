@@ -56,6 +56,18 @@
         display: flex;
         align-items: center;
         gap: 1rem;
+        button {
+          background-color: $primary-compliment-landing;
+          color: $primary-font-color;
+          transition: all 0.3s ease-in-out;
+          border-radius: 1rem;
+          letter-spacing: 0.2rem;
+          &:hover {
+            background-color: $primary-feature-bg;
+            color: #fff;
+            border-radius: 0;
+          }
+        }
       }
       .date-container {
         display: flex;
@@ -365,7 +377,6 @@
 }
 
 // Responsive
-
 //min-height
 @media screen and (min-height: 700px) {
   .monitor-attendance {
@@ -536,9 +547,11 @@
     }
     .more-details {
       .details {
-        img {
-          height: 25rem;
-          width: 25rem;
+        .timeIn-Out {
+          img {
+            height: 25rem;
+            width: 25rem;
+          }
         }
       }
     }
@@ -556,9 +569,11 @@
         & > * {
           font-size: 1.7rem;
         }
-        img {
-          height: 20rem;
-          width: 20rem;
+        .timeIn-Out {
+          img {
+            height: 20rem;
+            width: 20rem;
+          }
         }
       }
     }
@@ -619,9 +634,11 @@
         & > * {
           font-size: 1.6rem;
         }
-        img {
-          height: 17rem;
-          width: 17rem;
+        .timeIn-Out {
+          img {
+            height: 17rem;
+            width: 17rem;
+          }
         }
       }
     }

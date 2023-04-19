@@ -12,6 +12,7 @@ const initialState = {
   selectedDay: null,
   isGenerateOpen: false,
   generatingDocument: null,
+  isNarrativeSampleOpen: false,
 };
 
 export const getAllNarrative = createAsyncThunk(
@@ -37,12 +38,14 @@ export const getAllNarrative = createAsyncThunk(
 
 export const updateNarrative = createAsyncThunk(
   "/narrative/update",
-  async ({date, content, email}, {rejectWithValue}) => {
+  async ({date, content, email, tasks}, {rejectWithValue}) => {
+    console.log(content);
     try {
-      const url = `https://sims-twqb.onrender.com/attendance/updateNarrative/${email}`;
+      // const url = `https://sims-twqb.onrender.com/attendance/updateNarrative/${email}`;
+      const url = `http://localhost:5000/attendance/updateNarrative/${email}`;
       const {data: res} = await axios.patch(url, {
         params: {date},
-        data: {content},
+        data: {content, tasks},
       });
       console.log(res);
       return {res: res.allAttendance};
@@ -60,6 +63,9 @@ export const narrativeReducer = createSlice({
   name: "narrative",
   initialState,
   reducers: {
+    handleNarrativeSample: (state, action) => {
+      state.isNarrativeSampleOpen = !state.isNarrativeSampleOpen;
+    },
     handleGenerate: (state, {payload}) => {
       if (payload) {
         state.generatingDocument = payload;
@@ -130,6 +136,7 @@ export const {
   handleEditModal,
   handleViewModal,
   handleGenerate,
+  handleNarrativeSample,
 } = narrativeReducer.actions;
 
 export default narrativeReducer.reducer;

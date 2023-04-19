@@ -18,10 +18,22 @@ import {sendDocument, removeDocument} from "../interns/documentsReducer";
 const initialState = {
   user: null,
   isLoading: false,
-  isError: true,
+  isError: false,
   errorMessage: "",
   createdSuccessful: false,
   createdUser: null,
+  isVerifyModalOpen: false,
+  isVerifyError: false,
+  visitorEmail: null,
+  isVerifyLoading: false,
+  isVerifyError: false,
+  isForgotModalOpen: false,
+  resetErrorMessage: "",
+  isLoadingReset: false,
+  isSuccessResetSent: false,
+  isResetError: false,
+  isCodeVerified: false,
+  isPasswordChangeSuccess: false,
 };
 
 const convertForm = (form) => {
@@ -61,7 +73,9 @@ export const handleSignup = createAsyncThunk(
   async (form, {rejectWithValue}) => {
     try {
       const {email, firstName, lastName, password} = convertForm(form);
-      const url = "https://sims-twqb.onrender.com/auth/signup";
+      // const url = "https://sims-twqb.onrender.com/auth/signup";
+      const url = "http://localhost:5000/auth/signup";
+
       // const user = await createUserWithEmailAndPassword(auth, email, password);
       const {data: res} = await axios.post(url, convertForm(form));
       return {res};
@@ -78,7 +92,8 @@ export const handleLogin = createAsyncThunk(
     try {
       const {email, firstName, lastName, password} = convertForm(form);
       // const user = signInWithEmailAndPassword(auth, email, password);
-      const url = "https://sims-twqb.onrender.com/auth/login";
+      // const url = "https://sims-twqb.onrender.com/auth/login";
+      const url = "http://localhost:5000/auth/login";
       const {data: res} = await axios.post(url, convertForm(form));
       return {res};
     } catch (err) {
@@ -118,10 +133,80 @@ export const requestVerification = createAsyncThunk(
   }
 );
 
+export const forgotPassword = createAsyncThunk(
+  "/user/forgotPassword",
+  async ({email}, {rejectWithValue}) => {
+    console.log(email);
+    try {
+      const url = `http://localhost:5000/auth/forgotPassword`;
+      const {data: res} = await axios.post(url, {email});
+      console.log(res);
+      return {res};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const verifyCode = createAsyncThunk(
+  "/user/verifyCode",
+  async ({email, code}, {rejectWithValue}) => {
+    console.log(email, code);
+    try {
+      const url = `http://localhost:5000/auth/verify`;
+      const {data: res} = await axios.post(url, {email, code});
+      console.log(res);
+      return {res};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const verifyResetCode = createAsyncThunk(
+  "/user/verifyResetCode",
+  async ({email, code}, {rejectWithValue}) => {
+    console.log(email, code);
+    try {
+      const url = `http://localhost:5000/auth/verify`;
+      const {data: res} = await axios.post(url, {email, code});
+      console.log(res);
+      return {res};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const resetPassword = createAsyncThunk(
+  "/user/resetPassword",
+  async ({email, password}, {rejectWithValue}) => {
+    console.log(email, password);
+    try {
+      const url = `http://localhost:5000/auth/resetPassword`;
+      const {data: res} = await axios.patch(url, {email, password});
+      console.log(res);
+      return {res};
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 export const userReducer = createSlice({
   name: "user",
   initialState: initialState,
   reducers: {
+    handleClosePasswordChanged: (state, action) => {
+      state.isPasswordChangeSuccess = false;
+    },
+    handleForgetModal: (state, action) => {
+      state.isForgotModalOpen = !state.isForgotModalOpen;
+    },
     setUser: (state, action) => {
       state.user = action.payload;
     },
@@ -138,6 +223,90 @@ export const userReducer = createSlice({
     },
   },
   extraReducers: (builder) => {
+    // reset passoword
+    builder
+      .addCase(resetPassword.pending, (state, action) => {})
+      .addCase(resetPassword.fulfilled, (state, action) => {
+        state.isCodeVerified = false;
+        state.isPasswordChangeSuccess = true;
+      })
+      .addCase(resetPassword.rejected, (state, action) => {});
+    // verify reset code
+    builder
+      .addCase(verifyResetCode.pending, (state, action) => {
+        state.isVerifyLoading = true;
+        state.isVerifyError = false;
+      })
+      .addCase(verifyResetCode.fulfilled, (state, action) => {
+        console.log(action.payload.res.success);
+        state.isVerifyLoading = false;
+        state.isVerifyError = false;
+        state.isCodeVerified = action.payload.res.success;
+        state.isForgotModalOpen = false;
+      })
+      .addCase(verifyResetCode.rejected, (state, action) => {
+        state.isVerifyLoading = false;
+        state.isVerifyError = true;
+      });
+    // forgot password
+    builder
+      .addCase(forgotPassword.pending, (state, action) => {
+        state.isLoadingReset = true;
+        state.isResetError = false;
+      })
+      .addCase(forgotPassword.fulfilled, (state, action) => {
+        console.log(action.payload);
+        state.isLoadingReset = false;
+        state.isSuccessResetSent = true;
+      })
+      .addCase(forgotPassword.rejected, (state, action) => {
+        console.log(action.payload);
+        state.isLoadingReset = false;
+        state.resetErrorMessage = action.payload.msg;
+        state.isResetError = true;
+      });
+    // signup
+    builder
+      .addCase(handleSignup.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(handleSignup.fulfilled, (state, action) => {
+        const {res} = action.payload;
+
+        console.log(res);
+        state.isLoading = false;
+        state.isError = false;
+        state.isVerifyModalOpen = true;
+        state.visitorEmail = res.user.email;
+        // state.user = res.user;
+        // localStorage.setItem("token", res.token);
+      })
+      .addCase(handleSignup.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.errorMessage = action.payload.msg;
+      });
+    // verify code
+    builder
+      .addCase(verifyCode.pending, (state, action) => {
+        state.isVerifyLoading = true;
+        state.isVerifyError = false;
+      })
+      .addCase(verifyCode.fulfilled, (state, action) => {
+        const {res} = action.payload;
+
+        state.isVerifyLoading = false;
+        state.isVerifyError = false;
+        state.isVerifyModalOpen = false;
+        console.log(res);
+        state.user = res.user;
+        localStorage.setItem("token", res.token);
+      })
+      .addCase(verifyCode.rejected, (state, action) => {
+        state.isVerifyLoading = false;
+        state.isVerifyError = true;
+      });
+
     //create user
     builder
       .addCase(handleCreateUser.pending, (state, action) => {
@@ -192,23 +361,7 @@ export const userReducer = createSlice({
         state.isError = true;
         state.errorMessage = action.payload.msg;
       });
-    // signup
-    builder
-      .addCase(handleSignup.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(handleSignup.fulfilled, (state, action) => {
-        const {res} = action.payload;
-        state.isLoading = false;
-        state.isError = false;
-        state.user = res.user;
-        localStorage.setItem("token", res.token);
-      })
-      .addCase(handleSignup.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.errorMessage = action.payload.msg;
-      });
+
     // get user onload
     builder
       .addCase(getUserOnLoad.pending, (state, action) => {
@@ -277,7 +430,13 @@ export const userReducer = createSlice({
   },
 });
 
-export const {setUser, handleLogout, handleCloseSuccess, handleCloseError} =
-  userReducer.actions;
+export const {
+  setUser,
+  handleLogout,
+  handleCloseSuccess,
+  handleCloseError,
+  handleForgetModal,
+  handleClosePasswordChanged,
+} = userReducer.actions;
 
 export default userReducer.reducer;

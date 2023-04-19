@@ -3,6 +3,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { handleCloseModal } from "../../features/coordinator/monitorAttendance";
+import missingAtendance from "../../assets/img/missingAtendance.svg";
 
 const ViewMoreDetailsModal = React.memo(() => {
   const { selectedIntern } = useSelector((state) => state.monitorAttendance);
@@ -94,6 +95,7 @@ const ViewMoreDetailsModal = React.memo(() => {
             {missingTimeOut && (
               <div className="time-out">
                 <h3>Missing Time-out</h3>
+                <img src={missingAtendance} alt="" />
                 <p>Marked as Absent.</p>
               </div>
             )}

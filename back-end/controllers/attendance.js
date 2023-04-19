@@ -12,7 +12,6 @@ const cron = require("node-cron");
 function countRenderedHours(timeIn, timeOut) {
   const millisecondsInHour = 1000 * 60 * 60;
 
-  // Convert 12-hour time to 24-hour time
   const [hoursIn, minutesIn, secondsIn, meridiemIn] = timeIn.split(/:|\s/);
   const [hoursOut, minutesOut, secondsOut, meridiemOut] = timeOut.split(/:|\s/);
 
@@ -26,7 +25,7 @@ function countRenderedHours(timeIn, timeOut) {
       : (parseInt(hoursOut, 10) % 12) + 12;
 
   if (hours24Out < hours24In) {
-    hours24Out += 24; // add 24 hours if time-out is on a different day
+    hours24Out += 24;
   }
 
   const dateIn = new Date(
@@ -42,20 +41,15 @@ function countRenderedHours(timeIn, timeOut) {
 
   const difference = dateOut - dateIn;
 
-  console.log(dateIn, dateOut, "date in");
-  console.log(difference, "difference");
-
   let hours = difference / millisecondsInHour;
   // hours = Math.round(hours * 4) / 4; // Round to nearest quarter hour
 
   hours = Math.round(hours * 2) / 2;
 
   if (hours >= 8) {
-    console.log("Test");
-    hours--;
+    hours = 8;
   }
-  console.log(typeof hours);
-  console.log(hours);
+
   return hours;
 }
 
@@ -488,27 +482,36 @@ const updateNarrative = async (req, res) => {
   const {email} = req.params;
   const {
     params: {date},
-    data: {content},
+    data: {content, tasks},
   } = req.body;
 
-  if (!content) {
-    const attendance = await Attendance.findOneAndUpdate(
-      {email, date},
-      {"narrative.content": content, "narrative.isComplete": false},
-      {new: true}
-    );
-    const allAttendance = await Attendance.find({email});
-    res.status(StatusCodes.OK).json({success: true, attendance, allAttendance});
-  } else {
-    const attendance = await Attendance.findOneAndUpdate(
-      {email, date},
-      {"narrative.content": content, "narrative.isComplete": true},
-      {new: true}
-    );
-    const allAttendance = await Attendance.find({email});
+  const attendance = await Attendance.findOneAndUpdate(
+    {email, date},
+    {
+      "narrative.content": content,
+      "narrative.isComplete": false,
+      "narrative.tasks": tasks,
+    },
+    {new: true}
+  );
+  const allAttendance = await Attendance.find({email});
+  res.status(StatusCodes.OK).json({success: true, attendance, allAttendance});
 
-    res.status(StatusCodes.OK).json({success: true, attendance, allAttendance});
-  }
+  // if (!content) {
+  // } else {
+  //   const attendance = await Attendance.findOneAndUpdate(
+  //     {email, date},
+  //     {
+  //       "narrative.content": content,
+  //       "narrative.isComplete": true,
+  //       "narrative.tasks": tasks,
+  //     },
+  //     {new: true}
+  //   );
+  //   const allAttendance = await Attendance.find({email});
+
+  //   res.status(StatusCodes.OK).json({success: true, attendance, allAttendance});
+  // }
 };
 
 const checkAbsents = async (req, res) => {
@@ -550,11 +553,10 @@ const checkAbsents = async (req, res) => {
 
         await newAttendance.save();
       } else if (
-        currentTime.hour() === 22 &&
+        currentTime.hour() === 19 &&
         attendance.timeIn &&
         !attendance.timeOut
       ) {
-        console.log("here");
         const attendance = await Attendance.findOne({email, date: todayDate})
           .populate({
             path: "user",
@@ -578,9 +580,6 @@ const checkAbsents = async (req, res) => {
           },
           {new: true, runValidators: true}
         );
-
-        // console.log(absentAttendance);
-        // console.log("no timeout");
 
         await absentAttendance.save();
       }
@@ -664,12 +663,12 @@ const runCheckAbsents = async () => {
 
 const runStartingToday = async () => {
   try {
-    // const response = await axios.patch(
-    //   "http://localhost:5000/attendance/checkInternsStartingToday"
-    // );
     const response = await axios.patch(
-      "https://sims-twqb.onrender.com/attendance/checkInternsStartingToday"
+      "http://localhost:5000/attendance/checkInternsStartingToday"
     );
+    // const response = await axios.patch(
+    //   "https://sims-twqb.onrender.com/attendance/checkInternsStartingToday"
+    // );
     console.log(response.data);
   } catch (error) {
     console.error(error);

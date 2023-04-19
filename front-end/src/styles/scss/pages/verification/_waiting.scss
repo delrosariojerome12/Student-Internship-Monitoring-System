@@ -273,6 +273,22 @@
   }
 }
 
+@media screen and (max-width: 900px) {
+  .waiting-container-sent {
+    height: 95%;
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .waiting-container-sent {
+    img {
+      height: 30rem;
+      width: 20rem;
+    }
+  }
+}
+
 // @media screen and (max-width: 820px) {
 //   .waiting-container-pending {
 //     .sent-details {
@@ -345,16 +361,6 @@
     }
     button {
       padding: 1rem 2rem;
-    }
-  }
-}
-
-@media screen and (max-width: 460px) {
-  .waiting-container-sent {
-    width: 90%;
-    img {
-      height: 30rem;
-      width: 20rem;
     }
   }
 }

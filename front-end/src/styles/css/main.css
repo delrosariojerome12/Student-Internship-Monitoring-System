@@ -96,168 +96,316 @@ button {
   font-family: "Poppins", sans-serif;
 }
 
-.login {
-  display: grid;
-  grid-template-columns: 45.2rem 1fr;
-  font-size: 1.4rem;
-}
-.login .bg-container {
-  height: 100%;
-  width: 100%;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1080' height='560' preserveAspectRatio='none' viewBox='0 0 1080 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask2564%26quot%3b)' fill='none'%3e%3crect width='1080' height='560' x='0' y='0' fill='%230e2a47'%3e%3c/rect%3e%3cpath d='M1010.8603635618742 115.02007383675995L935.1085530076157 74.74212169962718 894.830600870483 150.4939322538857 970.5824114247415 190.77188439101846z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1029.702005360189-33.801361989301135L955.3181325638373 132.83996290940632 1114.23531739998 118.9365107967899z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M160.34755279135828 168.1717987652483L57.198242897431086 240.39772311410553 129.4241672462883 343.5470330080327 232.57347714021552 271.3211086591755z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M220.96 187.17 a172.47 172.47 0 1 0 344.94 0 a172.47 172.47 0 1 0 -344.94 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1018.7807516909211 434.36034169448095L907.1133335469049 512.5507096513369 1096.971119647777 546.0277598384972z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M221.043%2c171.975C268.229%2c172.492%2c317.623%2c157.708%2c341.015%2c116.725C364.253%2c76.012%2c352.021%2c25.929%2c327.048%2c-13.743C303.854%2c-50.589%2c264.567%2c-72.773%2c221.043%2c-73.86C175.388%2c-75%2c129.36%2c-58.188%2c105.454%2c-19.276C80.502%2c21.338%2c80.883%2c73.35%2c105.539%2c114.145C129.41%2c153.641%2c174.897%2c171.469%2c221.043%2c171.975' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M545.14 445.37 a103.26 103.26 0 1 0 206.52 0 a103.26 103.26 0 1 0 -206.52 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M-67.54124169793184 104.96717829859668L-101.53980937332204 203.7061883668626 63.56798956677189 205.33453484581497z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1085.1253407364632 390.54958929741383L1165.516297865899 275.739404112919 970.3151555519684 310.1586321679779z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M371.116887954621 239.9213757523273L455.48057641168793 158.4523088080166 374.0115094673772 74.0886203509497 289.6478210103103 155.5576872952604z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M447.07733384265805 664.1033901869265L485.82202255664106 508.706931417102 330.4255637868165 469.96224270311905 291.68087507283354 625.3587014729435z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M892.7093568070289-48.78614360137685L813.5510624340563-52.93465402129758 846.9074439906616 67.8770427481216z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask2564'%3e%3crect width='1080' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
-}
-.login footer {
-  display: none;
-}
-.login .card-container {
-  display: grid;
-  padding: 3rem;
-  gap: 3rem;
-  grid-template-rows: auto 1fr;
-}
-.login .card-container header {
-  display: flex;
-  gap: 1.5rem;
-  align-items: flex-start;
-  flex-direction: column;
-}
-.login .card-container header h1 {
-  font-size: 4.2rem;
-}
-.login .card-container header img {
-  height: 4.7rem;
-}
-.login .card-container form {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-}
-.login .card-container form .input-contain {
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  border-radius: 0.5rem;
-  width: -moz-fit-content;
-  width: fit-content;
-  gap: 1rem;
-}
-.login .card-container form .input-contain .placeholder-container {
-  position: absolute;
-  top: 5%;
-  left: 0%;
-  height: 4.5rem;
-  width: 100%;
-  pointer-events: none;
-}
-.login .card-container form .input-contain .eye-container {
-  z-index: 2;
-  position: absolute;
-  height: 4.5rem;
-  display: flex;
-  align-items: center;
-  top: 50%;
-  right: 3%;
-  transform: translate(0, -50%);
-}
-.login .card-container form .input-contain .eye-container svg {
-  cursor: pointer;
-  pointer-events: all;
-  font-size: 1.9rem;
-}
-.login .card-container form .input-contain input {
-  width: 39rem;
-  height: 5rem;
-  border: solid 3px transparent;
-  outline: solid 1px #8b8b8b;
-  border-radius: 0.5rem;
-  padding: 1.1rem 3.5rem 1.1rem 1.1rem;
-  letter-spacing: 2px;
-  transition: all 0.1s ease-in-out;
-}
-.login .card-container form .input-contain input:focus {
-  border: solid 3px #457b9d;
-  outline: none;
-}
-.login .card-container form .input-contain input:focus + .placeholder-container .placeholder-text {
-  top: 0%;
-  left: 0%;
-  background-color: #fff;
-  font-size: 1.1rem;
-  color: black;
-  scale: 0.8;
-}
-.login .card-container form .input-contain .input-error {
-  border: solid 2px #ed3737 !important;
-}
-.login .card-container form .input-contain .error-message {
-  color: #ed3737;
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-.login .card-container form .input-contain .icons-error {
-  color: red !important;
-}
-.login .card-container form .input-contain .placeholder-text {
-  position: absolute;
-  transition: all 0.2s ease-in-out;
-  pointer-events: none;
-  top: 50%;
-  left: 5%;
-  transform: translate(0%, -50%);
-}
-.login .card-container form .input-contain .placeholder-text:nth-child(1) {
-  left: 2% !important;
-}
-.login .card-container form .input-contain .placeholder-text .text {
-  font-size: 1.4rem;
-  padding: 0 0.5rem;
-  background-color: transparent;
-  color: black;
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
-.login .card-container form .input-contain .active {
-  top: 0%;
-  left: 0%;
-  background-color: #fff;
-  font-size: 1.1rem;
-  border-color: #8b8b8b;
-  scale: 0.8;
-}
-.login .card-container form span {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.login .card-container form span svg {
-  font-size: 1.7rem;
-}
-.login .card-container form button {
-  cursor: pointer;
-  height: 4.5rem;
-  width: 12.5rem;
-  border-radius: 5px;
-  border: solid 1px transparent;
-  outline: none;
-  background-color: #457b9d;
-  color: #f1faee;
-  letter-spacing: 0.2rem;
-  transition: all 0.3s ease-in-out;
-  font-weight: 600;
-}
-.login .card-container form button:hover {
-  background-color: #f1faee;
-  color: #457b9d;
-  border: solid 1px #457b9d;
-}
-
 /** @format */
 .login {
   display: grid;
   grid-template-columns: 45.2rem 1fr;
   font-size: 1.4rem;
 }
+.login .overlay {
+  width: 100%;
+  min-height: 100%;
+  background-color: rgba(48, 47, 47, 0.753);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: 6;
+}
+.login .forgot-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #d9d9d9;
+  height: 50rem;
+  width: 50rem;
+  z-index: 7;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+.login .forgot-modal h2 {
+  text-align: center;
+}
+.login .forgot-modal .forgot-modal-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #fff;
+  padding: 2rem;
+  border: 1px solid #000;
+  border-radius: 1rem;
+  height: 100%;
+}
+.login .forgot-modal .forgot-modal-container input {
+  padding: 1rem;
+}
+.login .forgot-modal .forgot-modal-container > form:not(.send-code) {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.login .forgot-modal .forgot-modal-container .send-code {
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  gap: 1rem;
+}
+.login .forgot-modal .forgot-modal-container .send-code label {
+  display: flex;
+  gap: 1rem;
+}
+.login .forgot-modal .forgot-modal-container .send-code input {
+  text-align: center;
+  font-size: 2rem;
+  width: 5rem;
+  height: 5rem;
+}
+.login .forgot-modal .forgot-modal-container a {
+  text-decoration: underline;
+  color: #030392;
+  cursor: pointer;
+}
+.login .forgot-modal .forgot-modal-container button {
+  height: 4.5rem;
+  width: 12rem;
+  background-color: #0d7377;
+  color: #fff;
+  border: 1px solid transparent;
+  outline: none;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  transition: all 0.3s linear;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.login .forgot-modal .forgot-modal-container button .icon {
+  font-size: 1.2rem;
+}
+.login .forgot-modal .forgot-modal-container button p {
+  padding-top: 0.2rem;
+}
+.login .forgot-modal .forgot-modal-container button:hover {
+  border-radius: 1rem;
+  border: solid 1px #00adb5;
+  background-color: #00adb5;
+}
+.login .forgot-modal .forgot-modal-container .error-text,
+.login .forgot-modal .forgot-modal-container .invalidCode {
+  color: #ed3737;
+}
+.login .forgot-modal .forgot-modal-container .code-success {
+  color: #00adb5;
+}
+.login .reset-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #d9d9d9;
+  height: 50rem;
+  width: 50rem;
+  z-index: 7;
+  border-radius: 1rem;
+  padding: 2rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.login .reset-form h1 {
+  text-align: center;
+}
+.login .reset-form .reset-form-container {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  height: 100%;
+}
+.login .reset-form .reset-form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.login .reset-form .reset-form-container form .input-contain {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  gap: 1rem;
+}
+.login .reset-form .reset-form-container form .input-contain .placeholder-container {
+  position: absolute;
+  top: 5%;
+  left: 0%;
+  height: 4.5rem;
+  width: 100%;
+  pointer-events: none;
+}
+.login .reset-form .reset-form-container form .input-contain .eye-container {
+  z-index: 2;
+  position: absolute;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  top: 0%;
+  right: 2rem;
+}
+.login .reset-form .reset-form-container form .input-contain .eye-container svg {
+  cursor: pointer;
+  pointer-events: all;
+  font-size: 1.9rem;
+}
+.login .reset-form .reset-form-container form .input-contain input {
+  width: auto !important;
+  height: 5rem;
+  border: solid 3px transparent;
+  outline: solid 1px #8b8b8b;
+  border-radius: 0.5rem;
+  padding: 1.1rem 3.5rem 1.1rem 1.1rem;
+  letter-spacing: 2px;
+  transition: all 0.1s ease-in-out;
+}
+.login .reset-form .reset-form-container form .input-contain input:focus {
+  border: solid 3px #457b9d;
+  outline: none;
+}
+.login .reset-form .reset-form-container form .input-contain input:focus + .placeholder-container .placeholder-text {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  color: black;
+  scale: 0.8;
+}
+.login .reset-form .reset-form-container form .input-contain .input-error {
+  border: solid 2px #ed3737 !important;
+}
+.login .reset-form .reset-form-container form .input-contain .error-message {
+  color: #ed3737;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.login .reset-form .reset-form-container form .input-contain .icons-error {
+  color: red !important;
+}
+.login .reset-form .reset-form-container form .input-contain .placeholder-text {
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+  top: 50%;
+  left: 5%;
+  transform: translate(0%, -50%);
+}
+.login .reset-form .reset-form-container form .input-contain .placeholder-text:nth-child(1) {
+  left: 2% !important;
+}
+.login .reset-form .reset-form-container form .input-contain .placeholder-text .text {
+  font-size: 1.4rem;
+  padding: 0 0.5rem;
+  background-color: transparent;
+  color: black;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.login .reset-form .reset-form-container form .input-contain .active {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  border-color: #8b8b8b;
+  scale: 0.8;
+}
+.login .reset-form .reset-form-container form > span {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.login .reset-form .reset-form-container form > span svg {
+  font-size: 1.7rem;
+}
+.login .reset-form .reset-form-container form > span .forgot-btn {
+  font-size: 1.4rem;
+  outline: none;
+  border: none;
+  height: 2rem;
+  display: flex;
+  background-color: transparent;
+  text-decoration: underline;
+  color: #030392;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+.login .reset-form .reset-form-container form .btn-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login .reset-form .reset-form-container form .btn-submit > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 4.5rem;
+  width: 12.5rem;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  background-color: #0d7377;
+  color: #fff;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.login .reset-form .reset-form-container form .btn-submit > button:hover {
+  border-radius: 1rem;
+  border: solid 1px #00adb5;
+  background-color: #00adb5;
+}
+.login .success-modal, .login .dashboard .admin-dashboard .error-modal, .login .dashboard-active .admin-dashboard .error-modal, .dashboard .admin-dashboard .login .error-modal, .dashboard-active .admin-dashboard .login .error-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  height: 50rem;
+  width: 50rem;
+  z-index: 7;
+  border-radius: 1rem;
+  padding: 3rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login .success-modal > button, .login .dashboard .admin-dashboard .error-modal > button, .login .dashboard-active .admin-dashboard .error-modal > button, .dashboard .admin-dashboard .login .error-modal > button, .dashboard-active .admin-dashboard .login .error-modal > button {
+  cursor: pointer;
+  height: 4.5rem;
+  width: 12.5rem;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  background-color: #457b9d;
+  color: #f1faee;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.login .success-modal > button:hover, .login .dashboard .admin-dashboard .error-modal > button:hover, .login .dashboard-active .admin-dashboard .error-modal > button:hover, .dashboard .admin-dashboard .login .error-modal > button:hover, .dashboard-active .admin-dashboard .login .error-modal > button:hover {
+  background-color: #f1faee;
+  color: #457b9d;
+  border: solid 1px #457b9d;
+}
 .login .bg-container {
   height: 100%;
   width: 100%;
@@ -383,14 +531,30 @@ button {
   scale: 0.8;
 }
 .login .card-container form span {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+  grid-template-rows: auto auto;
 }
 .login .card-container form span svg {
   font-size: 1.7rem;
 }
-.login .card-container form button {
+.login .card-container form span .forgot-btn {
+  grid-row: 2/3;
+  grid-column: 1/3;
+  font-size: 1.4rem;
+  outline: none;
+  border: none;
+  height: 2rem;
+  display: flex;
+  background-color: transparent;
+  text-decoration: underline;
+  color: #030392;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+.login .card-container form > button {
   cursor: pointer;
   height: 4.5rem;
   width: 12.5rem;
@@ -403,7 +567,484 @@ button {
   transition: all 0.3s ease-in-out;
   font-weight: 600;
 }
-.login .card-container form button:hover {
+.login .card-container form > button:hover {
+  background-color: #f1faee;
+  color: #457b9d;
+  border: solid 1px #457b9d;
+}
+
+/** @format */ /** @format */
+.login {
+  display: grid;
+  grid-template-columns: 45.2rem 1fr;
+  font-size: 1.4rem;
+}
+.login .overlay {
+  width: 100%;
+  min-height: 100%;
+  background-color: rgba(48, 47, 47, 0.753);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: 6;
+}
+.login .forgot-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #d9d9d9;
+  height: 50rem;
+  width: 50rem;
+  z-index: 7;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+.login .forgot-modal h2 {
+  text-align: center;
+}
+.login .forgot-modal .forgot-modal-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #fff;
+  padding: 2rem;
+  border: 1px solid #000;
+  border-radius: 1rem;
+  height: 100%;
+}
+.login .forgot-modal .forgot-modal-container input {
+  padding: 1rem;
+}
+.login .forgot-modal .forgot-modal-container > form:not(.send-code) {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.login .forgot-modal .forgot-modal-container .send-code {
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  gap: 1rem;
+}
+.login .forgot-modal .forgot-modal-container .send-code label {
+  display: flex;
+  gap: 1rem;
+}
+.login .forgot-modal .forgot-modal-container .send-code input {
+  text-align: center;
+  font-size: 2rem;
+  width: 5rem;
+  height: 5rem;
+}
+.login .forgot-modal .forgot-modal-container a {
+  text-decoration: underline;
+  color: #030392;
+  cursor: pointer;
+}
+.login .forgot-modal .forgot-modal-container button {
+  height: 4.5rem;
+  width: 12rem;
+  background-color: #0d7377;
+  color: #fff;
+  border: 1px solid transparent;
+  outline: none;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  transition: all 0.3s linear;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.login .forgot-modal .forgot-modal-container button .icon {
+  font-size: 1.2rem;
+}
+.login .forgot-modal .forgot-modal-container button p {
+  padding-top: 0.2rem;
+}
+.login .forgot-modal .forgot-modal-container button:hover {
+  border-radius: 1rem;
+  border: solid 1px #00adb5;
+  background-color: #00adb5;
+}
+.login .forgot-modal .forgot-modal-container .error-text,
+.login .forgot-modal .forgot-modal-container .invalidCode {
+  color: #ed3737;
+}
+.login .forgot-modal .forgot-modal-container .code-success {
+  color: #00adb5;
+}
+.login .reset-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #d9d9d9;
+  height: 50rem;
+  width: 50rem;
+  z-index: 7;
+  border-radius: 1rem;
+  padding: 2rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.login .reset-form h1 {
+  text-align: center;
+}
+.login .reset-form .reset-form-container {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  height: 100%;
+}
+.login .reset-form .reset-form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.login .reset-form .reset-form-container form .input-contain {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  gap: 1rem;
+}
+.login .reset-form .reset-form-container form .input-contain .placeholder-container {
+  position: absolute;
+  top: 5%;
+  left: 0%;
+  height: 4.5rem;
+  width: 100%;
+  pointer-events: none;
+}
+.login .reset-form .reset-form-container form .input-contain .eye-container {
+  z-index: 2;
+  position: absolute;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  top: 0%;
+  right: 2rem;
+}
+.login .reset-form .reset-form-container form .input-contain .eye-container svg {
+  cursor: pointer;
+  pointer-events: all;
+  font-size: 1.9rem;
+}
+.login .reset-form .reset-form-container form .input-contain input {
+  width: auto !important;
+  height: 5rem;
+  border: solid 3px transparent;
+  outline: solid 1px #8b8b8b;
+  border-radius: 0.5rem;
+  padding: 1.1rem 3.5rem 1.1rem 1.1rem;
+  letter-spacing: 2px;
+  transition: all 0.1s ease-in-out;
+}
+.login .reset-form .reset-form-container form .input-contain input:focus {
+  border: solid 3px #457b9d;
+  outline: none;
+}
+.login .reset-form .reset-form-container form .input-contain input:focus + .placeholder-container .placeholder-text {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  color: black;
+  scale: 0.8;
+}
+.login .reset-form .reset-form-container form .input-contain .input-error {
+  border: solid 2px #ed3737 !important;
+}
+.login .reset-form .reset-form-container form .input-contain .error-message {
+  color: #ed3737;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.login .reset-form .reset-form-container form .input-contain .icons-error {
+  color: red !important;
+}
+.login .reset-form .reset-form-container form .input-contain .placeholder-text {
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+  top: 50%;
+  left: 5%;
+  transform: translate(0%, -50%);
+}
+.login .reset-form .reset-form-container form .input-contain .placeholder-text:nth-child(1) {
+  left: 2% !important;
+}
+.login .reset-form .reset-form-container form .input-contain .placeholder-text .text {
+  font-size: 1.4rem;
+  padding: 0 0.5rem;
+  background-color: transparent;
+  color: black;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.login .reset-form .reset-form-container form .input-contain .active {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  border-color: #8b8b8b;
+  scale: 0.8;
+}
+.login .reset-form .reset-form-container form > span {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.login .reset-form .reset-form-container form > span svg {
+  font-size: 1.7rem;
+}
+.login .reset-form .reset-form-container form > span .forgot-btn {
+  font-size: 1.4rem;
+  outline: none;
+  border: none;
+  height: 2rem;
+  display: flex;
+  background-color: transparent;
+  text-decoration: underline;
+  color: #030392;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+.login .reset-form .reset-form-container form .btn-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login .reset-form .reset-form-container form .btn-submit > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 4.5rem;
+  width: 12.5rem;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  background-color: #0d7377;
+  color: #fff;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.login .reset-form .reset-form-container form .btn-submit > button:hover {
+  border-radius: 1rem;
+  border: solid 1px #00adb5;
+  background-color: #00adb5;
+}
+.login .success-modal, .login .dashboard .admin-dashboard .error-modal, .login .dashboard-active .admin-dashboard .error-modal, .dashboard .admin-dashboard .login .error-modal, .dashboard-active .admin-dashboard .login .error-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  height: 50rem;
+  width: 50rem;
+  z-index: 7;
+  border-radius: 1rem;
+  padding: 3rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login .success-modal > button, .login .dashboard .admin-dashboard .error-modal > button, .login .dashboard-active .admin-dashboard .error-modal > button, .dashboard .admin-dashboard .login .error-modal > button, .dashboard-active .admin-dashboard .login .error-modal > button {
+  cursor: pointer;
+  height: 4.5rem;
+  width: 12.5rem;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  background-color: #457b9d;
+  color: #f1faee;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.login .success-modal > button:hover, .login .dashboard .admin-dashboard .error-modal > button:hover, .login .dashboard-active .admin-dashboard .error-modal > button:hover, .dashboard .admin-dashboard .login .error-modal > button:hover, .dashboard-active .admin-dashboard .login .error-modal > button:hover {
+  background-color: #f1faee;
+  color: #457b9d;
+  border: solid 1px #457b9d;
+}
+.login .bg-container {
+  height: 100%;
+  width: 100%;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1080' height='560' preserveAspectRatio='none' viewBox='0 0 1080 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask2564%26quot%3b)' fill='none'%3e%3crect width='1080' height='560' x='0' y='0' fill='%230e2a47'%3e%3c/rect%3e%3cpath d='M1010.8603635618742 115.02007383675995L935.1085530076157 74.74212169962718 894.830600870483 150.4939322538857 970.5824114247415 190.77188439101846z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1029.702005360189-33.801361989301135L955.3181325638373 132.83996290940632 1114.23531739998 118.9365107967899z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M160.34755279135828 168.1717987652483L57.198242897431086 240.39772311410553 129.4241672462883 343.5470330080327 232.57347714021552 271.3211086591755z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M220.96 187.17 a172.47 172.47 0 1 0 344.94 0 a172.47 172.47 0 1 0 -344.94 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1018.7807516909211 434.36034169448095L907.1133335469049 512.5507096513369 1096.971119647777 546.0277598384972z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M221.043%2c171.975C268.229%2c172.492%2c317.623%2c157.708%2c341.015%2c116.725C364.253%2c76.012%2c352.021%2c25.929%2c327.048%2c-13.743C303.854%2c-50.589%2c264.567%2c-72.773%2c221.043%2c-73.86C175.388%2c-75%2c129.36%2c-58.188%2c105.454%2c-19.276C80.502%2c21.338%2c80.883%2c73.35%2c105.539%2c114.145C129.41%2c153.641%2c174.897%2c171.469%2c221.043%2c171.975' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M545.14 445.37 a103.26 103.26 0 1 0 206.52 0 a103.26 103.26 0 1 0 -206.52 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M-67.54124169793184 104.96717829859668L-101.53980937332204 203.7061883668626 63.56798956677189 205.33453484581497z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1085.1253407364632 390.54958929741383L1165.516297865899 275.739404112919 970.3151555519684 310.1586321679779z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M371.116887954621 239.9213757523273L455.48057641168793 158.4523088080166 374.0115094673772 74.0886203509497 289.6478210103103 155.5576872952604z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M447.07733384265805 664.1033901869265L485.82202255664106 508.706931417102 330.4255637868165 469.96224270311905 291.68087507283354 625.3587014729435z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M892.7093568070289-48.78614360137685L813.5510624340563-52.93465402129758 846.9074439906616 67.8770427481216z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask2564'%3e%3crect width='1080' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
+}
+.login footer {
+  display: none;
+}
+.login .card-container {
+  display: grid;
+  padding: 3rem;
+  gap: 3rem;
+  grid-template-rows: auto 1fr;
+}
+.login .card-container header {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.login .card-container header h1 {
+  font-size: 4.2rem;
+}
+.login .card-container header img {
+  height: 4.7rem;
+}
+.login .card-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.login .card-container form .input-contain {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  gap: 1rem;
+}
+.login .card-container form .input-contain .placeholder-container {
+  position: absolute;
+  top: 5%;
+  left: 0%;
+  height: 4.5rem;
+  width: 100%;
+  pointer-events: none;
+}
+.login .card-container form .input-contain .eye-container {
+  z-index: 2;
+  position: absolute;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  top: 50%;
+  right: 3%;
+  transform: translate(0, -50%);
+}
+.login .card-container form .input-contain .eye-container svg {
+  cursor: pointer;
+  pointer-events: all;
+  font-size: 1.9rem;
+}
+.login .card-container form .input-contain input {
+  width: 39rem;
+  height: 5rem;
+  border: solid 3px transparent;
+  outline: solid 1px #8b8b8b;
+  border-radius: 0.5rem;
+  padding: 1.1rem 3.5rem 1.1rem 1.1rem;
+  letter-spacing: 2px;
+  transition: all 0.1s ease-in-out;
+}
+.login .card-container form .input-contain input:focus {
+  border: solid 3px #457b9d;
+  outline: none;
+}
+.login .card-container form .input-contain input:focus + .placeholder-container .placeholder-text {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  color: black;
+  scale: 0.8;
+}
+.login .card-container form .input-contain .input-error {
+  border: solid 2px #ed3737 !important;
+}
+.login .card-container form .input-contain .error-message {
+  color: #ed3737;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.login .card-container form .input-contain .icons-error {
+  color: red !important;
+}
+.login .card-container form .input-contain .placeholder-text {
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+  top: 50%;
+  left: 5%;
+  transform: translate(0%, -50%);
+}
+.login .card-container form .input-contain .placeholder-text:nth-child(1) {
+  left: 2% !important;
+}
+.login .card-container form .input-contain .placeholder-text .text {
+  font-size: 1.4rem;
+  padding: 0 0.5rem;
+  background-color: transparent;
+  color: black;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.login .card-container form .input-contain .active {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  border-color: #8b8b8b;
+  scale: 0.8;
+}
+.login .card-container form span {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+  grid-template-rows: auto auto;
+}
+.login .card-container form span svg {
+  font-size: 1.7rem;
+}
+.login .card-container form span .forgot-btn {
+  grid-row: 2/3;
+  grid-column: 1/3;
+  font-size: 1.4rem;
+  outline: none;
+  border: none;
+  height: 2rem;
+  display: flex;
+  background-color: transparent;
+  text-decoration: underline;
+  color: #030392;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+.login .card-container form > button {
+  cursor: pointer;
+  height: 4.5rem;
+  width: 12.5rem;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  background-color: #457b9d;
+  color: #f1faee;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.login .card-container form > button:hover {
   background-color: #f1faee;
   color: #457b9d;
   border: solid 1px #457b9d;
@@ -418,6 +1059,87 @@ button {
   height: 100%;
   width: 100%;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1080' height='560' preserveAspectRatio='none' viewBox='0 0 1080 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask2564%26quot%3b)' fill='none'%3e%3crect width='1080' height='560' x='0' y='0' fill='%230e2a47'%3e%3c/rect%3e%3cpath d='M1010.8603635618742 115.02007383675995L935.1085530076157 74.74212169962718 894.830600870483 150.4939322538857 970.5824114247415 190.77188439101846z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1029.702005360189-33.801361989301135L955.3181325638373 132.83996290940632 1114.23531739998 118.9365107967899z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M160.34755279135828 168.1717987652483L57.198242897431086 240.39772311410553 129.4241672462883 343.5470330080327 232.57347714021552 271.3211086591755z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M220.96 187.17 a172.47 172.47 0 1 0 344.94 0 a172.47 172.47 0 1 0 -344.94 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1018.7807516909211 434.36034169448095L907.1133335469049 512.5507096513369 1096.971119647777 546.0277598384972z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M221.043%2c171.975C268.229%2c172.492%2c317.623%2c157.708%2c341.015%2c116.725C364.253%2c76.012%2c352.021%2c25.929%2c327.048%2c-13.743C303.854%2c-50.589%2c264.567%2c-72.773%2c221.043%2c-73.86C175.388%2c-75%2c129.36%2c-58.188%2c105.454%2c-19.276C80.502%2c21.338%2c80.883%2c73.35%2c105.539%2c114.145C129.41%2c153.641%2c174.897%2c171.469%2c221.043%2c171.975' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M545.14 445.37 a103.26 103.26 0 1 0 206.52 0 a103.26 103.26 0 1 0 -206.52 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M-67.54124169793184 104.96717829859668L-101.53980937332204 203.7061883668626 63.56798956677189 205.33453484581497z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1085.1253407364632 390.54958929741383L1165.516297865899 275.739404112919 970.3151555519684 310.1586321679779z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M371.116887954621 239.9213757523273L455.48057641168793 158.4523088080166 374.0115094673772 74.0886203509497 289.6478210103103 155.5576872952604z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M447.07733384265805 664.1033901869265L485.82202255664106 508.706931417102 330.4255637868165 469.96224270311905 291.68087507283354 625.3587014729435z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M892.7093568070289-48.78614360137685L813.5510624340563-52.93465402129758 846.9074439906616 67.8770427481216z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask2564'%3e%3crect width='1080' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
+}
+.signin .overlay {
+  width: 100%;
+  min-height: 100%;
+  background-color: rgba(48, 47, 47, 0.753);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: 6;
+}
+.signin .verification-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #d9d9d9;
+  height: 50rem;
+  width: 50rem;
+  z-index: 7;
+  border-radius: 1rem;
+  display: grid;
+  padding: 2rem;
+}
+.signin .verification-modal button {
+  height: 4.5rem;
+  width: 12rem;
+  background-color: #0d7377;
+  color: #fff;
+  border: 1px solid transparent;
+  outline: none;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  transition: all 0.3s linear;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.signin .verification-modal button .icon {
+  font-size: 1.2rem;
+}
+.signin .verification-modal button p {
+  padding-top: 0.2rem;
+}
+.signin .verification-modal button:hover {
+  border-radius: 1rem;
+  border: solid 1px #0d7377;
+  background-color: #fff;
+  color: #0d7377;
+}
+.signin .verification-modal form {
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 1rem;
+  gap: 2rem;
+}
+.signin .verification-modal form h1 {
+  display: grid;
+  gap: 0.5rem;
+}
+.signin .verification-modal form h1 span {
+  color: #00adb5;
+}
+.signin .verification-modal form label {
+  display: flex;
+  gap: 1rem;
+}
+.signin .verification-modal form input {
+  text-align: center;
+  font-size: 2rem;
+  width: 5rem;
+  height: 5rem;
+}
+.signin .verification-modal form .invalidCode {
+  color: #e63946;
 }
 .signin .card-container {
   display: grid;
@@ -2346,8 +3068,8 @@ button {
     font-size: 3rem;
   }
   .dashboard .left-sidebar .links-con .sub-container, .dashboard-active .left-sidebar .links-con .sub-container {
-    display: grid;
-    grid-template-rows: auto 1fr 4rem;
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
     padding: 1rem 1rem 2rem 1rem;
     width: 100%;
@@ -2357,7 +3079,6 @@ button {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    height: 100%;
     gap: 1rem;
   }
   .dashboard .left-sidebar .links-con .sub-container .link-container .icon-con, .dashboard-active .left-sidebar .links-con .sub-container .link-container .icon-con {
@@ -2434,16 +3155,6 @@ button {
     display: flex;
     background-color: #323232;
     width: 100vw;
-  }
-}
-@media screen and (max-height: 520px) {
-  .dashboard .left-sidebar .links-con .sub-container, .dashboard-active .left-sidebar .links-con .sub-container {
-    grid-template-rows: 13rem auto auto;
-  }
-  .dashboard .left-sidebar .links-con .sub-container .link-container, .dashboard-active .left-sidebar .links-con .sub-container .link-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: auto;
   }
 }
 .dashboard .sidebar-right, .dashboard-active .sidebar-right {
@@ -2693,8 +3404,8 @@ button {
   align-items: center;
   justify-content: center;
   padding: 0rem 2rem;
-  border-radius: 5px;
   border: solid 1px transparent;
+  border-radius: 1rem;
   outline: none;
   background-color: #0d7377;
   color: #f1faee;
@@ -2704,6 +3415,7 @@ button {
 }
 .dashboard .intern-container header .navigation .left-side button:hover, .dashboard-active .intern-container header .navigation .left-side button:hover {
   background-color: #00adb5;
+  border-radius: 0;
   color: #fff;
   border: solid 1px #00adb5;
 }
@@ -4898,6 +5610,25 @@ button {
   .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .all-internship-container {
     border-radius: 0 0 1rem 1rem;
   }
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-intern .no-intern, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-intern .no-intern,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-intern .no-approvals,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-intern .no-approvals,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-intern .no-internships,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-intern .no-internships,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .no-intern,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .no-intern,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .no-approvals,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .no-approvals,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .no-internships,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .no-internships,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .no-intern,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .no-intern,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .no-approvals,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .no-approvals,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .no-internships,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .no-internships {
+    padding-top: 4rem;
+  }
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-intern .no-intern img, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-intern .no-intern img,
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-intern .no-approvals img,
   .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-intern .no-approvals img,
@@ -5087,6 +5818,25 @@ button {
   }
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .intern-right button, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .intern-right button {
     height: 3.5rem;
+  }
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-intern .no-intern, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-intern .no-intern,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-intern .no-approvals,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-intern .no-approvals,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-intern .no-internships,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-intern .no-internships,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .no-intern,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .no-intern,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .no-approvals,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .no-approvals,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .no-internships,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .no-internships,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .no-intern,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .no-intern,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .no-approvals,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .no-approvals,
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-internships .no-internships,
+  .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-internships .no-internships {
+    padding-top: 2rem;
   }
 }
 @media screen and (max-width: 500px) {
@@ -5289,6 +6039,18 @@ button {
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+.dashboard .monitor-attendance header .mid .btn-container button, .dashboard-active .monitor-attendance header .mid .btn-container button {
+  background-color: #0d7377;
+  color: #f1faee;
+  transition: all 0.3s ease-in-out;
+  border-radius: 1rem;
+  letter-spacing: 0.2rem;
+}
+.dashboard .monitor-attendance header .mid .btn-container button:hover, .dashboard-active .monitor-attendance header .mid .btn-container button:hover {
+  background-color: #00adb5;
+  color: #fff;
+  border-radius: 0;
 }
 .dashboard .monitor-attendance header .mid .date-container, .dashboard-active .monitor-attendance header .mid .date-container {
   display: flex;
@@ -5680,7 +6442,7 @@ button {
     width: 100%;
     height: 100%;
   }
-  .dashboard .monitor-attendance .more-details .details img, .dashboard-active .monitor-attendance .more-details .details img {
+  .dashboard .monitor-attendance .more-details .details .timeIn-Out img, .dashboard-active .monitor-attendance .more-details .details .timeIn-Out img {
     height: 25rem;
     width: 25rem;
   }
@@ -5695,7 +6457,7 @@ button {
   .dashboard .monitor-attendance .more-details .details > *, .dashboard-active .monitor-attendance .more-details .details > * {
     font-size: 1.7rem;
   }
-  .dashboard .monitor-attendance .more-details .details img, .dashboard-active .monitor-attendance .more-details .details img {
+  .dashboard .monitor-attendance .more-details .details .timeIn-Out img, .dashboard-active .monitor-attendance .more-details .details .timeIn-Out img {
     height: 20rem;
     width: 20rem;
   }
@@ -5741,7 +6503,7 @@ button {
   .dashboard .monitor-attendance .more-details .details > *, .dashboard-active .monitor-attendance .more-details .details > * {
     font-size: 1.6rem;
   }
-  .dashboard .monitor-attendance .more-details .details img, .dashboard-active .monitor-attendance .more-details .details img {
+  .dashboard .monitor-attendance .more-details .details .timeIn-Out img, .dashboard-active .monitor-attendance .more-details .details .timeIn-Out img {
     height: 17rem;
     width: 17rem;
   }
@@ -6348,6 +7110,8 @@ button {
   grid-column: 1/3;
 }
 .dashboard .admin-document-page .document-approval-container .document-intern .text .top .internship-at, .dashboard-active .admin-document-page .document-approval-container .document-intern .text .top .internship-at {
+  grid-row: 2/3;
+  grid-column: 2/3;
   white-space: nowrap; /* Prevents text from wrapping */
   overflow: hidden; /* Hides any overflowed text */
   text-overflow: ellipsis;
@@ -8767,6 +9531,18 @@ button {
     font-size: 1.6rem;
   }
 }
+@media screen and (max-width: 900px) {
+  .waiting-container-sent {
+    height: 95%;
+    width: 95%;
+  }
+}
+@media screen and (max-width: 460px) {
+  .waiting-container-sent img {
+    height: 30rem;
+    width: 20rem;
+  }
+}
 @media screen and (max-width: 750px) {
   .waiting-container-pending {
     width: 96%;
@@ -8812,15 +9588,6 @@ button {
   }
   .waiting-container-pending button {
     padding: 1rem 2rem;
-  }
-}
-@media screen and (max-width: 460px) {
-  .waiting-container-sent {
-    width: 90%;
-  }
-  .waiting-container-sent img {
-    height: 30rem;
-    width: 20rem;
   }
 }
 /** @format */
@@ -9361,9 +10128,14 @@ button {
   border-radius: 1rem;
 }
 .profile-page .modal .middle {
+  overflow-y: auto;
   background-color: #fff;
   border: solid 1px #000;
   border-radius: 1rem;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 .profile-page .modal .middle textarea {
   border-radius: 1rem;
@@ -9372,6 +10144,150 @@ button {
   width: 100%;
   height: 100%;
   padding: 2rem;
+}
+.profile-page .modal .middle h4 {
+  color: #e63946;
+}
+.profile-page .modal .middle button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  background-color: #0d7377;
+  border: none;
+  border-radius: 1rem;
+  outline: none;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  transition: all 0.2s linear;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #d9d9d9;
+}
+.profile-page .modal .middle button:hover {
+  background-color: #00adb5;
+  border-radius: 0;
+  color: #fff;
+}
+.profile-page .modal .middle .input-contain {
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+  gap: 1rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 20% 20% auto;
+  align-items: center;
+}
+.profile-page .modal .middle .input-contain .css-6j8wv5-Input {
+  margin: 0;
+  padding: 0;
+  height: 5rem;
+}
+.profile-page .modal .middle .input-contain:nth-child(8) input:not(:focus) + .placeholder-container .placeholder-text {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  color: black;
+  scale: 0.8;
+}
+.profile-page .modal .middle .input-contain textarea {
+  resize: none;
+  height: 10rem;
+  border: solid 3px transparent;
+  outline: solid 1px #8b8b8b;
+  border-radius: 0.5rem;
+  padding: 1.1rem 3.5rem 1.1rem 2rem;
+  letter-spacing: 2px;
+  transition: all 0.3s ease-in-out;
+}
+.profile-page .modal .middle .input-contain textarea:focus {
+  border: solid 3px #457b9d;
+  outline: none;
+}
+.profile-page .modal .middle .input-contain textarea .placeholder-container {
+  position: absolute;
+  top: 0%;
+  left: 0rem;
+  height: 100%;
+  width: -moz-fit-content;
+  width: fit-content;
+  pointer-events: none;
+}
+.profile-page .modal .middle .input-contain textarea:focus + .placeholder-container .placeholder-text {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  color: black;
+  scale: 0.8;
+}
+.profile-page .modal .middle .input-contain .error-message {
+  font-size: 1.4rem;
+  color: red;
+}
+.profile-page .modal .middle .input-contain label {
+  position: relative;
+}
+.profile-page .modal .middle .input-contain label .placeholder-container {
+  position: absolute;
+  top: 0%;
+  left: 0rem;
+  height: 4.5rem;
+  width: 100%;
+  pointer-events: none;
+}
+.profile-page .modal .middle .input-contain label input {
+  width: 100%;
+  height: 5rem;
+  border: solid 3px transparent;
+  outline: solid 1px #8b8b8b;
+  border-radius: 0.5rem;
+  padding: 1.1rem 3.5rem 1.1rem 2rem;
+  letter-spacing: 2px;
+  transition: all 0.3s ease-in-out;
+  background-color: #fff;
+}
+.profile-page .modal .middle .input-contain label input:focus {
+  border: solid 3px #457b9d;
+  outline: none;
+}
+.profile-page .modal .middle .input-contain label input:focus + .placeholder-container .placeholder-text {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  color: black;
+  scale: 0.8;
+}
+.profile-page .modal .middle .input-contain .placeholder-text {
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+  top: 3rem;
+  left: 5%;
+  transform: translate(0%, -50%);
+}
+.profile-page .modal .middle .input-contain .placeholder-text:nth-child(1) {
+  left: 2% !important;
+}
+.profile-page .modal .middle .input-contain .placeholder-text .text {
+  font-size: 1.4rem;
+  padding: 0 0.5rem;
+  background-color: transparent;
+  color: black;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.profile-page .modal .middle .input-contain .active {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  border-color: #8b8b8b;
+  scale: 0.8;
 }
 .profile-page .modal .btn-controller {
   display: flex;
@@ -9760,7 +10676,7 @@ button {
   padding: 1rem;
   gap: 1rem;
   display: grid;
-  grid-template-columns: 14rem 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 .profile-page .content .display .narrative-container .report-container .narrative-content .dropdown-container .days-container .narrative-day > * {
   display: flex;
@@ -10374,8 +11290,8 @@ button {
   overflow-y: auto;
   background-color: #d9d9d9;
   border-radius: 1rem;
-  height: 55rem;
-  width: 45rem;
+  height: 45rem;
+  width: 55rem;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -10388,12 +11304,12 @@ button {
   gap: 1rem;
 }
 .daily-time-record .legend-modal .time {
-  padding: 1rem;
+  padding: 2rem;
   background-color: #fff;
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: 1rem;
 }
 .daily-time-record .legend-modal .time .upper {
@@ -10408,6 +11324,9 @@ button {
 }
 .daily-time-record .legend-modal .time h5 {
   text-align: center;
+}
+.daily-time-record .legend-modal button {
+  height: 4rem;
 }
 .daily-time-record .no-camera {
   display: flex;
@@ -10511,17 +11430,16 @@ button {
   border-radius: 1rem;
 }
 .daily-time-record header .mid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  justify-content: space-between;
   background-color: #282b30;
-  padding: 1rem;
+  padding: 1rem 4rem;
   border-radius: 1rem;
 }
 .daily-time-record header .mid .button-container {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding-left: 3rem;
 }
 .daily-time-record header .mid .button-container button {
   display: flex;
@@ -10549,34 +11467,25 @@ button {
   border-radius: 0;
   border: solid 1px #e63946;
 }
-.daily-time-record header .mid .search-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f1faee;
-  width: 80%;
-  border-radius: 2rem;
-  align-items: center;
-  padding: 0 1.5rem;
-  margin: auto;
-}
-.daily-time-record header .mid .search-box span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  cursor: pointer;
-}
-.daily-time-record header .mid .search-box input {
-  width: 100%;
-  background: transparent;
-  padding: 1rem;
-  outline: none;
-  border: 0;
-}
 .daily-time-record header .mid .legend {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+}
+.daily-time-record header .mid .legend button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.6rem 3rem;
+  border-radius: 1rem;
+  height: 4rem;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.daily-time-record header .mid .legend button:hover {
+  border-radius: 0;
+  background-color: #f1faee;
+  color: #0d7377;
+  border: solid 1px #0d7377;
 }
 .daily-time-record .DTR-content {
   display: grid;
@@ -10697,7 +11606,8 @@ button {
     height: 10rem;
     width: 10rem;
   }
-  .daily-time-record header .mid .button-container button {
+  .daily-time-record header .mid .button-container button,
+  .daily-time-record header .mid .legend button {
     height: 3.5rem;
   }
   .daily-time-record .DTR-content {
@@ -10723,12 +11633,37 @@ button {
     grid-template-columns: auto;
   }
 }
+@media screen and (max-width: 650px) {
+  .daily-time-record header .mid {
+    padding: 1rem 2rem;
+  }
+}
 @media screen and (max-width: 600px) {
   .daily-time-record {
     grid-template-rows: auto minmax(20rem, 47vh);
   }
   .daily-time-record .modal {
     width: 99%;
+  }
+  .daily-time-record .legend-modal {
+    height: 40rem;
+    width: 48rem;
+  }
+  .daily-time-record .legend-modal .time {
+    padding: 1rem;
+    display: grid;
+    grid-template-rows: 1fr auto;
+  }
+  .daily-time-record .legend-modal .time .upper {
+    gap: 0.4rem;
+    padding: 1rem 0 0 0;
+  }
+  .daily-time-record .legend-modal .time .upper p {
+    text-align: center;
+    font-size: 1.7rem;
+  }
+  .daily-time-record .legend-modal .time .lower {
+    gap: 0;
   }
   .daily-time-record .time-in .camera img,
   .daily-time-record .time-in .camera video,
@@ -10761,6 +11696,10 @@ button {
   .daily-time-record button {
     height: 4rem;
   }
+  .daily-time-record .legend-modal {
+    width: 100%;
+    padding: 1.5rem;
+  }
   .daily-time-record .time-in .address h2,
   .daily-time-record .time-out .address h2 {
     font-size: 1.8rem;
@@ -10790,15 +11729,16 @@ button {
     font-size: 1.6rem;
   }
   .daily-time-record header .mid {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 0.5rem;
     padding: 0.5rem;
   }
-  .daily-time-record header .mid .button-container {
+  .daily-time-record header .mid .button-container,
+  .daily-time-record header .mid .legend {
     justify-content: center;
-    padding: 0;
   }
-  .daily-time-record header .mid .button-container button {
+  .daily-time-record header .mid .button-container button,
+  .daily-time-record header .mid .legend button {
     height: 3rem;
   }
   .daily-time-record .no-camera {
@@ -10837,6 +11777,17 @@ button {
   }
   .daily-time-record .attendance-absent .btn-close button:hover {
     background-color: #fff;
+  }
+}
+@media screen and (max-width: 450px) {
+  .daily-time-record .legend-modal .time .upper p {
+    font-size: 1.6rem;
+  }
+  .daily-time-record .legend-modal .time .lower h5 {
+    font-size: 1.4rem;
+  }
+  .daily-time-record .legend-modal button {
+    height: 3.5rem;
   }
 }
 @media screen and (max-width: 400px) {
@@ -10881,6 +11832,14 @@ button {
   .daily-time-record .attendance-view .upper .img-con img {
     height: 18rem;
     width: 18rem;
+  }
+}
+@media screen and (max-width: 380px) {
+  .daily-time-record .legend-modal .time .upper p {
+    font-size: 1.55rem;
+  }
+  .daily-time-record .legend-modal .time .lower h5 {
+    font-size: 1.35rem;
   }
 }
 /** @format */
@@ -11624,6 +12583,30 @@ button {
   left: 0%;
   z-index: 6;
 }
+.reports .sample-view-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  z-index: 7;
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 65rem;
+  height: 93%;
+  overflow: auto;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 1rem;
+}
+.reports .sample-view-container img {
+  margin: auto;
+  height: auto;
+  width: 100%;
+}
+.reports .sample-view-container .btn-close {
+  display: none;
+}
 .reports .modal {
   background-color: #d9d9d9;
   position: absolute;
@@ -11650,9 +12633,14 @@ button {
   border-radius: 1rem;
 }
 .reports .modal .middle {
+  overflow-y: auto;
   background-color: #fff;
   border: solid 1px #000;
   border-radius: 1rem;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 .reports .modal .middle textarea {
   border-radius: 1rem;
@@ -11661,6 +12649,150 @@ button {
   width: 100%;
   height: 100%;
   padding: 2rem;
+}
+.reports .modal .middle h4 {
+  color: #e63946;
+}
+.reports .modal .middle button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  background-color: #0d7377;
+  border: none;
+  border-radius: 1rem;
+  outline: none;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  transition: all 0.2s linear;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #d9d9d9;
+}
+.reports .modal .middle button:hover {
+  background-color: #00adb5;
+  border-radius: 0;
+  color: #fff;
+}
+.reports .modal .middle .input-contain {
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+  gap: 1rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 20% 20% auto;
+  align-items: center;
+}
+.reports .modal .middle .input-contain .css-6j8wv5-Input {
+  margin: 0;
+  padding: 0;
+  height: 5rem;
+}
+.reports .modal .middle .input-contain:nth-child(8) input:not(:focus) + .placeholder-container .placeholder-text {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  color: black;
+  scale: 0.8;
+}
+.reports .modal .middle .input-contain textarea {
+  resize: none;
+  height: 10rem;
+  border: solid 3px transparent;
+  outline: solid 1px #8b8b8b;
+  border-radius: 0.5rem;
+  padding: 1.1rem 3.5rem 1.1rem 2rem;
+  letter-spacing: 2px;
+  transition: all 0.3s ease-in-out;
+}
+.reports .modal .middle .input-contain textarea:focus {
+  border: solid 3px #457b9d;
+  outline: none;
+}
+.reports .modal .middle .input-contain textarea .placeholder-container {
+  position: absolute;
+  top: 0%;
+  left: 0rem;
+  height: 100%;
+  width: -moz-fit-content;
+  width: fit-content;
+  pointer-events: none;
+}
+.reports .modal .middle .input-contain textarea:focus + .placeholder-container .placeholder-text {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  color: black;
+  scale: 0.8;
+}
+.reports .modal .middle .input-contain .error-message {
+  font-size: 1.4rem;
+  color: red;
+}
+.reports .modal .middle .input-contain label {
+  position: relative;
+}
+.reports .modal .middle .input-contain label .placeholder-container {
+  position: absolute;
+  top: 0%;
+  left: 0rem;
+  height: 4.5rem;
+  width: 100%;
+  pointer-events: none;
+}
+.reports .modal .middle .input-contain label input {
+  width: 100%;
+  height: 5rem;
+  border: solid 3px transparent;
+  outline: solid 1px #8b8b8b;
+  border-radius: 0.5rem;
+  padding: 1.1rem 3.5rem 1.1rem 2rem;
+  letter-spacing: 2px;
+  transition: all 0.3s ease-in-out;
+  background-color: #fff;
+}
+.reports .modal .middle .input-contain label input:focus {
+  border: solid 3px #457b9d;
+  outline: none;
+}
+.reports .modal .middle .input-contain label input:focus + .placeholder-container .placeholder-text {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  color: black;
+  scale: 0.8;
+}
+.reports .modal .middle .input-contain .placeholder-text {
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+  top: 3rem;
+  left: 5%;
+  transform: translate(0%, -50%);
+}
+.reports .modal .middle .input-contain .placeholder-text:nth-child(1) {
+  left: 2% !important;
+}
+.reports .modal .middle .input-contain .placeholder-text .text {
+  font-size: 1.4rem;
+  padding: 0 0.5rem;
+  background-color: transparent;
+  color: black;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.reports .modal .middle .input-contain .active {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  border-color: #8b8b8b;
+  scale: 0.8;
 }
 .reports .modal .btn-controller {
   display: flex;
@@ -11738,42 +12870,34 @@ button {
 }
 .reports .content {
   display: grid;
-  grid-template-rows: auto minmax(45rem, 81vh);
+  grid-template-rows: auto minmax(45rem, 83vh);
   gap: 1rem;
 }
-.reports .content .button-container {
+.reports .content header {
+  display: grid;
+  grid-template-columns: 1fr auto;
   background-color: #282b30;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 2rem 3rem;
+  padding: 1.5rem 2rem;
   border-radius: 1rem;
 }
-.reports .content .button-container button {
-  height: 4.5rem;
+.reports .content header h2 {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  border: none;
-  padding: 1rem 2rem;
-  outline: none;
-  font-weight: 500;
   color: #fff;
-  background-color: #0d7377;
-  transition: all 0.3s linear;
-  cursor: pointer;
 }
-.reports .content .button-container button span {
-  font-size: 1.8rem;
-  padding: 0.5rem 0.5rem 0;
-}
-.reports .content .button-container button p {
-  font-size: 1.5rem;
-}
-.reports .content .button-container button:hover {
-  background-color: #00adb5;
+.reports .content header button {
+  font-family: "Poppins", sans-serif;
+  padding: 1rem 1.5rem;
   border-radius: 1rem;
+  border: solid 1px transparent;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-weight: 600;
+}
+.reports .content header button:hover {
+  background-color: #00adb5;
+  color: #fff;
 }
 .reports .content .report-container {
   display: grid;
@@ -11851,7 +12975,7 @@ button {
   padding: 1rem;
   gap: 1rem;
   display: grid;
-  grid-template-columns: 14rem 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day > * {
   display: flex;
@@ -12286,14 +13410,14 @@ button {
   background-color: rgba(255, 255, 255, 0.521);
 }
 
-@media screen and (min-height: 680px) {
-  .reports .content {
-    grid-template-rows: auto minmax(45rem, 83vh);
-  }
-}
-@media screen and (min-height: 760px) {
+@media screen and (min-height: 700px) {
   .reports .content {
     grid-template-rows: auto minmax(45rem, 85vh);
+  }
+}
+@media screen and (min-height: 800px) {
+  .reports .content {
+    grid-template-rows: auto minmax(45rem, 87vh);
   }
 }
 @media screen and (max-width: 750px) {
@@ -12357,7 +13481,7 @@ button {
     font-size: 2.1rem;
   }
   .reports .content {
-    grid-template-rows: auto minmax(45rem, 70vh);
+    grid-template-rows: auto minmax(45rem, 72vh);
   }
   .reports .content .report-container .narrative-content .dropdown-container .days-container .narrative-day .btn-container {
     flex-direction: row;
@@ -12396,32 +13520,6 @@ button {
   .reports .content {
     grid-template-rows: auto minmax(45rem, 67vh);
   }
-  .reports .content .button-container {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-template-rows: repeat(2, auto);
-    padding: 1rem;
-    gap: 0.5rem;
-  }
-  .reports .content .button-container button {
-    height: 3.5rem;
-    border-radius: 1rem;
-  }
-  .reports .content .button-container button span {
-    font-size: 1.6rem;
-  }
-  .reports .content .button-container button p {
-    font-size: 1.3rem;
-  }
-  .reports .content .button-container button:hover {
-    border-radius: 0;
-  }
-  .reports .content .button-container > :nth-child(2) {
-    margin: auto;
-    width: 60%;
-    grid-row: 2/3;
-    grid-column: 1/3;
-  }
   .reports .content .report-container .narrative-content .sub-container > * {
     font-size: 1.7rem;
   }
@@ -12443,6 +13541,9 @@ button {
   }
 }
 @media screen and (max-width: 400px) {
+  .reports .content header h2 {
+    justify-content: center;
+  }
   .reports .content .report-container {
     grid-auto-rows: 13rem;
   }
@@ -12604,10 +13705,315 @@ button {
     font-size: 1.3rem;
   }
 }
+/** @format */
 .login {
   display: grid;
   grid-template-columns: 45.2rem 1fr;
   font-size: 1.4rem;
+}
+.login .overlay {
+  width: 100%;
+  min-height: 100%;
+  background-color: rgba(48, 47, 47, 0.753);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: 6;
+}
+.login .forgot-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #d9d9d9;
+  height: 50rem;
+  width: 50rem;
+  z-index: 7;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+.login .forgot-modal h2 {
+  text-align: center;
+}
+.login .forgot-modal .forgot-modal-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #fff;
+  padding: 2rem;
+  border: 1px solid #000;
+  border-radius: 1rem;
+  height: 100%;
+}
+.login .forgot-modal .forgot-modal-container input {
+  padding: 1rem;
+}
+.login .forgot-modal .forgot-modal-container > form:not(.send-code) {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.login .forgot-modal .forgot-modal-container .send-code {
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  gap: 1rem;
+}
+.login .forgot-modal .forgot-modal-container .send-code label {
+  display: flex;
+  gap: 1rem;
+}
+.login .forgot-modal .forgot-modal-container .send-code input {
+  text-align: center;
+  font-size: 2rem;
+  width: 5rem;
+  height: 5rem;
+}
+.login .forgot-modal .forgot-modal-container a {
+  text-decoration: underline;
+  color: #030392;
+  cursor: pointer;
+}
+.login .forgot-modal .forgot-modal-container button {
+  height: 4.5rem;
+  width: 12rem;
+  background-color: #0d7377;
+  color: #fff;
+  border: 1px solid transparent;
+  outline: none;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  transition: all 0.3s linear;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.login .forgot-modal .forgot-modal-container button .icon {
+  font-size: 1.2rem;
+}
+.login .forgot-modal .forgot-modal-container button p {
+  padding-top: 0.2rem;
+}
+.login .forgot-modal .forgot-modal-container button:hover {
+  border-radius: 1rem;
+  border: solid 1px #00adb5;
+  background-color: #00adb5;
+}
+.login .forgot-modal .forgot-modal-container .error-text,
+.login .forgot-modal .forgot-modal-container .invalidCode {
+  color: #ed3737;
+}
+.login .forgot-modal .forgot-modal-container .code-success {
+  color: #00adb5;
+}
+.login .reset-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #d9d9d9;
+  height: 50rem;
+  width: 50rem;
+  z-index: 7;
+  border-radius: 1rem;
+  padding: 2rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.login .reset-form h1 {
+  text-align: center;
+}
+.login .reset-form .reset-form-container {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  height: 100%;
+}
+.login .reset-form .reset-form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.login .reset-form .reset-form-container form .input-contain {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  gap: 1rem;
+}
+.login .reset-form .reset-form-container form .input-contain .placeholder-container {
+  position: absolute;
+  top: 5%;
+  left: 0%;
+  height: 4.5rem;
+  width: 100%;
+  pointer-events: none;
+}
+.login .reset-form .reset-form-container form .input-contain .eye-container {
+  z-index: 2;
+  position: absolute;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  top: 0%;
+  right: 2rem;
+}
+.login .reset-form .reset-form-container form .input-contain .eye-container svg {
+  cursor: pointer;
+  pointer-events: all;
+  font-size: 1.9rem;
+}
+.login .reset-form .reset-form-container form .input-contain input {
+  width: auto !important;
+  height: 5rem;
+  border: solid 3px transparent;
+  outline: solid 1px #8b8b8b;
+  border-radius: 0.5rem;
+  padding: 1.1rem 3.5rem 1.1rem 1.1rem;
+  letter-spacing: 2px;
+  transition: all 0.1s ease-in-out;
+}
+.login .reset-form .reset-form-container form .input-contain input:focus {
+  border: solid 3px #457b9d;
+  outline: none;
+}
+.login .reset-form .reset-form-container form .input-contain input:focus + .placeholder-container .placeholder-text {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  color: black;
+  scale: 0.8;
+}
+.login .reset-form .reset-form-container form .input-contain .input-error {
+  border: solid 2px #ed3737 !important;
+}
+.login .reset-form .reset-form-container form .input-contain .error-message {
+  color: #ed3737;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.login .reset-form .reset-form-container form .input-contain .icons-error {
+  color: red !important;
+}
+.login .reset-form .reset-form-container form .input-contain .placeholder-text {
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+  top: 50%;
+  left: 5%;
+  transform: translate(0%, -50%);
+}
+.login .reset-form .reset-form-container form .input-contain .placeholder-text:nth-child(1) {
+  left: 2% !important;
+}
+.login .reset-form .reset-form-container form .input-contain .placeholder-text .text {
+  font-size: 1.4rem;
+  padding: 0 0.5rem;
+  background-color: transparent;
+  color: black;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.login .reset-form .reset-form-container form .input-contain .active {
+  top: 0%;
+  left: 0%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  border-color: #8b8b8b;
+  scale: 0.8;
+}
+.login .reset-form .reset-form-container form > span {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.login .reset-form .reset-form-container form > span svg {
+  font-size: 1.7rem;
+}
+.login .reset-form .reset-form-container form > span .forgot-btn {
+  font-size: 1.4rem;
+  outline: none;
+  border: none;
+  height: 2rem;
+  display: flex;
+  background-color: transparent;
+  text-decoration: underline;
+  color: #030392;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+.login .reset-form .reset-form-container form .btn-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login .reset-form .reset-form-container form .btn-submit > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 4.5rem;
+  width: 12.5rem;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  background-color: #0d7377;
+  color: #fff;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.login .reset-form .reset-form-container form .btn-submit > button:hover {
+  border-radius: 1rem;
+  border: solid 1px #00adb5;
+  background-color: #00adb5;
+}
+.login .success-modal, .login .dashboard .admin-dashboard .error-modal, .dashboard .admin-dashboard .login .error-modal, .login .dashboard-active .admin-dashboard .error-modal, .dashboard-active .admin-dashboard .login .error-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  height: 50rem;
+  width: 50rem;
+  z-index: 7;
+  border-radius: 1rem;
+  padding: 3rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login .success-modal > button, .login .dashboard .admin-dashboard .error-modal > button, .dashboard .admin-dashboard .login .error-modal > button, .login .dashboard-active .admin-dashboard .error-modal > button, .dashboard-active .admin-dashboard .login .error-modal > button {
+  cursor: pointer;
+  height: 4.5rem;
+  width: 12.5rem;
+  border-radius: 5px;
+  border: solid 1px transparent;
+  outline: none;
+  background-color: #457b9d;
+  color: #f1faee;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.login .success-modal > button:hover, .login .dashboard .admin-dashboard .error-modal > button:hover, .dashboard .admin-dashboard .login .error-modal > button:hover, .login .dashboard-active .admin-dashboard .error-modal > button:hover, .dashboard-active .admin-dashboard .login .error-modal > button:hover {
+  background-color: #f1faee;
+  color: #457b9d;
+  border: solid 1px #457b9d;
 }
 .login .bg-container {
   height: 100%;
@@ -12734,14 +14140,30 @@ button {
   scale: 0.8;
 }
 .login .card-container form span {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+  grid-template-rows: auto auto;
 }
 .login .card-container form span svg {
   font-size: 1.7rem;
 }
-.login .card-container form button {
+.login .card-container form span .forgot-btn {
+  grid-row: 2/3;
+  grid-column: 1/3;
+  font-size: 1.4rem;
+  outline: none;
+  border: none;
+  height: 2rem;
+  display: flex;
+  background-color: transparent;
+  text-decoration: underline;
+  color: #030392;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+.login .card-container form > button {
   cursor: pointer;
   height: 4.5rem;
   width: 12.5rem;
@@ -12754,7 +14176,7 @@ button {
   transition: all 0.3s ease-in-out;
   font-weight: 600;
 }
-.login .card-container form button:hover {
+.login .card-container form > button:hover {
   background-color: #f1faee;
   color: #457b9d;
   border: solid 1px #457b9d;

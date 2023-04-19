@@ -1,3 +1,5 @@
+/** @format */
+
 import React, {useEffect, useState, useCallback} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Select from "react-select";
@@ -22,7 +24,7 @@ function convertObjectToFields(obj) {
       case "date":
         field = {
           code: "startingDate",
-          errorMessage: "Please Select a Weekday",
+          errorMessage: "Please Valid Date and Weekdays.",
           forInput: "Starting Date",
           id: "starting-date",
           isDisabled: false,
@@ -179,7 +181,7 @@ const Verification = React.memo(() => {
           type: "email",
           id: "email",
           code: "email",
-          forInput: "Email",
+          forInput: "Supervisor Email",
           value: "",
           isError: false,
           errorMessage: "Please provide valid email",
@@ -204,7 +206,7 @@ const Verification = React.memo(() => {
           code: "startingDate",
           value: "",
           isError: false,
-          errorMessage: "Please Select a Weekday",
+          errorMessage: "Please Select a Weekday and Valid Date.",
           isDisabled: false,
         },
         {
@@ -230,10 +232,6 @@ const Verification = React.memo(() => {
             {
               value: "Hardware Related",
               label: "Hardware Related",
-            },
-            {
-              value: "Not specified",
-              label: "Not specified",
             },
           ],
         },
@@ -295,7 +293,7 @@ const Verification = React.memo(() => {
           forInput: "Student Number",
           value: "",
           isError: false,
-          errorMessage: "Please enter a valid student number",
+          errorMessage: "Enter a valid student number. E.g A202001234",
           isDisabled: false,
         },
       ],
@@ -746,7 +744,6 @@ const Verification = React.memo(() => {
       const newForm = [...form];
 
       if (companyName && position === 0) {
-        console.log("1");
         const inputField = newForm[mainIndex].forms[7].id;
         switch (inputField) {
           case "starting-date":
@@ -766,16 +763,20 @@ const Verification = React.memo(() => {
             return;
         }
       } else {
-        console.log("2");
         const inputField = newForm[mainIndex].forms[index].id;
 
         switch (inputField) {
           case "starting-date":
             const selectedDate = new Date(value);
             const dayOfWeek = selectedDate.getDay();
+            const today = new Date();
 
-            // Check if the selected date is a weekend
             if (dayOfWeek === 0 || dayOfWeek === 6) {
+              newForm[mainIndex].forms[index].isError = true;
+              newForm[mainIndex].forms[index].value = "";
+            }
+            // Check if the selected date has already occurred
+            else if (selectedDate < today) {
               newForm[mainIndex].forms[index].isError = true;
               newForm[mainIndex].forms[index].value = "";
             } else {
@@ -804,8 +805,8 @@ const Verification = React.memo(() => {
             return;
           case "supervisor":
             newForm[mainIndex].forms[index].value = value;
-            const regex =
-              /^(?=.{2,50}$)(?!(\s.*){3,})(?!\s{3,})[^\d]*(\s[^\d]*){0,2}$/;
+            const regex = /^(?=.{2,50}$)(?!(\s.*){3,})(?!\s{3,})[a-zA-Z\s]*$/;
+
             let isSuperValid = regex.test(value);
             if (isSuperValid) {
               newForm[mainIndex].forms[index].isError = false;
@@ -813,7 +814,7 @@ const Verification = React.memo(() => {
               newForm[mainIndex].forms[index].isError = true;
               if (/\d/.test(value)) {
                 newForm[mainIndex].forms[index].errorMessage =
-                  "Supervisor name should not contain numbers";
+                  "Supervisor name should not contain numbers or special characters.";
               } else if (value.length < 2) {
                 newForm[mainIndex].forms[index].errorMessage =
                   "Supervisor name should have at least 2 and maximum of 50 characters";
@@ -997,7 +998,7 @@ const Verification = React.memo(() => {
           return (
             <div className="input-contain" key={index}>
               <input
-                min={minDateFormatted} // set minimum date as the next day after today
+                min={minDateFormatted}
                 max={maxDate}
                 tabIndex={-1}
                 disabled={isDisabled}

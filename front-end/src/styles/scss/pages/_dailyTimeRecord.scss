@@ -157,8 +157,8 @@
     overflow-y: auto;
     background-color: #d9d9d9;
     border-radius: 1rem;
-    height: 55rem;
-    width: 45rem;
+    height: 45rem;
+    width: 55rem;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -170,12 +170,12 @@
     justify-items: center;
     gap: 1rem;
     .time {
-      padding: 1rem;
+      padding: 2rem;
       background-color: #fff;
       border-radius: 1rem;
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
+      justify-content: space-between;
       gap: 1rem;
       .upper {
         display: flex;
@@ -190,6 +190,9 @@
       h5 {
         text-align: center;
       }
+    }
+    button {
+      height: 4rem;
     }
   }
 
@@ -299,16 +302,15 @@
       }
     }
     .mid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      justify-content: space-between;
       background-color: #282b30;
-      padding: 1rem;
+      padding: 1rem 4rem;
       border-radius: 1rem;
       .button-container {
         display: flex;
         align-items: center;
         gap: 1rem;
-        padding-left: 3rem;
         button {
           @include flexCenter;
           padding: 1.6rem 3rem;
@@ -334,30 +336,43 @@
           }
         }
       }
-      .search-box {
-        @include flexCenter;
-        background-color: $light-bg-color;
-        width: 80%;
-        border-radius: 2rem;
-        align-items: center;
-        padding: 0 1.5rem;
-        margin: auto;
-        span {
-          @include flexCenter;
-          font-size: 2rem;
-          cursor: pointer;
-        }
-        input {
-          width: 100%;
-          background: transparent;
-          padding: 1rem;
-          outline: none;
-          border: 0;
-        }
-      }
+      // .search-box {
+      //   @include flexCenter;
+      //   background-color: $light-bg-color;
+      //   width: 80%;
+      //   border-radius: 2rem;
+      //   align-items: center;
+      //   padding: 0 1.5rem;
+      //   margin: auto;
+      //   span {
+      //     @include flexCenter;
+      //     font-size: 2rem;
+      //     cursor: pointer;
+      //   }
+      //   input {
+      //     width: 100%;
+      //     background: transparent;
+      //     padding: 1rem;
+      //     outline: none;
+      //     border: 0;
+      //   }
+      // }
       .legend {
         display: flex;
-        justify-content: flex-end;
+        align-items: center;
+        button {
+          @include flexCenter;
+          padding: 1.6rem 3rem;
+          border-radius: 1rem;
+          height: 4rem;
+          width: fit-content;
+          &:hover {
+            border-radius: 0;
+            background-color: $primary-font-color;
+            color: $primary-compliment-landing;
+            border: solid 1px $primary-compliment-landing;
+          }
+        }
       }
     }
   }
@@ -412,7 +427,6 @@
 }
 
 //responsive
-
 //min-height
 @media screen and (min-height: 700px) {
   .daily-time-record {
@@ -503,7 +517,8 @@
         }
       }
       .mid {
-        .button-container {
+        .button-container,
+        .legend {
           button {
             height: 3.5rem;
           }
@@ -540,12 +555,41 @@
     }
   }
 }
+@media screen and (max-width: 650px) {
+  .daily-time-record {
+    header {
+      .mid {
+        padding: 1rem 2rem;
+      }
+    }
+  }
+}
 @media screen and (max-width: 600px) {
   .daily-time-record {
     grid-template-rows: auto minmax(20rem, 47vh);
     .modal {
       // height: 63rem;
       width: 99%;
+    }
+    .legend-modal {
+      height: 40rem;
+      width: 48rem;
+      .time {
+        padding: 1rem;
+        display: grid;
+        grid-template-rows: 1fr auto;
+        .upper {
+          gap: 0.4rem;
+          padding: 1rem 0 0 0;
+          p {
+            text-align: center;
+            font-size: 1.7rem;
+          }
+        }
+        .lower {
+          gap: 0;
+        }
+      }
     }
     .time-in,
     .time-out {
@@ -592,7 +636,10 @@
     button {
       height: 4rem;
     }
-
+    .legend-modal {
+      width: 100%;
+      padding: 1.5rem;
+    }
     .time-in,
     .time-out {
       .address {
@@ -638,12 +685,12 @@
         }
       }
       .mid {
-        grid-template-columns: 1fr;
+        flex-direction: column;
         gap: 0.5rem;
         padding: 0.5rem;
-        .button-container {
+        .button-container,
+        .legend {
           justify-content: center;
-          padding: 0;
           button {
             height: 3rem;
           }
@@ -690,6 +737,27 @@
   }
 }
 
+@media screen and (max-width: 450px) {
+  .daily-time-record {
+    .legend-modal {
+      .time {
+        .upper {
+          p {
+            font-size: 1.6rem;
+          }
+        }
+        .lower {
+          h5 {
+            font-size: 1.4rem;
+          }
+        }
+      }
+      button {
+        height: 3.5rem;
+      }
+    }
+  }
+}
 @media screen and (max-width: 400px) {
   .daily-time-record {
     grid-template-rows: auto minmax(20rem, 42vh);
@@ -739,6 +807,25 @@
           img {
             height: 18rem;
             width: 18rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .daily-time-record {
+    .legend-modal {
+      .time {
+        .upper {
+          p {
+            font-size: 1.55rem;
+          }
+        }
+        .lower {
+          h5 {
+            font-size: 1.35rem;
           }
         }
       }

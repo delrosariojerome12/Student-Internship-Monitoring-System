@@ -1,7 +1,7 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, {useEffect, useState} from "react";
+import {useSelector, useDispatch} from "react-redux";
 import {
   getAllAttendanceToday,
   getAllAttendanceByDate,
@@ -17,15 +17,8 @@ import Attendance from "../../components/coordinator/Attendance";
 import ViewMoreDetailsModal from "../../components/coordinator/ViewMoreDetailsModal";
 import ViewNarrative from "../../components/coordinator/ViewNarrative";
 import ApprovalWaiting from "../../assets/img/waiting.svg";
-
-const now = new Date();
-const year = now.getFullYear();
-const month = now.getMonth() + 1;
-const date = now.getDate();
-
-const today = `${month < 10 ? "0" : ""}${month}-${
-  date < 10 ? "0" : ""
-}${date}-${year}`;
+import axios from "axios";
+import moment from "moment";
 
 const months = [
   "January",
@@ -55,6 +48,9 @@ const MonitorAttendance = React.memo(() => {
     isViewMoreDetailsOpen,
     isNarrativeOpen,
   } = useSelector((state) => state.monitorAttendance);
+
+  const [today, setToday] = useState(null);
+
   const dispatch = useDispatch();
 
   const [time, setTime] = useState("");
@@ -66,12 +62,21 @@ const MonitorAttendance = React.memo(() => {
   });
 
   useEffect(() => {
-    // const now = new Date();
-    // const hours = now.getHours();
-    // if (hours >= 14) {
-    //   dispatch(checkAbsents({}));
-    // }
     dispatch(getAllAttendanceToday({}));
+
+    const getTime = async () => {
+      try {
+        const apiKey = "YWPMVZTIXVDO";
+        const apiUrl = `https://api.timezonedb.com/v2.1/get-time-zone?key=${apiKey}&format=json&by=zone&zone=Asia/Manila`;
+        const response = await axios.get(apiUrl);
+        const dateOnly = moment(response.data.formatted).format("MM-DD-YYYY");
+
+        setToday(dateOnly);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getTime();
   }, []);
 
   if (isLoading || !attendanceToday) {
@@ -108,6 +113,8 @@ const MonitorAttendance = React.memo(() => {
     return currentFormat;
   };
 
+  console.log(today);
+
   return (
     <div className="monitor-attendance">
       <header>
@@ -117,11 +124,12 @@ const MonitorAttendance = React.memo(() => {
         <div className="mid">
           <div className="btn-container">
             <button onClick={() => dispatch(handleFilter())}>Filter</button>
-            <button onClick={() => dispatch(handleSort())}>Sort</button>
+            {/* <button onClick={() => dispatch(handleSort())}>Sort</button> */}
           </div>
           <div className="date-container">
-            <h3>{formatDate(today)}</h3>
-            <h3>{time} </h3>
+            {/* <h3>{formatDate(today)}</h3> */}
+            {!today ? <h3>Loading...</h3> : formatDate(today)}
+            <h2>{time} </h2>
           </div>
         </div>
       </header>
@@ -134,7 +142,8 @@ const MonitorAttendance = React.memo(() => {
         <>
           <div
             className="overlay"
-            onClick={() => dispatch(handleFilter())}></div>
+            onClick={() => dispatch(handleFilter())}
+          ></div>
           <div onClick={(e) => e.stopPropagation()} className="filter modal">
             <h4>Filter</h4>
             <div className="inputs-container">
@@ -153,7 +162,7 @@ const MonitorAttendance = React.memo(() => {
             <div className="btn-controllers">
               <button
                 style={
-                  !filterDate ? { pointerEvents: "none", opacity: ".7" } : null
+                  !filterDate ? {pointerEvents: "none", opacity: ".7"} : null
                 }
                 onClick={() =>
                   dispatch(
@@ -161,7 +170,8 @@ const MonitorAttendance = React.memo(() => {
                       date: filterDate,
                     })
                   )
-                }>
+                }
+              >
                 Filter
               </button>
 
@@ -170,7 +180,7 @@ const MonitorAttendance = React.memo(() => {
           </div>
         </>
       )}
-      {isSortOpen && (
+      {/* {isSortOpen && (
         <>
           <div className="overlay" onClick={() => dispatch(handleSort())}></div>
           <div onClick={(e) => e.stopPropagation()} className="sort modal">
@@ -181,7 +191,7 @@ const MonitorAttendance = React.memo(() => {
             </div>
           </div>
         </>
-      )}
+      )} */}
       {isViewMoreDetailsOpen && <ViewMoreDetailsModal />}
       {isNarrativeOpen && <ViewNarrative />}
     </div>

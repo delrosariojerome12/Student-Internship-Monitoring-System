@@ -36,8 +36,8 @@
           height: 4rem;
           @include flexCenter;
           padding: 0rem 2rem;
-          border-radius: 5px;
           border: solid 1px transparent;
+          border-radius: 1rem;
           outline: none;
           background-color: $primary-compliment-landing;
           color: $primary-font-color;
@@ -46,6 +46,7 @@
           font-weight: 600;
           &:hover {
             background-color: $primary-feature-bg;
+            border-radius: 0;
             color: #fff;
             border: solid 1px $primary-feature-bg;
           }

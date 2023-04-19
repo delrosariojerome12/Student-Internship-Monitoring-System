@@ -9,13 +9,30 @@ import { IconContext } from "react-icons";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { handleLogin } from "../../features/user/userReducer";
-
+import {
+  handleLogin,
+  handleForgetModal,
+  forgotPassword,
+  verifyResetCode,
+  handleClosePasswordChanged,
+} from "../../features/user/userReducer";
+import ResetForm from "../../components/utils/ResetForm";
 const Login = React.memo(() => {
   const dispatch = useDispatch();
-  const { isError, errorMessage, isLoading } = useSelector(
-    (state) => state.user
-  );
+  const {
+    isError,
+    errorMessage,
+    isLoading,
+    isForgotModalOpen,
+    isSuccessResetSent,
+    resetErrorMessage,
+    isResetError,
+    isLoadingReset,
+    isVerifyError,
+    isVerifyLoading,
+    isCodeVerified,
+    isPasswordChangeSuccess,
+  } = useSelector((state) => state.user);
 
   const [form, setForm] = useState([
     {
@@ -45,6 +62,9 @@ const Login = React.memo(() => {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
   const [isComplete, setComplete] = useState(false);
   const refPassword = useRef();
+  const [verifyEmail, setVerifyEmail] = useState("");
+
+  const [resetCode, setResetCode] = useState(["", "", "", ""]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -157,6 +177,35 @@ const Login = React.memo(() => {
     });
   };
 
+  const handleOTP = (e) => {
+    e.preventDefault();
+    dispatch(forgotPassword({ email: verifyEmail }));
+  };
+
+  const handleResetChange = (index, value) => {
+    value = value.replace(/\D/g, "").slice(0, 1);
+
+    setResetCode((prevVerificationCode) => {
+      const newResetCode = [...prevVerificationCode];
+      newResetCode[index] = value;
+      return newResetCode;
+    });
+
+    if (value) {
+      const nextIndex = index + 1;
+      if (nextIndex < resetCode.length) {
+        document.getElementById(`verification-code-${nextIndex}`).focus();
+      }
+    }
+  };
+
+  const handleVerifyReset = (e) => {
+    e.preventDefault();
+    const code = resetCode.join("");
+    console.log(`Verifying code: ${code}`);
+    dispatch(verifyResetCode({ email: verifyEmail, code }));
+  };
+
   return (
     <section className="login">
       <section className="card-container">
@@ -171,6 +220,14 @@ const Login = React.memo(() => {
             <span>
               <p>Doesn't have an account?</p>
               <Link to="/account/signup">Sign up</Link>
+              <button
+                onClick={() => {
+                  dispatch(handleForgetModal());
+                }}
+                className="forgot-btn"
+                type="button">
+                Forgot Password?
+              </button>
             </span>
             <button
               style={
@@ -187,6 +244,110 @@ const Login = React.memo(() => {
         </form>
       </section>
       <section className="bg-container"></section>
+
+      {isForgotModalOpen && (
+        <>
+          <div className="overlay"></div>
+          <div className="forgot-modal">
+            <h2>Reset Password</h2>
+            <div className="forgot-modal-container">
+              {isResetError && (
+                <h4 className="error-text">{resetErrorMessage}</h4>
+              )}
+              {isSuccessResetSent && !isResetError && (
+                <h3 className="code-success">Code Successfully Sent</h3>
+              )}
+
+              <form onSubmit={handleOTP}>
+                <label
+                  htmlFor="forgot-email"
+                  className={
+                    verifyEmail ? "placeholder-text active" : "placeholder-text"
+                  }>
+                  <div className={"text"}>
+                    <h3>Email:</h3>
+                  </div>
+                </label>
+                <input
+                  disabled={isVerifyLoading}
+                  placeholder="example@gmail.com"
+                  required
+                  type="email"
+                  name="forgot-email"
+                  id="forgot-email"
+                  value={verifyEmail}
+                  onChange={(e) => {
+                    setVerifyEmail(e.target.value);
+                  }}
+                />
+              </form>
+              {isSuccessResetSent && !isResetError && (
+                <form onSubmit={handleVerifyReset} className="send-code">
+                  <h2>Enter Your Code here</h2>
+                  <label>
+                    {resetCode.map((digit, index) => (
+                      <input
+                        key={index}
+                        id={`verification-code-${index}`}
+                        type="text"
+                        value={digit}
+                        maxLength="1"
+                        onChange={(e) =>
+                          handleResetChange(index, e.target.value)
+                        }
+                      />
+                    ))}
+                  </label>
+
+                  <button
+                    style={
+                      resetCode.filter((item) => item.length > 0).length !== 4
+                        ? { pointerEvents: "none", opacity: 0.5 }
+                        : {
+                            opacity: 1,
+                          }
+                    }
+                    disabled={
+                      resetCode.filter((item) => item.length > 0).length !== 4
+                        ? true
+                        : false
+                    }
+                    type="submit">
+                    {isVerifyLoading ? "Verifying..." : "Verify"}
+                  </button>
+                  {isVerifyError && (
+                    <h2 className="invalidCode">Invalid Code!</h2>
+                  )}
+                </form>
+              )}
+
+              <a
+                style={isLoadingReset ? { pointerEvents: "none" } : null}
+                href="#"
+                onClick={handleOTP}
+                type="submit">
+                {isLoadingReset
+                  ? "Sending..."
+                  : isSuccessResetSent
+                  ? "Resend Code"
+                  : "Send Code"}
+              </a>
+            </div>
+          </div>
+        </>
+      )}
+      {isCodeVerified && <ResetForm email={verifyEmail} />}
+      {isPasswordChangeSuccess && (
+        <>
+          <div className="overlay"></div>
+          <div className="success-modal">
+            <h1>Password Changed Successfully</h1>
+            <button onClick={() => dispatch(handleClosePasswordChanged())}>
+              Close
+            </button>
+          </div>
+        </>
+      )}
     </section>
   );
 });
