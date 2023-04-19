@@ -125,7 +125,6 @@ export const requestVerification = createAsyncThunk(
     try {
       const url = `https://sims-twqb.onrender.com/intern/requestVerify`;
       const {data: res} = await axios.patch(url, form);
-      console.log(res);
       return {res: res.user};
     } catch (error) {
       console.log(error);
@@ -141,7 +140,7 @@ export const forgotPassword = createAsyncThunk(
     try {
       const url = `http://localhost:5000/auth/forgotPassword`;
       const {data: res} = await axios.post(url, {email});
-      console.log(res);
+      // console.log(res);
       return {res};
     } catch (error) {
       console.log(error);
@@ -156,7 +155,12 @@ export const verifyCode = createAsyncThunk(
     console.log(email, code, pendingUser);
     try {
       const url = `http://localhost:5000/auth/verify`;
-      const {data: res} = await axios.post(url, {email, code, pendingUser});
+      const {data: res} = await axios.post(url, {
+        email,
+        code,
+        pendingUser,
+        usage: "signup",
+      });
       console.log(res);
       return {res};
     } catch (error) {
@@ -172,7 +176,7 @@ export const verifyResetCode = createAsyncThunk(
     console.log(email, code);
     try {
       const url = `http://localhost:5000/auth/verify`;
-      const {data: res} = await axios.post(url, {email, code});
+      const {data: res} = await axios.post(url, {email, code, usage: "reset"});
       console.log(res);
       return {res};
     } catch (error) {
