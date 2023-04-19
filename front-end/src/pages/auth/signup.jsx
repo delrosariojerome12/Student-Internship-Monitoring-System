@@ -7,13 +7,30 @@ import {FaUserAlt, FaLock, FaEye, FaEyeSlash, FaCheck} from "react-icons/fa";
 import {GrMail} from "react-icons/gr";
 import {IconContext} from "react-icons";
 import {useDispatch, useSelector} from "react-redux";
-import {handleSignup} from "../../features/user/userReducer";
+import {handleSignup, handlePendingUser} from "../../features/user/userReducer";
 
 import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
 import {storage} from "../../Firebase";
 import {v4} from "uuid";
 
 import VerificationModal from "../../components/utils/VerificationModal";
+
+const convertForm = (form) => {
+  const newData = form.map((input) => {
+    const {code, value} = input;
+    return {
+      code,
+      value,
+    };
+  });
+
+  const newObject = Object.assign(
+    {},
+    ...newData.map((item) => ({[item.code]: item.value}))
+  );
+
+  return newObject;
+};
 
 const Signup = React.memo(() => {
   const {isVerifyModalOpen} = useSelector((state) => state.user);
@@ -253,6 +270,8 @@ const Signup = React.memo(() => {
     // api send
     if (x === 0) {
       dispatch(handleSignup(form));
+      // dispatch(handleCreatePendingUser(form));
+      dispatch(handlePendingUser(convertForm(form)));
     }
   };
 
