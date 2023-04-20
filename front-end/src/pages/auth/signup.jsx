@@ -60,7 +60,7 @@ const Signup = React.memo(() => {
       IconType: FaUserAlt,
       isError: false,
       errorMessage:
-        "First name must be between 3 and 20 characters long. No Special Characters and Numbers.",
+        "First name must be between 2 and 20 characters long. No Special Characters and Numbers.",
       hasEyeIcon: false,
       code: "firstName",
       isVisible: true,
@@ -73,7 +73,7 @@ const Signup = React.memo(() => {
       IconType: FaUserAlt,
       isError: false,
       errorMessage:
-        "Last name must be between 3 and 20 characters long. No Special Characters and Numbers",
+        "Last name must be between 2 and 20 characters long. No Special Characters and Numbers",
       hasEyeIcon: false,
       code: "lastName",
       isVisible: true,
@@ -147,7 +147,7 @@ const Signup = React.memo(() => {
 
         let firstNameRegex = /^[a-zA-Z]+( [a-zA-Z]+){0,2}$/;
 
-        value.length > 2 && value.length < 20 && firstNameRegex.test(value)
+        value.length >= 2 && value.length < 20 && firstNameRegex.test(value)
           ? (data[index].isError = false)
           : (data[index].isError = true);
 
@@ -158,12 +158,11 @@ const Signup = React.memo(() => {
       case "Last Name":
         data[index].value = value;
         let lastNameRegex = /^[a-zA-Z]+( [a-zA-Z]+){0,2}$/;
-        value.length > 2 && value.length < 20 && lastNameRegex.test(value)
+        value.length >= 2 && value.length < 20 && lastNameRegex.test(value)
           ? (data[index].isError = false)
           : (data[index].isError = true);
 
         data[index].value = value;
-        // value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
         setForm(data);
         checkCompletion();
 
