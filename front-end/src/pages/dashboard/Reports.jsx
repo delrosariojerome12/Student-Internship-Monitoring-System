@@ -1,7 +1,7 @@
 /** @format */
 
-import React, {useEffect} from "react";
-import {useSelector, useDispatch} from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   getAllNarrative,
   handleNarrativeSample,
@@ -18,13 +18,13 @@ import ReactPDF from "../../components/utils/ReactPDF";
 
 import ApprovalWaiting from "../../assets/img/waiting.svg";
 
-import {Viewer} from "@react-pdf-viewer/core";
+import { Viewer } from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 
 const Reports = React.memo(() => {
   const {
     user: {
-      user: {email},
+      user: { email },
     },
   } = useSelector((state) => state.user);
 
@@ -42,7 +42,7 @@ const Reports = React.memo(() => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllNarrative({email}));
+    dispatch(getAllNarrative({ email }));
   }, []);
 
   if (isError) {
@@ -78,9 +78,11 @@ const Reports = React.memo(() => {
       <div className="content">
         <header>
           <h2>Reports</h2>
-          <button onClick={() => dispatch(handleNarrativeSample())}>
-            View Sample Narrative
-          </button>
+          <div className="btn-view">
+            <button onClick={() => dispatch(handleNarrativeSample())}>
+              View Sample Narrative
+            </button>
+          </div>
         </header>
         {renderNarrative()}
       </div>
@@ -98,8 +100,7 @@ const Reports = React.memo(() => {
         <>
           <div
             onClick={() => dispatch(handleNarrativeSample())}
-            className="overlay"
-          ></div>
+            className="overlay"></div>
           <div className="sample-view-container">
             <Viewer fileUrl="https://firebasestorage.googleapis.com/v0/b/sims-9f681.appspot.com/o/images%2Fdocuments%2Fsample%2FJake-A.-Bristol-Complete.pdf?alt=media&token=28af534d-3d01-47ce-ab26-8068a2d96d28" />
           </div>

@@ -63,7 +63,7 @@ const signup = async (req, res) => {
     subject: "SIMS - Signup Verification Code", // Subject line
     text: `Your verification code is: ${verificationCode}`, // plain text body
     html: `<div
-     style="
+      style="
         background-color: #292929;
         color: #fff;
         padding: 2.3rem 2rem 2rem 2rem;
@@ -77,12 +77,14 @@ const signup = async (req, res) => {
         background-repeat: no-repeat;
         background-size: 120px auto;
       ">
-      <p style="  font-size: 20px;
+        <p style="  font-size: 20px;
           display: grid;
+          gap: 8px;
           grid-template-columns: 1fr;
           text-align: center;
-          gap:1rem;">Your verification code is: <b style="color: #00adb5">${verificationCode}</b></p>
-      <p style="font-size: 16px; text-align: center;">Thank you for using our service.</p>
+          gap:1rem;">Your verification code is: <b style="color: #00adb5">${verificationCode}</b>
+          <span style="font-size: 16px; text-align: center;">Thank you for using our service.</span>
+        </p>
        </div>`, // html body
   });
 
@@ -299,12 +301,14 @@ const forgotPassword = async (req, res) => {
         background-repeat: no-repeat;
         background-size: 120px auto;
       ">
-      <p style="  font-size: 20px;
+        <p style="  font-size: 20px;
           display: grid;
+          gap: 8px;
           grid-template-columns: 1fr;
           text-align: center;
-          gap:1rem;">Your verification code is: <b style="color: #00adb5">${verificationCode}</b></p>
-      <p style="font-size: 16px; text-align: center;">Thank you for using our service.</p>
+          gap:1rem;">Your verification code is: <b style="color: #00adb5">${verificationCode}</b>
+          <span style="font-size: 16px; text-align: center;">Thank you for using our service.</span>
+        </p>
        </div>`,
   });
 
