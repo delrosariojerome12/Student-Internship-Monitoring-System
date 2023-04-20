@@ -241,7 +241,7 @@
             scale: 0.8;
           }
         }
-        > span {
+        span {
           display: flex;
           flex-direction: column;
           gap: 1rem;
@@ -441,6 +441,10 @@
             display: flex;
             gap: 0.5rem;
             align-items: center;
+            > span {
+              @include flexCenter;
+              font-size: 1.5rem;
+            }
           }
         }
         .active {
@@ -452,7 +456,7 @@
           scale: 0.8;
         }
       }
-      span {
+      > span {
         display: grid;
         grid-template-columns: auto 1fr;
         gap: 1rem;

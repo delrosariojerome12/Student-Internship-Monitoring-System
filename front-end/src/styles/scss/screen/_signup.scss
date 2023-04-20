@@ -135,21 +135,6 @@
     }
   }
 }
-@media screen and (max-width: 357px) {
-  .signin {
-    grid-template-columns: 1fr;
-    .card-container {
-      padding: 2rem;
-      form {
-        span {
-          align-items: flex-start;
-          flex-direction: column;
-          margin: 0;
-        }
-      }
-    }
-  }
-}
 
 @media screen and (max-width: 380px) {
   .signin {
@@ -167,6 +152,32 @@
         }
         h2 {
           font-size: 1.8rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 357px) {
+  .signin {
+    grid-template-columns: 1fr;
+    .card-container {
+      padding: 2rem;
+      form {
+        span {
+          align-items: flex-start;
+          flex-direction: column;
+          margin: 0;
+        }
+      }
+    }
+    .verification-modal {
+      form {
+        h1 {
+          font-size: 1.8rem;
+        }
+        h2 {
+          font-size: 1.7rem;
         }
       }
     }
