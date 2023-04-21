@@ -371,11 +371,11 @@ const createUser = async (req, res) => {
           text-align: center;
         ">
         <span style="display: grid; grid-template-columns: 1fr; font-size: 16px;">
-          Your Esername or Email and Password:
+          Your Username or Email and Password:
           <b style="color: #00adb5; padding-top: 2px">${email}</b>
           <b style="color: #00adb5; padding-top: 2px">${password}</b>
         </span>
-        <span style="font-size: 14px; text-align: center; padding-top: 15px"
+        <span style="font-size: 14px; text-align: center; padding-top: 10px"
           >Thank you for using our service.</span
         >
       </p>
