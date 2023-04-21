@@ -58,8 +58,8 @@ export const handleCreateUser = createAsyncThunk(
   "/user/createUser",
   async ({form}, {rejectWithValue}) => {
     try {
-      const url = "https://sims-twqb.onrender.com/auth/signup";
-      // const url = "http://localhost:5000/auth/signup";
+      // const url = "https://sims-twqb.onrender.com/auth/signup";
+      const url = "http://localhost:5000/auth/createUser";
       const {data: res} = await axios.post(url, convertForm(form));
       return {res};
     } catch (err) {
@@ -93,8 +93,8 @@ export const handleLogin = createAsyncThunk(
     try {
       const {email, firstName, lastName, password} = convertForm(form);
       // const user = signInWithEmailAndPassword(auth, email, password);
-      // const url = "https://sims-twqb.onrender.com/auth/login";
-      const url = "http://localhost:5000/auth/login";
+      const url = "https://sims-twqb.onrender.com/auth/login";
+      // const url = "http://localhost:5000/auth/login";
       const {data: res} = await axios.post(url, convertForm(form));
       return {res};
     } catch (err) {
@@ -138,7 +138,10 @@ export const forgotPassword = createAsyncThunk(
   async ({email}, {rejectWithValue}) => {
     console.log(email);
     try {
-      const url = `http://localhost:5000/auth/forgotPassword`;
+      // const url = `http://localhost:5000/auth/forgotPassword`;
+
+      const url = `https://sims-twqb.onrender.com/auth/forgotPassword`;
+
       const {data: res} = await axios.post(url, {email});
       // console.log(res);
       return {res};
@@ -154,7 +157,8 @@ export const verifyCode = createAsyncThunk(
   async ({email, code, pendingUser}, {rejectWithValue}) => {
     console.log(email, code, pendingUser);
     try {
-      const url = `http://localhost:5000/auth/verify`;
+      // const url = `http://localhost:5000/auth/verify`;
+      const url = `https://sims-twqb.onrender.com/auth/verify`;
       const {data: res} = await axios.post(url, {
         email,
         code,
@@ -175,7 +179,9 @@ export const verifyResetCode = createAsyncThunk(
   async ({email, code}, {rejectWithValue}) => {
     console.log(email, code);
     try {
-      const url = `http://localhost:5000/auth/verify`;
+      // const url = `http://localhost:5000/auth/verify`;
+      const url = `https://sims-twqb.onrender.com/auth/verify`;
+
       const {data: res} = await axios.post(url, {email, code, usage: "reset"});
       console.log(res);
       return {res};
@@ -191,7 +197,8 @@ export const resetPassword = createAsyncThunk(
   async ({email, password}, {rejectWithValue}) => {
     console.log(email, password);
     try {
-      const url = `http://localhost:5000/auth/resetPassword`;
+      const url = `https://sims-twqb.onrender.com/auth/resetPassword`;
+      // const url = `http://localhost:5000/auth/resetPassword`;
       const {data: res} = await axios.patch(url, {email, password});
       console.log(res);
       return {res};

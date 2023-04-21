@@ -359,12 +359,12 @@ const rejectDocument = async (req, res) => {
 
 const runCheckAbsents = async () => {
   try {
-    const response = await axios.post(
-      "http://localhost:5000/attendance/checkAbsents"
-    );
     // const response = await axios.post(
-    //   "https://sims-twqb.onrender.com/attendance/checkAbsents"
+    //   "http://localhost:5000/attendance/checkAbsents"
     // );
+    const response = await axios.post(
+      "https://sims-twqb.onrender.com/attendance/checkAbsents"
+    );
     console.log(response.data);
   } catch (error) {
     console.error(error);

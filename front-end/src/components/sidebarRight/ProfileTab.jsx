@@ -14,6 +14,15 @@ const ProfileTab = () => {
   const {user: userDetails} = user;
   const {firstName, lastName, role, profileImage} = userDetails;
 
+  const roleRenderer = () => {
+    if (role === "admin") {
+      return "placement officer";
+    } else if (role === "coordinator") {
+      return "admin";
+    }
+    return role;
+  };
+
   return (
     <IconContext.Provider value={{className: "icon"}}>
       <div className="profile-tab tab">
@@ -21,7 +30,7 @@ const ProfileTab = () => {
           <img src={profileImage} alt="profile-image" />
           <div className="text">
             <p>{`${firstName} ${lastName}`}</p>
-            <p>{role}</p>
+            <p>{roleRenderer()}</p>
           </div>
         </div>
         {/* <div className="dark-mode">

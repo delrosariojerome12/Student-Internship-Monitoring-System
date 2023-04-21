@@ -2463,6 +2463,8 @@ button {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 }
 .dashboard .leaflet-container, .dashboard-active .leaflet-container {
   height: 100%;
@@ -8117,6 +8119,26 @@ button {
   .dashboard .admin-dashboard, .dashboard-active .admin-dashboard {
     grid-template-rows: auto minmax(45rem, 69vh);
   }
+}
+.dashboard .under-dev, .dashboard-active .under-dev {
+  background-color: #212121;
+  padding: 3rem;
+  color: #fff;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dashboard .under-dev img, .dashboard-active .under-dev img {
+  width: 100%;
+  height: 50rem;
+}
+.dashboard .under-dev .con, .dashboard-active .under-dev .con {
+  width: 50rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
 }
 
 .dashboard-active {
