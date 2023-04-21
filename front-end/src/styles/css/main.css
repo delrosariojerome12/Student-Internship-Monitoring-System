@@ -2462,7 +2462,7 @@ button {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"); /** @format */
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap");
 }
@@ -2898,10 +2898,10 @@ button {
 .dashboard .left-sidebar .profile-tab, .dashboard-active .left-sidebar .profile-tab {
   display: none !important;
   position: absolute;
-  left: 12rem;
+  left: 11rem;
   bottom: 1%;
   height: auto;
-  width: 30rem;
+  width: 31rem;
   z-index: 2;
   background-color: #323232;
   border-radius: 2rem;
@@ -3250,9 +3250,9 @@ button {
 .dashboard .sidebar-right .top .tab, .dashboard-active .sidebar-right .top .tab {
   position: absolute;
   top: 1rem;
-  left: -32rem;
+  left: -33rem;
   height: auto;
-  width: 30rem;
+  width: 31rem;
   z-index: 2;
   background-color: #323232;
   border-radius: 2rem;
@@ -7661,7 +7661,7 @@ button {
 }
 .dashboard .admin-dashboard, .dashboard-active .admin-dashboard {
   display: grid;
-  grid-template-rows: auto minmax(45rem, 79vh);
+  grid-template-rows: auto minmax(45rem, 83vh);
   gap: 1rem;
 }
 .dashboard .admin-dashboard .overlay, .dashboard-active .admin-dashboard .overlay {
@@ -7737,12 +7737,6 @@ button {
 .dashboard .admin-dashboard > header h1, .dashboard-active .admin-dashboard > header h1 {
   font-size: 4rem;
 }
-.dashboard .admin-dashboard > header h1 b, .dashboard-active .admin-dashboard > header h1 b {
-  color: #00adb5;
-}
-.dashboard .admin-dashboard > header h3, .dashboard-active .admin-dashboard > header h3 {
-  font-size: 2rem;
-}
 .dashboard .admin-dashboard .content, .dashboard-active .admin-dashboard .content {
   background-color: #282b30;
   border-radius: 1rem;
@@ -7755,16 +7749,8 @@ button {
   height: 100%;
   overflow-y: auto;
 }
-.dashboard .admin-dashboard .content header, .dashboard-active .admin-dashboard .content header {
+.dashboard .admin-dashboard .content .brief-text, .dashboard-active .admin-dashboard .content .brief-text {
   color: #000;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.dashboard .admin-dashboard .content header h2, .dashboard-active .admin-dashboard .content header h2 {
-  color: #fff;
-}
-.dashboard .admin-dashboard .content header .brief-text, .dashboard-active .admin-dashboard .content header .brief-text {
   background-color: #fff;
   text-align: center;
   padding: 2rem;
@@ -8001,12 +7987,12 @@ button {
 }
 @media screen and (min-height: 700px) {
   .dashboard .admin-dashboard, .dashboard-active .admin-dashboard {
-    grid-template-rows: auto minmax(45rem, 81vh);
+    grid-template-rows: auto minmax(45rem, 85.5vh);
   }
 }
 @media screen and (min-height: 800px) {
   .dashboard .admin-dashboard, .dashboard-active .admin-dashboard {
-    grid-template-rows: auto minmax(30rem, 83vh);
+    grid-template-rows: auto minmax(30rem, 87.5vh);
   }
 }
 @media screen and (max-width: 900px) {
@@ -8030,10 +8016,6 @@ button {
   }
   .dashboard .admin-dashboard > header h3, .dashboard-active .admin-dashboard > header h3 {
     font-size: 1.8rem;
-  }
-  .dashboard .admin-dashboard .content header h2, .dashboard-active .admin-dashboard .content header h2 {
-    text-align: center;
-    font-size: 2.5rem;
   }
   .dashboard .admin-dashboard .content .form-container .choice-contain, .dashboard-active .admin-dashboard .content .form-container .choice-contain {
     grid-template-columns: auto 1fr;
@@ -8083,13 +8065,15 @@ button {
   .dashboard .admin-dashboard, .dashboard-active .admin-dashboard {
     grid-template-rows: auto minmax(45rem, 72vh);
   }
+  .dashboard .admin-dashboard > header, .dashboard-active .admin-dashboard > header {
+    margin: auto;
+  }
   .dashboard .admin-dashboard > header h1, .dashboard-active .admin-dashboard > header h1 {
+    display: flex;
+    text-align: center;
     font-size: 3rem;
   }
-  .dashboard .admin-dashboard .content header h2, .dashboard-active .admin-dashboard .content header h2 {
-    font-size: 2.3rem;
-  }
-  .dashboard .admin-dashboard .content header .brief-text, .dashboard-active .admin-dashboard .content header .brief-text {
+  .dashboard .admin-dashboard .content .brief-text, .dashboard-active .admin-dashboard .content .brief-text {
     padding: 1.5rem;
   }
   .dashboard .admin-dashboard .content .form-container .choice-contain, .dashboard-active .admin-dashboard .content .form-container .choice-contain {
@@ -8121,24 +8105,128 @@ button {
   }
 }
 .dashboard .under-dev, .dashboard-active .under-dev {
-  background-color: #212121;
-  padding: 3rem;
-  color: #fff;
-  border-radius: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.dashboard .under-dev img, .dashboard-active .under-dev img {
-  width: 100%;
-  height: 50rem;
-}
-.dashboard .under-dev .con, .dashboard-active .under-dev .con {
-  width: 50rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+.dashboard .under-dev > *, .dashboard-active .under-dev > * {
+  background-color: #282b30;
+  border-radius: 1rem;
+  color: #fff;
+}
+.dashboard .under-dev .name-greet, .dashboard-active .under-dev .name-greet {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: #f1faee;
+  padding: 2rem;
+}
+.dashboard .under-dev .name-greet h1, .dashboard-active .under-dev .name-greet h1 {
+  font-size: 3.7rem;
+}
+.dashboard .under-dev .name-greet h1 b, .dashboard-active .under-dev .name-greet h1 b {
+  color: #0d7377;
+}
+.dashboard .under-dev .name-greet h4, .dashboard-active .under-dev .name-greet h4 {
+  font-size: 2rem;
+}
+.dashboard .under-dev .con, .dashboard-active .under-dev .con {
+  padding: 2rem 2rem 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  height: 100%;
+}
+.dashboard .under-dev .con img, .dashboard-active .under-dev .con img {
+  height: auto;
+  width: 50rem;
+  margin: 0 auto;
+}
+@media screen and (min-height: 700px) {
+  .dashboard .under-dev .con h1, .dashboard-active .under-dev .con h1 {
+    font-size: 3rem;
+  }
+  .dashboard .under-dev .con img, .dashboard-active .under-dev .con img {
+    width: 60rem;
+  }
+}
+@media screen and (max-width: 980px) {
+  .dashboard .under-dev .name-greet h1, .dashboard-active .under-dev .name-greet h1 {
+    font-size: 3.5rem;
+  }
+}
+@media screen and (max-width: 820px) {
+  .dashboard .under-dev .name-greet h1, .dashboard-active .under-dev .name-greet h1 {
+    font-size: 3.3rem;
+  }
+  .dashboard .under-dev .name-greet h4, .dashboard-active .under-dev .name-greet h4 {
+    font-size: 1.9rem;
+  }
+  .dashboard .under-dev .con h1, .dashboard-active .under-dev .con h1 {
+    font-size: 2.7rem;
+  }
+  .dashboard .under-dev .con img, .dashboard-active .under-dev .con img {
+    width: 42rem;
+  }
+}
+@media screen and (max-width: 720px) {
+  .dashboard .under-dev .name-greet h1, .dashboard-active .under-dev .name-greet h1 {
+    font-size: 3.1rem;
+  }
+  .dashboard .under-dev .name-greet h4, .dashboard-active .under-dev .name-greet h4 {
+    font-size: 1.7rem;
+  }
+  .dashboard .under-dev .con h1, .dashboard-active .under-dev .con h1 {
+    font-size: 2.5rem;
+  }
+  .dashboard .under-dev .con img, .dashboard-active .under-dev .con img {
+    width: 37rem;
+  }
+}
+@media screen and (max-width: 650px) {
+  .dashboard .under-dev .name-greet h1, .dashboard-active .under-dev .name-greet h1 {
+    font-size: 2.9rem;
+  }
+  .dashboard .under-dev .con h1, .dashboard-active .under-dev .con h1 {
+    font-size: 2.2rem;
+  }
+  .dashboard .under-dev .con img, .dashboard-active .under-dev .con img {
+    width: 35rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .dashboard .under-dev .name-greet, .dashboard-active .under-dev .name-greet {
+    text-align: center;
+    padding: 1.5rem 2rem;
+  }
+  .dashboard .under-dev .name-greet h1, .dashboard-active .under-dev .name-greet h1 {
+    font-size: 2.6rem;
+  }
+  .dashboard .under-dev .con h1, .dashboard-active .under-dev .con h1 {
+    font-size: 2rem;
+  }
+  .dashboard .under-dev .con img, .dashboard-active .under-dev .con img {
+    width: 32rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  .dashboard .under-dev .name-greet h1, .dashboard-active .under-dev .name-greet h1 {
+    font-size: 2.5rem;
+  }
+  .dashboard .under-dev .con h1, .dashboard-active .under-dev .con h1 {
+    font-size: 1.8rem;
+  }
+  .dashboard .under-dev .con img, .dashboard-active .under-dev .con img {
+    width: 28rem;
+  }
+}
+@media screen and (max-width: 370px) {
+  .dashboard .under-dev .con img, .dashboard-active .under-dev .con img {
+    width: 25rem;
+  }
 }
 
 .dashboard-active {

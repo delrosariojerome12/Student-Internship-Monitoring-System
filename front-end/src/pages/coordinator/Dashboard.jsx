@@ -125,7 +125,7 @@ const Dashboard = React.memo(() => {
       <header>
         <div className="name-greet">
           <h1>
-            Hello, <b>Coordinator</b>
+            Hello, <b>Admin</b>
           </h1>
           <h4> Welcome Back!</h4>
         </div>
