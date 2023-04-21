@@ -11,6 +11,7 @@
       grid-column: 2/3;
       grid-row: 1/2;
     }
+
     .card-container {
       margin-top: 5%;
       grid-column: 1/2;
@@ -104,6 +105,28 @@
     }
   }
 }
+
+@media screen and (max-width: 380px) {
+  .login {
+    .forgot-modal {
+      .forgot-modal-container {
+        .send-code {
+          button {
+            height: 4rem;
+          }
+          input {
+            width: 4rem;
+            height: 4rem;
+          }
+          h2 {
+            font-size: 1.9rem;
+          }
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 357px) {
   .login {
     grid-template-columns: 1fr;

@@ -103,6 +103,11 @@ const Reports = React.memo(() => {
             className="overlay"></div>
           <div className="sample-view-container">
             <Viewer fileUrl="https://firebasestorage.googleapis.com/v0/b/sims-9f681.appspot.com/o/images%2Fdocuments%2Fsample%2FJake-A.-Bristol-Complete.pdf?alt=media&token=28af534d-3d01-47ce-ab26-8068a2d96d28" />
+            <div className="btn-close">
+              <button onClick={() => dispatch(handleNarrativeSample())}>
+                Close
+              </button>
+            </div>
           </div>
         </>
       )}
