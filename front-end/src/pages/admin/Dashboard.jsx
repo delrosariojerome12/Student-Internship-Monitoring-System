@@ -1,22 +1,22 @@
 /** @format */
 
-import React, {useState} from "react";
-import {FaUserAlt, FaLock, FaEye, FaEyeSlash, FaCheck} from "react-icons/fa";
-import {GrMail} from "react-icons/gr";
-import {IconContext} from "react-icons";
-import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
-import {storage} from "../../Firebase";
-import {v4} from "uuid";
+import React, { useState } from "react";
+import { FaUserAlt, FaLock, FaEye, FaEyeSlash, FaCheck } from "react-icons/fa";
+import { GrMail } from "react-icons/gr";
+import { IconContext } from "react-icons";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from "../../Firebase";
+import { v4 } from "uuid";
 import {
   handleCreateUser,
   handleCloseSuccess,
   handleCloseError,
 } from "../../features/user/userReducer";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import errorIcon from "../../assets/img/errorCreate.svg";
 import success from "../../assets/img/successCreate.svg";
 const Dashboard = React.memo(() => {
-  const {isError, errorMessage, isLoading, createdSuccessful} = useSelector(
+  const { isError, errorMessage, isLoading, createdSuccessful } = useSelector(
     (state) => state.user
   );
   const dispatch = useDispatch();
@@ -230,7 +230,7 @@ const Dashboard = React.memo(() => {
         return;
       case "Profile Image":
         if (value) {
-          const {name, type} = value;
+          const { name, type } = value;
           if (!type.includes("image")) {
             console.log("error");
             data[index].isError = true;
@@ -309,8 +309,7 @@ const Dashboard = React.memo(() => {
                   htmlFor={id}
                   className={
                     value ? "placeholder-text active" : "placeholder-text"
-                  }
-                >
+                  }>
                   <div className={isError ? "text icons-error" : "text"}>
                     <span>
                       <IconType className={isError ? "icons-error" : "icons"} />
@@ -336,7 +335,13 @@ const Dashboard = React.memo(() => {
                         }
                         autoComplete={hasEyeIcon ? "true" : null}
                       />
-                      <label htmlFor={`${id}${radioValue}`}>{radioValue}</label>
+                      <label htmlFor={`${id}${radioValue}`}>
+                        {radioValue === "admin"
+                          ? "Placement Officer"
+                          : radioValue === "coordinator"
+                          ? "Admin"
+                          : null}
+                      </label>
                     </div>
                   );
                 }
@@ -365,8 +370,7 @@ const Dashboard = React.memo(() => {
                   htmlFor={id}
                   className={
                     value ? "placeholder-text active" : "placeholder-text"
-                  }
-                >
+                  }>
                   <div className={isError ? "text icons-error" : "text"}>
                     <span>
                       <IconType className={isError ? "icons-error" : "icons"} />
@@ -391,7 +395,7 @@ const Dashboard = React.memo(() => {
                   <img src={value} alt="profile" />
                 </div>
                 {isError ? (
-                  <p style={{color: "red"}}>{errorMessage}</p>
+                  <p style={{ color: "red" }}>{errorMessage}</p>
                 ) : value.includes("firebase") ? (
                   <p>
                     Profile Selected
@@ -426,41 +430,34 @@ const Dashboard = React.memo(() => {
     });
     // api send
     if (x === 0) {
-      dispatch(handleCreateUser({form}));
+      dispatch(handleCreateUser({ form }));
     }
   };
 
   return (
     <section className="admin-dashboard">
       <header>
-        <h1>
-          Hello, <b>Admin</b>
-        </h1>
-        <h3>Welcome Back!</h3>
+        <h1>Create Account</h1>
       </header>
       <section className="content">
-        <header>
-          <h2>Create Account</h2>
-          <div className="brief-text">
-            <h5>
-              The purpose of this tab is to create new accounts for the admin
-              and coordinator
-            </h5>
-          </div>
-        </header>
+        <div className="brief-text">
+          <h5>
+            The purpose of this tab is to create new accounts for the admin and
+            coordinator
+          </h5>
+        </div>
         <form className="form-container" onSubmit={handleSubmit}>
-          <IconContext.Provider value={{className: "icons"}}>
+          <IconContext.Provider value={{ className: "icons" }}>
             {renderInputs()}
             <button
               style={
                 isComplete
-                  ? {opacity: "1"}
+                  ? { opacity: "1" }
                   : isLoading
-                  ? {opacity: ".7", pointerEvents: "none"}
-                  : {opacity: ".7", pointerEvents: "none"}
+                  ? { opacity: ".7", pointerEvents: "none" }
+                  : { opacity: ".7", pointerEvents: "none" }
               }
-              type="submit"
-            >
+              type="submit">
               {isLoading ? "Creating User..." : "Create User"}
             </button>
           </IconContext.Provider>
@@ -473,8 +470,7 @@ const Dashboard = React.memo(() => {
             onClick={() => {
               window.location.reload();
               dispatch(handleCloseSuccess());
-            }}
-          ></div>
+            }}></div>
           <div className="success-modal">
             <h3>Created Successful!</h3>
             <img src={success} alt="success" />
@@ -483,8 +479,7 @@ const Dashboard = React.memo(() => {
                 dispatch(handleCloseSuccess());
                 clearForm();
                 window.location.reload();
-              }}
-            >
+              }}>
               Close
             </button>
           </div>
@@ -494,8 +489,7 @@ const Dashboard = React.memo(() => {
         <>
           <div
             className="overlay"
-            onClick={() => dispatch(handleCloseError())}
-          ></div>
+            onClick={() => dispatch(handleCloseError())}></div>
           <div className="error-modal">
             <h3>Oops!</h3>
             <h4>{errorMessage}</h4>

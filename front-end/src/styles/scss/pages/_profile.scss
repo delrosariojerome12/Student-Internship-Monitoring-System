@@ -653,7 +653,7 @@
                   padding: 1rem;
                   gap: 1rem;
                   display: grid;
-                  grid-template-columns: 1fr 1fr;
+                  grid-template-columns: 1fr auto;
                   & > * {
                     @include flexCenter;
                   }
@@ -662,7 +662,8 @@
                     background-color: #fff;
                     border-radius: 1rem;
                     text-align: center;
-                    padding: 1rem;
+                    justify-content: space-between;
+                    padding: 0.5rem 1rem;
                     // border: solid 1px #000;
                   }
                   .status {
@@ -682,7 +683,8 @@
                       outline: none;
                       cursor: pointer;
                       padding: 1rem 1.5rem;
-                      transition: all 0.2s linear;
+                      transition: all 0.3s linear;
+                      width: 8rem;
                       font-weight: 600;
                       border-radius: 1rem;
                       &:hover {
@@ -753,6 +755,33 @@
     }
   }
 }
+
+@media screen and (max-width: 890px) {
+  .profile-page {
+    .modal {
+      .middle {
+        padding: 1rem;
+        .input-contain {
+          grid-template-columns: repeat(2, 1fr) auto;
+          grid-template-rows: auto auto;
+          border: solid 1px #000;
+          border-radius: 1rem;
+          padding: 1rem;
+          padding-bottom: 1rem;
+          & > :nth-child(1) {
+            grid-row: 1/2;
+            grid-column: 1/3;
+          }
+          > button {
+            grid-row: 1/3;
+            grid-column: 3/4;
+          }
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 880px) {
   .profile-page {
     .content {
@@ -803,26 +832,7 @@
     .modal {
       width: 90%;
       .upper {
-        display: grid;
-        grid-template-columns: auto auto;
-        grid-template-rows: auto auto;
         padding: 1rem 2rem;
-        gap: 0;
-        h3 {
-          font-size: 1.9rem;
-        }
-        & > :nth-child(1) {
-          font-size: 2.2rem;
-        }
-        & > :nth-child(2) {
-          color: $primary-bg-color-landing-compliment;
-        }
-        & > :nth-child(3) {
-          margin: auto;
-          grid-column: 2/3;
-          // width: 60%;
-          grid-row: 1/3;
-        }
       }
     }
     .content {
@@ -1007,52 +1017,39 @@
               width: 22rem;
             }
           }
-          .report-container {
-            .narrative-content {
-              .dropdown-container {
-                .days-container {
-                  .narrative-day {
-                    .btn-container {
-                      flex-direction: row;
-                    }
-                  }
-                }
-              }
-            }
-          }
         }
       }
     }
   }
 }
 
-@media screen and (max-width: 520px) {
-  .profile-page {
-    .content {
-      .display {
-        .narrative-container {
-          .report-container {
-            .narrative-content {
-              .dropdown-container {
-                .days-container {
-                  .narrative-day {
-                    .btn-container {
-                      flex-direction: column;
-                      button {
-                        height: 3.5rem;
-                        width: 6rem;
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
+// @media screen and (max-width: 520px) {
+//   .profile-page {
+//     .content {
+//       .display {
+//         .narrative-container {
+//           .report-container {
+//             .narrative-content {
+//               .dropdown-container {
+//                 .days-container {
+//                   .narrative-day {
+//                     .btn-container {
+//                       flex-direction: column;
+//                       button {
+//                         height: 3.5rem;
+//                         width: 6rem;
+//                       }
+//                     }
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
 @media screen and (max-width: 500px) {
   .profile-page {
     .profile-user {
@@ -1083,9 +1080,6 @@
       border-radius: 0;
       width: 100%;
       height: 100%;
-      .upper {
-        gap: 0.5rem;
-      }
       .btn-controller {
         button {
           font-size: 1.3rem;
@@ -1171,23 +1165,48 @@
                   font-size: 1.7rem;
                 }
               }
-              .dropdown-container {
-                .days-container {
-                  @include flexColumn;
-                  .narrative-day {
-                    gap: 0.5rem;
-                    grid-template-rows: repeat(2, auto);
-                    grid-template-columns: repeat(2, auto);
-                    .btn-container {
-                      flex-direction: row;
-                      justify-content: center;
-                      grid-column: 1/3;
-                      grid-row: 2/3;
-                    }
-                  }
-                }
-              }
+              // .dropdown-container {
+              //   .days-container {
+              //     @include flexColumn;
+              //     .narrative-day {
+              //       gap: 0.5rem;
+              //       grid-template-rows: repeat(2, auto);
+              //       grid-template-columns: repeat(2, auto);
+              //       .btn-container {
+              //         flex-direction: row;
+              //         justify-content: center;
+              //         grid-column: 1/3;
+              //         grid-row: 2/3;
+              //       }
+              //     }
+              //   }
+              // }
             }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .profile-page {
+    .modal {
+      .middle {
+        .input-contain {
+          grid-template-columns: 1fr auto;
+          grid-template-rows: repeat(3, auto);
+          & > :nth-child(1) {
+            // grid-row: 1/2;
+            grid-column: 1/3;
+          }
+          & > :nth-child(2) {
+            // grid-row: 1/2;
+            grid-column: 1/2;
+          }
+          > button {
+            grid-row: 2/4;
+            grid-column: 2/3;
           }
         }
       }
@@ -1291,30 +1310,30 @@
           }
           .report-container {
             grid-auto-rows: 13rem;
-            .narrative-content {
-              .dropdown-container {
-                .days-container {
-                  .narrative-day {
-                    gap: 0;
-                    padding: 0.5rem;
-                    display: flex;
-                    flex-direction: column;
-                    .num-days {
-                      padding: 0.5rem 0 0 0;
-                      border-radius: 1rem 1rem 0 0;
-                    }
-                    .status {
-                      padding: 0 0 0.5rem 0;
-                      border-radius: 0 0 1rem 1rem;
-                    }
+            // .narrative-content {
+            //   .dropdown-container {
+            //     .days-container {
+            //       .narrative-day {
+            //         gap: 0;
+            //         padding: 0.5rem;
+            //         display: flex;
+            //         flex-direction: column;
+            //         .num-days {
+            //           padding: 0.5rem 0 0 0;
+            //           border-radius: 1rem 1rem 0 0;
+            //         }
+            //         .status {
+            //           padding: 0 0 0.5rem 0;
+            //           border-radius: 0 0 1rem 1rem;
+            //         }
 
-                    .btn-container {
-                      padding: 0.5rem 0 0 0;
-                    }
-                  }
-                }
-              }
-            }
+            //         .btn-container {
+            //           padding: 0.5rem 0 0 0;
+            //         }
+            //       }
+            //     }
+            //   }
+            // }
           }
         }
       }

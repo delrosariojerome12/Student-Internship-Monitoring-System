@@ -82,8 +82,8 @@ const signup = async (req, res) => {
           gap: 8px;
           grid-template-columns: 1fr;
           text-align: center;
-          gap:1rem;">Your verification code is: <b style="color: #00adb5">${verificationCode}</b>
-          <span style="font-size: 16px; text-align: center;">Thank you for using our service.</span>
+          gap:1rem;">Your verification code is: <b style="color: #00adb5; text-decoration: underline;">${verificationCode}</b>
+          <span style="font-size: 16px; text-align: center; padding-top: 15px;">Thank you for using our service.</span>
         </p>
        </div>`, // html body
   });
@@ -306,8 +306,8 @@ const forgotPassword = async (req, res) => {
           gap: 8px;
           grid-template-columns: 1fr;
           text-align: center;
-          gap:1rem;">Your verification code is: <b style="color: #00adb5">${verificationCode}</b>
-          <span style="font-size: 16px; text-align: center;">Thank you for using our service.</span>
+          gap:1rem;">Your verification code is: <b style="color: #00adb5; text-decoration: underline;">${verificationCode}</b>
+          <span style="font-size: 16px; text-align: center; padding-top: 15px;">Thank you for using our service.</span>
         </p>
        </div>`,
   });
@@ -338,10 +338,186 @@ const resetPassword = async (req, res) => {
   res.status(StatusCodes.OK).json({message: "Password reset successfully"});
 };
 
+const createUser = async (req, res) => {
+  const {firstName, lastName, email, password, profileImage} = req.body;
+
+  if (!firstName || !lastName || !email || !password || !profileImage) {
+    throw new BadRequest("Credentials must be provided");
+  }
+  const user = await User.create({...req.body});
+
+  User.createIndexes();
+
+  // if (user.role === "intern") {
+  //   const intern = await (
+  //     await Intern.create({user: user._id, email})
+  //   ).populate({
+  //     path: "user",
+  //     model: "User",
+  //   });
+
+  //   await transporter.sendMail({
+  //     from: '"Jerome Ramos - SIMS Lead Developer" <sims@gmail.com>',
+  //     to: `${email}`,
+  //     subject: "SIMS - Admin Created Your Account",
+  //     text: `Your Username/Email: ${email} and Your Password: ${password}`,
+  //     html: `<div
+  //     style="
+  //       background-color: #292929;
+  //       color: #fff;
+  //       padding: 30px 20px 20px 20px;
+  //       margin: auto 0;
+  //       border-radius: 10px;
+  //       display: grid;
+  //       width: 300px;
+  //       height: fit-content;
+  //       background-image: url('https://firebasestorage.googleapis.com/v0/b/sims-9f681.appspot.com/o/Logo_3.png?alt=media&token=baa0455c-2916-4eb3-bf0c-3bfe5e4e804f');
+  //       background-position: 10px 10px;
+  //       background-repeat: no-repeat;
+  //       background-size: 120px auto;
+  //       word-break: break-all;
+  //     ">
+  //     <p
+  //       style="
+  //         font-size: 20px;
+  //         display: grid;
+  //         grid-template-columns: 1fr;
+  //         text-align: center;
+  //       ">
+  //       <span style="display: grid; grid-template-columns: 1fr; font-size: 16px;">
+  //         Your Username or Email and Password:
+  //         <b style="color: #00adb5; padding-top: 2px">${email}</b>
+  //         <b style="color: #00adb5; padding-top: 2px">${password}</b>
+  //       </span>
+  //       <span style="font-size: 14px; text-align: center; padding-top: 10px"
+  //         >Thank you for using our service.</span
+  //       >
+  //     </p>
+  //   </div>`,
+  //   });
+
+  //   const token = user.createJWT();
+  //   res.status(StatusCodes.CREATED).json({
+  //     user: intern,
+  //     token,
+  //   });
+  // }
+  if (user.role === "admin") {
+    const admin = await (
+      await Admin.create({user: user._id})
+    ).populate({
+      path: "user",
+      model: "User",
+    });
+
+    await transporter.sendMail({
+      from: '"Jerome Ramos - SIMS Lead Developer" <sims@gmail.com>',
+      to: `${email}`,
+      subject: "SIMS - Admin Created Your Account - (Placement Officer)",
+      text: `Your Username/Email: ${email} and Your Password: ${password}`,
+      html: `<div
+      style="
+        background-color: #292929;
+        color: #fff;
+        padding: 30px 20px 20px 20px;
+        margin: auto 0;
+        border-radius: 10px;
+        display: grid;
+        width: 300px;
+        height: fit-content;
+        background-image: url('https://firebasestorage.googleapis.com/v0/b/sims-9f681.appspot.com/o/Logo_3.png?alt=media&token=baa0455c-2916-4eb3-bf0c-3bfe5e4e804f');
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        background-size: 120px auto;
+        word-break: break-all;
+      ">
+      <p
+        style="
+          font-size: 20px;
+          display: grid;
+          grid-template-columns: 1fr;
+          text-align: center;
+        ">
+        <span style="display: grid; grid-template-columns: 1fr; font-size: 16px;">
+          Your Username or Email and Password:
+          <b style="color: #00adb5; padding-top: 2px">${email}</b>
+          <b style="color: #00adb5; padding-top: 2px">${password}</b>
+        </span>
+        <span style="font-size: 14px; text-align: center; padding-top: 10px"
+          >Thank you for using our service.</span
+        >
+      </p>
+    </div>`, // html body
+    });
+
+    const token = user.createJWT();
+    res.status(StatusCodes.CREATED).json({
+      user: admin,
+      token,
+    });
+  }
+  if (user.role === "coordinator") {
+    const {department} = req.body;
+    const coordinator = await (
+      await Coordinator.create({user: user._id, email, department})
+    ).populate({
+      path: "user",
+      model: "User",
+    });
+
+    await transporter.sendMail({
+      from: '"Jerome Ramos - SIMS Lead Developer" <sims@gmail.com>',
+      to: `${email}`,
+      subject: "SIMS - Admin Created Your Account - (ADMIN)",
+      text: `Your Username/Email: ${email} and Your Password: ${password}`,
+      html: `<div
+      style="
+        background-color: #292929;
+        color: #fff;
+        padding: 30px 20px 20px 20px;
+        margin: auto 0;
+        border-radius: 10px;
+        display: grid;
+        width: 300px;
+        height: fit-content;
+        background-image: url('https://firebasestorage.googleapis.com/v0/b/sims-9f681.appspot.com/o/Logo_3.png?alt=media&token=baa0455c-2916-4eb3-bf0c-3bfe5e4e804f');
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        background-size: 120px auto;
+        word-break: break-all;
+      ">
+      <p
+        style="
+          font-size: 20px;
+          display: grid;
+          grid-template-columns: 1fr;
+          text-align: center;
+        ">
+        <span style="display: grid; grid-template-columns: 1fr; font-size: 16px;">
+          Your Username or Email and Password:
+          <b style="color: #00adb5; padding-top: 2px">${email}</b>
+          <b style="color: #00adb5; padding-top: 2px">${password}</b>
+        </span>
+        <span style="font-size: 14px; text-align: center; padding-top: 10px"
+          >Thank you for using our service.</span
+        >
+      </p>
+    </div>`,
+    });
+
+    const token = user.createJWT();
+    res.status(StatusCodes.CREATED).json({
+      user: coordinator,
+      token,
+    });
+  }
+};
+
 module.exports = {
   signup,
   login,
   verifyCode,
   forgotPassword,
   resetPassword,
+  createUser,
 };

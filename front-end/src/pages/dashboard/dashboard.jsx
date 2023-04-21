@@ -70,7 +70,7 @@ const Dashboard = () => {
           <Route path="/profile/*" element={<Profile />} />
           <Route path="/daily-time-record" element={<DailyTimeRecord />} />
           <Route path="/documents" element={<Documents />} />
-          <Route path="/reports/*" element={<Reports />} />
+          <Route path="/reports/*" element={<Reports />} />s
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Routes>
       </Suspense>

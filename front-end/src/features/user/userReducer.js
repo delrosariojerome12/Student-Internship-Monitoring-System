@@ -58,8 +58,8 @@ export const handleCreateUser = createAsyncThunk(
   "/user/createUser",
   async ({form}, {rejectWithValue}) => {
     try {
-      const url = "https://sims-twqb.onrender.com/auth/signup";
-      // const url = "http://localhost:5000/auth/signup";
+      // const url = "https://sims-twqb.onrender.com/auth/signup";
+      const url = "http://localhost:5000/auth/createUser";
       const {data: res} = await axios.post(url, convertForm(form));
       return {res};
     } catch (err) {

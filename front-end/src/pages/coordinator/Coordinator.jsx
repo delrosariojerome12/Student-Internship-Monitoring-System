@@ -6,6 +6,8 @@ import SideBarRight from "../../components/dashboard/SidebarRight";
 import {useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {getAllInterns} from "../../features/interns/internReducer";
+// import Dashboard from "./Dashboard";
+import CreateAccount from "../admin/Dashboard";
 
 import Bouncing from "../../components/loading/Bouncing";
 import Test from "./InternProfile";
@@ -40,6 +42,7 @@ const Coordinator = React.memo(({isSidebarOpen}) => {
           <Route path="/approvals" element={<Approvals />} />
           <Route path="/documents" element={<Documents />} />
           <Route path="/internships" element={<Internships />} />
+          <Route path="/createAccounts/*" element={<CreateAccount />} />
 
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Routes>
