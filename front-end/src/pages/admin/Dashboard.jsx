@@ -336,7 +336,13 @@ const Dashboard = React.memo(() => {
                         }
                         autoComplete={hasEyeIcon ? "true" : null}
                       />
-                      <label htmlFor={`${id}${radioValue}`}>{radioValue}</label>
+                      <label htmlFor={`${id}${radioValue}`}>
+                        {radioValue === "admin"
+                          ? "Placement Officer"
+                          : radioValue === "coordinator"
+                          ? "Admin"
+                          : null}
+                      </label>
                     </div>
                   );
                 }
