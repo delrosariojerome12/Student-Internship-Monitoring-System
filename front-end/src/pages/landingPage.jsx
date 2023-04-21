@@ -99,7 +99,7 @@ const teamMembers = [
   {
     name: "Ivan Cedie C. Batario",
     position: "",
-    // Backend Developer
+    // position: "Backend Developer",
     image: Ivan,
   },
 ];
