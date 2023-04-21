@@ -74,9 +74,8 @@ export const handleSignup = createAsyncThunk(
   async (form, {rejectWithValue}) => {
     try {
       const {email, firstName, lastName, password} = convertForm(form);
-      // const url = "https://sims-twqb.onrender.com/auth/signup";
-      const url = "http://localhost:5000/auth/signup";
-
+      const url = "https://sims-twqb.onrender.com/auth/signup";
+      // const url = "http://localhost:5000/auth/signup";
       // const user = await createUserWithEmailAndPassword(auth, email, password);
       const {data: res} = await axios.post(url, convertForm(form));
       return {res};
