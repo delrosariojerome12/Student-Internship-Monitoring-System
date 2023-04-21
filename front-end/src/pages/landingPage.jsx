@@ -85,11 +85,7 @@ const teamMembers = [
     position: "UI/UX System Designer",
     image: Jake,
   },
-  {
-    name: "Ivan Cedie C. Batario",
-    position: "Backend Developer",
-    image: Ivan,
-  },
+
   {
     name: "Diosa D. Tadiosa",
     position: "Documentation/Tester",
@@ -99,6 +95,12 @@ const teamMembers = [
     name: "Jezreel Dannah D. Menor",
     position: "Documentation/Tester",
     image: Jez,
+  },
+  {
+    name: "Ivan Cedie C. Batario",
+    position: "",
+    // Backend Developer
+    image: Ivan,
   },
 ];
 
