@@ -58,8 +58,8 @@ export const handleCreateUser = createAsyncThunk(
   "/user/createUser",
   async ({form}, {rejectWithValue}) => {
     try {
-      // const url = "https://sims-twqb.onrender.com/auth/signup";
-      const url = "http://localhost:5000/auth/createUser";
+      const url = "https://sims-twqb.onrender.com/auth/createUser";
+      // const url = "http://localhost:5000/auth/createUser";
       const {data: res} = await axios.post(url, convertForm(form));
       return {res};
     } catch (err) {
@@ -138,9 +138,7 @@ export const forgotPassword = createAsyncThunk(
     console.log(email);
     try {
       // const url = `http://localhost:5000/auth/forgotPassword`;
-
       const url = `https://sims-twqb.onrender.com/auth/forgotPassword`;
-
       const {data: res} = await axios.post(url, {email});
       // console.log(res);
       return {res};
@@ -180,7 +178,6 @@ export const verifyResetCode = createAsyncThunk(
     try {
       // const url = `http://localhost:5000/auth/verify`;
       const url = `https://sims-twqb.onrender.com/auth/verify`;
-
       const {data: res} = await axios.post(url, {email, code, usage: "reset"});
       console.log(res);
       return {res};
