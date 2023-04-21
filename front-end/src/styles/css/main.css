@@ -3999,7 +3999,8 @@ button {
   border-radius: 0 0 1rem 1rem;
 }
 .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   background-color: #d9d9d9;
 }
 .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form {
@@ -4008,10 +4009,13 @@ button {
 }
 .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form .forms label, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form .forms label {
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto auto;
   width: 100%;
   height: 100%;
   padding: 1rem;
+}
+.dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form .forms label > *, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form .forms label > * {
+  margin: auto 0;
 }
 .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form .forms label textarea, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form .forms label textarea {
   height: 100%;
@@ -4178,6 +4182,38 @@ button {
   .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .img-container img, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .img-container img {
     height: 14rem;
     width: 14rem;
+  }
+  .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container {
+    grid-template-rows: repeat(9, auto);
+  }
+  .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(3), .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(3) {
+    grid-column: 2/5;
+    grid-row: 2/3;
+  }
+  .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(4), .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(4) {
+    grid-column: 2/5;
+    grid-row: 3/4;
+  }
+  .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(5), .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(5) {
+    grid-column: 1/5;
+    grid-row: 4/5;
+  }
+  .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(6), .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(6) {
+    grid-column: 1/5;
+    grid-row: 5/6;
+  }
+  .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(7), .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(7) {
+    grid-column: 1/5;
+    grid-row: 6/7;
+  }
+  .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(8), .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(8) {
+    grid-column: 1/5;
+    grid-row: 7/8;
+  }
+  .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(9), .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(9) {
+    grid-column: 1/5;
+    grid-row: 8/10;
+    border-radius: 0 0 1rem 1rem;
   }
   .dashboard .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form p, .dashboard-active .approvals .approval-container .approvals-intern-container .approval-intern .overlay .intern-modal .feedback-container form p {
     font-size: 1.5rem;
@@ -5348,10 +5384,13 @@ button {
 }
 .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .feedback-container form .forms label, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .feedback-container form .forms label {
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto auto;
   width: 100%;
   height: 100%;
   padding: 1rem;
+}
+.dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .feedback-container form .forms label > *, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .feedback-container form .forms label > * {
+  margin: auto 0;
 }
 .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .feedback-container form .forms label textarea, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .feedback-container form .forms label textarea {
   height: 100%;
@@ -5749,6 +5788,38 @@ button {
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .sent-details .img-container img, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .sent-details .img-container img {
     height: 14rem;
     width: 14rem;
+  }
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container {
+    grid-template-rows: repeat(9, auto);
+  }
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(3), .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(3) {
+    grid-column: 2/5;
+    grid-row: 2/3;
+  }
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(4), .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(4) {
+    grid-column: 2/5;
+    grid-row: 3/4;
+  }
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(5), .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(5) {
+    grid-column: 1/5;
+    grid-row: 4/5;
+  }
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(6), .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(6) {
+    grid-column: 1/5;
+    grid-row: 5/6;
+  }
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(7), .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(7) {
+    grid-column: 1/5;
+    grid-row: 6/7;
+  }
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(8), .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(8) {
+    grid-column: 1/5;
+    grid-row: 7/8;
+  }
+  .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(9), .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .sent-details .internship-details-container > *:nth-child(9) {
+    grid-column: 1/5;
+    grid-row: 8/10;
+    border-radius: 0 0 1rem 1rem;
   }
   .dashboard .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .feedback-container form p, .dashboard-active .coordinator-dashboard .dashboard-content .dashboard-approvals .all-approvals-container .approval-intern .overlay .intern-modal .feedback-container form p {
     font-size: 1.5rem;
@@ -9385,6 +9456,7 @@ button {
   grid-template-columns: 20rem repeat(5, 1fr);
   grid-template-rows: auto auto;
   background-color: #d9d9d9;
+  border-radius: 1rem;
   gap: 2rem;
   padding: 2rem;
 }
@@ -9427,7 +9499,7 @@ button {
   grid-column: 1/7;
   display: grid;
   grid-template-columns: 10rem auto auto auto;
-  grid-template-rows: 3rem repeat(6, auto);
+  grid-template-rows: repeat(7, auto);
   background-color: #d9d9d9;
   gap: 0.5rem;
 }
@@ -9507,6 +9579,38 @@ button {
   }
   .waiting-container-pending .sent-details .img-container {
     background-color: transparent;
+  }
+  .waiting-container-pending .sent-details .internship-details-container {
+    grid-template-rows: repeat(9, auto);
+  }
+  .waiting-container-pending .sent-details .internship-details-container > *:nth-child(3) {
+    grid-column: 2/5;
+    grid-row: 2/3;
+  }
+  .waiting-container-pending .sent-details .internship-details-container > *:nth-child(4) {
+    grid-column: 2/5;
+    grid-row: 3/4;
+  }
+  .waiting-container-pending .sent-details .internship-details-container > *:nth-child(5) {
+    grid-column: 1/5;
+    grid-row: 4/5;
+  }
+  .waiting-container-pending .sent-details .internship-details-container > *:nth-child(6) {
+    grid-column: 1/5;
+    grid-row: 5/6;
+  }
+  .waiting-container-pending .sent-details .internship-details-container > *:nth-child(7) {
+    grid-column: 1/5;
+    grid-row: 6/7;
+  }
+  .waiting-container-pending .sent-details .internship-details-container > *:nth-child(8) {
+    grid-column: 1/5;
+    grid-row: 7/8;
+  }
+  .waiting-container-pending .sent-details .internship-details-container > *:nth-child(9) {
+    grid-column: 1/5;
+    grid-row: 8/10;
+    border-radius: 0 0 1rem 1rem;
   }
 }
 @media screen and (max-width: 1030px) {
