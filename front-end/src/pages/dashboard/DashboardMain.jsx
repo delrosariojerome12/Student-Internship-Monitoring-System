@@ -1,18 +1,18 @@
 /** @format */
 
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 // import searchIcon from "../../assets/img/search.svg";
-import {useSelector, useDispatch} from "react-redux";
-import {BiSearchAlt} from "react-icons/bi";
-import {checkStartingDate} from "../../features/interns/attendanceReducer";
-import {useNavigate} from "react-router";
+import { useSelector, useDispatch } from "react-redux";
+import { BiSearchAlt } from "react-icons/bi";
+import { checkStartingDate } from "../../features/interns/attendanceReducer";
+import { useNavigate } from "react-router";
 import ReactMap from "../../components/utils/ReactMap";
 import NoInternship from "../../assets/img/no-internship.svg";
 
 const DashboardMain = React.memo(() => {
   const {
     user: {
-      user: {firstName},
+      user: { firstName },
       email,
       internshipDetails: {
         renderedHours,
@@ -23,7 +23,7 @@ const DashboardMain = React.memo(() => {
         supervisorContact,
         email: supEmail,
       },
-      schoolDetails: {requiredHours},
+      schoolDetails: { requiredHours },
       documentDetails,
       status,
     },
@@ -35,7 +35,7 @@ const DashboardMain = React.memo(() => {
 
   useEffect(() => {
     if (status !== "Starting") {
-      dispatch(checkStartingDate({email}));
+      dispatch(checkStartingDate({ email }));
     }
   }, []);
 
@@ -51,8 +51,8 @@ const DashboardMain = React.memo(() => {
     }
     return documentDetails.map((item, index) => {
       const {
-        document: {name, format},
-        completion: {isApproved, hasSent, isRejected},
+        document: { name, format },
+        completion: { isApproved, hasSent, isRejected },
       } = item;
       return (
         <div className="document-dashboard" key={index}>
@@ -70,8 +70,7 @@ const DashboardMain = React.memo(() => {
                 : isRejected
                 ? "#e63946"
                 : "#F18805",
-            }}
-          >
+            }}>
             {isApproved
               ? "Approved"
               : hasSent
@@ -147,7 +146,7 @@ const DashboardMain = React.memo(() => {
           </div>
         </div>
         <div className="internship-details">
-          <h4>Intership Details</h4>
+          <h4>Internship Details</h4>
           <div className="internship-contents">
             <p>
               <b>Internship at: </b> {companyName}
