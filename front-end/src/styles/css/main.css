@@ -6661,6 +6661,9 @@ button {
     justify-content: center;
     align-items: center;
   }
+  .dashboard .monitor-attendance .display .content .day-attendance .right .first p, .dashboard-active .monitor-attendance .display .content .day-attendance .right .first p {
+    text-align: center;
+  }
   .dashboard .monitor-attendance .display .content .day-attendance .right .first .rendered, .dashboard-active .monitor-attendance .display .content .day-attendance .right .first .rendered {
     display: none;
   }
