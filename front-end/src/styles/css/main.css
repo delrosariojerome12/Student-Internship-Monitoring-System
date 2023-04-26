@@ -371,40 +371,56 @@ button {
   border: solid 1px #00adb5;
   background-color: #00adb5;
 }
-.login .success-modal, .login .dashboard .admin-dashboard .error-modal, .login .dashboard-active .admin-dashboard .error-modal, .dashboard .admin-dashboard .login .error-modal, .dashboard-active .admin-dashboard .login .error-modal {
+.login .success-container {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fff;
+  background-color: #d9d9d9;
   height: 50rem;
   width: 50rem;
   z-index: 7;
   border-radius: 1rem;
-  padding: 3rem;
-  gap: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding: 2rem;
+  display: grid;
 }
-.login .success-modal > button, .login .dashboard .admin-dashboard .error-modal > button, .login .dashboard-active .admin-dashboard .error-modal > button, .dashboard .admin-dashboard .login .error-modal > button, .dashboard-active .admin-dashboard .login .error-modal > button {
+.login .success-container .success-modal, .login .success-container .dashboard .admin-dashboard .error-modal, .login .success-container .dashboard-active .admin-dashboard .error-modal, .dashboard .admin-dashboard .login .success-container .error-modal, .dashboard-active .admin-dashboard .login .success-container .error-modal {
+  display: flex;
+  border-radius: 1rem;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: #fff;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+.login .success-container .success-modal .top, .login .success-container .dashboard .admin-dashboard .error-modal .top, .login .success-container .dashboard-active .admin-dashboard .error-modal .top, .dashboard .admin-dashboard .login .success-container .error-modal .top, .dashboard-active .admin-dashboard .login .success-container .error-modal .top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+.login .success-container .success-modal .top img, .login .success-container .dashboard .admin-dashboard .error-modal .top img, .login .success-container .dashboard-active .admin-dashboard .error-modal .top img, .dashboard .admin-dashboard .login .success-container .error-modal .top img, .dashboard-active .admin-dashboard .login .success-container .error-modal .top img {
+  height: auto;
+  width: 20rem;
+}
+.login .success-container .success-modal > button, .login .success-container .dashboard .admin-dashboard .error-modal > button, .login .success-container .dashboard-active .admin-dashboard .error-modal > button, .dashboard .admin-dashboard .login .success-container .error-modal > button, .dashboard-active .admin-dashboard .login .success-container .error-modal > button {
   cursor: pointer;
   height: 4.5rem;
   width: 12.5rem;
   border-radius: 5px;
   border: solid 1px transparent;
   outline: none;
-  background-color: #457b9d;
-  color: #f1faee;
-  letter-spacing: 0.2rem;
+  background-color: #00ff9d;
+  color: #fff;
   transition: all 0.3s ease-in-out;
   font-weight: 600;
 }
-.login .success-modal > button:hover, .login .dashboard .admin-dashboard .error-modal > button:hover, .login .dashboard-active .admin-dashboard .error-modal > button:hover, .dashboard .admin-dashboard .login .error-modal > button:hover, .dashboard-active .admin-dashboard .login .error-modal > button:hover {
-  background-color: #f1faee;
-  color: #457b9d;
-  border: solid 1px #457b9d;
+.login .success-container .success-modal > button:hover, .login .success-container .dashboard .admin-dashboard .error-modal > button:hover, .login .success-container .dashboard-active .admin-dashboard .error-modal > button:hover, .dashboard .admin-dashboard .login .success-container .error-modal > button:hover, .dashboard-active .admin-dashboard .login .success-container .error-modal > button:hover {
+  background-color: #fff;
+  color: #000;
+  border: solid 1px #000;
 }
 .login .bg-container {
   height: 100%;
@@ -853,40 +869,56 @@ button {
   border: solid 1px #00adb5;
   background-color: #00adb5;
 }
-.login .success-modal, .login .dashboard .admin-dashboard .error-modal, .login .dashboard-active .admin-dashboard .error-modal, .dashboard .admin-dashboard .login .error-modal, .dashboard-active .admin-dashboard .login .error-modal {
+.login .success-container {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fff;
+  background-color: #d9d9d9;
   height: 50rem;
   width: 50rem;
   z-index: 7;
   border-radius: 1rem;
-  padding: 3rem;
-  gap: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding: 2rem;
+  display: grid;
 }
-.login .success-modal > button, .login .dashboard .admin-dashboard .error-modal > button, .login .dashboard-active .admin-dashboard .error-modal > button, .dashboard .admin-dashboard .login .error-modal > button, .dashboard-active .admin-dashboard .login .error-modal > button {
+.login .success-container .success-modal, .login .success-container .dashboard .admin-dashboard .error-modal, .login .success-container .dashboard-active .admin-dashboard .error-modal, .dashboard .admin-dashboard .login .success-container .error-modal, .dashboard-active .admin-dashboard .login .success-container .error-modal {
+  display: flex;
+  border-radius: 1rem;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: #fff;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+.login .success-container .success-modal .top, .login .success-container .dashboard .admin-dashboard .error-modal .top, .login .success-container .dashboard-active .admin-dashboard .error-modal .top, .dashboard .admin-dashboard .login .success-container .error-modal .top, .dashboard-active .admin-dashboard .login .success-container .error-modal .top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+.login .success-container .success-modal .top img, .login .success-container .dashboard .admin-dashboard .error-modal .top img, .login .success-container .dashboard-active .admin-dashboard .error-modal .top img, .dashboard .admin-dashboard .login .success-container .error-modal .top img, .dashboard-active .admin-dashboard .login .success-container .error-modal .top img {
+  height: auto;
+  width: 20rem;
+}
+.login .success-container .success-modal > button, .login .success-container .dashboard .admin-dashboard .error-modal > button, .login .success-container .dashboard-active .admin-dashboard .error-modal > button, .dashboard .admin-dashboard .login .success-container .error-modal > button, .dashboard-active .admin-dashboard .login .success-container .error-modal > button {
   cursor: pointer;
   height: 4.5rem;
   width: 12.5rem;
   border-radius: 5px;
   border: solid 1px transparent;
   outline: none;
-  background-color: #457b9d;
-  color: #f1faee;
-  letter-spacing: 0.2rem;
+  background-color: #00ff9d;
+  color: #fff;
   transition: all 0.3s ease-in-out;
   font-weight: 600;
 }
-.login .success-modal > button:hover, .login .dashboard .admin-dashboard .error-modal > button:hover, .login .dashboard-active .admin-dashboard .error-modal > button:hover, .dashboard .admin-dashboard .login .error-modal > button:hover, .dashboard-active .admin-dashboard .login .error-modal > button:hover {
-  background-color: #f1faee;
-  color: #457b9d;
-  border: solid 1px #457b9d;
+.login .success-container .success-modal > button:hover, .login .success-container .dashboard .admin-dashboard .error-modal > button:hover, .login .success-container .dashboard-active .admin-dashboard .error-modal > button:hover, .dashboard .admin-dashboard .login .success-container .error-modal > button:hover, .dashboard-active .admin-dashboard .login .success-container .error-modal > button:hover {
+  background-color: #fff;
+  color: #000;
+  border: solid 1px #000;
 }
 .login .bg-container {
   height: 100%;
@@ -13850,40 +13882,56 @@ button {
   border: solid 1px #00adb5;
   background-color: #00adb5;
 }
-.login .success-modal, .login .dashboard .admin-dashboard .error-modal, .dashboard .admin-dashboard .login .error-modal, .login .dashboard-active .admin-dashboard .error-modal, .dashboard-active .admin-dashboard .login .error-modal {
+.login .success-container {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fff;
+  background-color: #d9d9d9;
   height: 50rem;
   width: 50rem;
   z-index: 7;
   border-radius: 1rem;
-  padding: 3rem;
-  gap: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding: 2rem;
+  display: grid;
 }
-.login .success-modal > button, .login .dashboard .admin-dashboard .error-modal > button, .dashboard .admin-dashboard .login .error-modal > button, .login .dashboard-active .admin-dashboard .error-modal > button, .dashboard-active .admin-dashboard .login .error-modal > button {
+.login .success-container .success-modal, .login .success-container .dashboard .admin-dashboard .error-modal, .dashboard .admin-dashboard .login .success-container .error-modal, .login .success-container .dashboard-active .admin-dashboard .error-modal, .dashboard-active .admin-dashboard .login .success-container .error-modal {
+  display: flex;
+  border-radius: 1rem;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: #fff;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+.login .success-container .success-modal .top, .login .success-container .dashboard .admin-dashboard .error-modal .top, .dashboard .admin-dashboard .login .success-container .error-modal .top, .login .success-container .dashboard-active .admin-dashboard .error-modal .top, .dashboard-active .admin-dashboard .login .success-container .error-modal .top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+.login .success-container .success-modal .top img, .login .success-container .dashboard .admin-dashboard .error-modal .top img, .dashboard .admin-dashboard .login .success-container .error-modal .top img, .login .success-container .dashboard-active .admin-dashboard .error-modal .top img, .dashboard-active .admin-dashboard .login .success-container .error-modal .top img {
+  height: auto;
+  width: 20rem;
+}
+.login .success-container .success-modal > button, .login .success-container .dashboard .admin-dashboard .error-modal > button, .dashboard .admin-dashboard .login .success-container .error-modal > button, .login .success-container .dashboard-active .admin-dashboard .error-modal > button, .dashboard-active .admin-dashboard .login .success-container .error-modal > button {
   cursor: pointer;
   height: 4.5rem;
   width: 12.5rem;
   border-radius: 5px;
   border: solid 1px transparent;
   outline: none;
-  background-color: #457b9d;
-  color: #f1faee;
-  letter-spacing: 0.2rem;
+  background-color: #00ff9d;
+  color: #fff;
   transition: all 0.3s ease-in-out;
   font-weight: 600;
 }
-.login .success-modal > button:hover, .login .dashboard .admin-dashboard .error-modal > button:hover, .dashboard .admin-dashboard .login .error-modal > button:hover, .login .dashboard-active .admin-dashboard .error-modal > button:hover, .dashboard-active .admin-dashboard .login .error-modal > button:hover {
-  background-color: #f1faee;
-  color: #457b9d;
-  border: solid 1px #457b9d;
+.login .success-container .success-modal > button:hover, .login .success-container .dashboard .admin-dashboard .error-modal > button:hover, .dashboard .admin-dashboard .login .success-container .error-modal > button:hover, .login .success-container .dashboard-active .admin-dashboard .error-modal > button:hover, .dashboard-active .admin-dashboard .login .success-container .error-modal > button:hover {
+  background-color: #fff;
+  color: #000;
+  border: solid 1px #000;
 }
 .login .bg-container {
   height: 100%;
@@ -14107,7 +14155,9 @@ button {
   }
 }
 @media screen and (max-width: 520px) {
-  .login .forgot-modal {
+  .login .forgot-modal,
+  .login .success-container,
+  .login .reset-form {
     width: 100%;
   }
   .login .forgot-modal .forgot-modal-container {
@@ -14118,7 +14168,9 @@ button {
   }
 }
 @media screen and (max-height: 520px) {
-  .login .forgot-modal {
+  .login .forgot-modal,
+  .login .success-container,
+  .login .reset-form {
     height: 100%;
   }
 }
@@ -14130,6 +14182,12 @@ button {
   .login .bg-container {
     grid-column: 2/3;
     grid-row: 1/2;
+  }
+  .login .success-container .success-modal .top, .login .success-container .dashboard .admin-dashboard .error-modal .top, .dashboard .admin-dashboard .login .success-container .error-modal .top, .login .success-container .dashboard-active .admin-dashboard .error-modal .top, .dashboard-active .admin-dashboard .login .success-container .error-modal .top {
+    text-align: center;
+  }
+  .login .success-container .success-modal .top img, .login .success-container .dashboard .admin-dashboard .error-modal .top img, .dashboard .admin-dashboard .login .success-container .error-modal .top img, .login .success-container .dashboard-active .admin-dashboard .error-modal .top img, .dashboard-active .admin-dashboard .login .success-container .error-modal .top img {
+    width: 17rem;
   }
   .login .card-container {
     grid-column: 1/2;

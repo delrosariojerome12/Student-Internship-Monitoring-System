@@ -55,8 +55,12 @@
 
 @media screen and (max-width: 520px) {
   .login {
-    .forgot-modal {
+    .forgot-modal,
+    .success-container,
+    .reset-form {
       width: 100%;
+    }
+    .forgot-modal {
       .forgot-modal-container {
         overflow-y: auto;
         overflow-x: auto;
@@ -68,7 +72,9 @@
 }
 @media screen and (max-height: 520px) {
   .login {
-    .forgot-modal {
+    .forgot-modal,
+    .success-container,
+    .reset-form {
       height: 100%;
     }
   }
@@ -81,6 +87,16 @@
     .bg-container {
       grid-column: 2/3;
       grid-row: 1/2;
+    }
+    .success-container {
+      .success-modal {
+        .top {
+          text-align: center;
+          img {
+            width: 17rem;
+          }
+        }
+      }
     }
     .card-container {
       grid-column: 1/2;
