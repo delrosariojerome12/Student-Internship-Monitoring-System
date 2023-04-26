@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/img/logo.svg";
+import success from "../../assets/img/successCreate.svg";
 import { FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import { GrMail } from "react-icons/gr";
 import { IconContext } from "react-icons";
@@ -340,11 +341,16 @@ const Login = React.memo(() => {
       {isPasswordChangeSuccess && (
         <>
           <div className="overlay"></div>
-          <div className="success-modal">
-            <h1>Password Changed Successfully</h1>
-            <button onClick={() => dispatch(handleClosePasswordChanged())}>
-              Close
-            </button>
+          <div className="success-container">
+            <div className="success-modal">
+              <div className="top">
+                <h1>Password Changed Successfully</h1>
+                <img src={success} alt="Success img" />
+              </div>
+              <button onClick={() => dispatch(handleClosePasswordChanged())}>
+                Close
+              </button>
+            </div>
           </div>
         </>
       )}

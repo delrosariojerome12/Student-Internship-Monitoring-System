@@ -98,8 +98,7 @@ const teamMembers = [
   },
   {
     name: "Ivan Cedie C. Batario",
-    position: "",
-    // position: "Backend Developer",
+    position: "Documentation/Tester",
     image: Ivan,
   },
 ];
