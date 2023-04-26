@@ -647,6 +647,11 @@ const checkInternsStartingToday = async (req, res) => {
   }
 };
 
+const wakeup = async (req, res) => {
+  console.log("wakeup");
+  res.status(StatusCodes.OK).json({success: true, msg: "wakeup"});
+};
+
 const runCheckAbsents = async () => {
   try {
     // const response = await axios.post(
@@ -731,4 +736,5 @@ module.exports = {
   checkInternsStartingToday,
   checkAbsents,
   updateNarrative,
+  wakeup,
 };
