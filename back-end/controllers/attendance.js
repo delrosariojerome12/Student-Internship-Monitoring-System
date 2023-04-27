@@ -362,7 +362,14 @@ const getAttendance = async (req, res) => {
 };
 
 const timeIn = async (req, res) => {
+  const today = moment.tz("Asia/Manila").format("MM-DD-YYYY");
+  // console.log(today);
   const {email} = req.params;
+  const {form, timeObject} = req.body;
+
+  console.log(form);
+  console.log("|");
+  console.log(timeObject);
 
   if (!email) {
     throw new NotFound("Email not found");
@@ -375,7 +382,8 @@ const timeIn = async (req, res) => {
     user: user._id,
     intern: intern._id,
     email,
-    ...req.body,
+    ...form,
+    date: timeObject.todayDate,
   });
 
   Attendance.createIndexes();
