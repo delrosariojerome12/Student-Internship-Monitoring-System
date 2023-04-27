@@ -360,9 +360,7 @@
     width: 65rem;
     height: 93%;
     overflow: auto;
-    display: grid;
-    grid-template-rows: 1fr auto;
-    gap: 1rem;
+    @include flexColumn;
     img {
       margin: auto;
       height: auto;
@@ -537,6 +535,10 @@
                 }
               }
             }
+            .error-container {
+              flex-direction: row;
+              justify-content: space-evenly;
+            }
           }
         }
         .drop-file-container {
@@ -558,6 +560,9 @@
   .documents-page {
     .sample-view-container {
       width: 60rem;
+      > div {
+        height: 88% !important;
+      }
       .btn-close {
         @include flexCenter;
         button {
@@ -635,7 +640,14 @@
       }
     }
     .sample-view-container {
-      width: 55rem;
+      border-radius: 0;
+      width: 100%;
+      height: 100%;
+      .btn-close {
+        button {
+          height: 4rem;
+        }
+      }
     }
   }
 }
@@ -653,16 +665,16 @@
       }
     }
 
-    .sample-view-container {
-      border-radius: 0;
-      width: 100%;
-      height: 100%;
-      .btn-close {
-        button {
-          height: 3.8rem;
-        }
-      }
-    }
+    // .sample-view-container {
+    //   border-radius: 0;
+    //   width: 100%;
+    //   height: 100%;
+    //   .btn-close {
+    //     button {
+    //       height: 3.8rem;
+    //     }
+    //   }
+    // }
   }
 }
 @media screen and (max-width: 500px) {
@@ -673,6 +685,24 @@
     // }
     .display {
       grid-auto-rows: 6rem;
+    }
+    .top {
+      .drop-file {
+        form {
+          label {
+            .error-container {
+              img {
+                width: 6rem;
+                height: auto;
+              }
+              h4 {
+                font-size: 1.7rem;
+                text-align: center;
+              }
+            }
+          }
+        }
+      }
     }
     .required-document {
       width: 100%;
@@ -706,5 +736,45 @@
 @media screen and (max-width: 400px) {
   .documents-page {
     grid-template-rows: auto minmax(20rem, 44vh);
+
+    .top {
+      .drop-file {
+        form {
+          label {
+            .error-container {
+              padding: 1rem;
+              img {
+                width: 5rem;
+              }
+              h4 {
+                font-size: 1.6rem;
+                text-align: center;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .documents-page {
+    .top {
+      .drop-file {
+        form {
+          label {
+            .error-container {
+              img {
+                width: 4rem;
+              }
+              h4 {
+                font-size: 1.5rem;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
