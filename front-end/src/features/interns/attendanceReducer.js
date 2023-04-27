@@ -19,6 +19,8 @@ const initialState = {
   todayAttendance: null,
   allAttendanceToday: null,
   timeObject: null,
+  isTimeInLoading: false,
+  isTimeOutLoading: false,
 };
 
 const apiKey = "YWPMVZTIXVDO";
@@ -289,6 +291,7 @@ export const attendanceReducer = createSlice({
     //   time in
     builder
       .addCase(timeInAttendance.pending, (state, action) => {
+        state.isTimeInLoading = true;
         // state.isLoading = true;
       })
       .addCase(timeInAttendance.fulfilled, (state, {payload}) => {
@@ -296,14 +299,16 @@ export const attendanceReducer = createSlice({
         state.allAttendance = [...state.allAttendance, payload.res.data];
         state.isTimeInOpen = false;
         state.isTimeInDisable = true;
+        state.isTimeInLoading = false;
       })
       .addCase(timeInAttendance.rejected, (state, action) => {
         state.isError = true;
+        state.isTimeInLoading = false;
       });
     //   timeout
     builder
       .addCase(timeOutAttendance.pending, (state, action) => {
-        // state.isLoading = true;
+        state.isTimeOutLoading = true;
       })
       .addCase(timeOutAttendance.fulfilled, (state, {payload}) => {
         console.log(payload.res);
@@ -312,9 +317,11 @@ export const attendanceReducer = createSlice({
         state.isTimeOutOpen = false;
         state.isTimeOutDisable = true;
         state.todayAttendance = payload.res.todayAttendance;
+        state.isTimeOutLoading = false;
       })
       .addCase(timeOutAttendance.rejected, (state, action) => {
-        state.isLoading = false;
+        state.isTimeOutLoading = false;
+        // state.isLoading = false;
         state.isError = true;
       });
     // check starting date

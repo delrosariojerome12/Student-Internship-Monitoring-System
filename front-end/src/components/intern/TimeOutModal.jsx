@@ -52,6 +52,7 @@ const TimeOutModal = React.memo(({email}) => {
   const {
     todayAttendance,
     timeObject: {dateTime},
+    isTimeOutLoading,
   } = useSelector((state) => state.attendance);
 
   const {
@@ -193,8 +194,6 @@ const TimeOutModal = React.memo(({email}) => {
     );
   }
 
-  console.log(deviceType);
-
   const renderToggle = () => {
     if (deviceType === "tablet" || deviceType === "phone") {
       return <button onClick={handleToggleCamera}>Toggle Camera</button>;
@@ -249,12 +248,12 @@ const TimeOutModal = React.memo(({email}) => {
             )
           }
           style={
-            capturedPhoto
-              ? {opacity: "1"}
-              : {opacity: ".7", pointerEvents: "none"}
+            isTimeOutLoading || !capturedPhoto
+              ? {opacity: ".7", pointerEvents: "none"}
+              : {opacity: 1}
           }
         >
-          Time Out
+          {isTimeOutLoading ? "Timing out..." : "Time out"}
         </button>
       </div>
     </>
