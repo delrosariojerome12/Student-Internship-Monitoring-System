@@ -19,13 +19,17 @@ const initialState = {
   todayAttendance: null,
   allAttendanceToday: null,
   timeObject: null,
+  isTimeInLoading: false,
+  isTimeOutLoading: false,
 };
+
+const apiKey = "YWPMVZTIXVDO";
 
 export const getAllAttendance = createAsyncThunk(
   "/attendance/getAllAttendance",
   async ({email, scheduleDetails}, {rejectWithValue}) => {
     try {
-      const apiKey = "YWPMVZTIXVDO";
+      // const apiKey = "YWPMVZTIXVDO";
       const apiUrl = `https://api.timezonedb.com/v2.1/get-time-zone?key=${apiKey}&format=json&by=zone&zone=Asia/Manila`;
       const response = await axios.get(apiUrl);
 
@@ -104,9 +108,40 @@ export const timeInAttendance = createAsyncThunk(
   "/attendance/timeIn",
   async ({email, form}, {rejectWithValue}) => {
     try {
+      const apiUrl = `https://api.timezonedb.com/v2.1/get-time-zone?key=${apiKey}&format=json&by=zone&zone=Asia/Manila`;
+      const response = await axios.get(apiUrl);
+
+      const dateTime = response.data.formatted;
+      const date = new Date(dateTime);
+
+      const day = date.getDay();
+      const hours = date.getHours() % 12 || 12;
+      const minutes = date.getMinutes();
+      const amOrPm = date.getHours() >= 12 ? "PM" : "AM";
+
+      const month =
+        date.getMonth() + 1 < 10
+          ? `0${date.getMonth() + 1}`
+          : date.getMonth() + 1;
+      const dayDate =
+        date.getDate() + 1 < 10 ? `0${date.getDate()}` : date.getDate();
+      const year = date.getFullYear();
+      const todayDate = `${month}-${dayDate}-${year}`;
+
+      const timeObject = {
+        day,
+        hours,
+        minutes,
+        amOrPm,
+        todayDate,
+        dateTime,
+      };
+
+      console.log(timeObject);
+
       const url = `https://sims-twqb.onrender.com/attendance/timeIn/${email}`;
       // const url = `http://localhost:5000/attendance/timeIn/${email}`;
-      const {data: res} = await axios.post(url, form);
+      const {data: res} = await axios.post(url, {form, timeObject});
       console.log(res);
       return {res};
     } catch (error) {
@@ -256,6 +291,7 @@ export const attendanceReducer = createSlice({
     //   time in
     builder
       .addCase(timeInAttendance.pending, (state, action) => {
+        state.isTimeInLoading = true;
         // state.isLoading = true;
       })
       .addCase(timeInAttendance.fulfilled, (state, {payload}) => {
@@ -263,14 +299,16 @@ export const attendanceReducer = createSlice({
         state.allAttendance = [...state.allAttendance, payload.res.data];
         state.isTimeInOpen = false;
         state.isTimeInDisable = true;
+        state.isTimeInLoading = false;
       })
       .addCase(timeInAttendance.rejected, (state, action) => {
         state.isError = true;
+        state.isTimeInLoading = false;
       });
     //   timeout
     builder
       .addCase(timeOutAttendance.pending, (state, action) => {
-        // state.isLoading = true;
+        state.isTimeOutLoading = true;
       })
       .addCase(timeOutAttendance.fulfilled, (state, {payload}) => {
         console.log(payload.res);
@@ -279,9 +317,11 @@ export const attendanceReducer = createSlice({
         state.isTimeOutOpen = false;
         state.isTimeOutDisable = true;
         state.todayAttendance = payload.res.todayAttendance;
+        state.isTimeOutLoading = false;
       })
       .addCase(timeOutAttendance.rejected, (state, action) => {
-        state.isLoading = false;
+        state.isTimeOutLoading = false;
+        // state.isLoading = false;
         state.isError = true;
       });
     // check starting date

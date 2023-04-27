@@ -54,6 +54,7 @@ const TimeInModal = React.memo(({email}) => {
   const dispatch = useDispatch();
   const {
     timeObject: {dateTime},
+    isTimeInLoading,
   } = useSelector((state) => state.attendance);
 
   const [time, setTime] = useState("");
@@ -199,6 +200,8 @@ const TimeInModal = React.memo(({email}) => {
     }
   };
 
+  console.log(isTimeInLoading);
+
   return (
     <>
       <div className="overlay" onClick={() => dispatch(handleTimeIn())}></div>
@@ -245,12 +248,15 @@ const TimeInModal = React.memo(({email}) => {
             )
           }
           style={
-            capturedPhoto
-              ? {opacity: "1"}
-              : {opacity: ".7", pointerEvents: "none"}
+            // capturedPhoto
+            //   ? {opacity: "1"}
+            //   : {opacity: ".7", pointerEvents: "none"}
+            isTimeInLoading || !capturedPhoto
+              ? {opacity: ".7", pointerEvents: "none"}
+              : {opacity: 1}
           }
         >
-          Time in
+          {isTimeInLoading ? "Timing in..." : "Time in"}
         </button>
       </div>
     </>
